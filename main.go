@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/list"
 	"fmt"
 	"go/ast"
 	"go/parser"
@@ -23,12 +24,14 @@ func main() {
 	// print all of nodes from ast
 	//ast.Print(fset, astTree)
 	count := 0
+	node_list := list.New()
 
 	for _, tree := range astTree.Decls {
 		nodes, ok := tree.(*ast.FuncDecl)
 		if ok {
 			fmt.Println("Functions:", nodes.Name.Name)
-			ast.Print(fset, nodes)
+			node_list.PushBack(nodes)
+			//ast.Print(fset, nodes)
 			fmt.Println()
 			count++
 			//				continue
@@ -36,4 +39,9 @@ func main() {
 		//fmt.Println(fn.Name.Name)
 	}
 	fmt.Println("count is: ", count)
+
+	for item := node_list.Front(); item != nil; item = item.Next() {
+		fmt.Println("item value is ", item)
+	}
+
 }
