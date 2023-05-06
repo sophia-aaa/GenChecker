@@ -64,15 +64,30 @@ func main() {
 					}*/
 		case *ast.Ident:
 			ident++
-			fmt.Println("ast.Ident is: ", x)
+			fmt.Println("!!! Ident !!!", x.Name)
+			//fmt.Println("ast.Ident is: ", x)Assignstatement
 		//node_list.PushBack(x)
 		// TODO: detailed!!!!! must to know sequence
+		case *ast.SelectorExpr:
+			fmt.Println("!!! SelectorExpr !!!")
 		case *ast.AssignStmt:
 			fmt.Println("!!! Assignstatement !!!")
 		case *ast.BlockStmt:
 			fmt.Println("!!! Blockstatement !!!")
 		case *ast.DeclStmt:
 			fmt.Println("!!! Declstatement !!!")
+		case *ast.CallExpr:
+			fmt.Println("!!! CallExpr !!!")
+		case *ast.ReturnStmt:
+			fmt.Println("!!! ReturnStmt !!!")
+		case *ast.SliceExpr:
+			fmt.Println("!!! SliceExpr !!!")
+		case *ast.FieldList: //input
+			fmt.Println("!!! FieldList !!!", x)
+		case *ast.FuncType: //input
+			fmt.Println("!!! FuncType !!!", x)
+		case *ast.StarExpr: //input
+			fmt.Println("!!! StarExpr !!!", x)
 
 		}
 
