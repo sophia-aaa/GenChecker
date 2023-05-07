@@ -147,3 +147,27 @@ func (h *Header) UnsafePointers() []unsafe.Pointer {
 }
 func (h *Header) SetUnsafePointer(i int, x unsafe.Pointer) { h.UnsafePointers()[i] = x }
 func (h *Header) GetUnsafePointer(i int) unsafe.Pointer    { return h.UnsafePointers()[i] }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
