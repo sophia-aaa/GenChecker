@@ -35,9 +35,12 @@ func main() {
 		log.Fatal(err)
 	}
 
+	//ast.Print(fset, astTree)
+
 	node_list := list.New()
 	var elem_list []elem
 	nameFunction := ""
+	//nameCheck := 0
 	astNode := ""
 	var listFunctions1 []function1
 	var listFunctions2 []function2
@@ -55,6 +58,7 @@ func main() {
 				elem_list = []elem{}
 				astNode = ""
 				astValue = []string{}
+				//nameCheck = 0
 			}
 			nameFunction = x.Name.String()
 			node_list.PushBack(elem{nameFunction, []string{}})
@@ -258,18 +262,25 @@ func main() {
 
 		case *ast.Ident:
 			astValue = append(astValue, x.Name)
+			/*	if x.Name == nameFunction {
+						nameCheck++
+					}
+					if x.Name != nameFunction && nameCheck != 0 {
+						astValue = append(astValue, x.Name)
+					}
+				}
+
+					if node_list != nil {
+						fmt.Println(nameFunction, " added! node_list")
+						listFunctions1 = append(listFunctions1, function1{nameFunction, node_list})
+						node_list.Init()
+					}
+					if elem_list != nil {
+						fmt.Println(nameFunction, " added! elem_list")
+						listFunctions2 = append(listFunctions2, function2{nameFunction, elem_list})
+						elem_list = []elem{}
+					}*/
 		}
-		/*
-			if node_list != nil {
-				fmt.Println(nameFunction, " added! node_list")
-				listFunctions1 = append(listFunctions1, function1{nameFunction, node_list})
-				node_list.Init()
-			}
-			if elem_list != nil {
-				fmt.Println(nameFunction, " added! elem_list")
-				listFunctions2 = append(listFunctions2, function2{nameFunction, elem_list})
-				elem_list = []elem{}
-			}*/
 		return true
 	})
 
