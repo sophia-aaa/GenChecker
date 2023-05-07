@@ -50,6 +50,9 @@ func main() {
 			if len(astValue) != 0 { // if a new root meets
 				elem_list = append(elem_list, elem{astNode, astValue})
 				node_list.PushBack(elem{astNode, astValue})
+				func2 := function2{nameFunction, elem_list}
+				listFunctions2 = append(listFunctions2, func2)
+				elem_list = []elem{}
 				astNode = ""
 				astValue = []string{}
 			}
@@ -255,7 +258,8 @@ func main() {
 
 		case *ast.Ident:
 			astValue = append(astValue, x.Name)
-		} /*
+		}
+		/*
 			if node_list != nil {
 				fmt.Println(nameFunction, " added! node_list")
 				listFunctions1 = append(listFunctions1, function1{nameFunction, node_list})
@@ -268,16 +272,29 @@ func main() {
 			}*/
 		return true
 	})
+
+	if len(astValue) != 0 { // if a new root meets
+		elem_list = append(elem_list, elem{astNode, astValue})
+		node_list.PushBack(elem{astNode, astValue})
+		func2 := function2{nameFunction, elem_list}
+		listFunctions2 = append(listFunctions2, func2)
+		elem_list = []elem{}
+		astNode = ""
+		astValue = []string{}
+	}
 	for item := node_list.Front(); item != nil; item = item.Next() {
 		fmt.Println(item.Value)
 	}
 	fmt.Println(len(listFunctions1))
 	fmt.Println(len(listFunctions2))
-	/*	for s := range listFunctions {
-		fmt.Println("function name is ", listFunctions[s].funcName)
-		for item := listFunctions[s].value.Front(); item != nil; item = item.Next() {
-			fmt.Println(item.Value)
+	for s := range listFunctions2 {
+		fmt.Print("function name is ", listFunctions2[s].funcName, " ")
+		fmt.Printf("%d\n", len(listFunctions2[s].value))
+		for _, value := range listFunctions2[s].value {
+			fmt.Printf("%s\n", value)
 		}
-	}*/
+		fmt.Println()
+		fmt.Println()
+	}
 
 }
