@@ -42,7 +42,7 @@ func main() {
 	nameFunction := ""
 	//nameCheck := 0
 	astNode := ""
-	var listFunctions1 []function1
+	//var listFunctions1 []function1
 	var listFunctions2 []function2
 	var astValue []string
 	fmt.Println(len(astValue))
@@ -103,7 +103,6 @@ func main() {
 			} else {
 				astNode += " -> " + "BlockStmt"
 			}
-
 		case *ast.CallExpr:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -116,7 +115,6 @@ func main() {
 			} else {
 				astNode += " -> " + "CallExpr"
 			}
-
 		case *ast.ReturnStmt:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -129,7 +127,6 @@ func main() {
 			} else {
 				astNode += " -> " + "ReturnStmt"
 			}
-
 		case *ast.SliceExpr:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -142,7 +139,6 @@ func main() {
 			} else {
 				astNode += " -> " + "SliceExpr"
 			}
-
 		case *ast.StarExpr:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -155,7 +151,6 @@ func main() {
 			} else {
 				astNode += " -> " + "StarExpr"
 			}
-
 		case *ast.IndexExpr:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -168,7 +163,6 @@ func main() {
 			} else {
 				astNode += " -> " + "IndexExpr"
 			}
-
 		case *ast.SwitchStmt:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -181,7 +175,6 @@ func main() {
 			} else {
 				astNode += " -> " + "SwitchStmt"
 			}
-
 		case *ast.InterfaceType:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -194,7 +187,6 @@ func main() {
 			} else {
 				astNode += " -> " + "InterfaceType"
 			}
-
 		case *ast.DeclStmt:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -207,7 +199,6 @@ func main() {
 			} else {
 				astNode += " -> " + "DeclStmt"
 			}
-
 		case *ast.FieldList:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -220,7 +211,6 @@ func main() {
 			} else {
 				astNode += " -> " + "FieldList"
 			}
-
 		case *ast.CaseClause: //input
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -233,7 +223,6 @@ func main() {
 			} else {
 				astNode += " -> " + "CaseClause"
 			}
-
 		case *ast.BasicLit:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -246,7 +235,6 @@ func main() {
 			} else {
 				astNode += " -> " + "BasicLit"
 			}
-
 		case *ast.StructType:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -259,7 +247,6 @@ func main() {
 			} else {
 				astNode += " -> " + "StructType"
 			}
-
 		case *ast.Ident:
 			astValue = append(astValue, x.Name)
 			/*	if x.Name == nameFunction {
@@ -293,12 +280,43 @@ func main() {
 		astNode = ""
 		astValue = []string{}
 	}
-	for item := node_list.Front(); item != nil; item = item.Next() {
+	/*for item := node_list.Front(); item != nil; item = item.Next() {
 		fmt.Println(item.Value)
 	}
 	fmt.Println(len(listFunctions1))
 	fmt.Println(len(listFunctions2))
+	*/
+	f, err := os.Create(filename + ".txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}(f)
+	var str string
+	nextLine := "\n\n"
 	for s := range listFunctions2 {
+		str = "function name is " + listFunctions2[s].funcName + " "
+		_, err2 := f.WriteString(str)
+		if err2 != nil {
+			log.Fatal(err2)
+		}
+		for _, value := range listFunctions2[s].value {
+			str = fmt.Sprintln(value)
+			_, err2 := f.WriteString(str)
+			if err2 != nil {
+				log.Fatal(err2)
+			}
+		}
+		_, err2 = f.WriteString(nextLine)
+		if err2 != nil {
+			log.Fatal(err2)
+		}
+	}
+	/*for s := range listFunctions2 {
 		fmt.Print("function name is ", listFunctions2[s].funcName, " ")
 		fmt.Printf("%d\n", len(listFunctions2[s].value))
 		for _, value := range listFunctions2[s].value {
@@ -306,6 +324,6 @@ func main() {
 		}
 		fmt.Println()
 		fmt.Println()
-	}
+	}*/
 
 }

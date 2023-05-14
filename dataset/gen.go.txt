@@ -1,0 +1,11 @@
+function name is  { [dataset GenHeader]}
+{FieldList [T any]}
+{StructType -> FieldList [List T]}
+
+
+function name is Gens {FieldList [g]}
+{StarExpr -> IndexExpr [GenHeader T Gens]}
+{FieldList -> FieldList [T]}
+{BlockStmt -> ReturnStmt -> SelectorExpr [g List]}
+
+

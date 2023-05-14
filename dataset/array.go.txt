@@ -1,0 +1,479 @@
+function name is  { [storage]}
+{BasicLit -> BasicLit -> BasicLit -> BasicLit -> BasicLit -> BasicLit [array]}
+{StructType -> FieldList -> SelectorExpr [storage Header t Dtype]}
+
+
+function name is makeArray { [makeArray]}
+{FieldList [t Dtype length int]}
+{FieldList [array]}
+{BlockStmt -> AssignStmt [v]}
+{CallExpr [malloc t length]}
+{AssignStmt [hdr]}
+{SelectorExpr [storage Header Raw v]}
+{ReturnStmt [array Header hdr t t]}
+
+
+function name is arrayFromSlice { [arrayFromSlice]}
+{FieldList [x]}
+{InterfaceType -> FieldList -> FieldList [array]}
+{BlockStmt -> AssignStmt [xT]}
+{CallExpr -> SelectorExpr [reflect TypeOf x]}
+{CallExpr -> SelectorExpr [xT Kind]}
+{SelectorExpr [reflect Slice]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit -> AssignStmt [elT]}
+{CallExpr -> SelectorExpr [xT Elem]}
+{ReturnStmt [array Header]}
+{SelectorExpr [storage Header Raw]}
+{CallExpr -> SelectorExpr [storage AsByteSlice x t Dtype elT]}
+
+
+function name is Len {FieldList [a]}
+{StarExpr [array Len]}
+{FieldList -> FieldList [int]}
+{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr -> SelectorExpr [a Header TypedLen]}
+{SelectorExpr -> SelectorExpr [a t Type]}
+
+
+function name is Cap {FieldList [a]}
+{StarExpr [array Cap]}
+{FieldList -> FieldList [int]}
+{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr -> SelectorExpr [a Header TypedLen]}
+{SelectorExpr -> SelectorExpr [a t Type]}
+
+
+function name is fromSlice {FieldList [a]}
+{StarExpr [array fromSlice]}
+{FieldList [x]}
+{InterfaceType -> FieldList -> BlockStmt -> AssignStmt [xT]}
+{CallExpr -> SelectorExpr [reflect TypeOf x]}
+{CallExpr -> SelectorExpr [xT Kind]}
+{SelectorExpr [reflect Slice]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit -> AssignStmt [elT]}
+{CallExpr -> SelectorExpr [xT Elem]}
+{AssignStmt -> SelectorExpr [a Raw]}
+{CallExpr -> SelectorExpr [storage AsByteSlice x]}
+{AssignStmt -> SelectorExpr [a t Dtype elT]}
+
+
+function name is fromSliceOrArrayer {FieldList [a]}
+{StarExpr [array fromSliceOrArrayer]}
+{FieldList [x]}
+{InterfaceType -> FieldList -> BlockStmt -> AssignStmt [T ok x arrayer ok]}
+{BlockStmt -> AssignStmt [xp]}
+{CallExpr -> SelectorExpr [T arrPtr]}
+{SelectorExpr -> SelectorExpr [a Header Raw nil]}
+{BlockStmt -> AssignStmt -> SelectorExpr -> SelectorExpr [a Header Raw]}
+{CallExpr [malloc]}
+{SelectorExpr [xp t]}
+{CallExpr -> SelectorExpr [xp Len]}
+{AssignStmt -> SelectorExpr [a t]}
+{SelectorExpr [xp t]}
+{CallExpr [copyArray a]}
+{CallExpr -> SelectorExpr [T arrPtr]}
+{ReturnStmt -> CallExpr -> SelectorExpr [a fromSlice x]}
+
+
+function name is byteSlice {FieldList [a array byteSlice]}
+{FieldList -> FieldList [byte]}
+{BlockStmt -> ReturnStmt -> SelectorExpr -> SelectorExpr [a Header Raw]}
+
+
+function name is sliceInto {FieldList [a]}
+{StarExpr [array sliceInto]}
+{FieldList [i j int res]}
+{StarExpr [array]}
+{BlockStmt -> AssignStmt [c]}
+{CallExpr -> SelectorExpr [a Cap i]}
+{BasicLit [j i j c]}
+{BlockStmt -> CallExpr [panic]}
+{CallExpr -> SelectorExpr [fmt Sprintf]}
+{BasicLit [a i j]}
+{AssignStmt [s i]}
+{CallExpr [int]}
+{CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
+{AssignStmt [e j]}
+{CallExpr [int]}
+{CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
+{AssignStmt [c c i]}
+{AssignStmt -> SelectorExpr [res Raw]}
+{SliceExpr -> SelectorExpr [a Raw s e]}
+
+
+function name is slice {FieldList [a array slice]}
+{FieldList [start end int]}
+{FieldList [array]}
+{BlockStmt [end]}
+{CallExpr -> SelectorExpr [a Len]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit [end start]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit -> AssignStmt [s start]}
+{CallExpr [int]}
+{CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
+{AssignStmt [e end]}
+{CallExpr [int]}
+{CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
+{ReturnStmt [array Header]}
+{SelectorExpr [storage Header Raw]}
+{SliceExpr -> SelectorExpr [a Raw s e t]}
+{SelectorExpr [a t]}
+
+
+function name is swap {FieldList [a]}
+{StarExpr [array swap]}
+{FieldList [i j int]}
+{BlockStmt -> SelectorExpr [a t String]}
+{BlockStmt -> AssignStmt [ss]}
+{CallExpr -> SelectorExpr -> CallExpr -> SelectorExpr [a hdr Strings]}
+{AssignStmt -> IndexExpr [ss i]}
+{IndexExpr [ss j]}
+{IndexExpr [ss j]}
+{IndexExpr [ss i]}
+{ReturnStmt -> CallExpr [isParameterizedKind]}
+{CallExpr -> SelectorExpr -> SelectorExpr [a t Kind]}
+{BlockStmt -> SwitchStmt -> CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
+{BlockStmt -> CaseClause -> BasicLit -> AssignStmt [us]}
+{CallExpr -> SelectorExpr -> CallExpr -> SelectorExpr [a hdr Uint64s]}
+{AssignStmt -> IndexExpr [us i]}
+{IndexExpr [us j]}
+{IndexExpr [us j]}
+{IndexExpr [us i]}
+{CaseClause -> BasicLit -> AssignStmt [us]}
+{CallExpr -> SelectorExpr -> CallExpr -> SelectorExpr [a hdr Uint32s]}
+{AssignStmt -> IndexExpr [us i]}
+{IndexExpr [us j]}
+{IndexExpr [us j]}
+{IndexExpr [us i]}
+{CaseClause -> BasicLit -> AssignStmt [us]}
+{CallExpr -> SelectorExpr -> CallExpr -> SelectorExpr [a hdr Uint16s]}
+{AssignStmt -> IndexExpr [us i]}
+{IndexExpr [us j]}
+{IndexExpr [us j]}
+{IndexExpr [us i]}
+{CaseClause -> BasicLit -> AssignStmt [us]}
+{CallExpr -> SelectorExpr -> CallExpr -> SelectorExpr [a hdr Uint8s]}
+{AssignStmt -> IndexExpr [us i]}
+{IndexExpr [us j]}
+{IndexExpr [us j]}
+{IndexExpr [us i]}
+{ReturnStmt -> AssignStmt [size]}
+{CallExpr [int]}
+{CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
+{AssignStmt [tmp]}
+{CallExpr [make byte size]}
+{AssignStmt [bs]}
+{CallExpr -> SelectorExpr [a byteSlice]}
+{AssignStmt [is i size]}
+{AssignStmt [ie is size]}
+{AssignStmt [js j size]}
+{AssignStmt [je js size]}
+{CallExpr [copy tmp]}
+{SliceExpr [bs is ie]}
+{CallExpr [copy]}
+{SliceExpr [bs is ie]}
+{SliceExpr [bs js je]}
+{CallExpr [copy]}
+{SliceExpr [bs js je tmp]}
+
+
+function name is MemSize {FieldList [a]}
+{StarExpr [array Uintptr]}
+{FieldList -> FieldList [uintptr]}
+{BlockStmt -> ReturnStmt -> CallExpr [uintptr]}
+{CallExpr -> SelectorExpr [unsafe Pointer]}
+{IndexExpr -> SelectorExpr -> SelectorExpr [a Header Raw]}
+{BasicLit -> FieldList [a]}
+{StarExpr [array MemSize]}
+{FieldList -> FieldList [uintptr]}
+{BlockStmt -> ReturnStmt -> CallExpr [uintptr]}
+{CallExpr [len]}
+{SelectorExpr -> SelectorExpr [a Header Raw]}
+
+
+function name is Data {FieldList [a array Data]}
+{FieldList -> FieldList -> InterfaceType -> FieldList -> BlockStmt -> AssignStmt [shdr]}
+{SelectorExpr [reflect SliceHeader Data]}
+{CallExpr -> SelectorExpr [a Uintptr Len]}
+{CallExpr -> SelectorExpr [a Len Cap]}
+{CallExpr -> SelectorExpr [a Cap]}
+{AssignStmt [sliceT]}
+{CallExpr -> SelectorExpr [reflect SliceOf]}
+{SelectorExpr -> SelectorExpr [a t Type]}
+{AssignStmt [ptr]}
+{CallExpr -> SelectorExpr [unsafe Pointer shdr]}
+{AssignStmt [val]}
+{CallExpr -> SelectorExpr [reflect Indirect]}
+{CallExpr -> SelectorExpr [reflect NewAt sliceT ptr]}
+{ReturnStmt -> CallExpr -> SelectorExpr [val Interface]}
+
+
+function name is Zero {FieldList [a array Zero]}
+{FieldList -> BlockStmt -> CallExpr -> SelectorExpr -> SelectorExpr [a t Kind]}
+{SelectorExpr [reflect String]}
+{BlockStmt -> AssignStmt [ss]}
+{CallExpr -> SelectorExpr [a Strings i ss]}
+{BlockStmt -> AssignStmt -> IndexExpr [ss i]}
+{BasicLit -> ReturnStmt -> CallExpr [isParameterizedKind]}
+{CallExpr -> SelectorExpr -> SelectorExpr [a t Kind]}
+{BlockStmt -> AssignStmt [ba]}
+{CallExpr -> SelectorExpr [a byteSlice i ba]}
+{BlockStmt -> AssignStmt -> IndexExpr [ba i]}
+{BasicLit -> ReturnStmt -> AssignStmt [l]}
+{CallExpr -> SelectorExpr [a Len]}
+{AssignStmt [i]}
+{BasicLit [i l i]}
+{BlockStmt -> AssignStmt [val]}
+{CallExpr -> SelectorExpr [reflect NewAt]}
+{SelectorExpr -> SelectorExpr [a t Type]}
+{CallExpr -> SelectorExpr [storage ElementAt i]}
+{CallExpr -> SelectorExpr [unsafe Pointer]}
+{IndexExpr -> SelectorExpr -> SelectorExpr [a Header Raw]}
+{BasicLit -> CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
+{AssignStmt [val]}
+{CallExpr -> SelectorExpr [reflect Indirect val]}
+{CallExpr -> SelectorExpr [val Set]}
+{CallExpr -> SelectorExpr [reflect Zero]}
+{SelectorExpr [a t]}
+
+
+function name is hdr {FieldList [a]}
+{StarExpr [array hdr]}
+{FieldList -> FieldList -> StarExpr -> SelectorExpr [storage Header]}
+{BlockStmt -> ReturnStmt -> SelectorExpr [a Header]}
+
+
+function name is rtype {FieldList [a]}
+{StarExpr [array rtype]}
+{FieldList -> FieldList -> SelectorExpr [reflect Type]}
+{BlockStmt -> ReturnStmt -> SelectorExpr -> SelectorExpr [a t Type]}
+
+
+function name is malloc { [malloc]}
+{FieldList [t Dtype length int]}
+{FieldList [byte]}
+{BlockStmt -> AssignStmt [size]}
+{CallExpr [int]}
+{CallExpr [calcMemSize t length]}
+{ReturnStmt -> CallExpr [make byte size]}
+
+
+function name is calcMemSize { [calcMemSize]}
+{FieldList [dt Dtype size int]}
+{FieldList [int64]}
+{BlockStmt -> ReturnStmt -> CallExpr [int64]}
+{CallExpr -> SelectorExpr [dt Size]}
+{CallExpr [int64 size]}
+
+
+function name is copyArray { [copyArray]}
+{FieldList [dst src]}
+{StarExpr [array]}
+{FieldList [int]}
+{BlockStmt -> SelectorExpr [dst t]}
+{SelectorExpr [src t]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit -> ReturnStmt -> CallExpr -> SelectorExpr [storage Copy]}
+{SelectorExpr -> SelectorExpr [dst t Type]}
+{SelectorExpr [dst Header]}
+{SelectorExpr [src Header]}
+
+
+function name is copyArraySliced { [copyArraySliced]}
+{FieldList [dst array dstart dend int src array sstart send int]}
+{FieldList [int]}
+{BlockStmt -> SelectorExpr [dst t]}
+{SelectorExpr [src t]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit -> ReturnStmt -> CallExpr -> SelectorExpr [storage CopySliced]}
+{SelectorExpr -> SelectorExpr [dst t Type]}
+{SelectorExpr [dst Header dstart dend]}
+{SelectorExpr [src Header sstart send]}
+
+
+function name is copyDense { [copyDense]}
+{FieldList [dst src DenseTensor]}
+{FieldList [int]}
+{BlockStmt -> CallExpr -> SelectorExpr [dst Dtype]}
+{CallExpr -> SelectorExpr [src Dtype]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit -> AssignStmt [ms ok src MaskedTensor ok]}
+{CallExpr -> SelectorExpr [ms IsMasked]}
+{BlockStmt -> AssignStmt [md ok dst MaskedTensor ok]}
+{BlockStmt -> AssignStmt [dmask]}
+{CallExpr -> SelectorExpr [md Mask]}
+{AssignStmt [smask]}
+{CallExpr -> SelectorExpr [ms Mask]}
+{CallExpr [cap dmask]}
+{CallExpr [len smask]}
+{BlockStmt -> AssignStmt [dmask]}
+{CallExpr [make bool]}
+{CallExpr [len smask]}
+{CallExpr [copy dmask]}
+{CallExpr -> SelectorExpr [md Mask]}
+{CallExpr -> SelectorExpr [md SetMask dmask]}
+{CallExpr [copy dmask smask]}
+{AssignStmt [e]}
+{CallExpr -> SelectorExpr [src Engine]}
+{AssignStmt [err]}
+{CallExpr -> SelectorExpr [e Memcpy]}
+{CallExpr -> SelectorExpr [dst arrPtr]}
+{CallExpr -> SelectorExpr [src arrPtr err nil]}
+{BlockStmt -> CallExpr [panic err]}
+{ReturnStmt -> CallExpr -> SelectorExpr [dst len]}
+
+
+function name is copyDenseSliced { [copyDenseSliced]}
+{FieldList [dst DenseTensor dstart dend int src DenseTensor sstart send int]}
+{FieldList [int]}
+{BlockStmt -> CallExpr -> SelectorExpr [dst Dtype]}
+{CallExpr -> SelectorExpr [src Dtype]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit -> AssignStmt [ms ok src MaskedTensor ok]}
+{CallExpr -> SelectorExpr [ms IsMasked]}
+{BlockStmt -> AssignStmt [md ok dst MaskedTensor ok]}
+{BlockStmt -> AssignStmt [dmask]}
+{CallExpr -> SelectorExpr [md Mask]}
+{AssignStmt [smask]}
+{CallExpr -> SelectorExpr [ms Mask]}
+{CallExpr [cap dmask dend]}
+{BlockStmt -> AssignStmt [dmask]}
+{CallExpr [make bool dend]}
+{CallExpr [copy dmask]}
+{CallExpr -> SelectorExpr [md Mask]}
+{CallExpr -> SelectorExpr [md SetMask dmask]}
+{CallExpr [copy]}
+{SliceExpr [dmask dstart dend]}
+{SliceExpr [smask sstart send]}
+{AssignStmt [e]}
+{CallExpr -> SelectorExpr [src Engine e nil]}
+{BlockStmt -> AssignStmt [darr]}
+{CallExpr -> SelectorExpr [dst arr]}
+{AssignStmt [sarr]}
+{CallExpr -> SelectorExpr [src arr]}
+{AssignStmt [da]}
+{CallExpr -> SelectorExpr [darr slice dstart dend]}
+{AssignStmt [sa]}
+{CallExpr -> SelectorExpr [sarr slice sstart send e]}
+{BlockStmt -> CaseClause [NonStdEngine]}
+{AssignStmt [err]}
+{CallExpr -> SelectorExpr [e Memcpy da sa err nil]}
+{BlockStmt -> CallExpr [panic err]}
+{CaseClause -> CallExpr -> SelectorExpr [storage Copy]}
+{SelectorExpr -> SelectorExpr [da t Type]}
+{SelectorExpr [da Header]}
+{SelectorExpr [sa Header]}
+{ReturnStmt -> CallExpr -> SelectorExpr [da Len]}
+{ReturnStmt -> CallExpr [copyArraySliced]}
+{CallExpr -> SelectorExpr [dst arr dstart dend]}
+{CallExpr -> SelectorExpr [src arr sstart send]}
+
+
+function name is copyDenseIter { [copyDenseIter]}
+{FieldList [dst src DenseTensor diter siter Iterator]}
+{FieldList [int error]}
+{BlockStmt -> CallExpr -> SelectorExpr [dst Dtype]}
+{CallExpr -> SelectorExpr [src Dtype]}
+{BlockStmt -> CallExpr [panic]}
+{BasicLit -> CallExpr -> SelectorExpr [dst RequiresIterator]}
+{CallExpr -> SelectorExpr [src RequiresIterator]}
+{CallExpr -> SelectorExpr -> CallExpr -> SelectorExpr [dst DataOrder HasSameOrder]}
+{CallExpr -> SelectorExpr [src DataOrder]}
+{BlockStmt -> ReturnStmt -> CallExpr [copyDense dst src nil]}
+{CallExpr -> SelectorExpr [dst IsNativelyAccessible]}
+{BlockStmt -> ReturnStmt -> BasicLit -> CallExpr -> SelectorExpr [errors Errorf inaccessibleData dst]}
+{CallExpr -> SelectorExpr [src IsNativelyAccessible]}
+{BlockStmt -> ReturnStmt -> BasicLit -> CallExpr -> SelectorExpr [errors Errorf inaccessibleData src diter nil]}
+{BlockStmt -> AssignStmt [diter]}
+{CallExpr [FlatIteratorFromDense dst siter nil]}
+{BlockStmt -> AssignStmt [siter]}
+{CallExpr [FlatIteratorFromDense src]}
+{AssignStmt [ms ok src MaskedTensor ok]}
+{CallExpr -> SelectorExpr [ms IsMasked]}
+{BlockStmt -> AssignStmt [md ok dst MaskedTensor ok]}
+{BlockStmt -> AssignStmt [dmask]}
+{CallExpr -> SelectorExpr [md Mask]}
+{AssignStmt [smask]}
+{CallExpr -> SelectorExpr [ms Mask]}
+{CallExpr [cap dmask]}
+{CallExpr [len smask]}
+{BlockStmt -> AssignStmt [dmask]}
+{CallExpr [make bool]}
+{CallExpr [len smask]}
+{CallExpr [copy dmask]}
+{CallExpr -> SelectorExpr [md Mask]}
+{CallExpr -> SelectorExpr [md SetMask dmask]}
+{CallExpr [copy dmask smask]}
+{ReturnStmt -> CallExpr -> SelectorExpr [storage CopyIter]}
+{CallExpr -> SelectorExpr [dst rtype]}
+{CallExpr -> SelectorExpr [dst hdr]}
+{CallExpr -> SelectorExpr [src hdr diter siter nil scalarPtrCount]}
+{StructType -> FieldList [Ptr]}
+{SelectorExpr [unsafe Pointer Count int scalarRCLock]}
+{SelectorExpr [sync Mutex scalarRC]}
+{CallExpr [make uintptr]}
+{StarExpr -> SelectorExpr [sync Pool]}
+
+
+function name is scalarPool { [scalarPool]}
+{FieldList [size uintptr]}
+{FieldList -> StarExpr -> SelectorExpr [sync Pool]}
+{BlockStmt -> CallExpr -> SelectorExpr [scalarRCLock Lock]}
+{AssignStmt [pool ok]}
+{IndexExpr [scalarRC size ok]}
+{BlockStmt -> AssignStmt [pool]}
+{SelectorExpr [sync Pool New]}
+{FieldList -> FieldList -> InterfaceType -> FieldList -> BlockStmt -> ReturnStmt -> CallExpr [make byte size]}
+{AssignStmt -> IndexExpr [scalarRC size pool]}
+{CallExpr -> SelectorExpr [scalarRCLock Unlock]}
+{ReturnStmt [pool]}
+
+
+function name is allocScalar { [allocScalar]}
+{FieldList [a]}
+{InterfaceType -> FieldList -> FieldList [byte]}
+{BlockStmt -> AssignStmt [atype]}
+{CallExpr -> SelectorExpr [reflect TypeOf a]}
+{AssignStmt [size]}
+{CallExpr -> SelectorExpr [atype Size]}
+{AssignStmt [pool]}
+{CallExpr [scalarPool size]}
+{ReturnStmt -> CallExpr -> SelectorExpr [pool Get byte]}
+
+
+function name is freeScalar { [freeScalar]}
+{FieldList [bs byte]}
+{BlockStmt [bs nil]}
+{BlockStmt -> ReturnStmt [i bs]}
+{BlockStmt -> AssignStmt -> IndexExpr [bs i]}
+{BasicLit -> AssignStmt [size]}
+{CallExpr [uintptr]}
+{CallExpr [len bs]}
+{AssignStmt [pool]}
+{CallExpr [scalarPool size]}
+{CallExpr -> SelectorExpr [pool Put bs]}
+
+
+function name is scalarToHeader { [scalarToHeader]}
+{FieldList [a]}
+{InterfaceType -> FieldList -> FieldList [hdr]}
+{StarExpr -> SelectorExpr [storage Header newAlloc bool]}
+{BlockStmt -> DeclStmt [raw byte]}
+{AssignStmt [at a]}
+{BlockStmt -> CaseClause [Memory]}
+{AssignStmt [raw]}
+{CallExpr -> SelectorExpr [storage FromMemory]}
+{CallExpr -> SelectorExpr [at Uintptr]}
+{CallExpr -> SelectorExpr [at MemSize]}
+{CaseClause -> AssignStmt [raw]}
+{CallExpr [allocScalar a]}
+{AssignStmt [newAlloc true]}
+{AssignStmt [hdr]}
+{CallExpr [borrowHeader]}
+{AssignStmt -> SelectorExpr [hdr Raw raw newAlloc]}
+{BlockStmt -> CallExpr [copyScalarToPrealloc a]}
+{SelectorExpr [hdr Raw]}
+{ReturnStmt [hdr newAlloc]}
+
+
