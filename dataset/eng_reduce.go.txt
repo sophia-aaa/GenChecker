@@ -1,1142 +1,1462 @@
-function name is ReduceFirst { [execution]}
-{BasicLit -> BasicLit -> BasicLit -> BasicLit -> FieldList [e E ReduceFirst]}
-{FieldList [t]}
-{SelectorExpr [reflect Type data]}
-{StarExpr -> SelectorExpr [storage Header retVal]}
-{StarExpr -> SelectorExpr [storage Header split int size int fn]}
-{InterfaceType -> FieldList -> FieldList [err error]}
-{BlockStmt -> SwitchStmt [t]}
-{BlockStmt -> CaseClause [Bool]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Bools]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Bools]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [bool bool]}
-{CallExpr [reduceFirstB dt rt split size f]}
-{CaseClause -> FieldList [bool bool]}
-{FieldList [bool]}
-{CallExpr [genericReduceFirstB dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Ints]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Ints]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int int]}
-{CallExpr [reduceFirstI dt rt split size f]}
-{CaseClause -> FieldList [int int]}
-{FieldList [int]}
-{CallExpr [genericReduceFirstI dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int8]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int8s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int8s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int8 int8]}
-{CallExpr [reduceFirstI8 dt rt split size f]}
-{CaseClause -> FieldList [int8 int8]}
-{FieldList [int8]}
-{CallExpr [genericReduceFirstI8 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int16]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int16s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int16s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int16 int16]}
-{CallExpr [reduceFirstI16 dt rt split size f]}
-{CaseClause -> FieldList [int16 int16]}
-{FieldList [int16]}
-{CallExpr [genericReduceFirstI16 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int32]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int32s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int32 int32]}
-{CallExpr [reduceFirstI32 dt rt split size f]}
-{CaseClause -> FieldList [int32 int32]}
-{FieldList [int32]}
-{CallExpr [genericReduceFirstI32 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int64]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int64s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int64 int64]}
-{CallExpr [reduceFirstI64 dt rt split size f]}
-{CaseClause -> FieldList [int64 int64]}
-{FieldList [int64]}
-{CallExpr [genericReduceFirstI64 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uints]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uints]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint uint]}
-{CallExpr [reduceFirstU dt rt split size f]}
-{CaseClause -> FieldList [uint uint]}
-{FieldList [uint]}
-{CallExpr [genericReduceFirstU dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint8]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint8s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint8s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint8 uint8]}
-{CallExpr [reduceFirstU8 dt rt split size f]}
-{CaseClause -> FieldList [uint8 uint8]}
-{FieldList [uint8]}
-{CallExpr [genericReduceFirstU8 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint16]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint16s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint16s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint16 uint16]}
-{CallExpr [reduceFirstU16 dt rt split size f]}
-{CaseClause -> FieldList [uint16 uint16]}
-{FieldList [uint16]}
-{CallExpr [genericReduceFirstU16 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint32]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint32s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint32 uint32]}
-{CallExpr [reduceFirstU32 dt rt split size f]}
-{CaseClause -> FieldList [uint32 uint32]}
-{FieldList [uint32]}
-{CallExpr [genericReduceFirstU32 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint64]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint64s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint64 uint64]}
-{CallExpr [reduceFirstU64 dt rt split size f]}
-{CaseClause -> FieldList [uint64 uint64]}
-{FieldList [uint64]}
-{CallExpr [genericReduceFirstU64 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uintptr]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uintptrs]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uintptrs]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uintptr uintptr]}
-{CallExpr [reduceFirstUintptr dt rt split size f]}
-{CaseClause -> FieldList [uintptr uintptr]}
-{FieldList [uintptr]}
-{CallExpr [genericReduceFirstUintptr dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Float32]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Float32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Float32s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [float32 float32]}
-{CallExpr [reduceFirstF32 dt rt split size f]}
-{CaseClause -> FieldList [float32 float32]}
-{FieldList [float32]}
-{CallExpr [genericReduceFirstF32 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Float64]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Float64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Float64s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [float64 float64]}
-{CallExpr [reduceFirstF64 dt rt split size f]}
-{CaseClause -> FieldList [float64 float64]}
-{FieldList [float64]}
-{CallExpr [genericReduceFirstF64 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Complex64]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Complex64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Complex64s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [complex64 complex64]}
-{CallExpr [reduceFirstC64 dt rt split size f]}
-{CaseClause -> FieldList [complex64 complex64]}
-{FieldList [complex64]}
-{CallExpr [genericReduceFirstC64 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Complex128]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Complex128s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Complex128s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [complex128 complex128]}
-{CallExpr [reduceFirstC128 dt rt split size f]}
-{CaseClause -> FieldList [complex128 complex128]}
-{FieldList [complex128]}
-{CallExpr [genericReduceFirstC128 dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [String]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Strings]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Strings]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [string string]}
-{CallExpr [reduceFirstStr dt rt split size f]}
-{CaseClause -> FieldList [string string]}
-{FieldList [string]}
-{CallExpr [genericReduceFirstStr dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [UnsafePointer]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data UnsafePointers]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal UnsafePointers]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList -> SelectorExpr [unsafe Pointer]}
-{SelectorExpr [unsafe Pointer]}
-{CallExpr [reduceFirstUnsafePointer dt rt split size f]}
-{CaseClause -> FieldList -> SelectorExpr [unsafe Pointer]}
-{SelectorExpr [unsafe Pointer]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{CallExpr [genericReduceFirstUnsafePointer dt rt split size f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf]}
-{BasicLit [t]}
+{*ast.File [execution]}
 
 
-function name is ReduceLast {FieldList [e E ReduceLast]}
-{FieldList [t]}
-{SelectorExpr [reflect Type data]}
-{StarExpr -> SelectorExpr [storage Header retVal]}
-{StarExpr -> SelectorExpr [storage Header dimSize int defaultValue]}
-{InterfaceType -> FieldList [fn]}
-{InterfaceType -> FieldList -> FieldList [err error]}
-{BlockStmt -> DeclStmt [ok bool]}
-{SwitchStmt [t]}
-{BlockStmt -> CaseClause [Bool]}
-{DeclStmt [def bool]}
-{AssignStmt [def ok defaultValue bool ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Bools]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Bools]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [bool]}
-{FieldList [bool]}
-{CallExpr [reduceLastB dt rt dimSize def f]}
-{CaseClause -> FieldList [bool bool]}
-{FieldList [bool]}
-{CallExpr [genericReduceLastB dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int]}
-{DeclStmt [def int]}
-{AssignStmt [def ok defaultValue int ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Ints]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Ints]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int]}
-{FieldList [int]}
-{CallExpr [reduceLastI dt rt dimSize def f]}
-{CaseClause -> FieldList [int int]}
-{FieldList [int]}
-{CallExpr [genericReduceLastI dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int8]}
-{DeclStmt [def int8]}
-{AssignStmt [def ok defaultValue int8 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int8s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int8s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int8]}
-{FieldList [int8]}
-{CallExpr [reduceLastI8 dt rt dimSize def f]}
-{CaseClause -> FieldList [int8 int8]}
-{FieldList [int8]}
-{CallExpr [genericReduceLastI8 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int16]}
-{DeclStmt [def int16]}
-{AssignStmt [def ok defaultValue int16 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int16s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int16s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int16]}
-{FieldList [int16]}
-{CallExpr [reduceLastI16 dt rt dimSize def f]}
-{CaseClause -> FieldList [int16 int16]}
-{FieldList [int16]}
-{CallExpr [genericReduceLastI16 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int32]}
-{DeclStmt [def int32]}
-{AssignStmt [def ok defaultValue int32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int32s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int32]}
-{FieldList [int32]}
-{CallExpr [reduceLastI32 dt rt dimSize def f]}
-{CaseClause -> FieldList [int32 int32]}
-{FieldList [int32]}
-{CallExpr [genericReduceLastI32 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Int64]}
-{DeclStmt [def int64]}
-{AssignStmt [def ok defaultValue int64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int64s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [int64]}
-{FieldList [int64]}
-{CallExpr [reduceLastI64 dt rt dimSize def f]}
-{CaseClause -> FieldList [int64 int64]}
-{FieldList [int64]}
-{CallExpr [genericReduceLastI64 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint]}
-{DeclStmt [def uint]}
-{AssignStmt [def ok defaultValue uint ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uints]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uints]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint]}
-{FieldList [uint]}
-{CallExpr [reduceLastU dt rt dimSize def f]}
-{CaseClause -> FieldList [uint uint]}
-{FieldList [uint]}
-{CallExpr [genericReduceLastU dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint8]}
-{DeclStmt [def uint8]}
-{AssignStmt [def ok defaultValue uint8 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint8s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint8s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint8]}
-{FieldList [uint8]}
-{CallExpr [reduceLastU8 dt rt dimSize def f]}
-{CaseClause -> FieldList [uint8 uint8]}
-{FieldList [uint8]}
-{CallExpr [genericReduceLastU8 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint16]}
-{DeclStmt [def uint16]}
-{AssignStmt [def ok defaultValue uint16 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint16s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint16s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint16]}
-{FieldList [uint16]}
-{CallExpr [reduceLastU16 dt rt dimSize def f]}
-{CaseClause -> FieldList [uint16 uint16]}
-{FieldList [uint16]}
-{CallExpr [genericReduceLastU16 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint32]}
-{DeclStmt [def uint32]}
-{AssignStmt [def ok defaultValue uint32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint32s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint32]}
-{FieldList [uint32]}
-{CallExpr [reduceLastU32 dt rt dimSize def f]}
-{CaseClause -> FieldList [uint32 uint32]}
-{FieldList [uint32]}
-{CallExpr [genericReduceLastU32 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uint64]}
-{DeclStmt [def uint64]}
-{AssignStmt [def ok defaultValue uint64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint64s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uint64]}
-{FieldList [uint64]}
-{CallExpr [reduceLastU64 dt rt dimSize def f]}
-{CaseClause -> FieldList [uint64 uint64]}
-{FieldList [uint64]}
-{CallExpr [genericReduceLastU64 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Uintptr]}
-{DeclStmt [def uintptr]}
-{AssignStmt [def ok defaultValue uintptr ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uintptrs]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uintptrs]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [uintptr]}
-{FieldList [uintptr]}
-{CallExpr [reduceLastUintptr dt rt dimSize def f]}
-{CaseClause -> FieldList [uintptr uintptr]}
-{FieldList [uintptr]}
-{CallExpr [genericReduceLastUintptr dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Float32]}
-{DeclStmt [def float32]}
-{AssignStmt [def ok defaultValue float32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Float32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Float32s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [float32]}
-{FieldList [float32]}
-{CallExpr [reduceLastF32 dt rt dimSize def f]}
-{CaseClause -> FieldList [float32 float32]}
-{FieldList [float32]}
-{CallExpr [genericReduceLastF32 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Float64]}
-{DeclStmt [def float64]}
-{AssignStmt [def ok defaultValue float64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Float64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Float64s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [float64]}
-{FieldList [float64]}
-{CallExpr [reduceLastF64 dt rt dimSize def f]}
-{CaseClause -> FieldList [float64 float64]}
-{FieldList [float64]}
-{CallExpr [genericReduceLastF64 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Complex64]}
-{DeclStmt [def complex64]}
-{AssignStmt [def ok defaultValue complex64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Complex64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Complex64s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [complex64]}
-{FieldList [complex64]}
-{CallExpr [reduceLastC64 dt rt dimSize def f]}
-{CaseClause -> FieldList [complex64 complex64]}
-{FieldList [complex64]}
-{CallExpr [genericReduceLastC64 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [Complex128]}
-{DeclStmt [def complex128]}
-{AssignStmt [def ok defaultValue complex128 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Complex128s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Complex128s]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [complex128]}
-{FieldList [complex128]}
-{CallExpr [reduceLastC128 dt rt dimSize def f]}
-{CaseClause -> FieldList [complex128 complex128]}
-{FieldList [complex128]}
-{CallExpr [genericReduceLastC128 dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [String]}
-{DeclStmt [def string]}
-{AssignStmt [def ok defaultValue string ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Strings]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Strings]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList [string]}
-{FieldList [string]}
-{CallExpr [reduceLastStr dt rt dimSize def f]}
-{CaseClause -> FieldList [string string]}
-{FieldList [string]}
-{CallExpr [genericReduceLastStr dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause [UnsafePointer]}
-{DeclStmt [def]}
-{SelectorExpr [unsafe Pointer]}
-{AssignStmt [def ok defaultValue]}
-{SelectorExpr [unsafe Pointer ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data UnsafePointers]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal UnsafePointers]}
-{AssignStmt [f fn]}
-{BlockStmt -> CaseClause -> FieldList -> SelectorExpr [unsafe Pointer]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{CallExpr [reduceLastUnsafePointer dt rt dimSize def f]}
-{CaseClause -> FieldList -> SelectorExpr [unsafe Pointer]}
-{SelectorExpr [unsafe Pointer]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{CallExpr [genericReduceLastUnsafePointer dt rt dimSize def f]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{ReturnStmt [nil]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf]}
-{BasicLit [t]}
+function name is ReduceFirst 
+	 {*ast.FieldList -> *ast.Field [e E ReduceFirst]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.Field [data]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [retVal]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [split int]}
+	 {*ast.Field [size int]}
+	 {*ast.Field [fn]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.SwitchStmt [t]}
+	 {*ast.BlockStmt -> *ast.CaseClause [Bool]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Bools]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Bools]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
+	 {*ast.Field -> *ast.ArrayType [bool]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstB dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstB dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Ints]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Ints]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
+	 {*ast.Field -> *ast.ArrayType [int]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int8]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int8s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int8s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
+	 {*ast.Field -> *ast.ArrayType [int8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI8 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI8 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int16]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int16s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int16s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
+	 {*ast.Field -> *ast.ArrayType [int16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI16 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI16 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int32]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int32s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
+	 {*ast.Field -> *ast.ArrayType [int32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI32 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI32 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int64]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int64s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
+	 {*ast.Field -> *ast.ArrayType [int64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI64 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI64 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uints]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uints]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
+	 {*ast.Field -> *ast.ArrayType [uint]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint8]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint8s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint8s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
+	 {*ast.Field -> *ast.ArrayType [uint8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU8 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU8 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint16]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint16s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint16s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
+	 {*ast.Field -> *ast.ArrayType [uint16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU16 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU16 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint32]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint32s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint32]}
+	 {*ast.Field -> *ast.ArrayType [uint32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU32 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU32 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint64]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint64s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint64]}
+	 {*ast.Field -> *ast.ArrayType [uint64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU64 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU64 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uintptr]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uintptrs]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uintptrs]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uintptr]}
+	 {*ast.Field -> *ast.ArrayType [uintptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstUintptr dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstUintptr dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Float32]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Float32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float32s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float32]}
+	 {*ast.Field -> *ast.ArrayType [float32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstF32 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstF32 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Float64]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Float64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float64s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float64]}
+	 {*ast.Field -> *ast.ArrayType [float64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstF64 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstF64 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Complex64]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Complex64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex64s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex64]}
+	 {*ast.Field -> *ast.ArrayType [complex64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstC64 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstC64 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Complex128]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Complex128s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex128s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex128]}
+	 {*ast.Field -> *ast.ArrayType [complex128]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstC128 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstC128 dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [String]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Strings]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Strings]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
+	 {*ast.Field -> *ast.ArrayType [string]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstStr dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstStr dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [UnsafePointer]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data UnsafePointers]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal UnsafePointers]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstUnsafePointer dt rt split size f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstUnsafePointer dt rt split size f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
 
 
-function name is ReduceDefault {FieldList [e E ReduceDefault]}
-{FieldList [t]}
-{SelectorExpr [reflect Type data]}
-{StarExpr -> SelectorExpr [storage Header retVal]}
-{StarExpr -> SelectorExpr [storage Header dim0 int dimSize int outerStride int stride int expected int fn]}
-{InterfaceType -> FieldList -> FieldList [err error]}
-{BlockStmt -> DeclStmt [ok bool]}
-{SwitchStmt [t]}
-{BlockStmt -> CaseClause [Bool]}
-{DeclStmt [f]}
-{FieldList [bool bool]}
-{FieldList [bool]}
-{AssignStmt [f ok fn]}
-{FieldList [bool bool]}
-{FieldList [bool ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Bools]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Bools]}
-{CallExpr [reduceDefaultB dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Int]}
-{DeclStmt [f]}
-{FieldList [int int]}
-{FieldList [int]}
-{AssignStmt [f ok fn]}
-{FieldList [int int]}
-{FieldList [int ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Ints]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Ints]}
-{CallExpr [reduceDefaultI dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Int8]}
-{DeclStmt [f]}
-{FieldList [int8 int8]}
-{FieldList [int8]}
-{AssignStmt [f ok fn]}
-{FieldList [int8 int8]}
-{FieldList [int8 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int8s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int8s]}
-{CallExpr [reduceDefaultI8 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Int16]}
-{DeclStmt [f]}
-{FieldList [int16 int16]}
-{FieldList [int16]}
-{AssignStmt [f ok fn]}
-{FieldList [int16 int16]}
-{FieldList [int16 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int16s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int16s]}
-{CallExpr [reduceDefaultI16 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Int32]}
-{DeclStmt [f]}
-{FieldList [int32 int32]}
-{FieldList [int32]}
-{AssignStmt [f ok fn]}
-{FieldList [int32 int32]}
-{FieldList [int32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int32s]}
-{CallExpr [reduceDefaultI32 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Int64]}
-{DeclStmt [f]}
-{FieldList [int64 int64]}
-{FieldList [int64]}
-{AssignStmt [f ok fn]}
-{FieldList [int64 int64]}
-{FieldList [int64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Int64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Int64s]}
-{CallExpr [reduceDefaultI64 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Uint]}
-{DeclStmt [f]}
-{FieldList [uint uint]}
-{FieldList [uint]}
-{AssignStmt [f ok fn]}
-{FieldList [uint uint]}
-{FieldList [uint ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uints]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uints]}
-{CallExpr [reduceDefaultU dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Uint8]}
-{DeclStmt [f]}
-{FieldList [uint8 uint8]}
-{FieldList [uint8]}
-{AssignStmt [f ok fn]}
-{FieldList [uint8 uint8]}
-{FieldList [uint8 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint8s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint8s]}
-{CallExpr [reduceDefaultU8 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Uint16]}
-{DeclStmt [f]}
-{FieldList [uint16 uint16]}
-{FieldList [uint16]}
-{AssignStmt [f ok fn]}
-{FieldList [uint16 uint16]}
-{FieldList [uint16 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint16s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint16s]}
-{CallExpr [reduceDefaultU16 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Uint32]}
-{DeclStmt [f]}
-{FieldList [uint32 uint32]}
-{FieldList [uint32]}
-{AssignStmt [f ok fn]}
-{FieldList [uint32 uint32]}
-{FieldList [uint32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint32s]}
-{CallExpr [reduceDefaultU32 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Uint64]}
-{DeclStmt [f]}
-{FieldList [uint64 uint64]}
-{FieldList [uint64]}
-{AssignStmt [f ok fn]}
-{FieldList [uint64 uint64]}
-{FieldList [uint64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uint64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uint64s]}
-{CallExpr [reduceDefaultU64 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Uintptr]}
-{DeclStmt [f]}
-{FieldList [uintptr uintptr]}
-{FieldList [uintptr]}
-{AssignStmt [f ok fn]}
-{FieldList [uintptr uintptr]}
-{FieldList [uintptr ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Uintptrs]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Uintptrs]}
-{CallExpr [reduceDefaultUintptr dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Float32]}
-{DeclStmt [f]}
-{FieldList [float32 float32]}
-{FieldList [float32]}
-{AssignStmt [f ok fn]}
-{FieldList [float32 float32]}
-{FieldList [float32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Float32s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Float32s]}
-{CallExpr [reduceDefaultF32 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Float64]}
-{DeclStmt [f]}
-{FieldList [float64 float64]}
-{FieldList [float64]}
-{AssignStmt [f ok fn]}
-{FieldList [float64 float64]}
-{FieldList [float64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Float64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Float64s]}
-{CallExpr [reduceDefaultF64 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Complex64]}
-{DeclStmt [f]}
-{FieldList [complex64 complex64]}
-{FieldList [complex64]}
-{AssignStmt [f ok fn]}
-{FieldList [complex64 complex64]}
-{FieldList [complex64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Complex64s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Complex64s]}
-{CallExpr [reduceDefaultC64 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [Complex128]}
-{DeclStmt [f]}
-{FieldList [complex128 complex128]}
-{FieldList [complex128]}
-{AssignStmt [f ok fn]}
-{FieldList [complex128 complex128]}
-{FieldList [complex128 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Complex128s]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Complex128s]}
-{CallExpr [reduceDefaultC128 dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [String]}
-{DeclStmt [f]}
-{FieldList [string string]}
-{FieldList [string]}
-{AssignStmt [f ok fn]}
-{FieldList [string string]}
-{FieldList [string ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data Strings]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal Strings]}
-{CallExpr [reduceDefaultStr dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause [UnsafePointer]}
-{DeclStmt [f]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{SelectorExpr [unsafe Pointer]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{AssignStmt [f ok fn]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{SelectorExpr [unsafe Pointer]}
-{FieldList -> SelectorExpr [unsafe Pointer ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [dt]}
-{CallExpr -> SelectorExpr [data UnsafePointers]}
-{AssignStmt [rt]}
-{CallExpr -> SelectorExpr [retVal UnsafePointers]}
-{CallExpr [reduceDefaultUnsafePointer dt rt dim0 dimSize outerStride stride expected f]}
-{ReturnStmt [nil]}
-{CaseClause -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf]}
-{BasicLit [t]}
+function name is ReduceLast 
+	 {*ast.FieldList -> *ast.Field [e E ReduceLast]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.Field [data]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [retVal]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [dimSize int]}
+	 {*ast.Field [defaultValue]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [fn]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
+	 {*ast.SwitchStmt [t]}
+	 {*ast.BlockStmt -> *ast.CaseClause [Bool]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def bool]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue bool]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Bools]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Bools]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastB dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastB dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Ints]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Ints]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int8]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int8s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int8s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI8 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI8 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int16]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int16s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int16s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI16 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI16 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int32s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI32 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI32 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int64s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI64 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI64 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uints]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uints]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint8]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint8s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint8s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU8 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU8 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint16]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint16s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint16s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU16 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU16 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint32s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU32 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU32 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint64s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU64 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU64 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uintptr]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uintptr]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uintptr]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uintptrs]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uintptrs]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastUintptr dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastUintptr dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Float32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def float32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue float32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Float32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float32s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastF32 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastF32 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Float64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def float64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue float64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Float64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float64s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastF64 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastF64 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Complex64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def complex64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue complex64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Complex64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex64s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastC64 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastC64 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Complex128]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def complex128]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue complex128]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Complex128s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex128s]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastC128 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastC128 dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [String]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def string]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue string]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Strings]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Strings]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastStr dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastStr dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [UnsafePointer]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def]}
+	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue]}
+	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data UnsafePointers]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal UnsafePointers]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastUnsafePointer dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastUnsafePointer dt rt dimSize def f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
 
 
-function name is Reduce {FieldList [e E Reduce]}
-{FieldList [t]}
-{SelectorExpr [reflect Type a]}
-{StarExpr -> SelectorExpr [storage Header defaultValue]}
-{InterfaceType -> FieldList [fn]}
-{InterfaceType -> FieldList -> FieldList [retVal]}
-{InterfaceType -> FieldList [err error]}
-{BlockStmt -> DeclStmt [ok bool]}
-{SwitchStmt [t]}
-{BlockStmt -> CaseClause [Bool]}
-{DeclStmt [f]}
-{FieldList [bool bool]}
-{FieldList [bool]}
-{DeclStmt [def bool]}
-{AssignStmt [f ok fn]}
-{FieldList [bool bool]}
-{FieldList [bool ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue bool ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceB f def]}
-{CallExpr -> SelectorExpr [a Bools]}
-{ReturnStmt -> CaseClause [Int]}
-{DeclStmt [f]}
-{FieldList [int int]}
-{FieldList [int]}
-{DeclStmt [def int]}
-{AssignStmt [f ok fn]}
-{FieldList [int int]}
-{FieldList [int ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue int ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceI f def]}
-{CallExpr -> SelectorExpr [a Ints]}
-{ReturnStmt -> CaseClause [Int8]}
-{DeclStmt [f]}
-{FieldList [int8 int8]}
-{FieldList [int8]}
-{DeclStmt [def int8]}
-{AssignStmt [f ok fn]}
-{FieldList [int8 int8]}
-{FieldList [int8 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue int8 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceI8 f def]}
-{CallExpr -> SelectorExpr [a Int8s]}
-{ReturnStmt -> CaseClause [Int16]}
-{DeclStmt [f]}
-{FieldList [int16 int16]}
-{FieldList [int16]}
-{DeclStmt [def int16]}
-{AssignStmt [f ok fn]}
-{FieldList [int16 int16]}
-{FieldList [int16 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue int16 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceI16 f def]}
-{CallExpr -> SelectorExpr [a Int16s]}
-{ReturnStmt -> CaseClause [Int32]}
-{DeclStmt [f]}
-{FieldList [int32 int32]}
-{FieldList [int32]}
-{DeclStmt [def int32]}
-{AssignStmt [f ok fn]}
-{FieldList [int32 int32]}
-{FieldList [int32 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue int32 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceI32 f def]}
-{CallExpr -> SelectorExpr [a Int32s]}
-{ReturnStmt -> CaseClause [Int64]}
-{DeclStmt [f]}
-{FieldList [int64 int64]}
-{FieldList [int64]}
-{DeclStmt [def int64]}
-{AssignStmt [f ok fn]}
-{FieldList [int64 int64]}
-{FieldList [int64 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue int64 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceI64 f def]}
-{CallExpr -> SelectorExpr [a Int64s]}
-{ReturnStmt -> CaseClause [Uint]}
-{DeclStmt [f]}
-{FieldList [uint uint]}
-{FieldList [uint]}
-{DeclStmt [def uint]}
-{AssignStmt [f ok fn]}
-{FieldList [uint uint]}
-{FieldList [uint ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue uint ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceU f def]}
-{CallExpr -> SelectorExpr [a Uints]}
-{ReturnStmt -> CaseClause [Uint8]}
-{DeclStmt [f]}
-{FieldList [uint8 uint8]}
-{FieldList [uint8]}
-{DeclStmt [def uint8]}
-{AssignStmt [f ok fn]}
-{FieldList [uint8 uint8]}
-{FieldList [uint8 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue uint8 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceU8 f def]}
-{CallExpr -> SelectorExpr [a Uint8s]}
-{ReturnStmt -> CaseClause [Uint16]}
-{DeclStmt [f]}
-{FieldList [uint16 uint16]}
-{FieldList [uint16]}
-{DeclStmt [def uint16]}
-{AssignStmt [f ok fn]}
-{FieldList [uint16 uint16]}
-{FieldList [uint16 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue uint16 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceU16 f def]}
-{CallExpr -> SelectorExpr [a Uint16s]}
-{ReturnStmt -> CaseClause [Uint32]}
-{DeclStmt [f]}
-{FieldList [uint32 uint32]}
-{FieldList [uint32]}
-{DeclStmt [def uint32]}
-{AssignStmt [f ok fn]}
-{FieldList [uint32 uint32]}
-{FieldList [uint32 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue uint32 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceU32 f def]}
-{CallExpr -> SelectorExpr [a Uint32s]}
-{ReturnStmt -> CaseClause [Uint64]}
-{DeclStmt [f]}
-{FieldList [uint64 uint64]}
-{FieldList [uint64]}
-{DeclStmt [def uint64]}
-{AssignStmt [f ok fn]}
-{FieldList [uint64 uint64]}
-{FieldList [uint64 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue uint64 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceU64 f def]}
-{CallExpr -> SelectorExpr [a Uint64s]}
-{ReturnStmt -> CaseClause [Uintptr]}
-{DeclStmt [f]}
-{FieldList [uintptr uintptr]}
-{FieldList [uintptr]}
-{DeclStmt [def uintptr]}
-{AssignStmt [f ok fn]}
-{FieldList [uintptr uintptr]}
-{FieldList [uintptr ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue uintptr ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceUintptr f def]}
-{CallExpr -> SelectorExpr [a Uintptrs]}
-{ReturnStmt -> CaseClause [Float32]}
-{DeclStmt [f]}
-{FieldList [float32 float32]}
-{FieldList [float32]}
-{DeclStmt [def float32]}
-{AssignStmt [f ok fn]}
-{FieldList [float32 float32]}
-{FieldList [float32 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue float32 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceF32 f def]}
-{CallExpr -> SelectorExpr [a Float32s]}
-{ReturnStmt -> CaseClause [Float64]}
-{DeclStmt [f]}
-{FieldList [float64 float64]}
-{FieldList [float64]}
-{DeclStmt [def float64]}
-{AssignStmt [f ok fn]}
-{FieldList [float64 float64]}
-{FieldList [float64 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue float64 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceF64 f def]}
-{CallExpr -> SelectorExpr [a Float64s]}
-{ReturnStmt -> CaseClause [Complex64]}
-{DeclStmt [f]}
-{FieldList [complex64 complex64]}
-{FieldList [complex64]}
-{DeclStmt [def complex64]}
-{AssignStmt [f ok fn]}
-{FieldList [complex64 complex64]}
-{FieldList [complex64 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue complex64 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceC64 f def]}
-{CallExpr -> SelectorExpr [a Complex64s]}
-{ReturnStmt -> CaseClause [Complex128]}
-{DeclStmt [f]}
-{FieldList [complex128 complex128]}
-{FieldList [complex128]}
-{DeclStmt [def complex128]}
-{AssignStmt [f ok fn]}
-{FieldList [complex128 complex128]}
-{FieldList [complex128 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue complex128 ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceC128 f def]}
-{CallExpr -> SelectorExpr [a Complex128s]}
-{ReturnStmt -> CaseClause [String]}
-{DeclStmt [f]}
-{FieldList [string string]}
-{FieldList [string]}
-{DeclStmt [def string]}
-{AssignStmt [f ok fn]}
-{FieldList [string string]}
-{FieldList [string ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue string ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceStr f def]}
-{CallExpr -> SelectorExpr [a Strings]}
-{ReturnStmt -> CaseClause [UnsafePointer]}
-{DeclStmt [f]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{SelectorExpr [unsafe Pointer]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{DeclStmt [def]}
-{SelectorExpr [unsafe Pointer]}
-{AssignStmt [f ok fn]}
-{FieldList -> SelectorExpr [unsafe Pointer]}
-{SelectorExpr [unsafe Pointer]}
-{FieldList -> SelectorExpr [unsafe Pointer ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf reductionErrMsg fn]}
-{AssignStmt [def ok defaultValue]}
-{SelectorExpr [unsafe Pointer ok]}
-{BlockStmt -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
-{AssignStmt [retVal]}
-{CallExpr [ReduceUnsafePointer f def]}
-{CallExpr -> SelectorExpr [a UnsafePointers]}
-{ReturnStmt -> CaseClause -> ReturnStmt [nil]}
-{CallExpr -> SelectorExpr [errors Errorf]}
-{BasicLit [t]}
+function name is ReduceDefault 
+	 {*ast.FieldList -> *ast.Field [e E ReduceDefault]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.Field [data]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [retVal]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [dim0 int]}
+	 {*ast.Field [dimSize int]}
+	 {*ast.Field [outerStride int]}
+	 {*ast.Field [stride int]}
+	 {*ast.Field [expected int]}
+	 {*ast.Field [fn]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
+	 {*ast.SwitchStmt [t]}
+	 {*ast.BlockStmt -> *ast.CaseClause [Bool]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Bools]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Bools]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultB dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Ints]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Ints]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int8]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int8s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int8s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI8 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int16]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int16s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int16s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI16 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int32s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI32 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Int64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int64s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI64 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uints]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uints]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint8]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint8s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint8s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU8 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint16]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint16s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint16s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU16 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint32s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU32 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint64s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU64 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uintptr]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Uintptrs]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uintptrs]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultUintptr dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Float32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Float32s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float32s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultF32 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Float64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Float64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float64s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultF64 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Complex64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Complex64s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex64s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultC64 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Complex128]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Complex128s]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex128s]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultC128 dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [String]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data Strings]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Strings]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultStr dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [UnsafePointer]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.AssignStmt [dt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [data UnsafePointers]}
+	 {*ast.AssignStmt [rt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [retVal UnsafePointers]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultUnsafePointer dt rt dim0 dimSize outerStride stride expected f]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+
+
+function name is Reduce 
+	 {*ast.FieldList -> *ast.Field [e E Reduce]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.Field [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [defaultValue]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [fn]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [retVal]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
+	 {*ast.SwitchStmt [t]}
+	 {*ast.BlockStmt -> *ast.CaseClause [Bool]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def bool]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue bool]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceB f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Int]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceI f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Int8]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceI8 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Int16]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceI16 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Int32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceI32 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Int64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def int64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceI64 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Uint]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceU f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Uint8]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceU8 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Uint16]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceU16 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Uint32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceU32 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Uint64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uint64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceU64 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Uintptr]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def uintptr]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uintptr]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceUintptr f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Float32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def float32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue float32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceF32 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Float64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def float64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue float64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceF64 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Complex64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def complex64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue complex64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceC64 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [Complex128]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def complex128]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue complex128]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceC128 f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [String]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def string]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue string]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceStr f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
+	 {*ast.ReturnStmt -> *ast.CaseClause [UnsafePointer]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.DeclStmt -> *ast.ValueSpec [def]}
+	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue]}
+	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
+	 {*ast.AssignStmt [retVal]}
+	 {*ast.CallExpr [ReduceUnsafePointer f def]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
+	 {*ast.ReturnStmt -> *ast.CaseClause -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
 
 

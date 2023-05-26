@@ -1,18 +1,24 @@
-function name is Data { [dataset]}
-{BasicLit -> BasicLit -> FieldList [a array Data]}
-{FieldList -> FieldList -> InterfaceType -> FieldList -> BlockStmt -> AssignStmt [shdr]}
-{SelectorExpr [reflect SliceHeader Data]}
-{CallExpr -> SelectorExpr [a Uintptr Len]}
-{CallExpr -> SelectorExpr [a Len Cap]}
-{CallExpr -> SelectorExpr [a Cap]}
-{AssignStmt [sliceT]}
-{CallExpr -> SelectorExpr [reflect SliceOf]}
-{SelectorExpr -> SelectorExpr [a t Type]}
-{AssignStmt [ptr]}
-{CallExpr -> SelectorExpr [unsafe Pointer shdr]}
-{AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect Indirect]}
-{CallExpr -> SelectorExpr [reflect NewAt sliceT ptr]}
-{ReturnStmt -> CallExpr -> SelectorExpr [val Interface]}
+function name is  {*ast.File [dataset]}
+
+
+function name is Data {*ast.FieldList -> *ast.Field [a array Data]}
+{*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [shdr]}
+{*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
+{*ast.KeyValueExpr [Data]}
+{*ast.CallExpr -> *ast.SelectorExpr [a Uintptr]}
+{*ast.KeyValueExpr [Len]}
+{*ast.CallExpr -> *ast.SelectorExpr [a Len]}
+{*ast.KeyValueExpr [Cap]}
+{*ast.CallExpr -> *ast.SelectorExpr [a Cap]}
+{*ast.AssignStmt [sliceT]}
+{*ast.CallExpr -> *ast.SelectorExpr [reflect SliceOf]}
+{*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+{*ast.AssignStmt [ptr]}
+{*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+{*ast.UnaryExpr [shdr]}
+{*ast.AssignStmt [val]}
+{*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect]}
+{*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt sliceT ptr]}
+{*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Interface]}
 
 

@@ -1,11 +1,14 @@
-function name is  { [dataset GenHeader]}
-{FieldList [T any]}
-{StructType -> FieldList [List T]}
+{*ast.File [dataset]}
+{*ast.TypeSpec [GenHeader]}
+{*ast.FieldList -> *ast.Field [T any]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [List]}
+{*ast.ArrayType [T]}
 
 
-function name is Gens {FieldList [g]}
-{StarExpr -> IndexExpr [GenHeader T Gens]}
-{FieldList -> FieldList [T]}
-{BlockStmt -> ReturnStmt -> SelectorExpr [g List]}
+function name is Gens 
+	 {*ast.FieldList -> *ast.Field [g]}
+	 {*ast.StarExpr -> *ast.IndexExpr [GenHeader T Gens]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [T]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [g List]}
 
 

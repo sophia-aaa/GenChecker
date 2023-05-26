@@ -8,6 +8,7 @@ import (
 	"go/token"
 	"log"
 	"os"
+	"reflect"
 )
 
 type elem struct {
@@ -24,6 +25,14 @@ type function2 struct {
 	value    []elem
 }
 
+type values struct {
+	lists []string
+}
+
+func resetValues() values {
+	return values{lists: []string{}}
+
+}
 func main() {
 	//	filename, err := os.ReadFile(os.Args[2])
 	// command must be like this: go run gen.go - test.go
@@ -35,6 +44,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	/*test := values{lists: []string{"test1", "test2"}}
+	fmt.Println(test)
+	test = resetValues()
+	fmt.Println("is reset?", test)*/
+
 	//ast.Print(fset, astTree)
 
 	node_list := list.New()
@@ -42,14 +56,15 @@ func main() {
 	nameFunction := ""
 	//nameCheck := 0
 	astNode := ""
-	//var listFunctions1 []function1
 	var listFunctions2 []function2
 	var astValue []string
 	fmt.Println(len(astValue))
 	ast.Inspect(astTree, func(node ast.Node) bool {
 		switch x := node.(type) {
 		case *ast.FuncDecl:
-			fmt.Println(x.Name)
+			//	fmt.Println(x.Name)
+			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
+			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
 			if len(astValue) != 0 { // if a new root meets
 				elem_list = append(elem_list, elem{astNode, astValue})
 				node_list.PushBack(elem{astNode, astValue})
@@ -61,194 +76,30 @@ func main() {
 				//nameCheck = 0
 			}
 			nameFunction = x.Name.String()
-			node_list.PushBack(elem{nameFunction, []string{}})
+			node_list.PushBack(elem{reflect.TypeOf(x).String(), []string{nameFunction}})
 
-		// TODO: detailed!!!!! must to know sequence
-		case *ast.SelectorExpr:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "SelectorExpr"
-			} else {
-				astNode += " -> " + "SelectorExpr"
-			}
-			if x.Sel.String() == "SliceHeader" {
-				fmt.Println("There is SliceHeader")
-			}
-		case *ast.AssignStmt:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "AssignStmt"
-			} else {
-				astNode += " -> " + "AssignStmt"
-			}
-		case *ast.BlockStmt:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "BlockStmt"
-			} else {
-				astNode += " -> " + "BlockStmt"
-			}
-		case *ast.CallExpr:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "CallExpr"
-			} else {
-				astNode += " -> " + "CallExpr"
-			}
-		case *ast.ReturnStmt:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "ReturnStmt"
-			} else {
-				astNode += " -> " + "ReturnStmt"
-			}
-		case *ast.SliceExpr:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "SliceExpr"
-			} else {
-				astNode += " -> " + "SliceExpr"
-			}
-		case *ast.StarExpr:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "StarExpr"
-			} else {
-				astNode += " -> " + "StarExpr"
-			}
-		case *ast.IndexExpr:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "IndexExpr"
-			} else {
-				astNode += " -> " + "IndexExpr"
-			}
-		case *ast.SwitchStmt:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "SwitchStmt"
-			} else {
-				astNode += " -> " + "SwitchStmt"
-			}
-		case *ast.InterfaceType:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "InterfaceType"
-			} else {
-				astNode += " -> " + "InterfaceType"
-			}
-		case *ast.DeclStmt:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "DeclStmt"
-			} else {
-				astNode += " -> " + "DeclStmt"
-			}
-		case *ast.FieldList:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "FieldList"
-			} else {
-				astNode += " -> " + "FieldList"
-			}
-		case *ast.CaseClause: //input
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "CaseClause"
-			} else {
-				astNode += " -> " + "CaseClause"
-			}
-		case *ast.BasicLit:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "BasicLit"
-			} else {
-				astNode += " -> " + "BasicLit"
-			}
-		case *ast.StructType:
-			if len(astValue) != 0 {
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				astNode = ""
-				astValue = []string{}
-			}
-			if astNode == "" {
-				astNode += "StructType"
-			} else {
-				astNode += " -> " + "StructType"
-			}
 		case *ast.Ident:
 			astValue = append(astValue, x.Name)
+
+		case *ast.GenDecl, *ast.ImportSpec, *ast.BasicLit, *ast.CommentGroup, *ast.Comment:
+			fmt.Print(reflect.TypeOf(x))
+		default:
+			if x != nil {
+				//		fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
+				//			fmt.Println(fset.Position(x.Pos()))
+				if len(astValue) != 0 {
+					elem_list = append(elem_list, elem{astNode, astValue})
+					node_list.PushBack(elem{astNode, astValue})
+					astNode = ""
+					astValue = []string{}
+				}
+				if astNode == "" {
+					astNode += reflect.TypeOf(x).String()
+				} else {
+					astNode += " -> " + reflect.TypeOf(x).String()
+				}
+			}
+
 			/*	if x.Name == nameFunction {
 						nameCheck++
 					}
@@ -282,10 +133,22 @@ func main() {
 	}
 	/*for item := node_list.Front(); item != nil; item = item.Next() {
 		fmt.Println(item.Value)
+	}*/
+
+	for s := range listFunctions2 {
+		if listFunctions2[s].funcName != "" {
+			fmt.Println(listFunctions2[s].funcName)
+			for _, value := range listFunctions2[s].value {
+				fmt.Println("\t", value)
+			}
+		} else {
+			for _, value := range listFunctions2[s].value {
+				fmt.Println(value)
+			}
+		}
+		fmt.Println()
 	}
-	fmt.Println(len(listFunctions1))
-	fmt.Println(len(listFunctions2))
-	*/
+
 	f, err := os.Create(filename + ".txt")
 	if err != nil {
 		log.Fatal(err)
@@ -299,22 +162,40 @@ func main() {
 	var str string
 	nextLine := "\n\n"
 	for s := range listFunctions2 {
-		str = "function name is " + listFunctions2[s].funcName + " "
-		_, err2 := f.WriteString(str)
-		if err2 != nil {
-			log.Fatal(err2)
-		}
-		for _, value := range listFunctions2[s].value {
-			str = fmt.Sprintln(value)
+		if listFunctions2[s].funcName != "" {
+
+			str = "function name is " + listFunctions2[s].funcName + " \n"
 			_, err2 := f.WriteString(str)
 			if err2 != nil {
 				log.Fatal(err2)
 			}
+			for _, value := range listFunctions2[s].value {
+				str = fmt.Sprintln("\t", value)
+				_, err2 := f.WriteString(str)
+				if err2 != nil {
+					log.Fatal(err2)
+				}
+			}
+			_, err2 = f.WriteString(nextLine)
+			if err2 != nil {
+				log.Fatal(err2)
+			}
+
+		} else {
+
+			for _, value := range listFunctions2[s].value {
+				str = fmt.Sprintln(value)
+				_, err2 := f.WriteString(str)
+				if err2 != nil {
+					log.Fatal(err2)
+				}
+			}
+			_, err2 := f.WriteString(nextLine)
+			if err2 != nil {
+				log.Fatal(err2)
+			}
 		}
-		_, err2 = f.WriteString(nextLine)
-		if err2 != nil {
-			log.Fatal(err2)
-		}
+
 	}
 	/*for s := range listFunctions2 {
 		fmt.Print("function name is ", listFunctions2[s].funcName, " ")
