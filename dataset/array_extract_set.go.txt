@@ -1,0 +1,96 @@
+{*ast.File [tensor]}
+
+
+function name is Set 
+	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [main array Set]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
+	 {*ast.Field [x]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
+	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x bool]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetB i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int8]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI8 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int16]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int16]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI16 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int32]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int32]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI32 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int64]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int64]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI64 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint8]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint8]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU8 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint16]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint16]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU16 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint32]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint32]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU32 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint64]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint64]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU64 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uintptr]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uintptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetUintptr i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float32]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x float32]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetF32 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float64]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x float64]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetF64 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex64]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x complex64]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetC64 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex128]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x complex128]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetC128 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect String]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x string]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetStr i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect UnsafePointer]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x]}
+	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetUnsafePointer i xv]}
+	 {*ast.CaseClause -> *ast.AssignStmt [xv]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf x]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set xv]}
+
+
