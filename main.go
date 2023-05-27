@@ -10,6 +10,7 @@ import (
 	"log"
 	"os"
 	"reflect"
+	"strings"
 )
 
 type elem struct {
@@ -183,7 +184,7 @@ func main() {
 	var genCheck [][]string
 	var genFunc []string
 	flag := false
-	for i := 0; i < len(listFunctions2)-1; i++ {
+	for i := 0; i < len(listFunctions2); i++ {
 		if listFunctions2[i].funcName != "" {
 			if len(genCheck) != 0 {
 				if !contains2D(genCheck, listFunctions2[i].funcName) {
@@ -197,30 +198,63 @@ func main() {
 			for j := i + 1; j < len(listFunctions2); j++ {
 				if listFunctions2[j].funcName != "" {
 					if len(listFunctions2[i].value) == len(listFunctions2[j].value) {
+						// Compare details between functions
 						for idx := range listFunctions2[i].value {
-							if listFunctions2[i].value[idx].path == listFunctions2[j].value[idx].path {
+							if strings.Compare(listFunctions2[i].value[idx].path, listFunctions2[j].value[idx].path) == 0 {
 								if len(listFunctions2[i].value[idx].value) == len(listFunctions2[j].value[idx].value) {
 									for idxValue := range listFunctions2[i].value[idx].value {
-										if listFunctions2[i].value[idx].value[idxValue] == listFunctions2[j].value[idx].value[idxValue] {
+										if strings.Compare(listFunctions2[i].value[idx].value[idxValue], listFunctions2[j].value[idx].value[idxValue]) == 0 {
 											flag = true
 										} else {
 											if (contains(funcList, listFunctions2[i].value[idx].value[idxValue]) && contains(funcList, listFunctions2[j].value[idx].value[idxValue])) ||
 												(contains(typeList, listFunctions2[i].value[idx].value[idxValue]) && contains(typeList, listFunctions2[j].value[idx].value[idxValue])) {
 												flag = true
+											} else {
+												flag = false
+												break
 											}
-											flag = false
-
 										}
 									}
 								} else {
 									flag = false
+									break
 								}
+							} else if strings.Contains(listFunctions2[i].value[idx].path, "*ast.SelectorExpr") {
+								// listFunctions2[i].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
+								// and listFunctions2[j].value[idx] looks like " ... [TYPE]"
+								if !contains(typeList, listFunctions2[j].value[idx].value[0]) {
+									flag = false
+									break
+								}
+								for _, val := range listFunctions2[i].value[idx].value {
+									if !contains([]string{"unsafe", "Pointer"}, val) {
+										flag = false
+										break
+									}
+								}
+								flag = true
+							} else if strings.Contains(listFunctions2[j].value[idx].path, "*ast.SelectorExpr") {
+								// listFunctions2[i].value[idx] looks like " ... [TYPE]"
+								// and listFunctions2[j].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
+								if !contains(typeList, listFunctions2[i].value[idx].value[0]) {
+									flag = false
+									break
+								}
+								for _, val := range listFunctions2[j].value[idx].value {
+									if !contains([]string{"unsafe", "Pointer"}, val) {
+										flag = false
+										break
+									}
+								}
+								flag = true
 							} else {
 								flag = false
+								break
 							}
 						}
 					} else {
 						flag = false
+						continue // continue the progress comparing a next function to the compared one
 					}
 				}
 				if flag == true {
