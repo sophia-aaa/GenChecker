@@ -57,6 +57,10 @@ func contains2D(strArr [][]string, str string) bool {
 	}
 	return false
 }
+
+func checkUnsafeUsages(str string) bool {
+	return contains([]string{"unsafe", "Pointer"}, str)
+}
 func main() {
 	// filename, err := os.ReadFile(os.Args[2])
 	// command must be like this: go run gen.go - test.go
@@ -103,6 +107,7 @@ func main() {
 				elem_list = []elem{}
 				astNode = ""
 				astValue = []string{}
+
 				//nameCheck = 0
 			}
 			nameFunction = x.Name.String()
@@ -227,7 +232,7 @@ func main() {
 									break
 								}
 								for _, val := range listFunctions2[i].value[idx].value {
-									if !contains([]string{"unsafe", "Pointer"}, val) {
+									if !checkUnsafeUsages(val) {
 										flag = false
 										break
 									}
@@ -241,7 +246,7 @@ func main() {
 									break
 								}
 								for _, val := range listFunctions2[j].value[idx].value {
-									if !contains([]string{"unsafe", "Pointer"}, val) {
+									if !checkUnsafeUsages(val) {
 										flag = false
 										break
 									}
@@ -255,6 +260,21 @@ func main() {
 					} else {
 						flag = false
 						continue // continue the progress comparing a next function to the compared one
+
+						/*
+							// TODO: SetUnsafePointer
+							// how to handle the *ast.SelectorExpr ?
+							else if len(listFunctions2[i].value) > len(listFunctions2[j].value) {
+								longLen := len(listFunctions2[i].value)
+								puffer := 0
+								for k := 0; k < len(listFunctions2[i].value); k++ {
+									if listFunctions2[i].value[k].path == "*ast.SelectorExpr" {
+
+									}
+								}
+							} else if len(listFunctions2[i].value) < len(listFunctions2[j].value) {
+
+							}*/
 					}
 				}
 				if flag == true {

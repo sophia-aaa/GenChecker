@@ -22,7 +22,7 @@ import (
 		return g.List[i]
 	}
 */
-func (a array) Data() interface{} {
+func (a array) Data1() interface{} {
 	// build a type of []T
 	shdr := reflect.SliceHeader{
 		Data: a.Uintptr(),
@@ -31,6 +31,20 @@ func (a array) Data() interface{} {
 	}
 	sliceT := reflect.SliceOf(a.t.Type)
 	ptr := unsafe.Pointer(&shdr)
+	val := reflect.Indirect(reflect.NewAt(sliceT, ptr))
+	return val.Interface()
+
+}
+
+func (a array) Data2() interface{} {
+	// build a type of []T
+	shdr := reflect.SliceHeader{
+		Data: a.Uintptr(),
+		Len:  a.Len(),
+		Cap:  a.Cap(),
+	}
+	ptr := unsafe.Pointer(&shdr)
+	sliceT := reflect.SliceOf(a.t.Type)
 	val := reflect.Indirect(reflect.NewAt(sliceT, ptr))
 	return val.Interface()
 

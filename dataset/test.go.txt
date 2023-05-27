@@ -1,24 +1,47 @@
-function name is  {*ast.File [dataset]}
+{*ast.File [dataset]}
 
 
-function name is Data {*ast.FieldList -> *ast.Field [a array Data]}
-{*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [shdr]}
-{*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
-{*ast.KeyValueExpr [Data]}
-{*ast.CallExpr -> *ast.SelectorExpr [a Uintptr]}
-{*ast.KeyValueExpr [Len]}
-{*ast.CallExpr -> *ast.SelectorExpr [a Len]}
-{*ast.KeyValueExpr [Cap]}
-{*ast.CallExpr -> *ast.SelectorExpr [a Cap]}
-{*ast.AssignStmt [sliceT]}
-{*ast.CallExpr -> *ast.SelectorExpr [reflect SliceOf]}
-{*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
-{*ast.AssignStmt [ptr]}
-{*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-{*ast.UnaryExpr [shdr]}
-{*ast.AssignStmt [val]}
-{*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect]}
-{*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt sliceT ptr]}
-{*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Interface]}
+function name is Data1 
+	 {*ast.FieldList -> *ast.Field [a array Data1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [shdr]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
+	 {*ast.KeyValueExpr [Data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptr]}
+	 {*ast.KeyValueExpr [Len]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
+	 {*ast.KeyValueExpr [Cap]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Cap]}
+	 {*ast.AssignStmt [sliceT]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect SliceOf]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+	 {*ast.AssignStmt [ptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [shdr]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt sliceT ptr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Interface]}
+
+
+function name is Data2 
+	 {*ast.FieldList -> *ast.Field [a array Data2]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [shdr]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
+	 {*ast.KeyValueExpr [Data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptr]}
+	 {*ast.KeyValueExpr [Len]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
+	 {*ast.KeyValueExpr [Cap]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Cap]}
+	 {*ast.AssignStmt [ptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [shdr]}
+	 {*ast.AssignStmt [sliceT]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect SliceOf]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt sliceT ptr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Interface]}
 
 
