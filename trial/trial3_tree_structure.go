@@ -1,7 +1,6 @@
 package main
 
 import (
-	"container/list"
 	"fmt"
 	"go/ast"
 	"go/parser"
@@ -13,54 +12,6 @@ import (
 	"strings"
 )
 
-type elem struct {
-	path  string
-	value []string
-}
-
-type function1 struct {
-	funcName string
-	value    *list.List
-}
-
-// Basic structure for every function in the input file
-type function2 struct {
-	funcName string
-	value    []elem
-}
-
-type funcNameList struct {
-	lists []string
-}
-
-func resetValues() funcNameList {
-	return funcNameList{lists: []string{}}
-
-}
-
-func contains(strArr []string, str string) bool {
-	for _, val := range strArr {
-		if val == str {
-			return true
-		}
-	}
-	return false
-}
-
-func contains2D(strArr [][]string, str string) bool {
-	for i := 0; i < len(strArr); i++ {
-		for j := 0; j < len(strArr[i]); j++ {
-			if strArr[i][j] == str {
-				return true
-			}
-		}
-	}
-	return false
-}
-
-func checkUnsafeUsages(str string) bool {
-	return contains([]string{"unsafe", "Pointer"}, str)
-}
 func main() {
 	// filename, err := os.ReadFile(os.Args[2])
 	// command must be like this: go run gen.go - test.go
@@ -72,93 +23,93 @@ func main() {
 		log.Fatal(err)
 	}
 
-	typeList := []string{
+	/*typeList := []string{
 		"bool", "bType", "int", "iType", "int8", "i8Type", "int16", "i16Type", "int32", "i32Type", "int64", "i64Type", "uint", "uType",
 		"uint8", "u8Type", "uint16", "u16Type", "uint32", "u32Type", "uint64", "u64Type", "uintptr", "uintptrType",
 		"float32", "f32Type", "float64", "f64Type", "complex64", "c64Type", "complex128", "c128Type", "string", "strType",
 		"unsafe", "Pointer", "unsafePointerType",
 	}
-	/*test := values{lists: []string{"test1", "test2"}}
+	test := values{lists: []string{"test1", "test2"}}
 	fmt.Println(test)
 	test = resetValues()
 	fmt.Println("is reset?", test)*/
+	/*
+		ast.Print(fset, astTree)
 
-	ast.Print(fset, astTree)
-
-	node_list := list.New()
-	var elem_list []elem
-	nameFunction := ""
-	//nameCheck := 0
-	astNode := ""
-	var listFunctions2 []function2
-	var astValue []string
-	fmt.Println(len(astValue))
-	count := 0
-	ast.Inspect(astTree, func(node ast.Node) bool {
-		switch x := node.(type) {
-		case *ast.FuncDecl:
-			count++
-			fmt.Println(reflect.TypeOf(x).String(), count)
-			//	fmt.Println(x.Name)
-			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
-			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
-			if len(astValue) != 0 { // if a new root meets
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				func2 := function2{nameFunction, elem_list}
-				listFunctions2 = append(listFunctions2, func2)
-				elem_list = []elem{}
-				astNode = ""
-				astValue = []string{}
-
-				//nameCheck = 0
-			}
-			nameFunction = x.Name.String()
-			node_list.PushBack(elem{reflect.TypeOf(x).String(), []string{nameFunction}})
-
-		case *ast.Ident:
-			fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
-			astValue = append(astValue, x.Name)
-
-		case *ast.GenDecl, *ast.ImportSpec, *ast.BasicLit, *ast.CommentGroup, *ast.Comment:
-			fmt.Print(reflect.TypeOf(x))
-
-		default:
-			if x != nil {
-				fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String())
-				//			fmt.Println(fset.Position(x.Pos()))
-				if len(astValue) != 0 {
+		node_list := list.New()
+		var elem_list []elem
+		nameFunction := ""
+		//nameCheck := 0
+		astNode := ""
+		var listFunctions2 []function2
+		var astValue []string
+		fmt.Println(len(astValue))
+		count := 0
+		ast.Inspect(astTree, func(node ast.Node) bool {
+			switch x := node.(type) {
+			case *ast.FuncDecl:
+				count++
+				fmt.Println(reflect.TypeOf(x).String(), count)
+				//	fmt.Println(x.Name)
+				//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
+				//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
+				if len(astValue) != 0 { // if a new root meets
 					elem_list = append(elem_list, elem{astNode, astValue})
 					node_list.PushBack(elem{astNode, astValue})
+					func2 := function2{nameFunction, elem_list}
+					listFunctions2 = append(listFunctions2, func2)
+					elem_list = []elem{}
 					astNode = ""
 					astValue = []string{}
-				}
-				if astNode == "" {
-					astNode += reflect.TypeOf(x).String()
-				} else {
-					astNode += " -> " + reflect.TypeOf(x).String()
-				}
-			}
 
-			/*	if x.Name == nameFunction {
-						nameCheck++
+					//nameCheck = 0
+				}
+				nameFunction = x.Name.String()
+				node_list.PushBack(elem{reflect.TypeOf(x).String(), []string{nameFunction}})
+
+			case *ast.Ident:
+				fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
+				astValue = append(astValue, x.Name)
+
+			case *ast.GenDecl, *ast.ImportSpec, *ast.BasicLit, *ast.CommentGroup, *ast.Comment:
+				fmt.Print(reflect.TypeOf(x))
+
+			default:
+				if x != nil {
+					fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String())
+					//			fmt.Println(fset.Position(x.Pos()))
+					if len(astValue) != 0 {
+						elem_list = append(elem_list, elem{astNode, astValue})
+						node_list.PushBack(elem{astNode, astValue})
+						astNode = ""
+						astValue = []string{}
 					}
-					if x.Name != nameFunction && nameCheck != 0 {
-						astValue = append(astValue, x.Name)
+					if astNode == "" {
+						astNode += reflect.TypeOf(x).String()
+					} else {
+						astNode += " -> " + reflect.TypeOf(x).String()
 					}
 				}
 
-					if node_list != nil {
-						fmt.Println(nameFunction, " added! node_list")
-						listFunctions1 = append(listFunctions1, function1{nameFunction, node_list})
-						node_list.Init()
+				/*	if x.Name == nameFunction {
+							nameCheck++
+						}
+						if x.Name != nameFunction && nameCheck != 0 {
+							astValue = append(astValue, x.Name)
+						}
 					}
-					if elem_list != nil {
-						fmt.Println(nameFunction, " added! elem_list")
-						listFunctions2 = append(listFunctions2, function2{nameFunction, elem_list})
-						elem_list = []elem{}
-					}*/
-		}
+
+						if node_list != nil {
+							fmt.Println(nameFunction, " added! node_list")
+							listFunctions1 = append(listFunctions1, function1{nameFunction, node_list})
+							node_list.Init()
+						}
+						if elem_list != nil {
+							fmt.Println(nameFunction, " added! elem_list")
+							listFunctions2 = append(listFunctions2, function2{nameFunction, elem_list})
+							elem_list = []elem{}
+						}*/
+	/*}
 		return true
 	})
 
@@ -175,7 +126,7 @@ func main() {
 		fmt.Println(item.Value)
 	}*/
 
-	var funcList []string
+	/*var funcList []string
 	for s := range listFunctions2 {
 		if listFunctions2[s].funcName != "" {
 			//	fmt.Println(listFunctions2[s].funcName)
@@ -281,7 +232,7 @@ func main() {
 							} else if len(listFunctions2[i].value) < len(listFunctions2[j].value) {
 
 							}*/
-					}
+	/*}
 				}
 				if flag == true {
 					genFunc = append(genFunc, listFunctions2[j].funcName)
@@ -348,7 +299,7 @@ func main() {
 		fmt.Println()
 		fmt.Println()
 	}*/
-	fmt.Println(len(listFunctions2))
+	/*fmt.Println(len(listFunctions2))
 	for s := range genCheck {
 		if len(genCheck[s]) > 1 {
 			fmt.Print("These functions can be merged as generics: ")
@@ -357,5 +308,26 @@ func main() {
 			}
 			fmt.Println()
 		}
+	}*/
+	var v visitor
+	ast.Walk(v, astTree)
+}
+
+// Reference: https://golangdocs.com/golang-ast-package
+type visitor int
+
+func (v visitor) Visit(n ast.Node) ast.Visitor {
+	if n == nil {
+		return nil
 	}
+
+	// int(v) is a depth of a current node
+	if reflect.TypeOf(n).String() == "*ast.Ident" || reflect.TypeOf(n).String() == "*ast.FuncDecl" {
+		fmt.Printf("%s%d: ", strings.Repeat("\t", int(v)), int(v))
+		fmt.Printf("%v\n", n)
+	} else {
+		fmt.Printf("%s%d: ", strings.Repeat("\t", int(v)), int(v))
+		fmt.Printf("%T\n", n)
+	}
+	return v + 1
 }
