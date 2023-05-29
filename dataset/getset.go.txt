@@ -473,8 +473,7 @@ function name is SetUnsafePointer
 	 {*ast.FieldList -> *ast.Field [h]}
 	 {*ast.StarExpr [Header SetUnsafePointer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x]}
-	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field -> *ast.SelectorExpr [x unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h UnsafePointers i x]}
 
 

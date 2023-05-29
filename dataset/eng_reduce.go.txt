@@ -1,7 +1,5 @@
-{*ast.File [execution]}
-
-
 function name is ReduceFirst 
+	 {*ast.File [execution]}
 	 {*ast.FieldList -> *ast.Field [e E ReduceFirst]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
@@ -715,11 +713,9 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [UnsafePointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def]}
-	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.DeclStmt -> *ast.ValueSpec -> *ast.SelectorExpr [def unsafe Pointer]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
-	 {*ast.TypeAssertExpr [defaultValue]}
-	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [defaultValue unsafe Pointer]}
 	 {*ast.UnaryExpr [ok]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
@@ -1495,8 +1491,7 @@ function name is Reduce
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def]}
-	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.DeclStmt -> *ast.ValueSpec -> *ast.SelectorExpr [def unsafe Pointer]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
@@ -1506,8 +1501,7 @@ function name is Reduce
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
-	 {*ast.TypeAssertExpr [defaultValue]}
-	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [defaultValue unsafe Pointer]}
 	 {*ast.UnaryExpr [ok]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}

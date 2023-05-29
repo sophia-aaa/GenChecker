@@ -62,6 +62,81 @@ func contains2D(strArr [][]string, str string) bool {
 	}
 	return false
 }
+func buildAstDataStr(filename string) []function2 {
+	fset := token.NewFileSet()
+	astTree, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var elem_list []elem
+	nameFunction := ""
+	astNode := ""
+	var listFunctions2 []function2
+	var astValue []string
+
+	ast.Inspect(astTree, func(node ast.Node) bool {
+		switch x := node.(type) {
+		case *ast.FuncDecl:
+
+			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
+			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
+			if nameFunction != "" { // if a new root meets
+				elem_list = append(elem_list, elem{astNode, astValue})
+				listFunctions2 = append(listFunctions2, function2{nameFunction, elem_list})
+				elem_list = []elem{}
+				astNode = ""
+				astValue = []string{}
+			}
+
+			nameFunction = x.Name.String()
+
+		case *ast.Ident:
+			//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
+			astValue = append(astValue, x.Name)
+
+		case *ast.GenDecl, *ast.ImportSpec, *ast.BasicLit, *ast.CommentGroup, *ast.Comment:
+			fmt.Print(" ")
+		case *ast.CaseClause, *ast.SwitchStmt:
+			// *ast.CaseClause -> *ast.SelectorExpr
+			elem_list = append(elem_list, elem{astNode, astValue})
+			astNode = ""
+			astValue = []string{}
+
+			if astNode == "" {
+				astNode += reflect.TypeOf(x).String()
+			} else {
+				astNode += " -> " + reflect.TypeOf(x).String()
+			}
+
+		default:
+			if x != nil {
+				//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String())
+				//			fmt.Println(fset.Position(x.Pos()))
+				if len(astValue) != 0 {
+					elem_list = append(elem_list, elem{astNode, astValue})
+					astNode = ""
+					astValue = []string{}
+				}
+				if astNode == "" {
+					astNode += reflect.TypeOf(x).String()
+				} else {
+					astNode += " -> " + reflect.TypeOf(x).String()
+				}
+			}
+		}
+		return true
+	})
+	if nameFunction != "" { // add last function
+		elem_list = append(elem_list, elem{astNode, astValue})
+		func2 := function2{nameFunction, elem_list}
+		listFunctions2 = append(listFunctions2, func2)
+		elem_list = []elem{}
+		astNode = ""
+		astValue = []string{}
+	}
+	return listFunctions2
+}
 
 func checkUnsafeUsages(str string) bool {
 	return contains([]string{"unsafe", "Pointer"}, str)
@@ -107,8 +182,36 @@ func checkGenerics(listFunctions2 []function2, funcList []string, typeList []str
 									flag = false
 									break
 								}
+							} else if listFunctions2[i].value[idx].path+" -> *ast.SelectorExpr" == listFunctions2[j].value[idx].path {
+								// This is a special case for modified elem list
+								// listFunctions2[j].value[idx].path is listFunctions2[i].value[idx].path " -> *ast.SelectorExpr"
+								// listFunctions2[j].value[idx].value must look like [... unsafe Pointer] and
+								// listFunctions2[i].value[idx].value must have type variable in its elem value so like [... type]
+								len1 := len(listFunctions2[i].value[idx].value)
+								len2 := len(listFunctions2[j].value[idx].value)
+								if len2 > 1 && !contains(typeList, listFunctions2[i].value[idx].value[len1-1]) ||
+									(!checkUnsafeUsages(listFunctions2[j].value[idx].value[len2-1]) &&
+										!checkUnsafeUsages(listFunctions2[j].value[idx].value[len2-2])) {
+									flag = false
+									break
+								}
+								flag = true
+							} else if listFunctions2[j].value[idx].path+" -> *ast.SelectorExpr" == listFunctions2[i].value[idx].path {
+								// This is a special case for modified elem list
+								// listFunctions2[i].value[idx].path is listFunctions2[j].value[idx].path " -> *ast.SelectorExpr"
+								// listFunctions2[i].value[idx].value must look like [... unsafe Pointer] and
+								// listFunctions2[j].value[idx].value must have type variable in its elem value so like [... type]
+								len1 := len(listFunctions2[j].value[idx].value)
+								len2 := len(listFunctions2[i].value[idx].value)
+								if len2 > 2 && !contains(typeList, listFunctions2[j].value[idx].value[len1-1]) ||
+									(!checkUnsafeUsages(listFunctions2[i].value[idx].value[len2-1]) &&
+										!checkUnsafeUsages(listFunctions2[i].value[idx].value[len2-2])) {
+									flag = false
+									break
+								}
+								flag = true
 							} else if strings.Contains(listFunctions2[i].value[idx].path, "*ast.SelectorExpr") {
-								// listFunctions2[i].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
+								// listFunctions2[i].value[idx] looks like "... -> *ast.SelectorExpr [... unsafe Pointer]"
 								// and listFunctions2[j].value[idx] looks like " ... [TYPE]"
 								if !contains(typeList, listFunctions2[j].value[idx].value[0]) {
 									flag = false
@@ -123,7 +226,7 @@ func checkGenerics(listFunctions2 []function2, funcList []string, typeList []str
 								flag = true
 							} else if strings.Contains(listFunctions2[j].value[idx].path, "*ast.SelectorExpr") {
 								// listFunctions2[i].value[idx] looks like " ... [TYPE]"
-								// and listFunctions2[j].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
+								// and listFunctions2[j].value[idx] looks like "... -> *ast.SelectorExpr [... unsafe Pointer]"
 								if !contains(typeList, listFunctions2[i].value[idx].value[0]) {
 									flag = false
 									break
@@ -206,6 +309,34 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 											caseFlag = false
 											break
 										}
+									} else if caseWFunc[k].cases[i].value[idx].path+" -> *ast.SelectorExpr" == caseWFunc[k].cases[j].value[idx].path {
+										// This is a special case for modified elem list
+										// listFunctions2[j].value[idx].path is listFunctions2[i].value[idx].path " -> *ast.SelectorExpr"
+										// listFunctions2[j].value[idx].value must look like [... unsafe Pointer] and
+										// listFunctions2[i].value[idx].value must have type variable in its elem value so like [... type]
+										len1 := len(caseWFunc[k].cases[i].value[idx].value)
+										len2 := len(caseWFunc[k].cases[j].value[idx].value)
+										if len2 > 1 && !contains(typeList, caseWFunc[k].cases[i].value[idx].value[len1-1]) ||
+											(!checkUnsafeUsages(caseWFunc[k].cases[j].value[idx].value[len2-1]) &&
+												!checkUnsafeUsages(caseWFunc[k].cases[j].value[idx].value[len2-2])) {
+											caseFlag = false
+											break
+										}
+										caseFlag = true
+									} else if caseWFunc[k].cases[j].value[idx].path+" -> *ast.SelectorExpr" == caseWFunc[k].cases[i].value[idx].path {
+										// This is a special case for modified elem list
+										// listFunctions2[i].value[idx].path is listFunctions2[j].value[idx].path " -> *ast.SelectorExpr"
+										// listFunctions2[i].value[idx].value must look like [... unsafe Pointer] and
+										// listFunctions2[j].value[idx].value must have type variable in its elem value so like [... type]
+										len1 := len(caseWFunc[k].cases[j].value[idx].value)
+										len2 := len(caseWFunc[k].cases[i].value[idx].value)
+										if len2 > 2 && !contains(typeList, caseWFunc[k].cases[j].value[idx].value[len1-1]) ||
+											(!checkUnsafeUsages(caseWFunc[k].cases[i].value[idx].value[len2-1]) &&
+												!checkUnsafeUsages(caseWFunc[k].cases[i].value[idx].value[len2-2])) {
+											caseFlag = false
+											break
+										}
+										caseFlag = true
 									} else if strings.Contains(caseWFunc[k].cases[i].value[idx].path, "*ast.SelectorExpr") {
 										// listFunctions2[i].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
 										// and listFunctions2[j].value[idx] looks like " ... [TYPE]"
@@ -263,6 +394,42 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 	return caseListCheck
 }
 
+func checkSelectorExpr(listFunctions2 []function2) []function2 {
+
+	var modElemList []elem
+	var modListFunctions2 []function2
+	var modFuncName string
+	var modPath string
+	var modAstValue []string
+	if len(listFunctions2) > 0 {
+		for l := range listFunctions2 {
+			modFuncName = listFunctions2[l].funcName
+			for i := 0; i < len(listFunctions2[l].value); i++ {
+				modPath = listFunctions2[l].value[i].path
+				for _, val := range listFunctions2[l].value[i].value {
+					modAstValue = append(modAstValue, val)
+				}
+				if i < len(listFunctions2[l].value)-1 && listFunctions2[l].value[i+1].path == "*ast.SelectorExpr" {
+					if listFunctions2[l].value[i+1].value[0] == "unsafe" && listFunctions2[l].value[i+1].value[1] == "Pointer" {
+						modPath += " -> *ast.SelectorExpr"
+						modAstValue = append(modAstValue, "unsafe")
+						modAstValue = append(modAstValue, "Pointer")
+						i++
+					}
+				}
+				modElemList = append(modElemList, elem{modPath, modAstValue})
+				modPath = ""
+				modAstValue = []string{}
+			}
+			modListFunctions2 = append(modListFunctions2, function2{modFuncName, modElemList})
+			modFuncName = ""
+			modElemList = []elem{}
+		}
+	}
+
+	return modListFunctions2
+}
+
 func createTextFile(filename string, listFunctions2 []function2) {
 	f, err := os.Create(filename + ".txt")
 	if err != nil {
@@ -313,118 +480,7 @@ func createTextFile(filename string, listFunctions2 []function2) {
 
 }
 
-func main() {
-	// filename, err := os.ReadFile(os.Args[2])
-	// command must be like this: go run gen.go - test.go
-	filename := os.Args[2]
-	//fmt.Println(filename)
-	fset := token.NewFileSet()
-	astTree, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	typeList := []string{
-		"bool", "bType", "int", "iType", "int8", "i8Type", "int16", "i16Type", "int32", "i32Type", "int64", "i64Type", "uint", "uType",
-		"uint8", "u8Type", "uint16", "u16Type", "uint32", "u32Type", "uint64", "u64Type", "uintptr", "uintptrType",
-		"float32", "f32Type", "float64", "f64Type", "complex64", "c64Type", "complex128", "c128Type", "string", "strType",
-		"unsafe", "Pointer", "unsafePointerType",
-	}
-
-	//ast.Print(fset, astTree)
-
-	node_list := list.New()
-	var elem_list []elem
-	nameFunction := ""
-	//nameCheck := 0
-	astNode := ""
-	var listFunctions2 []function2
-	var astValue []string
-
-	ast.Inspect(astTree, func(node ast.Node) bool {
-		switch x := node.(type) {
-		case *ast.FuncDecl:
-
-			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
-			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
-			if nameFunction != "" { // if a new root meets
-				elem_list = append(elem_list, elem{astNode, astValue})
-				node_list.PushBack(elem{astNode, astValue})
-				func2 := function2{nameFunction, elem_list}
-				listFunctions2 = append(listFunctions2, func2)
-				elem_list = []elem{}
-				astNode = ""
-				astValue = []string{}
-			}
-
-			nameFunction = x.Name.String()
-			node_list.PushBack(elem{reflect.TypeOf(x).String(), []string{nameFunction}})
-
-		case *ast.Ident:
-			//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
-			astValue = append(astValue, x.Name)
-
-		case *ast.GenDecl, *ast.ImportSpec, *ast.BasicLit, *ast.CommentGroup, *ast.Comment:
-			fmt.Print(" ")
-		case *ast.CaseClause, *ast.SwitchStmt:
-
-			// *ast.CaseClause -> *ast.SelectorExpr
-			elem_list = append(elem_list, elem{astNode, astValue})
-			node_list.PushBack(elem{astNode, astValue})
-			astNode = ""
-			astValue = []string{}
-
-			if astNode == "" {
-				astNode += reflect.TypeOf(x).String()
-			} else {
-				astNode += " -> " + reflect.TypeOf(x).String()
-			}
-
-		default:
-			if x != nil {
-				//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String())
-				//			fmt.Println(fset.Position(x.Pos()))
-				if len(astValue) != 0 {
-					elem_list = append(elem_list, elem{astNode, astValue})
-					node_list.PushBack(elem{astNode, astValue})
-					astNode = ""
-					astValue = []string{}
-				}
-				if astNode == "" {
-					astNode += reflect.TypeOf(x).String()
-				} else {
-					astNode += " -> " + reflect.TypeOf(x).String()
-				}
-			}
-		}
-		return true
-	})
-
-	if nameFunction != "" { // if a new root meets
-		elem_list = append(elem_list, elem{astNode, astValue})
-		node_list.PushBack(elem{astNode, astValue})
-		func2 := function2{nameFunction, elem_list}
-		listFunctions2 = append(listFunctions2, func2)
-		elem_list = []elem{}
-		astNode = ""
-		astValue = []string{}
-	}
-	/*for item := node_list.Front(); item != nil; item = item.Next() {
-		fmt.Println(item.Value)
-	}*/
-
-	fmt.Println()
-	var funcList []string
-	for s := range listFunctions2 {
-		if listFunctions2[s].funcName != "" {
-			funcList = append(funcList, listFunctions2[s].funcName)
-		}
-	}
-
-	// compare functions
-	genCheck := checkGenerics(listFunctions2, funcList, typeList)
-
-	// build data structure for comparing switch statement
+func checkSwitchStatement(listFunctions2 []function2) []checkCases {
 	var switchCheck []string
 	var caseListWVar []function2
 	var caseName string
@@ -465,17 +521,50 @@ func main() {
 
 		}
 	}
+	return caseWFunc
+}
+
+func main() {
+	// filename, err := os.ReadFile(os.Args[2])
+	// command must be like this: go run gen.go - test.go
+	filename := os.Args[2]
+
+	typeList := []string{
+		"bool", "bType", "int", "iType", "int8", "i8Type", "int16", "i16Type", "int32", "i32Type", "int64", "i64Type", "uint", "uType",
+		"uint8", "u8Type", "uint16", "u16Type", "uint32", "u32Type", "uint64", "u64Type", "uintptr", "uintptrType",
+		"float32", "f32Type", "float64", "f64Type", "complex64", "c64Type", "complex128", "c128Type", "string", "strType",
+		"unsafe", "Pointer", "unsafePointerType",
+	}
+
+	listFunctions2 := buildAstDataStr(filename)
+
+	fmt.Println()
+	var funcList []string
+	for s := range listFunctions2 {
+		if listFunctions2[s].funcName != "" {
+			funcList = append(funcList, listFunctions2[s].funcName)
+		}
+	}
+
+	// check leaf of SelectorExpr and unsafe Pointer
+	modListFunctions2 := checkSelectorExpr(listFunctions2)
+
+	// Check Generic Replacement
+	genCheck := checkGenerics(modListFunctions2, funcList, typeList)
+	for s := range genCheck {
+		if len(genCheck[s]) > 1 {
+			fmt.Print("These functions have a same structure and the code are reused: ")
+			for _, value := range genCheck[s] {
+				fmt.Print(value, " ")
+			}
+			fmt.Println()
+		}
+	}
+
+	caseWFunc := checkSwitchStatement(modListFunctions2)
 
 	// Check reused cases in switch statement
 	caseListCheck := checkReusedCases(caseWFunc, funcList, typeList)
-
-	if len(switchCheck) > 0 {
-		fmt.Print("\nThese(This) function(s) contain(s) switch statement: ")
-		for _, val := range switchCheck {
-			fmt.Print(val, " ")
-		}
-		fmt.Println()
-	}
 
 	if len(caseListCheck) > 0 {
 		for _, val := range caseListCheck {
@@ -489,17 +578,7 @@ func main() {
 	}
 
 	// create a text file
-	createTextFile(filename, listFunctions2)
-
-	// Check Generic Replacement
-	for s := range genCheck {
-		if len(genCheck[s]) > 1 {
-			fmt.Print("These functions have a same structure and the code are reused: ")
-			for _, value := range genCheck[s] {
-				fmt.Print(value, " ")
-			}
-			fmt.Println()
-		}
-	}
+	//createTextFile(filename, listFunctions2)
+	createTextFile(filename, modListFunctions2)
 
 }

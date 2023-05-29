@@ -77,8 +77,7 @@ function name is Set
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetStr i xv]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect UnsafePointer]}
 	 {*ast.AssignStmt [xv]}
-	 {*ast.TypeAssertExpr [x]}
-	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [x unsafe Pointer]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetUnsafePointer i xv]}
 	 {*ast.CaseClause -> *ast.AssignStmt [xv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf x]}
@@ -295,8 +294,7 @@ function name is Memset
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [UnsafePointer]}
 	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
-	 {*ast.TypeAssertExpr [x]}
-	 {*ast.SelectorExpr [unsafe Pointer ok]}
+	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [x unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
 	 {*ast.RangeStmt [i data]}
@@ -605,8 +603,7 @@ function name is memsetIter
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [UnsafePointer]}
 	 {*ast.AssignStmt [xv ok]}
-	 {*ast.TypeAssertExpr [x]}
-	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [x unsafe Pointer]}
 	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
 	 {*ast.SelectorExpr [a t x]}
