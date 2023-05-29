@@ -320,10 +320,31 @@ func (v visitor) Visit(n ast.Node) ast.Visitor {
 	if n == nil {
 		return nil
 	}
+
+	// TODO to test fmt.Printf -> fmt.Sprinft and save in []str
 	// int(v) is a depth of a current node
-	if reflect.TypeOf(n).String() == "*ast.Ident" || reflect.TypeOf(n).String() == "*ast.FuncDecl" {
+	if reflect.TypeOf(n).String() == "*ast.Ident" {
 		fmt.Printf("%s%d: ", strings.Repeat("\t", int(v)), int(v))
-		fmt.Printf("%v\n", n)
+		fmt.Printf("%s %v\n", reflect.TypeOf(n).String(), n)
+	} else if reflect.TypeOf(n).String() == "*ast.FuncDecl" {
+		str := fmt.Sprintf("%v", n)
+		count := 0
+		var strIdx int
+		var endIdx int
+		for i := 0; i < len(str); i++ {
+			if str[i] == ' ' {
+				count++
+			}
+			if str[i] == ' ' && count == 2 {
+				strIdx = i + 1
+			}
+			if str[i] == ' ' && count == 3 {
+				endIdx = i
+			}
+		}
+		fmt.Printf("%s%d: ", strings.Repeat("\t", int(v)), int(v))
+		fmt.Printf("%s %v\n", reflect.TypeOf(n).String(), str[strIdx:endIdx])
+
 	} else {
 		fmt.Printf("%s%d: ", strings.Repeat("\t", int(v)), int(v))
 		fmt.Printf("%T\n", n)

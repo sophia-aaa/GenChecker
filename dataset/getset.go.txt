@@ -1,7 +1,5 @@
-{*ast.File [storage]}
-
-
 function name is Bools 
+	 {*ast.File [storage]}
 	 {*ast.FieldList -> *ast.Field [h]}
 	 {*ast.StarExpr [Header Bools]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
