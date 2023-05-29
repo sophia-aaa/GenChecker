@@ -1,0 +1,5617 @@
+0: *ast.File
+	1: *ast.Ident execution
+	1: *ast.GenDecl
+		2: *ast.ImportSpec
+			3: *ast.BasicLit
+		2: *ast.ImportSpec
+			3: *ast.BasicLit
+		2: *ast.ImportSpec
+			3: *ast.BasicLit
+		2: *ast.ImportSpec
+			3: *ast.BasicLit
+	1: *ast.FuncDecl 
+		2: *ast.FieldList
+			3: *ast.Field
+				4: *ast.Ident e
+				4: *ast.Ident E
+		2: *ast.Ident ReduceFirst
+		2: *ast.FuncType
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident t
+					5: *ast.SelectorExpr
+						6: *ast.Ident reflect
+						6: *ast.Ident Type
+				4: *ast.Field
+					5: *ast.Ident data
+					5: *ast.StarExpr
+						6: *ast.SelectorExpr
+							7: *ast.Ident storage
+							7: *ast.Ident Header
+				4: *ast.Field
+					5: *ast.Ident retVal
+					5: *ast.StarExpr
+						6: *ast.SelectorExpr
+							7: *ast.Ident storage
+							7: *ast.Ident Header
+				4: *ast.Field
+					5: *ast.Ident split
+					5: *ast.Ident int
+				4: *ast.Field
+					5: *ast.Ident size
+					5: *ast.Ident int
+				4: *ast.Field
+					5: *ast.Ident fn
+					5: *ast.InterfaceType
+						6: *ast.FieldList
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident err
+					5: *ast.Ident error
+		2: *ast.BlockStmt
+			3: *ast.SwitchStmt
+				4: *ast.Ident t
+				4: *ast.BlockStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Bool
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Bools
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Bools
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident bool
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident bool
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstB
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+											11: *ast.Field
+												12: *ast.Ident bool
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstB
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Ints
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Ints
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstI
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+											11: *ast.Field
+												12: *ast.Ident int
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstI
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int8
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int8s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int8s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int8
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int8
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstI8
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+											11: *ast.Field
+												12: *ast.Ident int8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstI8
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int16
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int16s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int16s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int16
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int16
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstI16
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+											11: *ast.Field
+												12: *ast.Ident int16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstI16
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int32
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int32s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int32
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstI32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+											11: *ast.Field
+												12: *ast.Ident int32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstI32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int64
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int64s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int64
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstI64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+											11: *ast.Field
+												12: *ast.Ident int64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstI64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uints
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uints
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstU
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+											11: *ast.Field
+												12: *ast.Ident uint
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstU
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint8
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint8s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint8s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint8
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint8
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstU8
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+											11: *ast.Field
+												12: *ast.Ident uint8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstU8
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint16
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint16s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint16s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint16
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint16
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstU16
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+											11: *ast.Field
+												12: *ast.Ident uint16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstU16
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint32
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint32s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint32
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstU32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+											11: *ast.Field
+												12: *ast.Ident uint32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstU32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint64
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint64s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint64
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstU64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+											11: *ast.Field
+												12: *ast.Ident uint64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstU64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uintptr
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uintptrs
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uintptrs
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uintptr
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uintptr
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstUintptr
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+											11: *ast.Field
+												12: *ast.Ident uintptr
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstUintptr
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Float32
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Float32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Float32s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident float32
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident float32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstF32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+											11: *ast.Field
+												12: *ast.Ident float32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstF32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Float64
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Float64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Float64s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident float64
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident float64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstF64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+											11: *ast.Field
+												12: *ast.Ident float64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstF64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Complex64
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Complex64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Complex64s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident complex64
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident complex64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstC64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+											11: *ast.Field
+												12: *ast.Ident complex64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstC64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Complex128
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Complex128s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Complex128s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident complex128
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident complex128
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstC128
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+											11: *ast.Field
+												12: *ast.Ident complex128
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstC128
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident String
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Strings
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Strings
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident string
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident string
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstStr
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+											11: *ast.Field
+												12: *ast.Ident string
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstStr
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident UnsafePointer
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident UnsafePointers
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident UnsafePointers
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.SelectorExpr
+														14: *ast.Ident unsafe
+														14: *ast.Ident Pointer
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.SelectorExpr
+														14: *ast.Ident unsafe
+														14: *ast.Ident Pointer
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceFirstUnsafePointer
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceFirstUnsafePointer
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident split
+											11: *ast.Ident size
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident errors
+									9: *ast.Ident Errorf
+								8: *ast.BasicLit
+								8: *ast.Ident t
+	1: *ast.FuncDecl 
+		2: *ast.FieldList
+			3: *ast.Field
+				4: *ast.Ident e
+				4: *ast.Ident E
+		2: *ast.Ident ReduceLast
+		2: *ast.FuncType
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident t
+					5: *ast.SelectorExpr
+						6: *ast.Ident reflect
+						6: *ast.Ident Type
+				4: *ast.Field
+					5: *ast.Ident data
+					5: *ast.StarExpr
+						6: *ast.SelectorExpr
+							7: *ast.Ident storage
+							7: *ast.Ident Header
+				4: *ast.Field
+					5: *ast.Ident retVal
+					5: *ast.StarExpr
+						6: *ast.SelectorExpr
+							7: *ast.Ident storage
+							7: *ast.Ident Header
+				4: *ast.Field
+					5: *ast.Ident dimSize
+					5: *ast.Ident int
+				4: *ast.Field
+					5: *ast.Ident defaultValue
+					5: *ast.InterfaceType
+						6: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident fn
+					5: *ast.InterfaceType
+						6: *ast.FieldList
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident err
+					5: *ast.Ident error
+		2: *ast.BlockStmt
+			3: *ast.DeclStmt
+				4: *ast.GenDecl
+					5: *ast.ValueSpec
+						6: *ast.Ident ok
+						6: *ast.Ident bool
+			3: *ast.SwitchStmt
+				4: *ast.Ident t
+				4: *ast.BlockStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Bool
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident bool
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident bool
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Bools
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Bools
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident bool
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastB
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+											11: *ast.Field
+												12: *ast.Ident bool
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastB
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Ints
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Ints
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastI
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+											11: *ast.Field
+												12: *ast.Ident int
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastI
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int8
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int8
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int8
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int8s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int8s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastI8
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+											11: *ast.Field
+												12: *ast.Ident int8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastI8
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int16
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int16
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int16
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int16s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int16s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastI16
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+											11: *ast.Field
+												12: *ast.Ident int16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastI16
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int32s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastI32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+											11: *ast.Field
+												12: *ast.Ident int32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastI32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int64s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident int64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastI64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+											11: *ast.Field
+												12: *ast.Ident int64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastI64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uints
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uints
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastU
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+											11: *ast.Field
+												12: *ast.Ident uint
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastU
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint8
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint8
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint8
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint8s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint8s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastU8
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+											11: *ast.Field
+												12: *ast.Ident uint8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastU8
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint16
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint16
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint16
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint16s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint16s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastU16
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+											11: *ast.Field
+												12: *ast.Ident uint16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastU16
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint32s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastU32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+											11: *ast.Field
+												12: *ast.Ident uint32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastU32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint64s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uint64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastU64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+											11: *ast.Field
+												12: *ast.Ident uint64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastU64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uintptr
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uintptr
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uintptr
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uintptrs
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uintptrs
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident uintptr
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastUintptr
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+											11: *ast.Field
+												12: *ast.Ident uintptr
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastUintptr
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Float32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident float32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident float32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Float32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Float32s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident float32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastF32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+											11: *ast.Field
+												12: *ast.Ident float32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastF32
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Float64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident float64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident float64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Float64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Float64s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident float64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastF64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+											11: *ast.Field
+												12: *ast.Ident float64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastF64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Complex64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident complex64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident complex64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Complex64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Complex64s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident complex64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastC64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+											11: *ast.Field
+												12: *ast.Ident complex64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastC64
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Complex128
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident complex128
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident complex128
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Complex128s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Complex128s
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident complex128
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastC128
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+											11: *ast.Field
+												12: *ast.Ident complex128
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastC128
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident String
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident string
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident string
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Strings
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Strings
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.Ident string
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastStr
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+											11: *ast.Field
+												12: *ast.Ident string
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastStr
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident UnsafePointer
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.SelectorExpr
+										10: *ast.Ident unsafe
+										10: *ast.Ident Pointer
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.SelectorExpr
+										10: *ast.Ident unsafe
+										10: *ast.Ident Pointer
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident UnsafePointers
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident UnsafePointers
+						6: *ast.TypeSwitchStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+							7: *ast.BlockStmt
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.ArrayType
+													13: *ast.SelectorExpr
+														14: *ast.Ident unsafe
+														14: *ast.Ident Pointer
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident reduceLastUnsafePointer
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+									9: *ast.ExprStmt
+										10: *ast.CallExpr
+											11: *ast.Ident genericReduceLastUnsafePointer
+											11: *ast.Ident dt
+											11: *ast.Ident rt
+											11: *ast.Ident dimSize
+											11: *ast.Ident def
+											11: *ast.Ident f
+								8: *ast.CaseClause
+									9: *ast.ReturnStmt
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident errors
+												12: *ast.Ident Errorf
+											11: *ast.Ident reductionErrMsg
+											11: *ast.Ident fn
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident errors
+									9: *ast.Ident Errorf
+								8: *ast.BasicLit
+								8: *ast.Ident t
+	1: *ast.FuncDecl 
+		2: *ast.FieldList
+			3: *ast.Field
+				4: *ast.Ident e
+				4: *ast.Ident E
+		2: *ast.Ident ReduceDefault
+		2: *ast.FuncType
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident t
+					5: *ast.SelectorExpr
+						6: *ast.Ident reflect
+						6: *ast.Ident Type
+				4: *ast.Field
+					5: *ast.Ident data
+					5: *ast.StarExpr
+						6: *ast.SelectorExpr
+							7: *ast.Ident storage
+							7: *ast.Ident Header
+				4: *ast.Field
+					5: *ast.Ident retVal
+					5: *ast.StarExpr
+						6: *ast.SelectorExpr
+							7: *ast.Ident storage
+							7: *ast.Ident Header
+				4: *ast.Field
+					5: *ast.Ident dim0
+					5: *ast.Ident int
+				4: *ast.Field
+					5: *ast.Ident dimSize
+					5: *ast.Ident int
+				4: *ast.Field
+					5: *ast.Ident outerStride
+					5: *ast.Ident int
+				4: *ast.Field
+					5: *ast.Ident stride
+					5: *ast.Ident int
+				4: *ast.Field
+					5: *ast.Ident expected
+					5: *ast.Ident int
+				4: *ast.Field
+					5: *ast.Ident fn
+					5: *ast.InterfaceType
+						6: *ast.FieldList
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident err
+					5: *ast.Ident error
+		2: *ast.BlockStmt
+			3: *ast.DeclStmt
+				4: *ast.GenDecl
+					5: *ast.ValueSpec
+						6: *ast.Ident ok
+						6: *ast.Ident bool
+			3: *ast.SwitchStmt
+				4: *ast.Ident t
+				4: *ast.BlockStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Bool
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+											11: *ast.Field
+												12: *ast.Ident bool
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+											11: *ast.Field
+												12: *ast.Ident bool
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Bools
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Bools
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultB
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+											11: *ast.Field
+												12: *ast.Ident int
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+											11: *ast.Field
+												12: *ast.Ident int
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Ints
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Ints
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultI
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int8
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+											11: *ast.Field
+												12: *ast.Ident int8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+											11: *ast.Field
+												12: *ast.Ident int8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int8s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int8s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultI8
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int16
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+											11: *ast.Field
+												12: *ast.Ident int16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+											11: *ast.Field
+												12: *ast.Ident int16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int16s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int16s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultI16
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+											11: *ast.Field
+												12: *ast.Ident int32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+											11: *ast.Field
+												12: *ast.Ident int32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int32s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultI32
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+											11: *ast.Field
+												12: *ast.Ident int64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+											11: *ast.Field
+												12: *ast.Ident int64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Int64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Int64s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultI64
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+											11: *ast.Field
+												12: *ast.Ident uint
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+											11: *ast.Field
+												12: *ast.Ident uint
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uints
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uints
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultU
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint8
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+											11: *ast.Field
+												12: *ast.Ident uint8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+											11: *ast.Field
+												12: *ast.Ident uint8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint8s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint8s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultU8
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint16
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+											11: *ast.Field
+												12: *ast.Ident uint16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+											11: *ast.Field
+												12: *ast.Ident uint16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint16s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint16s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultU16
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+											11: *ast.Field
+												12: *ast.Ident uint32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+											11: *ast.Field
+												12: *ast.Ident uint32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint32s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultU32
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+											11: *ast.Field
+												12: *ast.Ident uint64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+											11: *ast.Field
+												12: *ast.Ident uint64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uint64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uint64s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultU64
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uintptr
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+											11: *ast.Field
+												12: *ast.Ident uintptr
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+											11: *ast.Field
+												12: *ast.Ident uintptr
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Uintptrs
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Uintptrs
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultUintptr
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Float32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+											11: *ast.Field
+												12: *ast.Ident float32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+											11: *ast.Field
+												12: *ast.Ident float32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Float32s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Float32s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultF32
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Float64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+											11: *ast.Field
+												12: *ast.Ident float64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+											11: *ast.Field
+												12: *ast.Ident float64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Float64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Float64s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultF64
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Complex64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+											11: *ast.Field
+												12: *ast.Ident complex64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+											11: *ast.Field
+												12: *ast.Ident complex64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Complex64s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Complex64s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultC64
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Complex128
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+											11: *ast.Field
+												12: *ast.Ident complex128
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+											11: *ast.Field
+												12: *ast.Ident complex128
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Complex128s
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Complex128s
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultC128
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident String
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+											11: *ast.Field
+												12: *ast.Ident string
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+											11: *ast.Field
+												12: *ast.Ident string
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident Strings
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident Strings
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultStr
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident UnsafePointer
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.AssignStmt
+							7: *ast.Ident dt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident data
+									9: *ast.Ident UnsafePointers
+						6: *ast.AssignStmt
+							7: *ast.Ident rt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident retVal
+									9: *ast.Ident UnsafePointers
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.Ident reduceDefaultUnsafePointer
+								8: *ast.Ident dt
+								8: *ast.Ident rt
+								8: *ast.Ident dim0
+								8: *ast.Ident dimSize
+								8: *ast.Ident outerStride
+								8: *ast.Ident stride
+								8: *ast.Ident expected
+								8: *ast.Ident f
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident errors
+									9: *ast.Ident Errorf
+								8: *ast.BasicLit
+								8: *ast.Ident t
+	1: *ast.FuncDecl 
+		2: *ast.FieldList
+			3: *ast.Field
+				4: *ast.Ident e
+				4: *ast.Ident E
+		2: *ast.Ident Reduce
+		2: *ast.FuncType
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident t
+					5: *ast.SelectorExpr
+						6: *ast.Ident reflect
+						6: *ast.Ident Type
+				4: *ast.Field
+					5: *ast.Ident a
+					5: *ast.StarExpr
+						6: *ast.SelectorExpr
+							7: *ast.Ident storage
+							7: *ast.Ident Header
+				4: *ast.Field
+					5: *ast.Ident defaultValue
+					5: *ast.InterfaceType
+						6: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident fn
+					5: *ast.InterfaceType
+						6: *ast.FieldList
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident retVal
+					5: *ast.InterfaceType
+						6: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident err
+					5: *ast.Ident error
+		2: *ast.BlockStmt
+			3: *ast.DeclStmt
+				4: *ast.GenDecl
+					5: *ast.ValueSpec
+						6: *ast.Ident ok
+						6: *ast.Ident bool
+			3: *ast.SwitchStmt
+				4: *ast.Ident t
+				4: *ast.BlockStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Bool
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+											11: *ast.Field
+												12: *ast.Ident bool
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident bool
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+											11: *ast.Field
+												12: *ast.Ident bool
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident bool
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident bool
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceB
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Bools
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Int
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+											11: *ast.Field
+												12: *ast.Ident int
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+											11: *ast.Field
+												12: *ast.Ident int
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceI
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Ints
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Int8
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+											11: *ast.Field
+												12: *ast.Ident int8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int8
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+											11: *ast.Field
+												12: *ast.Ident int8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int8
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int8
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceI8
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Int8s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Int16
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+											11: *ast.Field
+												12: *ast.Ident int16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int16
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+											11: *ast.Field
+												12: *ast.Ident int16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int16
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int16
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceI16
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Int16s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Int32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+											11: *ast.Field
+												12: *ast.Ident int32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+											11: *ast.Field
+												12: *ast.Ident int32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceI32
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Int32s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Int64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+											11: *ast.Field
+												12: *ast.Ident int64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident int64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+											11: *ast.Field
+												12: *ast.Ident int64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident int64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident int64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceI64
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Int64s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Uint
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+											11: *ast.Field
+												12: *ast.Ident uint
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+											11: *ast.Field
+												12: *ast.Ident uint
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceU
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Uints
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Uint8
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+											11: *ast.Field
+												12: *ast.Ident uint8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint8
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+											11: *ast.Field
+												12: *ast.Ident uint8
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint8
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint8
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceU8
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Uint8s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Uint16
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+											11: *ast.Field
+												12: *ast.Ident uint16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint16
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+											11: *ast.Field
+												12: *ast.Ident uint16
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint16
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint16
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceU16
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Uint16s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Uint32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+											11: *ast.Field
+												12: *ast.Ident uint32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+											11: *ast.Field
+												12: *ast.Ident uint32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceU32
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Uint32s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Uint64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+											11: *ast.Field
+												12: *ast.Ident uint64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uint64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+											11: *ast.Field
+												12: *ast.Ident uint64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uint64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uint64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceU64
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Uint64s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Uintptr
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+											11: *ast.Field
+												12: *ast.Ident uintptr
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident uintptr
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+											11: *ast.Field
+												12: *ast.Ident uintptr
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident uintptr
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident uintptr
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceUintptr
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Uintptrs
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Float32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+											11: *ast.Field
+												12: *ast.Ident float32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident float32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+											11: *ast.Field
+												12: *ast.Ident float32
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident float32
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceF32
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Float32s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Float64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+											11: *ast.Field
+												12: *ast.Ident float64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident float64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+											11: *ast.Field
+												12: *ast.Ident float64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident float64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident float64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceF64
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Float64s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Complex64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+											11: *ast.Field
+												12: *ast.Ident complex64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident complex64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+											11: *ast.Field
+												12: *ast.Ident complex64
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident complex64
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceC64
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Complex64s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Complex128
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+											11: *ast.Field
+												12: *ast.Ident complex128
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident complex128
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+											11: *ast.Field
+												12: *ast.Ident complex128
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident complex128
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident complex128
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceC128
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Complex128s
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident String
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+											11: *ast.Field
+												12: *ast.Ident string
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.Ident string
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+											11: *ast.Field
+												12: *ast.Ident string
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.Ident string
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.Ident string
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceStr
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident Strings
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.Ident UnsafePointer
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident f
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+						6: *ast.DeclStmt
+							7: *ast.GenDecl
+								8: *ast.ValueSpec
+									9: *ast.Ident def
+									9: *ast.SelectorExpr
+										10: *ast.Ident unsafe
+										10: *ast.Ident Pointer
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident f
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident fn
+									9: *ast.FuncType
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+										10: *ast.FieldList
+											11: *ast.Field
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident reductionErrMsg
+										10: *ast.Ident fn
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident def
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident defaultValue
+									9: *ast.SelectorExpr
+										10: *ast.Ident unsafe
+										10: *ast.Ident Pointer
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident defaultValueErrMsg
+										10: *ast.Ident def
+										10: *ast.Ident defaultValue
+										10: *ast.Ident defaultValue
+						6: *ast.AssignStmt
+							7: *ast.Ident retVal
+							7: *ast.CallExpr
+								8: *ast.Ident ReduceUnsafePointer
+								8: *ast.Ident f
+								8: *ast.Ident def
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident UnsafePointers
+						6: *ast.ReturnStmt
+					5: *ast.CaseClause
+						6: *ast.ReturnStmt
+							7: *ast.Ident nil
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident errors
+									9: *ast.Ident Errorf
+								8: *ast.BasicLit
+								8: *ast.Ident t
