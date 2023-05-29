@@ -13,15 +13,18 @@ function name is ReduceFirst
 	 {*ast.Field [size int]}
 	 {*ast.Field [fn]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.SwitchStmt [t]}
-	 {*ast.BlockStmt -> *ast.CaseClause [Bool]}
+	 {*ast.BlockStmt []}
+	 {*ast.SwitchStmt [t]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Bool]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Bools]}
 	 {*ast.AssignStmt [rt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Bools]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
 	 {*ast.Field -> *ast.ArrayType [bool]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstB dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
@@ -37,7 +40,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Ints]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
 	 {*ast.Field -> *ast.ArrayType [int]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
@@ -53,7 +57,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int8s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
 	 {*ast.Field -> *ast.ArrayType [int8]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI8 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
@@ -69,7 +74,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int16s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
 	 {*ast.Field -> *ast.ArrayType [int16]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI16 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
@@ -85,7 +91,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int32s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
 	 {*ast.Field -> *ast.ArrayType [int32]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI32 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
@@ -101,7 +108,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int64s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
 	 {*ast.Field -> *ast.ArrayType [int64]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI64 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
@@ -117,7 +125,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uints]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
 	 {*ast.Field -> *ast.ArrayType [uint]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
@@ -133,7 +142,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint8s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
 	 {*ast.Field -> *ast.ArrayType [uint8]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU8 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
@@ -149,7 +159,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint16s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
 	 {*ast.Field -> *ast.ArrayType [uint16]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU16 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
@@ -165,7 +176,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint32s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint32]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint32]}
 	 {*ast.Field -> *ast.ArrayType [uint32]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU32 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
@@ -181,7 +193,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint64s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint64]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint64]}
 	 {*ast.Field -> *ast.ArrayType [uint64]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU64 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
@@ -197,7 +210,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uintptrs]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uintptr]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uintptr]}
 	 {*ast.Field -> *ast.ArrayType [uintptr]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstUintptr dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
@@ -213,7 +227,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float32s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float32]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float32]}
 	 {*ast.Field -> *ast.ArrayType [float32]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstF32 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
@@ -229,7 +244,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float64s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float64]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float64]}
 	 {*ast.Field -> *ast.ArrayType [float64]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstF64 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
@@ -245,7 +261,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex64s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex64]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex64]}
 	 {*ast.Field -> *ast.ArrayType [complex64]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstC64 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
@@ -261,7 +278,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex128s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex128]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex128]}
 	 {*ast.Field -> *ast.ArrayType [complex128]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstC128 dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
@@ -277,7 +295,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Strings]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
 	 {*ast.Field -> *ast.ArrayType [string]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstStr dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
@@ -293,7 +312,8 @@ function name is ReduceFirst
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal UnsafePointers]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstUnsafePointer dt rt split size f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
@@ -319,7 +339,8 @@ function name is ReduceLast
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
 	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
 	 {*ast.SwitchStmt [t]}
-	 {*ast.BlockStmt -> *ast.CaseClause [Bool]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Bool]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [def bool]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue bool]}
@@ -331,7 +352,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Bools]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastB dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
@@ -352,7 +374,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Ints]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
@@ -373,7 +396,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int8s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
 	 {*ast.FieldList -> *ast.Field [int8]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI8 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
@@ -394,7 +418,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int16s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
 	 {*ast.FieldList -> *ast.Field [int16]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI16 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
@@ -415,7 +440,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int32s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
@@ -436,7 +462,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Int64s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
 	 {*ast.FieldList -> *ast.Field [int64]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
@@ -457,7 +484,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uints]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
 	 {*ast.FieldList -> *ast.Field [uint]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
@@ -478,7 +506,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint8s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU8 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
@@ -499,7 +528,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint16s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU16 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
@@ -520,7 +550,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint32s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint32]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint32]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
@@ -541,7 +572,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uint64s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint64]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint64]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
@@ -562,7 +594,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Uintptrs]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uintptr]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uintptr]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastUintptr dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
@@ -583,7 +616,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float32s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float32]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float32]}
 	 {*ast.FieldList -> *ast.Field [float32]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastF32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
@@ -604,7 +638,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Float64s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float64]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float64]}
 	 {*ast.FieldList -> *ast.Field [float64]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastF64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
@@ -625,7 +660,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex64s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex64]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex64]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastC64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
@@ -646,7 +682,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Complex128s]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex128]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex128]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastC128 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
@@ -667,7 +704,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal Strings]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastStr dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
@@ -690,7 +728,8 @@ function name is ReduceLast
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal UnsafePointers]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
 	 {*ast.TypeAssertExpr [fn]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastUnsafePointer dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
@@ -719,7 +758,8 @@ function name is ReduceDefault
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
 	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
 	 {*ast.SwitchStmt [t]}
-	 {*ast.BlockStmt -> *ast.CaseClause [Bool]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Bool]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [bool]}
@@ -1058,7 +1098,8 @@ function name is Reduce
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [err error]}
 	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
 	 {*ast.SwitchStmt [t]}
-	 {*ast.BlockStmt -> *ast.CaseClause [Bool]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Bool]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [bool]}
@@ -1080,7 +1121,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceB f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Int]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Int]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [int]}
@@ -1102,7 +1144,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceI f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Int8]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Int8]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
 	 {*ast.Field [int8]}
@@ -1124,7 +1167,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceI8 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Int16]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Int16]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
 	 {*ast.Field [int16]}
@@ -1146,7 +1190,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceI16 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Int32]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Int32]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
 	 {*ast.Field [int32]}
@@ -1168,7 +1213,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceI32 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Int64]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Int64]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
 	 {*ast.Field [int64]}
@@ -1190,7 +1236,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceI64 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Uint]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Uint]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
 	 {*ast.Field [uint]}
@@ -1212,7 +1259,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceU f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Uint8]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Uint8]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.Field [uint8]}
@@ -1234,7 +1282,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceU8 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Uint16]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Uint16]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.Field [uint16]}
@@ -1256,7 +1305,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceU16 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Uint32]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Uint32]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.Field [uint32]}
@@ -1278,7 +1328,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceU32 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Uint64]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Uint64]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [uint64]}
@@ -1300,7 +1351,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceU64 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Uintptr]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Uintptr]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.Field [uintptr]}
@@ -1322,7 +1374,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceUintptr f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Float32]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Float32]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
 	 {*ast.Field [float32]}
@@ -1344,7 +1397,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceF32 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Float64]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Float64]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
 	 {*ast.Field [float64]}
@@ -1366,7 +1420,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceF64 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Complex64]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Complex64]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.Field [complex64]}
@@ -1388,7 +1443,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceC64 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [Complex128]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [Complex128]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.Field [complex128]}
@@ -1410,7 +1466,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceC128 f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [String]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [String]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [string]}
@@ -1432,7 +1489,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceStr f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
-	 {*ast.ReturnStmt -> *ast.CaseClause [UnsafePointer]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause [UnsafePointer]}
 	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
@@ -1456,7 +1514,8 @@ function name is Reduce
 	 {*ast.AssignStmt [retVal]}
 	 {*ast.CallExpr [ReduceUnsafePointer f def]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
-	 {*ast.ReturnStmt -> *ast.CaseClause -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt []}
+	 {*ast.CaseClause -> *ast.ReturnStmt [nil]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
 
 

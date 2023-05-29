@@ -33,6 +33,11 @@ type funcNameList struct {
 	lists []string
 }
 
+type casesCheck struct {
+	funcName string
+	cases    []function2
+}
+
 func resetValues() funcNameList {
 	return funcNameList{lists: []string{}}
 
@@ -65,7 +70,7 @@ func main() {
 	// filename, err := os.ReadFile(os.Args[2])
 	// command must be like this: go run gen.go - test.go
 	filename := os.Args[2]
-	fmt.Println(filename)
+	//fmt.Println(filename)
 	fset := token.NewFileSet()
 	astTree, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)
 	if err != nil {
@@ -83,7 +88,7 @@ func main() {
 	test = resetValues()
 	fmt.Println("is reset?", test)*/
 
-	ast.Print(fset, astTree)
+	//ast.Print(fset, astTree)
 
 	node_list := list.New()
 	var elem_list []elem
@@ -92,13 +97,10 @@ func main() {
 	astNode := ""
 	var listFunctions2 []function2
 	var astValue []string
-	fmt.Println(len(astValue))
-	count := 0
+
 	ast.Inspect(astTree, func(node ast.Node) bool {
 		switch x := node.(type) {
 		case *ast.FuncDecl:
-			count++
-			fmt.Println(reflect.TypeOf(x).String(), count)
 			//	fmt.Println(x.Name)
 			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
 			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
@@ -117,15 +119,28 @@ func main() {
 			node_list.PushBack(elem{reflect.TypeOf(x).String(), []string{nameFunction}})
 
 		case *ast.Ident:
-			fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
+			//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
 			astValue = append(astValue, x.Name)
 
 		case *ast.GenDecl, *ast.ImportSpec, *ast.BasicLit, *ast.CommentGroup, *ast.Comment:
-			fmt.Print(reflect.TypeOf(x))
+			fmt.Print(" ")
+		case *ast.CaseClause, *ast.SwitchStmt:
+
+			// *ast.CaseClause -> *ast.SelectorExpr
+			elem_list = append(elem_list, elem{astNode, astValue})
+			node_list.PushBack(elem{astNode, astValue})
+			astNode = ""
+			astValue = []string{}
+
+			if astNode == "" {
+				astNode += reflect.TypeOf(x).String()
+			} else {
+				astNode += " -> " + reflect.TypeOf(x).String()
+			}
 
 		default:
 			if x != nil {
-				fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String())
+				//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String())
 				//			fmt.Println(fset.Position(x.Pos()))
 				if len(astValue) != 0 {
 					elem_list = append(elem_list, elem{astNode, astValue})
@@ -178,17 +193,8 @@ func main() {
 	var funcList []string
 	for s := range listFunctions2 {
 		if listFunctions2[s].funcName != "" {
-			//	fmt.Println(listFunctions2[s].funcName)
 			funcList = append(funcList, listFunctions2[s].funcName)
-			//	for _, value := range listFunctions2[s].value {
-			//		fmt.Println("\t", value)
-			//	}
-		} //else {
-		//	for _, value := range listFunctions2[s].value {
-		//			fmt.Println(value)
-		//		}
-		//		}
-		//		fmt.Println()
+		}
 	}
 
 	// compare functions
@@ -292,6 +298,149 @@ func main() {
 		}
 	}
 
+	// build data structure for comparing switch statement
+	var switchCheck []string
+	var caseCheck []function2
+	var caseName string
+	var caseList []elem
+	var caseWFunc []casesCheck
+	caseBool := false
+	for i := range listFunctions2 {
+		for j := range listFunctions2[i].value {
+			if strings.Contains(listFunctions2[i].value[j].path, "*ast.SwitchStmt") {
+				if !contains(switchCheck, listFunctions2[i].funcName) {
+					switchCheck = append(switchCheck, listFunctions2[i].funcName)
+				}
+			}
+			if strings.Contains(listFunctions2[i].value[j].path, "*ast.CaseClause -> *ast.SelectorExpr") {
+				if len(caseList) > 0 {
+					caseCheck = append(caseCheck, function2{caseName, caseList})
+					caseList = []elem{}
+				}
+				caseName = listFunctions2[i].value[j].value[1]
+				caseList = append(caseList, elem{listFunctions2[i].value[j].path, listFunctions2[i].value[j].value})
+				caseBool = true
+				continue
+			} else if strings.Contains(listFunctions2[i].value[j].path, "*ast.CaseClause") {
+				if len(caseList) > 0 {
+					caseBool = false
+					caseCheck = append(caseCheck, function2{caseName, caseList})
+					caseList = []elem{}
+				}
+				continue
+			}
+			if caseBool {
+				caseList = append(caseList, elem{listFunctions2[i].value[j].path, listFunctions2[i].value[j].value})
+			}
+		}
+		if len(caseCheck) > 0 {
+			caseWFunc = append(caseWFunc, casesCheck{listFunctions2[i].funcName, caseCheck})
+		}
+	}
+	if len(switchCheck) > 0 {
+		fmt.Print("\nThese(This) function(s) contain(s) switch statement: ")
+		for _, val := range switchCheck {
+			fmt.Print(val, " ")
+		}
+		fmt.Println()
+		/*
+			for s := range caseCheck {
+				for _, value := range caseCheck[s].value {
+					fmt.Printf("%s\n", value)
+				}
+				fmt.Println()
+
+			}*/
+	}
+
+	// TODO for multiple functions with switch statement
+	var caseReplacement []string
+	caseFlag := false
+	for i := 0; i < len(caseCheck); i++ {
+		if caseCheck[i].funcName != "" {
+			for j := i + 1; j < len(caseCheck); j++ {
+				if caseCheck[j].funcName != "" {
+					if len(caseCheck[i].value) == len(caseCheck[j].value) {
+						// Compare details between cases
+						for idx := range caseCheck[i].value {
+							if strings.Compare(caseCheck[i].value[idx].path, caseCheck[j].value[idx].path) == 0 {
+								if len(caseCheck[i].value[idx].value) == len(caseCheck[j].value[idx].value) {
+									for idxValue := range caseCheck[i].value[idx].value {
+										if strings.Compare(caseCheck[i].value[idx].value[idxValue], caseCheck[j].value[idx].value[idxValue]) == 0 {
+											caseFlag = true
+										} else {
+											if (contains(funcList, caseCheck[i].value[idx].value[idxValue]) && contains(funcList, caseCheck[j].value[idx].value[idxValue])) ||
+												(contains(typeList, caseCheck[i].value[idx].value[idxValue]) && contains(typeList, caseCheck[j].value[idx].value[idxValue])) ||
+												(strings.Contains(caseCheck[i].value[idx].value[idxValue], "Set") && strings.Contains(caseCheck[j].value[idx].value[idxValue], "Set")) ||
+												(strings.Contains(caseCheck[i].value[idx].value[idxValue], "Get") && strings.Contains(caseCheck[j].value[idx].value[idxValue], "Get")) {
+												caseFlag = true
+											} else {
+												caseFlag = false
+												break
+											}
+										}
+									}
+								} else {
+									caseFlag = false
+									break
+								}
+							} else if strings.Contains(caseCheck[i].value[idx].path, "*ast.SelectorExpr") {
+								// listFunctions2[i].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
+								// and listFunctions2[j].value[idx] looks like " ... [TYPE]"
+								if !contains(typeList, caseCheck[j].value[idx].value[0]) {
+									caseFlag = false
+									break
+								}
+								for _, val := range caseCheck[i].value[idx].value {
+									if !checkUnsafeUsages(val) {
+										caseFlag = false
+										break
+									}
+								}
+								caseFlag = true
+							} else if strings.Contains(caseCheck[j].value[idx].path, "*ast.SelectorExpr") {
+								// listFunctions2[i].value[idx] looks like " ... [TYPE]"
+								// and listFunctions2[j].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
+								if !contains(typeList, caseCheck[i].value[idx].value[0]) {
+									caseFlag = false
+									break
+								}
+								for _, val := range caseCheck[j].value[idx].value {
+									if !checkUnsafeUsages(val) {
+										caseFlag = false
+										break
+									}
+								}
+								caseFlag = true
+							} else {
+								caseFlag = false
+								break
+							}
+						}
+					} else {
+						caseFlag = false
+						continue // continue the progress comparing a next function to the compared one
+
+					}
+				}
+				if caseFlag == true {
+					if !contains(caseReplacement, caseCheck[j].funcName) {
+						caseReplacement = append(caseReplacement, caseCheck[j].funcName)
+					}
+					caseFlag = false
+				}
+			}
+		}
+
+	}
+
+	if len(caseReplacement) > 0 {
+		fmt.Print("These cases have same structure: ")
+		for _, val := range caseReplacement {
+			fmt.Print(val, " ")
+		}
+	}
+
 	// create a text file
 	f, err := os.Create(filename + ".txt")
 	if err != nil {
@@ -347,11 +496,12 @@ func main() {
 		}
 		fmt.Println()
 		fmt.Println()
+
 	}*/
-	fmt.Println(len(listFunctions2))
+
 	for s := range genCheck {
 		if len(genCheck[s]) > 1 {
-			fmt.Print("These functions can be merged as generics: ")
+			fmt.Print("These functions have a same structure and the code are reused: ")
 			for _, value := range genCheck[s] {
 				fmt.Print(value, " ")
 			}

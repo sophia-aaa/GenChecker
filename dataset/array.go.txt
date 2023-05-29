@@ -164,8 +164,10 @@ function name is swap
 	 {*ast.IndexExpr [ss i]}
 	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [isParameterizedKind]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
-	 {*ast.BlockStmt -> *ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.AssignStmt [us]}
+	 {*ast.BlockStmt []}
+	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.AssignStmt [us]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [a hdr Uint64s]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [us i]}
 	 {*ast.IndexExpr [us j]}
@@ -433,7 +435,8 @@ function name is copyDenseSliced
 	 {*ast.AssignStmt [sa]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [sarr slice sstart send]}
 	 {*ast.TypeSwitchStmt -> *ast.ExprStmt -> *ast.TypeAssertExpr [e]}
-	 {*ast.BlockStmt -> *ast.CaseClause [NonStdEngine]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [NonStdEngine]}
 	 {*ast.IfStmt -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [e Memcpy]}
 	 {*ast.UnaryExpr [da]}
@@ -567,7 +570,8 @@ function name is scalarToHeader
 	 {*ast.ArrayType [byte]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [at]}
 	 {*ast.TypeAssertExpr [a]}
-	 {*ast.BlockStmt -> *ast.CaseClause [Memory]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Memory]}
 	 {*ast.AssignStmt [raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage FromMemory]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [at Uintptr]}

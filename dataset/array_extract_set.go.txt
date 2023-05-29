@@ -6,8 +6,10 @@ function name is Set
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array Set]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
-	 {*ast.BlockStmt -> *ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
 	 {*ast.AssignStmt [xv]}
 	 {*ast.TypeAssertExpr [x bool]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetB i xv]}
