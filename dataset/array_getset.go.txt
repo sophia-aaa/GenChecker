@@ -1,622 +1,997 @@
-function name is Set { [tensor]}
-{BasicLit -> BasicLit -> BasicLit -> BasicLit -> BasicLit -> FieldList [a]}
-{StarExpr -> SelectorExpr [main array Set]}
-{FieldList [i int x]}
-{InterfaceType -> FieldList -> BlockStmt -> SwitchStmt -> CallExpr -> SelectorExpr -> SelectorExpr [a t Kind]}
-{BlockStmt -> CaseClause -> SelectorExpr [reflect Bool]}
-{AssignStmt [xv x bool]}
-{CallExpr -> SelectorExpr [a SetB i xv]}
-{CaseClause -> SelectorExpr [reflect Int]}
-{AssignStmt [xv x int]}
-{CallExpr -> SelectorExpr [a SetI i xv]}
-{CaseClause -> SelectorExpr [reflect Int8]}
-{AssignStmt [xv x int8]}
-{CallExpr -> SelectorExpr [a SetI8 i xv]}
-{CaseClause -> SelectorExpr [reflect Int16]}
-{AssignStmt [xv x int16]}
-{CallExpr -> SelectorExpr [a SetI16 i xv]}
-{CaseClause -> SelectorExpr [reflect Int32]}
-{AssignStmt [xv x int32]}
-{CallExpr -> SelectorExpr [a SetI32 i xv]}
-{CaseClause -> SelectorExpr [reflect Int64]}
-{AssignStmt [xv x int64]}
-{CallExpr -> SelectorExpr [a SetI64 i xv]}
-{CaseClause -> SelectorExpr [reflect Uint]}
-{AssignStmt [xv x uint]}
-{CallExpr -> SelectorExpr [a SetU i xv]}
-{CaseClause -> SelectorExpr [reflect Uint8]}
-{AssignStmt [xv x uint8]}
-{CallExpr -> SelectorExpr [a SetU8 i xv]}
-{CaseClause -> SelectorExpr [reflect Uint16]}
-{AssignStmt [xv x uint16]}
-{CallExpr -> SelectorExpr [a SetU16 i xv]}
-{CaseClause -> SelectorExpr [reflect Uint32]}
-{AssignStmt [xv x uint32]}
-{CallExpr -> SelectorExpr [a SetU32 i xv]}
-{CaseClause -> SelectorExpr [reflect Uint64]}
-{AssignStmt [xv x uint64]}
-{CallExpr -> SelectorExpr [a SetU64 i xv]}
-{CaseClause -> SelectorExpr [reflect Uintptr]}
-{AssignStmt [xv x uintptr]}
-{CallExpr -> SelectorExpr [a SetUintptr i xv]}
-{CaseClause -> SelectorExpr [reflect Float32]}
-{AssignStmt [xv x float32]}
-{CallExpr -> SelectorExpr [a SetF32 i xv]}
-{CaseClause -> SelectorExpr [reflect Float64]}
-{AssignStmt [xv x float64]}
-{CallExpr -> SelectorExpr [a SetF64 i xv]}
-{CaseClause -> SelectorExpr [reflect Complex64]}
-{AssignStmt [xv x complex64]}
-{CallExpr -> SelectorExpr [a SetC64 i xv]}
-{CaseClause -> SelectorExpr [reflect Complex128]}
-{AssignStmt [xv x complex128]}
-{CallExpr -> SelectorExpr [a SetC128 i xv]}
-{CaseClause -> SelectorExpr [reflect String]}
-{AssignStmt [xv x string]}
-{CallExpr -> SelectorExpr [a SetStr i xv]}
-{CaseClause -> SelectorExpr [reflect UnsafePointer]}
-{AssignStmt [xv x]}
-{SelectorExpr [unsafe Pointer]}
-{CallExpr -> SelectorExpr [a SetUnsafePointer i xv]}
-{CaseClause -> AssignStmt [xv]}
-{CallExpr -> SelectorExpr [reflect ValueOf x]}
-{AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect NewAt]}
-{SelectorExpr -> SelectorExpr [a t Type]}
-{CallExpr -> SelectorExpr [storage ElementAt i]}
-{CallExpr -> SelectorExpr [unsafe Pointer]}
-{IndexExpr -> SelectorExpr -> SelectorExpr [a Header Raw]}
-{BasicLit -> CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
-{AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect Indirect val]}
-{CallExpr -> SelectorExpr [val Set xv]}
+function name is Set 
+	 {*ast.File [tensor]}
+	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [main array Set]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
+	 {*ast.Field [x]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x bool]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetB i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int8]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI8 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int16]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int16]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI16 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int32]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int32]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI32 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int64]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x int64]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetI64 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint8]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint8]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU8 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint16]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint16]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU16 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint32]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint32]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU32 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint64]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uint64]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetU64 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uintptr]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x uintptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetUintptr i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float32]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x float32]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetF32 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float64]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x float64]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetF64 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex64]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x complex64]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetC64 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex128]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x complex128]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetC128 i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect String]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x string]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetStr i xv]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect UnsafePointer]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.TypeAssertExpr [x]}
+	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [a SetUnsafePointer i xv]}
+	 {*ast.CaseClause -> *ast.AssignStmt [xv]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf x]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set xv]}
 
 
-function name is Get {FieldList [a]}
-{StarExpr -> SelectorExpr [main array Get]}
-{FieldList [i int]}
-{FieldList -> InterfaceType -> FieldList -> BlockStmt -> SwitchStmt -> CallExpr -> SelectorExpr -> SelectorExpr [a t Kind]}
-{BlockStmt -> CaseClause -> SelectorExpr [reflect Bool]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetB i]}
-{CaseClause -> SelectorExpr [reflect Int]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetI i]}
-{CaseClause -> SelectorExpr [reflect Int8]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetI8 i]}
-{CaseClause -> SelectorExpr [reflect Int16]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetI16 i]}
-{CaseClause -> SelectorExpr [reflect Int32]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetI32 i]}
-{CaseClause -> SelectorExpr [reflect Int64]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetI64 i]}
-{CaseClause -> SelectorExpr [reflect Uint]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetU i]}
-{CaseClause -> SelectorExpr [reflect Uint8]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetU8 i]}
-{CaseClause -> SelectorExpr [reflect Uint16]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetU16 i]}
-{CaseClause -> SelectorExpr [reflect Uint32]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetU32 i]}
-{CaseClause -> SelectorExpr [reflect Uint64]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetU64 i]}
-{CaseClause -> SelectorExpr [reflect Uintptr]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetUintptr i]}
-{CaseClause -> SelectorExpr [reflect Float32]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetF32 i]}
-{CaseClause -> SelectorExpr [reflect Float64]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetF64 i]}
-{CaseClause -> SelectorExpr [reflect Complex64]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetC64 i]}
-{CaseClause -> SelectorExpr [reflect Complex128]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetC128 i]}
-{CaseClause -> SelectorExpr [reflect String]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetStr i]}
-{CaseClause -> SelectorExpr [reflect UnsafePointer]}
-{ReturnStmt -> CallExpr -> SelectorExpr [a GetUnsafePointer i]}
-{CaseClause -> AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect NewAt]}
-{SelectorExpr -> SelectorExpr [a t Type]}
-{CallExpr -> SelectorExpr [storage ElementAt i]}
-{CallExpr -> SelectorExpr [unsafe Pointer]}
-{IndexExpr -> SelectorExpr -> SelectorExpr [a Header Raw]}
-{BasicLit -> CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
-{AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect Indirect val]}
-{ReturnStmt -> CallExpr -> SelectorExpr [val Interface]}
+function name is Get 
+	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [main array Get]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetB i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetI i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetI8 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int16]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetI16 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int32]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetI32 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int64]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetI64 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetU i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint8]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetU8 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint16]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetU16 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint32]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetU32 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint64]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetU64 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uintptr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetUintptr i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float32]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetF32 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float64]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetF64 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex64]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetC64 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex128]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetC128 i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect String]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetStr i]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect UnsafePointer]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [a GetUnsafePointer i]}
+	 {*ast.CaseClause -> *ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Interface]}
 
 
-function name is Memset {FieldList [a]}
-{StarExpr -> SelectorExpr [main array Memset]}
-{FieldList [x]}
-{InterfaceType -> FieldList -> FieldList [error]}
-{BlockStmt -> SwitchStmt -> SelectorExpr [a t]}
-{BlockStmt -> CaseClause [Bool]}
-{AssignStmt [xv ok x bool ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Bools i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Int]}
-{AssignStmt [xv ok x int ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Ints i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Int8]}
-{AssignStmt [xv ok x int8 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Int8s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Int16]}
-{AssignStmt [xv ok x int16 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Int16s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Int32]}
-{AssignStmt [xv ok x int32 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Int32s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Int64]}
-{AssignStmt [xv ok x int64 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Int64s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Uint]}
-{AssignStmt [xv ok x uint ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uints i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Uint8]}
-{AssignStmt [xv ok x uint8 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uint8s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Uint16]}
-{AssignStmt [xv ok x uint16 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uint16s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Uint32]}
-{AssignStmt [xv ok x uint32 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uint32s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Uint64]}
-{AssignStmt [xv ok x uint64 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uint64s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Uintptr]}
-{AssignStmt [xv ok x uintptr ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uintptrs i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Float32]}
-{AssignStmt [xv ok x float32 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Float32s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Float64]}
-{AssignStmt [xv ok x float64 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Float64s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Complex64]}
-{AssignStmt [xv ok x complex64 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Complex64s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [Complex128]}
-{AssignStmt [xv ok x complex128 ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Complex128s i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [String]}
-{AssignStmt [xv ok x string ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Strings i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{CaseClause [UnsafePointer]}
-{AssignStmt [xv ok x]}
-{SelectorExpr [unsafe Pointer ok]}
-{BlockStmt -> AssignStmt [data]}
-{CallExpr -> SelectorExpr [a UnsafePointers i data]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{ReturnStmt [nil]}
-{AssignStmt [xv]}
-{CallExpr -> SelectorExpr [reflect ValueOf x]}
-{AssignStmt [l]}
-{CallExpr -> SelectorExpr [a Len]}
-{AssignStmt [i]}
-{BasicLit [i l i]}
-{BlockStmt -> AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect NewAt]}
-{SelectorExpr -> SelectorExpr [a t Type]}
-{CallExpr -> SelectorExpr [storage ElementAt i]}
-{CallExpr -> SelectorExpr [unsafe Pointer]}
-{IndexExpr -> SelectorExpr -> SelectorExpr [a Header Raw]}
-{BasicLit -> CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
-{AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect Indirect val]}
-{CallExpr -> SelectorExpr [val Set xv]}
-{ReturnStmt [nil]}
+function name is Memset 
+	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [main array Memset]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt []}
+	 {*ast.SwitchStmt -> *ast.SelectorExpr [a t]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Bool]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x bool ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int8 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int16 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int32 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Int64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int64 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint8 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint16 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint32 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uint64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint64 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Uintptr]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uintptr ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Float32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x float32 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Float64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x float64 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Complex64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x complex64 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [Complex128]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x complex128 ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [String]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x string ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CaseClause [UnsafePointer]}
+	 {*ast.IfStmt -> *ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x]}
+	 {*ast.SelectorExpr [unsafe Pointer ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
+	 {*ast.RangeStmt [i data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [xv]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf x]}
+	 {*ast.AssignStmt [l]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i]}
+	 {*ast.BinaryExpr [i l]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set xv]}
+	 {*ast.ReturnStmt [nil]}
 
 
-function name is Eq {FieldList [a]}
-{StarExpr -> SelectorExpr [main array memsetIter]}
-{FieldList [x]}
-{InterfaceType -> FieldList [it Iterator]}
-{FieldList [err error]}
-{BlockStmt -> DeclStmt [i int]}
-{SwitchStmt -> SelectorExpr [a t]}
-{BlockStmt -> CaseClause [Bool]}
-{AssignStmt [xv ok x bool ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Bools]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Int]}
-{AssignStmt [xv ok x int ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Ints]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Int8]}
-{AssignStmt [xv ok x int8 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Int8s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Int16]}
-{AssignStmt [xv ok x int16 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Int16s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Int32]}
-{AssignStmt [xv ok x int32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Int32s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Int64]}
-{AssignStmt [xv ok x int64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Int64s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Uint]}
-{AssignStmt [xv ok x uint ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uints]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Uint8]}
-{AssignStmt [xv ok x uint8 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uint8s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Uint16]}
-{AssignStmt [xv ok x uint16 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uint16s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Uint32]}
-{AssignStmt [xv ok x uint32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uint32s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Uint64]}
-{AssignStmt [xv ok x uint64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uint64s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Uintptr]}
-{AssignStmt [xv ok x uintptr ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Uintptrs]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Float32]}
-{AssignStmt [xv ok x float32 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Float32s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Float64]}
-{AssignStmt [xv ok x float64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Float64s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Complex64]}
-{AssignStmt [xv ok x complex64 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Complex64s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [Complex128]}
-{AssignStmt [xv ok x complex128 ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Complex128s]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [String]}
-{AssignStmt [xv ok x string ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a Strings]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause [UnsafePointer]}
-{AssignStmt [xv ok x]}
-{SelectorExpr [unsafe Pointer ok]}
-{BlockStmt -> ReturnStmt -> CallExpr -> SelectorExpr [errors Errorf dtypeMismatch]}
-{SelectorExpr [a t x]}
-{AssignStmt [data]}
-{CallExpr -> SelectorExpr [a UnsafePointers]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt -> IndexExpr [data i xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{CaseClause -> AssignStmt [xv]}
-{CallExpr -> SelectorExpr [reflect ValueOf x]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next err nil]}
-{AssignStmt [i err]}
-{CallExpr -> SelectorExpr [it Next]}
-{BlockStmt -> AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect NewAt]}
-{SelectorExpr -> SelectorExpr [a t Type]}
-{CallExpr -> SelectorExpr [storage ElementAt i]}
-{CallExpr -> SelectorExpr [unsafe Pointer]}
-{IndexExpr -> SelectorExpr -> SelectorExpr [a Header Raw]}
-{BasicLit -> CallExpr -> SelectorExpr -> SelectorExpr [a t Size]}
-{AssignStmt [val]}
-{CallExpr -> SelectorExpr [reflect Indirect val]}
-{CallExpr -> SelectorExpr [val Set xv]}
-{AssignStmt [err]}
-{CallExpr [handleNoOp err]}
-{ReturnStmt -> FieldList [a]}
-{SelectorExpr [main array Eq]}
-{FieldList [other]}
-{InterfaceType -> FieldList -> FieldList [bool]}
-{BlockStmt -> AssignStmt [oa ok other]}
-{StarExpr -> SelectorExpr [main array ok]}
-{BlockStmt -> SelectorExpr [oa t]}
-{SelectorExpr [a t]}
-{BlockStmt -> ReturnStmt [false]}
-{CallExpr -> SelectorExpr [oa Len]}
-{CallExpr -> SelectorExpr [a Len]}
-{BlockStmt -> ReturnStmt [false]}
-{CallExpr [uintptr]}
-{CallExpr -> SelectorExpr [unsafe Pointer]}
-{IndexExpr -> SelectorExpr -> SelectorExpr [oa Header Raw]}
-{BasicLit -> CallExpr [uintptr]}
-{CallExpr -> SelectorExpr [unsafe Pointer]}
-{IndexExpr -> SelectorExpr -> SelectorExpr [a Header Raw]}
-{BasicLit -> BlockStmt -> ReturnStmt [true]}
-{SwitchStmt -> CallExpr -> SelectorExpr -> SelectorExpr [a t Kind]}
-{BlockStmt -> CaseClause -> SelectorExpr [reflect Bool i v]}
-{CallExpr -> SelectorExpr [a Bools]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetB i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Int i v]}
-{CallExpr -> SelectorExpr [a Ints]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetI i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Int8 i v]}
-{CallExpr -> SelectorExpr [a Int8s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetI8 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Int16 i v]}
-{CallExpr -> SelectorExpr [a Int16s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetI16 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Int32 i v]}
-{CallExpr -> SelectorExpr [a Int32s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetI32 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Int64 i v]}
-{CallExpr -> SelectorExpr [a Int64s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetI64 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Uint i v]}
-{CallExpr -> SelectorExpr [a Uints]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetU i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Uint8 i v]}
-{CallExpr -> SelectorExpr [a Uint8s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetU8 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Uint16 i v]}
-{CallExpr -> SelectorExpr [a Uint16s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetU16 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Uint32 i v]}
-{CallExpr -> SelectorExpr [a Uint32s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetU32 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Uint64 i v]}
-{CallExpr -> SelectorExpr [a Uint64s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetU64 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Uintptr i v]}
-{CallExpr -> SelectorExpr [a Uintptrs]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetUintptr i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Float32 i v]}
-{CallExpr -> SelectorExpr [a Float32s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetF32 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Float64 i v]}
-{CallExpr -> SelectorExpr [a Float64s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetF64 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Complex64 i v]}
-{CallExpr -> SelectorExpr [a Complex64s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetC64 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect Complex128 i v]}
-{CallExpr -> SelectorExpr [a Complex128s]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetC128 i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect String i v]}
-{CallExpr -> SelectorExpr [a Strings]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetStr i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> SelectorExpr [reflect UnsafePointer i v]}
-{CallExpr -> SelectorExpr [a UnsafePointers]}
-{BlockStmt -> CallExpr -> SelectorExpr [oa GetUnsafePointer i v]}
-{BlockStmt -> ReturnStmt [false]}
-{CaseClause -> AssignStmt [i]}
-{BasicLit [i]}
-{CallExpr -> SelectorExpr [a Len i]}
-{BlockStmt -> CallExpr -> SelectorExpr [reflect DeepEqual]}
-{CallExpr -> SelectorExpr [a Get i]}
-{CallExpr -> SelectorExpr [oa Get i]}
-{BlockStmt -> ReturnStmt [false]}
-{ReturnStmt [true]}
-{ReturnStmt [false]}
+function name is memsetIter 
+	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [main array memsetIter]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [it Iterator]}
+	 {*ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [i int]}
+	 {*ast.SwitchStmt -> *ast.SelectorExpr [a t]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Bool]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x bool]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int8]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int8]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int16]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int16]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int32]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int32]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int64]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x int64]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint8]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint8]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint16]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint16]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint32]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint32]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint64]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uint64]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uintptr]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x uintptr]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Float32]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x float32]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Float64]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x float64]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Complex64]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x complex64]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Complex128]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x complex128]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [String]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x string]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [UnsafePointer]}
+	 {*ast.AssignStmt [xv ok]}
+	 {*ast.TypeAssertExpr [x]}
+	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf dtypeMismatch]}
+	 {*ast.SelectorExpr [a t x]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause -> *ast.AssignStmt [xv]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf x]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set xv]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.ReturnStmt []}
+
+
+function name is Eq 
+	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.SelectorExpr [main array Eq]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [other]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [oa ok]}
+	 {*ast.TypeAssertExpr [other]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [main array ok]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [oa t]}
+	 {*ast.SelectorExpr [a t]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa Len]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [oa Header Raw]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [true]}
+	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetB i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetI i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetI8 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int16]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetI16 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int32]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetI32 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int64]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetI64 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetU i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint8]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetU8 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint16]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetU16 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint32]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetU32 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint64]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetU64 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uintptr]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetUintptr i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float32]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetF32 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float64]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetF64 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex64]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetC64 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex128]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetC128 i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect String]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetStr i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect UnsafePointer]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetUnsafePointer i v]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.CaseClause -> *ast.ForStmt -> *ast.AssignStmt [i]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Get i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [oa Get i]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.ReturnStmt [true]}
+	 {*ast.ReturnStmt [false]}
+
+
+function name is zeroIter 
+	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [main array zeroIter]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [it Iterator]}
+	 {*ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [i int]}
+	 {*ast.SwitchStmt -> *ast.SelectorExpr [a t]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Bool]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i false]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int8]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int16]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int32]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Int64]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint8]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint16]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint32]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uint64]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Uintptr]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Float32]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Float64]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Complex64]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [Complex128]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [String]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause [UnsafePointer]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.CaseClause -> *ast.ForStmt -> *ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.AssignStmt [i err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Zero]}
+	 {*ast.SelectorExpr [a t]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [handleNoOp err]}
+	 {*ast.ReturnStmt []}
 
 

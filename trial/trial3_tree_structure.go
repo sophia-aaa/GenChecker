@@ -320,7 +320,6 @@ func (v visitor) Visit(n ast.Node) ast.Visitor {
 	if n == nil {
 		return nil
 	}
-
 	// int(v) is a depth of a current node
 	if reflect.TypeOf(n).String() == "*ast.Ident" || reflect.TypeOf(n).String() == "*ast.FuncDecl" {
 		fmt.Printf("%s%d: ", strings.Repeat("\t", int(v)), int(v))

@@ -33,7 +33,7 @@ type funcNameList struct {
 	lists []string
 }
 
-type casesCheck struct {
+type check struct {
 	funcName string
 	cases    []function2
 }
@@ -101,10 +101,10 @@ func main() {
 	ast.Inspect(astTree, func(node ast.Node) bool {
 		switch x := node.(type) {
 		case *ast.FuncDecl:
-			//	fmt.Println(x.Name)
+
 			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
 			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
-			if len(astValue) != 0 { // if a new root meets
+			if nameFunction != "" { // if a new root meets
 				elem_list = append(elem_list, elem{astNode, astValue})
 				node_list.PushBack(elem{astNode, astValue})
 				func2 := function2{nameFunction, elem_list}
@@ -112,9 +112,8 @@ func main() {
 				elem_list = []elem{}
 				astNode = ""
 				astValue = []string{}
-
-				//nameCheck = 0
 			}
+
 			nameFunction = x.Name.String()
 			node_list.PushBack(elem{reflect.TypeOf(x).String(), []string{nameFunction}})
 
@@ -177,7 +176,7 @@ func main() {
 		return true
 	})
 
-	if len(astValue) != 0 { // if a new root meets
+	if nameFunction != "" { // if a new root meets
 		elem_list = append(elem_list, elem{astNode, astValue})
 		node_list.PushBack(elem{astNode, astValue})
 		func2 := function2{nameFunction, elem_list}
@@ -190,6 +189,7 @@ func main() {
 		fmt.Println(item.Value)
 	}*/
 
+	fmt.Println()
 	var funcList []string
 	for s := range listFunctions2 {
 		if listFunctions2[s].funcName != "" {
@@ -303,7 +303,7 @@ func main() {
 	var caseCheck []function2
 	var caseName string
 	var caseList []elem
-	var caseWFunc []casesCheck
+	var caseWFunc []check
 	caseBool := false
 	for i := range listFunctions2 {
 		for j := range listFunctions2[i].value {
@@ -334,23 +334,32 @@ func main() {
 			}
 		}
 		if len(caseCheck) > 0 {
-			caseWFunc = append(caseWFunc, casesCheck{listFunctions2[i].funcName, caseCheck})
+			caseWFunc = append(caseWFunc, check{listFunctions2[i].funcName, caseCheck})
+			caseCheck = []function2{}
+
 		}
 	}
+
 	if len(switchCheck) > 0 {
 		fmt.Print("\nThese(This) function(s) contain(s) switch statement: ")
 		for _, val := range switchCheck {
 			fmt.Print(val, " ")
 		}
 		fmt.Println()
-		/*
-			for s := range caseCheck {
-				for _, value := range caseCheck[s].value {
-					fmt.Printf("%s\n", value)
+	}
+
+	fmt.Println("len caseWFunc", len(caseWFunc))
+	if len(caseWFunc) > 0 {
+		for i := range caseWFunc {
+			fmt.Print("Function name is\t", caseWFunc[i].funcName, "\n")
+			for j := range caseWFunc[i].cases {
+				fmt.Print(caseWFunc[i].cases[j].funcName, "\t\t")
+				for _, val := range caseWFunc[i].cases[j].value {
+					fmt.Print(val, " ")
 				}
 				fmt.Println()
-
-			}*/
+			}
+		}
 	}
 
 	// TODO for multiple functions with switch statement
@@ -434,12 +443,12 @@ func main() {
 
 	}
 
-	if len(caseReplacement) > 0 {
+	/*if len(caseReplacement) > 0 {
 		fmt.Print("These cases have same structure: ")
 		for _, val := range caseReplacement {
 			fmt.Print(val, " ")
 		}
-	}
+	}*/
 
 	// create a text file
 	f, err := os.Create(filename + ".txt")
@@ -508,4 +517,5 @@ func main() {
 			fmt.Println()
 		}
 	}
+
 }
