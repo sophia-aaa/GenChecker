@@ -1,7 +1,6 @@
 package main
 
 import (
-	"container/list"
 	"fmt"
 	"go/ast"
 	"go/parser"
@@ -18,13 +17,8 @@ type elem struct {
 	value []string
 }
 
-type function1 struct {
-	funcName string
-	value    *list.List
-}
-
 // Basic structure for every function in the input file
-type function2 struct {
+type basicStr struct {
 	funcName string
 	value    []elem
 }
@@ -35,7 +29,7 @@ type funcNameList struct {
 
 type checkCases struct {
 	funcName string
-	cases    []function2
+	cases    []basicStr
 }
 
 func resetValues() funcNameList {
@@ -62,7 +56,7 @@ func contains2D(strArr [][]string, str string) bool {
 	}
 	return false
 }
-func buildAstDataStr(filename string) []function2 {
+func buildAstDataStr(filename string) []basicStr {
 	fset := token.NewFileSet()
 	astTree, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)
 	if err != nil {
@@ -72,31 +66,25 @@ func buildAstDataStr(filename string) []function2 {
 	var elem_list []elem
 	nameFunction := ""
 	astNode := ""
-	var listFunctions2 []function2
+	var listFunctions2 []basicStr
 	var astValue []string
 
 	ast.Inspect(astTree, func(node ast.Node) bool {
 		switch x := node.(type) {
 		case *ast.FuncDecl:
-
 			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
 			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
 			if nameFunction != "" { // if a new root meets
 				elem_list = append(elem_list, elem{astNode, astValue})
-				listFunctions2 = append(listFunctions2, function2{nameFunction, elem_list})
+				listFunctions2 = append(listFunctions2, basicStr{nameFunction, elem_list})
 				elem_list = []elem{}
 				astNode = ""
 				astValue = []string{}
 			}
-
 			nameFunction = x.Name.String()
-
 		case *ast.Ident:
 			//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
 			astValue = append(astValue, x.Name)
-
-		case *ast.GenDecl, *ast.ImportSpec, *ast.BasicLit, *ast.CommentGroup, *ast.Comment:
-			fmt.Print(" ")
 		case *ast.CaseClause, *ast.SwitchStmt:
 			// *ast.CaseClause -> *ast.SelectorExpr
 			elem_list = append(elem_list, elem{astNode, astValue})
@@ -129,8 +117,7 @@ func buildAstDataStr(filename string) []function2 {
 	})
 	if nameFunction != "" { // add last function
 		elem_list = append(elem_list, elem{astNode, astValue})
-		func2 := function2{nameFunction, elem_list}
-		listFunctions2 = append(listFunctions2, func2)
+		listFunctions2 = append(listFunctions2, basicStr{nameFunction, elem_list})
 		elem_list = []elem{}
 		astNode = ""
 		astValue = []string{}
@@ -142,7 +129,7 @@ func checkUnsafeUsages(str string) bool {
 	return contains([]string{"unsafe", "Pointer"}, str)
 }
 
-func checkGenerics(listFunctions2 []function2, funcList []string, typeList []string) [][]string {
+func checkGenerics(listFunctions2 []basicStr, funcList []string, typeList []string) [][]string {
 	var genCheck [][]string
 	var genFunc []string
 	flag := false
@@ -278,10 +265,9 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 	var caseListCheck []elem
 	var caseReplacement []string
 	caseFlag := false
-	fmt.Println("len caseWFunc", len(caseWFunc))
+
 	if len(caseWFunc) > 0 {
 		for k := range caseWFunc {
-			fmt.Print("Function name is\t", caseWFunc[k].funcName, "\n")
 			for i := 0; i < len(caseWFunc[k].cases); i++ {
 				if caseWFunc[k].cases[i].funcName != "" {
 					for j := i + 1; j < len(caseWFunc[k].cases); j++ {
@@ -394,10 +380,9 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 	return caseListCheck
 }
 
-func checkSelectorExpr(listFunctions2 []function2) []function2 {
-
+func checkSelectorExpr(listFunctions2 []basicStr) []basicStr {
 	var modElemList []elem
-	var modListFunctions2 []function2
+	var modListFunctions2 []basicStr
 	var modFuncName string
 	var modPath string
 	var modAstValue []string
@@ -421,7 +406,7 @@ func checkSelectorExpr(listFunctions2 []function2) []function2 {
 				modPath = ""
 				modAstValue = []string{}
 			}
-			modListFunctions2 = append(modListFunctions2, function2{modFuncName, modElemList})
+			modListFunctions2 = append(modListFunctions2, basicStr{modFuncName, modElemList})
 			modFuncName = ""
 			modElemList = []elem{}
 		}
@@ -430,7 +415,7 @@ func checkSelectorExpr(listFunctions2 []function2) []function2 {
 	return modListFunctions2
 }
 
-func createTextFile(filename string, listFunctions2 []function2) {
+func createTextFile(filename string, listFunctions2 []basicStr) {
 	f, err := os.Create(filename + ".txt")
 	if err != nil {
 		log.Fatal(err)
@@ -477,12 +462,11 @@ func createTextFile(filename string, listFunctions2 []function2) {
 			}
 		}
 	}
-
 }
 
-func checkSwitchStatement(listFunctions2 []function2) []checkCases {
+func checkSwitchStatement(listFunctions2 []basicStr) []checkCases {
 	var switchCheck []string
-	var caseListWVar []function2
+	var caseListWVar []basicStr
 	var caseName string
 	var caseList []elem
 	var caseWFunc []checkCases
@@ -496,7 +480,7 @@ func checkSwitchStatement(listFunctions2 []function2) []checkCases {
 			}
 			if strings.Contains(listFunctions2[i].value[j].path, "*ast.CaseClause -> *ast.SelectorExpr") {
 				if len(caseList) > 0 {
-					caseListWVar = append(caseListWVar, function2{caseName, caseList})
+					caseListWVar = append(caseListWVar, basicStr{caseName, caseList})
 					caseList = []elem{}
 				}
 				caseName = listFunctions2[i].value[j].value[1]
@@ -506,7 +490,7 @@ func checkSwitchStatement(listFunctions2 []function2) []checkCases {
 			} else if strings.Contains(listFunctions2[i].value[j].path, "*ast.CaseClause") {
 				if len(caseList) > 0 {
 					caseBool = false
-					caseListWVar = append(caseListWVar, function2{caseName, caseList})
+					caseListWVar = append(caseListWVar, basicStr{caseName, caseList})
 					caseList = []elem{}
 				}
 				continue
@@ -517,9 +501,26 @@ func checkSwitchStatement(listFunctions2 []function2) []checkCases {
 		}
 		if len(caseListWVar) > 0 {
 			caseWFunc = append(caseWFunc, checkCases{listFunctions2[i].funcName, caseListWVar})
-			caseListWVar = []function2{}
+			caseListWVar = []basicStr{}
 
 		}
+	}
+
+	if len(switchCheck) > 2 {
+		fmt.Println()
+		fmt.Println("These functions have (a) switch statement(s):")
+		for _, val := range switchCheck {
+			fmt.Print(val, " ")
+		}
+	} else if len(switchCheck) == 1 {
+		fmt.Println()
+		fmt.Println("This function has (a) switch statement(s):")
+		for _, val := range switchCheck {
+			fmt.Print(val, " ")
+		}
+	} else {
+		fmt.Println()
+		fmt.Println("There is no function with switch statements")
 	}
 	return caseWFunc
 }
@@ -538,7 +539,6 @@ func main() {
 
 	listFunctions2 := buildAstDataStr(filename)
 
-	fmt.Println()
 	var funcList []string
 	for s := range listFunctions2 {
 		if listFunctions2[s].funcName != "" {
@@ -561,14 +561,17 @@ func main() {
 		}
 	}
 
+	// This variable is for checking switch statement
 	caseWFunc := checkSwitchStatement(modListFunctions2)
 
 	// Check reused cases in switch statement
 	caseListCheck := checkReusedCases(caseWFunc, funcList, typeList)
 
 	if len(caseListCheck) > 0 {
+		fmt.Println()
+		fmt.Println()
 		for _, val := range caseListCheck {
-			fmt.Print("This Function ", val.path, " has switch-statement and same case structures.\nThe cases are: \n")
+			fmt.Print("This Function ", val.path, " has switch-statement and reused cases : \n")
 			for _, cases := range val.value {
 				fmt.Print(cases, " ")
 			}

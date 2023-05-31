@@ -1,11 +1,8 @@
-{*ast.File [storage]}
-{*ast.TypeSpec [array]}
-{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [storage Header]}
-{*ast.Field [t Dtype]}
-
-
 function name is makeArray 
-	 { [makeArray]}
+	 {*ast.File [storage]}
+	 {*ast.TypeSpec [array]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [t Dtype makeArray]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t Dtype]}
 	 {*ast.Field [length int]}
 	 {*ast.FieldList -> *ast.Field [array]}
@@ -502,8 +499,7 @@ function name is copyDenseIter
 	 {*ast.CallExpr -> *ast.SelectorExpr [dst hdr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src hdr diter siter nil]}
 	 {*ast.TypeSpec [scalarPtrCount]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Ptr]}
-	 {*ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Ptr unsafe Pointer]}
 	 {*ast.Field [Count int]}
 	 {*ast.ValueSpec [scalarRCLock]}
 	 {*ast.SelectorExpr [sync Mutex]}
@@ -586,5 +582,23 @@ function name is scalarToHeader
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [copyScalarToPrealloc a]}
 	 {*ast.SelectorExpr [hdr Raw]}
 	 {*ast.ReturnStmt [hdr newAlloc]}
+
+
+function name is copyScalarToPrealloc 
+	 { [copyScalarToPrealloc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [a]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [bs]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [xV]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf a]}
+	 {*ast.AssignStmt [xT]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf a]}
+	 {*ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [bs]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt xT p]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect Indirect v Set xV]}
+	 {*ast.ReturnStmt []}
 
 

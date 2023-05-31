@@ -9,7 +9,7 @@
 			3: *ast.BasicLit
 		2: *ast.ImportSpec
 			3: *ast.BasicLit
-	1: *ast.FuncDecl 
+	1: *ast.FuncDecl ReduceFirst
 		2: *ast.FieldList
 			3: *ast.Field
 				4: *ast.Ident e
@@ -1240,7 +1240,7 @@
 									9: *ast.Ident Errorf
 								8: *ast.BasicLit
 								8: *ast.Ident t
-	1: *ast.FuncDecl 
+	1: *ast.FuncDecl ReduceLast
 		2: *ast.FieldList
 			3: *ast.Field
 				4: *ast.Ident e
@@ -2913,7 +2913,7 @@
 									9: *ast.Ident Errorf
 								8: *ast.BasicLit
 								8: *ast.Ident t
-	1: *ast.FuncDecl 
+	1: *ast.FuncDecl ReduceDefault
 		2: *ast.FieldList
 			3: *ast.Field
 				4: *ast.Ident e
@@ -4160,7 +4160,7 @@
 									9: *ast.Ident Errorf
 								8: *ast.BasicLit
 								8: *ast.Ident t
-	1: *ast.FuncDecl 
+	1: *ast.FuncDecl Reduce
 		2: *ast.FieldList
 			3: *ast.Field
 				4: *ast.Ident e
