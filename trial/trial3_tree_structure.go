@@ -172,10 +172,23 @@ func main() {
 				astValueList = append(astValueList, astValue)
 				continue
 			}
-			if flag && strings.Contains(val.value, "*ast.CaseClause") {
+			if flag && strings.Contains(val.value, "*ast.CaseClause") { // to set a depth
+				if len(astValueList) > 0 {
+					fmt.Println(path, " ", astValueList)
+					astValueList = []string{}
+				}
 				depthFirstCase = val.depth
 				flag = false
-				fmt.Println(val.value, " ", depthFirstCase, " ", len(val.value))
+				path = val.value
+				fmt.Println("case begins!!!\t", " ", depthFirstCase, " ", len(val.value))
+				continue
+			} else if depthFirstCase == val.depth && strings.Contains(val.value, "*ast.CaseClause") {
+				if len(astValueList) > 0 {
+					fmt.Println(path, " ", astValueList)
+					astValueList = []string{}
+				}
+				path = val.value
+				fmt.Println("case begins!!!\t", " ", depthFirstCase, " ", len(val.value))
 				continue
 			}
 			if len(astValueList) > 0 {
