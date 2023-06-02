@@ -70,7 +70,7 @@ func contains2D(strArr [][]string, str string) bool {
 	}
 	return false
 }
-func buildBasisStr(Tree2cases []basicCases) []checkCases {
+func buildAstCaseStr(Tree2cases []basicCases) []checkCases {
 	var funcName string
 	var path string
 	var astValue string
@@ -179,6 +179,7 @@ func buildBasisStr(Tree2cases []basicCases) []checkCases {
 func checkUnsafeUsages(str string) bool {
 	return contains([]string{"unsafe", "Pointer"}, str)
 }
+
 func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []string) []elem {
 	var caseListCheck []elem
 	var caseReplacement []string
@@ -438,7 +439,7 @@ func main() {
 		createTextFile("tree", Tree2str)
 	}
 
-	funcCheck := buildBasisStr(Tree2cases)
+	funcCheck := buildAstCaseStr(Tree2cases)
 
 	var funcList []string
 	for s := range funcCheck {

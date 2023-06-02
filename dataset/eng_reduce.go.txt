@@ -1,6 +1,6 @@
 function name is ReduceFirst 
 	 {*ast.File [execution]}
-	 {*ast.FieldList -> *ast.Field [e E ReduceFirst]}
+	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.FieldList -> *ast.Field [e E ReduceFirst]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.Field [data]}
@@ -320,7 +320,8 @@ function name is ReduceFirst
 	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstUnsafePointer dt rt split size f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 
 
 function name is ReduceLast 
@@ -335,11 +336,11 @@ function name is ReduceLast
 	 {*ast.Field [defaultValue]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [fn]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ok bool]}
 	 {*ast.SwitchStmt [t]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [Bool]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def bool]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def bool]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue bool]}
 	 {*ast.UnaryExpr [ok]}
@@ -361,7 +362,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue int]}
 	 {*ast.UnaryExpr [ok]}
@@ -383,7 +384,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int8]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue int8]}
 	 {*ast.UnaryExpr [ok]}
@@ -405,7 +406,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int16]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue int16]}
 	 {*ast.UnaryExpr [ok]}
@@ -427,7 +428,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue int32]}
 	 {*ast.UnaryExpr [ok]}
@@ -449,7 +450,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue int64]}
 	 {*ast.UnaryExpr [ok]}
@@ -471,7 +472,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue uint]}
 	 {*ast.UnaryExpr [ok]}
@@ -493,7 +494,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint8]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue uint8]}
 	 {*ast.UnaryExpr [ok]}
@@ -515,7 +516,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint16]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue uint16]}
 	 {*ast.UnaryExpr [ok]}
@@ -537,7 +538,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue uint32]}
 	 {*ast.UnaryExpr [ok]}
@@ -559,7 +560,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue uint64]}
 	 {*ast.UnaryExpr [ok]}
@@ -581,7 +582,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uintptr]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uintptr]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uintptr]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue uintptr]}
 	 {*ast.UnaryExpr [ok]}
@@ -603,7 +604,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Float32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def float32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def float32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue float32]}
 	 {*ast.UnaryExpr [ok]}
@@ -625,7 +626,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Float64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def float64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def float64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue float64]}
 	 {*ast.UnaryExpr [ok]}
@@ -647,7 +648,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Complex64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def complex64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def complex64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue complex64]}
 	 {*ast.UnaryExpr [ok]}
@@ -669,7 +670,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Complex128]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def complex128]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def complex128]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue complex128]}
 	 {*ast.UnaryExpr [ok]}
@@ -691,7 +692,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [String]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def string]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def string]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr [defaultValue string]}
 	 {*ast.UnaryExpr [ok]}
@@ -713,7 +714,7 @@ function name is ReduceLast
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [UnsafePointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec -> *ast.SelectorExpr [def unsafe Pointer]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec -> *ast.SelectorExpr [def unsafe Pointer]}
 	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
 	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [defaultValue unsafe Pointer]}
 	 {*ast.UnaryExpr [ok]}
@@ -734,7 +735,8 @@ function name is ReduceLast
 	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastUnsafePointer dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 
 
 function name is ReduceDefault 
@@ -752,11 +754,11 @@ function name is ReduceDefault
 	 {*ast.Field [expected int]}
 	 {*ast.Field [fn]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ok bool]}
 	 {*ast.SwitchStmt [t]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [Bool]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
@@ -774,7 +776,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultB dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [int]}
 	 {*ast.FieldList -> *ast.Field [int]}
@@ -792,7 +794,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
 	 {*ast.Field [int8]}
 	 {*ast.FieldList -> *ast.Field [int8]}
@@ -810,7 +812,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI8 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
 	 {*ast.Field [int16]}
 	 {*ast.FieldList -> *ast.Field [int16]}
@@ -828,7 +830,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI16 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
 	 {*ast.Field [int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
@@ -846,7 +848,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI32 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
 	 {*ast.Field [int64]}
 	 {*ast.FieldList -> *ast.Field [int64]}
@@ -864,7 +866,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultI64 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
 	 {*ast.Field [uint]}
 	 {*ast.FieldList -> *ast.Field [uint]}
@@ -882,7 +884,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.Field [uint8]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
@@ -900,7 +902,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU8 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.Field [uint16]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
@@ -918,7 +920,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU16 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.Field [uint32]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
@@ -936,7 +938,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU32 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [uint64]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
@@ -954,7 +956,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultU64 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uintptr]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.Field [uintptr]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
@@ -972,7 +974,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultUintptr dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Float32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
 	 {*ast.Field [float32]}
 	 {*ast.FieldList -> *ast.Field [float32]}
@@ -990,7 +992,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultF32 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Float64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
 	 {*ast.Field [float64]}
 	 {*ast.FieldList -> *ast.Field [float64]}
@@ -1008,7 +1010,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultF64 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Complex64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.Field [complex64]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
@@ -1026,7 +1028,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultC64 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Complex128]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.Field [complex128]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
@@ -1044,7 +1046,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultC128 dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [String]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [string]}
 	 {*ast.FieldList -> *ast.Field [string]}
@@ -1062,7 +1064,7 @@ function name is ReduceDefault
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultStr dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [UnsafePointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
@@ -1079,7 +1081,8 @@ function name is ReduceDefault
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal UnsafePointers]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultUnsafePointer dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 
 
 function name is Reduce 
@@ -1092,15 +1095,15 @@ function name is Reduce
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [fn]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [retVal]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [ok bool]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ok bool]}
 	 {*ast.SwitchStmt [t]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [Bool]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def bool]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def bool]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
@@ -1119,11 +1122,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Int]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [int]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
@@ -1142,11 +1145,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Int8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
 	 {*ast.Field [int8]}
 	 {*ast.FieldList -> *ast.Field [int8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int8]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
@@ -1165,11 +1168,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Int16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
 	 {*ast.Field [int16]}
 	 {*ast.FieldList -> *ast.Field [int16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int16]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
@@ -1188,11 +1191,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Int32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
 	 {*ast.Field [int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
@@ -1211,11 +1214,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Int64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
 	 {*ast.Field [int64]}
 	 {*ast.FieldList -> *ast.Field [int64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def int64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
@@ -1234,11 +1237,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Uint]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
 	 {*ast.Field [uint]}
 	 {*ast.FieldList -> *ast.Field [uint]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
@@ -1257,11 +1260,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Uint8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.Field [uint8]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint8]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
@@ -1280,11 +1283,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Uint16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.Field [uint16]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint16]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
@@ -1303,11 +1306,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Uint32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.Field [uint32]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
@@ -1326,11 +1329,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Uint64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [uint64]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uint64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
@@ -1349,11 +1352,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Uintptr]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.Field [uintptr]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def uintptr]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uintptr]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
@@ -1372,11 +1375,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Float32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
 	 {*ast.Field [float32]}
 	 {*ast.FieldList -> *ast.Field [float32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def float32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def float32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
@@ -1395,11 +1398,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Float64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
 	 {*ast.Field [float64]}
 	 {*ast.FieldList -> *ast.Field [float64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def float64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def float64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
@@ -1418,11 +1421,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Complex64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.Field [complex64]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def complex64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def complex64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
@@ -1441,11 +1444,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [Complex128]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.Field [complex128]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def complex128]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def complex128]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
@@ -1464,11 +1467,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [String]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [string]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [def string]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def string]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
@@ -1487,11 +1490,11 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [UnsafePointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec -> *ast.SelectorExpr [def unsafe Pointer]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec -> *ast.SelectorExpr [def unsafe Pointer]}
 	 {*ast.IfStmt -> *ast.AssignStmt [f ok]}
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
@@ -1510,6 +1513,7 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause -> *ast.ReturnStmt [nil]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 
 

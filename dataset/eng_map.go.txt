@@ -1,6 +1,6 @@
 function name is Map 
 	 {*ast.File [execution]}
-	 {*ast.FieldList -> *ast.Field [e E Map]}
+	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.FieldList -> *ast.Field [e E Map]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.Field [fn]}
@@ -13,10 +13,10 @@ function name is Map
 	 {*ast.SwitchStmt [t]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [Bool]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [error]}
@@ -30,32 +30,37 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
 	 {*ast.IfStmt [incr]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt [err]}
 	 {*ast.CallExpr [MapErrB f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapB f0 at]}
 	 {*ast.CaseClause [Int]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [error]}
@@ -69,35 +74,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp int]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI f0 at]}
@@ -112,10 +123,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrI f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI f0 at]}
 	 {*ast.CaseClause [Int8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
 	 {*ast.FieldList -> *ast.Field [int8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
 	 {*ast.FieldList -> *ast.Field [int8]}
 	 {*ast.Field [error]}
@@ -129,35 +140,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [int8]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp int8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int8]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI8 f0 at]}
@@ -172,10 +189,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrI8 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI8 f0 at]}
 	 {*ast.CaseClause [Int16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
 	 {*ast.FieldList -> *ast.Field [int16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
 	 {*ast.FieldList -> *ast.Field [int16]}
 	 {*ast.Field [error]}
@@ -189,35 +206,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [int16]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp int16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int16]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI16 f0 at]}
@@ -232,10 +255,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrI16 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI16 f0 at]}
 	 {*ast.CaseClause [Int32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
 	 {*ast.Field [error]}
@@ -249,35 +272,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [int32]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp int32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI32 f0 at]}
@@ -292,10 +321,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrI32 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI32 f0 at]}
 	 {*ast.CaseClause [Int64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
 	 {*ast.FieldList -> *ast.Field [int64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
 	 {*ast.FieldList -> *ast.Field [int64]}
 	 {*ast.Field [error]}
@@ -309,35 +338,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [int64]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp int64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI64 f0 at]}
@@ -352,10 +387,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrI64 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI64 f0 at]}
 	 {*ast.CaseClause [Uint]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
 	 {*ast.FieldList -> *ast.Field [uint]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
 	 {*ast.FieldList -> *ast.Field [uint]}
 	 {*ast.Field [error]}
@@ -369,35 +404,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [uint]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp uint]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU f0 at]}
@@ -412,10 +453,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrU f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU f0 at]}
 	 {*ast.CaseClause [Uint8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.Field [error]}
@@ -429,35 +470,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp uint8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint8]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU8 f0 at]}
@@ -472,10 +519,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrU8 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU8 f0 at]}
 	 {*ast.CaseClause [Uint16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.Field [error]}
@@ -489,35 +536,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp uint16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint16]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU16 f0 at]}
@@ -532,10 +585,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrU16 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU16 f0 at]}
 	 {*ast.CaseClause [Uint32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.Field [error]}
@@ -549,35 +602,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp uint32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU32 f0 at]}
@@ -592,10 +651,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrU32 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU32 f0 at]}
 	 {*ast.CaseClause [Uint64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [error]}
@@ -609,35 +668,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp uint64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU64 f0 at]}
@@ -652,10 +717,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrU64 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU64 f0 at]}
 	 {*ast.CaseClause [Uintptr]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.Field [error]}
@@ -669,32 +734,37 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
 	 {*ast.IfStmt [incr]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt [err]}
 	 {*ast.CallExpr [MapErrUintptr f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapUintptr f0 at]}
 	 {*ast.CaseClause [Float32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
 	 {*ast.FieldList -> *ast.Field [float32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
 	 {*ast.FieldList -> *ast.Field [float32]}
 	 {*ast.Field [error]}
@@ -708,35 +778,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [float32]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp float32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp float32]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrF32 f0 at]}
@@ -751,10 +827,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrF32 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapF32 f0 at]}
 	 {*ast.CaseClause [Float64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
 	 {*ast.FieldList -> *ast.Field [float64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
 	 {*ast.FieldList -> *ast.Field [float64]}
 	 {*ast.Field [error]}
@@ -768,35 +844,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [float64]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp float64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp float64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrF64 f0 at]}
@@ -811,10 +893,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrF64 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapF64 f0 at]}
 	 {*ast.CaseClause [Complex64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.Field [error]}
@@ -828,35 +910,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp complex64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp complex64]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrC64 f0 at]}
@@ -871,10 +959,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrC64 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapC64 f0 at]}
 	 {*ast.CaseClause [Complex128]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.Field [error]}
@@ -888,35 +976,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp complex128]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp complex128]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrC128 f0 at]}
@@ -931,10 +1025,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrC128 f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapC128 f0 at]}
 	 {*ast.CaseClause [String]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [error]}
@@ -948,35 +1042,41 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [tmp string]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp string]}
 	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at tmp]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
 	 {*ast.UnaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrStr f0 at]}
@@ -991,10 +1091,10 @@ function name is Map
 	 {*ast.CallExpr [MapErrStr f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapStr f0 at]}
 	 {*ast.CaseClause [UnsafePointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field [error]}
@@ -1008,28 +1108,34 @@ function name is Map
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
 	 {*ast.IfStmt [incr]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
-	 {*ast.CallExpr [f0]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [at err]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
 	 {*ast.CallExpr [f1]}
 	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
 	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
 	 {*ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt [err]}
 	 {*ast.CallExpr [MapErrUnsafePointer f1 at]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapUnsafePointer f0 at]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 	 {*ast.ReturnStmt []}
 
 
@@ -1049,10 +1155,10 @@ function name is MapIter
 	 {*ast.CaseClause [Bool]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [error]}
@@ -1066,9 +1172,11 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.IfStmt [incr]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt [err]}
@@ -1077,10 +1185,10 @@ function name is MapIter
 	 {*ast.CaseClause [Int]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [error]}
@@ -1094,7 +1202,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1111,10 +1220,10 @@ function name is MapIter
 	 {*ast.CaseClause [Int8]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
 	 {*ast.FieldList -> *ast.Field [int8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
 	 {*ast.FieldList -> *ast.Field [int8]}
 	 {*ast.Field [error]}
@@ -1128,7 +1237,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [int8]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1145,10 +1255,10 @@ function name is MapIter
 	 {*ast.CaseClause [Int16]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
 	 {*ast.FieldList -> *ast.Field [int16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
 	 {*ast.FieldList -> *ast.Field [int16]}
 	 {*ast.Field [error]}
@@ -1162,7 +1272,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [int16]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1179,10 +1290,10 @@ function name is MapIter
 	 {*ast.CaseClause [Int32]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
 	 {*ast.Field [error]}
@@ -1196,7 +1307,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [int32]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1213,10 +1325,10 @@ function name is MapIter
 	 {*ast.CaseClause [Int64]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
 	 {*ast.FieldList -> *ast.Field [int64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
 	 {*ast.FieldList -> *ast.Field [int64]}
 	 {*ast.Field [error]}
@@ -1230,7 +1342,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [int64]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1247,10 +1360,10 @@ function name is MapIter
 	 {*ast.CaseClause [Uint]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
 	 {*ast.FieldList -> *ast.Field [uint]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
 	 {*ast.FieldList -> *ast.Field [uint]}
 	 {*ast.Field [error]}
@@ -1264,7 +1377,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [uint]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1281,10 +1395,10 @@ function name is MapIter
 	 {*ast.CaseClause [Uint8]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.Field [error]}
@@ -1298,7 +1412,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1315,10 +1430,10 @@ function name is MapIter
 	 {*ast.CaseClause [Uint16]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.Field [error]}
@@ -1332,7 +1447,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1349,10 +1465,10 @@ function name is MapIter
 	 {*ast.CaseClause [Uint32]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.Field [error]}
@@ -1366,7 +1482,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1383,10 +1500,10 @@ function name is MapIter
 	 {*ast.CaseClause [Uint64]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [error]}
@@ -1400,7 +1517,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1417,10 +1535,10 @@ function name is MapIter
 	 {*ast.CaseClause [Uintptr]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.Field [error]}
@@ -1434,9 +1552,11 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.IfStmt [incr]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt [err]}
@@ -1445,10 +1565,10 @@ function name is MapIter
 	 {*ast.CaseClause [Float32]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
 	 {*ast.FieldList -> *ast.Field [float32]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
 	 {*ast.FieldList -> *ast.Field [float32]}
 	 {*ast.Field [error]}
@@ -1462,7 +1582,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [float32]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1479,10 +1600,10 @@ function name is MapIter
 	 {*ast.CaseClause [Float64]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
 	 {*ast.FieldList -> *ast.Field [float64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
 	 {*ast.FieldList -> *ast.Field [float64]}
 	 {*ast.Field [error]}
@@ -1496,7 +1617,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [float64]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1513,10 +1635,10 @@ function name is MapIter
 	 {*ast.CaseClause [Complex64]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.Field [error]}
@@ -1530,7 +1652,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1547,10 +1670,10 @@ function name is MapIter
 	 {*ast.CaseClause [Complex128]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.Field [error]}
@@ -1564,7 +1687,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1581,10 +1705,10 @@ function name is MapIter
 	 {*ast.CaseClause [String]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [error]}
@@ -1598,7 +1722,8 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [incr]}
 	 {*ast.BinaryExpr [f0 nil]}
@@ -1615,10 +1740,10 @@ function name is MapIter
 	 {*ast.CaseClause [UnsafePointer]}
 	 {*ast.AssignStmt [at]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.DeclStmt -> *ast.ValueSpec [f1]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field [error]}
@@ -1632,15 +1757,18 @@ function name is MapIter
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field [error]}
 	 {*ast.AssignStmt [f1 f]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf fn]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
 	 {*ast.IfStmt [incr]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 	 {*ast.SwitchStmt -> *ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.BinaryExpr [f0 nil]}
 	 {*ast.AssignStmt [err]}
 	 {*ast.CallExpr [MapIterErrUnsafePointer f1 at ait]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapIterUnsafePointer f0 at ait]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf t]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
 	 {*ast.ReturnStmt []}
 
 
