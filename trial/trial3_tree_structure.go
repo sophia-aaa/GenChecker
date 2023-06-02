@@ -453,6 +453,7 @@ func main() {
 
 	caseListCheck := checkReusedCases(modifiedFuncCheck, funcList, typeList)
 
+	// count number of case clauses
 	lengthList := make([]int, len(modifiedFuncCheck))
 	numberOfCase := 0
 	for idx := range modifiedFuncCheck {
@@ -480,6 +481,7 @@ func main() {
 		checkCaseClause = []elem{}
 	}
 
+	// check whether the case clauses are type variables
 	flag4Case := make([]bool, len(funcCaseClause))
 	flag4outer := false
 	for idx := range funcCaseClause {
