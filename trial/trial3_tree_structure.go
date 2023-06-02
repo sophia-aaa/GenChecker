@@ -429,7 +429,7 @@ func main() {
 		"bool", "bType", "int", "iType", "int8", "i8Type", "int16", "i16Type", "int32", "i32Type", "int64", "i64Type", "uint", "uType",
 		"uint8", "u8Type", "uint16", "u16Type", "uint32", "u32Type", "uint64", "u64Type", "uintptr", "uintptrType",
 		"float32", "f32Type", "float64", "f64Type", "complex64", "c64Type", "complex128", "c128Type", "string", "strType",
-		"unsafe", "Pointer", "unsafePointerType",
+		"unsafe", "Pointer", "UnsafePointer", "unsafePointerType",
 	}
 
 	var v visitor
@@ -443,7 +443,6 @@ func main() {
 	var funcList []string
 	for s := range funcCheck {
 		if funcCheck[s].funcName != "" {
-			fmt.Println(funcCheck[s].funcName)
 			funcList = append(funcList, funcCheck[s].funcName)
 		}
 	}
@@ -452,14 +451,57 @@ func main() {
 		modifiedFuncCheck = append(modifiedFuncCheck, checkCases{funcCheck[idx].funcName, checkSelectorExpr(funcCheck[idx].cases)})
 	}
 
-	var test []checkCases
+	caseListCheck := checkReusedCases(modifiedFuncCheck, funcList, typeList)
+
+	lengthList := make([]int, len(modifiedFuncCheck))
+	numberOfCase := 0
 	for idx := range modifiedFuncCheck {
-		if modifiedFuncCheck[idx].funcName == "Reduce" {
-			test = append(test, checkCases{"Reduce", modifiedFuncCheck[idx].cases})
+		for _, val := range modifiedFuncCheck[idx].cases {
+			if strings.Contains(val.funcName, "case") {
+				numberOfCase++
+			}
 		}
+		lengthList[idx] = numberOfCase
+		numberOfCase = 0
 	}
 
-	caseListCheck := checkReusedCases(modifiedFuncCheck, funcList, typeList)
+	var caseClauseList []string
+	var checkCaseClause []elem
+	var funcCaseClause []basicStr
+
+	for idx := range modifiedFuncCheck {
+		for _, val := range modifiedFuncCheck[idx].cases {
+			if strings.Contains(val.funcName, "case") && val.value[0].path == "*ast.CaseClause" {
+				caseClauseList = val.value[0].value
+				checkCaseClause = append(checkCaseClause, elem{val.funcName, caseClauseList})
+			}
+		}
+		funcCaseClause = append(funcCaseClause, basicStr{modifiedFuncCheck[idx].funcName, checkCaseClause})
+		checkCaseClause = []elem{}
+	}
+
+	flag4Case := make([]bool, len(funcCaseClause))
+	flag4outer := false
+	for idx := range funcCaseClause {
+		fmt.Println(funcCaseClause[idx].funcName)
+		for _, val := range funcCaseClause[idx].value {
+			if len(val.value) > 0 {
+				for _, value := range val.value {
+					if !contains(typeList, value) {
+						flag4Case[idx] = false
+						flag4outer = true
+						break
+					}
+					flag4Case[idx] = true
+				}
+			}
+			if flag4outer {
+				flag4outer = false
+				break
+			}
+		}
+	}
+	fmt.Println(flag4Case)
 
 	if len(caseListCheck) > 0 {
 		fmt.Println()
@@ -474,17 +516,25 @@ func main() {
 		}
 	}
 
-	//for idx := range modifiedFuncCheck {
-	//	fmt.Println()
-	//	fmt.Println(modifiedFuncCheck[idx].funcName)
-	//	if modifiedFuncCheck[idx].funcName == "Reduce" {
-	//		for _, val := range modifiedFuncCheck[idx].cases {
-	//			fmt.Println("\t", val.funcName)
-	//			for _, value := range val.value {
-	//				fmt.Println(value)
-	//			}
-	//		}
-	//	}
-	//}
+	for idx := range caseListCheck {
+		lengthCase := len(caseListCheck[idx].value)
+		if flag4Case[idx] && ((lengthCase == lengthList[idx]) ||
+			((lengthCase == lengthList[idx]-1) && // in this case, there exists a default case clause and it will not be considered.
+				(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[0].cases)-1].value[0].path))) {
+			fmt.Println("The function ", modifiedFuncCheck[idx].funcName, " can be replaced by Generics.")
+		}
+	}
+
+	/*	for idx := range modifiedFuncCheck {
+		for _, w := range modifiedFuncCheck[idx].cases {
+			fmt.Println(w.funcName)
+			for _, w1 := range w.value {
+				fmt.Println(w1.path)
+			}
+
+		}
+	}*/
+
+	//	fmt.Println(modifiedFuncCheck[0].cases[1].value[0].path, "\t", modifiedFuncCheck[0].cases[len(modifiedFuncCheck[0].cases)-1].value[0].path)
 
 }
