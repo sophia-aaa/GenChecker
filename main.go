@@ -85,7 +85,7 @@ func buildAstDataStr(filename string) []basicStr {
 		case *ast.FuncDecl:
 			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
 			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
-			if nameFunction != "" { // if a new root meets
+			if astNode != "" || len(astValue) != 0 { // if a new root meets
 				elem_list = append(elem_list, elem{astNode, astValue})
 				listFunctions2 = append(listFunctions2, basicStr{nameFunction, elem_list})
 				elem_list = []elem{}

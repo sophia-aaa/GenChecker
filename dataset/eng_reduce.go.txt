@@ -1,6 +1,9 @@
+{*ast.File [execution]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit []}
+
+
 function name is ReduceFirst 
-	 {*ast.File [execution]}
-	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.FieldList -> *ast.Field [e E ReduceFirst]}
+	 {*ast.FieldList -> *ast.Field [e E ReduceFirst]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.Field [data]}

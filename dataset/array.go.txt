@@ -1,9 +1,12 @@
+{*ast.File [storage]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [array]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [storage Header]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [t Dtype]}
+{*ast.CommentGroup -> *ast.Comment []}
+
+
 function name is makeArray 
-	 {*ast.File [storage]}
-	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [array]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [storage Header]}
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [t Dtype]}
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.CommentGroup -> *ast.Comment [makeArray]}
+	 {*ast.CommentGroup -> *ast.Comment [makeArray]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t Dtype]}
 	 {*ast.Field [length int]}
 	 {*ast.FieldList -> *ast.Field [array]}
