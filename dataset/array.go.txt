@@ -1,8 +1,9 @@
 function name is makeArray 
 	 {*ast.File [storage]}
-	 {*ast.TypeSpec [array]}
+	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [array]}
 	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [storage Header]}
-	 {*ast.Field [t Dtype makeArray]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [t Dtype]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.CommentGroup -> *ast.Comment [makeArray]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t Dtype]}
 	 {*ast.Field [length int]}
 	 {*ast.FieldList -> *ast.Field [array]}
@@ -17,7 +18,7 @@ function name is makeArray
 
 
 function name is arrayFromSlice 
-	 { [arrayFromSlice]}
+	 {*ast.CommentGroup -> *ast.Comment [arrayFromSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [array]}
 	 {*ast.BlockStmt -> *ast.AssignStmt [xT]}
@@ -25,7 +26,7 @@ function name is arrayFromSlice
 	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [xT Kind]}
 	 {*ast.SelectorExpr [reflect Slice]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.AssignStmt [elT]}
+	 {*ast.BasicLit -> *ast.AssignStmt [elT]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [xT Elem]}
 	 {*ast.ReturnStmt -> *ast.CompositeLit [array]}
 	 {*ast.KeyValueExpr [Header]}
@@ -53,7 +54,7 @@ function name is Cap
 
 
 function name is fromSlice 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr [array fromSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [xT]}
@@ -61,7 +62,7 @@ function name is fromSlice
 	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [xT Kind]}
 	 {*ast.SelectorExpr [reflect Slice]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.AssignStmt [elT]}
+	 {*ast.BasicLit -> *ast.AssignStmt [elT]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [xT Elem]}
 	 {*ast.AssignStmt -> *ast.SelectorExpr [a Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage AsByteSlice x]}
@@ -70,7 +71,7 @@ function name is fromSlice
 
 
 function name is fromSliceOrArrayer 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr [array fromSliceOrArrayer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [T ok]}
@@ -90,13 +91,13 @@ function name is fromSliceOrArrayer
 
 
 function name is byteSlice 
-	 {*ast.FieldList -> *ast.Field [a array byteSlice]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a array byteSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
 
 
 function name is sliceInto 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr [array sliceInto]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i j int]}
 	 {*ast.Field [res]}
@@ -104,10 +105,11 @@ function name is sliceInto
 	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Cap]}
 	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [i]}
-	 {*ast.BinaryExpr [j i]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [j i]}
 	 {*ast.BinaryExpr [j c]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf a i j]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [a i j]}
 	 {*ast.AssignStmt [s]}
 	 {*ast.BinaryExpr [i]}
 	 {*ast.CallExpr [int]}
@@ -123,15 +125,15 @@ function name is sliceInto
 
 
 function name is slice 
-	 {*ast.FieldList -> *ast.Field [a array slice]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a array slice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [start end int]}
 	 {*ast.FieldList -> *ast.Field [array]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [end]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [end start]}
+	 {*ast.BasicLit -> *ast.IfStmt -> *ast.BinaryExpr [end start]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.AssignStmt [s]}
+	 {*ast.BasicLit -> *ast.AssignStmt [s]}
 	 {*ast.BinaryExpr [start]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
@@ -149,7 +151,7 @@ function name is slice
 
 
 function name is swap 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr [array swap]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i j int]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [a t String]}
@@ -164,25 +166,25 @@ function name is swap
 	 {*ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause -> *ast.AssignStmt [us]}
+	 {*ast.CaseClause -> *ast.BasicLit -> *ast.AssignStmt [us]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [a hdr Uint64s]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [us i]}
 	 {*ast.IndexExpr [us j]}
 	 {*ast.IndexExpr [us j]}
 	 {*ast.IndexExpr [us i]}
-	 {*ast.CaseClause -> *ast.AssignStmt [us]}
+	 {*ast.CaseClause -> *ast.BasicLit -> *ast.AssignStmt [us]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [a hdr Uint32s]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [us i]}
 	 {*ast.IndexExpr [us j]}
 	 {*ast.IndexExpr [us j]}
 	 {*ast.IndexExpr [us i]}
-	 {*ast.CaseClause -> *ast.AssignStmt [us]}
+	 {*ast.CaseClause -> *ast.BasicLit -> *ast.AssignStmt [us]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [a hdr Uint16s]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [us i]}
 	 {*ast.IndexExpr [us j]}
 	 {*ast.IndexExpr [us j]}
 	 {*ast.IndexExpr [us i]}
-	 {*ast.CaseClause -> *ast.AssignStmt [us]}
+	 {*ast.CaseClause -> *ast.BasicLit -> *ast.AssignStmt [us]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [a hdr Uint8s]}
 	 {*ast.AssignStmt -> *ast.IndexExpr [us i]}
 	 {*ast.IndexExpr [us j]}
@@ -214,16 +216,17 @@ function name is swap
 
 
 function name is Uintptr 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr [array Uintptr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
+	 {*ast.BasicLit []}
 
 
 function name is MemSize 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr [array MemSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [uintptr]}
@@ -232,7 +235,7 @@ function name is MemSize
 
 
 function name is Data 
-	 {*ast.FieldList -> *ast.Field [a array Data]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a array Data]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [shdr]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
 	 {*ast.KeyValueExpr [Data]}
@@ -254,23 +257,23 @@ function name is Data
 
 
 function name is Zero 
-	 {*ast.FieldList -> *ast.Field [a array Zero]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a array Zero]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
 	 {*ast.SelectorExpr [reflect String]}
 	 {*ast.BlockStmt -> *ast.AssignStmt [ss]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
 	 {*ast.RangeStmt [i ss]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [ss i]}
-	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [isParameterizedKind]}
+	 {*ast.BasicLit -> *ast.ReturnStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [isParameterizedKind]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
 	 {*ast.BlockStmt -> *ast.AssignStmt [ba]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a byteSlice]}
 	 {*ast.RangeStmt [i ba]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [ba i]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt [l]}
+	 {*ast.BasicLit -> *ast.ReturnStmt -> *ast.AssignStmt [l]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
 	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.BinaryExpr [i l]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [i l]}
 	 {*ast.IncDecStmt [i]}
 	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
@@ -278,7 +281,7 @@ function name is Zero
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
 	 {*ast.AssignStmt [val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set]}
@@ -301,7 +304,7 @@ function name is rtype
 
 
 function name is malloc 
-	 { [malloc]}
+	 {*ast.CommentGroup -> *ast.Comment [malloc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t Dtype]}
 	 {*ast.Field [length int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
@@ -313,7 +316,7 @@ function name is malloc
 
 
 function name is calcMemSize 
-	 { [calcMemSize]}
+	 {*ast.CommentGroup -> *ast.Comment [calcMemSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dt Dtype]}
 	 {*ast.Field [size int]}
 	 {*ast.FieldList -> *ast.Field [int64]}
@@ -323,14 +326,14 @@ function name is calcMemSize
 
 
 function name is copyArray 
-	 { [copyArray]}
+	 {*ast.CommentGroup -> *ast.Comment [copyArray]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dst src]}
 	 {*ast.StarExpr [array]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [dst t]}
 	 {*ast.SelectorExpr [src t]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [storage Copy]}
+	 {*ast.BasicLit -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [storage Copy]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [dst t Type]}
 	 {*ast.UnaryExpr -> *ast.SelectorExpr [dst Header]}
 	 {*ast.UnaryExpr -> *ast.SelectorExpr [src Header]}
@@ -346,20 +349,20 @@ function name is copyArraySliced
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [dst t]}
 	 {*ast.SelectorExpr [src t]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [storage CopySliced]}
+	 {*ast.BasicLit -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [storage CopySliced]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [dst t Type]}
 	 {*ast.UnaryExpr -> *ast.SelectorExpr [dst Header dstart dend]}
 	 {*ast.UnaryExpr -> *ast.SelectorExpr [src Header sstart send]}
 
 
 function name is copyDense 
-	 { [copyDense]}
+	 {*ast.CommentGroup -> *ast.Comment [copyDense]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dst src DenseTensor]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [dst Dtype]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src Dtype]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.IfStmt -> *ast.AssignStmt [ms ok]}
+	 {*ast.BasicLit -> *ast.IfStmt -> *ast.AssignStmt [ms ok]}
 	 {*ast.TypeAssertExpr [src MaskedTensor]}
 	 {*ast.BinaryExpr [ok]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ms IsMasked]}
@@ -391,7 +394,7 @@ function name is copyDense
 
 
 function name is copyDenseSliced 
-	 { [copyDenseSliced]}
+	 {*ast.CommentGroup -> *ast.Comment [copyDenseSliced]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dst DenseTensor]}
 	 {*ast.Field [dstart dend int]}
 	 {*ast.Field [src DenseTensor]}
@@ -400,7 +403,7 @@ function name is copyDenseSliced
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [dst Dtype]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src Dtype]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.IfStmt -> *ast.AssignStmt [ms ok]}
+	 {*ast.BasicLit -> *ast.IfStmt -> *ast.AssignStmt [ms ok]}
 	 {*ast.TypeAssertExpr [src MaskedTensor]}
 	 {*ast.BinaryExpr [ok]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ms IsMasked]}
@@ -451,7 +454,7 @@ function name is copyDenseSliced
 
 
 function name is copyDenseIter 
-	 { [copyDenseIter]}
+	 {*ast.CommentGroup -> *ast.Comment [copyDenseIter]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dst src DenseTensor]}
 	 {*ast.Field [diter siter Iterator]}
 	 {*ast.FieldList -> *ast.Field [int]}
@@ -459,15 +462,15 @@ function name is copyDenseIter
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [dst Dtype]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src Dtype]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [dst RequiresIterator]}
+	 {*ast.BasicLit -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [dst RequiresIterator]}
 	 {*ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [src RequiresIterator]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [dst DataOrder HasSameOrder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src DataOrder]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [copyDense dst src nil]}
 	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [dst IsNativelyAccessible]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf inaccessibleData dst]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf inaccessibleData dst]}
 	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [src IsNativelyAccessible]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf inaccessibleData src]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf inaccessibleData src]}
 	 {*ast.IfStmt -> *ast.BinaryExpr [diter nil]}
 	 {*ast.BlockStmt -> *ast.AssignStmt [diter]}
 	 {*ast.CallExpr [FlatIteratorFromDense dst]}
@@ -498,15 +501,16 @@ function name is copyDenseIter
 	 {*ast.CallExpr -> *ast.SelectorExpr [dst rtype]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dst hdr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src hdr diter siter nil]}
-	 {*ast.TypeSpec [scalarPtrCount]}
+	 {*ast.GenDecl -> *ast.TypeSpec [scalarPtrCount]}
 	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Ptr unsafe Pointer]}
 	 {*ast.Field [Count int]}
-	 {*ast.ValueSpec [scalarRCLock]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [scalarRCLock]}
 	 {*ast.SelectorExpr [sync Mutex]}
-	 {*ast.ValueSpec [scalarRC]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [scalarRC]}
 	 {*ast.CallExpr [make]}
 	 {*ast.MapType [uintptr]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [sync Pool]}
+	 {*ast.CommentGroup -> *ast.Comment []}
 
 
 function name is scalarPool 
@@ -548,7 +552,7 @@ function name is freeScalar
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [bs nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.RangeStmt [i bs]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [bs i]}
-	 {*ast.AssignStmt [size]}
+	 {*ast.BasicLit -> *ast.AssignStmt [size]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr [len bs]}
 	 {*ast.AssignStmt [pool]}
@@ -557,12 +561,12 @@ function name is freeScalar
 
 
 function name is scalarToHeader 
-	 { [scalarToHeader]}
+	 {*ast.CommentGroup -> *ast.Comment [scalarToHeader]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [hdr]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
 	 {*ast.Field [newAlloc bool]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [raw]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [raw]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [at]}
 	 {*ast.TypeAssertExpr [a]}
@@ -596,7 +600,7 @@ function name is copyScalarToPrealloc
 	 {*ast.AssignStmt [p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr [bs]}
-	 {*ast.AssignStmt [v]}
+	 {*ast.BasicLit -> *ast.AssignStmt [v]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt xT p]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect Indirect v Set xV]}
 	 {*ast.ReturnStmt []}
