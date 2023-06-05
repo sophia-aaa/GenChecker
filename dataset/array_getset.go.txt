@@ -1,6 +1,6 @@
 function name is Set 
 	 {*ast.File [tensor]}
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array Set]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x]}
@@ -87,14 +87,14 @@ function name is Set
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
 	 {*ast.AssignStmt [val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set xv]}
 
 
 function name is Get 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array Get]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt []}
@@ -142,14 +142,14 @@ function name is Get
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
 	 {*ast.AssignStmt [val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Interface]}
 
 
 function name is Memset 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array Memset]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
@@ -305,7 +305,7 @@ function name is Memset
 	 {*ast.AssignStmt [l]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
 	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.BinaryExpr [i l]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [i l]}
 	 {*ast.IncDecStmt [i]}
 	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
@@ -313,7 +313,7 @@ function name is Memset
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
 	 {*ast.AssignStmt [val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set xv]}
@@ -326,7 +326,7 @@ function name is memsetIter
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [it Iterator]}
 	 {*ast.FieldList -> *ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [i int]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [i int]}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [a t]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [Bool]}
@@ -630,7 +630,7 @@ function name is memsetIter
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
 	 {*ast.AssignStmt [val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set xv]}
@@ -640,7 +640,7 @@ function name is memsetIter
 
 
 function name is Eq 
-	 {*ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.SelectorExpr [main array Eq]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [other]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
@@ -656,10 +656,10 @@ function name is Eq
 	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [oa Header Raw]}
-	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit -> *ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [true]}
+	 {*ast.BasicLit -> *ast.BlockStmt -> *ast.ReturnStmt [true]}
 	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
@@ -753,7 +753,7 @@ function name is Eq
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [oa GetUnsafePointer i v]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
 	 {*ast.CaseClause -> *ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
 	 {*ast.IncDecStmt [i]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual]}
@@ -769,7 +769,7 @@ function name is zeroIter
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array zeroIter]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [it Iterator]}
 	 {*ast.FieldList -> *ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.ValueSpec [i int]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [i int]}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [a t]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [Bool]}
@@ -792,7 +792,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Int8]}
 	 {*ast.AssignStmt [data]}
@@ -803,7 +803,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Int16]}
 	 {*ast.AssignStmt [data]}
@@ -814,7 +814,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Int32]}
 	 {*ast.AssignStmt [data]}
@@ -825,7 +825,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Int64]}
 	 {*ast.AssignStmt [data]}
@@ -836,7 +836,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Uint]}
 	 {*ast.AssignStmt [data]}
@@ -847,7 +847,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Uint8]}
 	 {*ast.AssignStmt [data]}
@@ -858,7 +858,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Uint16]}
 	 {*ast.AssignStmt [data]}
@@ -869,7 +869,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Uint32]}
 	 {*ast.AssignStmt [data]}
@@ -880,7 +880,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Uint64]}
 	 {*ast.AssignStmt [data]}
@@ -891,7 +891,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Uintptr]}
 	 {*ast.AssignStmt [data]}
@@ -902,7 +902,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Float32]}
 	 {*ast.AssignStmt [data]}
@@ -913,7 +913,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Float64]}
 	 {*ast.AssignStmt [data]}
@@ -924,7 +924,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Complex64]}
 	 {*ast.AssignStmt [data]}
@@ -935,7 +935,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [Complex128]}
 	 {*ast.AssignStmt [data]}
@@ -946,7 +946,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [String]}
 	 {*ast.AssignStmt [data]}
@@ -957,7 +957,7 @@ function name is zeroIter
 	 {*ast.AssignStmt [i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [it Next]}
 	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [data i]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.BasicLit -> *ast.AssignStmt [err]}
 	 {*ast.CallExpr [handleNoOp err]}
 	 {*ast.CaseClause [UnsafePointer]}
 	 {*ast.AssignStmt [data]}
@@ -981,7 +981,7 @@ function name is zeroIter
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
+	 {*ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
 	 {*ast.AssignStmt [val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect val]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Set]}

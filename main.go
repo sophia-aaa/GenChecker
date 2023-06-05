@@ -932,22 +932,6 @@ func main() {
 
 	// This variable is for checking switch statement
 	caseWFunc, existsSwitch := checkSwitchStatement(modListFunctions2)
-
-	// Check reused cases in switch statement
-	caseListCheck := checkReusedCases(caseWFunc, funcList, typeList)
-
-	if len(caseListCheck) > 0 {
-		fmt.Println()
-		fmt.Println()
-		for _, val := range caseListCheck {
-			fmt.Print("This Function ", val.path, " has switch-statement and reused cases : \n")
-			for _, cases := range val.value {
-				fmt.Print(cases, " ")
-			}
-			fmt.Println()
-			fmt.Println()
-		}
-	}
 	if existsSwitch {
 		fset := token.NewFileSet()
 		astTree, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)
@@ -1042,10 +1026,10 @@ func main() {
 				/*				fmt.Println(flag4Case[idx])
 								fmt.Println(lengthCase == lengthList[idx])
 								fmt.Println(lengthCase == lengthList[idx]-1)
-								fmt.Println(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[0].cases)-1].value[0].path)*/
+								fmt.Println(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[idx].cases)-1].value[0].path)*/
 				if flag4Case[idx] && ((lengthCase == lengthList[idx]) ||
 					((lengthCase == lengthList[idx]-1) && // in this case, there exists a default case clause and it will not be considered.
-						(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[0].cases)-1].value[0].path))) {
+						(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[idx].cases)-1].value[0].path))) {
 					fmt.Println()
 					fmt.Println("The function ", modifiedFuncCheck[idx].funcName, " can be replaced by Generics and the cases which will be replaced by generics are: ")
 					for _, val := range funcCaseClause[idx].value {
@@ -1062,4 +1046,20 @@ func main() {
 		createTextFile(filename, modListFunctions2)
 
 	}
+	// Check reused cases in switch statement
+	caseListCheck := checkReusedCases(caseWFunc, funcList, typeList)
+
+	if len(caseListCheck) > 0 {
+		fmt.Println()
+		fmt.Println()
+		for _, val := range caseListCheck {
+			fmt.Print("This Function ", val.path, " has switch-statement and reused cases : \n")
+			for _, cases := range val.value {
+				fmt.Print(cases, " ")
+			}
+			fmt.Println()
+			fmt.Println()
+		}
+	}
+
 }
