@@ -885,6 +885,86 @@ func buildAstCaseStr(Tree2cases []basicCases) []checkCases {
 
 	return funcCheck
 }
+
+func checkSwitchCases(modifiedFuncCheck []checkCases, funcList []string, typeList []string) {
+
+	caseListCheck := checkReusedCases(modifiedFuncCheck, funcList, typeList)
+
+	// count number of case clauses
+	lengthList := make([]int, len(modifiedFuncCheck))
+	numberOfCase := 0
+	for idx := range modifiedFuncCheck {
+		for _, val := range modifiedFuncCheck[idx].cases {
+			if strings.Contains(val.funcName, "case") {
+				numberOfCase++
+			}
+		}
+		lengthList[idx] = numberOfCase
+		numberOfCase = 0
+	}
+	// *********************
+	var checkCaseClause []elem
+	var funcCaseClause []basicStr
+	// filter case clause
+	for idx := range modifiedFuncCheck {
+		for _, val := range modifiedFuncCheck[idx].cases {
+			if strings.Contains(val.funcName, "case") &&
+				(val.value[0].path == "*ast.CaseClause" ||
+					val.value[0].path == "*ast.CaseClause -> *ast.SelectorExpr") {
+				//fmt.Println(val.value[0].value)
+				checkCaseClause = append(checkCaseClause, elem{val.funcName, val.value[0].value})
+			}
+		}
+		funcCaseClause = append(funcCaseClause, basicStr{modifiedFuncCheck[idx].funcName, checkCaseClause})
+		checkCaseClause = []elem{}
+	}
+
+	// check whether the case clauses are type variables
+	flag4Case := make([]bool, len(funcCaseClause))
+	flag4outer := false
+	for idx := range funcCaseClause {
+		for i, val := range funcCaseClause[idx].value {
+			if len(val.value) > 0 {
+				for _, value := range val.value {
+					if !contains(typeList, value) {
+						if i != len(funcCaseClause[idx].value)-1 {
+							flag4Case[idx] = false
+							flag4outer = true
+							break
+						}
+					}
+					flag4Case[idx] = true
+				}
+			}
+			if flag4outer {
+				flag4outer = false
+				break
+			}
+		}
+	}
+
+	if len(caseListCheck) > 0 {
+		for idx := range caseListCheck {
+			lengthCase := len(caseListCheck[idx].value)
+			/*				fmt.Println(flag4Case[idx])
+							fmt.Println(lengthCase == lengthList[idx])
+							fmt.Println(lengthCase == lengthList[idx]-1)
+							fmt.Println(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[idx].cases)-1].value[0].path)*/
+			if flag4Case[idx] && ((lengthCase == lengthList[idx]) ||
+				((lengthCase == lengthList[idx]-1) && // in this case, there exists a default case clause and it will not be considered.
+					(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[idx].cases)-1].value[0].path))) {
+				fmt.Println()
+				fmt.Println("The function ", modifiedFuncCheck[idx].funcName, " can be replaced by Generics and the cases which will be replaced by generics are: ")
+				for _, val := range funcCaseClause[idx].value {
+					fmt.Print(val.value, " ")
+				}
+				fmt.Println()
+			}
+			fmt.Println()
+		}
+
+	}
+}
 func main() {
 	// filename, err := os.ReadFile(os.Args[2])
 	// command must be like this: go run gen.go - test.go
@@ -958,91 +1038,7 @@ func main() {
 			modifiedFuncCheck = append(modifiedFuncCheck, checkCases{funcCheck[idx].funcName, checkSelectorExpr(funcCheck[idx].cases)})
 		}
 
-		caseListCheck := checkReusedCases(modifiedFuncCheck, funcList, typeList)
-
-		// count number of case clauses
-		lengthList := make([]int, len(modifiedFuncCheck))
-		numberOfCase := 0
-		for idx := range modifiedFuncCheck {
-			for _, val := range modifiedFuncCheck[idx].cases {
-				if strings.Contains(val.funcName, "case") {
-					numberOfCase++
-				}
-			}
-			lengthList[idx] = numberOfCase
-			numberOfCase = 0
-		}
-
-		var checkCaseClause []elem
-		var funcCaseClause []basicStr
-		// filter case clause
-		for idx := range modifiedFuncCheck {
-			for _, val := range modifiedFuncCheck[idx].cases {
-				if strings.Contains(val.funcName, "case") &&
-					(val.value[0].path == "*ast.CaseClause" ||
-						val.value[0].path == "*ast.CaseClause -> *ast.SelectorExpr") {
-					//fmt.Println(val.value[0].value)
-					checkCaseClause = append(checkCaseClause, elem{val.funcName, val.value[0].value})
-				}
-			}
-			funcCaseClause = append(funcCaseClause, basicStr{modifiedFuncCheck[idx].funcName, checkCaseClause})
-			checkCaseClause = []elem{}
-		}
-
-		/*for idx := range funcCaseClause {
-			fmt.Println(funcCaseClause[idx].funcName)
-			for _, val := range funcCaseClause[idx].value {
-				fmt.Println(val)
-			}
-		}*/
-
-		// check whether the case clauses are type variables
-		flag4Case := make([]bool, len(funcCaseClause))
-		flag4outer := false
-		for idx := range funcCaseClause {
-			for i, val := range funcCaseClause[idx].value {
-				if len(val.value) > 0 {
-					for _, value := range val.value {
-						if !contains(typeList, value) {
-							if i != len(funcCaseClause[idx].value)-1 {
-								flag4Case[idx] = false
-								flag4outer = true
-								break
-							}
-						}
-						flag4Case[idx] = true
-					}
-				}
-				if flag4outer {
-					flag4outer = false
-					break
-				}
-			}
-		}
-
-		if len(caseListCheck) > 0 {
-			for idx := range caseListCheck {
-				lengthCase := len(caseListCheck[idx].value)
-				/*				fmt.Println(flag4Case[idx])
-								fmt.Println(lengthCase == lengthList[idx])
-								fmt.Println(lengthCase == lengthList[idx]-1)
-								fmt.Println(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[idx].cases)-1].value[0].path)*/
-				if flag4Case[idx] && ((lengthCase == lengthList[idx]) ||
-					((lengthCase == lengthList[idx]-1) && // in this case, there exists a default case clause and it will not be considered.
-						(modifiedFuncCheck[idx].cases[1].value[0].path != modifiedFuncCheck[idx].cases[len(modifiedFuncCheck[idx].cases)-1].value[0].path))) {
-					fmt.Println()
-					fmt.Println("The function ", modifiedFuncCheck[idx].funcName, " can be replaced by Generics and the cases which will be replaced by generics are: ")
-					for _, val := range funcCaseClause[idx].value {
-						fmt.Print(val.value, " ")
-					}
-					fmt.Println()
-				}
-				fmt.Println()
-			}
-
-		}
-		// create a text file
-		//createTextFile(filename, listFunctions2)
+		checkSwitchCases(modifiedFuncCheck, funcList, typeList)
 		createTextFile(filename, modListFunctions2)
 
 	}

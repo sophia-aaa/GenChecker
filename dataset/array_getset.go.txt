@@ -1,6 +1,9 @@
+{*ast.File [tensor]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit []}
+
+
 function name is Set 
-	 {*ast.File [tensor]}
-	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array Set]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x]}
