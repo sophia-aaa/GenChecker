@@ -482,7 +482,7 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 								}
 							} else {
 								caseFlag = false
-								continue // continue the progress comparing a next function to the compared one
+								break // break and continue the progress comparing a next function to the compared one
 
 							}
 						}

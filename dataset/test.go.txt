@@ -1,263 +1,28 @@
-function name is Bools 
-	 {*ast.File [dataset]}
-	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Bools]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [bool]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen bType]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen bType]}
+{*ast.File [dataset]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit []}
 
 
-function name is SetB 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetB]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Bools i x]}
-
-
-function name is GetB 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetB]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Bools i]}
-
-
-function name is Ints 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Ints]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen iType]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen iType]}
-
-
-function name is SetI 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetI]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Ints i x]}
-
-
-function name is GetI 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetI]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Ints i]}
-
-
-function name is Int8s 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Int8s]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int8]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i8Type]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i8Type]}
-
-
-function name is SetI8 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetI8]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x int8]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int8s i x]}
-
-
-function name is GetI8 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetI8]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [int8]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int8s i]}
-
-
-function name is Int16s 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Int16s]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int16]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i16Type]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i16Type]}
-
-
-function name is SetI16 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetI16]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x int16]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int16s i x]}
-
-
-function name is GetI16 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetI16]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [int16]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int16s i]}
-
-
-function name is Int32s 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Int32s]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int32]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i32Type]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i32Type]}
-
-
-function name is SetI32 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetI32]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int32s i x]}
-
-
-function name is GetI32 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetI32]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int32s i]}
-
-
-function name is Int64s 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Int64s]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int64]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i64Type]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i64Type]}
-
-
-function name is SetI64 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetI64]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int64s i x]}
-
-
-function name is GetI64 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetI64]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [int64]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int64s i]}
-
-
-function name is Uints 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Uints]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uint]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen uType]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen uType]}
-
-
-function name is SetU 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetU]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x uint]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uints i x]}
-
-
-function name is GetU 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetU]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [uint]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uints i]}
-
-
-function name is Uint8s 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Uint8s]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uint8]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u8Type]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u8Type]}
-
-
-function name is SetU8 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetU8]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x uint8]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint8s i x]}
-
-
-function name is GetU8 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetU8]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [uint8]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint8s i]}
-
-
-function name is Uint16s 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header Uint16s]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uint16]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u16Type]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u16Type]}
-
-
-function name is SetU16 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header SetU16]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.Field [x uint16]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint16s i x]}
-
-
-function name is GetU16 
-	 {*ast.FieldList -> *ast.Field [h]}
-	 {*ast.StarExpr [Header GetU16]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field [uint16]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint16s i]}
-
-
-function name is ReduceFirst 
-	 {*ast.FieldList -> *ast.Field [e E ReduceFirst]}
+function name is ReduceLast 
+	 {*ast.FieldList -> *ast.Field [e E ReduceLast]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.Field [data]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
 	 {*ast.Field [retVal]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
-	 {*ast.Field [split int]}
-	 {*ast.Field [size int]}
-	 {*ast.Field [fn]}
+	 {*ast.Field [dimSize int]}
+	 {*ast.Field [defaultValue]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [fn]}
 	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [err error]}
-	 {*ast.BlockStmt []}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ok bool]}
 	 {*ast.SwitchStmt [t]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [Bool]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def bool]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue bool]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Bools]}
 	 {*ast.AssignStmt [rt]}
@@ -266,15 +31,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
-	 {*ast.Field -> *ast.ArrayType [bool]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstB dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastB dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.Field [bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstB dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastB dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Ints]}
 	 {*ast.AssignStmt [rt]}
@@ -283,15 +53,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
-	 {*ast.Field -> *ast.ArrayType [int]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [int]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Int8s]}
 	 {*ast.AssignStmt [rt]}
@@ -300,15 +75,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
-	 {*ast.Field -> *ast.ArrayType [int8]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI8 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI8 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
 	 {*ast.Field [int8]}
 	 {*ast.FieldList -> *ast.Field [int8]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI8 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI8 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Int16s]}
 	 {*ast.AssignStmt [rt]}
@@ -317,15 +97,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
-	 {*ast.Field -> *ast.ArrayType [int16]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI16 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI16 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
 	 {*ast.Field [int16]}
 	 {*ast.FieldList -> *ast.Field [int16]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI16 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI16 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Int32s]}
 	 {*ast.AssignStmt [rt]}
@@ -334,15 +119,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
-	 {*ast.Field -> *ast.ArrayType [int32]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI32 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
 	 {*ast.Field [int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI32 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Int64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def int64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue int64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Int64s]}
 	 {*ast.AssignStmt [rt]}
@@ -351,15 +141,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
-	 {*ast.Field -> *ast.ArrayType [int64]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstI64 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastI64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
 	 {*ast.Field [int64]}
 	 {*ast.FieldList -> *ast.Field [int64]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstI64 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastI64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Uints]}
 	 {*ast.AssignStmt [rt]}
@@ -368,15 +163,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
-	 {*ast.Field -> *ast.ArrayType [uint]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
 	 {*ast.Field [uint]}
 	 {*ast.FieldList -> *ast.Field [uint]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint8]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint8s]}
 	 {*ast.AssignStmt [rt]}
@@ -385,15 +185,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
-	 {*ast.Field -> *ast.ArrayType [uint8]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU8 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU8 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
 	 {*ast.Field [uint8]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU8 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU8 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint16]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint16s]}
 	 {*ast.AssignStmt [rt]}
@@ -402,15 +207,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
-	 {*ast.Field -> *ast.ArrayType [uint16]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU16 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU16 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
 	 {*ast.Field [uint16]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU16 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU16 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint32s]}
 	 {*ast.AssignStmt [rt]}
@@ -419,15 +229,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint32]}
-	 {*ast.Field -> *ast.ArrayType [uint32]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU32 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
 	 {*ast.Field [uint32]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU32 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uint64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uint64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uint64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Uint64s]}
 	 {*ast.AssignStmt [rt]}
@@ -436,15 +251,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint64]}
-	 {*ast.Field -> *ast.ArrayType [uint64]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstU64 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastU64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [uint64]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstU64 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastU64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Uintptr]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def uintptr]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue uintptr]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Uintptrs]}
 	 {*ast.AssignStmt [rt]}
@@ -453,15 +273,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uintptr]}
-	 {*ast.Field -> *ast.ArrayType [uintptr]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstUintptr dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastUintptr dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.Field [uintptr]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstUintptr dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastUintptr dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Float32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def float32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue float32]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Float32s]}
 	 {*ast.AssignStmt [rt]}
@@ -470,15 +295,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float32]}
-	 {*ast.Field -> *ast.ArrayType [float32]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstF32 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastF32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
 	 {*ast.Field [float32]}
 	 {*ast.FieldList -> *ast.Field [float32]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstF32 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastF32 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Float64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def float64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue float64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Float64s]}
 	 {*ast.AssignStmt [rt]}
@@ -487,15 +317,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float64]}
-	 {*ast.Field -> *ast.ArrayType [float64]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstF64 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastF64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
 	 {*ast.Field [float64]}
 	 {*ast.FieldList -> *ast.Field [float64]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstF64 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastF64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Complex64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def complex64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue complex64]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Complex64s]}
 	 {*ast.AssignStmt [rt]}
@@ -504,15 +339,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex64]}
-	 {*ast.Field -> *ast.ArrayType [complex64]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstC64 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastC64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
 	 {*ast.Field [complex64]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstC64 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastC64 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [Complex128]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def complex128]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue complex128]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Complex128s]}
 	 {*ast.AssignStmt [rt]}
@@ -521,15 +361,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex128]}
-	 {*ast.Field -> *ast.ArrayType [complex128]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstC128 dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastC128 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
 	 {*ast.Field [complex128]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstC128 dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastC128 dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [String]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [def string]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr [defaultValue string]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data Strings]}
 	 {*ast.AssignStmt [rt]}
@@ -538,15 +383,20 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
-	 {*ast.Field -> *ast.ArrayType [string]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstStr dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastStr dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [string]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstStr dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastStr dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause [UnsafePointer]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec -> *ast.SelectorExpr [def unsafe Pointer]}
+	 {*ast.IfStmt -> *ast.AssignStmt [def ok]}
+	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [defaultValue unsafe Pointer]}
+	 {*ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf defaultValueErrMsg def defaultValue defaultValue]}
 	 {*ast.AssignStmt [dt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [data UnsafePointers]}
 	 {*ast.AssignStmt [rt]}
@@ -555,37 +405,1148 @@ function name is ReduceFirst
 	 {*ast.TypeAssertExpr [fn]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.ExprStmt -> *ast.CallExpr [reduceFirstUnsafePointer dt rt split size f]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.ExprStmt -> *ast.CallExpr [reduceLastUnsafePointer dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstUnsafePointer dt rt split size f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastUnsafePointer dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
 	 {*ast.BasicLit [t]}
 
 
-function name is Data 
-	 {*ast.FieldList -> *ast.Field [a array Data]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [shdr]}
-	 {*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
-	 {*ast.KeyValueExpr [Data]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptr]}
-	 {*ast.KeyValueExpr [Len]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
-	 {*ast.KeyValueExpr [Cap]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [a Cap]}
-	 {*ast.AssignStmt [sliceT]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [reflect SliceOf]}
-	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
-	 {*ast.AssignStmt [ptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [shdr]}
-	 {*ast.AssignStmt [val]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt sliceT ptr]}
-	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Interface]}
+function name is Map 
+	 {*ast.FieldList -> *ast.Field [e E Map]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.Field [fn]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
+	 {*ast.Field [incr bool]}
+	 {*ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [as]}
+	 {*ast.CallExpr [isScalar a t]}
+	 {*ast.SwitchStmt [t]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [Bool]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Bools]}
+	 {*ast.IfStmt [incr]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrB f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapB f0 at]}
+	 {*ast.CaseClause [Int]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Ints]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrI f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrI f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI f0 at]}
+	 {*ast.CaseClause [Int8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int8]}
+	 {*ast.FieldList -> *ast.Field [int8]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int8s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI8 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrI8 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrI8 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI8 f0 at]}
+	 {*ast.CaseClause [Int16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int16]}
+	 {*ast.FieldList -> *ast.Field [int16]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int16s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI16 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrI16 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrI16 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI16 f0 at]}
+	 {*ast.CaseClause [Int32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int32]}
+	 {*ast.FieldList -> *ast.Field [int32]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int32s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI32 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrI32 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrI32 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI32 f0 at]}
+	 {*ast.CaseClause [Int64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.FieldList -> *ast.Field [int64]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Int64s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp int64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrI64 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrI64 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrI64 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapI64 f0 at]}
+	 {*ast.CaseClause [Uint]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.FieldList -> *ast.Field [uint]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uints]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrU f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrU f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU f0 at]}
+	 {*ast.CaseClause [Uint8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.FieldList -> *ast.Field [uint8]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint8s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU8 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrU8 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrU8 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU8 f0 at]}
+	 {*ast.CaseClause [Uint16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.FieldList -> *ast.Field [uint16]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint16s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint16]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU16 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrU16 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrU16 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU16 f0 at]}
+	 {*ast.CaseClause [Uint32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint32s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU32 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrU32 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrU32 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU32 f0 at]}
+	 {*ast.CaseClause [Uint64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uint64s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp uint64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrU64 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrU64 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrU64 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapU64 f0 at]}
+	 {*ast.CaseClause [Uintptr]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptrs]}
+	 {*ast.IfStmt [incr]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrUintptr f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapUintptr f0 at]}
+	 {*ast.CaseClause [Float32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float32]}
+	 {*ast.FieldList -> *ast.Field [float32]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float32s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp float32]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrF32 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrF32 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrF32 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapF32 f0 at]}
+	 {*ast.CaseClause [Float64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [float64]}
+	 {*ast.FieldList -> *ast.Field [float64]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Float64s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp float64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrF64 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrF64 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrF64 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapF64 f0 at]}
+	 {*ast.CaseClause [Complex64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.FieldList -> *ast.Field [complex64]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex64s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp complex64]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrC64 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrC64 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrC64 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapC64 f0 at]}
+	 {*ast.CaseClause [Complex128]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.FieldList -> *ast.Field [complex128]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Complex128s]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp complex128]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrC128 f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrC128 f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrC128 f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapC128 f0 at]}
+	 {*ast.CaseClause [String]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tmp string]}
+	 {*ast.IfStmt -> *ast.AssignStmt [tmp err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [tmp]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr [MapIncrStr f0 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapIncrErrStr f1 at]}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.UnaryExpr [incr]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrStr f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapStr f0 at]}
+	 {*ast.CaseClause [UnsafePointer]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f0]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f1]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field [error]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [f]}
+	 {*ast.TypeAssertExpr [fn]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.AssignStmt [f0 f]}
+	 {*ast.CaseClause -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field [error]}
+	 {*ast.AssignStmt [f1 f]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [fn]}
+	 {*ast.AssignStmt [at]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
+	 {*ast.IfStmt [incr]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit -> *ast.CallExpr [f0]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [at]}
+	 {*ast.BasicLit [err]}
+	 {*ast.CallExpr [f1]}
+	 {*ast.IndexExpr [at]}
+	 {*ast.BasicLit []}
+	 {*ast.CaseClause -> *ast.BinaryExpr -> *ast.UnaryExpr [as]}
+	 {*ast.BinaryExpr [f0 nil]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [MapErrUnsafePointer f1 at]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr [MapUnsafePointer f0 at]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [t]}
+	 {*ast.ReturnStmt []}
 
 

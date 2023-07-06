@@ -5,325 +5,947 @@ import (
 	"unsafe"
 )
 
-/*
-	type GenHeader[T any] struct {
-		List []T
-	}
-
-	func (g *GenHeader[T]) Gens() []T {
-		return g.List
-	}
-
-	func (g *GenHeader[T]) SetGI(i int, x T) {
-		g.List[i] = x
-	}
-
-	func (g *GenHeader[T]) GetGI(i int) T {
-		return g.List[i]
-	}
-*/
-func (h *Header) Bools() []bool {
-	return (*(*[]bool)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(bType):h.TypedLen(bType)]
-}
-func (h *Header) SetB(i int, x bool) { h.Bools()[i] = x }
-func (h *Header) GetB(i int) bool    { return h.Bools()[i] }
-
-/* int */
-
-func (h *Header) Ints() []int {
-	return (*(*[]int)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(iType):h.TypedLen(iType)]
-}
-func (h *Header) SetI(i int, x int) { h.Ints()[i] = x }
-func (h *Header) GetI(i int) int    { return h.Ints()[i] }
-
-/* int8 */
-
-func (h *Header) Int8s() []int8 {
-	return (*(*[]int8)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(i8Type):h.TypedLen(i8Type)]
-}
-func (h *Header) SetI8(i int, x int8) { h.Int8s()[i] = x }
-func (h *Header) GetI8(i int) int8    { return h.Int8s()[i] }
-
-/* int16 */
-
-func (h *Header) Int16s() []int16 {
-	return (*(*[]int16)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(i16Type):h.TypedLen(i16Type)]
-}
-func (h *Header) SetI16(i int, x int16) { h.Int16s()[i] = x }
-func (h *Header) GetI16(i int) int16    { return h.Int16s()[i] }
-
-/* int32 */
-
-func (h *Header) Int32s() []int32 {
-	return (*(*[]int32)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(i32Type):h.TypedLen(i32Type)]
-}
-func (h *Header) SetI32(i int, x int32) { h.Int32s()[i] = x }
-func (h *Header) GetI32(i int) int32    { return h.Int32s()[i] }
-
-/* int64 */
-
-func (h *Header) Int64s() []int64 {
-	return (*(*[]int64)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(i64Type):h.TypedLen(i64Type)]
-}
-func (h *Header) SetI64(i int, x int64) { h.Int64s()[i] = x }
-func (h *Header) GetI64(i int) int64    { return h.Int64s()[i] }
-
-/* uint */
-
-func (h *Header) Uints() []uint {
-	return (*(*[]uint)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(uType):h.TypedLen(uType)]
-}
-func (h *Header) SetU(i int, x uint) { h.Uints()[i] = x }
-func (h *Header) GetU(i int) uint    { return h.Uints()[i] }
-
-/* uint8 */
-
-func (h *Header) Uint8s() []uint8 {
-	return (*(*[]uint8)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(u8Type):h.TypedLen(u8Type)]
-}
-func (h *Header) SetU8(i int, x uint8) { h.Uint8s()[i] = x }
-func (h *Header) GetU8(i int) uint8    { return h.Uint8s()[i] }
-
-/* uint16 */
-
-func (h *Header) Uint16s() []uint16 {
-	return (*(*[]uint16)(unsafe.Pointer(&h.Raw)))[:h.TypedLen(u16Type):h.TypedLen(u16Type)]
-}
-func (h *Header) SetU16(i int, x uint16) { h.Uint16s()[i] = x }
-func (h *Header) GetU16(i int) uint16    { return h.Uint16s()[i] }
-
-func (e E) ReduceFirst(t reflect.Type, data *storage.Header, retVal *storage.Header, split int, size int, fn interface{}) (err error) {
+func (e E) ReduceLast(t reflect.Type, data *storage.Header, retVal *storage.Header, dimSize int, defaultValue interface{}, fn interface{}) (err error) {
+	var ok bool
 	switch t {
 	case Bool:
+		var def bool
+
+		if def, ok = defaultValue.(bool); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Bools()
 		rt := retVal.Bools()
 		switch f := fn.(type) {
-		case func([]bool, []bool):
-			reduceFirstB(dt, rt, split, size, f)
+		case func([]bool) bool:
+			reduceLastB(dt, rt, dimSize, def, f)
 		case func(bool, bool) bool:
-			genericReduceFirstB(dt, rt, split, size, f)
+			genericReduceLastB(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Int:
+		var def int
+
+		if def, ok = defaultValue.(int); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Ints()
 		rt := retVal.Ints()
 		switch f := fn.(type) {
-		case func([]int, []int):
-			reduceFirstI(dt, rt, split, size, f)
+		case func([]int) int:
+			reduceLastI(dt, rt, dimSize, def, f)
 		case func(int, int) int:
-			genericReduceFirstI(dt, rt, split, size, f)
+			genericReduceLastI(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Int8:
+		var def int8
+
+		if def, ok = defaultValue.(int8); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Int8s()
 		rt := retVal.Int8s()
 		switch f := fn.(type) {
-		case func([]int8, []int8):
-			reduceFirstI8(dt, rt, split, size, f)
+		case func([]int8) int8:
+			reduceLastI8(dt, rt, dimSize, def, f)
 		case func(int8, int8) int8:
-			genericReduceFirstI8(dt, rt, split, size, f)
+			genericReduceLastI8(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Int16:
+		var def int16
+
+		if def, ok = defaultValue.(int16); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Int16s()
 		rt := retVal.Int16s()
 		switch f := fn.(type) {
-		case func([]int16, []int16):
-			reduceFirstI16(dt, rt, split, size, f)
+		case func([]int16) int16:
+			reduceLastI16(dt, rt, dimSize, def, f)
 		case func(int16, int16) int16:
-			genericReduceFirstI16(dt, rt, split, size, f)
+			genericReduceLastI16(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Int32:
+		var def int32
+
+		if def, ok = defaultValue.(int32); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Int32s()
 		rt := retVal.Int32s()
 		switch f := fn.(type) {
-		case func([]int32, []int32):
-			reduceFirstI32(dt, rt, split, size, f)
+		case func([]int32) int32:
+			reduceLastI32(dt, rt, dimSize, def, f)
 		case func(int32, int32) int32:
-			genericReduceFirstI32(dt, rt, split, size, f)
+			genericReduceLastI32(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Int64:
+		var def int64
+
+		if def, ok = defaultValue.(int64); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Int64s()
 		rt := retVal.Int64s()
 		switch f := fn.(type) {
-		case func([]int64, []int64):
-			reduceFirstI64(dt, rt, split, size, f)
+		case func([]int64) int64:
+			reduceLastI64(dt, rt, dimSize, def, f)
 		case func(int64, int64) int64:
-			genericReduceFirstI64(dt, rt, split, size, f)
+			genericReduceLastI64(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Uint:
+		var def uint
+
+		if def, ok = defaultValue.(uint); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Uints()
 		rt := retVal.Uints()
 		switch f := fn.(type) {
-		case func([]uint, []uint):
-			reduceFirstU(dt, rt, split, size, f)
+		case func([]uint) uint:
+			reduceLastU(dt, rt, dimSize, def, f)
 		case func(uint, uint) uint:
-			genericReduceFirstU(dt, rt, split, size, f)
+			genericReduceLastU(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Uint8:
+		var def uint8
+
+		if def, ok = defaultValue.(uint8); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Uint8s()
 		rt := retVal.Uint8s()
 		switch f := fn.(type) {
-		case func([]uint8, []uint8):
-			reduceFirstU8(dt, rt, split, size, f)
+		case func([]uint8) uint8:
+			reduceLastU8(dt, rt, dimSize, def, f)
 		case func(uint8, uint8) uint8:
-			genericReduceFirstU8(dt, rt, split, size, f)
+			genericReduceLastU8(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Uint16:
+		var def uint16
+
+		if def, ok = defaultValue.(uint16); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Uint16s()
 		rt := retVal.Uint16s()
 		switch f := fn.(type) {
-		case func([]uint16, []uint16):
-			reduceFirstU16(dt, rt, split, size, f)
+		case func([]uint16) uint16:
+			reduceLastU16(dt, rt, dimSize, def, f)
 		case func(uint16, uint16) uint16:
-			genericReduceFirstU16(dt, rt, split, size, f)
+			genericReduceLastU16(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Uint32:
+		var def uint32
+
+		if def, ok = defaultValue.(uint32); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Uint32s()
 		rt := retVal.Uint32s()
 		switch f := fn.(type) {
-		case func([]uint32, []uint32):
-			reduceFirstU32(dt, rt, split, size, f)
+		case func([]uint32) uint32:
+			reduceLastU32(dt, rt, dimSize, def, f)
 		case func(uint32, uint32) uint32:
-			genericReduceFirstU32(dt, rt, split, size, f)
+			genericReduceLastU32(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Uint64:
+		var def uint64
+
+		if def, ok = defaultValue.(uint64); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Uint64s()
 		rt := retVal.Uint64s()
 		switch f := fn.(type) {
-		case func([]uint64, []uint64):
-			reduceFirstU64(dt, rt, split, size, f)
+		case func([]uint64) uint64:
+			reduceLastU64(dt, rt, dimSize, def, f)
 		case func(uint64, uint64) uint64:
-			genericReduceFirstU64(dt, rt, split, size, f)
+			genericReduceLastU64(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Uintptr:
+		var def uintptr
+
+		if def, ok = defaultValue.(uintptr); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Uintptrs()
 		rt := retVal.Uintptrs()
 		switch f := fn.(type) {
-		case func([]uintptr, []uintptr):
-			reduceFirstUintptr(dt, rt, split, size, f)
+		case func([]uintptr) uintptr:
+			reduceLastUintptr(dt, rt, dimSize, def, f)
 		case func(uintptr, uintptr) uintptr:
-			genericReduceFirstUintptr(dt, rt, split, size, f)
+			genericReduceLastUintptr(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Float32:
+		var def float32
+
+		if def, ok = defaultValue.(float32); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Float32s()
 		rt := retVal.Float32s()
 		switch f := fn.(type) {
-		case func([]float32, []float32):
-			reduceFirstF32(dt, rt, split, size, f)
+		case func([]float32) float32:
+			reduceLastF32(dt, rt, dimSize, def, f)
 		case func(float32, float32) float32:
-			genericReduceFirstF32(dt, rt, split, size, f)
+			genericReduceLastF32(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Float64:
+		var def float64
+
+		if def, ok = defaultValue.(float64); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Float64s()
 		rt := retVal.Float64s()
 		switch f := fn.(type) {
-		case func([]float64, []float64):
-			reduceFirstF64(dt, rt, split, size, f)
+		case func([]float64) float64:
+			reduceLastF64(dt, rt, dimSize, def, f)
 		case func(float64, float64) float64:
-			genericReduceFirstF64(dt, rt, split, size, f)
+			genericReduceLastF64(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Complex64:
+		var def complex64
+
+		if def, ok = defaultValue.(complex64); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Complex64s()
 		rt := retVal.Complex64s()
 		switch f := fn.(type) {
-		case func([]complex64, []complex64):
-			reduceFirstC64(dt, rt, split, size, f)
+		case func([]complex64) complex64:
+			reduceLastC64(dt, rt, dimSize, def, f)
 		case func(complex64, complex64) complex64:
-			genericReduceFirstC64(dt, rt, split, size, f)
+			genericReduceLastC64(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case Complex128:
+		var def complex128
+
+		if def, ok = defaultValue.(complex128); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Complex128s()
 		rt := retVal.Complex128s()
 		switch f := fn.(type) {
-		case func([]complex128, []complex128):
-			reduceFirstC128(dt, rt, split, size, f)
+		case func([]complex128) complex128:
+			reduceLastC128(dt, rt, dimSize, def, f)
 		case func(complex128, complex128) complex128:
-			genericReduceFirstC128(dt, rt, split, size, f)
+			genericReduceLastC128(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case String:
+		var def string
+
+		if def, ok = defaultValue.(string); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.Strings()
 		rt := retVal.Strings()
 		switch f := fn.(type) {
-		case func([]string, []string):
-			reduceFirstStr(dt, rt, split, size, f)
+		case func([]string) string:
+			reduceLastStr(dt, rt, dimSize, def, f)
 		case func(string, string) string:
-			genericReduceFirstStr(dt, rt, split, size, f)
+			genericReduceLastStr(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	case UnsafePointer:
+		var def unsafe.Pointer
+
+		if def, ok = defaultValue.(unsafe.Pointer); !ok {
+			return errors.Errorf(defaultValueErrMsg, def, defaultValue, defaultValue)
+		}
 		dt := data.UnsafePointers()
 		rt := retVal.UnsafePointers()
 		switch f := fn.(type) {
-		case func([]unsafe.Pointer, []unsafe.Pointer):
-			reduceFirstUnsafePointer(dt, rt, split, size, f)
+		case func([]unsafe.Pointer) unsafe.Pointer:
+			reduceLastUnsafePointer(dt, rt, dimSize, def, f)
 		case func(unsafe.Pointer, unsafe.Pointer) unsafe.Pointer:
-			genericReduceFirstUnsafePointer(dt, rt, split, size, f)
+			genericReduceLastUnsafePointer(dt, rt, dimSize, def, f)
 		default:
 			return errors.Errorf(reductionErrMsg, fn)
 		}
 		return nil
 	default:
-		return errors.Errorf("Unsupported type %v for ReduceFirst", t)
+		return errors.Errorf("Unsupported type %v for ReduceLast", t)
 	}
 }
+func (e E) Map(t reflect.Type, fn interface{}, a *storage.Header, incr bool) (err error) {
+	as := isScalar(a, t)
+	switch t {
+	case Bool:
+		var f0 func(bool) bool
+		var f1 func(bool) (bool, error)
 
-func (a array) Data() interface{} {
-	// build a type of []T
-	shdr := reflect.SliceHeader{
-		Data: a.Uintptr(),
-		Len:  a.Len(),
-		Cap:  a.Cap(),
+		switch f := fn.(type) {
+		case func(bool) bool:
+			f0 = f
+		case func(bool) (bool, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Bools()
+		if incr {
+			return errors.Errorf("Cannot perform increment on t of %v", t)
+		}
+		switch {
+		case as && f0 != nil:
+			at[0] = f0(at[0])
+		case as && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && f0 == nil:
+			err = MapErrB(f1, at)
+		default:
+			MapB(f0, at)
+		}
+	case Int:
+		var f0 func(int) int
+		var f1 func(int) (int, error)
+
+		switch f := fn.(type) {
+		case func(int) int:
+			f0 = f
+		case func(int) (int, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Ints()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp int
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrI(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrI(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrI(f1, at)
+		default:
+			MapI(f0, at)
+		}
+	case Int8:
+		var f0 func(int8) int8
+		var f1 func(int8) (int8, error)
+
+		switch f := fn.(type) {
+		case func(int8) int8:
+			f0 = f
+		case func(int8) (int8, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Int8s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp int8
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrI8(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrI8(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrI8(f1, at)
+		default:
+			MapI8(f0, at)
+		}
+	case Int16:
+		var f0 func(int16) int16
+		var f1 func(int16) (int16, error)
+
+		switch f := fn.(type) {
+		case func(int16) int16:
+			f0 = f
+		case func(int16) (int16, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Int16s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp int16
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrI16(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrI16(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrI16(f1, at)
+		default:
+			MapI16(f0, at)
+		}
+	case Int32:
+		var f0 func(int32) int32
+		var f1 func(int32) (int32, error)
+
+		switch f := fn.(type) {
+		case func(int32) int32:
+			f0 = f
+		case func(int32) (int32, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Int32s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp int32
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrI32(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrI32(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrI32(f1, at)
+		default:
+			MapI32(f0, at)
+		}
+	case Int64:
+		var f0 func(int64) int64
+		var f1 func(int64) (int64, error)
+
+		switch f := fn.(type) {
+		case func(int64) int64:
+			f0 = f
+		case func(int64) (int64, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Int64s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp int64
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrI64(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrI64(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrI64(f1, at)
+		default:
+			MapI64(f0, at)
+		}
+	case Uint:
+		var f0 func(uint) uint
+		var f1 func(uint) (uint, error)
+
+		switch f := fn.(type) {
+		case func(uint) uint:
+			f0 = f
+		case func(uint) (uint, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Uints()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp uint
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrU(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrU(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrU(f1, at)
+		default:
+			MapU(f0, at)
+		}
+	case Uint8:
+		var f0 func(uint8) uint8
+		var f1 func(uint8) (uint8, error)
+
+		switch f := fn.(type) {
+		case func(uint8) uint8:
+			f0 = f
+		case func(uint8) (uint8, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Uint8s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp uint8
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrU8(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrU8(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrU8(f1, at)
+		default:
+			MapU8(f0, at)
+		}
+	case Uint16:
+		var f0 func(uint16) uint16
+		var f1 func(uint16) (uint16, error)
+
+		switch f := fn.(type) {
+		case func(uint16) uint16:
+			f0 = f
+		case func(uint16) (uint16, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Uint16s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp uint16
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrU16(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrU16(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrU16(f1, at)
+		default:
+			MapU16(f0, at)
+		}
+	case Uint32:
+		var f0 func(uint32) uint32
+		var f1 func(uint32) (uint32, error)
+
+		switch f := fn.(type) {
+		case func(uint32) uint32:
+			f0 = f
+		case func(uint32) (uint32, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Uint32s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp uint32
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrU32(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrU32(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrU32(f1, at)
+		default:
+			MapU32(f0, at)
+		}
+	case Uint64:
+		var f0 func(uint64) uint64
+		var f1 func(uint64) (uint64, error)
+
+		switch f := fn.(type) {
+		case func(uint64) uint64:
+			f0 = f
+		case func(uint64) (uint64, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Uint64s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp uint64
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrU64(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrU64(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrU64(f1, at)
+		default:
+			MapU64(f0, at)
+		}
+	case Uintptr:
+		var f0 func(uintptr) uintptr
+		var f1 func(uintptr) (uintptr, error)
+
+		switch f := fn.(type) {
+		case func(uintptr) uintptr:
+			f0 = f
+		case func(uintptr) (uintptr, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Uintptrs()
+		if incr {
+			return errors.Errorf("Cannot perform increment on t of %v", t)
+		}
+		switch {
+		case as && f0 != nil:
+			at[0] = f0(at[0])
+		case as && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && f0 == nil:
+			err = MapErrUintptr(f1, at)
+		default:
+			MapUintptr(f0, at)
+		}
+	case Float32:
+		var f0 func(float32) float32
+		var f1 func(float32) (float32, error)
+
+		switch f := fn.(type) {
+		case func(float32) float32:
+			f0 = f
+		case func(float32) (float32, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Float32s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp float32
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrF32(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrF32(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrF32(f1, at)
+		default:
+			MapF32(f0, at)
+		}
+	case Float64:
+		var f0 func(float64) float64
+		var f1 func(float64) (float64, error)
+
+		switch f := fn.(type) {
+		case func(float64) float64:
+			f0 = f
+		case func(float64) (float64, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Float64s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp float64
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrF64(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrF64(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrF64(f1, at)
+		default:
+			MapF64(f0, at)
+		}
+	case Complex64:
+		var f0 func(complex64) complex64
+		var f1 func(complex64) (complex64, error)
+
+		switch f := fn.(type) {
+		case func(complex64) complex64:
+			f0 = f
+		case func(complex64) (complex64, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Complex64s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp complex64
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrC64(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrC64(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrC64(f1, at)
+		default:
+			MapC64(f0, at)
+		}
+	case Complex128:
+		var f0 func(complex128) complex128
+		var f1 func(complex128) (complex128, error)
+
+		switch f := fn.(type) {
+		case func(complex128) complex128:
+			f0 = f
+		case func(complex128) (complex128, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Complex128s()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp complex128
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrC128(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrC128(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrC128(f1, at)
+		default:
+			MapC128(f0, at)
+		}
+	case String:
+		var f0 func(string) string
+		var f1 func(string) (string, error)
+
+		switch f := fn.(type) {
+		case func(string) string:
+			f0 = f
+		case func(string) (string, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.Strings()
+		switch {
+		case as && incr && f0 != nil:
+			at[0] += f0(at[0])
+		case as && incr && f0 == nil:
+			var tmp string
+			if tmp, err = f1(at[0]); err != nil {
+				return
+			}
+			at[0] += tmp
+		case as && !incr && f0 != nil:
+			at[0] = f0(at[0])
+		case as && !incr && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && incr && f0 != nil:
+			MapIncrStr(f0, at)
+		case !as && incr && f0 == nil:
+			err = MapIncrErrStr(f1, at)
+		case !as && !incr && f0 == nil:
+			err = MapErrStr(f1, at)
+		default:
+			MapStr(f0, at)
+		}
+	case UnsafePointer:
+		var f0 func(unsafe.Pointer) unsafe.Pointer
+		var f1 func(unsafe.Pointer) (unsafe.Pointer, error)
+
+		switch f := fn.(type) {
+		case func(unsafe.Pointer) unsafe.Pointer:
+			f0 = f
+		case func(unsafe.Pointer) (unsafe.Pointer, error):
+			f1 = f
+		default:
+			return errors.Errorf("Cannot map fn of %T to array", fn)
+		}
+
+		at := a.UnsafePointers()
+		if incr {
+			return errors.Errorf("Cannot perform increment on t of %v", t)
+		}
+		switch {
+		case as && f0 != nil:
+			at[0] = f0(at[0])
+		case as && f0 == nil:
+			at[0], err = f1(at[0])
+		case !as && f0 == nil:
+			err = MapErrUnsafePointer(f1, at)
+		default:
+			MapUnsafePointer(f0, at)
+		}
+	default:
+		return errors.Errorf("Cannot map t of %v", t)
+
 	}
-	sliceT := reflect.SliceOf(a.t.Type)
-	ptr := unsafe.Pointer(&shdr)
-	val := reflect.Indirect(reflect.NewAt(sliceT, ptr))
-	return val.Interface()
+
+	return
 }
