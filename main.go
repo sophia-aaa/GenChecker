@@ -612,14 +612,14 @@ func createTextFileFromString(filename string, strList []string) {
 	}
 }
 
-func checkSwitchStatement(listFunctions2 []basicStr) ([]checkCases, bool) {
+func checkSwitchStatement(listFunctions2 []basicStr) bool {
 	var switchCheck []string
-	var caseListWVar []basicStr
-	var caseName string
-	var caseList []elem
-	var caseWFunc []checkCases
+	//var caseListWVar []basicStr
+	//var caseName string
+	//var caseList []elem
+	//var caseWFunc []checkCases
 	var existsSwitch bool
-	caseBool := false
+	//caseBool := false
 	for i := range listFunctions2 {
 		for j := range listFunctions2[i].value {
 			if strings.Contains(listFunctions2[i].value[j].path, "*ast.SwitchStmt") {
@@ -627,7 +627,7 @@ func checkSwitchStatement(listFunctions2 []basicStr) ([]checkCases, bool) {
 					switchCheck = append(switchCheck, listFunctions2[i].funcName)
 				}
 			}
-			if strings.Contains(listFunctions2[i].value[j].path, "*ast.CaseClause -> *ast.SelectorExpr") {
+			/*if strings.Contains(listFunctions2[i].value[j].path, "*ast.CaseClause -> *ast.SelectorExpr") {
 				if len(caseList) > 0 {
 					caseListWVar = append(caseListWVar, basicStr{caseName, caseList})
 					caseList = []elem{}
@@ -646,19 +646,18 @@ func checkSwitchStatement(listFunctions2 []basicStr) ([]checkCases, bool) {
 			}
 			if caseBool {
 				caseList = append(caseList, elem{listFunctions2[i].value[j].path, listFunctions2[i].value[j].value})
-			}
+			}*/
 		}
-		if len(caseListWVar) > 0 {
+		/*if len(caseListWVar) > 0 {
 			caseWFunc = append(caseWFunc, checkCases{listFunctions2[i].funcName, caseListWVar})
 			caseListWVar = []basicStr{}
-
-		}
+		}*/
 	}
 
 	if len(switchCheck) >= 1 {
 		existsSwitch = true
 	}
-	return caseWFunc, existsSwitch
+	return existsSwitch
 }
 
 func checkData(modListFunctions2 []basicStr) []string {
@@ -886,10 +885,9 @@ func buildAstCaseStr(Tree2cases []basicCases) []checkCases {
 	return funcCheck
 }
 
-func checkSwitchCases(modifiedFuncCheck []checkCases, funcList []string, typeList []string) {
+func checkSwitchCases(modifiedFuncCheck []checkCases, funcList []string, typeList []string) bool {
 
 	caseListCheck := checkReusedCases(modifiedFuncCheck, funcList, typeList)
-
 	// count number of case clauses
 	lengthList := make([]int, len(modifiedFuncCheck))
 	numberOfCase := 0
@@ -962,8 +960,9 @@ func checkSwitchCases(modifiedFuncCheck []checkCases, funcList []string, typeLis
 			}
 			fmt.Println()
 		}
-
+		return true
 	}
+	return false
 }
 func main() {
 	// filename, err := os.ReadFile(os.Args[2])
@@ -976,6 +975,11 @@ func main() {
 		"float32", "f32Type", "float64", "f64Type", "complex64", "c64Type", "complex128", "c128Type", "string", "strType",
 		"unsafe", "Pointer", "unsafePointer", "unsafePointerType", "reflect",
 	}
+
+	var pattern1 bool
+	var pattern2 bool
+	var pattern3 bool // pattern4 overlapped but somewhat diffrent
+	var pattern4 bool
 
 	listFunctions2 := buildAstDataStr(filename)
 
@@ -993,6 +997,7 @@ func main() {
 	genCheck := checkGenerics(modListFunctions2, funcList, typeList)
 	for s := range genCheck {
 		if len(genCheck[s]) > 1 {
+			pattern1 = true
 			fmt.Print("These functions have a same structure and the code are reused: ")
 			for _, value := range genCheck[s] {
 				fmt.Print(value, " ")
@@ -1003,6 +1008,7 @@ func main() {
 
 	checkDataFunc := checkData(modListFunctions2)
 	if len(checkDataFunc) > 0 {
+		pattern2 = true
 		fmt.Print("\nThere exists (a) function(s) with reflect.SliceHeader and Interface of return value. It recommends to use Generics Slice : ")
 		for _, val := range checkDataFunc {
 			fmt.Print(val, " ")
@@ -1011,7 +1017,7 @@ func main() {
 	}
 
 	// This variable is for checking switch statement
-	caseWFunc, existsSwitch := checkSwitchStatement(modListFunctions2)
+	existsSwitch := checkSwitchStatement(modListFunctions2)
 	if existsSwitch {
 		fset := token.NewFileSet()
 		astTree, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)
@@ -1038,24 +1044,24 @@ func main() {
 			modifiedFuncCheck = append(modifiedFuncCheck, checkCases{funcCheck[idx].funcName, checkSelectorExpr(funcCheck[idx].cases)})
 		}
 
-		checkSwitchCases(modifiedFuncCheck, funcList, typeList)
+		/*for val := range modifiedFuncCheck {
+			fmt.Println(val)
+		}*/
+		pattern4 = checkSwitchCases(modifiedFuncCheck, funcList, typeList)
 		createTextFile(filename, modListFunctions2)
 
 	}
-	// Check reused cases in switch statement
-	caseListCheck := checkReusedCases(caseWFunc, funcList, typeList)
 
-	if len(caseListCheck) > 0 {
-		fmt.Println()
-		fmt.Println()
-		for _, val := range caseListCheck {
-			fmt.Print("This Function ", val.path, " has switch-statement and reused cases : \n")
-			for _, cases := range val.value {
-				fmt.Print(cases, " ")
-			}
-			fmt.Println()
-			fmt.Println()
-		}
+	if pattern1 {
+		fmt.Println("pattern1")
 	}
-
+	if pattern2 {
+		fmt.Println("pattern2")
+	}
+	if pattern3 {
+		fmt.Println("pattern3")
+	}
+	if pattern4 {
+		fmt.Println("pattern4")
+	}
 }

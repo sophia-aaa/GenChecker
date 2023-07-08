@@ -432,6 +432,7 @@ func main() {
 		"float32", "f32Type", "float64", "f64Type", "complex64", "c64Type", "complex128", "c128Type", "string", "strType",
 		"unsafe", "Pointer", "UnsafePointer", "unsafePointerType",
 	}
+	ast.Print(fset, astTree)
 
 	var v visitor
 	ast.Walk(v, astTree)
