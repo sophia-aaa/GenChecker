@@ -1,5 +1,5 @@
 0: *ast.File
-	1: *ast.Ident storage
+	1: *ast.Ident tensor
 	1: *ast.GenDecl
 		2: *ast.ImportSpec
 			3: *ast.BasicLit
@@ -11,938 +11,1175 @@
 			3: *ast.BasicLit
 		2: *ast.ImportSpec
 			3: *ast.BasicLit
-		2: *ast.ImportSpec
-			3: *ast.BasicLit
-	1: *ast.GenDecl
+	1: *ast.FuncDecl Set
 		2: *ast.CommentGroup
 			3: *ast.Comment
-		2: *ast.TypeSpec
-			3: *ast.Ident array
-			3: *ast.StructType
-				4: *ast.FieldList
-					5: *ast.Field
-						6: *ast.SelectorExpr
-							7: *ast.Ident storage
-							7: *ast.Ident Header
-						6: *ast.CommentGroup
-							7: *ast.Comment
-					5: *ast.Field
-						6: *ast.Ident t
-						6: *ast.Ident Dtype
-						6: *ast.CommentGroup
-							7: *ast.Comment
-	1: *ast.FuncDecl makeArray
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident makeArray
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident t
-					5: *ast.Ident Dtype
-				4: *ast.Field
-					5: *ast.Ident length
-					5: *ast.Ident int
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident array
-		2: *ast.BlockStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident v
-				4: *ast.CallExpr
-					5: *ast.Ident malloc
-					5: *ast.Ident t
-					5: *ast.Ident length
-			3: *ast.AssignStmt
-				4: *ast.Ident hdr
-				4: *ast.CompositeLit
+		2: *ast.FieldList
+			3: *ast.Field
+				4: *ast.Ident a
+				4: *ast.StarExpr
 					5: *ast.SelectorExpr
-						6: *ast.Ident storage
-						6: *ast.Ident Header
-					5: *ast.KeyValueExpr
-						6: *ast.Ident Raw
-						6: *ast.Ident v
-			3: *ast.ReturnStmt
-				4: *ast.CompositeLit
-					5: *ast.Ident array
-					5: *ast.KeyValueExpr
-						6: *ast.Ident Header
-						6: *ast.Ident hdr
-					5: *ast.KeyValueExpr
-						6: *ast.Ident t
-						6: *ast.Ident t
-	1: *ast.FuncDecl arrayFromSlice
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident arrayFromSlice
+						6: *ast.Ident main
+						6: *ast.Ident array
+		2: *ast.Ident Set
 		2: *ast.FuncType
 			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident i
+					5: *ast.Ident int
 				4: *ast.Field
 					5: *ast.Ident x
 					5: *ast.InterfaceType
 						6: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident array
 		2: *ast.BlockStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident xT
+			3: *ast.SwitchStmt
 				4: *ast.CallExpr
 					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident TypeOf
-					5: *ast.Ident x
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.CallExpr
 						6: *ast.SelectorExpr
-							7: *ast.Ident xT
-							7: *ast.Ident Kind
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident Slice
+							7: *ast.Ident a
+							7: *ast.Ident t
+						6: *ast.Ident Kind
 				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.AssignStmt
-				4: *ast.Ident elT
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident xT
-						6: *ast.Ident Elem
-			3: *ast.ReturnStmt
-				4: *ast.CompositeLit
-					5: *ast.Ident array
-					5: *ast.KeyValueExpr
-						6: *ast.Ident Header
-						6: *ast.CompositeLit
-							7: *ast.SelectorExpr
-								8: *ast.Ident storage
-								8: *ast.Ident Header
-							7: *ast.KeyValueExpr
-								8: *ast.Ident Raw
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Bool
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident bool
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetB
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetI
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int8
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int8
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetI8
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int16
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int16
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetI16
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int32
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int32
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetI32
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int64
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int64
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetI64
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetU
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint8
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint8
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetU8
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint16
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint16
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetU16
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint32
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint32
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetU32
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint64
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint64
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetU64
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uintptr
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uintptr
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetUintptr
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Float32
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident float32
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetF32
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Float64
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident float64
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetF64
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Complex64
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident complex64
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetC64
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Complex128
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident complex128
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetC128
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident String
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident string
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetStr
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident UnsafePointer
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.SelectorExpr
+									9: *ast.Ident unsafe
+									9: *ast.Ident Pointer
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident SetUnsafePointer
+								8: *ast.Ident i
+								8: *ast.Ident xv
+					5: *ast.CaseClause
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident ValueOf
+								8: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident val
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident NewAt
+								8: *ast.SelectorExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident t
+									9: *ast.Ident Type
 								8: *ast.CallExpr
 									9: *ast.SelectorExpr
 										10: *ast.Ident storage
-										10: *ast.Ident AsByteSlice
-									9: *ast.Ident x
-					5: *ast.KeyValueExpr
-						6: *ast.Ident t
-						6: *ast.CompositeLit
-							7: *ast.Ident Dtype
-							7: *ast.Ident elT
-	1: *ast.FuncDecl Len
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident Len
-		2: *ast.FuncType
-			3: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident int
-		2: *ast.BlockStmt
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident a
-							7: *ast.Ident Header
-						6: *ast.Ident TypedLen
-					5: *ast.SelectorExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident a
-							7: *ast.Ident t
-						6: *ast.Ident Type
-	1: *ast.FuncDecl Cap
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident Cap
-		2: *ast.FuncType
-			3: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident int
-		2: *ast.BlockStmt
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident a
-							7: *ast.Ident Header
-						6: *ast.Ident TypedLen
-					5: *ast.SelectorExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident a
-							7: *ast.Ident t
-						6: *ast.Ident Type
-	1: *ast.FuncDecl fromSlice
+										10: *ast.Ident ElementAt
+									9: *ast.Ident i
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident unsafe
+											11: *ast.Ident Pointer
+										10: *ast.UnaryExpr
+											11: *ast.IndexExpr
+												12: *ast.SelectorExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident a
+														14: *ast.Ident Header
+													13: *ast.Ident Raw
+												12: *ast.BasicLit
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident a
+												12: *ast.Ident t
+											11: *ast.Ident Size
+						6: *ast.AssignStmt
+							7: *ast.Ident val
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Indirect
+								8: *ast.Ident val
+						6: *ast.ExprStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident val
+									9: *ast.Ident Set
+								8: *ast.Ident xv
+	1: *ast.FuncDecl Get
 		2: *ast.CommentGroup
 			3: *ast.Comment
 		2: *ast.FieldList
 			3: *ast.Field
 				4: *ast.Ident a
 				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident fromSlice
+					5: *ast.SelectorExpr
+						6: *ast.Ident main
+						6: *ast.Ident array
+		2: *ast.Ident Get
+		2: *ast.FuncType
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident i
+					5: *ast.Ident int
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.InterfaceType
+						6: *ast.FieldList
+		2: *ast.BlockStmt
+			3: *ast.SwitchStmt
+				4: *ast.CallExpr
+					5: *ast.SelectorExpr
+						6: *ast.SelectorExpr
+							7: *ast.Ident a
+							7: *ast.Ident t
+						6: *ast.Ident Kind
+				4: *ast.BlockStmt
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Bool
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetB
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetI
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int8
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetI8
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int16
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetI16
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int32
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetI32
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Int64
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetI64
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetU
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint8
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetU8
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint16
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetU16
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint32
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetU32
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uint64
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetU64
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Uintptr
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetUintptr
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Float32
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetF32
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Float64
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetF64
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Complex64
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetC64
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident Complex128
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetC128
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident String
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetStr
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.SelectorExpr
+							7: *ast.Ident reflect
+							7: *ast.Ident UnsafePointer
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident GetUnsafePointer
+								8: *ast.Ident i
+					5: *ast.CaseClause
+						6: *ast.AssignStmt
+							7: *ast.Ident val
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident NewAt
+								8: *ast.SelectorExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident a
+										10: *ast.Ident t
+									9: *ast.Ident Type
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident storage
+										10: *ast.Ident ElementAt
+									9: *ast.Ident i
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident unsafe
+											11: *ast.Ident Pointer
+										10: *ast.UnaryExpr
+											11: *ast.IndexExpr
+												12: *ast.SelectorExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident a
+														14: *ast.Ident Header
+													13: *ast.Ident Raw
+												12: *ast.BasicLit
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident a
+												12: *ast.Ident t
+											11: *ast.Ident Size
+						6: *ast.AssignStmt
+							7: *ast.Ident val
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Indirect
+								8: *ast.Ident val
+						6: *ast.ReturnStmt
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident val
+									9: *ast.Ident Interface
+	1: *ast.FuncDecl Memset
+		2: *ast.CommentGroup
+			3: *ast.Comment
+		2: *ast.FieldList
+			3: *ast.Field
+				4: *ast.Ident a
+				4: *ast.StarExpr
+					5: *ast.SelectorExpr
+						6: *ast.Ident main
+						6: *ast.Ident array
+		2: *ast.Ident Memset
 		2: *ast.FuncType
 			3: *ast.FieldList
 				4: *ast.Field
 					5: *ast.Ident x
 					5: *ast.InterfaceType
 						6: *ast.FieldList
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident error
 		2: *ast.BlockStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident xT
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident TypeOf
-					5: *ast.Ident x
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident xT
-							7: *ast.Ident Kind
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident Slice
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.AssignStmt
-				4: *ast.Ident elT
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident xT
-						6: *ast.Ident Elem
-			3: *ast.AssignStmt
-				4: *ast.SelectorExpr
-					5: *ast.Ident a
-					5: *ast.Ident Raw
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident storage
-						6: *ast.Ident AsByteSlice
-					5: *ast.Ident x
-			3: *ast.AssignStmt
+			3: *ast.SwitchStmt
 				4: *ast.SelectorExpr
 					5: *ast.Ident a
 					5: *ast.Ident t
-				4: *ast.CompositeLit
-					5: *ast.Ident Dtype
-					5: *ast.Ident elT
-	1: *ast.FuncDecl fromSliceOrArrayer
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident fromSliceOrArrayer
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident x
-					5: *ast.InterfaceType
-						6: *ast.FieldList
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.AssignStmt
-					5: *ast.Ident T
-					5: *ast.Ident ok
-					5: *ast.TypeAssertExpr
-						6: *ast.Ident x
-						6: *ast.Ident arrayer
-				4: *ast.Ident ok
 				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.Ident xp
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident T
-								8: *ast.Ident arrPtr
-					5: *ast.IfStmt
-						6: *ast.BinaryExpr
-							7: *ast.SelectorExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident Header
-								8: *ast.Ident Raw
-							7: *ast.Ident nil
-						6: *ast.BlockStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Bool
+						6: *ast.IfStmt
 							7: *ast.AssignStmt
-								8: *ast.SelectorExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident a
-										10: *ast.Ident Header
-									9: *ast.Ident Raw
-								8: *ast.CallExpr
-									9: *ast.Ident malloc
-									9: *ast.SelectorExpr
-										10: *ast.Ident xp
-										10: *ast.Ident t
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident bool
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
 									9: *ast.CallExpr
 										10: *ast.SelectorExpr
-											11: *ast.Ident xp
-											11: *ast.Ident Len
-					5: *ast.AssignStmt
-						6: *ast.SelectorExpr
-							7: *ast.Ident a
-							7: *ast.Ident t
-						6: *ast.SelectorExpr
-							7: *ast.Ident xp
-							7: *ast.Ident t
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident copyArray
-							7: *ast.Ident a
-							7: *ast.CallExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident T
-									9: *ast.Ident arrPtr
-					5: *ast.ReturnStmt
-			3: *ast.ExprStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident a
-						6: *ast.Ident fromSlice
-					5: *ast.Ident x
-	1: *ast.FuncDecl byteSlice
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.Ident array
-		2: *ast.Ident byteSlice
-		2: *ast.FuncType
-			3: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.ArrayType
-						6: *ast.Ident byte
-		2: *ast.BlockStmt
-			3: *ast.ReturnStmt
-				4: *ast.SelectorExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident a
-						6: *ast.Ident Header
-					5: *ast.Ident Raw
-	1: *ast.FuncDecl sliceInto
-		2: *ast.CommentGroup
-			3: *ast.Comment
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident sliceInto
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident i
-					5: *ast.Ident j
-					5: *ast.Ident int
-				4: *ast.Field
-					5: *ast.Ident res
-					5: *ast.StarExpr
-						6: *ast.Ident array
-		2: *ast.BlockStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident c
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident a
-						6: *ast.Ident Cap
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.BinaryExpr
-						6: *ast.BinaryExpr
-							7: *ast.Ident i
-							7: *ast.BasicLit
-						6: *ast.BinaryExpr
-							7: *ast.Ident j
-							7: *ast.Ident i
-					5: *ast.BinaryExpr
-						6: *ast.Ident j
-						6: *ast.Ident c
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.CallExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident fmt
-									9: *ast.Ident Sprintf
-								8: *ast.BasicLit
-								8: *ast.Ident a
-								8: *ast.Ident i
-								8: *ast.Ident j
-			3: *ast.AssignStmt
-				4: *ast.Ident s
-				4: *ast.BinaryExpr
-					5: *ast.Ident i
-					5: *ast.CallExpr
-						6: *ast.Ident int
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident t
-								8: *ast.Ident Size
-			3: *ast.AssignStmt
-				4: *ast.Ident e
-				4: *ast.BinaryExpr
-					5: *ast.Ident j
-					5: *ast.CallExpr
-						6: *ast.Ident int
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident t
-								8: *ast.Ident Size
-			3: *ast.AssignStmt
-				4: *ast.Ident c
-				4: *ast.BinaryExpr
-					5: *ast.Ident c
-					5: *ast.Ident i
-			3: *ast.AssignStmt
-				4: *ast.SelectorExpr
-					5: *ast.Ident res
-					5: *ast.Ident Raw
-				4: *ast.SliceExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident a
-						6: *ast.Ident Raw
-					5: *ast.Ident s
-					5: *ast.Ident e
-	1: *ast.FuncDecl slice
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.Ident array
-		2: *ast.Ident slice
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident start
-					5: *ast.Ident end
-					5: *ast.Ident int
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident array
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.Ident end
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident a
-							7: *ast.Ident Len
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.Ident end
-					5: *ast.Ident start
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.AssignStmt
-				4: *ast.Ident s
-				4: *ast.BinaryExpr
-					5: *ast.Ident start
-					5: *ast.CallExpr
-						6: *ast.Ident int
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident t
-								8: *ast.Ident Size
-			3: *ast.AssignStmt
-				4: *ast.Ident e
-				4: *ast.BinaryExpr
-					5: *ast.Ident end
-					5: *ast.CallExpr
-						6: *ast.Ident int
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident t
-								8: *ast.Ident Size
-			3: *ast.ReturnStmt
-				4: *ast.CompositeLit
-					5: *ast.Ident array
-					5: *ast.KeyValueExpr
-						6: *ast.Ident Header
-						6: *ast.CompositeLit
-							7: *ast.SelectorExpr
-								8: *ast.Ident storage
-								8: *ast.Ident Header
-							7: *ast.KeyValueExpr
-								8: *ast.Ident Raw
-								8: *ast.SliceExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident a
-										10: *ast.Ident Raw
-									9: *ast.Ident s
-									9: *ast.Ident e
-					5: *ast.KeyValueExpr
-						6: *ast.Ident t
-						6: *ast.SelectorExpr
-							7: *ast.Ident a
-							7: *ast.Ident t
-	1: *ast.FuncDecl swap
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident swap
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident i
-					5: *ast.Ident j
-					5: *ast.Ident int
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident a
-						6: *ast.Ident t
-					5: *ast.Ident String
-				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.Ident ss
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.CallExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident a
-										10: *ast.Ident hdr
-								8: *ast.Ident Strings
-					5: *ast.AssignStmt
-						6: *ast.IndexExpr
-							7: *ast.Ident ss
-							7: *ast.Ident i
-						6: *ast.IndexExpr
-							7: *ast.Ident ss
-							7: *ast.Ident j
-						6: *ast.IndexExpr
-							7: *ast.Ident ss
-							7: *ast.Ident j
-						6: *ast.IndexExpr
-							7: *ast.Ident ss
-							7: *ast.Ident i
-					5: *ast.ReturnStmt
-			3: *ast.IfStmt
-				4: *ast.UnaryExpr
-					5: *ast.CallExpr
-						6: *ast.Ident isParameterizedKind
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident t
-								8: *ast.Ident Kind
-				4: *ast.BlockStmt
-					5: *ast.SwitchStmt
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident t
-								8: *ast.Ident Size
-						6: *ast.BlockStmt
-							7: *ast.CaseClause
-								8: *ast.BasicLit
+											11: *ast.Ident a
+											11: *ast.Ident Bools
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident int
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
 								8: *ast.AssignStmt
-									9: *ast.Ident us
+									9: *ast.Ident data
 									9: *ast.CallExpr
 										10: *ast.SelectorExpr
-											11: *ast.CallExpr
-												12: *ast.SelectorExpr
-													13: *ast.Ident a
-													13: *ast.Ident hdr
-											11: *ast.Ident Uint64s
+											11: *ast.Ident a
+											11: *ast.Ident Ints
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int8
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident int8
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
 								8: *ast.AssignStmt
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident i
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident j
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident j
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident i
-							7: *ast.CaseClause
-								8: *ast.BasicLit
-								8: *ast.AssignStmt
-									9: *ast.Ident us
+									9: *ast.Ident data
 									9: *ast.CallExpr
 										10: *ast.SelectorExpr
-											11: *ast.CallExpr
-												12: *ast.SelectorExpr
-													13: *ast.Ident a
-													13: *ast.Ident hdr
-											11: *ast.Ident Uint32s
+											11: *ast.Ident a
+											11: *ast.Ident Int8s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int16
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident int16
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
 								8: *ast.AssignStmt
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident i
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident j
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident j
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident i
-							7: *ast.CaseClause
-								8: *ast.BasicLit
-								8: *ast.AssignStmt
-									9: *ast.Ident us
+									9: *ast.Ident data
 									9: *ast.CallExpr
 										10: *ast.SelectorExpr
-											11: *ast.CallExpr
-												12: *ast.SelectorExpr
-													13: *ast.Ident a
-													13: *ast.Ident hdr
-											11: *ast.Ident Uint16s
+											11: *ast.Ident a
+											11: *ast.Ident Int16s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident int32
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
 								8: *ast.AssignStmt
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident i
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident j
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident j
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident i
-							7: *ast.CaseClause
-								8: *ast.BasicLit
-								8: *ast.AssignStmt
-									9: *ast.Ident us
+									9: *ast.Ident data
 									9: *ast.CallExpr
 										10: *ast.SelectorExpr
-											11: *ast.CallExpr
-												12: *ast.SelectorExpr
-													13: *ast.Ident a
-													13: *ast.Ident hdr
+											11: *ast.Ident a
+											11: *ast.Ident Int32s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Int64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident int64
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Int64s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident uint
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uints
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint8
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident uint8
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
 											11: *ast.Ident Uint8s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint16
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident uint16
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
 								8: *ast.AssignStmt
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident i
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident j
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident j
-									9: *ast.IndexExpr
-										10: *ast.Ident us
-										10: *ast.Ident i
-					5: *ast.ReturnStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident size
-				4: *ast.CallExpr
-					5: *ast.Ident int
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident a
-								8: *ast.Ident t
-							7: *ast.Ident Size
-			3: *ast.AssignStmt
-				4: *ast.Ident tmp
-				4: *ast.CallExpr
-					5: *ast.Ident make
-					5: *ast.ArrayType
-						6: *ast.Ident byte
-					5: *ast.Ident size
-			3: *ast.AssignStmt
-				4: *ast.Ident bs
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident a
-						6: *ast.Ident byteSlice
-			3: *ast.AssignStmt
-				4: *ast.Ident is
-				4: *ast.BinaryExpr
-					5: *ast.Ident i
-					5: *ast.Ident size
-			3: *ast.AssignStmt
-				4: *ast.Ident ie
-				4: *ast.BinaryExpr
-					5: *ast.Ident is
-					5: *ast.Ident size
-			3: *ast.AssignStmt
-				4: *ast.Ident js
-				4: *ast.BinaryExpr
-					5: *ast.Ident j
-					5: *ast.Ident size
-			3: *ast.AssignStmt
-				4: *ast.Ident je
-				4: *ast.BinaryExpr
-					5: *ast.Ident js
-					5: *ast.Ident size
-			3: *ast.ExprStmt
-				4: *ast.CallExpr
-					5: *ast.Ident copy
-					5: *ast.Ident tmp
-					5: *ast.SliceExpr
-						6: *ast.Ident bs
-						6: *ast.Ident is
-						6: *ast.Ident ie
-			3: *ast.ExprStmt
-				4: *ast.CallExpr
-					5: *ast.Ident copy
-					5: *ast.SliceExpr
-						6: *ast.Ident bs
-						6: *ast.Ident is
-						6: *ast.Ident ie
-					5: *ast.SliceExpr
-						6: *ast.Ident bs
-						6: *ast.Ident js
-						6: *ast.Ident je
-			3: *ast.ExprStmt
-				4: *ast.CallExpr
-					5: *ast.Ident copy
-					5: *ast.SliceExpr
-						6: *ast.Ident bs
-						6: *ast.Ident js
-						6: *ast.Ident je
-					5: *ast.Ident tmp
-	1: *ast.FuncDecl Uintptr
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident Uintptr
-		2: *ast.FuncType
-			3: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident uintptr
-		2: *ast.BlockStmt
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.Ident uintptr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident unsafe
-							7: *ast.Ident Pointer
-						6: *ast.UnaryExpr
-							7: *ast.IndexExpr
-								8: *ast.SelectorExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident a
-										10: *ast.Ident Header
-									9: *ast.Ident Raw
-								8: *ast.BasicLit
-	1: *ast.FuncDecl MemSize
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident MemSize
-		2: *ast.FuncType
-			3: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident uintptr
-		2: *ast.BlockStmt
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.Ident uintptr
-					5: *ast.CallExpr
-						6: *ast.Ident len
-						6: *ast.SelectorExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident a
-								8: *ast.Ident Header
-							7: *ast.Ident Raw
-	1: *ast.FuncDecl Data
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.Ident array
-		2: *ast.Ident Data
-		2: *ast.FuncType
-			3: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.InterfaceType
-						6: *ast.FieldList
-		2: *ast.BlockStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident shdr
-				4: *ast.CompositeLit
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident SliceHeader
-					5: *ast.KeyValueExpr
-						6: *ast.Ident Data
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident a
-								8: *ast.Ident Uintptr
-					5: *ast.KeyValueExpr
-						6: *ast.Ident Len
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident a
-								8: *ast.Ident Len
-					5: *ast.KeyValueExpr
-						6: *ast.Ident Cap
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident a
-								8: *ast.Ident Cap
-			3: *ast.AssignStmt
-				4: *ast.Ident sliceT
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident SliceOf
-					5: *ast.SelectorExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident a
-							7: *ast.Ident t
-						6: *ast.Ident Type
-			3: *ast.AssignStmt
-				4: *ast.Ident ptr
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident unsafe
-						6: *ast.Ident Pointer
-					5: *ast.UnaryExpr
-						6: *ast.Ident shdr
-			3: *ast.AssignStmt
-				4: *ast.Ident val
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident Indirect
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident reflect
-							7: *ast.Ident NewAt
-						6: *ast.Ident sliceT
-						6: *ast.Ident ptr
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident val
-						6: *ast.Ident Interface
-	1: *ast.FuncDecl Zero
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.Ident array
-		2: *ast.Ident Zero
-		2: *ast.FuncType
-			3: *ast.FieldList
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident a
-								8: *ast.Ident t
-							7: *ast.Ident Kind
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uint16s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident uint32
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uint32s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uint64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident uint64
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uint64s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Uintptr
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident uintptr
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uintptrs
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Float32
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident float32
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Float32s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Float64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident float64
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Float64s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Complex64
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident complex64
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Complex64s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident Complex128
+						6: *ast.IfStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident complex128
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Complex128s
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
 						6: *ast.Ident String
-				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.Ident ss
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident a
-								8: *ast.Ident Strings
-					5: *ast.RangeStmt
-						6: *ast.Ident i
-						6: *ast.Ident ss
-						6: *ast.BlockStmt
+						6: *ast.IfStmt
 							7: *ast.AssignStmt
-								8: *ast.IndexExpr
-									9: *ast.Ident ss
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.Ident string
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Strings
+								8: *ast.RangeStmt
 									9: *ast.Ident i
-								8: *ast.BasicLit
-					5: *ast.ReturnStmt
-			3: *ast.IfStmt
-				4: *ast.UnaryExpr
-					5: *ast.CallExpr
-						6: *ast.Ident isParameterizedKind
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident t
-								8: *ast.Ident Kind
-				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.Ident ba
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident a
-								8: *ast.Ident byteSlice
-					5: *ast.RangeStmt
-						6: *ast.Ident i
-						6: *ast.Ident ba
-						6: *ast.BlockStmt
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+					5: *ast.CaseClause
+						6: *ast.Ident UnsafePointer
+						6: *ast.IfStmt
 							7: *ast.AssignStmt
-								8: *ast.IndexExpr
-									9: *ast.Ident ba
+								8: *ast.Ident xv
+								8: *ast.Ident ok
+								8: *ast.TypeAssertExpr
+									9: *ast.Ident x
+									9: *ast.SelectorExpr
+										10: *ast.Ident unsafe
+										10: *ast.Ident Pointer
+							7: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident data
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident UnsafePointers
+								8: *ast.RangeStmt
 									9: *ast.Ident i
-								8: *ast.BasicLit
-					5: *ast.ReturnStmt
+									9: *ast.Ident data
+									9: *ast.BlockStmt
+										10: *ast.AssignStmt
+											11: *ast.IndexExpr
+												12: *ast.Ident data
+												12: *ast.Ident i
+											11: *ast.Ident xv
+								8: *ast.ReturnStmt
+									9: *ast.Ident nil
+			3: *ast.AssignStmt
+				4: *ast.Ident xv
+				4: *ast.CallExpr
+					5: *ast.SelectorExpr
+						6: *ast.Ident reflect
+						6: *ast.Ident ValueOf
+					5: *ast.Ident x
 			3: *ast.AssignStmt
 				4: *ast.Ident l
 				4: *ast.CallExpr
@@ -1005,1090 +1242,2469 @@
 							7: *ast.SelectorExpr
 								8: *ast.Ident val
 								8: *ast.Ident Set
-							7: *ast.CallExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident reflect
-									9: *ast.Ident Zero
-								8: *ast.SelectorExpr
-									9: *ast.Ident a
-									9: *ast.Ident t
-	1: *ast.FuncDecl hdr
+							7: *ast.Ident xv
+			3: *ast.ReturnStmt
+				4: *ast.Ident nil
+	1: *ast.FuncDecl memsetIter
 		2: *ast.FieldList
 			3: *ast.Field
 				4: *ast.Ident a
 				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident hdr
-		2: *ast.FuncType
-			3: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.StarExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident storage
-							7: *ast.Ident Header
-		2: *ast.BlockStmt
-			3: *ast.ReturnStmt
-				4: *ast.UnaryExpr
 					5: *ast.SelectorExpr
-						6: *ast.Ident a
-						6: *ast.Ident Header
-	1: *ast.FuncDecl rtype
-		2: *ast.FieldList
-			3: *ast.Field
-				4: *ast.Ident a
-				4: *ast.StarExpr
-					5: *ast.Ident array
-		2: *ast.Ident rtype
-		2: *ast.FuncType
-			3: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident Type
-		2: *ast.BlockStmt
-			3: *ast.ReturnStmt
-				4: *ast.SelectorExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident a
-						6: *ast.Ident t
-					5: *ast.Ident Type
-	1: *ast.FuncDecl malloc
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident malloc
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident t
-					5: *ast.Ident Dtype
-				4: *ast.Field
-					5: *ast.Ident length
-					5: *ast.Ident int
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.ArrayType
-						6: *ast.Ident byte
-		2: *ast.BlockStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident size
-				4: *ast.CallExpr
-					5: *ast.Ident int
-					5: *ast.CallExpr
-						6: *ast.Ident calcMemSize
-						6: *ast.Ident t
-						6: *ast.Ident length
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.Ident make
-					5: *ast.ArrayType
-						6: *ast.Ident byte
-					5: *ast.Ident size
-	1: *ast.FuncDecl calcMemSize
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident calcMemSize
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident dt
-					5: *ast.Ident Dtype
-				4: *ast.Field
-					5: *ast.Ident size
-					5: *ast.Ident int
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident int64
-		2: *ast.BlockStmt
-			3: *ast.ReturnStmt
-				4: *ast.BinaryExpr
-					5: *ast.CallExpr
-						6: *ast.Ident int64
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident dt
-								8: *ast.Ident Size
-					5: *ast.CallExpr
-						6: *ast.Ident int64
-						6: *ast.Ident size
-	1: *ast.FuncDecl copyArray
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident copyArray
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident dst
-					5: *ast.Ident src
-					5: *ast.StarExpr
+						6: *ast.Ident main
 						6: *ast.Ident array
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident int
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident dst
-						6: *ast.Ident t
-					5: *ast.SelectorExpr
-						6: *ast.Ident src
-						6: *ast.Ident t
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident storage
-						6: *ast.Ident Copy
-					5: *ast.SelectorExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident t
-						6: *ast.Ident Type
-					5: *ast.UnaryExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident Header
-					5: *ast.UnaryExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident Header
-	1: *ast.FuncDecl copyArraySliced
-		2: *ast.Ident copyArraySliced
+		2: *ast.Ident memsetIter
 		2: *ast.FuncType
 			3: *ast.FieldList
 				4: *ast.Field
-					5: *ast.Ident dst
-					5: *ast.Ident array
+					5: *ast.Ident x
+					5: *ast.InterfaceType
+						6: *ast.FieldList
 				4: *ast.Field
-					5: *ast.Ident dstart
-					5: *ast.Ident dend
-					5: *ast.Ident int
-				4: *ast.Field
-					5: *ast.Ident src
-					5: *ast.Ident array
-				4: *ast.Field
-					5: *ast.Ident sstart
-					5: *ast.Ident send
-					5: *ast.Ident int
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident int
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident dst
-						6: *ast.Ident t
-					5: *ast.SelectorExpr
-						6: *ast.Ident src
-						6: *ast.Ident t
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident storage
-						6: *ast.Ident CopySliced
-					5: *ast.SelectorExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident t
-						6: *ast.Ident Type
-					5: *ast.UnaryExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident Header
-					5: *ast.Ident dstart
-					5: *ast.Ident dend
-					5: *ast.UnaryExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident Header
-					5: *ast.Ident sstart
-					5: *ast.Ident send
-	1: *ast.FuncDecl copyDense
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident copyDense
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident dst
-					5: *ast.Ident src
-					5: *ast.Ident DenseTensor
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident int
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident Dtype
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident Dtype
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.IfStmt
-				4: *ast.AssignStmt
-					5: *ast.Ident ms
-					5: *ast.Ident ok
-					5: *ast.TypeAssertExpr
-						6: *ast.Ident src
-						6: *ast.Ident MaskedTensor
-				4: *ast.BinaryExpr
-					5: *ast.Ident ok
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident ms
-							7: *ast.Ident IsMasked
-				4: *ast.BlockStmt
-					5: *ast.IfStmt
-						6: *ast.AssignStmt
-							7: *ast.Ident md
-							7: *ast.Ident ok
-							7: *ast.TypeAssertExpr
-								8: *ast.Ident dst
-								8: *ast.Ident MaskedTensor
-						6: *ast.Ident ok
-						6: *ast.BlockStmt
-							7: *ast.AssignStmt
-								8: *ast.Ident dmask
-								8: *ast.CallExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident md
-										10: *ast.Ident Mask
-							7: *ast.AssignStmt
-								8: *ast.Ident smask
-								8: *ast.CallExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident ms
-										10: *ast.Ident Mask
-							7: *ast.IfStmt
-								8: *ast.BinaryExpr
-									9: *ast.CallExpr
-										10: *ast.Ident cap
-										10: *ast.Ident dmask
-									9: *ast.CallExpr
-										10: *ast.Ident len
-										10: *ast.Ident smask
-								8: *ast.BlockStmt
-									9: *ast.AssignStmt
-										10: *ast.Ident dmask
-										10: *ast.CallExpr
-											11: *ast.Ident make
-											11: *ast.ArrayType
-												12: *ast.Ident bool
-											11: *ast.CallExpr
-												12: *ast.Ident len
-												12: *ast.Ident smask
-									9: *ast.ExprStmt
-										10: *ast.CallExpr
-											11: *ast.Ident copy
-											11: *ast.Ident dmask
-											11: *ast.CallExpr
-												12: *ast.SelectorExpr
-													13: *ast.Ident md
-													13: *ast.Ident Mask
-									9: *ast.ExprStmt
-										10: *ast.CallExpr
-											11: *ast.SelectorExpr
-												12: *ast.Ident md
-												12: *ast.Ident SetMask
-											11: *ast.Ident dmask
-							7: *ast.ExprStmt
-								8: *ast.CallExpr
-									9: *ast.Ident copy
-									9: *ast.Ident dmask
-									9: *ast.Ident smask
-			3: *ast.AssignStmt
-				4: *ast.Ident e
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident src
-						6: *ast.Ident Engine
-			3: *ast.IfStmt
-				4: *ast.AssignStmt
-					5: *ast.Ident err
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident e
-							7: *ast.Ident Memcpy
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident dst
-								8: *ast.Ident arrPtr
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident src
-								8: *ast.Ident arrPtr
-				4: *ast.BinaryExpr
-					5: *ast.Ident err
-					5: *ast.Ident nil
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.Ident err
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident dst
-						6: *ast.Ident len
-	1: *ast.FuncDecl copyDenseSliced
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident copyDenseSliced
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident dst
-					5: *ast.Ident DenseTensor
-				4: *ast.Field
-					5: *ast.Ident dstart
-					5: *ast.Ident dend
-					5: *ast.Ident int
-				4: *ast.Field
-					5: *ast.Ident src
-					5: *ast.Ident DenseTensor
-				4: *ast.Field
-					5: *ast.Ident sstart
-					5: *ast.Ident send
-					5: *ast.Ident int
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident int
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident Dtype
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident Dtype
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.IfStmt
-				4: *ast.AssignStmt
-					5: *ast.Ident ms
-					5: *ast.Ident ok
-					5: *ast.TypeAssertExpr
-						6: *ast.Ident src
-						6: *ast.Ident MaskedTensor
-				4: *ast.BinaryExpr
-					5: *ast.Ident ok
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident ms
-							7: *ast.Ident IsMasked
-				4: *ast.BlockStmt
-					5: *ast.IfStmt
-						6: *ast.AssignStmt
-							7: *ast.Ident md
-							7: *ast.Ident ok
-							7: *ast.TypeAssertExpr
-								8: *ast.Ident dst
-								8: *ast.Ident MaskedTensor
-						6: *ast.Ident ok
-						6: *ast.BlockStmt
-							7: *ast.AssignStmt
-								8: *ast.Ident dmask
-								8: *ast.CallExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident md
-										10: *ast.Ident Mask
-							7: *ast.AssignStmt
-								8: *ast.Ident smask
-								8: *ast.CallExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident ms
-										10: *ast.Ident Mask
-							7: *ast.IfStmt
-								8: *ast.BinaryExpr
-									9: *ast.CallExpr
-										10: *ast.Ident cap
-										10: *ast.Ident dmask
-									9: *ast.Ident dend
-								8: *ast.BlockStmt
-									9: *ast.AssignStmt
-										10: *ast.Ident dmask
-										10: *ast.CallExpr
-											11: *ast.Ident make
-											11: *ast.ArrayType
-												12: *ast.Ident bool
-											11: *ast.Ident dend
-									9: *ast.ExprStmt
-										10: *ast.CallExpr
-											11: *ast.Ident copy
-											11: *ast.Ident dmask
-											11: *ast.CallExpr
-												12: *ast.SelectorExpr
-													13: *ast.Ident md
-													13: *ast.Ident Mask
-									9: *ast.ExprStmt
-										10: *ast.CallExpr
-											11: *ast.SelectorExpr
-												12: *ast.Ident md
-												12: *ast.Ident SetMask
-											11: *ast.Ident dmask
-							7: *ast.ExprStmt
-								8: *ast.CallExpr
-									9: *ast.Ident copy
-									9: *ast.SliceExpr
-										10: *ast.Ident dmask
-										10: *ast.Ident dstart
-										10: *ast.Ident dend
-									9: *ast.SliceExpr
-										10: *ast.Ident smask
-										10: *ast.Ident sstart
-										10: *ast.Ident send
-			3: *ast.IfStmt
-				4: *ast.AssignStmt
-					5: *ast.Ident e
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident Engine
-				4: *ast.BinaryExpr
-					5: *ast.Ident e
-					5: *ast.Ident nil
-				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.Ident darr
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident dst
-								8: *ast.Ident arr
-					5: *ast.AssignStmt
-						6: *ast.Ident sarr
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident src
-								8: *ast.Ident arr
-					5: *ast.AssignStmt
-						6: *ast.Ident da
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident darr
-								8: *ast.Ident slice
-							7: *ast.Ident dstart
-							7: *ast.Ident dend
-					5: *ast.AssignStmt
-						6: *ast.Ident sa
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident sarr
-								8: *ast.Ident slice
-							7: *ast.Ident sstart
-							7: *ast.Ident send
-					5: *ast.TypeSwitchStmt
-						6: *ast.ExprStmt
-							7: *ast.TypeAssertExpr
-								8: *ast.Ident e
-						6: *ast.BlockStmt
-							7: *ast.CaseClause
-								8: *ast.Ident NonStdEngine
-								8: *ast.IfStmt
-									9: *ast.AssignStmt
-										10: *ast.Ident err
-										10: *ast.CallExpr
-											11: *ast.SelectorExpr
-												12: *ast.Ident e
-												12: *ast.Ident Memcpy
-											11: *ast.UnaryExpr
-												12: *ast.Ident da
-											11: *ast.UnaryExpr
-												12: *ast.Ident sa
-									9: *ast.BinaryExpr
-										10: *ast.Ident err
-										10: *ast.Ident nil
-									9: *ast.BlockStmt
-										10: *ast.ExprStmt
-											11: *ast.CallExpr
-												12: *ast.Ident panic
-												12: *ast.Ident err
-							7: *ast.CaseClause
-								8: *ast.ExprStmt
-									9: *ast.CallExpr
-										10: *ast.SelectorExpr
-											11: *ast.Ident storage
-											11: *ast.Ident Copy
-										10: *ast.SelectorExpr
-											11: *ast.SelectorExpr
-												12: *ast.Ident da
-												12: *ast.Ident t
-											11: *ast.Ident Type
-										10: *ast.UnaryExpr
-											11: *ast.SelectorExpr
-												12: *ast.Ident da
-												12: *ast.Ident Header
-										10: *ast.UnaryExpr
-											11: *ast.SelectorExpr
-												12: *ast.Ident sa
-												12: *ast.Ident Header
-					5: *ast.ReturnStmt
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident da
-								8: *ast.Ident Len
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.Ident copyArraySliced
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident arr
-					5: *ast.Ident dstart
-					5: *ast.Ident dend
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident arr
-					5: *ast.Ident sstart
-					5: *ast.Ident send
-	1: *ast.FuncDecl copyDenseIter
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident copyDenseIter
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident dst
-					5: *ast.Ident src
-					5: *ast.Ident DenseTensor
-				4: *ast.Field
-					5: *ast.Ident diter
-					5: *ast.Ident siter
+					5: *ast.Ident it
 					5: *ast.Ident Iterator
 			3: *ast.FieldList
 				4: *ast.Field
-					5: *ast.Ident int
-				4: *ast.Field
+					5: *ast.Ident err
 					5: *ast.Ident error
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident Dtype
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident Dtype
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident panic
-							7: *ast.BasicLit
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.BinaryExpr
-						6: *ast.UnaryExpr
-							7: *ast.CallExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident dst
-									9: *ast.Ident RequiresIterator
-						6: *ast.UnaryExpr
-							7: *ast.CallExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident src
-									9: *ast.Ident RequiresIterator
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.CallExpr
-								8: *ast.SelectorExpr
-									9: *ast.Ident dst
-									9: *ast.Ident DataOrder
-							7: *ast.Ident HasSameOrder
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident src
-								8: *ast.Ident DataOrder
-				4: *ast.BlockStmt
-					5: *ast.ReturnStmt
-						6: *ast.CallExpr
-							7: *ast.Ident copyDense
-							7: *ast.Ident dst
-							7: *ast.Ident src
-						6: *ast.Ident nil
-			3: *ast.IfStmt
-				4: *ast.UnaryExpr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident IsNativelyAccessible
-				4: *ast.BlockStmt
-					5: *ast.ReturnStmt
-						6: *ast.BasicLit
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident errors
-								8: *ast.Ident Errorf
-							7: *ast.Ident inaccessibleData
-							7: *ast.Ident dst
-			3: *ast.IfStmt
-				4: *ast.UnaryExpr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident IsNativelyAccessible
-				4: *ast.BlockStmt
-					5: *ast.ReturnStmt
-						6: *ast.BasicLit
-						6: *ast.CallExpr
-							7: *ast.SelectorExpr
-								8: *ast.Ident errors
-								8: *ast.Ident Errorf
-							7: *ast.Ident inaccessibleData
-							7: *ast.Ident src
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.Ident diter
-					5: *ast.Ident nil
-				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.Ident diter
-						6: *ast.CallExpr
-							7: *ast.Ident FlatIteratorFromDense
-							7: *ast.Ident dst
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.Ident siter
-					5: *ast.Ident nil
-				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.Ident siter
-						6: *ast.CallExpr
-							7: *ast.Ident FlatIteratorFromDense
-							7: *ast.Ident src
-			3: *ast.IfStmt
-				4: *ast.AssignStmt
-					5: *ast.Ident ms
-					5: *ast.Ident ok
-					5: *ast.TypeAssertExpr
-						6: *ast.Ident src
-						6: *ast.Ident MaskedTensor
-				4: *ast.BinaryExpr
-					5: *ast.Ident ok
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident ms
-							7: *ast.Ident IsMasked
-				4: *ast.BlockStmt
-					5: *ast.IfStmt
-						6: *ast.AssignStmt
-							7: *ast.Ident md
-							7: *ast.Ident ok
-							7: *ast.TypeAssertExpr
-								8: *ast.Ident dst
-								8: *ast.Ident MaskedTensor
-						6: *ast.Ident ok
-						6: *ast.BlockStmt
-							7: *ast.AssignStmt
-								8: *ast.Ident dmask
-								8: *ast.CallExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident md
-										10: *ast.Ident Mask
-							7: *ast.AssignStmt
-								8: *ast.Ident smask
-								8: *ast.CallExpr
-									9: *ast.SelectorExpr
-										10: *ast.Ident ms
-										10: *ast.Ident Mask
-							7: *ast.IfStmt
-								8: *ast.BinaryExpr
-									9: *ast.CallExpr
-										10: *ast.Ident cap
-										10: *ast.Ident dmask
-									9: *ast.CallExpr
-										10: *ast.Ident len
-										10: *ast.Ident smask
-								8: *ast.BlockStmt
-									9: *ast.AssignStmt
-										10: *ast.Ident dmask
-										10: *ast.CallExpr
-											11: *ast.Ident make
-											11: *ast.ArrayType
-												12: *ast.Ident bool
-											11: *ast.CallExpr
-												12: *ast.Ident len
-												12: *ast.Ident smask
-									9: *ast.ExprStmt
-										10: *ast.CallExpr
-											11: *ast.Ident copy
-											11: *ast.Ident dmask
-											11: *ast.CallExpr
-												12: *ast.SelectorExpr
-													13: *ast.Ident md
-													13: *ast.Ident Mask
-									9: *ast.ExprStmt
-										10: *ast.CallExpr
-											11: *ast.SelectorExpr
-												12: *ast.Ident md
-												12: *ast.Ident SetMask
-											11: *ast.Ident dmask
-							7: *ast.ExprStmt
-								8: *ast.CallExpr
-									9: *ast.Ident copy
-									9: *ast.Ident dmask
-									9: *ast.Ident smask
-			3: *ast.ReturnStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident storage
-						6: *ast.Ident CopyIter
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident rtype
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident dst
-							7: *ast.Ident hdr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident src
-							7: *ast.Ident hdr
-					5: *ast.Ident diter
-					5: *ast.Ident siter
-				4: *ast.Ident nil
-	1: *ast.GenDecl
-		2: *ast.TypeSpec
-			3: *ast.Ident scalarPtrCount
-			3: *ast.StructType
-				4: *ast.FieldList
-					5: *ast.Field
-						6: *ast.Ident Ptr
-						6: *ast.SelectorExpr
-							7: *ast.Ident unsafe
-							7: *ast.Ident Pointer
-					5: *ast.Field
-						6: *ast.Ident Count
-						6: *ast.Ident int
-	1: *ast.GenDecl
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.ValueSpec
-			3: *ast.Ident scalarRCLock
-			3: *ast.SelectorExpr
-				4: *ast.Ident sync
-				4: *ast.Ident Mutex
-	1: *ast.GenDecl
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.ValueSpec
-			3: *ast.Ident scalarRC
-			3: *ast.CallExpr
-				4: *ast.Ident make
-				4: *ast.MapType
-					5: *ast.Ident uintptr
-					5: *ast.StarExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident sync
-							7: *ast.Ident Pool
-			3: *ast.CommentGroup
-				4: *ast.Comment
-	1: *ast.FuncDecl scalarPool
-		2: *ast.Ident scalarPool
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident size
-					5: *ast.Ident uintptr
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.StarExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident sync
-							7: *ast.Ident Pool
-		2: *ast.BlockStmt
-			3: *ast.ExprStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident scalarRCLock
-						6: *ast.Ident Lock
-			3: *ast.AssignStmt
-				4: *ast.Ident pool
-				4: *ast.Ident ok
-				4: *ast.IndexExpr
-					5: *ast.Ident scalarRC
-					5: *ast.Ident size
-			3: *ast.IfStmt
-				4: *ast.UnaryExpr
-					5: *ast.Ident ok
-				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.Ident pool
-						6: *ast.UnaryExpr
-							7: *ast.CompositeLit
-								8: *ast.SelectorExpr
-									9: *ast.Ident sync
-									9: *ast.Ident Pool
-								8: *ast.KeyValueExpr
-									9: *ast.Ident New
-									9: *ast.FuncLit
-										10: *ast.FuncType
-											11: *ast.FieldList
-											11: *ast.FieldList
-												12: *ast.Field
-													13: *ast.InterfaceType
-														14: *ast.FieldList
-										10: *ast.BlockStmt
-											11: *ast.ReturnStmt
-												12: *ast.CallExpr
-													13: *ast.Ident make
-													13: *ast.ArrayType
-														14: *ast.Ident byte
-													13: *ast.Ident size
-					5: *ast.AssignStmt
-						6: *ast.IndexExpr
-							7: *ast.Ident scalarRC
-							7: *ast.Ident size
-						6: *ast.Ident pool
-			3: *ast.ExprStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident scalarRCLock
-						6: *ast.Ident Unlock
-			3: *ast.ReturnStmt
-				4: *ast.Ident pool
-	1: *ast.FuncDecl allocScalar
-		2: *ast.Ident allocScalar
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident a
-					5: *ast.InterfaceType
-						6: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.ArrayType
-						6: *ast.Ident byte
-		2: *ast.BlockStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident atype
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident TypeOf
-					5: *ast.Ident a
-			3: *ast.AssignStmt
-				4: *ast.Ident size
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident atype
-						6: *ast.Ident Size
-			3: *ast.AssignStmt
-				4: *ast.Ident pool
-				4: *ast.CallExpr
-					5: *ast.Ident scalarPool
-					5: *ast.Ident size
-			3: *ast.ReturnStmt
-				4: *ast.TypeAssertExpr
-					5: *ast.CallExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident pool
-							7: *ast.Ident Get
-					5: *ast.ArrayType
-						6: *ast.Ident byte
-	1: *ast.FuncDecl freeScalar
-		2: *ast.Ident freeScalar
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident bs
-					5: *ast.ArrayType
-						6: *ast.Ident byte
-		2: *ast.BlockStmt
-			3: *ast.IfStmt
-				4: *ast.BinaryExpr
-					5: *ast.Ident bs
-					5: *ast.Ident nil
-				4: *ast.BlockStmt
-					5: *ast.ReturnStmt
-			3: *ast.RangeStmt
-				4: *ast.Ident i
-				4: *ast.Ident bs
-				4: *ast.BlockStmt
-					5: *ast.AssignStmt
-						6: *ast.IndexExpr
-							7: *ast.Ident bs
-							7: *ast.Ident i
-						6: *ast.BasicLit
-			3: *ast.AssignStmt
-				4: *ast.Ident size
-				4: *ast.CallExpr
-					5: *ast.Ident uintptr
-					5: *ast.CallExpr
-						6: *ast.Ident len
-						6: *ast.Ident bs
-			3: *ast.AssignStmt
-				4: *ast.Ident pool
-				4: *ast.CallExpr
-					5: *ast.Ident scalarPool
-					5: *ast.Ident size
-			3: *ast.ExprStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident pool
-						6: *ast.Ident Put
-					5: *ast.Ident bs
-	1: *ast.FuncDecl scalarToHeader
-		2: *ast.CommentGroup
-			3: *ast.Comment
-		2: *ast.Ident scalarToHeader
-		2: *ast.FuncType
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident a
-					5: *ast.InterfaceType
-						6: *ast.FieldList
-			3: *ast.FieldList
-				4: *ast.Field
-					5: *ast.Ident hdr
-					5: *ast.StarExpr
-						6: *ast.SelectorExpr
-							7: *ast.Ident storage
-							7: *ast.Ident Header
-				4: *ast.Field
-					5: *ast.Ident newAlloc
-					5: *ast.Ident bool
 		2: *ast.BlockStmt
 			3: *ast.DeclStmt
 				4: *ast.GenDecl
 					5: *ast.ValueSpec
-						6: *ast.Ident raw
-						6: *ast.ArrayType
-							7: *ast.Ident byte
-			3: *ast.TypeSwitchStmt
-				4: *ast.AssignStmt
-					5: *ast.Ident at
-					5: *ast.TypeAssertExpr
-						6: *ast.Ident a
+						6: *ast.Ident i
+						6: *ast.Ident int
+			3: *ast.SwitchStmt
+				4: *ast.SelectorExpr
+					5: *ast.Ident a
+					5: *ast.Ident t
 				4: *ast.BlockStmt
 					5: *ast.CaseClause
-						6: *ast.Ident Memory
+						6: *ast.Ident Bool
 						6: *ast.AssignStmt
-							7: *ast.Ident raw
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident bool
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
 							7: *ast.CallExpr
 								8: *ast.SelectorExpr
-									9: *ast.Ident storage
-									9: *ast.Ident FromMemory
+									9: *ast.Ident a
+									9: *ast.Ident Bools
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
 								8: *ast.CallExpr
 									9: *ast.SelectorExpr
-										10: *ast.Ident at
-										10: *ast.Ident Uintptr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
 								8: *ast.CallExpr
 									9: *ast.SelectorExpr
-										10: *ast.Ident at
-										10: *ast.Ident MemSize
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Ints
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int8
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int8
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Int8s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int16
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int16
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Int16s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int32
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int32
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Int32s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int64
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident int64
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Int64s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uints
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint8
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint8
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uint8s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint16
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint16
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uint16s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint32
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint32
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uint32s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint64
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uint64
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uint64s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uintptr
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident uintptr
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uintptrs
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Float32
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident float32
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Float32s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Float64
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident float64
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Float64s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Complex64
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident complex64
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Complex64s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Complex128
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident complex128
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Complex128s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident String
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.Ident string
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Strings
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident UnsafePointer
+						6: *ast.AssignStmt
+							7: *ast.Ident xv
+							7: *ast.Ident ok
+							7: *ast.TypeAssertExpr
+								8: *ast.Ident x
+								8: *ast.SelectorExpr
+									9: *ast.Ident unsafe
+									9: *ast.Ident Pointer
+						6: *ast.IfStmt
+							7: *ast.UnaryExpr
+								8: *ast.Ident ok
+							7: *ast.BlockStmt
+								8: *ast.ReturnStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident errors
+											11: *ast.Ident Errorf
+										10: *ast.Ident dtypeMismatch
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident t
+										10: *ast.Ident x
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident UnsafePointers
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident xv
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
 					5: *ast.CaseClause
 						6: *ast.AssignStmt
-							7: *ast.Ident raw
+							7: *ast.Ident xv
 							7: *ast.CallExpr
-								8: *ast.Ident allocScalar
-								8: *ast.Ident a
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident ValueOf
+								8: *ast.Ident x
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident val
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident reflect
+											11: *ast.Ident NewAt
+										10: *ast.SelectorExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident a
+												12: *ast.Ident t
+											11: *ast.Ident Type
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident storage
+												12: *ast.Ident ElementAt
+											11: *ast.Ident i
+											11: *ast.CallExpr
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+												12: *ast.UnaryExpr
+													13: *ast.IndexExpr
+														14: *ast.SelectorExpr
+															15: *ast.SelectorExpr
+																16: *ast.Ident a
+																16: *ast.Ident Header
+															15: *ast.Ident Raw
+														14: *ast.BasicLit
+											11: *ast.CallExpr
+												12: *ast.SelectorExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident a
+														14: *ast.Ident t
+													13: *ast.Ident Size
+								8: *ast.AssignStmt
+									9: *ast.Ident val
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident reflect
+											11: *ast.Ident Indirect
+										10: *ast.Ident val
+								8: *ast.ExprStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident val
+											11: *ast.Ident Set
+										10: *ast.Ident xv
 						6: *ast.AssignStmt
-							7: *ast.Ident newAlloc
-							7: *ast.Ident true
-			3: *ast.AssignStmt
-				4: *ast.Ident hdr
-				4: *ast.CallExpr
-					5: *ast.Ident borrowHeader
-			3: *ast.AssignStmt
-				4: *ast.SelectorExpr
-					5: *ast.Ident hdr
-					5: *ast.Ident Raw
-				4: *ast.Ident raw
-			3: *ast.IfStmt
-				4: *ast.Ident newAlloc
-				4: *ast.BlockStmt
-					5: *ast.ExprStmt
-						6: *ast.CallExpr
-							7: *ast.Ident copyScalarToPrealloc
-							7: *ast.Ident a
-							7: *ast.SelectorExpr
-								8: *ast.Ident hdr
-								8: *ast.Ident Raw
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
 			3: *ast.ReturnStmt
-				4: *ast.Ident hdr
-				4: *ast.Ident newAlloc
-	1: *ast.FuncDecl copyScalarToPrealloc
-		2: *ast.Ident copyScalarToPrealloc
+	1: *ast.FuncDecl Eq
+		2: *ast.CommentGroup
+			3: *ast.Comment
+		2: *ast.FieldList
+			3: *ast.Field
+				4: *ast.Ident a
+				4: *ast.SelectorExpr
+					5: *ast.Ident main
+					5: *ast.Ident array
+		2: *ast.Ident Eq
 		2: *ast.FuncType
 			3: *ast.FieldList
 				4: *ast.Field
-					5: *ast.Ident a
+					5: *ast.Ident other
 					5: *ast.InterfaceType
 						6: *ast.FieldList
+			3: *ast.FieldList
 				4: *ast.Field
-					5: *ast.Ident bs
-					5: *ast.ArrayType
-						6: *ast.Ident byte
+					5: *ast.Ident bool
 		2: *ast.BlockStmt
-			3: *ast.AssignStmt
-				4: *ast.Ident xV
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident ValueOf
-					5: *ast.Ident a
-			3: *ast.AssignStmt
-				4: *ast.Ident xT
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident TypeOf
-					5: *ast.Ident a
-			3: *ast.AssignStmt
-				4: *ast.Ident p
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident unsafe
-						6: *ast.Ident Pointer
-					5: *ast.UnaryExpr
-						6: *ast.IndexExpr
-							7: *ast.Ident bs
-							7: *ast.BasicLit
-			3: *ast.AssignStmt
-				4: *ast.Ident v
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
-						6: *ast.Ident reflect
-						6: *ast.Ident NewAt
-					5: *ast.Ident xT
-					5: *ast.Ident p
-			3: *ast.ExprStmt
-				4: *ast.CallExpr
-					5: *ast.SelectorExpr
+			3: *ast.IfStmt
+				4: *ast.AssignStmt
+					5: *ast.Ident oa
+					5: *ast.Ident ok
+					5: *ast.TypeAssertExpr
+						6: *ast.Ident other
+						6: *ast.StarExpr
+							7: *ast.SelectorExpr
+								8: *ast.Ident main
+								8: *ast.Ident array
+				4: *ast.Ident ok
+				4: *ast.BlockStmt
+					5: *ast.IfStmt
+						6: *ast.BinaryExpr
+							7: *ast.SelectorExpr
+								8: *ast.Ident oa
+								8: *ast.Ident t
+							7: *ast.SelectorExpr
+								8: *ast.Ident a
+								8: *ast.Ident t
+						6: *ast.BlockStmt
+							7: *ast.ReturnStmt
+								8: *ast.Ident false
+					5: *ast.IfStmt
+						6: *ast.BinaryExpr
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident oa
+									9: *ast.Ident Len
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Len
+						6: *ast.BlockStmt
+							7: *ast.ReturnStmt
+								8: *ast.Ident false
+					5: *ast.IfStmt
+						6: *ast.BinaryExpr
+							7: *ast.CallExpr
+								8: *ast.Ident uintptr
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident unsafe
+										10: *ast.Ident Pointer
+									9: *ast.UnaryExpr
+										10: *ast.IndexExpr
+											11: *ast.SelectorExpr
+												12: *ast.SelectorExpr
+													13: *ast.Ident oa
+													13: *ast.Ident Header
+												12: *ast.Ident Raw
+											11: *ast.BasicLit
+							7: *ast.CallExpr
+								8: *ast.Ident uintptr
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident unsafe
+										10: *ast.Ident Pointer
+									9: *ast.UnaryExpr
+										10: *ast.IndexExpr
+											11: *ast.SelectorExpr
+												12: *ast.SelectorExpr
+													13: *ast.Ident a
+													13: *ast.Ident Header
+												12: *ast.Ident Raw
+											11: *ast.BasicLit
+						6: *ast.BlockStmt
+							7: *ast.ReturnStmt
+								8: *ast.Ident true
+					5: *ast.SwitchStmt
 						6: *ast.CallExpr
 							7: *ast.SelectorExpr
-								8: *ast.Ident reflect
-								8: *ast.Ident Indirect
-							7: *ast.Ident v
-						6: *ast.Ident Set
-					5: *ast.Ident xV
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident t
+								8: *ast.Ident Kind
+						6: *ast.BlockStmt
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Bool
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Bools
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetB
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Int
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Ints
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetI
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Int8
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Int8s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetI8
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Int16
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Int16s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetI16
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Int32
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Int32s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetI32
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Int64
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Int64s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetI64
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Uint
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uints
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetU
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Uint8
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uint8s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetU8
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Uint16
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uint16s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetU16
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Uint32
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uint32s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetU32
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Uint64
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uint64s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetU64
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Uintptr
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Uintptrs
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetUintptr
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Float32
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Float32s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetF32
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Float64
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Float64s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetF64
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Complex64
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Complex64s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetC64
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident Complex128
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Complex128s
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetC128
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident String
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident Strings
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetStr
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.SelectorExpr
+									9: *ast.Ident reflect
+									9: *ast.Ident UnsafePointer
+								8: *ast.RangeStmt
+									9: *ast.Ident i
+									9: *ast.Ident v
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident a
+											11: *ast.Ident UnsafePointers
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.BinaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident oa
+														14: *ast.Ident GetUnsafePointer
+													13: *ast.Ident i
+												12: *ast.Ident v
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+							7: *ast.CaseClause
+								8: *ast.ForStmt
+									9: *ast.AssignStmt
+										10: *ast.Ident i
+										10: *ast.BasicLit
+									9: *ast.BinaryExpr
+										10: *ast.Ident i
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident a
+												12: *ast.Ident Len
+									9: *ast.IncDecStmt
+										10: *ast.Ident i
+									9: *ast.BlockStmt
+										10: *ast.IfStmt
+											11: *ast.UnaryExpr
+												12: *ast.CallExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident reflect
+														14: *ast.Ident DeepEqual
+													13: *ast.CallExpr
+														14: *ast.SelectorExpr
+															15: *ast.Ident a
+															15: *ast.Ident Get
+														14: *ast.Ident i
+													13: *ast.CallExpr
+														14: *ast.SelectorExpr
+															15: *ast.Ident oa
+															15: *ast.Ident Get
+														14: *ast.Ident i
+											11: *ast.BlockStmt
+												12: *ast.ReturnStmt
+													13: *ast.Ident false
+					5: *ast.ReturnStmt
+						6: *ast.Ident true
+			3: *ast.ReturnStmt
+				4: *ast.Ident false
+	1: *ast.FuncDecl zeroIter
+		2: *ast.FieldList
+			3: *ast.Field
+				4: *ast.Ident a
+				4: *ast.StarExpr
+					5: *ast.SelectorExpr
+						6: *ast.Ident main
+						6: *ast.Ident array
+		2: *ast.Ident zeroIter
+		2: *ast.FuncType
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident it
+					5: *ast.Ident Iterator
+			3: *ast.FieldList
+				4: *ast.Field
+					5: *ast.Ident err
+					5: *ast.Ident error
+		2: *ast.BlockStmt
+			3: *ast.DeclStmt
+				4: *ast.GenDecl
+					5: *ast.ValueSpec
+						6: *ast.Ident i
+						6: *ast.Ident int
+			3: *ast.SwitchStmt
+				4: *ast.SelectorExpr
+					5: *ast.Ident a
+					5: *ast.Ident t
+				4: *ast.BlockStmt
+					5: *ast.CaseClause
+						6: *ast.Ident Bool
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Bools
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident false
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Ints
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int8
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Int8s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int16
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Int16s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int32
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Int32s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Int64
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Int64s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uints
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint8
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uint8s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint16
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uint16s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint32
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uint32s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uint64
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uint64s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Uintptr
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Uintptrs
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Float32
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Float32s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Float64
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Float64s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Complex64
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Complex64s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident Complex128
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Complex128s
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident String
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident Strings
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.BasicLit
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.Ident UnsafePointer
+						6: *ast.AssignStmt
+							7: *ast.Ident data
+							7: *ast.CallExpr
+								8: *ast.SelectorExpr
+									9: *ast.Ident a
+									9: *ast.Ident UnsafePointers
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.IndexExpr
+										10: *ast.Ident data
+										10: *ast.Ident i
+									9: *ast.Ident nil
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
+					5: *ast.CaseClause
+						6: *ast.ForStmt
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BinaryExpr
+								8: *ast.Ident err
+								8: *ast.Ident nil
+							7: *ast.AssignStmt
+								8: *ast.Ident i
+								8: *ast.Ident err
+								8: *ast.CallExpr
+									9: *ast.SelectorExpr
+										10: *ast.Ident it
+										10: *ast.Ident Next
+							7: *ast.BlockStmt
+								8: *ast.AssignStmt
+									9: *ast.Ident val
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident reflect
+											11: *ast.Ident NewAt
+										10: *ast.SelectorExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident a
+												12: *ast.Ident t
+											11: *ast.Ident Type
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident storage
+												12: *ast.Ident ElementAt
+											11: *ast.Ident i
+											11: *ast.CallExpr
+												12: *ast.SelectorExpr
+													13: *ast.Ident unsafe
+													13: *ast.Ident Pointer
+												12: *ast.UnaryExpr
+													13: *ast.IndexExpr
+														14: *ast.SelectorExpr
+															15: *ast.SelectorExpr
+																16: *ast.Ident a
+																16: *ast.Ident Header
+															15: *ast.Ident Raw
+														14: *ast.BasicLit
+											11: *ast.CallExpr
+												12: *ast.SelectorExpr
+													13: *ast.SelectorExpr
+														14: *ast.Ident a
+														14: *ast.Ident t
+													13: *ast.Ident Size
+								8: *ast.AssignStmt
+									9: *ast.Ident val
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident reflect
+											11: *ast.Ident Indirect
+										10: *ast.Ident val
+								8: *ast.ExprStmt
+									9: *ast.CallExpr
+										10: *ast.SelectorExpr
+											11: *ast.Ident val
+											11: *ast.Ident Set
+										10: *ast.CallExpr
+											11: *ast.SelectorExpr
+												12: *ast.Ident reflect
+												12: *ast.Ident Zero
+											11: *ast.SelectorExpr
+												12: *ast.Ident a
+												12: *ast.Ident t
+						6: *ast.AssignStmt
+							7: *ast.Ident err
+							7: *ast.CallExpr
+								8: *ast.Ident handleNoOp
+								8: *ast.Ident err
 			3: *ast.ReturnStmt
