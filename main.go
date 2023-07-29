@@ -1100,8 +1100,7 @@ func replacePattern(filename string, pattern int) {
 								},
 							},
 						},
-					},
-					)
+					})
 				}
 				once = false
 			}
