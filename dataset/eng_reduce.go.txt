@@ -1,5 +1,8 @@
 {*ast.File [execution]}
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec -> *ast.BasicLit []}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [STRING "github.com/pkg/errors"]}
+{*ast.ImportSpec [STRING "gorgonia.org/tensor/internal/storage"]}
 
 
 function name is ReduceFirst 
@@ -323,8 +326,7 @@ function name is ReduceFirst
 	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceFirstUnsafePointer dt rt split size f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
-	 {*ast.BasicLit [t]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf STRING "Unsupported type %v for ReduceFirst" t]}
 
 
 function name is ReduceLast 
@@ -738,8 +740,7 @@ function name is ReduceLast
 	 {*ast.ExprStmt -> *ast.CallExpr [genericReduceLastUnsafePointer dt rt dimSize def f]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf reductionErrMsg fn]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
-	 {*ast.BasicLit [t]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf STRING "Unsupported type %v for ReduceLast" t]}
 
 
 function name is ReduceDefault 
@@ -1084,8 +1085,7 @@ function name is ReduceDefault
 	 {*ast.CallExpr -> *ast.SelectorExpr [retVal UnsafePointers]}
 	 {*ast.ExprStmt -> *ast.CallExpr [reduceDefaultUnsafePointer dt rt dim0 dimSize outerStride stride expected f]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
-	 {*ast.BasicLit [t]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors Errorf STRING "Unsupported type %v for ReduceDefault" t]}
 
 
 function name is Reduce 
@@ -1516,7 +1516,6 @@ function name is Reduce
 	 {*ast.CallExpr -> *ast.SelectorExpr [a UnsafePointers]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause -> *ast.ReturnStmt [nil]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
-	 {*ast.BasicLit [t]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf STRING "Unsupported type %v for Reduce" t]}
 
 
