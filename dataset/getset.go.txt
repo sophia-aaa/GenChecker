@@ -1,6 +1,9 @@
+{*ast.File [storage]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+
+
 function name is Bools 
-	 {*ast.File [storage]}
-	 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.FieldList -> *ast.Field [h]}
+	 {*ast.FieldList -> *ast.Field [h]}
 	 {*ast.StarExpr [Header Bools]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [bool]}

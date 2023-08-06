@@ -6,6 +6,13 @@ import (
 )
 
 var (
+	typeList = []string{
+		"bool", "bType", "int", "iType", "int8", "i8Type", "int16", "i16Type", "int32", "i32Type", "int64", "i64Type", "uint", "uType",
+		"uint8", "u8Type", "uint16", "u16Type", "uint32", "u32Type", "uint64", "u64Type", "uintptr", "uintptrType",
+		"float32", "f32Type", "float64", "f64Type", "complex64", "c64Type", "complex128", "c128Type", "string", "strType",
+		"unsafe", "Pointer", "unsafePointer", "unsafePointerType", "reflect",
+	}
+
 	genStruct = &ast.GenDecl{
 		Tok: token.TYPE,
 		Specs: []ast.Spec{

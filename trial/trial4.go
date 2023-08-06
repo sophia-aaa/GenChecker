@@ -48,7 +48,7 @@ func main() {
 	}*/
 
 	fset := token.NewFileSet()
-	filename := "test.go"
+	filename := "test1.go"
 	f, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)
 	//import "github.com/davecgh/go-spew/spew"
 	//spew.Dump(f)

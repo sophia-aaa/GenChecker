@@ -417,7 +417,7 @@ func checkSelectorExpr(listFunctions2 []basicStr) []basicStr {
 
 func main() {
 	// filename, err := os.ReadFile(os.Args[2])
-	// command must be like this: go run gen.go - test.go
+	// command must be like this: go run gen.go - example.go
 	filename := os.Args[2]
 	fmt.Println(filename)
 	fset := token.NewFileSet()
