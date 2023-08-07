@@ -1,6 +1,8 @@
 package main
 
-import "strings"
+import (
+	"strings"
+)
 
 func contains(strArr []string, str string) bool {
 	for _, val := range strArr {
@@ -32,4 +34,19 @@ func isSameString(strArr []string, str string) bool {
 		}
 	}
 	return false
+}
+
+func funcNameDivider(funcWordList []string, str string) []string {
+	funcWord := ""
+	for _, val := range str {
+		if 'A' <= val && val <= 'Z' {
+			if !strings.EqualFold(funcWord, "") {
+				funcWordList = append(funcWordList, funcWord)
+			}
+			funcWord = string(val)
+		} else {
+			funcWord += string(val)
+		}
+	}
+	return funcWordList
 }

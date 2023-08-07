@@ -1,0 +1,1316 @@
+{*ast.File [gtk]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.ImportSpec [STRING "C"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "errors"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [STRING "github.com/gotk3/gotk3/cairo"]}
+{*ast.ImportSpec [STRING "github.com/gotk3/gotk3/gdk"]}
+{*ast.ImportSpec [STRING "github.com/gotk3/gotk3/glib"]}
+{*ast.ImportSpec [STRING "github.com/gotk3/gotk3/internal/callback"]}
+{*ast.ImportSpec [STRING "github.com/gotk3/gotk3/pango"]}
+
+
+function name is init 
+	 { [init]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [tm]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.SelectorExpr [glib TypeMarshaler]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_transition_type_get_type marshalRevealerTransitionType]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_transition_type_get_type marshalStackTransitionType]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_get_type marshalHeaderBar]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_get_type marshalListBox]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_row_get_type marshalListBoxRow]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_get_type marshalRevealer]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_search_bar_get_type marshalSearchBar]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_get_type marshalStack]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.SelectorExpr [glib Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_switcher_get_type marshalStackSwitcher]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [glib RegisterGValueMarshalers tm]}
+	 {*ast.RangeStmt [k v]}
+	 {*ast.CompositeLit -> *ast.MapType [string WrapFn]}
+	 {*ast.KeyValueExpr [STRING "GtkHeaderBar" wrapHeaderBar]}
+	 {*ast.KeyValueExpr [STRING "GtkListBox" wrapListBox]}
+	 {*ast.KeyValueExpr [STRING "GtkListBoxRow" wrapListBoxRow]}
+	 {*ast.KeyValueExpr [STRING "GtkRevealer" wrapRevealer]}
+	 {*ast.KeyValueExpr [STRING "GtkSearchBar" wrapSearchBar]}
+	 {*ast.KeyValueExpr [STRING "GtkStack" wrapStack]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [WrapMap k v]}
+	 {*ast.GenDecl -> *ast.ValueSpec [ALIGN_BASELINE Align]}
+	 {*ast.SelectorExpr [C GTK_ALIGN_BASELINE]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [IMAGE_SURFACE ImageType]}
+	 {*ast.SelectorExpr [C GTK_IMAGE_SURFACE]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [RevealerTransitionType int]}
+	 {*ast.GenDecl -> *ast.ValueSpec [REVEALER_TRANSITION_TYPE_NONE RevealerTransitionType]}
+	 {*ast.SelectorExpr [C GTK_REVEALER_TRANSITION_TYPE_NONE]}
+	 {*ast.ValueSpec [REVEALER_TRANSITION_TYPE_CROSSFADE RevealerTransitionType]}
+	 {*ast.SelectorExpr [C GTK_REVEALER_TRANSITION_TYPE_CROSSFADE]}
+	 {*ast.ValueSpec [REVEALER_TRANSITION_TYPE_SLIDE_RIGHT RevealerTransitionType]}
+	 {*ast.SelectorExpr [C GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT]}
+	 {*ast.ValueSpec [REVEALER_TRANSITION_TYPE_SLIDE_LEFT RevealerTransitionType]}
+	 {*ast.SelectorExpr [C GTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT]}
+	 {*ast.ValueSpec [REVEALER_TRANSITION_TYPE_SLIDE_UP RevealerTransitionType]}
+	 {*ast.SelectorExpr [C GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP]}
+	 {*ast.ValueSpec [REVEALER_TRANSITION_TYPE_SLIDE_DOWN RevealerTransitionType]}
+	 {*ast.SelectorExpr [C GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN]}
+
+
+function name is marshalRevealerTransitionType 
+	 { [marshalRevealerTransitionType]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p uintptr]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C g_value_get_enum]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GValue]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [RevealerTransitionType c nil]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [StackTransitionType int]}
+	 {*ast.GenDecl -> *ast.ValueSpec [STACK_TRANSITION_TYPE_NONE StackTransitionType]}
+	 {*ast.SelectorExpr [C GTK_STACK_TRANSITION_TYPE_NONE]}
+	 {*ast.ValueSpec [STACK_TRANSITION_TYPE_CROSSFADE StackTransitionType]}
+	 {*ast.SelectorExpr [C GTK_STACK_TRANSITION_TYPE_CROSSFADE]}
+	 {*ast.ValueSpec [STACK_TRANSITION_TYPE_SLIDE_RIGHT StackTransitionType]}
+	 {*ast.SelectorExpr [C GTK_STACK_TRANSITION_TYPE_SLIDE_RIGHT]}
+	 {*ast.ValueSpec [STACK_TRANSITION_TYPE_SLIDE_LEFT StackTransitionType]}
+	 {*ast.SelectorExpr [C GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT]}
+	 {*ast.ValueSpec [STACK_TRANSITION_TYPE_SLIDE_UP StackTransitionType]}
+	 {*ast.SelectorExpr [C GTK_STACK_TRANSITION_TYPE_SLIDE_UP]}
+	 {*ast.ValueSpec [STACK_TRANSITION_TYPE_SLIDE_DOWN StackTransitionType]}
+	 {*ast.SelectorExpr [C GTK_STACK_TRANSITION_TYPE_SLIDE_DOWN]}
+	 {*ast.ValueSpec [STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT StackTransitionType]}
+	 {*ast.SelectorExpr [C GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT]}
+	 {*ast.ValueSpec [STACK_TRANSITION_TYPE_SLIDE_UP_DOWN StackTransitionType]}
+	 {*ast.SelectorExpr [C GTK_STACK_TRANSITION_TYPE_SLIDE_UP_DOWN]}
+
+
+function name is marshalStackTransitionType 
+	 { [marshalStackTransitionType]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p uintptr]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C g_value_get_enum]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GValue]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [StackTransitionType c nil]}
+
+
+function name is ImageNewFromSurface 
+	 {*ast.CommentGroup -> *ast.Comment [ImageNewFromSurface]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [surface]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [cairo Surface]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Image]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_image_new_from_surface]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C cairo_surface_t]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [surface GetCSurface]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapImage obj nil]}
+
+
+function name is SetFromSurface 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Image SetFromSurface]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [surface]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [cairo Surface]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [csurface]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C cairo_surface_t]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [surface GetCSurface]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_image_set_from_surface]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native csurface]}
+
+
+function name is LoadIconForScale 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [IconTheme LoadIconForScale]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [iconName string]}
+	 {*ast.Field [size scale int]}
+	 {*ast.Field [flags IconLookupFlags]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [gdk Pixbuf]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString iconName]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [err]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [C GError nil]}
+	 {*ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_icon_theme_load_icon_for_scale]}
+	 {*ast.SelectorExpr [v Theme]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gint size]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gint scale]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GtkIconLookupFlags flags]}
+	 {*ast.UnaryExpr [err]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C g_error_free err]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.CallExpr [goString]}
+	 {*ast.SelectorExpr [err message]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [gdk Pixbuf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is GetTabs 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Entry GetTabs]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [pango TabArray]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_entry_get_tabs]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [pango WrapTabArray]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is SetTabs 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Entry SetTabs]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [tabs]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [pango TabArray]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_entry_set_tabs]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C PangoTabArray]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tabs Native]}
+
+
+function name is ButtonNewFromIconName 
+	 {*ast.CommentGroup -> *ast.Comment [ButtonNewFromIconName]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [iconName string]}
+	 {*ast.Field [size IconSize]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Button]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString iconName]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_button_new_from_icon_name]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GtkIconSize size]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapButton]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is RemoveRow 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Grid RemoveRow]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [position int]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_grid_remove_row]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gint position]}
+
+
+function name is RemoveColumn 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Grid RemoveColumn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [position int]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_grid_remove_column]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gint position]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [HeaderBar]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Container]}
+
+
+function name is native 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar native]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C GtkHeaderBar]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [v nil]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [v GObject nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [v GObject]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C toGtkHeaderBar p]}
+
+
+function name is marshalHeaderBar 
+	 { [marshalHeaderBar]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p uintptr]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C g_value_get_object]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GValue]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapHeaderBar obj nil]}
+
+
+function name is wrapHeaderBar 
+	 { [wrapHeaderBar]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [obj]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [glib Object]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [HeaderBar]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [obj nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [HeaderBar]}
+	 {*ast.CompositeLit [Container]}
+	 {*ast.CompositeLit [Widget]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [glib InitiallyUnowned obj]}
+
+
+function name is HeaderBarNew 
+	 {*ast.CommentGroup -> *ast.Comment [HeaderBarNew]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [HeaderBar]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_new]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapHeaderBar]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is SetTitle 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar SetTitle]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [title string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString title]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_set_title]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+
+
+function name is GetTitle 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar GetTitle]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_get_title]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C GoString]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char cstr]}
+
+
+function name is SetSubtitle 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar SetSubtitle]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [subtitle string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString subtitle]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_set_subtitle]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+
+
+function name is GetSubtitle 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar GetSubtitle]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_get_subtitle]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C GoString]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char cstr]}
+
+
+function name is SetCustomTitle 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar SetCustomTitle]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [titleWidget IWidget]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_set_custom_title]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [titleWidget toWidget]}
+
+
+function name is GetCustomTitle 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar GetCustomTitle]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [IWidget]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_get_custom_title]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [castWidget c]}
+
+
+function name is PackStart 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar PackStart]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [child IWidget]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_pack_start]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [child toWidget]}
+
+
+function name is PackEnd 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar PackEnd]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [child IWidget]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_pack_end]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [child toWidget]}
+
+
+function name is SetShowCloseButton 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar SetShowCloseButton]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [setting bool]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_set_show_close_button]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr [gbool setting]}
+
+
+function name is GetShowCloseButton 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [HeaderBar GetShowCloseButton]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_header_bar_get_show_close_button]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [gobool c]}
+
+
+function name is GetLines 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Label GetLines]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_label_get_lines]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [int c]}
+
+
+function name is SetLines 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Label SetLines]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [lines int]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_label_set_lines]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gint lines]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ListBox]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Container]}
+
+
+function name is native 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox native]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C GtkListBox]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [v nil]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [v GObject nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [v GObject]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C toGtkListBox p]}
+
+
+function name is marshalListBox 
+	 { [marshalListBox]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p uintptr]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C g_value_get_object]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GValue]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapListBox obj nil]}
+
+
+function name is wrapListBox 
+	 { [wrapListBox]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [obj]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [glib Object]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [ListBox]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [obj nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [ListBox]}
+	 {*ast.CompositeLit [Container]}
+	 {*ast.CompositeLit [Widget]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [glib InitiallyUnowned obj]}
+
+
+function name is ListBoxNew 
+	 {*ast.CommentGroup -> *ast.Comment [ListBoxNew]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [ListBox]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_new]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapListBox]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is Prepend 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox Prepend]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [child IWidget]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_prepend]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [child toWidget]}
+
+
+function name is Insert 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox Insert]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [child IWidget]}
+	 {*ast.Field [position int]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_insert]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [child toWidget]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gint position]}
+
+
+function name is SelectRow 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox SelectRow]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [row]}
+	 {*ast.StarExpr [ListBoxRow]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_select_row]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [row native]}
+
+
+function name is GetSelectedRow 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox GetSelectedRow]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [ListBoxRow]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_get_selected_row]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapListBoxRow]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+
+
+function name is SetSelectionMode 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox SetSelectionMode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [mode SelectionMode]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_set_selection_mode]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GtkSelectionMode mode]}
+
+
+function name is GetSelectionMode 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox GetSelectionMode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [SelectionMode]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_get_selection_mode]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [SelectionMode c]}
+
+
+function name is SetActivateOnSingleClick 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox SetActivateOnSingleClick]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [single bool]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_set_activate_on_single_click]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr [gbool single]}
+
+
+function name is GetActivateOnSingleClick 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox GetActivateOnSingleClick]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_get_activate_on_single_click]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [gobool c]}
+
+
+function name is GetAdjustment 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox GetAdjustment]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Adjustment]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_get_adjustment]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Adjustment]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [glib InitiallyUnowned obj]}
+
+
+function name is SetAdjustment 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox SetAdjustment]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [adjustment]}
+	 {*ast.StarExpr [Adjustment]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_set_adjustment]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [adjustment native]}
+
+
+function name is SetPlaceholder 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox SetPlaceholder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [placeholder IWidget]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_set_placeholder]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [placeholder toWidget]}
+
+
+function name is GetRowAtIndex 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox GetRowAtIndex]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [index int]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [ListBoxRow]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_get_row_at_index]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gint index]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapListBoxRow]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+
+
+function name is GetRowAtY 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox GetRowAtY]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [y int]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [ListBoxRow]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_get_row_at_y]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gint y]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapListBoxRow]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+
+
+function name is InvalidateFilter 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox InvalidateFilter]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_invalidate_filter]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+
+
+function name is InvalidateHeaders 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox InvalidateHeaders]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_invalidate_headers]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+
+
+function name is InvalidateSort 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox InvalidateSort]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_invalidate_sort]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ListBoxFilterFunc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [row]}
+	 {*ast.StarExpr [ListBoxRow]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+
+
+function name is SetFilterFunc 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox SetFilterFunc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fn ListBoxFilterFunc]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C _gtk_list_box_set_filter_func]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gpointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [callback Assign fn]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ListBoxHeaderFunc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [row]}
+	 {*ast.StarExpr [ListBoxRow]}
+	 {*ast.Field [before]}
+	 {*ast.StarExpr [ListBoxRow]}
+
+
+function name is SetHeaderFunc 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox SetHeaderFunc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fn ListBoxHeaderFunc]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C _gtk_list_box_set_header_func]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gpointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [callback Assign fn]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ListBoxSortFunc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [row1]}
+	 {*ast.StarExpr [ListBoxRow]}
+	 {*ast.Field [row2]}
+	 {*ast.StarExpr [ListBoxRow]}
+	 {*ast.FieldList -> *ast.Field [int]}
+
+
+function name is SetSortFunc 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox SetSortFunc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fn ListBoxSortFunc]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C _gtk_list_box_set_sort_func]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gpointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [callback Assign fn]}
+
+
+function name is DragHighlightRow 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox DragHighlightRow]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [row]}
+	 {*ast.StarExpr [ListBoxRow]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_drag_highlight_row]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [row native]}
+
+
+function name is DragUnhighlightRow 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBox DragUnhighlightRow]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_drag_unhighlight_row]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ListBoxRow]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Bin]}
+
+
+function name is native 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBoxRow native]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C GtkListBoxRow]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [v nil]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [v GObject nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [v GObject]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C toGtkListBoxRow p]}
+
+
+function name is marshalListBoxRow 
+	 { [marshalListBoxRow]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p uintptr]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C g_value_get_object]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GValue]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapListBoxRow obj nil]}
+
+
+function name is wrapListBoxRow 
+	 { [wrapListBoxRow]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [obj]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [glib Object]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [ListBoxRow]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [obj nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [ListBoxRow]}
+	 {*ast.CompositeLit [Bin]}
+	 {*ast.CompositeLit [Container]}
+	 {*ast.CompositeLit [Widget]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [glib InitiallyUnowned obj]}
+
+
+function name is ListBoxRowNew 
+	 {*ast.CommentGroup -> *ast.Comment [ListBoxRowNew]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [ListBoxRow]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_row_new]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapListBoxRow]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is Changed 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBoxRow Changed]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_row_changed]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+
+
+function name is GetHeader 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBoxRow GetHeader]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [IWidget]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_row_get_header]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [castWidget c]}
+
+
+function name is SetHeader 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBoxRow SetHeader]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [header IWidget]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [header nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_row_set_header]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native nil]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_row_set_header]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [header toWidget]}
+
+
+function name is GetIndex 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [ListBoxRow GetIndex]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_list_box_row_get_index]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [int c]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [Revealer]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Bin]}
+
+
+function name is native 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Revealer native]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C GtkRevealer]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [v nil]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [v GObject nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [v GObject]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C toGtkRevealer p]}
+
+
+function name is marshalRevealer 
+	 { [marshalRevealer]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p uintptr]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C g_value_get_object]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GValue]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapRevealer obj nil]}
+
+
+function name is wrapRevealer 
+	 { [wrapRevealer]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [obj]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [glib Object]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Revealer]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [obj nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Revealer]}
+	 {*ast.CompositeLit [Bin]}
+	 {*ast.CompositeLit [Container]}
+	 {*ast.CompositeLit [Widget]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [glib InitiallyUnowned obj]}
+
+
+function name is RevealerNew 
+	 {*ast.CommentGroup -> *ast.Comment [RevealerNew]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Revealer]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_new]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapRevealer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is GetRevealChild 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Revealer GetRevealChild]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_get_reveal_child]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [gobool c]}
+
+
+function name is SetRevealChild 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Revealer SetRevealChild]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [revealChild bool]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_set_reveal_child]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr [gbool revealChild]}
+
+
+function name is GetChildRevealed 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Revealer GetChildRevealed]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_get_child_revealed]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [gobool c]}
+
+
+function name is GetTransitionDuration 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Revealer GetTransitionDuration]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_get_transition_duration]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [uint c]}
+
+
+function name is SetTransitionDuration 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Revealer SetTransitionDuration]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [duration uint]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_set_transition_duration]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C guint duration]}
+
+
+function name is GetTransitionType 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Revealer GetTransitionType]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [RevealerTransitionType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_get_transition_type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [RevealerTransitionType c]}
+
+
+function name is SetTransitionType 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Revealer SetTransitionType]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [transition RevealerTransitionType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GtkRevealerTransitionType transition]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_revealer_set_transition_type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native t]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [SearchBar]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Bin]}
+
+
+function name is native 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [SearchBar native]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C GtkSearchBar]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [v nil]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [v GObject nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [v GObject]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C toGtkSearchBar p]}
+
+
+function name is marshalSearchBar 
+	 { [marshalSearchBar]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p uintptr]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C g_value_get_object]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GValue]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapSearchBar obj nil]}
+
+
+function name is wrapSearchBar 
+	 { [wrapSearchBar]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [obj]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [glib Object]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [SearchBar]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [obj nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [SearchBar]}
+	 {*ast.CompositeLit [Bin]}
+	 {*ast.CompositeLit [Container]}
+	 {*ast.CompositeLit [Widget]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [glib InitiallyUnowned obj]}
+
+
+function name is SearchBarNew 
+	 {*ast.CommentGroup -> *ast.Comment [SearchBarNew]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [SearchBar]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_search_bar_new]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapSearchBar]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is ConnectEntry 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [SearchBar ConnectEntry]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [entry IEntry]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_search_bar_connect_entry]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [entry toEntry]}
+
+
+function name is GetSearchMode 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [SearchBar GetSearchMode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_search_bar_get_search_mode]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [gobool c]}
+
+
+function name is SetSearchMode 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [SearchBar SetSearchMode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [searchMode bool]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_search_bar_set_search_mode]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr [gbool searchMode]}
+
+
+function name is GetShowCloseButton 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [SearchBar GetShowCloseButton]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_search_bar_get_show_close_button]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [gobool c]}
+
+
+function name is SetShowCloseButton 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [SearchBar SetShowCloseButton]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [visible bool]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_search_bar_set_show_close_button]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr [gbool visible]}
+
+
+function name is HandleEvent 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [SearchBar HandleEvent]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [event]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [gdk Event]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [e]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GdkEvent]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [event Native]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_search_bar_handle_event]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native e]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [Stack]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Container]}
+
+
+function name is native 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack native]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C GtkStack]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [v nil]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [v GObject nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [v GObject]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C toGtkStack p]}
+
+
+function name is marshalStack 
+	 { [marshalStack]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p uintptr]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C g_value_get_object]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C GValue]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapStack obj nil]}
+
+
+function name is wrapStack 
+	 { [wrapStack]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [obj]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [glib Object]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Stack]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [obj nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Stack]}
+	 {*ast.CompositeLit [Container]}
+	 {*ast.CompositeLit [Widget]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [glib InitiallyUnowned obj]}
+
+
+function name is StackNew 
+	 {*ast.CommentGroup -> *ast.Comment [StackNew]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Stack]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_new]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [wrapStack]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c nil]}
+
+
+function name is AddNamed 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack AddNamed]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [child IWidget]}
+	 {*ast.Field [name string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString name]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_add_named]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [child toWidget]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+
+
+function name is AddTitled 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack AddTitled]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [child IWidget]}
+	 {*ast.Field [name title string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cName]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString name]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cName]}
+	 {*ast.AssignStmt [cTitle]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString title]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cTitle]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_add_titled]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [child toWidget]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cName]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cTitle]}
+
+
+function name is SetVisibleChild 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack SetVisibleChild]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [child IWidget]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_set_visible_child]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [child toWidget]}
+
+
+function name is GetVisibleChild 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack GetVisibleChild]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [IWidget]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_get_visible_child]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [castWidget c]}
+
+
+function name is SetVisibleChildName 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack SetVisibleChildName]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString name]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_set_visible_child_name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+
+
+function name is GetVisibleChildName 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack GetVisibleChildName]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_get_visible_child_name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C GoString]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char c]}
+
+
+function name is SetVisibleChildFull 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack SetVisibleChildFull]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
+	 {*ast.Field [transaction StackTransitionType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString name]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_set_visible_child_full]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GtkStackTransitionType transaction]}
+
+
+function name is SetHomogeneous 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack SetHomogeneous]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [homogeneous bool]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_set_homogeneous]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr [gbool homogeneous]}
+
+
+function name is GetHomogeneous 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack GetHomogeneous]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_get_homogeneous]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [gobool c]}
+
+
+function name is SetTransitionDuration 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack SetTransitionDuration]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [duration uint]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_set_transition_duration]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C guint duration]}
+
+
+function name is GetTransitionDuration 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack GetTransitionDuration]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uint]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_get_transition_duration]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [uint c]}
+
+
+function name is SetTransitionType 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack SetTransitionType]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [transition StackTransitionType]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_set_transition_type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GtkStackTransitionType transition]}
+
+
+function name is GetTransitionType 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [Stack GetTransitionType]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [StackTransitionType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_stack_get_transition_type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [StackTransitionType c]}
+
+
+function name is BuilderNewFromFile 
+	 {*ast.CommentGroup -> *ast.Comment [BuilderNewFromFile]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [filePath string]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Builder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString filePath]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_builder_new_from_file]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Builder obj nil]}
+
+
+function name is BuilderNewFromResource 
+	 {*ast.CommentGroup -> *ast.Comment [BuilderNewFromResource]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [resourcePath string]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Builder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString resourcePath]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_builder_new_from_resource]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Builder obj nil]}
+
+
+function name is BuilderNewFromString 
+	 {*ast.CommentGroup -> *ast.Comment [BuilderNewFromString]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [resource string]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Builder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString resource]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cstr]}
+	 {*ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_builder_new_from_string]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C gchar cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gssize]}
+	 {*ast.CallExpr [len resource]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [c nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nilPtrErr]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [glib Take]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Builder obj nil]}
+
+
+function name is GetCurrentName 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [FileChooser GetCurrentName]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C gtk_file_chooser_get_current_name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v native]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [goString c]}
+
+

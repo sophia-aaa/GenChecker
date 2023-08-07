@@ -1,0 +1,695 @@
+{*ast.File [sqlparser]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "bytes"]}
+{*ast.ImportSpec [STRING "encoding/json"]}
+{*ast.ImportSpec [STRING "reflect"]}
+{*ast.ImportSpec [STRING "strings"]}
+{*ast.ImportSpec [STRING "testing"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [STRING "github.com/xwb1989/sqlparser/dependency/sqltypes"]}
+
+
+function name is TestAppend 
+	 { [TestAppend]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [query STRING "select * from t where a = 1"]}
+	 {*ast.AssignStmt [tree err]}
+	 {*ast.CallExpr [Parse query]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [b]}
+	 {*ast.SelectorExpr [bytes Buffer]}
+	 {*ast.ExprStmt -> *ast.CallExpr [Append]}
+	 {*ast.UnaryExpr [b tree]}
+	 {*ast.AssignStmt [got]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [b String]}
+	 {*ast.AssignStmt [want query]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [got want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Append: %s, want %s" got want]}
+	 {*ast.ExprStmt -> *ast.CallExpr [Append]}
+	 {*ast.UnaryExpr [b tree]}
+	 {*ast.AssignStmt [got]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [b String]}
+	 {*ast.AssignStmt [want]}
+	 {*ast.BinaryExpr [query query]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [got want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Append: %s, want %s" got want]}
+
+
+function name is TestSelect 
+	 { [TestSelect]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [tree err]}
+	 {*ast.CallExpr [Parse STRING "select * from t where a = 1"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.AssignStmt [expr]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr [tree]}
+	 {*ast.StarExpr [Select Where Expr]}
+	 {*ast.AssignStmt [sel]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Select]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sel AddWhere expr]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [sel Where Format buf]}
+	 {*ast.AssignStmt [want STRING " where a = 1"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "where: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sel AddWhere expr]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [sel Where Format buf]}
+	 {*ast.AssignStmt [want STRING " where a = 1 and a = 1"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "where: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.AssignStmt [sel]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Select]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sel AddHaving expr]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [sel Having Format buf]}
+	 {*ast.AssignStmt [want STRING " having a = 1"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "having: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sel AddHaving expr]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [sel Having Format buf]}
+	 {*ast.AssignStmt [want STRING " having a = 1 and a = 1"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "having: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.AssignStmt [tree err]}
+	 {*ast.CallExpr [Parse STRING "select * from t where a = 1 or b = 1"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.AssignStmt [expr]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr [tree]}
+	 {*ast.StarExpr [Select Where Expr]}
+	 {*ast.AssignStmt [sel]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Select]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sel AddWhere expr]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [sel Where Format buf]}
+	 {*ast.AssignStmt [want STRING " where (a = 1 or b = 1)"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "where: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.AssignStmt [sel]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Select]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sel AddHaving expr]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [sel Having Format buf]}
+	 {*ast.AssignStmt [want STRING " having (a = 1 or b = 1)"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "having: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+
+
+function name is TestRemoveHints 
+	 { [TestRemoveHints]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.RangeStmt [_ query]}
+	 {*ast.CompositeLit -> *ast.ArrayType [string STRING "select * from t use index (i)" STRING "select * from t force index (i)"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [tree err]}
+	 {*ast.CallExpr [Parse query]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal err]}
+	 {*ast.AssignStmt [sel]}
+	 {*ast.TypeAssertExpr [tree]}
+	 {*ast.StarExpr [Select]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [sel From]}
+	 {*ast.CompositeLit [TableExprs]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr -> *ast.IndexExpr -> *ast.SelectorExpr [sel From INT 0]}
+	 {*ast.StarExpr [AliasedTableExpr RemoveHints]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sel Format buf]}
+	 {*ast.IfStmt -> *ast.AssignStmt [got want]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String STRING "select * from t"]}
+	 {*ast.BinaryExpr [got want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "stripped query: %s, want %s" got want]}
+
+
+function name is TestAddOrder 
+	 { [TestAddOrder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [src err]}
+	 {*ast.CallExpr [Parse STRING "select foo, bar from baz order by foo"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.AssignStmt [order]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr [src]}
+	 {*ast.StarExpr [Select OrderBy INT 0]}
+	 {*ast.AssignStmt [dst err]}
+	 {*ast.CallExpr [Parse STRING "select * from t"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr [dst]}
+	 {*ast.StarExpr [Select AddOrder order]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [dst Format buf]}
+	 {*ast.AssignStmt [want STRING "select * from t order by foo asc"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "order: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.AssignStmt [dst err]}
+	 {*ast.CallExpr [Parse STRING "select * from t union select * from s"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr [dst]}
+	 {*ast.StarExpr [Union AddOrder order]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [dst Format buf]}
+	 {*ast.AssignStmt [want STRING "select * from t union select * from s order by foo asc"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "order: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+
+
+function name is TestSetLimit 
+	 { [TestSetLimit]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [src err]}
+	 {*ast.CallExpr [Parse STRING "select foo, bar from baz limit 4"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.AssignStmt [limit]}
+	 {*ast.SelectorExpr -> *ast.TypeAssertExpr [src]}
+	 {*ast.StarExpr [Select Limit]}
+	 {*ast.AssignStmt [dst err]}
+	 {*ast.CallExpr [Parse STRING "select * from t"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr [dst]}
+	 {*ast.StarExpr [Select SetLimit limit]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [dst Format buf]}
+	 {*ast.AssignStmt [want STRING "select * from t limit 4"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "limit: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.AssignStmt [dst err]}
+	 {*ast.CallExpr [Parse STRING "select * from t union select * from s"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr [dst]}
+	 {*ast.StarExpr [Union SetLimit limit]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [dst Format buf]}
+	 {*ast.AssignStmt [want STRING "select * from t union select * from s limit 4"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "order: %q, want %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String want]}
+
+
+function name is TestWhere 
+	 { [TestWhere]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [w]}
+	 {*ast.StarExpr [Where]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Format buf]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String STRING ""]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "w.Format(nil): %q, want \"\""]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String]}
+	 {*ast.AssignStmt [w]}
+	 {*ast.CallExpr [NewWhere WhereStr nil]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [NewTrackedBuffer nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Format buf]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [buf String STRING ""]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "w.Format(&Where{nil}: %q, want \"\""]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf String]}
+
+
+function name is TestIsAggregate 
+	 { [TestIsAggregate]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [f]}
+	 {*ast.CompositeLit [FuncExpr]}
+	 {*ast.KeyValueExpr [Name]}
+	 {*ast.CallExpr [NewColIdent STRING "avg"]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [f IsAggregate]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error STRING "IsAggregate: false, want true"]}
+	 {*ast.AssignStmt [f]}
+	 {*ast.CompositeLit [FuncExpr]}
+	 {*ast.KeyValueExpr [Name]}
+	 {*ast.CallExpr [NewColIdent STRING "Avg"]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [f IsAggregate]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error STRING "IsAggregate: false, want true"]}
+	 {*ast.AssignStmt [f]}
+	 {*ast.CompositeLit [FuncExpr]}
+	 {*ast.KeyValueExpr [Name]}
+	 {*ast.CallExpr [NewColIdent STRING "foo"]}
+	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [f IsAggregate]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error STRING "IsAggregate: true, want false"]}
+
+
+function name is TestReplaceExpr 
+	 { [TestReplaceExpr]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [tcases]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in out string]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where (select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING ":a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where (select a from b) and b"]}
+	 {*ast.KeyValueExpr [out STRING ":a and b"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where a and (select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "a and :a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where (select a from b) or b"]}
+	 {*ast.KeyValueExpr [out STRING ":a or b"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where a or (select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "a or :a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where not (select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "not :a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where ((select a from b))"]}
+	 {*ast.KeyValueExpr [out STRING "(:a)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where (select a from b) = 1"]}
+	 {*ast.KeyValueExpr [out STRING ":a = 1"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where a = (select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "a = :a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where a like b escape (select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "a like b escape :a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where (select a from b) between a and b"]}
+	 {*ast.KeyValueExpr [out STRING ":a between a and b"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where a between (select a from b) and b"]}
+	 {*ast.KeyValueExpr [out STRING "a between :a and b"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where a between b and (select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "a between b and :a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where (select a from b) is null"]}
+	 {*ast.KeyValueExpr [out STRING ":a is null"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where exists (select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "exists (select a from b)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where a in ((select a from b), 1)"]}
+	 {*ast.KeyValueExpr [out STRING "a in (:a, 1)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where a in (0, (select a from b), 1)"]}
+	 {*ast.KeyValueExpr [out STRING "a in (0, :a, 1)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where (select a from b) + 1"]}
+	 {*ast.KeyValueExpr [out STRING ":a + 1"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where 1+(select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "1 + :a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where -(select a from b)"]}
+	 {*ast.KeyValueExpr [out STRING "-:a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where interval (select a from b) aa"]}
+	 {*ast.KeyValueExpr [out STRING "interval :a aa"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where (select a from b) collate utf8"]}
+	 {*ast.KeyValueExpr [out STRING ":a collate utf8"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where func((select a from b), 1)"]}
+	 {*ast.KeyValueExpr [out STRING "func(:a, 1)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where func(1, (select a from b), 1)"]}
+	 {*ast.KeyValueExpr [out STRING "func(1, :a, 1)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where group_concat((select a from b), 1 order by a)"]}
+	 {*ast.KeyValueExpr [out STRING "group_concat(:a, 1 order by a asc)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where group_concat(1 order by (select a from b), a)"]}
+	 {*ast.KeyValueExpr [out STRING "group_concat(1 order by :a asc, a asc)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where group_concat(1 order by a, (select a from b))"]}
+	 {*ast.KeyValueExpr [out STRING "group_concat(1 order by a asc, :a asc)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where substr(a, (select a from b), b)"]}
+	 {*ast.KeyValueExpr [out STRING "substr(a, :a, b)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where substr(a, b, (select a from b))"]}
+	 {*ast.KeyValueExpr [out STRING "substr(a, b, :a)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where convert((select a from b), json)"]}
+	 {*ast.KeyValueExpr [out STRING "convert(:a, json)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where convert((select a from b) using utf8)"]}
+	 {*ast.KeyValueExpr [out STRING "convert(:a using utf8)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where match((select a from b), 1) against (a)"]}
+	 {*ast.KeyValueExpr [out STRING "match(:a, 1) against (a)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where match(1, (select a from b), 1) against (a)"]}
+	 {*ast.KeyValueExpr [out STRING "match(1, :a, 1) against (a)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where match(1, a, 1) against ((select a from b))"]}
+	 {*ast.KeyValueExpr [out STRING "match(1, a, 1) against (:a)"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where case (select a from b) when a then b when b then c else d end"]}
+	 {*ast.KeyValueExpr [out STRING "case :a when a then b when b then c else d end"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where case a when (select a from b) then b when b then c else d end"]}
+	 {*ast.KeyValueExpr [out STRING "case a when :a then b when b then c else d end"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where case a when b then (select a from b) when b then c else d end"]}
+	 {*ast.KeyValueExpr [out STRING "case a when b then :a when b then c else d end"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where case a when b then c when (select a from b) then c else d end"]}
+	 {*ast.KeyValueExpr [out STRING "case a when b then c when :a then c else d end"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "select * from t where case a when b then c when d then c else (select a from b) end"]}
+	 {*ast.KeyValueExpr [out STRING "case a when b then c when d then c else :a end"]}
+	 {*ast.AssignStmt [to]}
+	 {*ast.CallExpr [NewValArg]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte STRING ":a"]}
+	 {*ast.RangeStmt [_ tcase tcases]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [tree err]}
+	 {*ast.CallExpr [Parse]}
+	 {*ast.SelectorExpr [tcase in]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal err]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [from]}
+	 {*ast.StarExpr [Subquery]}
+	 {*ast.AssignStmt [_]}
+	 {*ast.CallExpr [Walk]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [node SQLNode]}
+	 {*ast.FieldList -> *ast.Field [kontinue bool]}
+	 {*ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [sq ok]}
+	 {*ast.TypeAssertExpr [node]}
+	 {*ast.StarExpr [Subquery ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [from sq]}
+	 {*ast.ReturnStmt [false nil]}
+	 {*ast.ReturnStmt [true nil tree]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [from nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "from is nil for %s"]}
+	 {*ast.SelectorExpr [tcase in]}
+	 {*ast.AssignStmt [expr]}
+	 {*ast.CallExpr [ReplaceExpr]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr [tree]}
+	 {*ast.StarExpr [Select Where Expr from to]}
+	 {*ast.AssignStmt [got]}
+	 {*ast.CallExpr [String expr]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [tcase out got]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "ReplaceExpr(%s): %s, want %s"]}
+	 {*ast.SelectorExpr [tcase in got]}
+	 {*ast.SelectorExpr [tcase out]}
+
+
+function name is TestExprFromValue 
+	 { [TestExprFromValue]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [tcases]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.SelectorExpr [sqltypes Value]}
+	 {*ast.Field [out SQLNode]}
+	 {*ast.Field [err string]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
+	 {*ast.SelectorExpr [sqltypes NULL]}
+	 {*ast.KeyValueExpr [out]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [NullVal]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [sqltypes NewInt64 INT 1]}
+	 {*ast.KeyValueExpr [out]}
+	 {*ast.CallExpr [NewIntVal]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte STRING "1"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [sqltypes NewFloat64 FLOAT 1.1]}
+	 {*ast.KeyValueExpr [out]}
+	 {*ast.CallExpr [NewFloatVal]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte STRING "1.1"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [sqltypes MakeTrusted]}
+	 {*ast.SelectorExpr [sqltypes Decimal]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte STRING "1.1"]}
+	 {*ast.KeyValueExpr [out]}
+	 {*ast.CallExpr [NewFloatVal]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte STRING "1.1"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [sqltypes NewVarChar STRING "aa"]}
+	 {*ast.KeyValueExpr [out]}
+	 {*ast.CallExpr [NewStrVal]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte STRING "aa"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [sqltypes MakeTrusted]}
+	 {*ast.SelectorExpr [sqltypes Expression]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte STRING "rand()"]}
+	 {*ast.KeyValueExpr [err STRING "cannot convert value EXPRESSION(rand()) to AST"]}
+	 {*ast.RangeStmt [_ tcase tcases]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [got err]}
+	 {*ast.CallExpr [ExprFromValue]}
+	 {*ast.SelectorExpr [tcase in]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [tcase err STRING ""]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [err Error]}
+	 {*ast.SelectorExpr [tcase err]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "ExprFromValue(%v) err: %v, want %s"]}
+	 {*ast.SelectorExpr [tcase in err]}
+	 {*ast.SelectorExpr [tcase err]}
+	 {*ast.BranchStmt -> *ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [got want got]}
+	 {*ast.SelectorExpr [tcase out]}
+	 {*ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual got want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "ExprFromValue(%v): %v, want %s"]}
+	 {*ast.SelectorExpr [tcase in got want]}
+
+
+function name is TestColNameEqual 
+	 { [TestColNameEqual]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [c1 c2]}
+	 {*ast.StarExpr [ColName]}
+	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [c1 Equal c2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error STRING "nil columns equal, want unequal"]}
+	 {*ast.AssignStmt [c1]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [ColName]}
+	 {*ast.KeyValueExpr [Name]}
+	 {*ast.CallExpr [NewColIdent STRING "aa"]}
+	 {*ast.AssignStmt [c2]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [ColName]}
+	 {*ast.KeyValueExpr [Name]}
+	 {*ast.CallExpr [NewColIdent STRING "bb"]}
+	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [c1 Equal c2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error STRING "columns equal, want unequal"]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [c2 Name]}
+	 {*ast.CallExpr [NewColIdent STRING "aa"]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [c1 Equal c2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error STRING "columns unequal, want equal"]}
+
+
+function name is TestColIdent 
+	 { [TestColIdent]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [str]}
+	 {*ast.CallExpr [NewColIdent STRING "Ab"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [str String STRING "Ab"]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "String=%s, want Ab"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [str String]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [str String STRING "Ab"]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Val=%s, want Ab"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [str String]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [str Lowered STRING "ab"]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Val=%s, want ab"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [str Lowered]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [str Equal]}
+	 {*ast.CallExpr [NewColIdent STRING "aB"]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error STRING "str.Equal(NewColIdent(aB))=false, want true"]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [str EqualString STRING "ab"]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error STRING "str.EqualString(ab)=false, want true"]}
+	 {*ast.AssignStmt [str]}
+	 {*ast.CallExpr [NewColIdent STRING ""]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [str Lowered STRING ""]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Val=%s, want \"\""]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [str Lowered]}
+
+
+function name is TestColIdentMarshal 
+	 { [TestColIdentMarshal]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [str]}
+	 {*ast.CallExpr [NewColIdent STRING "Ab"]}
+	 {*ast.AssignStmt [b err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [json Marshal str]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal err]}
+	 {*ast.AssignStmt [got]}
+	 {*ast.CallExpr [string b]}
+	 {*ast.AssignStmt [want STRING `"Ab"`]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [got want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "json.Marshal()= %s, want %s" got want]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [out ColIdent]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [json Unmarshal b]}
+	 {*ast.UnaryExpr [out]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Unmarshal err: %v, want nil" err]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual out str]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Unmarshal: %v, want %v" out str]}
+
+
+function name is TestColIdentSize 
+	 { [TestColIdentSize]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [size]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
+	 {*ast.CallExpr [NewColIdent STRING ""]}
+	 {*ast.AssignStmt [want]}
+	 {*ast.BinaryExpr [INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof STRING ""]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [size want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Size of ColIdent: %d, want 32" want]}
+
+
+function name is TestTableIdentMarshal 
+	 { [TestTableIdentMarshal]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [str]}
+	 {*ast.CallExpr [NewTableIdent STRING "Ab"]}
+	 {*ast.AssignStmt [b err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [json Marshal str]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal err]}
+	 {*ast.AssignStmt [got]}
+	 {*ast.CallExpr [string b]}
+	 {*ast.AssignStmt [want STRING `"Ab"`]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [got want]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "json.Marshal()= %s, want %s" got want]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [out TableIdent]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [json Unmarshal b]}
+	 {*ast.UnaryExpr [out]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Unmarshal err: %v, want nil" err]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual out str]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Unmarshal: %v, want %v" out str]}
+
+
+function name is TestHexDecode 
+	 { [TestHexDecode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [testcase]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in out string]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "313233"]}
+	 {*ast.KeyValueExpr [out STRING "123"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "ag"]}
+	 {*ast.KeyValueExpr [out STRING "encoding/hex: invalid byte: U+0067 'g'"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "777"]}
+	 {*ast.KeyValueExpr [out STRING "encoding/hex: odd length hex string"]}
+	 {*ast.RangeStmt [_ tc testcase]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [out err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [newHexVal]}
+	 {*ast.SelectorExpr [tc in HexDecode]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [err Error]}
+	 {*ast.SelectorExpr [tc out]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Decode(%q): %v, want %s"]}
+	 {*ast.SelectorExpr [tc in err]}
+	 {*ast.SelectorExpr [tc out]}
+	 {*ast.BranchStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [bytes Equal out]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte]}
+	 {*ast.SelectorExpr [tc out]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "Decode(%q): %s, want %s"]}
+	 {*ast.SelectorExpr [tc in out]}
+	 {*ast.SelectorExpr [tc out]}
+
+
+function name is TestCompliantName 
+	 { [TestCompliantName]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [testcases]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in out string]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "aa"]}
+	 {*ast.KeyValueExpr [out STRING "aa"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "1a"]}
+	 {*ast.KeyValueExpr [out STRING "_a"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "a1"]}
+	 {*ast.KeyValueExpr [out STRING "a1"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "a.b"]}
+	 {*ast.KeyValueExpr [out STRING "a_b"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING ".ab"]}
+	 {*ast.KeyValueExpr [out STRING "_ab"]}
+	 {*ast.RangeStmt [_ tc testcases]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [out]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [NewColIdent]}
+	 {*ast.SelectorExpr [tc in CompliantName]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [out]}
+	 {*ast.SelectorExpr [tc out]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "ColIdent(%s).CompliantNamt: %s, want %s"]}
+	 {*ast.SelectorExpr [tc in out]}
+	 {*ast.SelectorExpr [tc out]}
+	 {*ast.AssignStmt [out]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [NewTableIdent]}
+	 {*ast.SelectorExpr [tc in CompliantName]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [out]}
+	 {*ast.SelectorExpr [tc out]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "TableIdent(%s).CompliantNamt: %s, want %s"]}
+	 {*ast.SelectorExpr [tc in out]}
+	 {*ast.SelectorExpr [tc out]}
+
+
+function name is TestColumns_FindColumn 
+	 { [TestColumns_FindColumn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cols]}
+	 {*ast.CompositeLit [Columns]}
+	 {*ast.CallExpr [NewColIdent STRING "a"]}
+	 {*ast.CallExpr [NewColIdent STRING "c"]}
+	 {*ast.CallExpr [NewColIdent STRING "b"]}
+	 {*ast.CallExpr [NewColIdent STRING "0"]}
+	 {*ast.AssignStmt [testcases]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in string]}
+	 {*ast.Field [out int]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "a"]}
+	 {*ast.KeyValueExpr [out INT 0]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "b"]}
+	 {*ast.KeyValueExpr [out INT 2]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "0"]}
+	 {*ast.KeyValueExpr [out INT 3]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [in STRING "f"]}
+	 {*ast.KeyValueExpr [out]}
+	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.RangeStmt [_ tc testcases]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [cols FindColumn]}
+	 {*ast.CallExpr [NewColIdent]}
+	 {*ast.SelectorExpr [tc in]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [val]}
+	 {*ast.SelectorExpr [tc out]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "FindColumn(%s): %d, want %d"]}
+	 {*ast.SelectorExpr [tc in val]}
+	 {*ast.SelectorExpr [tc out]}
+
+
+function name is TestSplitStatementToPieces 
+	 { [TestSplitStatementToPieces]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [testcases]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [input string]}
+	 {*ast.Field [output string]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [input STRING "select * from table"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [input STRING "select * from table1; select * from table2;"]}
+	 {*ast.KeyValueExpr [output STRING "select * from table1; select * from table2"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [input STRING "select * from /* comment ; */ table;"]}
+	 {*ast.KeyValueExpr [output STRING "select * from /* comment ; */ table"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [input STRING "select * from table where semi = ';';"]}
+	 {*ast.KeyValueExpr [output STRING "select * from table where semi = ';'"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [input STRING "select * from table1;--comment;\nselect * from table2;"]}
+	 {*ast.KeyValueExpr [output STRING "select * from table1;--comment;\nselect * from table2"]}
+	 {*ast.CompositeLit -> *ast.KeyValueExpr [input]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [STRING "CREATE TABLE `total_data` (`id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id', " STRING "`region` varchar(32) NOT NULL COMMENT 'region name, like zh; th; kepler'," STRING "`data_size` bigint NOT NULL DEFAULT '0' COMMENT 'data size;'," STRING "`createtime` datetime NOT NULL DEFAULT NOW() COMMENT 'create time;'," STRING "`comment` varchar(100) NOT NULL DEFAULT '' COMMENT 'comment'," STRING "PRIMARY KEY (`id`))"]}
+	 {*ast.RangeStmt [_ tcase testcases]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [tcase output STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [tcase output]}
+	 {*ast.SelectorExpr [tcase input]}
+	 {*ast.AssignStmt [stmtPieces err]}
+	 {*ast.CallExpr [SplitStatementToPieces]}
+	 {*ast.SelectorExpr [tcase input]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "input: %s, err: %v"]}
+	 {*ast.SelectorExpr [tcase input err]}
+	 {*ast.BranchStmt -> *ast.AssignStmt [out]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [strings Join stmtPieces STRING ";"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [out]}
+	 {*ast.SelectorExpr [tcase output]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf STRING "out: %s, want %s" out]}
+	 {*ast.SelectorExpr [tcase output]}
+
+

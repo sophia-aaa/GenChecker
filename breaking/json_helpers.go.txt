@@ -1,0 +1,123 @@
+{*ast.File [chunk]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "sort"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [jsoniter STRING "github.com/json-iterator/go"]}
+{*ast.ImportSpec [STRING "github.com/prometheus/common/model"]}
+{*ast.ImportSpec [STRING "github.com/prometheus/prometheus/model/labels"]}
+
+
+function name is init 
+	 { [init]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoderFunc STRING "labels.Labels" decodeLabels]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeEncoderFunc STRING "labels.Labels" encodeLabels labelsIsEmpty]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoderFunc STRING "model.Time" decodeModelTime]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeEncoderFunc STRING "model.Time" encodeModelTime modelTimeIsEmpty]}
+
+
+function name is decodeLabels 
+	 {*ast.CommentGroup -> *ast.Comment [decodeLabels]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+	 {*ast.Field [iter]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [labelsPtr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [labels Labels ptr]}
+	 {*ast.AssignStmt -> *ast.StarExpr [labelsPtr]}
+	 {*ast.CallExpr [make]}
+	 {*ast.SelectorExpr [labels Labels INT 0 INT 10]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadMapCB]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [iter]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
+	 {*ast.Field [key string]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [value]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadString]}
+	 {*ast.AssignStmt -> *ast.StarExpr [labelsPtr]}
+	 {*ast.CallExpr [append]}
+	 {*ast.StarExpr [labelsPtr]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [labels Label]}
+	 {*ast.KeyValueExpr [Name key]}
+	 {*ast.KeyValueExpr [Value value]}
+	 {*ast.ReturnStmt [true]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sort Sort]}
+	 {*ast.StarExpr [labelsPtr]}
+
+
+function name is encodeLabels 
+	 {*ast.CommentGroup -> *ast.Comment [encodeLabels]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+	 {*ast.Field [stream]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Stream]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [labelsPtr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [labels Labels ptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteObjectStart]}
+	 {*ast.RangeStmt [i v]}
+	 {*ast.StarExpr [labelsPtr]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteMore]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteString]}
+	 {*ast.SelectorExpr [v Name]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteRaw STRING `:`]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteString]}
+	 {*ast.SelectorExpr [v Value]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteObjectEnd]}
+
+
+function name is labelsIsEmpty 
+	 { [labelsIsEmpty]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [labelsPtr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [labels Labels ptr]}
+	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.StarExpr [labelsPtr INT 0]}
+
+
+function name is decodeModelTime 
+	 {*ast.CommentGroup -> *ast.Comment [decodeModelTime]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+	 {*ast.Field [iter]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [pt]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [model Time ptr]}
+	 {*ast.AssignStmt [f]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
+	 {*ast.AssignStmt -> *ast.StarExpr [pt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [model Time]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BinaryExpr [f INT 1000]}
+
+
+function name is encodeModelTime 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [encodeModelTime]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+	 {*ast.Field [stream]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Stream]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [pt]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [model Time ptr]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.StarExpr [pt]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [t INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteRaw STRING `-`]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.UnaryExpr [t]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteInt64]}
+	 {*ast.BinaryExpr [t INT 1000]}
+	 {*ast.AssignStmt [fraction]}
+	 {*ast.BinaryExpr [t INT 1000]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [fraction INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteRaw STRING `.`]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [fraction INT 100]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteRaw STRING `0`]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [fraction INT 10]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteRaw STRING `0`]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteInt64 fraction]}
+
+
+function name is modelTimeIsEmpty 
+	 { [modelTimeIsEmpty]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+
+

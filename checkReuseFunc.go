@@ -1,14 +1,37 @@
 package main
 
-import "strings"
+import (
+	"fmt"
+	"go/token"
+	"strings"
+)
+
+type funcNamePos struct {
+	funcName string
+	funcPos  token.Pos
+}
 
 func checkGenerics(listFunctions []basicStr, funcList []string, typeList []string) [][]string {
 	var genCheck [][]string
 	var genFunc []string
 	flag := false
 
+	bool1 := false
+	bool2 := false
 	for i := 0; i < len(listFunctions); i++ {
 		if listFunctions[i].funcName != "" {
+			var funcNameI []string
+			funcNameI = funcNameDivider(funcNameI, listFunctions[i].funcName)
+
+			// todo remove
+			if strings.EqualFold(listFunctions[i].funcName, "RemoveColumn") {
+				bool1 = true
+				fmt.Println(bool1)
+
+			} else {
+				bool1 = false
+			}
+
 			if len(genCheck) != 0 {
 				if !contains2D(genCheck, listFunctions[i].funcName) {
 					genFunc = []string{listFunctions[i].funcName}
@@ -20,16 +43,45 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 			}
 			for j := i + 1; j < len(listFunctions); j++ {
 				if listFunctions[j].funcName != "" {
+					var funcNameJ []string
+					funcNameJ = funcNameDivider(funcNameJ, listFunctions[j].funcName)
+					for _, val := range funcNameI {
+						if !contains(funcNameJ, val) {
+							funcNameJ = append(funcNameJ, val)
+						}
+					}
+
+					// todo remove
+					if bool1 && strings.EqualFold(listFunctions[j].funcName, "SetLines") {
+						bool2 = true
+						fmt.Println(bool2, " ", listFunctions[j].funcName)
+					} else {
+						bool2 = false
+					}
+
 					if len(listFunctions[i].value) == len(listFunctions[j].value) {
 						// Compare details between functions
 						for idx := range listFunctions[i].value {
+							if bool1 && bool2 {
+								fmt.Println(listFunctions[i].value[idx].path, listFunctions[j].value[idx].path)
+								fmt.Println(listFunctions[i].value[idx].value, listFunctions[j].value[idx].value)
+							}
 							if strings.Compare(listFunctions[i].value[idx].path, listFunctions[j].value[idx].path) == 0 {
 								if len(listFunctions[i].value[idx].value) == len(listFunctions[j].value[idx].value) {
 									for idxValue := range listFunctions[i].value[idx].value {
+										if bool1 && bool2 {
+											fmt.Println(strings.Compare(listFunctions[i].value[idx].value[idxValue], listFunctions[j].value[idx].value[idxValue]))
+										}
 										if strings.Compare(listFunctions[i].value[idx].value[idxValue], listFunctions[j].value[idx].value[idxValue]) == 0 {
 											flag = true
 										} else {
+											if bool1 && bool2 {
+												fmt.Println((contains(funcList, listFunctions[i].value[idx].value[idxValue]) && contains(funcList, listFunctions[j].value[idx].value[idxValue])) ||
+													(contains(typeList, listFunctions[i].value[idx].value[idxValue]) && contains(typeList, listFunctions[j].value[idx].value[idxValue])))
+											}
+											// compare ast.Ident Name
 											if (contains(funcList, listFunctions[i].value[idx].value[idxValue]) && contains(funcList, listFunctions[j].value[idx].value[idxValue])) ||
+												(contains(funcNameJ, listFunctions[i].value[idx].value[idxValue]) && contains(funcNameJ, listFunctions[j].value[idx].value[idxValue])) ||
 												(contains(typeList, listFunctions[i].value[idx].value[idxValue]) && contains(typeList, listFunctions[j].value[idx].value[idxValue])) {
 												flag = true
 											} else {
@@ -41,6 +93,13 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 								} else {
 									flag = false
 									break
+								}
+								// ********************************* TODO how????????
+								if !flag {
+									break
+								}
+								if bool1 && bool2 {
+									fmt.Println("1 flag is ", flag)
 								}
 							} else if listFunctions[i].value[idx].path+" -> *ast.SelectorExpr" == listFunctions[j].value[idx].path {
 								// This is a special case for modified elem list
@@ -56,6 +115,9 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 									break
 								}
 								flag = true
+								if bool1 && bool2 {
+									fmt.Println("2 flag is ", flag)
+								}
 							} else if listFunctions[j].value[idx].path+" -> *ast.SelectorExpr" == listFunctions[i].value[idx].path {
 								// This is a special case for modified elem list
 								// listFunctions[i].value[idx].path is listFunctions[j].value[idx].path " -> *ast.SelectorExpr"
@@ -70,6 +132,9 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 									break
 								}
 								flag = true
+								if bool1 && bool2 {
+									fmt.Println("3 flag is ", flag)
+								}
 							} else if strings.Contains(listFunctions[i].value[idx].path, "*ast.SelectorExpr") {
 								// listFunctions[i].value[idx] looks like "... -> *ast.SelectorExpr [... unsafe Pointer]"
 								// and listFunctions[j].value[idx] looks like " ... [TYPE]"
@@ -84,6 +149,9 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 									}
 								}
 								flag = true
+								if bool1 && bool2 {
+									fmt.Println("4 flag is ", flag)
+								}
 							} else if strings.Contains(listFunctions[j].value[idx].path, "*ast.SelectorExpr") {
 								// listFunctions[i].value[idx] looks like " ... [TYPE]"
 								// and listFunctions[j].value[idx] looks like "... -> *ast.SelectorExpr [... unsafe Pointer]"
@@ -98,6 +166,9 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 									}
 								}
 								flag = true
+								if bool1 && bool2 {
+									fmt.Println("5 flag is ", flag)
+								}
 							} else {
 								flag = false
 								break
@@ -108,12 +179,16 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 						continue // continue the progress comparing a next function to the compared one
 					}
 				}
+				if bool1 && bool2 {
+					fmt.Println("6 flag is ", flag)
+				}
 				if flag == true {
 					genFunc = append(genFunc, listFunctions[j].funcName)
 					flag = false
 				}
 			}
 			genCheck = append(genCheck, genFunc)
+			//fmt.Println(genFunc)
 		}
 	}
 	return genCheck

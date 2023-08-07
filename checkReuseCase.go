@@ -79,7 +79,7 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 									} else if strings.Contains(caseWFunc[k].cases[i].value[idx].path, "*ast.SelectorExpr") {
 										// listFunctions[i].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
 										// and listFunctions[j].value[idx] looks like " ... [TYPE]"
-										if !contains(typeList, caseWFunc[k].cases[j].value[idx].value[0]) {
+										if len(caseWFunc[k].cases[j].value[idx].value) > 0 && !contains(typeList, caseWFunc[k].cases[j].value[idx].value[0]) {
 											caseFlag = false
 											break
 										}
@@ -93,7 +93,7 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 									} else if strings.Contains(caseWFunc[k].cases[j].value[idx].path, "*ast.SelectorExpr") {
 										// listFunctions[i].value[idx] looks like " ... [TYPE]"
 										// and listFunctions[j].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
-										if !contains(typeList, caseWFunc[k].cases[i].value[idx].value[0]) {
+										if len(caseWFunc[k].cases[j].value[idx].value) > 0 && !contains(typeList, caseWFunc[k].cases[i].value[idx].value[0]) {
 											caseFlag = false
 											break
 										}

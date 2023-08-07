@@ -37,7 +37,7 @@ func main() {
 				fmt.Print(unsafeList[s].funcName, " ")
 			}
 		}
-
+		fmt.Println()
 		fmt.Println()
 	}
 
@@ -47,8 +47,8 @@ func main() {
 		if len(genCheck[s]) > 1 {
 			pattern1 = true
 			fmt.Print("These functions have a same structure and the code are reused: ")
-			for _, value := range genCheck[s] {
-				fmt.Print(value, " ")
+			for i, value := range genCheck[s] {
+				fmt.Print(i, " ", value, "\t")
 			}
 			fmt.Println()
 		}
@@ -67,10 +67,10 @@ func main() {
 	// This variable is for checking switch statement
 	existsSwitch, caseList := checkSwitchStatement(filename, modListFunctions)
 	if existsSwitch {
+		fmt.Println("This function has switch statement: ")
 		for _, val := range caseList {
-			fmt.Println(val.funcName, "\t", val.value)
+			fmt.Print(val.funcName, " ")
 		}
-
 	}
 
 	if pattern1 {

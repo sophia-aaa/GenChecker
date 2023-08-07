@@ -1,0 +1,471 @@
+{*ast.File [binary]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "errors"]}
+{*ast.ImportSpec [STRING "io"]}
+{*ast.ImportSpec [STRING "io/ioutil"]}
+{*ast.ImportSpec [STRING "math"]}
+{*ast.ImportSpec [STRING "reflect"]}
+{*ast.ImportSpec [STRING "sync"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ValueSpec [decoders]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [sync RWMutex]}
+{*ast.Field [cache]}
+{*ast.MapType -> *ast.SelectorExpr [reflect Type typeDecoder]}
+{*ast.GenDecl -> *ast.TypeSpec [typeDecoder]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+{*ast.StarExpr [decoder]}
+{*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+{*ast.FieldList -> *ast.Field [error]}
+{*ast.GenDecl -> *ast.TypeSpec [decoder]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [coder]}
+{*ast.Field -> *ast.SelectorExpr [io Reader]}
+
+
+function name is skipDecoder 
+	 { [skipDecoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [typeDecoder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [s err]}
+	 {*ast.CallExpr [sizeof typ]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil err]}
+	 {*ast.AssignStmt [l]}
+	 {*ast.CallExpr [int64 s]}
+	 {*ast.ReturnStmt -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [_ unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [_ err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [io CopyN]}
+	 {*ast.SelectorExpr [ioutil Discard dec l]}
+	 {*ast.ReturnStmt [err nil]}
+
+
+function name is sliceDecoder 
+	 { [sliceDecoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [typeDecoder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [etyp]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Elem]}
+	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr [etyp Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
+	 {*ast.SelectorExpr [reflect Uint8]}
+	 {*ast.SelectorExpr [reflect Int16]}
+	 {*ast.SelectorExpr [reflect Uint16]}
+	 {*ast.SelectorExpr [reflect Int32]}
+	 {*ast.SelectorExpr [reflect Uint32]}
+	 {*ast.SelectorExpr [reflect Int64]}
+	 {*ast.SelectorExpr [reflect Uint64]}
+	 {*ast.ReturnStmt -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect NewAt typ p Elem]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [Read dec]}
+	 {*ast.SelectorExpr [dec order]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v Interface nil]}
+	 {*ast.AssignStmt [edec err]}
+	 {*ast.CallExpr [makeDecoder]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Elem]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil err]}
+	 {*ast.AssignStmt [s]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [etyp Size]}
+	 {*ast.ReturnStmt -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [h]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader p]}
+	 {*ast.AssignStmt [ep]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [h Data]}
+	 {*ast.ForStmt -> *ast.AssignStmt [ii INT 0]}
+	 {*ast.BinaryExpr [ii]}
+	 {*ast.SelectorExpr [h Len]}
+	 {*ast.IncDecStmt [ii]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [edec dec ep]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [ep]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr ep s]}
+	 {*ast.ReturnStmt [nil nil]}
+
+
+function name is arrayDecoder 
+	 { [arrayDecoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [typeDecoder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [etyp]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Elem]}
+	 {*ast.AssignStmt [al]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Len]}
+	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr [etyp Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
+	 {*ast.SelectorExpr [reflect Uint8]}
+	 {*ast.SelectorExpr [reflect Int16]}
+	 {*ast.SelectorExpr [reflect Uint16]}
+	 {*ast.SelectorExpr [reflect Int32]}
+	 {*ast.SelectorExpr [reflect Uint32]}
+	 {*ast.SelectorExpr [reflect Int64]}
+	 {*ast.SelectorExpr [reflect Uint64]}
+	 {*ast.ReturnStmt -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect NewAt typ p Elem Slice INT 0 al]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [Read dec]}
+	 {*ast.SelectorExpr [dec order]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v Interface nil]}
+	 {*ast.AssignStmt [edec err]}
+	 {*ast.CallExpr [makeDecoder]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Elem]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil err]}
+	 {*ast.AssignStmt [s]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [etyp Size]}
+	 {*ast.ReturnStmt -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [ii INT 0]}
+	 {*ast.BinaryExpr [ii al]}
+	 {*ast.IncDecStmt [ii]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [edec dec p]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr p s]}
+	 {*ast.ReturnStmt [nil nil]}
+
+
+function name is structDecoder 
+	 { [structDecoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [typeDecoder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [decoders]}
+	 {*ast.ArrayType [typeDecoder]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [offsets]}
+	 {*ast.ArrayType [uintptr]}
+	 {*ast.AssignStmt [count]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ NumField]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [dec typeDecoder]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [err error]}
+	 {*ast.ForStmt -> *ast.AssignStmt [ii INT 0]}
+	 {*ast.BinaryExpr [ii count]}
+	 {*ast.IncDecStmt [ii]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [f]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Field ii]}
+	 {*ast.AssignStmt [ftyp]}
+	 {*ast.SelectorExpr [f Type]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [f Name STRING "_"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [dec err]}
+	 {*ast.CallExpr [skipDecoder ftyp]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [f PkgPath STRING ""]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [dec err]}
+	 {*ast.CallExpr [makeDecoder ftyp]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil err]}
+	 {*ast.AssignStmt [decoders]}
+	 {*ast.CallExpr [append decoders dec]}
+	 {*ast.AssignStmt [offsets]}
+	 {*ast.CallExpr [append offsets]}
+	 {*ast.SelectorExpr [f Offset]}
+	 {*ast.ReturnStmt -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.RangeStmt [ii fdec decoders]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [fp]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr p]}
+	 {*ast.IndexExpr [offsets ii]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [fdec dec fp]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil nil]}
+
+
+function name is int8Decoder 
+	 { [int8Decoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [dec buf INT 1]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 1]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8 p]}
+	 {*ast.AssignStmt -> *ast.StarExpr [v]}
+	 {*ast.IndexExpr [bs INT 0]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is int16Decoder 
+	 { [int16Decoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [dec buf INT 2]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 2]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16 p]}
+	 {*ast.AssignStmt -> *ast.StarExpr [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint16 bs]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is int32Decoder 
+	 { [int32Decoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [dec buf INT 4]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 4]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32 p]}
+	 {*ast.AssignStmt -> *ast.StarExpr [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint32 bs]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is int64Decoder 
+	 { [int64Decoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [dec buf INT 8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 8]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64 p]}
+	 {*ast.AssignStmt -> *ast.StarExpr [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint64 bs]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is float32Decoder 
+	 { [float32Decoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [dec buf INT 4]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 4]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 p]}
+	 {*ast.AssignStmt -> *ast.StarExpr [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math Float32frombits]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint32 bs]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is float64Decoder 
+	 { [float64Decoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [dec buf INT 8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 8]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 p]}
+	 {*ast.AssignStmt -> *ast.StarExpr [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math Float64frombits]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint64 bs]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is complex64Decoder 
+	 { [complex64Decoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [dec buf INT 8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 8]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [complex64 p]}
+	 {*ast.AssignStmt -> *ast.StarExpr [v]}
+	 {*ast.CallExpr [complex]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math Float32frombits]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint32 bs]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math Float32frombits]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint32]}
+	 {*ast.SliceExpr [bs INT 4]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is complex128Decoder 
+	 { [complex128Decoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.StarExpr [decoder]}
+	 {*ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [dec buf INT 8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 8]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [f1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math Float64frombits]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint64 bs]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [readAtLeast dec bs INT 8]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [complex128 p]}
+	 {*ast.AssignStmt -> *ast.StarExpr [v]}
+	 {*ast.CallExpr [complex f1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math Float64frombits]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [dec order Uint64 bs]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is newDecoder 
+	 { [newDecoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [typeDecoder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt []}
+	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr [typ Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Array]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [arrayDecoder typ]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Slice]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [sliceDecoder typ]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Struct]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [structDecoder typ]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
+	 {*ast.SelectorExpr [reflect Uint8]}
+	 {*ast.ReturnStmt [int8Decoder nil]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int16]}
+	 {*ast.SelectorExpr [reflect Uint16]}
+	 {*ast.ReturnStmt [int16Decoder nil]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int32]}
+	 {*ast.SelectorExpr [reflect Uint32]}
+	 {*ast.ReturnStmt [int32Decoder nil]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int64]}
+	 {*ast.SelectorExpr [reflect Uint64]}
+	 {*ast.ReturnStmt [int64Decoder nil]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float32]}
+	 {*ast.ReturnStmt [float32Decoder nil]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float64]}
+	 {*ast.ReturnStmt [float64Decoder nil]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex64]}
+	 {*ast.ReturnStmt [complex64Decoder nil]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex128]}
+	 {*ast.ReturnStmt [complex128Decoder nil]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BinaryExpr [STRING "can't decode type "]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ String]}
+
+
+function name is makeDecoder 
+	 { [makeDecoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [typeDecoder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [decoders RLock]}
+	 {*ast.AssignStmt [decoder]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [decoders cache typ]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [decoders RUnlock]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [decoder nil]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [err error]}
+	 {*ast.AssignStmt [decoder err]}
+	 {*ast.CallExpr [newDecoder typ]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [decoders Lock]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [decoders cache nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [decoders cache]}
+	 {*ast.CompositeLit -> *ast.MapType -> *ast.SelectorExpr [reflect Type typeDecoder]}
+	 {*ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [decoders cache typ decoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [decoders Unlock]}
+	 {*ast.ReturnStmt [decoder nil]}
+
+
+function name is valueDecoder 
+	 { [valueDecoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [data]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.Field [typeDecoder]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [v]}
+	 {*ast.SelectorExpr [reflect Value]}
+	 {*ast.SwitchStmt -> *ast.AssignStmt [d]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [d Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Ptr]}
+	 {*ast.AssignStmt [v]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [d Elem]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Slice]}
+	 {*ast.AssignStmt [v d]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Invalid]}
+	 {*ast.ReturnStmt [nil nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "can't decode into nil"]}
+	 {*ast.CaseClause -> *ast.ReturnStmt [nil nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BinaryExpr [STRING "invalid type "]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [d Type String]}
+	 {*ast.AssignStmt [dec err]}
+	 {*ast.CallExpr [makeDecoder]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v Type]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil err]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v UnsafeAddr dec err]}
+
+
