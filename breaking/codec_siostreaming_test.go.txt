@@ -1,0 +1,352 @@
+{*ast.File [socketio]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "testing"]}
+{*ast.ImportSpec [STRING "utf8"]}
+{*ast.ImportSpec [STRING "fmt"]}
+{*ast.ImportSpec [STRING "bytes"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [STRING "os"]}
+
+
+function name is streamingFrame 
+	 { [streamingFrame]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [data string]}
+	 {*ast.Field [typ int]}
+	 {*ast.Field [json bool]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [utf8str]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [utf8 NewString data]}
+	 {*ast.SwitchStmt [typ]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [INT 0]}
+	 {*ast.ReturnStmt [STRING "0:0:,"]}
+	 {*ast.CaseClause [INT 2 INT 3]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%d:%d:%s," typ]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [utf8str RuneCount data]}
+	 {*ast.IfStmt [json]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%d:%d:j\n:%s," typ]}
+	 {*ast.BinaryExpr [INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [utf8str RuneCount data]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%d:%d::%s," typ]}
+	 {*ast.BinaryExpr [INT 1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [utf8str RuneCount data]}
+	 {*ast.GenDecl -> *ast.TypeSpec [streamingEncodeTest]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [out string]}
+	 {*ast.GenDecl -> *ast.ValueSpec [streamingEncodeTests]}
+	 {*ast.CompositeLit -> *ast.ArrayType [streamingEncodeTest]}
+	 {*ast.CompositeLit [INT 123]}
+	 {*ast.CallExpr [streamingFrame STRING "123" INT 1 false]}
+	 {*ast.CompositeLit [STRING "hello, world"]}
+	 {*ast.CallExpr [streamingFrame STRING "hello, world" INT 1 false]}
+	 {*ast.CompositeLit [STRING "öäö¥£♥"]}
+	 {*ast.CallExpr [streamingFrame STRING "öäö¥£♥" INT 1 false]}
+	 {*ast.CompositeLit [STRING "öäö¥£♥"]}
+	 {*ast.CallExpr [streamingFrame STRING "öäö¥£♥" INT 1 false]}
+	 {*ast.CompositeLit -> *ast.CallExpr [heartbeat INT 123456]}
+	 {*ast.CallExpr [streamingFrame STRING "123456" INT 2 false]}
+	 {*ast.CompositeLit -> *ast.CallExpr [handshake STRING "abcdefg"]}
+	 {*ast.CallExpr [streamingFrame STRING "abcdefg" INT 3 false]}
+	 {*ast.CompositeLit [true]}
+	 {*ast.CallExpr [streamingFrame STRING "true" INT 1 true]}
+	 {*ast.CompositeLit -> *ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.Field [Boolean bool]}
+	 {*ast.Field [Str string]}
+	 {*ast.Field [Array]}
+	 {*ast.ArrayType [int false STRING "string♥"]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int INT 1 INT 2 INT 3 INT 4]}
+	 {*ast.CallExpr [streamingFrame STRING `{"Boolean":false,"Str":"string♥","Array":[1,2,3,4]}` INT 1 true]}
+	 {*ast.CompositeLit -> *ast.CallExpr -> *ast.ArrayType [byte STRING "hello, world"]}
+	 {*ast.CallExpr [streamingFrame STRING "hello, world" INT 1 false]}
+	 {*ast.GenDecl -> *ast.TypeSpec [streamingDecodeTestMessage]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [messageType uint8]}
+	 {*ast.Field [data string]}
+	 {*ast.Field [heartbeat heartbeat]}
+	 {*ast.GenDecl -> *ast.TypeSpec [streamingDecodeTest]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [in string]}
+	 {*ast.Field [out]}
+	 {*ast.ArrayType [streamingDecodeTestMessage]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [streamingDecodeTests]}
+	 {*ast.CompositeLit -> *ast.ArrayType [streamingDecodeTest]}
+	 {*ast.CompositeLit -> *ast.CallExpr [streamingFrame STRING "" INT 1 false]}
+	 {*ast.CompositeLit -> *ast.ArrayType [streamingDecodeTestMessage]}
+	 {*ast.CompositeLit [MessageText STRING ""]}
+	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.CompositeLit -> *ast.CallExpr [streamingFrame STRING "123" INT 2 false]}
+	 {*ast.CompositeLit -> *ast.ArrayType [streamingDecodeTestMessage]}
+	 {*ast.CompositeLit [MessageHeartbeat STRING "123" INT 123]}
+	 {*ast.CompositeLit -> *ast.CallExpr [streamingFrame STRING "wadap!" INT 1 false]}
+	 {*ast.CompositeLit -> *ast.ArrayType [streamingDecodeTestMessage]}
+	 {*ast.CompositeLit [MessageText STRING "wadap!"]}
+	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.CompositeLit -> *ast.CallExpr [streamingFrame STRING "♥wadap!" INT 1 true]}
+	 {*ast.CompositeLit -> *ast.ArrayType [streamingDecodeTestMessage]}
+	 {*ast.CompositeLit [MessageJSON STRING "♥wadap!"]}
+	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.CompositeLit -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [streamingFrame STRING "hello, world!" INT 1 true]}
+	 {*ast.CallExpr [streamingFrame STRING "313" INT 2 false]}
+	 {*ast.CallExpr [streamingFrame STRING "♥wadap!" INT 1 false]}
+	 {*ast.CompositeLit -> *ast.ArrayType [streamingDecodeTestMessage]}
+	 {*ast.CompositeLit [MessageJSON STRING "hello, world!"]}
+	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.CompositeLit [MessageHeartbeat STRING "313" INT 313]}
+	 {*ast.CompositeLit [MessageText STRING "♥wadap!"]}
+	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.CompositeLit [STRING "1:3::fael!," nil]}
+	 {*ast.CompositeLit -> *ast.CallExpr [streamingFrame STRING "wadap!" INT 1 false]}
+	 {*ast.CompositeLit -> *ast.ArrayType [streamingDecodeTestMessage]}
+	 {*ast.CompositeLit [MessageText STRING "wadap!"]}
+	 {*ast.UnaryExpr [INT 1]}
+
+
+function name is TestStreamingEncode 
+	 { [TestStreamingEncode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [codec]}
+	 {*ast.CompositeLit [SIOStreamingCodec]}
+	 {*ast.AssignStmt [enc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [codec NewEncoder]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [new]}
+	 {*ast.SelectorExpr [bytes Buffer]}
+	 {*ast.RangeStmt [_ test streamingEncodeTests]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Logf STRING "in=%v out=%s"]}
+	 {*ast.SelectorExpr [test in]}
+	 {*ast.SelectorExpr [test out]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf Reset]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [enc Encode buf]}
+	 {*ast.SelectorExpr [test in]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal STRING "Encode:" err]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf Bytes]}
+	 {*ast.SelectorExpr [test out]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Expected %q but got %q from %q"]}
+	 {*ast.SelectorExpr [test out]}
+	 {*ast.CallExpr [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buf Bytes]}
+	 {*ast.SelectorExpr [test in]}
+
+
+function name is TestStreamingDecode 
+	 { [TestStreamingDecode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [codec]}
+	 {*ast.CompositeLit [SIOStreamingCodec]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [new]}
+	 {*ast.SelectorExpr [bytes Buffer]}
+	 {*ast.AssignStmt [dec]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [codec NewDecoder buf]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [messages]}
+	 {*ast.ArrayType [Message]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [err]}
+	 {*ast.SelectorExpr [os Error]}
+	 {*ast.RangeStmt [_ test streamingDecodeTests]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Logf STRING "in=%s out=%v"]}
+	 {*ast.SelectorExpr [test in]}
+	 {*ast.SelectorExpr [test out]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf WriteString]}
+	 {*ast.SelectorExpr [test in]}
+	 {*ast.IfStmt -> *ast.AssignStmt [messages err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [dec Decode]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [test out nil]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal STRING "Decode:" err]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [test out nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Expected decode error, but got: %v, %v" messages err]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len messages]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [test out]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Expected %d messages, but got %d"]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [test out]}
+	 {*ast.CallExpr [len messages]}
+	 {*ast.RangeStmt [i msg messages]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Logf STRING "message: %#v" msg]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [test out i messageType]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [msg Type]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Expected type %d but got %d"]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [test out i messageType]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [msg Type]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [test out i data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [msg Data]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Expected data %q but got %q"]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [test out i data]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [msg Data]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [test out i messageType MessageHeartbeat]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [hb ok]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [msg heartbeat]}
+	 {*ast.BinaryExpr -> *ast.UnaryExpr [ok]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [test out i heartbeat hb]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Expected heartbeat %d but got %d (%v)"]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [test out i heartbeat hb err]}
+
+
+function name is TestStreamingDecodeStreaming 
+	 { [TestStreamingDecodeStreaming]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [messages]}
+	 {*ast.ArrayType [Message]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [err]}
+	 {*ast.SelectorExpr [os Error]}
+	 {*ast.AssignStmt [codec]}
+	 {*ast.CompositeLit [SIOStreamingCodec]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [new]}
+	 {*ast.SelectorExpr [bytes Buffer]}
+	 {*ast.AssignStmt [dec]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [codec NewDecoder buf]}
+	 {*ast.AssignStmt [expectNothing]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [written string]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [messages err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [dec Decode]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [messages nil]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [len messages INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Partial decode failed after writing %s. err=%#v messages=%#v" written err messages]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf WriteString STRING "5"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [expectNothing STRING "5"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf WriteString STRING ":9"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [expectNothing STRING "5:9"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf WriteString STRING ":12345"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [expectNothing STRING "5:9:12345"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf WriteString STRING "678"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [expectNothing STRING "5:9:12345678"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf WriteString STRING "9"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [expectNothing STRING "5:9:123456789"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf WriteString STRING ",typefornextmessagewhichshouldbeignored"]}
+	 {*ast.AssignStmt [messages err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [dec Decode]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Did not expect errors: %s" err]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [messages nil]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [len messages INT 1]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Expected 1 message, got: %#v" messages]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr -> *ast.IndexExpr [messages INT 0]}
+	 {*ast.StarExpr [sioMessage typ INT 5]}
+	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [messages INT 0 Data STRING "123456789"]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "Expected data 123456789 and typ 5, got: %#v"]}
+	 {*ast.IndexExpr [messages INT 0]}
+
+
+function name is BenchmarkIntEncode 
+	 { [BenchmarkIntEncode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [codec]}
+	 {*ast.CompositeLit [SIOStreamingCodec]}
+	 {*ast.AssignStmt [enc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [codec NewEncoder]}
+	 {*ast.AssignStmt [payload INT 313313]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof payload]}
+	 {*ast.AssignStmt [w]}
+	 {*ast.CompositeLit [nopWriter]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.SelectorExpr [b N]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [enc Encode w payload]}
+
+
+function name is BenchmarkStringEncode 
+	 { [BenchmarkStringEncode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [codec]}
+	 {*ast.CompositeLit [SIOStreamingCodec]}
+	 {*ast.AssignStmt [enc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [codec NewEncoder]}
+	 {*ast.AssignStmt [payload STRING "Hello, World!"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.CallExpr [len payload]}
+	 {*ast.AssignStmt [w]}
+	 {*ast.CompositeLit [nopWriter]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.SelectorExpr [b N]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [enc Encode w payload]}
+
+
+function name is BenchmarkStructEncode 
+	 { [BenchmarkStructEncode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [codec]}
+	 {*ast.CompositeLit [SIOStreamingCodec]}
+	 {*ast.AssignStmt [enc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [codec NewEncoder]}
+	 {*ast.AssignStmt [payload]}
+	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.Field [boolean bool]}
+	 {*ast.Field [str string]}
+	 {*ast.Field [array]}
+	 {*ast.ArrayType [int false STRING "string♥"]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int INT 1 INT 2 INT 3 INT 4]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof payload]}
+	 {*ast.AssignStmt [w]}
+	 {*ast.CompositeLit [nopWriter]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.SelectorExpr [b N]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [enc Encode w payload]}
+
+
+function name is BenchmarkSingleFrameDecode 
+	 { [BenchmarkSingleFrameDecode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [codec]}
+	 {*ast.CompositeLit [SIOStreamingCodec]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [new]}
+	 {*ast.SelectorExpr [bytes Buffer]}
+	 {*ast.AssignStmt [dec]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [codec NewDecoder buf]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [decodeTests INT 2 in]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.CallExpr [len data]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.SelectorExpr [b N]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf Write data]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [dec Decode]}
+
+
+function name is BenchmarkThreeFramesDecode 
+	 { [BenchmarkThreeFramesDecode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [codec]}
+	 {*ast.CompositeLit [SIOStreamingCodec]}
+	 {*ast.AssignStmt [buf]}
+	 {*ast.CallExpr [new]}
+	 {*ast.SelectorExpr [bytes Buffer]}
+	 {*ast.AssignStmt [dec]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [codec NewDecoder buf]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [decodeTests INT 3 in]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.CallExpr [len data]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.SelectorExpr [b N]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [buf Write data]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [dec Decode]}
+
+

@@ -1,0 +1,802 @@
+{*ast.File [freecache]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "errors"]}
+{*ast.ImportSpec [STRING "sync/atomic"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ValueSpec [HASH_ENTRY_SIZE INT 16]}
+{*ast.GenDecl -> *ast.ValueSpec [ENTRY_HDR_SIZE INT 24]}
+{*ast.GenDecl -> *ast.ValueSpec [ErrLargeKey]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "The key is larger than 65535"]}
+{*ast.GenDecl -> *ast.ValueSpec [ErrLargeEntry]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "The entry size is larger than 1/1024 of cache size"]}
+{*ast.GenDecl -> *ast.ValueSpec [ErrNotFound]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Entry not found"]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [entryPtr]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [offset int64]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [hash16 uint16]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [keyLen uint16]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [reserved uint32]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [entryHdr]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [accessTime uint32]}
+{*ast.Field [expireAt uint32]}
+{*ast.Field [keyLen uint16]}
+{*ast.Field [hash16 uint16]}
+{*ast.Field [valLen uint32]}
+{*ast.Field [valCap uint32]}
+{*ast.Field [deleted bool]}
+{*ast.Field [slotId uint8]}
+{*ast.Field [reserved uint16]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.TypeSpec [segment]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [rb RingBuf]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [segId int]}
+{*ast.Field [_ uint32]}
+{*ast.Field [missCount int64]}
+{*ast.Field [hitCount int64]}
+{*ast.Field [entryCount int64]}
+{*ast.Field [totalCount int64]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [totalTime int64]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [timer Timer]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [totalEvacuate int64]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [totalExpired int64]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [overwrites int64]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [touched int64]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [vacuumLen int64]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [slotLens]}
+{*ast.ArrayType [INT 256 int32]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [slotCap int32]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [slotsData]}
+{*ast.ArrayType [entryPtr]}
+{*ast.CommentGroup -> *ast.Comment []}
+
+
+function name is newSegment 
+	 { [newSegment]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bufSize int]}
+	 {*ast.Field [segId int]}
+	 {*ast.Field [timer Timer]}
+	 {*ast.FieldList -> *ast.Field [seg segment]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [seg rb]}
+	 {*ast.CallExpr [NewRingBuf bufSize INT 0]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg segId segId]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg timer timer]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg vacuumLen]}
+	 {*ast.CallExpr [int64 bufSize]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg slotCap INT 1]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg slotsData]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [entryPtr]}
+	 {*ast.BinaryExpr [INT 256]}
+	 {*ast.SelectorExpr [seg slotCap]}
+	 {*ast.ReturnStmt []}
+
+
+function name is set 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment set]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [key value]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [hashVal uint64]}
+	 {*ast.Field [expireSeconds int]}
+	 {*ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len key INT 65535]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [ErrLargeKey]}
+	 {*ast.AssignStmt [maxKeyValLen]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [seg rb data INT 4 ENTRY_HDR_SIZE]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [len key]}
+	 {*ast.CallExpr [len value maxKeyValLen]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [ErrLargeEntry]}
+	 {*ast.AssignStmt [now]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg timer Now]}
+	 {*ast.AssignStmt [expireAt]}
+	 {*ast.CallExpr [uint32 INT 0]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [expireSeconds INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [expireAt]}
+	 {*ast.BinaryExpr [now]}
+	 {*ast.CallExpr [uint32 expireSeconds]}
+	 {*ast.AssignStmt [slotId]}
+	 {*ast.CallExpr [uint8]}
+	 {*ast.BinaryExpr [hashVal INT 8]}
+	 {*ast.AssignStmt [hash16]}
+	 {*ast.CallExpr [uint16]}
+	 {*ast.BinaryExpr [hashVal INT 16]}
+	 {*ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.AssignStmt [idx match]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [hdrBuf]}
+	 {*ast.ArrayType [ENTRY_HDR_SIZE byte]}
+	 {*ast.AssignStmt [hdr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [entryHdr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [hdrBuf INT 0]}
+	 {*ast.IfStmt [match]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [matchedPtr]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [slot idx]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb ReadAt]}
+	 {*ast.SliceExpr [hdrBuf]}
+	 {*ast.SelectorExpr [matchedPtr offset]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr slotId slotId]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr hash16 hash16]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr keyLen]}
+	 {*ast.CallExpr [uint16]}
+	 {*ast.CallExpr [len key]}
+	 {*ast.AssignStmt [originAccessTime]}
+	 {*ast.SelectorExpr [hdr accessTime]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr accessTime now]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr expireAt expireAt]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr valLen]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.CallExpr [len value]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [hdr valCap]}
+	 {*ast.SelectorExpr [hdr valLen]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalTime]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [hdr accessTime]}
+	 {*ast.CallExpr [int64 originAccessTime]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb WriteAt]}
+	 {*ast.SliceExpr [hdrBuf]}
+	 {*ast.SelectorExpr [matchedPtr offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb WriteAt value]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [matchedPtr offset ENTRY_HDR_SIZE]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [hdr keyLen]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg overwrites INT 1]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg delEntryPtr slotId slot idx]}
+	 {*ast.AssignStmt [match false]}
+	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [hdr valCap]}
+	 {*ast.SelectorExpr [hdr valLen]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [hdr valCap INT 2]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [hdr valCap]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.BinaryExpr [maxKeyValLen]}
+	 {*ast.CallExpr [len key]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [hdr valCap]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.BinaryExpr [maxKeyValLen]}
+	 {*ast.CallExpr [len key]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [hdr slotId slotId]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr hash16 hash16]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr keyLen]}
+	 {*ast.CallExpr [uint16]}
+	 {*ast.CallExpr [len key]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr accessTime now]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr expireAt expireAt]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr valLen]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.CallExpr [len value]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr valCap]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.CallExpr [len value]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [hdr valCap INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [hdr valCap INT 1]}
+	 {*ast.AssignStmt [entryLen]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [ENTRY_HDR_SIZE]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.CallExpr [len key]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [hdr valCap]}
+	 {*ast.AssignStmt [slotModified]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg evacuate entryLen slotId now]}
+	 {*ast.IfStmt [slotModified]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.AssignStmt [idx match]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
+	 {*ast.AssignStmt [newOff]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb End]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg insertEntryPtr slotId hash16 newOff idx]}
+	 {*ast.SelectorExpr [hdr keyLen]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Write]}
+	 {*ast.SliceExpr [hdrBuf]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Write key]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Write value]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Skip]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [hdr valCap]}
+	 {*ast.SelectorExpr [hdr valLen]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalTime]}
+	 {*ast.CallExpr [int64 now]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalCount INT 1]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg vacuumLen entryLen]}
+	 {*ast.ReturnStmt []}
+
+
+function name is touch 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment touch]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [key]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [hashVal uint64]}
+	 {*ast.Field [expireSeconds int]}
+	 {*ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len key INT 65535]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [ErrLargeKey]}
+	 {*ast.AssignStmt [slotId]}
+	 {*ast.CallExpr [uint8]}
+	 {*ast.BinaryExpr [hashVal INT 8]}
+	 {*ast.AssignStmt [hash16]}
+	 {*ast.CallExpr [uint16]}
+	 {*ast.BinaryExpr [hashVal INT 16]}
+	 {*ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.AssignStmt [idx match]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [match]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [err ErrNotFound]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [matchedPtr]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [slot idx]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [hdrBuf]}
+	 {*ast.ArrayType [ENTRY_HDR_SIZE byte]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb ReadAt]}
+	 {*ast.SliceExpr [hdrBuf]}
+	 {*ast.SelectorExpr [matchedPtr offset]}
+	 {*ast.AssignStmt [hdr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [entryHdr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [hdrBuf INT 0]}
+	 {*ast.AssignStmt [now]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg timer Now]}
+	 {*ast.IfStmt -> *ast.CallExpr [isExpired]}
+	 {*ast.SelectorExpr [hdr expireAt now]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg delEntryPtr slotId slot idx]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalExpired INT 1]}
+	 {*ast.AssignStmt [err ErrNotFound]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg missCount INT 1]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [expireAt]}
+	 {*ast.CallExpr [uint32 INT 0]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [expireSeconds INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [expireAt]}
+	 {*ast.BinaryExpr [now]}
+	 {*ast.CallExpr [uint32 expireSeconds]}
+	 {*ast.AssignStmt [originAccessTime]}
+	 {*ast.SelectorExpr [hdr accessTime]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr accessTime now]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr expireAt expireAt]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalTime]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [hdr accessTime]}
+	 {*ast.CallExpr [int64 originAccessTime]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb WriteAt]}
+	 {*ast.SliceExpr [hdrBuf]}
+	 {*ast.SelectorExpr [matchedPtr offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg touched INT 1]}
+	 {*ast.ReturnStmt []}
+
+
+function name is evacuate 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment evacuate]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [entryLen int64]}
+	 {*ast.Field [slotId uint8]}
+	 {*ast.Field [now uint32]}
+	 {*ast.FieldList -> *ast.Field [slotModified bool]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [oldHdrBuf]}
+	 {*ast.ArrayType [ENTRY_HDR_SIZE byte]}
+	 {*ast.AssignStmt [consecutiveEvacuate INT 0]}
+	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [seg vacuumLen entryLen]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [oldOff]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb End]}
+	 {*ast.SelectorExpr [seg vacuumLen]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Size]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb ReadAt]}
+	 {*ast.SliceExpr [oldHdrBuf oldOff]}
+	 {*ast.AssignStmt [oldHdr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [entryHdr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [oldHdrBuf INT 0]}
+	 {*ast.AssignStmt [oldEntryLen]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [ENTRY_HDR_SIZE]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [oldHdr keyLen]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [oldHdr valCap]}
+	 {*ast.IfStmt -> *ast.SelectorExpr [oldHdr deleted]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [consecutiveEvacuate INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalTime]}
+	 {*ast.UnaryExpr -> *ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [oldHdr accessTime]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalCount]}
+	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg vacuumLen oldEntryLen]}
+	 {*ast.BranchStmt -> *ast.AssignStmt [expired]}
+	 {*ast.CallExpr [isExpired]}
+	 {*ast.SelectorExpr [oldHdr expireAt now]}
+	 {*ast.AssignStmt [leastRecentUsed]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [oldHdr accessTime]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalCount]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalTime]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [expired leastRecentUsed]}
+	 {*ast.BinaryExpr [consecutiveEvacuate INT 5]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg delEntryPtrByOffset]}
+	 {*ast.SelectorExpr [oldHdr slotId]}
+	 {*ast.SelectorExpr [oldHdr hash16 oldOff]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [oldHdr slotId slotId]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [slotModified true]}
+	 {*ast.AssignStmt [consecutiveEvacuate INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalTime]}
+	 {*ast.UnaryExpr -> *ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [oldHdr accessTime]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalCount]}
+	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg vacuumLen oldEntryLen]}
+	 {*ast.IfStmt [expired]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalExpired INT 1]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalEvacuate INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [newOff]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Evacuate oldOff]}
+	 {*ast.CallExpr [int oldEntryLen]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg updateEntryPtr]}
+	 {*ast.SelectorExpr [oldHdr slotId]}
+	 {*ast.SelectorExpr [oldHdr hash16 oldOff newOff]}
+	 {*ast.IncDecStmt [consecutiveEvacuate]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalEvacuate INT 1]}
+	 {*ast.ReturnStmt []}
+
+
+function name is get 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment get]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [key buf]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [hashVal uint64]}
+	 {*ast.Field [peek bool]}
+	 {*ast.FieldList -> *ast.Field [value]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [expireAt uint32]}
+	 {*ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [hdr ptrOffset err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg locate key hashVal peek]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [expireAt]}
+	 {*ast.SelectorExpr [hdr expireAt]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [cap buf]}
+	 {*ast.CallExpr [int]}
+	 {*ast.SelectorExpr [hdr valLen]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [value]}
+	 {*ast.SliceExpr [buf]}
+	 {*ast.SelectorExpr [hdr valLen]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [value]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.SelectorExpr [hdr valLen]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb ReadAt value]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [ptrOffset ENTRY_HDR_SIZE]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [hdr keyLen]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [peek]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg hitCount INT 1]}
+	 {*ast.ReturnStmt []}
+
+
+function name is view 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment view]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [key]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [fn]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.Field [hashVal uint64]}
+	 {*ast.Field [peek bool]}
+	 {*ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [hdr ptrOffset err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg locate key hashVal peek]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [start]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [ptrOffset ENTRY_HDR_SIZE]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [hdr keyLen]}
+	 {*ast.AssignStmt [val err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Slice start]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.SelectorExpr [hdr valLen]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [fn val]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [peek]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg hitCount INT 1]}
+	 {*ast.ReturnStmt []}
+
+
+function name is locate 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment locate]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [key]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [hashVal uint64]}
+	 {*ast.Field [peek bool]}
+	 {*ast.FieldList -> *ast.Field [hdrEntry entryHdr]}
+	 {*ast.Field [ptrOffset int64]}
+	 {*ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [slotId]}
+	 {*ast.CallExpr [uint8]}
+	 {*ast.BinaryExpr [hashVal INT 8]}
+	 {*ast.AssignStmt [hash16]}
+	 {*ast.CallExpr [uint16]}
+	 {*ast.BinaryExpr [hashVal INT 16]}
+	 {*ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.AssignStmt [idx match]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [match]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [err ErrNotFound]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [peek]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg missCount INT 1]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [ptr]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [slot idx]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [hdrBuf]}
+	 {*ast.ArrayType [ENTRY_HDR_SIZE byte]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb ReadAt]}
+	 {*ast.SliceExpr [hdrBuf]}
+	 {*ast.SelectorExpr [ptr offset]}
+	 {*ast.AssignStmt [hdr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [entryHdr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [hdrBuf INT 0]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [peek]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [now]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg timer Now]}
+	 {*ast.IfStmt -> *ast.CallExpr [isExpired]}
+	 {*ast.SelectorExpr [hdr expireAt now]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg delEntryPtr slotId slot idx]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalExpired INT 1]}
+	 {*ast.AssignStmt [err ErrNotFound]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg missCount INT 1]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalTime]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BinaryExpr [now]}
+	 {*ast.SelectorExpr [hdr accessTime]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [hdr accessTime now]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb WriteAt]}
+	 {*ast.SliceExpr [hdrBuf]}
+	 {*ast.SelectorExpr [ptr offset]}
+	 {*ast.ReturnStmt -> *ast.StarExpr [hdr]}
+	 {*ast.SelectorExpr [ptr offset nil]}
+
+
+function name is del 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment del]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [key]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [hashVal uint64]}
+	 {*ast.FieldList -> *ast.Field [affected bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [slotId]}
+	 {*ast.CallExpr [uint8]}
+	 {*ast.BinaryExpr [hashVal INT 8]}
+	 {*ast.AssignStmt [hash16]}
+	 {*ast.CallExpr [uint16]}
+	 {*ast.BinaryExpr [hashVal INT 16]}
+	 {*ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.AssignStmt [idx match]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [match]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg delEntryPtr slotId slot idx]}
+	 {*ast.ReturnStmt [true]}
+
+
+function name is ttl 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment ttl]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [key]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [hashVal uint64]}
+	 {*ast.FieldList -> *ast.Field [timeLeft uint32]}
+	 {*ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [slotId]}
+	 {*ast.CallExpr [uint8]}
+	 {*ast.BinaryExpr [hashVal INT 8]}
+	 {*ast.AssignStmt [hash16]}
+	 {*ast.CallExpr [uint16]}
+	 {*ast.BinaryExpr [hashVal INT 16]}
+	 {*ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.AssignStmt [idx match]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [match]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [err ErrNotFound]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [ptr]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [slot idx]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [hdrBuf]}
+	 {*ast.ArrayType [ENTRY_HDR_SIZE byte]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb ReadAt]}
+	 {*ast.SliceExpr [hdrBuf]}
+	 {*ast.SelectorExpr [ptr offset]}
+	 {*ast.AssignStmt [hdr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [entryHdr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [hdrBuf INT 0]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [hdr expireAt INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BlockStmt -> *ast.AssignStmt [now]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg timer Now]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [isExpired]}
+	 {*ast.SelectorExpr [hdr expireAt now]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [timeLeft]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [hdr expireAt now]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [err ErrNotFound]}
+	 {*ast.ReturnStmt []}
+
+
+function name is expand 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment expand]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [newSlotData]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [entryPtr]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [seg slotCap INT 2 INT 256]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i INT 256]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [off]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [int32 i]}
+	 {*ast.SelectorExpr [seg slotCap]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copy]}
+	 {*ast.SliceExpr [newSlotData]}
+	 {*ast.BinaryExpr [off INT 2]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [seg slotsData off]}
+	 {*ast.BinaryExpr [off]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [seg slotLens i]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg slotCap INT 2]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg slotsData newSlotData]}
+
+
+function name is updateEntryPtr 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment updateEntryPtr]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slotId uint8]}
+	 {*ast.Field [hash16 uint16]}
+	 {*ast.Field [oldOff newOff int64]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.AssignStmt [idx match]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookupByOff slot hash16 oldOff]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [match]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [ptr]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [slot idx]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [ptr offset newOff]}
+
+
+function name is insertEntryPtr 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment insertEntryPtr]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slotId uint8]}
+	 {*ast.Field [hash16 uint16]}
+	 {*ast.Field [offset int64]}
+	 {*ast.Field [idx int]}
+	 {*ast.Field [keyLen uint16]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [seg slotLens slotId]}
+	 {*ast.SelectorExpr [seg slotCap]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg expand]}
+	 {*ast.IncDecStmt -> *ast.IndexExpr -> *ast.SelectorExpr [seg slotLens slotId]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg entryCount INT 1]}
+	 {*ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copy]}
+	 {*ast.SliceExpr [slot]}
+	 {*ast.BinaryExpr [idx INT 1]}
+	 {*ast.SliceExpr [slot idx]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.IndexExpr [slot idx offset offset]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.IndexExpr [slot idx hash16 hash16]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.IndexExpr [slot idx keyLen keyLen]}
+
+
+function name is delEntryPtrByOffset 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment delEntryPtrByOffset]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slotId uint8]}
+	 {*ast.Field [hash16 uint16]}
+	 {*ast.Field [offset int64]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [slot]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
+	 {*ast.AssignStmt [idx match]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookupByOff slot hash16 offset]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [match]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg delEntryPtr slotId slot idx]}
+
+
+function name is delEntryPtr 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment delEntryPtr]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slotId uint8]}
+	 {*ast.Field [slot]}
+	 {*ast.ArrayType [entryPtr]}
+	 {*ast.Field [idx int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [offset]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [slot idx offset]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [entryHdrBuf]}
+	 {*ast.ArrayType [ENTRY_HDR_SIZE byte]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb ReadAt]}
+	 {*ast.SliceExpr [entryHdrBuf offset]}
+	 {*ast.AssignStmt [entryHdr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [entryHdr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [entryHdrBuf INT 0]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [entryHdr deleted true]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb WriteAt]}
+	 {*ast.SliceExpr [entryHdrBuf offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copy]}
+	 {*ast.SliceExpr [slot idx]}
+	 {*ast.SliceExpr [slot]}
+	 {*ast.BinaryExpr [idx INT 1]}
+	 {*ast.IncDecStmt -> *ast.IndexExpr -> *ast.SelectorExpr [seg slotLens slotId]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg entryCount]}
+	 {*ast.UnaryExpr [INT 1]}
+
+
+function name is entryPtrIdx 
+	 { [entryPtrIdx]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slot]}
+	 {*ast.ArrayType [entryPtr]}
+	 {*ast.Field [hash16 uint16]}
+	 {*ast.FieldList -> *ast.Field [idx int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [high]}
+	 {*ast.CallExpr [len slot]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [idx high]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [mid]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [idx high INT 1]}
+	 {*ast.AssignStmt [oldEntry]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [slot mid]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [oldEntry hash16 hash16]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [idx]}
+	 {*ast.BinaryExpr [mid INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [high mid]}
+	 {*ast.ReturnStmt []}
+
+
+function name is lookup 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment lookup]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slot]}
+	 {*ast.ArrayType [entryPtr]}
+	 {*ast.Field [hash16 uint16]}
+	 {*ast.Field [key]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [idx int]}
+	 {*ast.Field [match bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [idx]}
+	 {*ast.CallExpr [entryPtrIdx slot hash16]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [idx]}
+	 {*ast.CallExpr [len slot]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [ptr]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [slot idx]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [ptr hash16 hash16]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [match]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [int]}
+	 {*ast.SelectorExpr [ptr keyLen]}
+	 {*ast.CallExpr [len key]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb EqualAt key]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [ptr offset ENTRY_HDR_SIZE]}
+	 {*ast.IfStmt [match]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IncDecStmt [idx]}
+	 {*ast.ReturnStmt []}
+
+
+function name is lookupByOff 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment lookupByOff]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slot]}
+	 {*ast.ArrayType [entryPtr]}
+	 {*ast.Field [hash16 uint16]}
+	 {*ast.Field [offset int64]}
+	 {*ast.FieldList -> *ast.Field [idx int]}
+	 {*ast.Field [match bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [idx]}
+	 {*ast.CallExpr [entryPtrIdx slot hash16]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [idx]}
+	 {*ast.CallExpr [len slot]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [ptr]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [slot idx]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [ptr hash16 hash16]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [match]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [ptr offset offset]}
+	 {*ast.IfStmt [match]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IncDecStmt [idx]}
+	 {*ast.ReturnStmt []}
+
+
+function name is resetStatistics 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment resetStatistics]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalEvacuate INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalExpired INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg overwrites INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg hitCount INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg missCount INT 0]}
+
+
+function name is clear 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment clear]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [bufSize]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [seg rb data]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Reset INT 0]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg vacuumLen]}
+	 {*ast.CallExpr [int64 bufSize]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg slotCap INT 1]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [seg slotsData]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [entryPtr]}
+	 {*ast.BinaryExpr [INT 256]}
+	 {*ast.SelectorExpr [seg slotCap]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [seg slotLens]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [seg slotLens i INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg hitCount INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg missCount INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg entryCount INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalCount INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalTime INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalEvacuate INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg totalExpired INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [seg overwrites INT 0]}
+
+
+function name is getSlot 
+	 {*ast.FieldList -> *ast.Field [seg]}
+	 {*ast.StarExpr [segment getSlot]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slotId uint8]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [entryPtr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [slotOff]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [int32 slotId]}
+	 {*ast.SelectorExpr [seg slotCap]}
+	 {*ast.ReturnStmt -> *ast.SliceExpr -> *ast.SelectorExpr [seg slotsData slotOff]}
+	 {*ast.BinaryExpr [slotOff]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [seg slotLens slotId]}
+	 {*ast.BinaryExpr [slotOff]}
+	 {*ast.SelectorExpr [seg slotCap]}
+
+
+function name is isExpired 
+	 {*ast.CommentGroup -> *ast.Comment [isExpired]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [keyExpireAt now uint32]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [keyExpireAt INT 0]}
+	 {*ast.BinaryExpr [keyExpireAt now]}
+
+

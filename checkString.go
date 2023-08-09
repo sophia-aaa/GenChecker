@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go/token"
 	"strings"
 )
 
@@ -16,10 +17,10 @@ func contains(strArr []string, str string) bool {
 	return false
 }
 
-func contains2D(strArr [][]string, str string) bool {
+func contains2D(strArr [][]funcNamePos, str string, pos token.Pos) bool {
 	for i := 0; i < len(strArr); i++ {
 		for j := 0; j < len(strArr[i]); j++ {
-			if strArr[i][j] == str {
+			if strings.EqualFold(strArr[i][j].funcName, str) && strArr[i][j].funcPos == pos {
 				return true
 			}
 		}

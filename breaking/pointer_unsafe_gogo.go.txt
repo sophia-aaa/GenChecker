@@ -1,0 +1,171 @@
+{*ast.File [proto]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+
+
+function name is structPointer_InterfaceAt 
+	 { [structPointer_InterfaceAt]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p structPointer]}
+	 {*ast.Field [f field]}
+	 {*ast.Field [t]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [point]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr p]}
+	 {*ast.CallExpr [uintptr f]}
+	 {*ast.AssignStmt [r]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt t point]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [r Interface]}
+
+
+function name is structPointer_InterfaceRef 
+	 { [structPointer_InterfaceRef]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p structPointer]}
+	 {*ast.Field [f field]}
+	 {*ast.Field [t]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [point]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr p]}
+	 {*ast.CallExpr [uintptr f]}
+	 {*ast.AssignStmt [r]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt t point]}
+	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [r Elem IsNil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [r Elem Interface]}
+
+
+function name is copyUintPtr 
+	 { [copyUintPtr]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [oldptr newptr uintptr]}
+	 {*ast.Field [size int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [oldbytes]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [byte INT 0]}
+	 {*ast.AssignStmt [oldslice]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [oldbytes]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [oldslice Data oldptr]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [oldslice Len size]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [oldslice Cap size]}
+	 {*ast.AssignStmt [newbytes]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [byte INT 0]}
+	 {*ast.AssignStmt [newslice]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [newbytes]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [newslice Data newptr]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [newslice Len size]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [newslice Cap size]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copy newbytes oldbytes]}
+
+
+function name is structPointer_Copy 
+	 { [structPointer_Copy]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [oldptr structPointer]}
+	 {*ast.Field [newptr structPointer]}
+	 {*ast.Field [size int]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [copyUintPtr]}
+	 {*ast.CallExpr [uintptr oldptr]}
+	 {*ast.CallExpr [uintptr newptr size]}
+
+
+function name is appendStructPointer 
+	 { [appendStructPointer]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [base structPointer]}
+	 {*ast.Field [f field]}
+	 {*ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [structPointer]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [size]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [typ Elem Size]}
+	 {*ast.AssignStmt [oldHeader]}
+	 {*ast.CallExpr [structPointer_GetSliceHeader base f]}
+	 {*ast.AssignStmt [newLen]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [oldHeader Len INT 1]}
+	 {*ast.AssignStmt [slice]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect MakeSlice typ newLen newLen]}
+	 {*ast.AssignStmt [bas]}
+	 {*ast.CallExpr [toStructPointer slice]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.SelectorExpr [oldHeader Len]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [newElemptr]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr bas]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr i size]}
+	 {*ast.AssignStmt [oldElemptr]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [oldHeader Data]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr i size]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copyUintPtr oldElemptr newElemptr]}
+	 {*ast.CallExpr [int size]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [oldHeader Data]}
+	 {*ast.CallExpr [uintptr bas]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [oldHeader Len newLen]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [oldHeader Cap newLen]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [structPointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer bas]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [newLen INT 1 size]}
+
+
+function name is structPointer_FieldPointer 
+	 { [structPointer_FieldPointer]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p structPointer]}
+	 {*ast.Field [f field]}
+	 {*ast.FieldList -> *ast.Field [structPointer]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [structPointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr p]}
+	 {*ast.CallExpr [uintptr f]}
+
+
+function name is structPointer_GetRefStructPointer 
+	 { [structPointer_GetRefStructPointer]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p structPointer]}
+	 {*ast.Field [f field]}
+	 {*ast.FieldList -> *ast.Field [structPointer]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [structPointer]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [structPointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr p]}
+	 {*ast.CallExpr [uintptr f]}
+
+
+function name is structPointer_GetSliceHeader 
+	 { [structPointer_GetSliceHeader]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p structPointer]}
+	 {*ast.Field [f field]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr p]}
+	 {*ast.CallExpr [uintptr f]}
+
+
+function name is structPointer_Add 
+	 { [structPointer_Add]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p structPointer]}
+	 {*ast.Field [size field]}
+	 {*ast.FieldList -> *ast.Field [structPointer]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [structPointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr p]}
+	 {*ast.CallExpr [uintptr size]}
+
+
+function name is structPointer_Len 
+	 { [structPointer_Len]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p structPointer]}
+	 {*ast.Field [f field]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [len]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.InterfaceType -> *ast.FieldList -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.CallExpr [structPointer_GetRefStructPointer p f]}
+
+

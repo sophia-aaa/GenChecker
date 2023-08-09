@@ -1,0 +1,212 @@
+{*ast.File [radix]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "bytes"]}
+{*ast.ImportSpec [STRING "fmt"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ValueSpec [encodeChars]}
+{*ast.CompositeLit -> *ast.ArrayType [string STRING "0" STRING "1" STRING "2" STRING "3" STRING "4" STRING "5" STRING "6" STRING "7" STRING "8" STRING "9" STRING "a" STRING "b" STRING "c" STRING "d" STRING "e" STRING "f"]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.TypeSpec [Nibble byte]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [Timer]}
+{*ast.InterfaceType -> *ast.FieldList -> *ast.Field [ContinuousTime]}
+{*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int64]}
+
+
+function name is toBytes 
+	 { [toBytes]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n]}
+	 {*ast.ArrayType [Nibble]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [byte]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [n]}
+	 {*ast.GenDecl -> *ast.ValueSpec [parts INT 2]}
+	 {*ast.ValueSpec [mirrored STRING "mirrored"]}
+	 {*ast.ValueSpec [yes STRING "yes"]}
+
+
+function name is nComp 
+	 { [nComp]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.ArrayType [Nibble]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
+	 {*ast.CallExpr [toBytes a]}
+	 {*ast.CallExpr [toBytes b]}
+
+
+function name is Rip 
+	 {*ast.CommentGroup -> *ast.Comment [Rip]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [result]}
+	 {*ast.ArrayType [Nibble]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [b nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [result]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [Nibble]}
+	 {*ast.BinaryExpr [parts]}
+	 {*ast.CallExpr [len b]}
+	 {*ast.RangeStmt [i char b]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [j INT 0]}
+	 {*ast.BinaryExpr [j parts]}
+	 {*ast.IncDecStmt [j]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [result]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [i parts j]}
+	 {*ast.CallExpr [Nibble]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [char]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [INT 8 parts j]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [INT 8]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr [INT 8 parts]}
+	 {*ast.ReturnStmt []}
+
+
+function name is stringEncode 
+	 { [stringEncode]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [buffer]}
+	 {*ast.CallExpr [new]}
+	 {*ast.SelectorExpr [bytes Buffer]}
+	 {*ast.RangeStmt [_ c b]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Fprint buffer]}
+	 {*ast.IndexExpr [encodeChars c]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [buffer Bytes]}
+
+
+function name is Stitch 
+	 {*ast.CommentGroup -> *ast.Comment [Stitch]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.ArrayType [Nibble]}
+	 {*ast.FieldList -> *ast.Field [result]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [b nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [result]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [len b parts]}
+	 {*ast.RangeStmt [i _ result]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [j INT 0]}
+	 {*ast.BinaryExpr [j parts]}
+	 {*ast.IncDecStmt [j]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [result i]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.IndexExpr [b]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [i parts j]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [parts j INT 1]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr [INT 8 parts]}
+	 {*ast.ReturnStmt -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [SubPrint]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Key]}
+	 {*ast.ArrayType [Nibble]}
+	 {*ast.Field [Sum]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [Exists bool]}
+
+
+function name is equals 
+	 {*ast.FieldList -> *ast.Field [self SubPrint equals]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [other SubPrint]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
+	 {*ast.SelectorExpr [other Sum]}
+	 {*ast.SelectorExpr [self Sum INT 0]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [Print]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Exists bool]}
+	 {*ast.Field [Key]}
+	 {*ast.ArrayType [Nibble]}
+	 {*ast.Field [Empty bool]}
+	 {*ast.Field [Timestamp int64]}
+	 {*ast.Field [SubTree bool]}
+	 {*ast.Field [SubPrints]}
+	 {*ast.ArrayType [SubPrint]}
+	 {*ast.Field [ByteHash]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [TreeHash]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [TreeDataTimestamp int64]}
+	 {*ast.Field [TreeSize int]}
+
+
+function name is coveredBy 
+	 {*ast.FieldList -> *ast.Field [self]}
+	 {*ast.StarExpr [Print coveredBy]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [other]}
+	 {*ast.StarExpr [Print]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [self nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr [other nil]}
+	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [other nil]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [other Timestamp]}
+	 {*ast.SelectorExpr [self Timestamp]}
+	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
+	 {*ast.SelectorExpr [self ByteHash]}
+	 {*ast.SelectorExpr [other ByteHash INT 0]}
+
+
+function name is push 
+	 {*ast.FieldList -> *ast.Field [self]}
+	 {*ast.StarExpr [Print push]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n]}
+	 {*ast.StarExpr [node]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [self Key]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [self Key]}
+	 {*ast.SelectorExpr [n segment]}
+
+
+function name is set 
+	 {*ast.FieldList -> *ast.Field [self]}
+	 {*ast.StarExpr [Print set]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n]}
+	 {*ast.StarExpr [node]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [self Exists true]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [self ByteHash]}
+	 {*ast.SelectorExpr [n byteHash]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [self TreeHash]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [n treeValue Hash]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [n treeValue nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [self TreeDataTimestamp]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [n treeValue DataTimestamp]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [self TreeSize]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [n treeValue Size]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [self Empty]}
+	 {*ast.SelectorExpr [n empty]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [self Timestamp]}
+	 {*ast.SelectorExpr [n timestamp]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [self SubPrints]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [SubPrint]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [n children]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [self SubTree]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [n treeValue nil]}
+	 {*ast.RangeStmt [index child]}
+	 {*ast.SelectorExpr [n children]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [child nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [self SubPrints index]}
+	 {*ast.CompositeLit [SubPrint]}
+	 {*ast.KeyValueExpr [Exists true]}
+	 {*ast.KeyValueExpr [Key]}
+	 {*ast.CallExpr [append]}
+	 {*ast.CallExpr [append]}
+	 {*ast.CompositeLit -> *ast.ArrayType [Nibble]}
+	 {*ast.SelectorExpr [self Key]}
+	 {*ast.SelectorExpr [child segment]}
+	 {*ast.KeyValueExpr [Sum]}
+	 {*ast.SelectorExpr [child hash]}
+
+
+function name is timestamp 
+	 {*ast.FieldList -> *ast.Field [self]}
+	 {*ast.StarExpr [Print timestamp]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int64]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [self nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0]}
+	 {*ast.ReturnStmt -> *ast.SelectorExpr [self Timestamp]}
+
+

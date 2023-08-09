@@ -34,7 +34,9 @@ func buildUnsafeList(modListFunctions []basicStr) []unsafeCheck {
 					firstBool = true
 				} else if firstBool && strings.EqualFold(val.value[i], "Pointer") {
 					if !checkDuplicateInUnsafe(unsafeList, modListFunctions[ind].funcName, modListFunctions[ind].funcToken) {
-						unsafeList = append(unsafeList, unsafeCheck{modListFunctions[ind].funcName, modListFunctions[ind].funcToken})
+						if !strings.EqualFold(modListFunctions[ind].funcName, "") {
+							unsafeList = append(unsafeList, unsafeCheck{modListFunctions[ind].funcName, modListFunctions[ind].funcToken})
+						}
 					}
 					firstBool = false
 				}

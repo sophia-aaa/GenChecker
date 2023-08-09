@@ -1,0 +1,124 @@
+{*ast.File [goinsta]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "encoding/json"]}
+{*ast.ImportSpec [STRING "image"]}
+{*ast.ImportSpec -> *ast.CommentGroup -> *ast.Comment [_ STRING "image/jpeg"]}
+{*ast.ImportSpec [_ STRING "image/png"]}
+{*ast.ImportSpec [STRING "io"]}
+{*ast.ImportSpec [STRING "strconv"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+
+
+function name is b2s 
+	 { [b2s]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [b]}
+
+
+function name is toString 
+	 { [toString]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.TypeSwitchStmt -> *ast.AssignStmt [s]}
+	 {*ast.TypeAssertExpr [i]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [string]}
+	 {*ast.ReturnStmt [s]}
+	 {*ast.CaseClause [bool]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatBool s]}
+	 {*ast.CaseClause [float64]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatFloat s CHAR 'f']}
+	 {*ast.UnaryExpr [INT 1 INT 64]}
+	 {*ast.CaseClause [float32]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatFloat]}
+	 {*ast.CallExpr [float64 s CHAR 'f']}
+	 {*ast.UnaryExpr [INT 1 INT 32]}
+	 {*ast.CaseClause [int]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv Itoa s]}
+	 {*ast.CaseClause [int64]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatInt s INT 10]}
+	 {*ast.CaseClause [int32]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv Itoa]}
+	 {*ast.CallExpr [int s]}
+	 {*ast.CaseClause [int16]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatInt]}
+	 {*ast.CallExpr [int64 s INT 10]}
+	 {*ast.CaseClause [int8]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatInt]}
+	 {*ast.CallExpr [int64 s INT 10]}
+	 {*ast.CaseClause [uint]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatInt]}
+	 {*ast.CallExpr [int64 s INT 10]}
+	 {*ast.CaseClause [uint64]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatInt]}
+	 {*ast.CallExpr [int64 s INT 10]}
+	 {*ast.CaseClause [uint32]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatInt]}
+	 {*ast.CallExpr [int64 s INT 10]}
+	 {*ast.CaseClause [uint16]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatInt]}
+	 {*ast.CallExpr [int64 s INT 10]}
+	 {*ast.CaseClause [uint8]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv FormatInt]}
+	 {*ast.CallExpr [int64 s INT 10]}
+	 {*ast.CaseClause -> *ast.ArrayType [byte]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [b2s s]}
+	 {*ast.CaseClause [error]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [s Error]}
+	 {*ast.ReturnStmt [STRING ""]}
+
+
+function name is prepareRecipients 
+	 { [prepareRecipients]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cc]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bb string]}
+	 {*ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [b]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.AssignStmt [ids]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType -> *ast.ArrayType [int64 INT 0]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [c]}
+	 {*ast.TypeAssertExpr [cc]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.StarExpr [Conversation]}
+	 {*ast.RangeStmt [i]}
+	 {*ast.SelectorExpr [c Users]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [ids]}
+	 {*ast.CallExpr [append ids]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int64]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [c Users i ID]}
+	 {*ast.CaseClause -> *ast.StarExpr [Item]}
+	 {*ast.AssignStmt [ids]}
+	 {*ast.CallExpr [append ids]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int64]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [c User ID]}
+	 {*ast.CaseClause [int64]}
+	 {*ast.AssignStmt [ids]}
+	 {*ast.CallExpr [append ids]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int64 c]}
+	 {*ast.AssignStmt [b err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [json Marshal ids]}
+	 {*ast.AssignStmt [bb]}
+	 {*ast.CallExpr [b2s b]}
+	 {*ast.ReturnStmt []}
+
+
+function name is getImageDimensionFromReader 
+	 {*ast.CommentGroup -> *ast.Comment [getImageDimensionFromReader]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rdr]}
+	 {*ast.SelectorExpr [io Reader]}
+	 {*ast.FieldList -> *ast.Field [int]}
+	 {*ast.Field [int]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [image _ err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [image DecodeConfig rdr]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 INT 0 err]}
+	 {*ast.ReturnStmt -> *ast.SelectorExpr [image Width]}
+	 {*ast.SelectorExpr [image Height nil]}
+
+

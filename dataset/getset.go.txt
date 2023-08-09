@@ -1,5 +1,7 @@
 {*ast.File [storage]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+
+
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 
 
 function name is Bools 

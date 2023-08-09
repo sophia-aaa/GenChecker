@@ -1,0 +1,163 @@
+{*ast.File [main]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "cmd/objfile/goobj"]}
+{*ast.ImportSpec [STRING "flag"]}
+{*ast.ImportSpec [STRING "fmt"]}
+{*ast.ImportSpec [STRING "net/http"]}
+{*ast.ImportSpec [STRING "os"]}
+{*ast.ImportSpec [STRING "runtime"]}
+{*ast.ImportSpec [STRING "strings"]}
+{*ast.ImportSpec [STRING "sync"]}
+{*ast.ImportSpec [STRING "time"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [STRING "github.com/dearplain/goloader"]}
+{*ast.ImportSpec [STRING "github.com/kr/pretty"]}
+
+
+function name is mustOK 
+	 { [mustOK]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
+	 {*ast.GenDecl -> *ast.TypeSpec [arrayFlags]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [File]}
+	 {*ast.ArrayType [string]}
+	 {*ast.Field [PkgPath]}
+	 {*ast.ArrayType [string]}
+
+
+function name is String 
+	 {*ast.FieldList -> *ast.Field [i]}
+	 {*ast.StarExpr [arrayFlags String]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING "my string representation"]}
+
+
+function name is Set 
+	 {*ast.FieldList -> *ast.Field [i]}
+	 {*ast.StarExpr [arrayFlags Set]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [value string]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [s]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [strings Split value STRING ":"]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [i File]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [i File]}
+	 {*ast.IndexExpr [s INT 0]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [path string]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len s INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [path]}
+	 {*ast.IndexExpr [s INT 1]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [i PkgPath]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [i PkgPath path]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is main 
+	 { [main]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [files arrayFlags]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flag Var]}
+	 {*ast.UnaryExpr [files STRING "o" STRING "load go object file"]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [pkgpath]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [flag String STRING "p" STRING "" STRING "package path"]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [parseFile]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [flag String STRING "parse" STRING "" STRING "parse go object file"]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [run]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [flag String STRING "run" STRING "main.main" STRING "run function"]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [times]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [flag Int STRING "times" INT 1 STRING "run count"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flag Parse]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.StarExpr [parseFile STRING ""]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [parse parseFile pkgpath]}
+	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [files File INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flag PrintDefaults]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [symPtr]}
+	 {*ast.CallExpr [make]}
+	 {*ast.MapType [string uintptr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [goloader RegSymbol symPtr]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [goloader RegTypes symPtr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Duration INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Unix INT 0 INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [goloader RegTypes symPtr]}
+	 {*ast.SelectorExpr [runtime LockOSThread]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [goloader RegTypes symPtr]}
+	 {*ast.SelectorExpr [http ListenAndServe]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [http Dir STRING "/"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [http Handler]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [http FileServer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [http Dir STRING "/"]}
+	 {*ast.SelectorExpr [http FileServer]}
+	 {*ast.SelectorExpr [http HandleFunc]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [http Request]}
+	 {*ast.AssignStmt [w]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [sync WaitGroup]}
+	 {*ast.AssignStmt [rw]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [sync RWMutex]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [goloader RegTypes symPtr]}
+	 {*ast.UnaryExpr [w]}
+	 {*ast.SelectorExpr [w Wait]}
+	 {*ast.UnaryExpr [rw]}
+	 {*ast.AssignStmt [reloc err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [goloader ReadObjs]}
+	 {*ast.SelectorExpr [files File]}
+	 {*ast.SelectorExpr [files PkgPath]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Println err]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [mmapByte]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.StarExpr [times]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [codeModule err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [goloader Load reloc symPtr]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Println STRING "Load error:" err]}
+	 {*ast.AssignStmt [runFuncPtr]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [codeModule Syms]}
+	 {*ast.StarExpr [run]}
+	 {*ast.AssignStmt [funcPtrContainer]}
+	 {*ast.CallExpr -> *ast.ParenExpr [uintptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [runFuncPtr]}
+	 {*ast.AssignStmt [runFunc]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.FuncType -> *ast.FieldList -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [funcPtrContainer]}
+	 {*ast.ExprStmt -> *ast.CallExpr [runFunc]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [codeModule Unload]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [mmapByte nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [mmapByte err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [goloader Mmap INT 1024]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Println err]}
+	 {*ast.AssignStmt [b]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [byte INT 1024]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copy mmapByte b]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [goloader Munmap mmapByte]}
+	 {*ast.AssignStmt [mmapByte nil]}
+
+
+function name is parse 
+	 { [parse]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [file pkgpath]}
+	 {*ast.StarExpr [string]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.StarExpr [file STRING ""]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flag PrintDefaults]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [f err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [os Open]}
+	 {*ast.StarExpr [file]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Printf STRING "%# v\n" err]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [obj err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [goobj Parse f]}
+	 {*ast.StarExpr [pkgpath]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [pretty Printf STRING "%# v\n" obj]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [f Close]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Printf STRING "error reading %s: %v\n"]}
+	 {*ast.StarExpr [file err]}
+	 {*ast.ReturnStmt []}
+
+

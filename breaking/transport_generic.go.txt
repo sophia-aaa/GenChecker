@@ -1,0 +1,69 @@
+{*ast.File [dbus]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "encoding/binary"]}
+{*ast.ImportSpec [STRING "errors"]}
+{*ast.ImportSpec [STRING "io"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ValueSpec [nativeEndian]}
+{*ast.SelectorExpr [binary ByteOrder]}
+
+
+function name is detectEndianness 
+	 { [detectEndianness]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [binary ByteOrder]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint32 INT 0x01020304]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [byte]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [x INT 0x01]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [binary BigEndian]}
+	 {*ast.ReturnStmt -> *ast.SelectorExpr [binary LittleEndian]}
+
+
+function name is init 
+	 { [init]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [nativeEndian]}
+	 {*ast.CallExpr [detectEndianness]}
+	 {*ast.GenDecl -> *ast.TypeSpec [genericTransport]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [io ReadWriteCloser]}
+
+
+function name is SendNullByte 
+	 {*ast.FieldList -> *ast.Field [t genericTransport SendNullByte]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [_ err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [t Write]}
+	 {*ast.CompositeLit -> *ast.ArrayType [byte INT 0]}
+	 {*ast.ReturnStmt [err]}
+
+
+function name is SupportsUnixFDs 
+	 {*ast.FieldList -> *ast.Field [t genericTransport SupportsUnixFDs]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+
+
+function name is EnableUnixFDs 
+	 {*ast.FieldList -> *ast.Field [t genericTransport EnableUnixFDs]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+
+
+function name is ReadMessage 
+	 {*ast.FieldList -> *ast.Field [t genericTransport ReadMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Message]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [DecodeMessage t]}
+
+
+function name is SendMessage 
+	 {*ast.FieldList -> *ast.Field [t genericTransport SendMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [fds err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [msg CountFds]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [fds INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New STRING "dbus: unix fd passing not enabled"]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [msg EncodeTo t nativeEndian]}
+
+

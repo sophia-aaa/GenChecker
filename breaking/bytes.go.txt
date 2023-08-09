@@ -1,0 +1,14 @@
+{*ast.File [bigcache]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+
+
+function name is bytesToString 
+	 { [bytesToString]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [b]}
+
+

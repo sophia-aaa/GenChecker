@@ -1,0 +1,29 @@
+{*ast.File [ole]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.TypeSpec [IProvideClassInfo]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [IUnknown]}
+{*ast.GenDecl -> *ast.TypeSpec [IProvideClassInfoVtbl]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [IUnknownVtbl]}
+{*ast.Field [GetClassInfo uintptr]}
+
+
+function name is VTable 
+	 {*ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [IProvideClassInfo VTable]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [IProvideClassInfoVtbl]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [IProvideClassInfoVtbl]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [v RawVTable]}
+
+
+function name is GetClassInfo 
+	 {*ast.FieldList -> *ast.Field [v]}
+	 {*ast.StarExpr [IProvideClassInfo GetClassInfo]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [cinfo]}
+	 {*ast.StarExpr [ITypeInfo]}
+	 {*ast.Field [err error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cinfo err]}
+	 {*ast.CallExpr [getClassInfo v]}
+	 {*ast.ReturnStmt []}
+
+

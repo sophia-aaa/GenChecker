@@ -1,0 +1,2389 @@
+{*ast.File [v1alpha2]}
+{*ast.GenDecl -> *ast.ImportSpec [unsafe STRING "unsafe"]}
+{*ast.ImportSpec [ignite STRING "github.com/weaveworks/ignite/pkg/apis/ignite"]}
+{*ast.ImportSpec [v1alpha1 STRING "github.com/weaveworks/ignite/pkg/apis/meta/v1alpha1"]}
+{*ast.ImportSpec [pkgruntime STRING "github.com/weaveworks/libgitops/pkg/runtime"]}
+{*ast.ImportSpec [conversion STRING "k8s.io/apimachinery/pkg/conversion"]}
+{*ast.ImportSpec [runtime STRING "k8s.io/apimachinery/pkg/runtime"]}
+
+
+function name is init 
+	 { [init]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [localSchemeBuilder Register RegisterConversions]}
+
+
+function name is RegisterConversions 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [RegisterConversions]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [runtime Scheme]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [BlockDeviceVolume nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_BlockDeviceVolume_To_ignite_BlockDeviceVolume]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [BlockDeviceVolume]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [BlockDeviceVolume nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_BlockDeviceVolume_To_v1alpha2_BlockDeviceVolume]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [BlockDeviceVolume scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [FileMapping nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite FileMapping nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_FileMapping_To_ignite_FileMapping]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [FileMapping]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite FileMapping scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite FileMapping nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [FileMapping nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_FileMapping_To_v1alpha2_FileMapping]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite FileMapping]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [FileMapping scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Image nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Image nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_Image_To_ignite_Image]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [Image]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Image scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Image nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Image nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_Image_To_v1alpha2_Image]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Image]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [Image scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ImageSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite ImageSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_ImageSpec_To_ignite_ImageSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [ImageSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite ImageSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ImageSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_ImageSpec_To_v1alpha2_ImageSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [ImageSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ImageStatus nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite ImageStatus nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_ImageStatus_To_ignite_ImageStatus]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [ImageStatus]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageStatus scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite ImageStatus nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ImageStatus nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_ImageStatus_To_v1alpha2_ImageStatus]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageStatus]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [ImageStatus scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Kernel nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Kernel nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_Kernel_To_ignite_Kernel]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [Kernel]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Kernel scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Kernel nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Kernel nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_Kernel_To_v1alpha2_Kernel]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Kernel]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [Kernel scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [KernelSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite KernelSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_KernelSpec_To_ignite_KernelSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [KernelSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite KernelSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [KernelSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_KernelSpec_To_v1alpha2_KernelSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [KernelSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [KernelStatus nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite KernelStatus nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_KernelStatus_To_ignite_KernelStatus]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [KernelStatus]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelStatus scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite KernelStatus nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [KernelStatus nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_KernelStatus_To_v1alpha2_KernelStatus]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelStatus]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [KernelStatus scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [OCIImageSource nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite OCIImageSource nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [OCIImageSource]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite OCIImageSource scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite OCIImageSource nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [OCIImageSource nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite OCIImageSource]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [OCIImageSource scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Pool nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Pool nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_Pool_To_ignite_Pool]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [Pool]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Pool scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Pool nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Pool nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_Pool_To_v1alpha2_Pool]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Pool]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [Pool scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [PoolDevice nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_PoolDevice_To_ignite_PoolDevice]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [PoolDevice]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [PoolDevice nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_PoolDevice_To_v1alpha2_PoolDevice]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [PoolDevice scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [PoolSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite PoolSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_PoolSpec_To_ignite_PoolSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [PoolSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite PoolSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [PoolSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_PoolSpec_To_v1alpha2_PoolSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [PoolSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [PoolStatus nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite PoolStatus nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_PoolStatus_To_ignite_PoolStatus]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [PoolStatus]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolStatus scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite PoolStatus nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [PoolStatus nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_PoolStatus_To_v1alpha2_PoolStatus]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolStatus]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [PoolStatus scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Runtime nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Runtime nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_Runtime_To_ignite_Runtime]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [Runtime]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Runtime scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [SSH nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite SSH nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_SSH_To_ignite_SSH]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [SSH]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite SSH scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite SSH nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [SSH nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_SSH_To_v1alpha2_SSH]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite SSH]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [SSH scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VM nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VM nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VM_To_ignite_VM]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VM]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VM scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VM nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VM nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VM_To_v1alpha2_VM]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VM]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VM scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMImageSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMImageSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VMImageSpec_To_ignite_VMImageSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VMImageSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMImageSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMImageSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMImageSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VMImageSpec_To_v1alpha2_VMImageSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMImageSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VMImageSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMKernelSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMKernelSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VMKernelSpec_To_ignite_VMKernelSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VMKernelSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMKernelSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMKernelSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMKernelSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VMKernelSpec_To_v1alpha2_VMKernelSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMKernelSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VMKernelSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMNetworkSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMNetworkSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VMNetworkSpec_To_ignite_VMNetworkSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VMNetworkSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMNetworkSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMNetworkSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMNetworkSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VMNetworkSpec_To_v1alpha2_VMNetworkSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMNetworkSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VMNetworkSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMSandboxSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMSandboxSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VMSandboxSpec_To_ignite_VMSandboxSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VMSandboxSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSandboxSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMSandboxSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMSandboxSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VMSandboxSpec_To_v1alpha2_VMSandboxSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSandboxSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VMSandboxSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VMSpec_To_ignite_VMSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VMSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VMSpec_To_v1alpha2_VMSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VMSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMStorageSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMStorageSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VMStorageSpec_To_ignite_VMStorageSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VMStorageSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStorageSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMStorageSpec nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMStorageSpec nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VMStorageSpec_To_v1alpha2_VMStorageSpec]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStorageSpec]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VMStorageSpec scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Volume nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Volume nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_Volume_To_ignite_Volume]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [Volume]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Volume scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Volume nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Volume nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_Volume_To_v1alpha2_Volume]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Volume]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [Volume scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VolumeMount nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VolumeMount nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VolumeMount_To_ignite_VolumeMount]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VolumeMount]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VolumeMount scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VolumeMount nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VolumeMount nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VolumeMount_To_v1alpha2_VolumeMount]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VolumeMount]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VolumeMount scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite Runtime nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Runtime nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_Runtime_To_v1alpha2_Runtime]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Runtime]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [Runtime scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMStatus nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMStatus nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_ignite_VMStatus_To_v1alpha2_VMStatus]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStatus]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr [VMStatus scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [s AddConversionFunc]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [VMStatus nil]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite VMStatus nil]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha2_VMStatus_To_ignite_VMStatus]}
+	 {*ast.TypeAssertExpr [a]}
+	 {*ast.StarExpr [VMStatus]}
+	 {*ast.TypeAssertExpr [b]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStatus scope]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is autoConvert_v1alpha2_BlockDeviceVolume_To_ignite_BlockDeviceVolume 
+	 { [autoConvert_v1alpha2_BlockDeviceVolume_To_ignite_BlockDeviceVolume]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [BlockDeviceVolume]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Path]}
+	 {*ast.SelectorExpr [in Path]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_BlockDeviceVolume_To_ignite_BlockDeviceVolume 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_BlockDeviceVolume_To_ignite_BlockDeviceVolume]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [BlockDeviceVolume]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_BlockDeviceVolume_To_ignite_BlockDeviceVolume in out s]}
+
+
+function name is autoConvert_ignite_BlockDeviceVolume_To_v1alpha2_BlockDeviceVolume 
+	 { [autoConvert_ignite_BlockDeviceVolume_To_v1alpha2_BlockDeviceVolume]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [BlockDeviceVolume]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Path]}
+	 {*ast.SelectorExpr [in Path]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_BlockDeviceVolume_To_v1alpha2_BlockDeviceVolume 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_BlockDeviceVolume_To_v1alpha2_BlockDeviceVolume]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [BlockDeviceVolume]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_BlockDeviceVolume_To_v1alpha2_BlockDeviceVolume in out s]}
+
+
+function name is autoConvert_v1alpha2_FileMapping_To_ignite_FileMapping 
+	 { [autoConvert_v1alpha2_FileMapping_To_ignite_FileMapping]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [FileMapping]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite FileMapping]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out HostPath]}
+	 {*ast.SelectorExpr [in HostPath]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out VMPath]}
+	 {*ast.SelectorExpr [in VMPath]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_FileMapping_To_ignite_FileMapping 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_FileMapping_To_ignite_FileMapping]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [FileMapping]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite FileMapping]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_FileMapping_To_ignite_FileMapping in out s]}
+
+
+function name is autoConvert_ignite_FileMapping_To_v1alpha2_FileMapping 
+	 { [autoConvert_ignite_FileMapping_To_v1alpha2_FileMapping]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite FileMapping]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [FileMapping]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out HostPath]}
+	 {*ast.SelectorExpr [in HostPath]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out VMPath]}
+	 {*ast.SelectorExpr [in VMPath]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_FileMapping_To_v1alpha2_FileMapping 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_FileMapping_To_v1alpha2_FileMapping]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite FileMapping]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [FileMapping]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_FileMapping_To_v1alpha2_FileMapping in out s]}
+
+
+function name is autoConvert_v1alpha2_Image_To_ignite_Image 
+	 { [autoConvert_v1alpha2_Image_To_ignite_Image]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Image]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Image]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out TypeMeta]}
+	 {*ast.SelectorExpr [in TypeMeta]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.SelectorExpr [in ObjectMeta]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_ImageSpec_To_ignite_ImageSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_ImageStatus_To_ignite_ImageStatus]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Status s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_Image_To_ignite_Image 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_Image_To_ignite_Image]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Image]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Image]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_Image_To_ignite_Image in out s]}
+
+
+function name is autoConvert_ignite_Image_To_v1alpha2_Image 
+	 { [autoConvert_ignite_Image_To_v1alpha2_Image]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Image]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Image]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out TypeMeta]}
+	 {*ast.SelectorExpr [in TypeMeta]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.SelectorExpr [in ObjectMeta]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_ImageSpec_To_v1alpha2_ImageSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_ImageStatus_To_v1alpha2_ImageStatus]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Status s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_Image_To_v1alpha2_Image 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_Image_To_v1alpha2_Image]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Image]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Image]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_Image_To_v1alpha2_Image in out s]}
+
+
+function name is autoConvert_v1alpha2_ImageSpec_To_ignite_ImageSpec 
+	 { [autoConvert_v1alpha2_ImageSpec_To_ignite_ImageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [ImageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_ImageSpec_To_ignite_ImageSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_ImageSpec_To_ignite_ImageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [ImageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_ImageSpec_To_ignite_ImageSpec in out s]}
+
+
+function name is autoConvert_ignite_ImageSpec_To_v1alpha2_ImageSpec 
+	 { [autoConvert_ignite_ImageSpec_To_v1alpha2_ImageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [ImageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_ImageSpec_To_v1alpha2_ImageSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_ImageSpec_To_v1alpha2_ImageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [ImageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_ImageSpec_To_v1alpha2_ImageSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_ImageStatus_To_ignite_ImageStatus 
+	 { [autoConvert_v1alpha2_ImageStatus_To_ignite_ImageStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [ImageStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in OCISource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out OCISource s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_ImageStatus_To_ignite_ImageStatus 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_ImageStatus_To_ignite_ImageStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [ImageStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_ImageStatus_To_ignite_ImageStatus in out s]}
+
+
+function name is autoConvert_ignite_ImageStatus_To_v1alpha2_ImageStatus 
+	 { [autoConvert_ignite_ImageStatus_To_v1alpha2_ImageStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [ImageStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in OCISource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out OCISource s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_ImageStatus_To_v1alpha2_ImageStatus 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_ImageStatus_To_v1alpha2_ImageStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite ImageStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [ImageStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_ImageStatus_To_v1alpha2_ImageStatus in out s]}
+
+
+function name is autoConvert_v1alpha2_Kernel_To_ignite_Kernel 
+	 { [autoConvert_v1alpha2_Kernel_To_ignite_Kernel]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Kernel]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Kernel]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out TypeMeta]}
+	 {*ast.SelectorExpr [in TypeMeta]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.SelectorExpr [in ObjectMeta]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_KernelSpec_To_ignite_KernelSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_KernelStatus_To_ignite_KernelStatus]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Status s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_Kernel_To_ignite_Kernel 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_Kernel_To_ignite_Kernel]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Kernel]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Kernel]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_Kernel_To_ignite_Kernel in out s]}
+
+
+function name is autoConvert_ignite_Kernel_To_v1alpha2_Kernel 
+	 { [autoConvert_ignite_Kernel_To_v1alpha2_Kernel]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Kernel]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Kernel]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out TypeMeta]}
+	 {*ast.SelectorExpr [in TypeMeta]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.SelectorExpr [in ObjectMeta]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_KernelSpec_To_v1alpha2_KernelSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_KernelStatus_To_v1alpha2_KernelStatus]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Status s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_Kernel_To_v1alpha2_Kernel 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_Kernel_To_v1alpha2_Kernel]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Kernel]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Kernel]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_Kernel_To_v1alpha2_Kernel in out s]}
+
+
+function name is autoConvert_v1alpha2_KernelSpec_To_ignite_KernelSpec 
+	 { [autoConvert_v1alpha2_KernelSpec_To_ignite_KernelSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [KernelSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_KernelSpec_To_ignite_KernelSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_KernelSpec_To_ignite_KernelSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [KernelSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_KernelSpec_To_ignite_KernelSpec in out s]}
+
+
+function name is autoConvert_ignite_KernelSpec_To_v1alpha2_KernelSpec 
+	 { [autoConvert_ignite_KernelSpec_To_v1alpha2_KernelSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [KernelSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_KernelSpec_To_v1alpha2_KernelSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_KernelSpec_To_v1alpha2_KernelSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [KernelSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_KernelSpec_To_v1alpha2_KernelSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_KernelStatus_To_ignite_KernelStatus 
+	 { [autoConvert_v1alpha2_KernelStatus_To_ignite_KernelStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [KernelStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Version]}
+	 {*ast.SelectorExpr [in Version]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in OCISource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out OCISource s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_KernelStatus_To_ignite_KernelStatus 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_KernelStatus_To_ignite_KernelStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [KernelStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_KernelStatus_To_ignite_KernelStatus in out s]}
+
+
+function name is autoConvert_ignite_KernelStatus_To_v1alpha2_KernelStatus 
+	 { [autoConvert_ignite_KernelStatus_To_v1alpha2_KernelStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [KernelStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Version]}
+	 {*ast.SelectorExpr [in Version]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in OCISource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out OCISource s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_KernelStatus_To_v1alpha2_KernelStatus 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_KernelStatus_To_v1alpha2_KernelStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite KernelStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [KernelStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_KernelStatus_To_v1alpha2_KernelStatus in out s]}
+
+
+function name is autoConvert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource 
+	 { [autoConvert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [OCIImageSource]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite OCIImageSource]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ID]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1alpha1 OCIContentID]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [in ID]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out Size]}
+	 {*ast.SelectorExpr [in Size]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [OCIImageSource]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite OCIImageSource]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource in out s]}
+
+
+function name is autoConvert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource 
+	 { [autoConvert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite OCIImageSource]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [OCIImageSource]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ID]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1alpha1 OCIContentID]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [in ID]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out Size]}
+	 {*ast.SelectorExpr [in Size]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite OCIImageSource]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [OCIImageSource]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource in out s]}
+
+
+function name is autoConvert_v1alpha2_Pool_To_ignite_Pool 
+	 { [autoConvert_v1alpha2_Pool_To_ignite_Pool]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Pool]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Pool]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out TypeMeta]}
+	 {*ast.SelectorExpr [in TypeMeta]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_PoolSpec_To_ignite_PoolSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_PoolStatus_To_ignite_PoolStatus]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Status s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_Pool_To_ignite_Pool 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_Pool_To_ignite_Pool]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Pool]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Pool]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_Pool_To_ignite_Pool in out s]}
+
+
+function name is autoConvert_ignite_Pool_To_v1alpha2_Pool 
+	 { [autoConvert_ignite_Pool_To_v1alpha2_Pool]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Pool]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Pool]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out TypeMeta]}
+	 {*ast.SelectorExpr [in TypeMeta]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_PoolSpec_To_v1alpha2_PoolSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_PoolStatus_To_v1alpha2_PoolStatus]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Status s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_Pool_To_v1alpha2_Pool 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_Pool_To_v1alpha2_Pool]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Pool]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Pool]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_Pool_To_v1alpha2_Pool in out s]}
+
+
+function name is autoConvert_v1alpha2_PoolDevice_To_ignite_PoolDevice 
+	 { [autoConvert_v1alpha2_PoolDevice_To_ignite_PoolDevice]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [PoolDevice]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Size]}
+	 {*ast.SelectorExpr [in Size]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out Parent]}
+	 {*ast.SelectorExpr [in Parent]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [ignite PoolDeviceType]}
+	 {*ast.SelectorExpr [in Type]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out MetadataPath]}
+	 {*ast.SelectorExpr [in MetadataPath]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_PoolDevice_To_ignite_PoolDevice 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_PoolDevice_To_ignite_PoolDevice]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [PoolDevice]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_PoolDevice_To_ignite_PoolDevice in out s]}
+
+
+function name is autoConvert_ignite_PoolDevice_To_v1alpha2_PoolDevice 
+	 { [autoConvert_ignite_PoolDevice_To_v1alpha2_PoolDevice]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [PoolDevice]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Size]}
+	 {*ast.SelectorExpr [in Size]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out Parent]}
+	 {*ast.SelectorExpr [in Parent]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out Type]}
+	 {*ast.CallExpr [PoolDeviceType]}
+	 {*ast.SelectorExpr [in Type]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out MetadataPath]}
+	 {*ast.SelectorExpr [in MetadataPath]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_PoolDevice_To_v1alpha2_PoolDevice 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_PoolDevice_To_v1alpha2_PoolDevice]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [PoolDevice]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_PoolDevice_To_v1alpha2_PoolDevice in out s]}
+
+
+function name is autoConvert_v1alpha2_PoolSpec_To_ignite_PoolSpec 
+	 { [autoConvert_v1alpha2_PoolSpec_To_ignite_PoolSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [PoolSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out MetadataSize]}
+	 {*ast.SelectorExpr [in MetadataSize]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out DataSize]}
+	 {*ast.SelectorExpr [in DataSize]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out AllocationSize]}
+	 {*ast.SelectorExpr [in AllocationSize]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out MetadataPath]}
+	 {*ast.SelectorExpr [in MetadataPath]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out DataPath]}
+	 {*ast.SelectorExpr [in DataPath]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_PoolSpec_To_ignite_PoolSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_PoolSpec_To_ignite_PoolSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [PoolSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_PoolSpec_To_ignite_PoolSpec in out s]}
+
+
+function name is autoConvert_ignite_PoolSpec_To_v1alpha2_PoolSpec 
+	 { [autoConvert_ignite_PoolSpec_To_v1alpha2_PoolSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [PoolSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out MetadataSize]}
+	 {*ast.SelectorExpr [in MetadataSize]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out DataSize]}
+	 {*ast.SelectorExpr [in DataSize]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out AllocationSize]}
+	 {*ast.SelectorExpr [in AllocationSize]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out MetadataPath]}
+	 {*ast.SelectorExpr [in MetadataPath]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out DataPath]}
+	 {*ast.SelectorExpr [in DataPath]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_PoolSpec_To_v1alpha2_PoolSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_PoolSpec_To_v1alpha2_PoolSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [PoolSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_PoolSpec_To_v1alpha2_PoolSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_PoolStatus_To_ignite_PoolStatus 
+	 { [autoConvert_v1alpha2_PoolStatus_To_ignite_PoolStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [PoolStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Devices]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [ignite PoolDevice]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Devices]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_PoolStatus_To_ignite_PoolStatus 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_PoolStatus_To_ignite_PoolStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [PoolStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_PoolStatus_To_ignite_PoolStatus in out s]}
+
+
+function name is autoConvert_ignite_PoolStatus_To_v1alpha2_PoolStatus 
+	 { [autoConvert_ignite_PoolStatus_To_v1alpha2_PoolStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [PoolStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Devices]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.StarExpr [PoolDevice]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Devices]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_PoolStatus_To_v1alpha2_PoolStatus 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_PoolStatus_To_v1alpha2_PoolStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite PoolStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [PoolStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_PoolStatus_To_v1alpha2_PoolStatus in out s]}
+
+
+function name is autoConvert_v1alpha2_Runtime_To_ignite_Runtime 
+	 { [autoConvert_v1alpha2_Runtime_To_ignite_Runtime]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Runtime]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Runtime]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ID]}
+	 {*ast.SelectorExpr [in ID]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_Runtime_To_ignite_Runtime 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_Runtime_To_ignite_Runtime]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Runtime]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Runtime]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_Runtime_To_ignite_Runtime in out s]}
+
+
+function name is autoConvert_ignite_Runtime_To_v1alpha2_Runtime 
+	 { [autoConvert_ignite_Runtime_To_v1alpha2_Runtime]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Runtime]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Runtime]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ID]}
+	 {*ast.SelectorExpr [in ID]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is autoConvert_v1alpha2_SSH_To_ignite_SSH 
+	 { [autoConvert_v1alpha2_SSH_To_ignite_SSH]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [SSH]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite SSH]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Generate]}
+	 {*ast.SelectorExpr [in Generate]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out PublicKey]}
+	 {*ast.SelectorExpr [in PublicKey]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_SSH_To_ignite_SSH 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_SSH_To_ignite_SSH]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [SSH]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite SSH]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_SSH_To_ignite_SSH in out s]}
+
+
+function name is autoConvert_ignite_SSH_To_v1alpha2_SSH 
+	 { [autoConvert_ignite_SSH_To_v1alpha2_SSH]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite SSH]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [SSH]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Generate]}
+	 {*ast.SelectorExpr [in Generate]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out PublicKey]}
+	 {*ast.SelectorExpr [in PublicKey]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_SSH_To_v1alpha2_SSH 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_SSH_To_v1alpha2_SSH]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite SSH]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [SSH]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_SSH_To_v1alpha2_SSH in out s]}
+
+
+function name is autoConvert_v1alpha2_VM_To_ignite_VM 
+	 { [autoConvert_v1alpha2_VM_To_ignite_VM]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VM]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VM]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out TypeMeta]}
+	 {*ast.SelectorExpr [in TypeMeta]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.SelectorExpr [in ObjectMeta]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_VMSpec_To_ignite_VMSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_VMStatus_To_ignite_VMStatus]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Status s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_VM_To_ignite_VM 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_VM_To_ignite_VM]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VM]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VM]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_VM_To_ignite_VM in out s]}
+
+
+function name is autoConvert_ignite_VM_To_v1alpha2_VM 
+	 { [autoConvert_ignite_VM_To_v1alpha2_VM]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VM]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VM]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out TypeMeta]}
+	 {*ast.SelectorExpr [in TypeMeta]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.SelectorExpr [in ObjectMeta]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_VMSpec_To_v1alpha2_VMSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_VMStatus_To_v1alpha2_VMStatus]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Status s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_VM_To_v1alpha2_VM 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_VM_To_v1alpha2_VM]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VM]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VM]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_VM_To_v1alpha2_VM in out s]}
+
+
+function name is autoConvert_v1alpha2_VMImageSpec_To_ignite_VMImageSpec 
+	 { [autoConvert_v1alpha2_VMImageSpec_To_ignite_VMImageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMImageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMImageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_VMImageSpec_To_ignite_VMImageSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_VMImageSpec_To_ignite_VMImageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMImageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMImageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_VMImageSpec_To_ignite_VMImageSpec in out s]}
+
+
+function name is autoConvert_ignite_VMImageSpec_To_v1alpha2_VMImageSpec 
+	 { [autoConvert_ignite_VMImageSpec_To_v1alpha2_VMImageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMImageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMImageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_VMImageSpec_To_v1alpha2_VMImageSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_VMImageSpec_To_v1alpha2_VMImageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMImageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMImageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_VMImageSpec_To_v1alpha2_VMImageSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_VMKernelSpec_To_ignite_VMKernelSpec 
+	 { [autoConvert_v1alpha2_VMKernelSpec_To_ignite_VMKernelSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMKernelSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMKernelSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out CmdLine]}
+	 {*ast.SelectorExpr [in CmdLine]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_VMKernelSpec_To_ignite_VMKernelSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_VMKernelSpec_To_ignite_VMKernelSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMKernelSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMKernelSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_VMKernelSpec_To_ignite_VMKernelSpec in out s]}
+
+
+function name is autoConvert_ignite_VMKernelSpec_To_v1alpha2_VMKernelSpec 
+	 { [autoConvert_ignite_VMKernelSpec_To_v1alpha2_VMKernelSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMKernelSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMKernelSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out CmdLine]}
+	 {*ast.SelectorExpr [in CmdLine]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_VMKernelSpec_To_v1alpha2_VMKernelSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_VMKernelSpec_To_v1alpha2_VMKernelSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMKernelSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMKernelSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_VMKernelSpec_To_v1alpha2_VMKernelSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_VMNetworkSpec_To_ignite_VMNetworkSpec 
+	 { [autoConvert_v1alpha2_VMNetworkSpec_To_ignite_VMNetworkSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMNetworkSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMNetworkSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Ports]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1alpha1 PortMappings]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Ports]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_VMNetworkSpec_To_ignite_VMNetworkSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_VMNetworkSpec_To_ignite_VMNetworkSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMNetworkSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMNetworkSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_VMNetworkSpec_To_ignite_VMNetworkSpec in out s]}
+
+
+function name is autoConvert_ignite_VMNetworkSpec_To_v1alpha2_VMNetworkSpec 
+	 { [autoConvert_ignite_VMNetworkSpec_To_v1alpha2_VMNetworkSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMNetworkSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMNetworkSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Ports]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1alpha1 PortMappings]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Ports]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_VMNetworkSpec_To_v1alpha2_VMNetworkSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_VMNetworkSpec_To_v1alpha2_VMNetworkSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMNetworkSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMNetworkSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_VMNetworkSpec_To_v1alpha2_VMNetworkSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_VMSandboxSpec_To_ignite_VMSandboxSpec 
+	 { [autoConvert_v1alpha2_VMSandboxSpec_To_ignite_VMSandboxSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMSandboxSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSandboxSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_VMSandboxSpec_To_ignite_VMSandboxSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_VMSandboxSpec_To_ignite_VMSandboxSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMSandboxSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSandboxSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_VMSandboxSpec_To_ignite_VMSandboxSpec in out s]}
+
+
+function name is autoConvert_ignite_VMSandboxSpec_To_v1alpha2_VMSandboxSpec 
+	 { [autoConvert_ignite_VMSandboxSpec_To_v1alpha2_VMSandboxSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSandboxSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMSandboxSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OCI]}
+	 {*ast.SelectorExpr [in OCI]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_VMSandboxSpec_To_v1alpha2_VMSandboxSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_VMSandboxSpec_To_v1alpha2_VMSandboxSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSandboxSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMSandboxSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_VMSandboxSpec_To_v1alpha2_VMSandboxSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_VMSpec_To_ignite_VMSpec 
+	 { [autoConvert_v1alpha2_VMSpec_To_ignite_VMSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_VMImageSpec_To_ignite_VMImageSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Image]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Image s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_VMSandboxSpec_To_ignite_VMSandboxSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Sandbox]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Sandbox s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_VMKernelSpec_To_ignite_VMKernelSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Kernel]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Kernel s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out CPUs]}
+	 {*ast.SelectorExpr [in CPUs]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out Memory]}
+	 {*ast.SelectorExpr [in Memory]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out DiskSize]}
+	 {*ast.SelectorExpr [in DiskSize]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_VMNetworkSpec_To_ignite_VMNetworkSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Network]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Network s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_VMStorageSpec_To_ignite_VMStorageSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Storage]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Storage s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out CopyFiles]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [ignite FileMapping]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in CopyFiles]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out SSH]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite SSH]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [in SSH]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_VMSpec_To_ignite_VMSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_VMSpec_To_ignite_VMSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_VMSpec_To_ignite_VMSpec in out s]}
+
+
+function name is autoConvert_ignite_VMSpec_To_v1alpha2_VMSpec 
+	 { [autoConvert_ignite_VMSpec_To_v1alpha2_VMSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_VMImageSpec_To_v1alpha2_VMImageSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Image]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Image s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_VMSandboxSpec_To_v1alpha2_VMSandboxSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Sandbox]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Sandbox s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_VMKernelSpec_To_v1alpha2_VMKernelSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Kernel]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Kernel s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out CPUs]}
+	 {*ast.SelectorExpr [in CPUs]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out Memory]}
+	 {*ast.SelectorExpr [in Memory]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out DiskSize]}
+	 {*ast.SelectorExpr [in DiskSize]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_VMNetworkSpec_To_v1alpha2_VMNetworkSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Network]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Network s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_VMStorageSpec_To_v1alpha2_VMStorageSpec]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Storage]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Storage s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out CopyFiles]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [FileMapping]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in CopyFiles]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out SSH]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [SSH]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [in SSH]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_VMSpec_To_v1alpha2_VMSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_VMSpec_To_v1alpha2_VMSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_VMSpec_To_v1alpha2_VMSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_VMStatus_To_ignite_VMStatus 
+	 { [autoConvert_v1alpha2_VMStatus_To_ignite_VMStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Running]}
+	 {*ast.SelectorExpr [in Running]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [in Runtime nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [in out]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Runtime]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Runtime]}
+	 {*ast.AssignStmt -> *ast.StarExpr [out]}
+	 {*ast.CallExpr [new]}
+	 {*ast.SelectorExpr [ignite Runtime]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_Runtime_To_ignite_Runtime]}
+	 {*ast.StarExpr [in]}
+	 {*ast.StarExpr [out s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Runtime nil]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out StartTime]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [pkgruntime Time]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [in StartTime]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Image]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Image s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_v1alpha2_OCIImageSource_To_ignite_OCIImageSource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Kernel]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Kernel s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is autoConvert_ignite_VMStatus_To_v1alpha2_VMStatus 
+	 { [autoConvert_ignite_VMStatus_To_v1alpha2_VMStatus]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStatus]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMStatus]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Running]}
+	 {*ast.SelectorExpr [in Running]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [in Runtime nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [in out]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Runtime]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Runtime]}
+	 {*ast.AssignStmt -> *ast.StarExpr [out]}
+	 {*ast.CallExpr [new Runtime]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_Runtime_To_v1alpha2_Runtime]}
+	 {*ast.StarExpr [in]}
+	 {*ast.StarExpr [out s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Runtime nil]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out StartTime]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [pkgruntime Time]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [in StartTime]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Image]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Image s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr [Convert_ignite_OCIImageSource_To_v1alpha2_OCIImageSource]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Kernel]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Kernel s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is autoConvert_v1alpha2_VMStorageSpec_To_ignite_VMStorageSpec 
+	 { [autoConvert_v1alpha2_VMStorageSpec_To_ignite_VMStorageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMStorageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStorageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Volumes]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [ignite Volume]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Volumes]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out VolumeMounts]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [ignite VolumeMount]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in VolumeMounts]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_VMStorageSpec_To_ignite_VMStorageSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_VMStorageSpec_To_ignite_VMStorageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VMStorageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStorageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_VMStorageSpec_To_ignite_VMStorageSpec in out s]}
+
+
+function name is autoConvert_ignite_VMStorageSpec_To_v1alpha2_VMStorageSpec 
+	 { [autoConvert_ignite_VMStorageSpec_To_v1alpha2_VMStorageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStorageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMStorageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Volumes]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [Volume]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Volumes]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out VolumeMounts]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [VolumeMount]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [in VolumeMounts]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_VMStorageSpec_To_v1alpha2_VMStorageSpec 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_VMStorageSpec_To_v1alpha2_VMStorageSpec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VMStorageSpec]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VMStorageSpec]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_VMStorageSpec_To_v1alpha2_VMStorageSpec in out s]}
+
+
+function name is autoConvert_v1alpha2_Volume_To_ignite_Volume 
+	 { [autoConvert_v1alpha2_Volume_To_ignite_Volume]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Volume]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Volume]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.SelectorExpr [in Name]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out BlockDevice]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [ignite BlockDeviceVolume]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [in BlockDevice]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_Volume_To_ignite_Volume 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_Volume_To_ignite_Volume]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [Volume]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Volume]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_Volume_To_ignite_Volume in out s]}
+
+
+function name is autoConvert_ignite_Volume_To_v1alpha2_Volume 
+	 { [autoConvert_ignite_Volume_To_v1alpha2_Volume]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Volume]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Volume]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.SelectorExpr [in Name]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out BlockDevice]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [BlockDeviceVolume]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [in BlockDevice]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_Volume_To_v1alpha2_Volume 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_Volume_To_v1alpha2_Volume]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite Volume]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [Volume]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_Volume_To_v1alpha2_Volume in out s]}
+
+
+function name is autoConvert_v1alpha2_VolumeMount_To_ignite_VolumeMount 
+	 { [autoConvert_v1alpha2_VolumeMount_To_ignite_VolumeMount]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VolumeMount]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VolumeMount]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.SelectorExpr [in Name]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out MountPath]}
+	 {*ast.SelectorExpr [in MountPath]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_v1alpha2_VolumeMount_To_ignite_VolumeMount 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha2_VolumeMount_To_ignite_VolumeMount]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr [VolumeMount]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VolumeMount]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_v1alpha2_VolumeMount_To_ignite_VolumeMount in out s]}
+
+
+function name is autoConvert_ignite_VolumeMount_To_v1alpha2_VolumeMount 
+	 { [autoConvert_ignite_VolumeMount_To_v1alpha2_VolumeMount]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VolumeMount]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VolumeMount]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.SelectorExpr [in Name]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [out MountPath]}
+	 {*ast.SelectorExpr [in MountPath]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is Convert_ignite_VolumeMount_To_v1alpha2_VolumeMount 
+	 {*ast.CommentGroup -> *ast.Comment [Convert_ignite_VolumeMount_To_v1alpha2_VolumeMount]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [ignite VolumeMount]}
+	 {*ast.Field [out]}
+	 {*ast.StarExpr [VolumeMount]}
+	 {*ast.Field [s]}
+	 {*ast.SelectorExpr [conversion Scope]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [autoConvert_ignite_VolumeMount_To_v1alpha2_VolumeMount in out s]}
+
+

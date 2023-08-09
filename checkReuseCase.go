@@ -243,7 +243,7 @@ func checkSwitchCases(modifiedFuncCheck []checkCases, funcList []string, typeLis
 		}
 	}
 
-	if len(caseListCheck) > 0 {
+	if len(caseListCheck) > 1 {
 		for idx := range caseListCheck {
 			lengthCase := len(caseListCheck[idx].value)
 			/*				fmt.Println(flag4Case[idx])

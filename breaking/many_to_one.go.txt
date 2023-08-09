@@ -1,0 +1,98 @@
+{*ast.File [diodes]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "log"]}
+{*ast.ImportSpec [STRING "sync/atomic"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.TypeSpec [ManyToOne]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [writeIndex uint64]}
+{*ast.Field [readIndex uint64]}
+{*ast.Field [buffer]}
+{*ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
+{*ast.Field [alerter Alerter]}
+
+
+function name is NewManyToOne 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment [NewManyToOne]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
+	 {*ast.Field [alerter Alerter]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [ManyToOne]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [alerter nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [alerter]}
+	 {*ast.CallExpr [AlertFunc]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [d]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [ManyToOne]}
+	 {*ast.KeyValueExpr [buffer]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer size]}
+	 {*ast.KeyValueExpr [alerter alerter]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [d writeIndex]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [d writeIndex]}
+	 {*ast.ReturnStmt [d]}
+
+
+function name is Set 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [d]}
+	 {*ast.StarExpr [ManyToOne Set]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [data GenericDataType]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [writeIndex]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic AddUint64]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [d writeIndex INT 1]}
+	 {*ast.AssignStmt [idx]}
+	 {*ast.BinaryExpr [writeIndex]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [d buffer]}
+	 {*ast.AssignStmt [old]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadPointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [d buffer idx]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [old nil]}
+	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bucket old nil]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bucket old seq]}
+	 {*ast.BinaryExpr [writeIndex]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [d buffer]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Println STRING "Diode set collision: consider using a larger diode"]}
+	 {*ast.BranchStmt -> *ast.AssignStmt [newBucket]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [bucket]}
+	 {*ast.KeyValueExpr [data data]}
+	 {*ast.KeyValueExpr [seq writeIndex]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [atomic CompareAndSwapPointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [d buffer idx old]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer newBucket]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Println STRING "Diode set collision: consider using a larger diode"]}
+	 {*ast.BranchStmt -> *ast.ReturnStmt []}
+
+
+function name is TryNext 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [d]}
+	 {*ast.StarExpr [ManyToOne TryNext]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [data GenericDataType]}
+	 {*ast.Field [ok bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [idx]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [d readIndex]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [d buffer]}
+	 {*ast.AssignStmt [result]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bucket]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic SwapPointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [d buffer idx nil]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [result nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil false]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [result seq]}
+	 {*ast.SelectorExpr [d readIndex]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil false]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [result seq]}
+	 {*ast.SelectorExpr [d readIndex]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [dropped]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [result seq]}
+	 {*ast.SelectorExpr [d readIndex]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [d readIndex]}
+	 {*ast.SelectorExpr [result seq]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [d alerter Alert]}
+	 {*ast.CallExpr [int dropped]}
+	 {*ast.IncDecStmt -> *ast.SelectorExpr [d readIndex]}
+	 {*ast.ReturnStmt -> *ast.SelectorExpr [result data true]}
+
+

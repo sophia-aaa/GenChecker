@@ -1,0 +1,880 @@
+{*ast.File [index]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "io"]}
+{*ast.ImportSpec [STRING "io/ioutil"]}
+{*ast.ImportSpec [STRING "log"]}
+{*ast.ImportSpec [STRING "os"]}
+{*ast.ImportSpec [STRING "strings"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [STRING "github.com/google/codesearch/sparse"]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [IndexWriter]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [LogSkip bool]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [Verbose bool]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [trigram]}
+{*ast.StarExpr -> *ast.SelectorExpr [sparse Set]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [buf]}
+{*ast.ArrayType [INT 8 byte]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [paths]}
+{*ast.ArrayType [string]}
+{*ast.Field [nameData]}
+{*ast.StarExpr [bufWriter]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [nameLen uint32]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [nameIndex]}
+{*ast.StarExpr [bufWriter]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [numName int]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [totalBytes int64]}
+{*ast.Field [post]}
+{*ast.ArrayType [postEntry]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [postFile]}
+{*ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [os File]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [postIndex]}
+{*ast.StarExpr [bufWriter]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [inbuf]}
+{*ast.ArrayType [byte]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [main]}
+{*ast.StarExpr [bufWriter]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.GenDecl -> *ast.ValueSpec [npost]}
+{*ast.BinaryExpr -> *ast.BinaryExpr [INT 64 INT 20 INT 8]}
+{*ast.CommentGroup -> *ast.Comment []}
+
+
+function name is Create 
+	 {*ast.CommentGroup -> *ast.Comment [Create]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [file string]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [IndexWriter]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [IndexWriter]}
+	 {*ast.KeyValueExpr [trigram]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [sparse NewSet]}
+	 {*ast.BinaryExpr [INT 1 INT 24]}
+	 {*ast.KeyValueExpr [nameData]}
+	 {*ast.CallExpr [bufCreate STRING ""]}
+	 {*ast.KeyValueExpr [nameIndex]}
+	 {*ast.CallExpr [bufCreate STRING ""]}
+	 {*ast.KeyValueExpr [postIndex]}
+	 {*ast.CallExpr [bufCreate STRING ""]}
+	 {*ast.KeyValueExpr [main]}
+	 {*ast.CallExpr [bufCreate file]}
+	 {*ast.KeyValueExpr [post]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [postEntry INT 0 npost]}
+	 {*ast.KeyValueExpr [inbuf]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [byte INT 16384]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [postEntry uint64]}
+
+
+function name is trigram 
+	 {*ast.FieldList -> *ast.Field [p postEntry trigram]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [uint32]}
+	 {*ast.BinaryExpr [p INT 32]}
+
+
+function name is fileid 
+	 {*ast.FieldList -> *ast.Field [p postEntry fileid]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [uint32 p]}
+
+
+function name is makePostEntry 
+	 { [makePostEntry]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [trigram fileid uint32]}
+	 {*ast.FieldList -> *ast.Field [postEntry]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [postEntry trigram INT 32]}
+	 {*ast.CallExpr [postEntry fileid]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.ValueSpec [maxFileLen]}
+	 {*ast.BinaryExpr [INT 1 INT 30]}
+	 {*ast.ValueSpec [maxLineLen INT 2000]}
+	 {*ast.ValueSpec [maxTextTrigrams INT 20000]}
+
+
+function name is AddPaths 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [ix]}
+	 {*ast.StarExpr [IndexWriter AddPaths]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [paths]}
+	 {*ast.ArrayType [string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [ix paths]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [ix paths paths]}
+
+
+function name is AddFile 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [ix]}
+	 {*ast.StarExpr [IndexWriter AddFile]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [f err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [os Open name]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Print err]}
+	 {*ast.ReturnStmt -> *ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [f Close]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ix Add name f]}
+
+
+function name is Add 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [ix]}
+	 {*ast.StarExpr [IndexWriter Add]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
+	 {*ast.Field [f]}
+	 {*ast.SelectorExpr [io Reader]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Reset]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [c]}
+	 {*ast.CallExpr [byte INT 0]}
+	 {*ast.ValueSpec [i INT 0]}
+	 {*ast.ValueSpec [buf]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [ix inbuf INT 0]}
+	 {*ast.ValueSpec [tv]}
+	 {*ast.CallExpr [uint32 INT 0]}
+	 {*ast.ValueSpec [n]}
+	 {*ast.CallExpr [int64 INT 0]}
+	 {*ast.ValueSpec [linelen INT 0]}
+	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [tv]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [tv INT 8]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [INT 1 INT 24 INT 1]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [i]}
+	 {*ast.CallExpr [len buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [n err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [f Read]}
+	 {*ast.SliceExpr [buf]}
+	 {*ast.CallExpr [cap buf]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [n INT 0]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [err]}
+	 {*ast.SelectorExpr [io EOF]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "%s: %v\n" name err]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "%s: 0-length read\n" name]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [buf]}
+	 {*ast.SliceExpr [buf n]}
+	 {*ast.AssignStmt [i INT 0]}
+	 {*ast.AssignStmt [c]}
+	 {*ast.IndexExpr [buf i]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.AssignStmt [tv]}
+	 {*ast.CallExpr [uint32 c]}
+	 {*ast.IfStmt -> *ast.IncDecStmt [n]}
+	 {*ast.BinaryExpr [n INT 3]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Add tv]}
+	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [validUTF8]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [tv INT 8 INT 0xFF]}
+	 {*ast.BinaryExpr [tv INT 0xFF]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "%s: invalid UTF-8, ignoring\n" name]}
+	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.BinaryExpr [n maxFileLen]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "%s: too long, ignoring\n" name]}
+	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.IncDecStmt [linelen]}
+	 {*ast.BinaryExpr [linelen maxLineLen]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "%s: very long lines, ignoring\n" name]}
+	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.BinaryExpr [c CHAR '\n']}
+	 {*ast.BlockStmt -> *ast.AssignStmt [linelen INT 0]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Len maxTextTrigrams]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "%s: too many trigrams, probably not text, ignoring\n" name]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [ix totalBytes n]}
+	 {*ast.IfStmt -> *ast.SelectorExpr [ix Verbose]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "%d %d %s\n" n]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Len name]}
+	 {*ast.AssignStmt [fileid]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [ix addName name]}
+	 {*ast.RangeStmt [_ trigram]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Dense]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [ix post]}
+	 {*ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [ix post]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ix flushPost]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [ix post]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [ix post]}
+	 {*ast.CallExpr [makePostEntry trigram fileid]}
+
+
+function name is Flush 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [ix]}
+	 {*ast.StarExpr [IndexWriter Flush]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ix addName STRING ""]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [off]}
+	 {*ast.ArrayType [INT 5 uint32]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main writeString magic]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [off INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main offset]}
+	 {*ast.RangeStmt [_ p]}
+	 {*ast.SelectorExpr [ix paths]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main writeString p]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main writeString STRING "\x00"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main writeString STRING "\x00"]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [off INT 1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copyFile]}
+	 {*ast.SelectorExpr [ix main]}
+	 {*ast.SelectorExpr [ix nameData]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [off INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ix mergePost]}
+	 {*ast.SelectorExpr [ix main]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [off INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copyFile]}
+	 {*ast.SelectorExpr [ix main]}
+	 {*ast.SelectorExpr [ix nameIndex]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [off INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copyFile]}
+	 {*ast.SelectorExpr [ix main]}
+	 {*ast.SelectorExpr [ix postIndex]}
+	 {*ast.RangeStmt [_ v off]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main writeUint32 v]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main writeString trailerMagic]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [os Remove]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ix nameData name]}
+	 {*ast.RangeStmt [_ f]}
+	 {*ast.SelectorExpr [ix postFile]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [os Remove]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [f Name]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [os Remove]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ix nameIndex name]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [os Remove]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ix postIndex name]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "%d data bytes, %d index bytes"]}
+	 {*ast.SelectorExpr [ix totalBytes]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main flush]}
+
+
+function name is copyFile 
+	 { [copyFile]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dst src]}
+	 {*ast.StarExpr [bufWriter]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [dst flush]}
+	 {*ast.AssignStmt [_ err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [io Copy]}
+	 {*ast.SelectorExpr [dst file]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [src finish]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf STRING "copying %s to %s: %v"]}
+	 {*ast.SelectorExpr [src name]}
+	 {*ast.SelectorExpr [dst name err]}
+
+
+function name is addName 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [ix]}
+	 {*ast.StarExpr [IndexWriter addName]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
+	 {*ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [strings Contains name STRING "\x00"]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf STRING "%q: file has NUL byte in name" name]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix nameIndex writeUint32]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix nameData offset]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix nameData writeString name]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix nameData writeByte INT 0]}
+	 {*ast.AssignStmt [id]}
+	 {*ast.SelectorExpr [ix numName]}
+	 {*ast.IncDecStmt -> *ast.SelectorExpr [ix numName]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [uint32 id]}
+
+
+function name is flushPost 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [ix]}
+	 {*ast.StarExpr [IndexWriter flushPost]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [w err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [ioutil TempFile STRING "" STRING "csearch-index"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatal err]}
+	 {*ast.IfStmt -> *ast.SelectorExpr [ix Verbose]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "flush %d entries to %s"]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [ix post]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [w Name]}
+	 {*ast.ExprStmt -> *ast.CallExpr [sortPost]}
+	 {*ast.SelectorExpr [ix post]}
+	 {*ast.AssignStmt [data]}
+	 {*ast.SliceExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BinaryExpr [npost INT 8 byte]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [ix post INT 0]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [ix post INT 8]}
+	 {*ast.IfStmt -> *ast.AssignStmt [n err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [w Write data]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [n]}
+	 {*ast.CallExpr [len data]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatal err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf STRING "short write writing %s"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [w Name]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [ix post]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [ix post INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Seek INT 0 INT 0]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [ix postFile]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [ix postFile w]}
+
+
+function name is mergePost 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [ix]}
+	 {*ast.StarExpr [IndexWriter mergePost]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [out]}
+	 {*ast.StarExpr [bufWriter]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [h postHeap]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "merge %d files + mem"]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [ix postFile]}
+	 {*ast.RangeStmt [_ f]}
+	 {*ast.SelectorExpr [ix postFile]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h addFile f]}
+	 {*ast.ExprStmt -> *ast.CallExpr [sortPost]}
+	 {*ast.SelectorExpr [ix post]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h addMem]}
+	 {*ast.SelectorExpr [ix post]}
+	 {*ast.AssignStmt [npost INT 0]}
+	 {*ast.AssignStmt [e]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [h next]}
+	 {*ast.AssignStmt [offset0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [out offset]}
+	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.IncDecStmt [npost]}
+	 {*ast.AssignStmt [offset]}
+	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [out offset offset0]}
+	 {*ast.AssignStmt [trigram]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [e trigram]}
+	 {*ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [ix buf INT 0]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [trigram INT 16]}
+	 {*ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [ix buf INT 1]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [trigram INT 8]}
+	 {*ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [ix buf INT 2]}
+	 {*ast.CallExpr [byte trigram]}
+	 {*ast.AssignStmt [fileid]}
+	 {*ast.UnaryExpr -> *ast.CallExpr [uint32 INT 0]}
+	 {*ast.AssignStmt [nfile]}
+	 {*ast.CallExpr [uint32 INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [out write]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [ix buf INT 3]}
+	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [e trigram trigram]}
+	 {*ast.BinaryExpr [trigram]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [INT 1 INT 24 INT 1]}
+	 {*ast.AssignStmt [e]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [h next]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [out writeUvarint]}
+	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [e fileid fileid]}
+	 {*ast.AssignStmt [fileid]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [e fileid]}
+	 {*ast.IncDecStmt [nfile]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [out writeUvarint INT 0]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix postIndex write]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [ix buf INT 3]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix postIndex writeUint32 nfile]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix postIndex writeUint32 offset]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [trigram]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [INT 1 INT 24 INT 1]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.TypeSpec [postChunk]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [e postEntry]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [m]}
+	 {*ast.ArrayType [postEntry]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.GenDecl -> *ast.ValueSpec [postBuf INT 4096]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [postHeap]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [ch]}
+	 {*ast.ArrayType -> *ast.StarExpr [postChunk]}
+
+
+function name is addFile 
+	 {*ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap addFile]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [f]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [os File]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.SelectorExpr -> *ast.CallExpr [mmapFile f d]}
+	 {*ast.AssignStmt [m]}
+	 {*ast.SliceExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [npost postEntry]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.IndexExpr [data INT 0]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [len data INT 8]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h addMem m]}
+
+
+function name is addMem 
+	 {*ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap addMem]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.ArrayType [postEntry]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h add]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [postChunk]}
+	 {*ast.KeyValueExpr [m x]}
+
+
+function name is step 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap step]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ch]}
+	 {*ast.StarExpr [postChunk]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [old]}
+	 {*ast.SelectorExpr [ch e]}
+	 {*ast.AssignStmt [m]}
+	 {*ast.SelectorExpr [ch m]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len m INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [ch e]}
+	 {*ast.CallExpr [postEntry]}
+	 {*ast.IndexExpr [m INT 0]}
+	 {*ast.AssignStmt [m]}
+	 {*ast.SliceExpr [m INT 1]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [ch m m]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [old]}
+	 {*ast.SelectorExpr [ch e]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "bad sort"]}
+	 {*ast.ReturnStmt [true]}
+
+
+function name is add 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap add]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ch]}
+	 {*ast.StarExpr [postChunk]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [ch m INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [ch e]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [ch m INT 0]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [ch m]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [ch m INT 1]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h push ch]}
+
+
+function name is empty 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap empty]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [h ch INT 0]}
+
+
+function name is next 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap next]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [postEntry]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [h ch INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [makePostEntry]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [INT 1 INT 24 INT 1 INT 0]}
+	 {*ast.AssignStmt [ch]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [h ch INT 0]}
+	 {*ast.AssignStmt [e]}
+	 {*ast.SelectorExpr [ch e]}
+	 {*ast.AssignStmt [m]}
+	 {*ast.SelectorExpr [ch m]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len m INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h pop]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [ch e]}
+	 {*ast.IndexExpr [m INT 0]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [ch m]}
+	 {*ast.SliceExpr [m INT 1]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h siftDown INT 0]}
+	 {*ast.ReturnStmt [e]}
+
+
+function name is pop 
+	 {*ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap pop]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [postChunk]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [ch]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [h ch INT 0]}
+	 {*ast.AssignStmt [n]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [h ch INT 1]}
+	 {*ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [h ch INT 0]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [h ch n]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [h ch]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [h ch n]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [n INT 1]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h siftDown INT 0]}
+	 {*ast.ReturnStmt [ch]}
+
+
+function name is push 
+	 {*ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap push]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ch]}
+	 {*ast.StarExpr [postChunk]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [n]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [h ch]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [h ch]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [h ch ch]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [h ch INT 2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h siftUp n]}
+
+
+function name is siftDown 
+	 {*ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap siftDown]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [ch]}
+	 {*ast.SelectorExpr [h ch]}
+	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [j1]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [INT 2 i INT 1]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [j1]}
+	 {*ast.CallExpr [len ch]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [j j1]}
+	 {*ast.IfStmt -> *ast.AssignStmt [j2]}
+	 {*ast.BinaryExpr [j1 INT 1]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [j2]}
+	 {*ast.CallExpr [len ch]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr [ch j1 e]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [ch j2 e]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [j j2]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr [ch i e]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [ch j e]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt -> *ast.IndexExpr [ch i]}
+	 {*ast.IndexExpr [ch j]}
+	 {*ast.IndexExpr [ch j]}
+	 {*ast.IndexExpr [ch i]}
+	 {*ast.AssignStmt [i j]}
+
+
+function name is siftUp 
+	 {*ast.FieldList -> *ast.Field [h]}
+	 {*ast.StarExpr [postHeap siftUp]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [j int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [ch]}
+	 {*ast.SelectorExpr [h ch]}
+	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [i]}
+	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [j INT 1 INT 2]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [i j]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr [ch i e]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [ch j e]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt -> *ast.IndexExpr [ch i]}
+	 {*ast.IndexExpr [ch j]}
+	 {*ast.IndexExpr [ch j]}
+	 {*ast.IndexExpr [ch i]}
+	 {*ast.AssignStmt [j i]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [bufWriter]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [name string]}
+	 {*ast.Field [file]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [os File]}
+	 {*ast.Field [buf]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [tmp]}
+	 {*ast.ArrayType [INT 8 byte]}
+
+
+function name is bufCreate 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [bufCreate]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [bufWriter]}
+	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [f]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [os File]}
+	 {*ast.ValueSpec [err error]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [name STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [f err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [os OpenFile name]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [os O_RDWR]}
+	 {*ast.SelectorExpr [os O_CREATE]}
+	 {*ast.SelectorExpr [os O_TRUNC INT 0600]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [f err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [ioutil TempFile STRING "" STRING "csearch"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatal err]}
+	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [bufWriter]}
+	 {*ast.KeyValueExpr [name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [f Name]}
+	 {*ast.KeyValueExpr [buf]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [byte INT 0]}
+	 {*ast.BinaryExpr [INT 256 INT 10]}
+	 {*ast.KeyValueExpr [file f]}
+
+
+function name is write 
+	 {*ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter write]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [n]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len x n]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b flush]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len x]}
+	 {*ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [_ err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b file Write x]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf STRING "writing %s: %v"]}
+	 {*ast.SelectorExpr [b name err]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf x]}
+
+
+function name is writeByte 
+	 {*ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter writeByte]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x byte]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b flush]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf x]}
+
+
+function name is writeString 
+	 {*ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter writeString]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [n]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len s n]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b flush]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len s]}
+	 {*ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [_ err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b file WriteString s]}
+	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf STRING "writing %s: %v"]}
+	 {*ast.SelectorExpr [b name err]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf s]}
+
+
+function name is offset 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter offset]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uint32]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [off _]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b file Seek INT 0 INT 1]}
+	 {*ast.AssignStmt [off]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [int64]}
+	 {*ast.CallExpr [uint32 off off]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf STRING "index is larger than 4GB"]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [uint32 off]}
+
+
+function name is flush 
+	 {*ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter flush]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [b buf INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [_ err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b file Write]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf STRING "writing %s: %v"]}
+	 {*ast.SelectorExpr [b name err]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [b buf INT 0]}
+
+
+function name is finish 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter finish]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [os File]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b flush]}
+	 {*ast.AssignStmt [f]}
+	 {*ast.SelectorExpr [b file]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [f Seek INT 0 INT 0]}
+	 {*ast.ReturnStmt [f]}
+
+
+function name is writeTrigram 
+	 {*ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter writeTrigram]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t uint32]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [b buf INT 3]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b flush]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [t INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [t INT 8]}
+	 {*ast.CallExpr [byte t]}
+
+
+function name is writeUint32 
+	 {*ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter writeUint32]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x uint32]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [b buf INT 4]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b flush]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 24]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 8]}
+	 {*ast.CallExpr [byte x]}
+
+
+function name is writeUvarint 
+	 {*ast.FieldList -> *ast.Field [b]}
+	 {*ast.StarExpr [bufWriter writeUvarint]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x uint32]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [cap]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [b buf INT 5]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b flush]}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr [x]}
+	 {*ast.BinaryExpr [INT 1 INT 7]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [byte x]}
+	 {*ast.CaseClause -> *ast.BinaryExpr [x]}
+	 {*ast.BinaryExpr [INT 1 INT 14]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 7]}
+	 {*ast.CaseClause -> *ast.BinaryExpr [x]}
+	 {*ast.BinaryExpr [INT 1 INT 21]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [x INT 7 INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 14]}
+	 {*ast.CaseClause -> *ast.BinaryExpr [x]}
+	 {*ast.BinaryExpr [INT 1 INT 28]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [x INT 7 INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [x INT 14 INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 21]}
+	 {*ast.CaseClause -> *ast.AssignStmt -> *ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [b buf]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [x INT 7 INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [x INT 14 INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [x INT 21 INT 0x80]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [x INT 28]}
+
+
+function name is validUTF8 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [validUTF8]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [c1 c2 uint32]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt []}
+	 {*ast.SwitchStmt -> *ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.BinaryExpr [c1 INT 0x80]}
+	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [c2 INT 0x80]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [INT 0xc0 c2]}
+	 {*ast.BinaryExpr [c2 INT 0xf8]}
+	 {*ast.CaseClause -> *ast.BinaryExpr [c1 INT 0xc0]}
+	 {*ast.ReturnStmt -> *ast.BinaryExpr [c2 INT 0xf8]}
+	 {*ast.CaseClause -> *ast.BinaryExpr [c1 INT 0xf8]}
+	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [INT 0x80 c2]}
+	 {*ast.BinaryExpr [c2 INT 0xc0]}
+	 {*ast.ReturnStmt [false]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.ValueSpec [sortK INT 12]}
+	 {*ast.GenDecl -> *ast.ValueSpec [sortTmp]}
+	 {*ast.ArrayType [postEntry]}
+	 {*ast.GenDecl -> *ast.ValueSpec [sortN]}
+	 {*ast.ArrayType -> *ast.BinaryExpr [INT 1 sortK int]}
+
+
+function name is sortPost 
+	 { [sortPost]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [post]}
+	 {*ast.ArrayType [postEntry]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len post]}
+	 {*ast.CallExpr [len sortTmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [sortTmp]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [postEntry]}
+	 {*ast.CallExpr [len post]}
+	 {*ast.AssignStmt [tmp]}
+	 {*ast.SliceExpr [sortTmp]}
+	 {*ast.CallExpr [len post]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [k sortK]}
+	 {*ast.RangeStmt [i sortN]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [sortN i INT 0]}
+	 {*ast.RangeStmt [_ p post]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [r]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [p INT 32]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [INT 1 k INT 1]}
+	 {*ast.IncDecStmt -> *ast.IndexExpr [sortN r]}
+	 {*ast.AssignStmt [tot INT 0]}
+	 {*ast.RangeStmt [i count sortN]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [sortN i tot]}
+	 {*ast.AssignStmt [tot count]}
+	 {*ast.RangeStmt [_ p post]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [r]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [p INT 32]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [INT 1 k INT 1]}
+	 {*ast.AssignStmt [o]}
+	 {*ast.IndexExpr [sortN r]}
+	 {*ast.IncDecStmt -> *ast.IndexExpr [sortN r]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [tmp o p]}
+	 {*ast.AssignStmt [tmp post post tmp]}
+	 {*ast.RangeStmt [i sortN]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [sortN i INT 0]}
+	 {*ast.RangeStmt [_ p post]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [r]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [p]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr [INT 32 k]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [INT 1 k INT 1]}
+	 {*ast.IncDecStmt -> *ast.IndexExpr [sortN r]}
+	 {*ast.AssignStmt [tot INT 0]}
+	 {*ast.RangeStmt [i count sortN]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [sortN i tot]}
+	 {*ast.AssignStmt [tot count]}
+	 {*ast.RangeStmt [_ p post]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [r]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [p]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr [INT 32 k]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [INT 1 k INT 1]}
+	 {*ast.AssignStmt [o]}
+	 {*ast.IndexExpr [sortN r]}
+	 {*ast.IncDecStmt -> *ast.IndexExpr [sortN r]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [tmp o p]}
+
+

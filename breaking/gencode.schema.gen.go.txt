@@ -1,0 +1,306 @@
+{*ast.File [goserbench]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "io"]}
+{*ast.ImportSpec [STRING "time"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ValueSpec [_]}
+{*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof INT 0]}
+{*ast.ValueSpec [_]}
+{*ast.SelectorExpr [io ReadFull]}
+{*ast.ValueSpec [_]}
+{*ast.CallExpr -> *ast.SelectorExpr [time Now]}
+{*ast.GenDecl -> *ast.TypeSpec [GencodeA]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Name string]}
+{*ast.Field [BirthDay]}
+{*ast.SelectorExpr [time Time]}
+{*ast.Field [Phone string]}
+{*ast.Field [Siblings int32]}
+{*ast.Field [Spouse bool]}
+{*ast.Field [Money float64]}
+
+
+function name is Size 
+	 {*ast.FieldList -> *ast.Field [d]}
+	 {*ast.StarExpr [GencodeA Size]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [s uint64]}
+	 {*ast.BlockStmt -> *ast.BlockStmt -> *ast.AssignStmt [l]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [d Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t l]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [t INT 0x80]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t INT 7]}
+	 {*ast.IncDecStmt [s]}
+	 {*ast.IncDecStmt [s]}
+	 {*ast.AssignStmt [s l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [l]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [d Phone]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t l]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [t INT 0x80]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t INT 7]}
+	 {*ast.IncDecStmt [s]}
+	 {*ast.IncDecStmt [s]}
+	 {*ast.AssignStmt [s l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.SelectorExpr [d Siblings]}
+	 {*ast.AssignStmt [t INT 1]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [d Siblings INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.UnaryExpr [t]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [t INT 0x80]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t INT 7]}
+	 {*ast.IncDecStmt [s]}
+	 {*ast.IncDecStmt [s]}
+	 {*ast.AssignStmt [s INT 24]}
+	 {*ast.ReturnStmt []}
+
+
+function name is Marshal 
+	 {*ast.FieldList -> *ast.Field [d]}
+	 {*ast.StarExpr [GencodeA Marshal]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [buf]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [size]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [d Size]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.CallExpr [cap buf size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.SliceExpr [buf size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [byte size]}
+	 {*ast.AssignStmt [i]}
+	 {*ast.CallExpr [uint64 INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [l]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [d Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.CallExpr [uint64 l]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [t INT 0x80]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [byte t INT 0x80]}
+	 {*ast.AssignStmt [t INT 7]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0]}
+	 {*ast.CallExpr [byte t]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copy]}
+	 {*ast.SliceExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0]}
+	 {*ast.SelectorExpr [d Name]}
+	 {*ast.AssignStmt [i l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [b err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [d BirthDay MarshalBinary]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil err]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copy]}
+	 {*ast.SliceExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0 b]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [l]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [d Phone]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.CallExpr [uint64 l]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [t INT 0x80]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [byte t INT 0x80]}
+	 {*ast.AssignStmt [t INT 7]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15]}
+	 {*ast.CallExpr [byte t]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.ExprStmt -> *ast.CallExpr [copy]}
+	 {*ast.SliceExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15]}
+	 {*ast.SelectorExpr [d Phone]}
+	 {*ast.AssignStmt [i l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.SelectorExpr [d Siblings]}
+	 {*ast.AssignStmt [t INT 1]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [d Siblings INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.UnaryExpr [t]}
+	 {*ast.ForStmt -> *ast.BinaryExpr [t INT 0x80]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [byte t INT 0x80]}
+	 {*ast.AssignStmt [t INT 7]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15]}
+	 {*ast.CallExpr [byte t]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [d Spouse]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.ParenExpr -> *ast.SelectorExpr [d Money]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 0 INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [v INT 0]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 1 INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [v INT 8]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 2 INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [v INT 16]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 3 INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [v INT 24]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 4 INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [v INT 32]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 5 INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [v INT 40]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 6 INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [v INT 48]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 7 INT 16]}
+	 {*ast.CallExpr [byte]}
+	 {*ast.BinaryExpr [v INT 56]}
+	 {*ast.ReturnStmt -> *ast.SliceExpr [buf]}
+	 {*ast.BinaryExpr [i INT 24 nil]}
+
+
+function name is Unmarshal 
+	 {*ast.FieldList -> *ast.Field [d]}
+	 {*ast.StarExpr [GencodeA Unmarshal]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [buf]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [uint64]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [i]}
+	 {*ast.CallExpr [uint64 INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [l]}
+	 {*ast.CallExpr [uint64 INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.CallExpr [uint8 INT 7]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0 INT 0x7F]}
+	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0 INT 0x80 INT 0x80]}
+	 {*ast.BlockStmt -> *ast.IncDecStmt [i]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0 INT 0x7F bs]}
+	 {*ast.AssignStmt [bs INT 7]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.AssignStmt [l t]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [d Name]}
+	 {*ast.CallExpr [string]}
+	 {*ast.SliceExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 0 l]}
+	 {*ast.AssignStmt [i l]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [d BirthDay UnmarshalBinary]}
+	 {*ast.SliceExpr [buf]}
+	 {*ast.BinaryExpr [i INT 0]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 0 INT 15]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [l]}
+	 {*ast.CallExpr [uint64 INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.CallExpr [uint8 INT 7]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.CallExpr [uint64]}
+	 {*ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 0x7F]}
+	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 0x80 INT 0x80]}
+	 {*ast.BlockStmt -> *ast.IncDecStmt [i]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 0x7F bs]}
+	 {*ast.AssignStmt [bs INT 7]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.AssignStmt [l t]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [d Phone]}
+	 {*ast.CallExpr [string]}
+	 {*ast.SliceExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 15 l]}
+	 {*ast.AssignStmt [i l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [bs]}
+	 {*ast.CallExpr [uint8 INT 7]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 0x7F]}
+	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 0x80 INT 0x80]}
+	 {*ast.BlockStmt -> *ast.IncDecStmt [i]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [uint32]}
+	 {*ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 0x7F bs]}
+	 {*ast.AssignStmt [bs INT 7]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [d Siblings]}
+	 {*ast.CallExpr [int32]}
+	 {*ast.BinaryExpr [t INT 1]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [t INT 1 INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [d Siblings]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [d Siblings]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [d Spouse]}
+	 {*ast.BinaryExpr -> *ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [i INT 15 INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [INT 0]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 0 INT 16 INT 0]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 1 INT 16 INT 8]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 2 INT 16 INT 16]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 3 INT 16 INT 24]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 4 INT 16 INT 32]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 5 INT 16 INT 40]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 6 INT 16 INT 48]}
+	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [uint64]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr [i INT 7 INT 16 INT 56]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [d Money]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [v]}
+	 {*ast.ReturnStmt -> *ast.BinaryExpr [i INT 24 nil]}
+
+

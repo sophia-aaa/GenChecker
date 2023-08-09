@@ -11,17 +11,21 @@ type funcNamePos struct {
 	funcPos  token.Pos
 }
 
-func checkGenerics(listFunctions []basicStr, funcList []string, typeList []string) [][]string {
-	var genCheck [][]string
-	var genFunc []string
+func checkGenerics(listFunctions []basicStr, funcList []string, typeList []string) [][]funcNamePos {
+
+	var genFunc []funcNamePos
+	var genCheck [][]funcNamePos
 	flag := false
 
 	bool1 := false
 	bool2 := false
 	for i := 0; i < len(listFunctions); i++ {
 		if listFunctions[i].funcName != "" {
-			var funcNameI []string
-			funcNameI = funcNameDivider(funcNameI, listFunctions[i].funcName)
+			/*
+				toThink Pervasiveness
+				var funcNameI []string
+				funcNameI = funcNameDivider(funcNameI, listFunctions[i].funcName)
+			*/
 
 			// todo remove
 			if strings.EqualFold(listFunctions[i].funcName, "RemoveColumn") {
@@ -33,24 +37,27 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 			}
 
 			if len(genCheck) != 0 {
-				if !contains2D(genCheck, listFunctions[i].funcName) {
-					genFunc = []string{listFunctions[i].funcName}
+				if !contains2D(genCheck, listFunctions[i].funcName, listFunctions[i].funcToken) {
+					genFunc = []funcNamePos{{listFunctions[i].funcName, listFunctions[i].funcToken}}
 				} else {
 					continue
 				}
 			} else {
-				genFunc = []string{listFunctions[i].funcName}
+				genFunc = []funcNamePos{{listFunctions[i].funcName, listFunctions[i].funcToken}}
 			}
 			for j := i + 1; j < len(listFunctions); j++ {
 				if listFunctions[j].funcName != "" {
-					var funcNameJ []string
-					funcNameJ = funcNameDivider(funcNameJ, listFunctions[j].funcName)
-					for _, val := range funcNameI {
-						if !contains(funcNameJ, val) {
-							funcNameJ = append(funcNameJ, val)
+					/*
+						toThink Pervasiveness
+						ambiguous how far acceptable for ident name
+						var funcNameJ []string
+						funcNameJ = funcNameDivider(funcNameJ, listFunctions[j].funcName)
+						for _, val := range funcNameI {
+							if !contains(funcNameJ, val) {
+								funcNameJ = append(funcNameJ, val)
+							}
 						}
-					}
-
+					*/
 					// todo remove
 					if bool1 && strings.EqualFold(listFunctions[j].funcName, "SetLines") {
 						bool2 = true
@@ -81,8 +88,8 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 											}
 											// compare ast.Ident Name
 											if (contains(funcList, listFunctions[i].value[idx].value[idxValue]) && contains(funcList, listFunctions[j].value[idx].value[idxValue])) ||
-												(contains(funcNameJ, listFunctions[i].value[idx].value[idxValue]) && contains(funcNameJ, listFunctions[j].value[idx].value[idxValue])) ||
-												(contains(typeList, listFunctions[i].value[idx].value[idxValue]) && contains(typeList, listFunctions[j].value[idx].value[idxValue])) {
+												// to think Pervasiveness (contains(funcNameJ, listFunctions[i].value[idx].value[idxValue]) && contains(funcNameJ, listFunctions[j].value[idx].value[idxValue])) ||
+												contains(typeList, listFunctions[i].value[idx].value[idxValue]) && contains(typeList, listFunctions[j].value[idx].value[idxValue]) {
 												flag = true
 											} else {
 												flag = false
@@ -138,7 +145,7 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 							} else if strings.Contains(listFunctions[i].value[idx].path, "*ast.SelectorExpr") {
 								// listFunctions[i].value[idx] looks like "... -> *ast.SelectorExpr [... unsafe Pointer]"
 								// and listFunctions[j].value[idx] looks like " ... [TYPE]"
-								if !contains(typeList, listFunctions[j].value[idx].value[0]) {
+								if len(listFunctions[j].value[idx].value) > 0 && !contains(typeList, listFunctions[j].value[idx].value[0]) {
 									flag = false
 									break
 								}
@@ -183,7 +190,7 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 					fmt.Println("6 flag is ", flag)
 				}
 				if flag == true {
-					genFunc = append(genFunc, listFunctions[j].funcName)
+					genFunc = append(genFunc, funcNamePos{listFunctions[j].funcName, listFunctions[j].funcToken})
 					flag = false
 				}
 			}

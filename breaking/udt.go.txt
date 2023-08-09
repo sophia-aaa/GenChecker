@@ -1,0 +1,65 @@
+{*ast.File [testutils]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "testing"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [STRING "github.com/gocql/gocql"]}
+{*ast.ImportSpec [STRING "github.com/stretchr/testify/assert"]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [UDTField]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Name string]}
+{*ast.Field [Type]}
+{*ast.SelectorExpr [gocql Type]}
+{*ast.Field [ValIn]}
+{*ast.ArrayType [byte]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.Field [Err bool]}
+{*ast.CommentGroup -> *ast.Comment -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [UDTTestCase]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Obj]}
+{*ast.SelectorExpr [gocql UDTMarshaler]}
+{*ast.Field [ObjName string]}
+{*ast.Field [New]}
+{*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [gocql UDTUnmarshaler]}
+{*ast.Field [Fields]}
+{*ast.ArrayType [UDTField]}
+
+
+function name is Run 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [testCase UDTTestCase Run]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.RangeStmt [_ ff]}
+	 {*ast.SelectorExpr [testCase Fields]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [field ff]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Run]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [testCase ObjName STRING "-"]}
+	 {*ast.SelectorExpr [field Name]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [nt]}
+	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.Field [proto byte]}
+	 {*ast.Field [typ]}
+	 {*ast.SelectorExpr [gocql Type]}
+	 {*ast.Field [_ string]}
+	 {*ast.KeyValueExpr [proto INT 0x03]}
+	 {*ast.KeyValueExpr [typ]}
+	 {*ast.SelectorExpr [field Type]}
+	 {*ast.AssignStmt [typeInfo]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [gocql NativeType]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [nt]}
+	 {*ast.AssignStmt [data err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [testCase Obj MarshalUDT]}
+	 {*ast.SelectorExpr [field Name typeInfo]}
+	 {*ast.IfStmt -> *ast.SelectorExpr [field Err]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Error t err]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NoError t err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
+	 {*ast.SelectorExpr [field ValIn data]}
+	 {*ast.AssignStmt [obj]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [testCase New]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [obj UnmarshalUDT]}
+	 {*ast.SelectorExpr [field Name typeInfo]}
+	 {*ast.SelectorExpr [field ValIn]}
+	 {*ast.IfStmt -> *ast.SelectorExpr [field Err]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Error t err]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NoError t err]}
+
+

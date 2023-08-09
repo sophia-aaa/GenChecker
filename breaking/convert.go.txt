@@ -1,0 +1,28 @@
+{*ast.File [tools]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+
+
+function name is ByteToInt8 
+	 {*ast.CommentGroup -> *ast.Comment [ByteToInt8]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [d]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int8]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [s]}
+	 {*ast.ReturnStmt [d]}
+
+
+function name is Int8ToByte 
+	 {*ast.CommentGroup -> *ast.Comment [Int8ToByte]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s]}
+	 {*ast.ArrayType [int8]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [d]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [byte]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [s]}
+	 {*ast.ReturnStmt [d]}
+
+

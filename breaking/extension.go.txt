@@ -1,0 +1,278 @@
+{*ast.File [main]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "context"]}
+{*ast.ImportSpec [STRING "encoding/json"]}
+{*ast.ImportSpec [STRING "flag"]}
+{*ast.ImportSpec [STRING "fmt"]}
+{*ast.ImportSpec [STRING "io/ioutil"]}
+{*ast.ImportSpec [STRING "log"]}
+{*ast.ImportSpec [STRING "net"]}
+{*ast.ImportSpec [STRING "net/http"]}
+{*ast.ImportSpec [STRING "os"]}
+{*ast.ImportSpec [STRING "path"]}
+{*ast.ImportSpec [STRING "runtime"]}
+{*ast.ImportSpec [STRING "time"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.ImportSpec [STRING "golang.org/x/xerrors"]}
+{*ast.ImportSpec [STRING "nhooyr.io/websocket"]}
+{*ast.ImportSpec [STRING "nhooyr.io/websocket/wsjson"]}
+{*ast.ImportSpec [STRING "go.coder.com/cli"]}
+{*ast.ImportSpec [STRING "go.coder.com/flog"]}
+
+
+function name is runNativeMsgHost 
+	 { [runNativeMsgHost]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [l err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [net Listen STRING "tcp" STRING "localhost:0"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal STRING "failed to listen: %v" err]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [l Close]}
+	 {*ast.AssignStmt [url]}
+	 {*ast.BinaryExpr [STRING "http://"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [l Addr String]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [writeNativeHostMessage]}
+	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.Field [URL string STRING `json:"url"` url]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal STRING "%v" err]}
+	 {*ast.AssignStmt [m]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [http NewServeMux]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [m HandleFunc STRING "/api/v1/run" handleRun]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [http Serve l m]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal STRING "failed to serve: %v" err]}
+
+
+function name is writeNativeHostMessage 
+	 { [writeNativeHostMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [b err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [json Marshal v]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf STRING "failed to marshal url: %w" err]}
+	 {*ast.AssignStmt [msgLen]}
+	 {*ast.CallExpr [uint32]}
+	 {*ast.CallExpr [len b]}
+	 {*ast.AssignStmt [msgLenHostByteOrder]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 4 byte]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [msgLen]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [os Stdout Write]}
+	 {*ast.SliceExpr [msgLenHostByteOrder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [os Stdout Write b]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.GenDecl -> *ast.TypeSpec [runRequest]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Project string STRING `json:"project"`]}
+
+
+function name is handleRun 
+	 { [handleRun]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [w]}
+	 {*ast.SelectorExpr [http ResponseWriter]}
+	 {*ast.Field [r]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [http Request]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [c err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [websocket Accept w r]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [websocket AcceptOptions]}
+	 {*ast.KeyValueExpr [InsecureSkipVerify true]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Println err]}
+	 {*ast.ReturnStmt -> *ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Close]}
+	 {*ast.SelectorExpr [websocket StatusInternalError STRING "something failed"]}
+	 {*ast.AssignStmt [ctx cancel]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [context WithTimeout]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [r Context]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [time Minute INT 5]}
+	 {*ast.DeferStmt -> *ast.CallExpr [cancel]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [req runRequest]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [wsjson Read ctx c]}
+	 {*ast.UnaryExpr [req]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf STRING "failed to read request: %v\n" err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Close]}
+	 {*ast.SelectorExpr [websocket StatusInvalidFramePayloadData STRING "failed to read"]}
+	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.CallExpr [streamRun ctx c STRING "run"]}
+	 {*ast.SelectorExpr [req Project]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Close]}
+	 {*ast.SelectorExpr [websocket StatusNormalClosure STRING ""]}
+	 {*ast.GenDecl -> *ast.TypeSpec [installExtHostCmd]}
+	 {*ast.StructType -> *ast.FieldList []}
+
+
+function name is Spec 
+	 {*ast.FieldList -> *ast.Field [c]}
+	 {*ast.StarExpr [installExtHostCmd Spec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cli CommandSpec]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CompositeLit -> *ast.SelectorExpr [cli CommandSpec]}
+	 {*ast.KeyValueExpr [Name STRING "install-ext-host"]}
+	 {*ast.KeyValueExpr [Desc STRING `Installs the native message host manifest into Chrome and Firefox.
+This allows the sail extension to manage sail.`]}
+
+
+function name is Run 
+	 {*ast.FieldList -> *ast.Field [c]}
+	 {*ast.StarExpr [installExtHostCmd Run]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fl]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [flag FlagSet]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [binPath err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [os Executable]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal STRING "failed to get sail binary location"]}
+	 {*ast.AssignStmt [nativeHostDirsChrome err]}
+	 {*ast.CallExpr [nativeMessageHostManifestDirectoriesChrome]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal STRING "failed to get chrome native message host manifest directory: %v" err]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [installManifests nativeHostDirsChrome STRING "com.coder.sail.json"]}
+	 {*ast.CallExpr [chromeManifest binPath]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal STRING "failed to write chrome manifest files: %v" err]}
+	 {*ast.AssignStmt [nativeHostDirsFirefox err]}
+	 {*ast.CallExpr [nativeMessageHostManifestDirectoriesFirefox]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal STRING "failed to get firefox native message host manifest directory: %v" err]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr [installManifests nativeHostDirsFirefox STRING "com.coder.sail.json"]}
+	 {*ast.CallExpr [firefoxManifest binPath]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal STRING "failed to write firefox manifest files: %v" err]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Info STRING "Successfully installed manifests."]}
+
+
+function name is nativeMessageHostManifestDirectoriesChrome 
+	 { [nativeMessageHostManifestDirectoriesChrome]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [homeDir err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [os UserHomeDir]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf STRING "failed to get user home dir: %w" err]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [chromeDir string]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [chromeBetaDir string]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [chromeDevDir string]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [chromeCanaryDir string]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [chromiumDir string]}
+	 {*ast.SwitchStmt -> *ast.SelectorExpr [runtime GOOS]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [STRING "linux"]}
+	 {*ast.AssignStmt [chromeDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING ".config" STRING "google-chrome" STRING "NativeMessagingHosts"]}
+	 {*ast.AssignStmt [chromeBetaDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING ".config" STRING "google-chrome-beta" STRING "NativeMessagingHosts"]}
+	 {*ast.AssignStmt [chromeDevDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING ".config" STRING "google-chrome-unstable" STRING "NativeMessagingHosts"]}
+	 {*ast.AssignStmt [chromiumDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING ".config" STRING "chromium" STRING "NativeMessagingHosts"]}
+	 {*ast.CaseClause [STRING "darwin"]}
+	 {*ast.AssignStmt [chromeDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING "Library" STRING "Application Support" STRING "Google" STRING "Chrome" STRING "NativeMessagingHosts"]}
+	 {*ast.AssignStmt [chromeCanaryDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING "Library" STRING "Application Support" STRING "Google" STRING "Chrome Canary" STRING "NativeMessagingHosts"]}
+	 {*ast.AssignStmt [chromiumDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING "Library" STRING "Application Support" STRING "Chromium" STRING "NativeMessagingHosts"]}
+	 {*ast.CaseClause -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf STRING "unsupported os %q"]}
+	 {*ast.SelectorExpr [runtime GOOS]}
+	 {*ast.ReturnStmt -> *ast.CompositeLit -> *ast.ArrayType [string chromeDir chromiumDir chromeBetaDir chromeDevDir chromeCanaryDir nil]}
+
+
+function name is chromeManifest 
+	 { [chromeManifest]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [binPath string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING `{
+		"name": "com.coder.sail",
+		"description": "sail message host",
+		"path": "%v",
+		"type": "stdio",
+		"allowed_origins": [
+			"chrome-extension://deeepphleikpinikcbjplcgojfhkcmna/"
+		]
+	}` binPath]}
+
+
+function name is nativeMessageHostManifestDirectoriesFirefox 
+	 { [nativeMessageHostManifestDirectoriesFirefox]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [homeDir err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [os UserHomeDir]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf STRING "failed to get user home dir: %w" err]}
+	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [firefoxDir string]}
+	 {*ast.SwitchStmt -> *ast.SelectorExpr [runtime GOOS]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause [STRING "linux"]}
+	 {*ast.AssignStmt [firefoxDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING ".mozilla" STRING "native-messaging-hosts"]}
+	 {*ast.CaseClause [STRING "darwin"]}
+	 {*ast.AssignStmt [firefoxDir]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join homeDir STRING "Library" STRING "Application Support" STRING "Mozilla" STRING "NativeMessagingHosts"]}
+	 {*ast.CaseClause -> *ast.ReturnStmt [nil]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf STRING "unsupported os %q"]}
+	 {*ast.SelectorExpr [runtime GOOS]}
+	 {*ast.ReturnStmt -> *ast.CompositeLit -> *ast.ArrayType [string firefoxDir nil]}
+
+
+function name is firefoxManifest 
+	 { [firefoxManifest]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [binPath string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING `{
+		"name": "com.coder.sail",
+		"description": "sail message host",
+		"path": "%v",
+		"type": "stdio",
+		"allowed_extensions": [
+			"sail@coder.com"
+		]
+	}` binPath]}
+
+
+function name is installManifests 
+	 { [installManifests]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [nativeHostDirs]}
+	 {*ast.ArrayType [string]}
+	 {*ast.Field [file string]}
+	 {*ast.Field [content string]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte content]}
+	 {*ast.RangeStmt [_ dir nativeHostDirs]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [dir STRING ""]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [os MkdirAll dir INT 0755]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf STRING "failed to ensure manifest directory exists: %w" err]}
+	 {*ast.AssignStmt [dst]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [path Join dir file]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [ioutil WriteFile dst data INT 0644]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf STRING "failed to write native messaging host manifest: %w" err]}
+	 {*ast.ReturnStmt [nil]}
+	 {*ast.GenDecl -> *ast.TypeSpec [chromeExtInstallCmd]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [cmd]}
+	 {*ast.StarExpr [installExtHostCmd]}
+
+
+function name is Spec 
+	 {*ast.FieldList -> *ast.Field [c]}
+	 {*ast.StarExpr [chromeExtInstallCmd Spec]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cli CommandSpec]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CompositeLit -> *ast.SelectorExpr [cli CommandSpec]}
+	 {*ast.KeyValueExpr [Name STRING "install-for-chrome-ext"]}
+	 {*ast.KeyValueExpr [Desc STRING "DEPRECATED: alias of install-ext-host."]}
+
+
+function name is Run 
+	 {*ast.FieldList -> *ast.Field [c]}
+	 {*ast.StarExpr [chromeExtInstallCmd Run]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fl]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [flag FlagSet]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [c cmd Run fl]}
+
+

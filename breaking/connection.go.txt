@@ -1,0 +1,382 @@
+{*ast.File [main]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "net"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "time"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "sync"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "sync/atomic"]}
+{*ast.GenDecl -> *ast.ImportSpec [log STRING "github.com/sirupsen/logrus"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "github.com/gorilla/websocket"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "container/list"]}
+{*ast.GenDecl -> *ast.ValueSpec [CLIENT_TIMEOUT]}
+{*ast.ParenExpr -> *ast.BinaryExpr [INT 60 INT 6]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [MESSAGE_QUEUE_LIMIT INT 300]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [MESSAGE_QUEUE_BLOCK_LIMIT INT 30]}
+{*ast.GenDecl -> *ast.TypeSpec [Conn]}
+{*ast.InterfaceType -> *ast.FieldList -> *ast.Field [Close]}
+{*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
+{*ast.Field [SetReadDeadline]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+{*ast.SelectorExpr [time Time]}
+{*ast.FieldList -> *ast.Field [error]}
+{*ast.Field [SetWriteDeadline]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+{*ast.SelectorExpr [time Time]}
+{*ast.FieldList -> *ast.Field [error]}
+{*ast.Field [ReadMessage]}
+{*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Message]}
+{*ast.Field [error]}
+{*ast.Field [WriteMessage]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+{*ast.StarExpr [Message]}
+{*ast.FieldList -> *ast.Field [error]}
+{*ast.GenDecl -> *ast.TypeSpec [NetConn]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [net Conn]}
+
+
+function name is ReadMessage 
+	 {*ast.FieldList -> *ast.Field [conn]}
+	 {*ast.StarExpr [NetConn ReadMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Message]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [ReceiveClientMessage]}
+	 {*ast.SelectorExpr [conn Conn]}
+
+
+function name is WriteMessage 
+	 {*ast.FieldList -> *ast.Field [conn]}
+	 {*ast.StarExpr [NetConn WriteMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [SendMessage]}
+	 {*ast.SelectorExpr [conn Conn msg]}
+	 {*ast.GenDecl -> *ast.TypeSpec [WSConn]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [websocket Conn]}
+
+
+function name is ReadMessage 
+	 {*ast.FieldList -> *ast.Field [ws]}
+	 {*ast.StarExpr [WSConn ReadMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Message]}
+	 {*ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [ReadWebsocketMessage]}
+	 {*ast.SelectorExpr [ws Conn]}
+
+
+function name is WriteMessage 
+	 {*ast.FieldList -> *ast.Field [ws]}
+	 {*ast.StarExpr [WSConn WriteMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [SendWebsocketBinaryMessage]}
+	 {*ast.SelectorExpr [ws Conn msg]}
+	 {*ast.GenDecl -> *ast.TypeSpec [Connection]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [conn Conn]}
+	 {*ast.Field [closed int32]}
+	 {*ast.Field [forbidden int32]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [notification_on bool]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [online bool]}
+	 {*ast.Field [sync_count int64]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [tc int32]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [blocking int32]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [wt]}
+	 {*ast.ChanType -> *ast.StarExpr [Message]}
+	 {*ast.Field [lwt]}
+	 {*ast.ChanType [int]}
+	 {*ast.Field -> *ast.CommentGroup -> *ast.Comment [pwt]}
+	 {*ast.ChanType -> *ast.ArrayType -> *ast.StarExpr [Message]}
+	 {*ast.Field [sequence int]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field -> *ast.CommentGroup -> *ast.Comment [version int]}
+	 {*ast.Field [tm]}
+	 {*ast.SelectorExpr [time Time]}
+	 {*ast.Field [appid int64]}
+	 {*ast.Field [uid int64]}
+	 {*ast.Field [device_id string]}
+	 {*ast.Field [device_ID int64]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [platform_id int8]}
+	 {*ast.Field [messages]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [list List]}
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [mutex]}
+	 {*ast.SelectorExpr [sync Mutex]}
+
+
+function name is Client 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection Client]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Client]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer client]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Client p]}
+
+
+function name is isSender 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection isSender]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.Field [device_id int64]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [msg cmd MSG_IM]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [msg cmd MSG_GROUP_IM]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [m]}
+	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [msg body]}
+	 {*ast.StarExpr [IMMessage]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [m sender]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.BinaryExpr [device_id]}
+	 {*ast.SelectorExpr [client device_ID]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [true]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [msg cmd MSG_CUSTOMER_V2]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [m]}
+	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [msg body]}
+	 {*ast.StarExpr [CustomerMessageV2]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [m sender_appid]}
+	 {*ast.SelectorExpr [client appid]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [m sender]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.BinaryExpr [device_id]}
+	 {*ast.SelectorExpr [client device_ID]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [true]}
+	 {*ast.ReturnStmt [false]}
+
+
+function name is SendGroupMessage 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection SendGroupMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [group]}
+	 {*ast.StarExpr [Group]}
+	 {*ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [appid]}
+	 {*ast.SelectorExpr [client appid]}
+	 {*ast.ExprStmt -> *ast.CallExpr [PublishGroupMessage appid]}
+	 {*ast.SelectorExpr [group gid msg]}
+	 {*ast.ExprStmt -> *ast.CallExpr [DispatchMessageToGroup msg group appid]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [client Client]}
+
+
+function name is SendMessage 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection SendMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [uid int64]}
+	 {*ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [appid]}
+	 {*ast.SelectorExpr [client appid]}
+	 {*ast.ExprStmt -> *ast.CallExpr [PublishMessage appid uid msg]}
+	 {*ast.ExprStmt -> *ast.CallExpr [DispatchMessageToPeer msg uid appid]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [client Client]}
+	 {*ast.ReturnStmt [true]}
+
+
+function name is EnqueueNonBlockContinueMessage 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection EnqueueNonBlockContinueMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.Field [sub_msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [closed]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client closed]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [closed INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Infof STRING "can't send message to closed connection:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.ReturnStmt [false]}
+	 {*ast.AssignStmt [tc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [tc INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Infof STRING "can't send message to blocked connection:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc INT 1]}
+	 {*ast.ReturnStmt [false]}
+	 {*ast.AssignStmt [blocking]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client blocking]}
+	 {*ast.AssignStmt [queue_limit MESSAGE_QUEUE_LIMIT]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [blocking INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [queue_limit MESSAGE_QUEUE_BLOCK_LIMIT]}
+	 {*ast.AssignStmt [dropped false]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client mutex Lock]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages Len queue_limit]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages Remove]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages Front]}
+	 {*ast.AssignStmt [dropped true]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages PushBack msg]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [sub_msg nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages Len queue_limit]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages Remove]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages Front]}
+	 {*ast.AssignStmt [dropped true]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages PushBack sub_msg]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client mutex Unlock]}
+	 {*ast.IfStmt [dropped]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Info STRING "message queue full, drop a message"]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client messages Len INT 50]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Warning STRING "message queue jam, connection:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.SelectStmt -> *ast.BlockStmt -> *ast.CommClause -> *ast.SendStmt -> *ast.SelectorExpr [client lwt INT 1]}
+	 {*ast.CommClause -> *ast.ReturnStmt [true]}
+
+
+function name is EnqueueNonBlockMessage 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection EnqueueNonBlockMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [client EnqueueNonBlockContinueMessage msg nil]}
+
+
+function name is EnqueueMessage 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection EnqueueMessage]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [closed]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client closed]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [closed INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Infof STRING "can't send message to closed connection:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.ReturnStmt [false]}
+	 {*ast.AssignStmt [tc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [tc INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Infof STRING "can't send message to blocked connection:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc INT 1]}
+	 {*ast.ReturnStmt [false]}
+	 {*ast.SelectStmt -> *ast.BlockStmt -> *ast.CommClause -> *ast.SendStmt -> *ast.SelectorExpr [client wt msg]}
+	 {*ast.ReturnStmt [true]}
+	 {*ast.CommClause -> *ast.ExprStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [time After]}
+	 {*ast.BinaryExpr [INT 60]}
+	 {*ast.SelectorExpr [time Second]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc INT 1]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Infof STRING "send message to wt timed out:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.ReturnStmt [false]}
+
+
+function name is EnqueueMessages 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection EnqueueMessages]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msgs]}
+	 {*ast.ArrayType -> *ast.StarExpr [Message]}
+	 {*ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [closed]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client closed]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [closed INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Infof STRING "can't send messages to closed connection:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.ReturnStmt [false]}
+	 {*ast.AssignStmt [tc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [tc INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Infof STRING "can't send messages to blocked connection:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc INT 1]}
+	 {*ast.ReturnStmt [false]}
+	 {*ast.SelectStmt -> *ast.BlockStmt -> *ast.CommClause -> *ast.SendStmt -> *ast.SelectorExpr [client pwt msgs]}
+	 {*ast.ReturnStmt [true]}
+	 {*ast.CommClause -> *ast.ExprStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [time After]}
+	 {*ast.BinaryExpr [INT 60]}
+	 {*ast.SelectorExpr [time Second]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc INT 1]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Infof STRING "send messages to pwt timed out:%d"]}
+	 {*ast.SelectorExpr [client uid]}
+	 {*ast.ReturnStmt [false]}
+
+
+function name is read 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection read]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Message]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client conn SetReadDeadline]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now Add]}
+	 {*ast.BinaryExpr [CLIENT_TIMEOUT]}
+	 {*ast.SelectorExpr [time Second]}
+	 {*ast.AssignStmt [msg _]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client conn ReadMessage]}
+	 {*ast.ReturnStmt [msg]}
+
+
+function name is send 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection send]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [m]}
+	 {*ast.StarExpr [Message]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [client sequence INT 1]}
+	 {*ast.AssignStmt [msg m]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [msg version]}
+	 {*ast.SelectorExpr [client version]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [msg]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Message]}
+	 {*ast.KeyValueExpr [cmd]}
+	 {*ast.SelectorExpr [m cmd]}
+	 {*ast.KeyValueExpr [seq]}
+	 {*ast.SelectorExpr [m seq]}
+	 {*ast.KeyValueExpr [version]}
+	 {*ast.SelectorExpr [client version]}
+	 {*ast.KeyValueExpr [flag]}
+	 {*ast.SelectorExpr [m flag]}
+	 {*ast.KeyValueExpr [body]}
+	 {*ast.SelectorExpr [m body]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [msg seq]}
+	 {*ast.SelectorExpr [client sequence]}
+	 {*ast.AssignStmt [complete_c]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ChanType [int INT 1]}
+	 {*ast.AssignStmt [block]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client blocking INT 1]}
+	 {*ast.SendStmt [complete_c INT 1]}
+	 {*ast.AssignStmt [timer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time AfterFunc]}
+	 {*ast.BinaryExpr [INT 10]}
+	 {*ast.SelectorExpr [time Millisecond block]}
+	 {*ast.AssignStmt [tc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [tc INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Info STRING "can't write data to blocked socket"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client conn SetWriteDeadline]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now Add]}
+	 {*ast.BinaryExpr [INT 30]}
+	 {*ast.SelectorExpr [time Second]}
+	 {*ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client conn WriteMessage msg]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client tc INT 1]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Info STRING "send msg:"]}
+	 {*ast.CallExpr [Command]}
+	 {*ast.SelectorExpr [msg cmd STRING " tcp err:" err]}
+	 {*ast.AssignStmt [r]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [timer Stop]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [r]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Info STRING "send message blocked"]}
+	 {*ast.ExprStmt -> *ast.UnaryExpr [complete_c]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt32]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [client blocking INT 0]}
+
+
+function name is close 
+	 {*ast.FieldList -> *ast.Field [client]}
+	 {*ast.StarExpr [Connection close]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client conn Close]}
+
+

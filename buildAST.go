@@ -36,6 +36,9 @@ type basicCaseStr struct {
 }
 
 func buildAstDataStr(filename string) []basicStr {
+	// Commentgroups and comments are ignored
+	// because they interfere with comparing the content of the code.
+
 	fset := token.NewFileSet()
 	astTree, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)
 	if err != nil {
@@ -48,10 +51,42 @@ func buildAstDataStr(filename string) []basicStr {
 	astNode := ""
 	var listFunctions []basicStr
 	var astValue []string
+	genDeclBool := false
 
 	ast.Inspect(astTree, func(node ast.Node) bool {
 		switch x := node.(type) {
+		case *ast.CommentGroup, *ast.Comment:
+			astNode += ""
+
+		case *ast.GenDecl:
+			if !genDeclBool {
+				fmt.Println("GenDecl ", nameFunction)
+				if astNode != "" || len(astValue) != 0 { // if a new root meets
+					fmt.Println("GenDecl ", nameFunction)
+					elem_list = append(elem_list, elem{astNode, astValue})
+					listFunctions = append(listFunctions, basicStr{nameFunction, tokPos, elem_list})
+					elem_list = []elem{}
+					astNode = ""
+					astValue = []string{}
+				}
+				nameFunction = ""
+				tokPos = x.Pos()
+			} else { // within function
+				if len(astValue) != 0 {
+					elem_list = append(elem_list, elem{astNode, astValue})
+					astNode = ""
+					astValue = []string{}
+				}
+			}
+			if astNode == "" {
+				astNode += reflect.TypeOf(x).String()
+			} else {
+				astNode += " -> " + reflect.TypeOf(x).String()
+			}
+		case *ast.DeclStmt:
+			genDeclBool = true
 		case *ast.FuncDecl:
+			fmt.Println("FuncDecl ", nameFunction, astNode != "" || len(astValue) != 0)
 			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
 			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
 			if astNode != "" || len(astValue) != 0 { // if a new root meets
@@ -64,25 +99,87 @@ func buildAstDataStr(filename string) []basicStr {
 			nameFunction = x.Name.String()
 			tokPos = x.Pos()
 			//fmt.Println(x.Name.String(), "\t", rune(x.Pos()))
-		case *ast.Ident:
-			//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
-			astValue = append(astValue, x.Name)
-		case *ast.BasicLit:
-			str := x.Kind.String() + " " + x.Value
-			astValue = append(astValue, str)
-			str = ""
-		case *ast.CaseClause, *ast.SwitchStmt:
-			// *ast.CaseClause -> *ast.SelectorExpr
-			elem_list = append(elem_list, elem{astNode, astValue})
-			astNode = ""
-			astValue = []string{}
-
+		case *ast.BinaryExpr:
+			if len(astValue) != 0 {
+				elem_list = append(elem_list, elem{astNode, astValue})
+				astNode = ""
+				astValue = []string{}
+			}
 			if astNode == "" {
 				astNode += reflect.TypeOf(x).String()
 			} else {
 				astNode += " -> " + reflect.TypeOf(x).String()
 			}
-
+			astValue = append(astValue, x.Op.String())
+			genDeclBool = false
+		case *ast.UnaryExpr:
+			if len(astValue) != 0 {
+				elem_list = append(elem_list, elem{astNode, astValue})
+				astNode = ""
+				astValue = []string{}
+			}
+			if astNode == "" {
+				astNode += reflect.TypeOf(x).String()
+			} else {
+				astNode += " -> " + reflect.TypeOf(x).String()
+			}
+			astValue = append(astValue, x.Op.String())
+			genDeclBool = false
+		case *ast.Ident:
+			//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String(), "\t", x.Name)
+			astValue = append(astValue, x.Name)
+			genDeclBool = false
+		case *ast.BasicLit:
+			if len(astValue) != 0 {
+				elem_list = append(elem_list, elem{astNode, astValue})
+				astNode = ""
+				astValue = []string{}
+			}
+			if astNode == "" {
+				astNode += reflect.TypeOf(x).String()
+			} else {
+				astNode += " -> " + reflect.TypeOf(x).String()
+			}
+			str := x.Kind.String() + " " + x.Value
+			astValue = append(astValue, str)
+			str = ""
+		case *ast.InterfaceType:
+			if len(astValue) != 0 {
+				elem_list = append(elem_list, elem{astNode, astValue})
+				astNode = ""
+				astValue = []string{}
+			}
+			astNode += reflect.TypeOf(x).String()
+			if len(x.Methods.List) > 0 {
+				for _, val := range x.Methods.List {
+					if len(val.Names) > 0 {
+						for _, valName := range val.Names {
+							astValue = append(astValue, valName.String())
+						}
+					}
+				}
+			}
+			elem_list = append(elem_list, elem{astNode, astValue})
+			astNode = ""
+			astValue = []string{}
+			// I couldn't find a way to express "incomplete", so I customised it like this.
+			if x.Incomplete == true {
+				elem_list = append(elem_list, elem{"*ast.InterfaceType.Incomplete", []string{"true"}})
+			} else {
+				elem_list = append(elem_list, elem{"*ast.InterfaceType.Incomplete", []string{"false"}})
+			}
+		case *ast.CaseClause, *ast.SwitchStmt:
+			// *ast.CaseClause -> *ast.SelectorExpr
+			if !strings.EqualFold(astNode, "") || len(astValue) > 0 {
+				elem_list = append(elem_list, elem{astNode, astValue})
+				astNode = ""
+				astValue = []string{}
+			}
+			if astNode == "" {
+				astNode += reflect.TypeOf(x).String()
+			} else {
+				astNode += " -> " + reflect.TypeOf(x).String()
+			}
 		default:
 			if x != nil {
 				//fmt.Println(fset.Position(x.Pos()), reflect.TypeOf(x).String())

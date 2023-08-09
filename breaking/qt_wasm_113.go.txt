@@ -1,0 +1,23 @@
+{*ast.File [qt]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "syscall/js"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+
+
+function name is TypedArrayOf 
+	 { [TypedArrayOf]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [src]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [js Value]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [dst]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [Global Get STRING "Uint8Array" New]}
+	 {*ast.CallExpr [len src]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [js CopyBytesToJS dst src]}
+	 {*ast.ReturnStmt [dst]}
+
+
+function name is ReleaseTypedArray 
+	 { [ReleaseTypedArray]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BlockStmt []}
+
+

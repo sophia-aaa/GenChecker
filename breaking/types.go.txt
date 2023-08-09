@@ -1,0 +1,467 @@
+{*ast.File [api]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "fmt"]}
+{*ast.ImportSpec [STRING "go/types"]}
+{*ast.ImportSpec [STRING "reflect"]}
+{*ast.ImportSpec [STRING "runtime"]}
+{*ast.ImportSpec [STRING "strings"]}
+{*ast.ImportSpec [STRING "sync"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [TypeName string]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [TypeNameInvalid STRING ""]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [StructField]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.CommentGroup -> *ast.Comment [Name string]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Comments string]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment [PkgPath string]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Type TypeName]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Tag]}
+{*ast.SelectorExpr [reflect StructTag]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Offset uintptr]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Index]}
+{*ast.ArrayType [int]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Anonymous bool]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [FuncField]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.CommentGroup -> *ast.Comment [Name string]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Type TypeName]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [Type]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.CommentGroup -> *ast.Comment [Name string]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Comments string]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [PkgPath string]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Kind]}
+{*ast.SelectorExpr [reflect Kind]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Key TypeName]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Elem TypeName]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Fields]}
+{*ast.ArrayType [StructField]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [In]}
+{*ast.ArrayType [FuncField]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment [Out]}
+{*ast.ArrayType [FuncField]}
+{*ast.Field -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment [Conflict int]}
+
+
+function name is RawTypeName 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr [Type RawTypeName]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [TypeName]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [t Name STRING ""]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [TypeNameInvalid]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [t PkgPath STRING ""]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [TypeName]}
+	 {*ast.SelectorExpr [t Name]}
+	 {*ast.ReturnStmt -> *ast.CallExpr [TypeName]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [t PkgPath STRING "."]}
+	 {*ast.SelectorExpr [t Name]}
+
+
+function name is TypeName 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr [Type TypeName]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [TypeName]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [tn]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [t RawTypeName]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [tn TypeNameInvalid]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [t Conflict INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [tn]}
+	 {*ast.CallExpr [TypeName]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%s [%d]" tn]}
+	 {*ast.SelectorExpr [t Conflict]}
+	 {*ast.ReturnStmt [tn]}
+	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [TypeContainer]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [lock]}
+	 {*ast.SelectorExpr [sync RWMutex]}
+	 {*ast.Field [types]}
+	 {*ast.MapType [TypeName]}
+	 {*ast.StarExpr [Type]}
+	 {*ast.Field [real]}
+	 {*ast.MapType [TypeName]}
+	 {*ast.ArrayType -> *ast.SelectorExpr [reflect Type]}
+
+
+function name is NewTypeContainer 
+	 {*ast.CommentGroup -> *ast.Comment [NewTypeContainer]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [TypeContainer]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [TypeContainer]}
+	 {*ast.KeyValueExpr [types]}
+	 {*ast.CallExpr [make]}
+	 {*ast.MapType [TypeName]}
+	 {*ast.StarExpr [Type]}
+	 {*ast.KeyValueExpr [real]}
+	 {*ast.CallExpr [make]}
+	 {*ast.MapType [TypeName]}
+	 {*ast.ArrayType -> *ast.SelectorExpr [reflect Type]}
+
+
+function name is Type 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [tc]}
+	 {*ast.StarExpr [TypeContainer Type]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name TypeName]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Type]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [name TypeNameInvalid]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [tc lock RLock]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [tc lock RUnlock]}
+	 {*ast.ReturnStmt -> *ast.IndexExpr -> *ast.SelectorExpr [tc types name]}
+
+
+function name is Types 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [tc]}
+	 {*ast.StarExpr [TypeContainer Types]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.MapType [TypeName]}
+	 {*ast.StarExpr [Type]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [tc types]}
+
+
+function name is setType 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [tc]}
+	 {*ast.StarExpr [TypeContainer setType]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr [Type]}
+	 {*ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [tn]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [t RawTypeName]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [tn TypeNameInvalid]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [tc lock Lock]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [tc lock Unlock]}
+	 {*ast.AssignStmt [typs]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [tc real tn]}
+	 {*ast.AssignStmt [index]}
+	 {*ast.CallExpr [len typs]}
+	 {*ast.RangeStmt [i originalType typs]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [originalType typ]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [index i]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Conflict index]}
+	 {*ast.AssignStmt [tn]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [t TypeName]}
+	 {*ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [tc types tn t]}
+	 {*ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [tc real tn]}
+	 {*ast.CallExpr [append typs typ]}
+
+
+function name is getStructFieldType 
+	 {*ast.FieldList -> *ast.Field [tc]}
+	 {*ast.StarExpr [TypeContainer getStructFieldType]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ field]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [TypeName]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [strings HasSuffix]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field String]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ String]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [tc NameOf field]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [field String]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ String]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [TypeName]}
+	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [typ PkgPath STRING "."]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Name]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Type]}
+	 {*ast.KeyValueExpr [PkgPath]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field PkgPath]}
+	 {*ast.KeyValueExpr [Kind]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field Kind]}
+	 {*ast.SwitchStmt -> *ast.SelectorExpr [t Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Array]}
+	 {*ast.SelectorExpr [reflect Slice]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Elem]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc getStructFieldType typ]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field Elem]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint STRING "[]"]}
+	 {*ast.SelectorExpr [t Elem]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Ptr]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Elem]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc getStructFieldType typ]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field Elem]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint STRING "*"]}
+	 {*ast.SelectorExpr [t Elem]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Map]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Key]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc getStructFieldType typ]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field Key]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Elem]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc getStructFieldType typ]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field Elem]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "map[%s]%s"]}
+	 {*ast.SelectorExpr [t Key]}
+	 {*ast.SelectorExpr [t Elem]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Chan]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Elem]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc getStructFieldType typ]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field Elem]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint STRING "chan "]}
+	 {*ast.SelectorExpr [t Elem]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [tc setType t field]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [t TypeName]}
+
+
+function name is NameOf 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [tc]}
+	 {*ast.StarExpr [TypeContainer NameOf]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.FieldList -> *ast.Field [TypeName]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Type]}
+	 {*ast.KeyValueExpr [Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Name]}
+	 {*ast.KeyValueExpr [PkgPath]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ PkgPath]}
+	 {*ast.KeyValueExpr [Kind]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Kind]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [t Name STRING ""]}
+	 {*ast.BinaryExpr -> *ast.SelectorExpr [t Kind]}
+	 {*ast.SelectorExpr [reflect Interface]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Name STRING "interface{}"]}
+	 {*ast.AssignStmt [tn]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [t TypeName]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [tn TypeNameInvalid]}
+	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [tc Type tn nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [tn]}
+	 {*ast.SwitchStmt -> *ast.SelectorExpr [t Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Array]}
+	 {*ast.SelectorExpr [reflect Slice]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Elem]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc NameOf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Elem]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [t Name STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint STRING "[]"]}
+	 {*ast.SelectorExpr [t Elem]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Ptr]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Elem]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc NameOf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Elem]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [t Name STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint STRING "*"]}
+	 {*ast.SelectorExpr [t Elem]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Map]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Key]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc NameOf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Key]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Elem]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc NameOf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Elem]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [t Name STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "map[%s]%s"]}
+	 {*ast.SelectorExpr [t Key]}
+	 {*ast.SelectorExpr [t Elem]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Chan]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Elem]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc NameOf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Elem]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [t Name STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint STRING "chan "]}
+	 {*ast.SelectorExpr [t Elem]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Struct]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ NumField]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [f]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Field i]}
+	 {*ast.AssignStmt [field]}
+	 {*ast.CompositeLit [StructField]}
+	 {*ast.KeyValueExpr [Name]}
+	 {*ast.SelectorExpr [f Name]}
+	 {*ast.KeyValueExpr [PkgPath]}
+	 {*ast.SelectorExpr [f PkgPath]}
+	 {*ast.KeyValueExpr [Tag]}
+	 {*ast.SelectorExpr [f Tag]}
+	 {*ast.KeyValueExpr [Offset]}
+	 {*ast.SelectorExpr [f Offset]}
+	 {*ast.KeyValueExpr [Index]}
+	 {*ast.SelectorExpr [f Index]}
+	 {*ast.KeyValueExpr [Anonymous]}
+	 {*ast.SelectorExpr [f Anonymous]}
+	 {*ast.KeyValueExpr [Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc getStructFieldType typ]}
+	 {*ast.SelectorExpr [f Type]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Fields]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [t Fields field]}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Func]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [tc fillFunctionSignature t typ]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [t Name STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "func(%s)"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [strings Join]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [t In STRING ", "]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [t Out INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING " %s"]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [t Out INT 0]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.SelectorExpr [t Out INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING " (%s)"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [strings Join]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr -> *ast.SelectorExpr [t Out STRING ", "]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [tc setType t typ]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [t TypeName]}
+
+
+function name is fillFunctionSignature 
+	 {*ast.FieldList -> *ast.Field [tc]}
+	 {*ast.StarExpr [TypeContainer fillFunctionSignature]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
+	 {*ast.StarExpr [Type]}
+	 {*ast.Field [typ]}
+	 {*ast.SelectorExpr [reflect Type]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ NumIn]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t In]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [t In]}
+	 {*ast.CompositeLit [FuncField]}
+	 {*ast.KeyValueExpr [Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc NameOf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ In i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ NumOut]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t Out]}
+	 {*ast.CallExpr [append]}
+	 {*ast.SelectorExpr [t Out]}
+	 {*ast.CompositeLit [FuncField]}
+	 {*ast.KeyValueExpr [Type]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tc NameOf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Out i]}
+
+
+function name is NameOfInstance 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [tc]}
+	 {*ast.StarExpr [TypeContainer NameOfInstance]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ins]}
+	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [TypeName]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [typ]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf ins]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [typ Kind]}
+	 {*ast.SelectorExpr [reflect Func]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [tc NameOf typ]}
+	 {*ast.AssignStmt [funcInfo]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [runtime FuncForPC]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf ins Pointer]}
+	 {*ast.AssignStmt [t]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Type]}
+	 {*ast.KeyValueExpr [Kind]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [typ Kind]}
+	 {*ast.KeyValueExpr [Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [funcInfo Name]}
+	 {*ast.IfStmt -> *ast.AssignStmt [index]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [strings LastIndexByte]}
+	 {*ast.SelectorExpr [t Name CHAR '.']}
+	 {*ast.BinaryExpr [index INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t PkgPath]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [t Name index]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [t Name]}
+	 {*ast.SliceExpr -> *ast.SelectorExpr [t Name]}
+	 {*ast.BinaryExpr [index INT 1]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [tc fillFunctionSignature t typ]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [tc setType t typ]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [t TypeName]}
+
+
+function name is Complete 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [tc]}
+	 {*ast.StarExpr [TypeContainer Complete]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [analyzer]}
+	 {*ast.StarExpr [Analyzer]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [tc lock Lock]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [tc lock Unlock]}
+	 {*ast.AssignStmt [errors]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [error INT 0]}
+	 {*ast.RangeStmt [_ typ]}
+	 {*ast.SelectorExpr [tc types]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [typ PkgPath STRING ""]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [strings HasSuffix]}
+	 {*ast.SelectorExpr [typ PkgPath STRING ".glob."]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [obj err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [analyzer ObjectOf]}
+	 {*ast.SelectorExpr [typ PkgPath]}
+	 {*ast.SelectorExpr [typ Name]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [errors]}
+	 {*ast.CallExpr [append errors err]}
+	 {*ast.BranchStmt -> *ast.IfStmt -> *ast.AssignStmt [comments]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [analyzer Comments]}
+	 {*ast.SelectorExpr [typ PkgPath]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [obj Pos]}
+	 {*ast.BinaryExpr [comments nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [typ Comments]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [comments Text]}
+	 {*ast.SwitchStmt -> *ast.SelectorExpr [typ Kind]}
+	 {*ast.BlockStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Struct]}
+	 {*ast.AssignStmt [o ok]}
+	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [obj Type]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [types Named]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [st ok]}
+	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Underlying]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [types Struct]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [st NumFields]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [field]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [st Field i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [j INT 0]}
+	 {*ast.BinaryExpr [j]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [typ Fields]}
+	 {*ast.IncDecStmt [j]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [typ Fields j Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field Name]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [comments]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [analyzer Comments]}
+	 {*ast.SelectorExpr [typ PkgPath]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [field Pos]}
+	 {*ast.BinaryExpr [comments nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [typ Fields j Comments]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [comments Text]}
+	 {*ast.BranchStmt []}
+	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Func]}
+	 {*ast.AssignStmt [o ok]}
+	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [obj Type]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [types Signature]}
+	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Params Len]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [param]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Params At i]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [typ In i Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [param Name]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Results Len]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [result]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Results At i]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [typ Out i Name]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [result Name]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len errors INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Errorf STRING "%v" errors]}
+
+

@@ -1,0 +1,297 @@
+{*ast.File -> *ast.CommentGroup -> *ast.Comment [v8worker2]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ImportSpec [STRING "C"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "errors"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "sync"]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "runtime"]}
+{*ast.GenDecl -> *ast.TypeSpec [workerTableIndex int]}
+{*ast.GenDecl -> *ast.ValueSpec [workerTableLock]}
+{*ast.SelectorExpr [sync Mutex]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [resolverTableLock]}
+{*ast.SelectorExpr [sync Mutex]}
+{*ast.GenDecl -> *ast.ValueSpec [nextResolverToken int]}
+{*ast.GenDecl -> *ast.ValueSpec [resolverFuncs]}
+{*ast.CallExpr [make]}
+{*ast.MapType [int ModuleResolverCallback]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.ValueSpec [workerTable]}
+{*ast.CallExpr [make]}
+{*ast.MapType [workerTableIndex]}
+{*ast.StarExpr [worker]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [workerTableNextAvailable workerTableIndex INT 0]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ReceiveMessageCallback]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+{*ast.ArrayType [byte]}
+{*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ModuleResolverCallback]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field [moduleName referrerName string]}
+{*ast.FieldList -> *ast.Field [int]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [initV8Once]}
+{*ast.SelectorExpr [sync Once]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.TypeSpec [worker]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [cWorker]}
+{*ast.StarExpr -> *ast.SelectorExpr [C worker]}
+{*ast.Field [cb ReceiveMessageCallback]}
+{*ast.Field [tableIndex workerTableIndex]}
+{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [Worker]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [worker]}
+{*ast.Field [disposed bool]}
+
+
+function name is Version 
+	 {*ast.CommentGroup -> *ast.Comment [Version]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C GoString]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_version]}
+
+
+function name is SetFlags 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [SetFlags]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [args]}
+	 {*ast.ArrayType [string]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [args]}
+	 {*ast.CallExpr [append]}
+	 {*ast.CompositeLit -> *ast.ArrayType [string STRING "dummy" args]}
+	 {*ast.AssignStmt [ptrSize]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
+	 {*ast.CallExpr [uintptr INT 0]}
+	 {*ast.AssignStmt [argv]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C malloc]}
+	 {*ast.BinaryExpr [ptrSize]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t]}
+	 {*ast.CallExpr [len args]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer argv]}
+	 {*ast.AssignStmt [a]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 10000]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [C char argv]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr [len args]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [cstr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString]}
+	 {*ast.IndexExpr [args i]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free cstr]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [a i]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char cstr]}
+	 {*ast.AssignStmt [argc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.CallExpr [len args]}
+	 {*ast.AssignStmt [argcPtr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [argc]}
+	 {*ast.AssignStmt [argvPtr]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer argv]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C worker_set_flags argcPtr argvPtr]}
+	 {*ast.AssignStmt [out]}
+	 {*ast.CallExpr [make]}
+	 {*ast.ArrayType [string argc]}
+	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr [int argc]}
+	 {*ast.IncDecStmt [i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [out i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString]}
+	 {*ast.IndexExpr [a i]}
+	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.IndexExpr [out INT 0 STRING "dummy"]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "Expected the first element to be our dummy"]}
+	 {*ast.ReturnStmt -> *ast.SliceExpr [out INT 1]}
+
+
+function name is workerTableLookup 
+	 { [workerTableLookup]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [index workerTableIndex]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [worker]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [workerTableLock Lock]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [workerTableLock Unlock]}
+	 {*ast.ReturnStmt -> *ast.IndexExpr [workerTable index]}
+
+
+function name is recvCb 
+	 {*ast.CommentGroup -> *ast.Comment [recvCb]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [buf unsafe Pointer]}
+	 {*ast.Field [buflen]}
+	 {*ast.SelectorExpr [C int]}
+	 {*ast.Field [index workerTableIndex]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [gbuf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GoBytes buf buflen]}
+	 {*ast.AssignStmt [w]}
+	 {*ast.CallExpr [workerTableLookup index]}
+	 {*ast.AssignStmt [retbuf]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [w cb gbuf]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [retbuf nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [retbufptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CBytes retbuf]}
+	 {*ast.ReturnStmt -> *ast.CompositeLit -> *ast.SelectorExpr [C buf retbufptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t]}
+	 {*ast.CallExpr [len retbuf]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CompositeLit -> *ast.SelectorExpr [C buf nil INT 0]}
+
+
+function name is ResolveModule 
+	 {*ast.CommentGroup -> *ast.Comment [ResolveModule]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [moduleSpecifier]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [C char]}
+	 {*ast.Field [referrerSpecifier]}
+	 {*ast.StarExpr -> *ast.SelectorExpr [C char]}
+	 {*ast.Field [resolverToken int]}
+	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C int]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [moduleName]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString moduleSpecifier]}
+	 {*ast.AssignStmt [referrerName]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString referrerSpecifier]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [resolverTableLock Lock]}
+	 {*ast.AssignStmt [resolve]}
+	 {*ast.IndexExpr [resolverFuncs resolverToken]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [resolverTableLock Unlock]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [resolve nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C int INT 1]}
+	 {*ast.AssignStmt [ret]}
+	 {*ast.CallExpr [resolve moduleName referrerName]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C int ret]}
+
+
+function name is New 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [New]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cb ReceiveMessageCallback]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Worker]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [workerTableLock Lock]}
+	 {*ast.AssignStmt [w]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [worker]}
+	 {*ast.KeyValueExpr [cb cb]}
+	 {*ast.KeyValueExpr [tableIndex workerTableNextAvailable]}
+	 {*ast.IncDecStmt [workerTableNextAvailable]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [workerTable]}
+	 {*ast.SelectorExpr [w tableIndex w]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [workerTableLock Unlock]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [initV8Once Do]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C v8_init]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [w cWorker]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_new]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.SelectorExpr [w tableIndex]}
+	 {*ast.AssignStmt [externalWorker]}
+	 {*ast.UnaryExpr -> *ast.CompositeLit [Worker]}
+	 {*ast.KeyValueExpr [worker w]}
+	 {*ast.KeyValueExpr [disposed false]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [runtime SetFinalizer externalWorker]}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [final_worker]}
+	 {*ast.StarExpr [Worker]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [final_worker Dispose]}
+	 {*ast.ReturnStmt [externalWorker]}
+
+
+function name is Dispose 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [w]}
+	 {*ast.StarExpr [Worker Dispose]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [w disposed]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "worker already disposed"]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [w disposed true]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [workerTableLock Lock]}
+	 {*ast.AssignStmt [internalWorker]}
+	 {*ast.SelectorExpr [w worker]}
+	 {*ast.ExprStmt -> *ast.CallExpr [delete workerTable]}
+	 {*ast.SelectorExpr [internalWorker tableIndex]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [workerTableLock Unlock]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C worker_dispose]}
+	 {*ast.SelectorExpr [internalWorker cWorker]}
+
+
+function name is Load 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [w]}
+	 {*ast.StarExpr [Worker Load]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [scriptName string]}
+	 {*ast.Field [code string]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [scriptName_s]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString scriptName]}
+	 {*ast.AssignStmt [code_s]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString code]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer scriptName_s]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer code_s]}
+	 {*ast.AssignStmt [r]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_load]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker scriptName_s code_s]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [r INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [errStr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_last_exception]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New errStr]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is LoadModule 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [w]}
+	 {*ast.StarExpr [Worker LoadModule]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [scriptName string]}
+	 {*ast.Field [code string]}
+	 {*ast.Field [resolve ModuleResolverCallback]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [scriptName_s]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString scriptName]}
+	 {*ast.AssignStmt [code_s]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CString code]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer scriptName_s]}
+	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer code_s]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [resolverTableLock Lock]}
+	 {*ast.IncDecStmt [nextResolverToken]}
+	 {*ast.AssignStmt [token nextResolverToken]}
+	 {*ast.AssignStmt -> *ast.IndexExpr [resolverFuncs token resolve]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [resolverTableLock Unlock]}
+	 {*ast.AssignStmt [token_i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int token]}
+	 {*ast.AssignStmt [r]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_load_module]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker scriptName_s code_s token_i]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [resolverTableLock Lock]}
+	 {*ast.ExprStmt -> *ast.CallExpr [delete resolverFuncs token]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [resolverTableLock Unlock]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [r INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [errStr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_last_exception]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New errStr]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is SendBytes 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [w]}
+	 {*ast.StarExpr [Worker SendBytes]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [msg_p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C CBytes msg]}
+	 {*ast.AssignStmt [r]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_send_bytes]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker msg_p]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t]}
+	 {*ast.CallExpr [len msg]}
+	 {*ast.IfStmt -> *ast.BinaryExpr [r INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [errStr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_last_exception]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker]}
+	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New errStr]}
+	 {*ast.ReturnStmt [nil]}
+
+
+function name is TerminateExecution 
+	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [w]}
+	 {*ast.StarExpr [Worker TerminateExecution]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C worker_terminate_execution]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker]}
+
+

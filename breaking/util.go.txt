@@ -1,0 +1,52 @@
+{*ast.File [fastjson]}
+{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
+{*ast.ImportSpec [STRING "unsafe"]}
+
+
+function name is b2s 
+	 { [b2s]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [b]}
+
+
+function name is s2b 
+	 { [s2b]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
+	 {*ast.FieldList -> *ast.Field [b]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [strh]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect StringHeader]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [s]}
+	 {*ast.AssignStmt [sh]}
+	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [b]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [sh Data]}
+	 {*ast.SelectorExpr [strh Data]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [sh Len]}
+	 {*ast.SelectorExpr [strh Len]}
+	 {*ast.AssignStmt -> *ast.SelectorExpr [sh Cap]}
+	 {*ast.SelectorExpr [strh Len]}
+	 {*ast.ReturnStmt [b]}
+	 {*ast.GenDecl -> *ast.ValueSpec [maxStartEndStringLen INT 80]}
+
+
+function name is startEndString 
+	 { [startEndString]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
+	 {*ast.FieldList -> *ast.Field [string]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len s maxStartEndStringLen]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [s]}
+	 {*ast.AssignStmt [start]}
+	 {*ast.SliceExpr [s INT 40]}
+	 {*ast.AssignStmt [end]}
+	 {*ast.SliceExpr [s]}
+	 {*ast.BinaryExpr -> *ast.CallExpr [len s INT 40]}
+	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [start STRING "..." end]}
+
+
