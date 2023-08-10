@@ -18,17 +18,29 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 	var caseListCheck []elem
 	var caseReplacement []string
 	caseFlag := false
+	caseMemset := false
 
 	if len(caseWFunc) > 0 {
 		for k := range caseWFunc {
+			if strings.EqualFold(caseWFunc[k].funcName, "Memset") {
+				caseMemset = true
+			} else {
+				caseMemset = false
+			}
 			for i := 0; i < len(caseWFunc[k].cases); i++ {
-				if strings.Contains(caseWFunc[k].cases[i].funcName, "case") {
+				if strings.Contains(caseWFunc[k].cases[i].caseName, "case") {
 					for j := i + 1; j < len(caseWFunc[k].cases); j++ {
-						if strings.Contains(caseWFunc[k].cases[j].funcName, "case") {
+						if strings.Contains(caseWFunc[k].cases[j].caseName, "case") {
+							if caseMemset {
+								/*fmt.Println("*****")
+								fmt.Println(len(caseWFunc[k].cases[i].value), " ", caseWFunc[k].cases[i].value, "\n\n", len(caseWFunc[k].cases[j].value), " ", caseWFunc[k].cases[j].value)
+								fmt.Println("*****")
+								fmt.Println()*/
+							}
 							if len(caseWFunc[k].cases[i].value) == len(caseWFunc[k].cases[j].value) {
 								// Compare details between cases
 								for idx := range caseWFunc[k].cases[i].value {
-									if strings.Compare(caseWFunc[k].cases[i].value[idx].path, caseWFunc[k].cases[j].value[idx].path) == 0 {
+									if strings.EqualFold(caseWFunc[k].cases[i].value[idx].path, caseWFunc[k].cases[j].value[idx].path) {
 										if len(caseWFunc[k].cases[i].value[idx].value) == len(caseWFunc[k].cases[j].value[idx].value) {
 											for idxValue := range caseWFunc[k].cases[i].value[idx].value {
 												if strings.Compare(caseWFunc[k].cases[i].value[idx].value[idxValue], caseWFunc[k].cases[j].value[idx].value[idxValue]) == 0 {
@@ -48,59 +60,59 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 											caseFlag = false
 											break
 										}
-									} else if caseWFunc[k].cases[i].value[idx].path+" -> *ast.SelectorExpr" == caseWFunc[k].cases[j].value[idx].path {
-										// This is a special case for modified elem list
-										// listFunctions[j].value[idx].path is listFunctions[i].value[idx].path " -> *ast.SelectorExpr"
-										// listFunctions[j].value[idx].value must look like [... unsafe Pointer] and
-										// listFunctions[i].value[idx].value must have type variable in its elem value so like [... type]
-										len1 := len(caseWFunc[k].cases[i].value[idx].value)
-										len2 := len(caseWFunc[k].cases[j].value[idx].value)
-										if len2 > 1 && !contains(typeList, caseWFunc[k].cases[i].value[idx].value[len1-1]) ||
-											(!checkUnsafeUsages(caseWFunc[k].cases[j].value[idx].value[len2-1]) &&
-												!checkUnsafeUsages(caseWFunc[k].cases[j].value[idx].value[len2-2])) {
+										// TODO
+									} else if (strings.Contains(caseWFunc[k].cases[i].value[idx].path, "*ast.SelectorExpr") && !strings.Contains(caseWFunc[k].cases[j].value[idx].path, "*ast.SelectorExpr")) ||
+										(strings.Contains(caseWFunc[k].cases[j].value[idx].path, "*ast.SelectorExpr") && !strings.Contains(caseWFunc[k].cases[i].value[idx].path, "*ast.SelectorExpr")) {
+										// if one of path contains "*ast.SelectorExpr"
+										length := 0
+										if (len(caseWFunc[k].cases[i].value[idx].value) == 0) || (len(caseWFunc[k].cases[j].value[idx].value) == 0) {
 											caseFlag = false
 											break
-										}
-										caseFlag = true
-									} else if caseWFunc[k].cases[j].value[idx].path+" -> *ast.SelectorExpr" == caseWFunc[k].cases[i].value[idx].path {
-										// This is a special case for modified elem list
-										// listFunctions[i].value[idx].path is listFunctions[j].value[idx].path " -> *ast.SelectorExpr"
-										// listFunctions[i].value[idx].value must look like [... unsafe Pointer] and
-										// listFunctions[j].value[idx].value must have type variable in its elem value so like [... type]
-										len1 := len(caseWFunc[k].cases[j].value[idx].value)
-										len2 := len(caseWFunc[k].cases[i].value[idx].value)
-										if len2 > 2 && !contains(typeList, caseWFunc[k].cases[j].value[idx].value[len1-1]) ||
-											(!checkUnsafeUsages(caseWFunc[k].cases[i].value[idx].value[len2-1]) &&
-												!checkUnsafeUsages(caseWFunc[k].cases[i].value[idx].value[len2-2])) {
-											caseFlag = false
-											break
-										}
-										caseFlag = true
-									} else if strings.Contains(caseWFunc[k].cases[i].value[idx].path, "*ast.SelectorExpr") {
-										// listFunctions[i].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
-										// and listFunctions[j].value[idx] looks like " ... [TYPE]"
-										if len(caseWFunc[k].cases[j].value[idx].value) > 0 && !contains(typeList, caseWFunc[k].cases[j].value[idx].value[0]) {
-											caseFlag = false
-											break
-										}
-										for _, val := range caseWFunc[k].cases[i].value[idx].value {
-											if !checkUnsafeUsages(val) {
-												caseFlag = false
-												break
-											}
-										}
-										caseFlag = true
-									} else if strings.Contains(caseWFunc[k].cases[j].value[idx].path, "*ast.SelectorExpr") {
-										// listFunctions[i].value[idx] looks like " ... [TYPE]"
-										// and listFunctions[j].value[idx] looks like "... -> *ast.SelectorExpr [unsafe Pointer]"
-										if len(caseWFunc[k].cases[j].value[idx].value) > 0 && !contains(typeList, caseWFunc[k].cases[i].value[idx].value[0]) {
-											caseFlag = false
-											break
-										}
-										for _, val := range caseWFunc[k].cases[j].value[idx].value {
-											if !checkUnsafeUsages(val) {
-												caseFlag = false
-												break
+										} else {
+											if len(caseWFunc[k].cases[i].value[idx].value) <= len(caseWFunc[k].cases[j].value[idx].value) {
+												length = len(caseWFunc[k].cases[i].value[idx].value) // will be index a
+												a, b := 0, 0
+												for ; a < length; a++ {
+													if !strings.EqualFold(caseWFunc[k].cases[i].value[idx].value[a], caseWFunc[k].cases[j].value[idx].value[b]) {
+														if contains(typeList, caseWFunc[k].cases[i].value[idx].value[a]) {
+															if !checkUnsafeUsages(caseWFunc[k].cases[j].value[idx].value[b]) {
+																caseFlag = false
+																break
+															} else if b+1 < length && !checkUnsafeUsages(caseWFunc[k].cases[j].value[idx].value[b+1]) {
+																caseFlag = false
+																break
+															} else {
+																b++
+															}
+														}
+													}
+												}
+												if a != b {
+													caseFlag = false
+													break
+												}
+											} else {
+												length = len(caseWFunc[k].cases[j].value[idx].value)
+												a, b := 0, 0
+												for ; a < length; a++ {
+													if !strings.EqualFold(caseWFunc[k].cases[i].value[idx].value[a], caseWFunc[k].cases[j].value[idx].value[b]) {
+														if contains(typeList, caseWFunc[k].cases[j].value[idx].value[a]) {
+															if !checkUnsafeUsages(caseWFunc[k].cases[i].value[idx].value[b]) {
+																caseFlag = false
+																break
+															} else if b+1 < length && !checkUnsafeUsages(caseWFunc[k].cases[i].value[idx].value[b+1]) {
+																caseFlag = false
+																break
+															} else {
+																b++
+															}
+														}
+													}
+												}
+												if a != b {
+													caseFlag = false
+													break
+												}
 											}
 										}
 										caseFlag = true
@@ -116,11 +128,11 @@ func checkReusedCases(caseWFunc []checkCases, funcList []string, typeList []stri
 							}
 						}
 						if caseFlag == true {
-							if !isSameString(caseReplacement, caseWFunc[k].cases[i].funcName) {
-								caseReplacement = append(caseReplacement, caseWFunc[k].cases[i].funcName)
+							if !isSameString(caseReplacement, caseWFunc[k].cases[i].caseName) {
+								caseReplacement = append(caseReplacement, caseWFunc[k].cases[i].caseName)
 							}
-							if !isSameString(caseReplacement, caseWFunc[k].cases[j].funcName) {
-								caseReplacement = append(caseReplacement, caseWFunc[k].cases[j].funcName)
+							if !isSameString(caseReplacement, caseWFunc[k].cases[j].caseName) {
+								caseReplacement = append(caseReplacement, caseWFunc[k].cases[j].caseName)
 							}
 							caseFlag = false
 						}
@@ -178,6 +190,14 @@ func checkSwitchStatement(filename string, listFunctions []basicStr) (bool, []ba
 		var modifiedFuncCheck []checkCases
 		for idx := range funcCheck {
 			modifiedFuncCheck = append(modifiedFuncCheck, checkCases{funcCheck[idx].funcName, checkSelectorExprCase(funcCheck[idx].cases)})
+			/*if strings.EqualFold(funcCheck[idx].funcName, "Memset") || strings.EqualFold(funcCheck[idx].funcName, "zeroIter") || strings.EqualFold(funcCheck[idx].funcName, "Get") {
+				for _, val := range modifiedFuncCheck {
+					for _, value := range val.cases {
+						fmt.Println(value.caseName, "\n", value.value)
+					}
+					fmt.Println()
+				}
+			}*/
 		}
 
 		return true, checkSwitchCases(modifiedFuncCheck, funcList, typeList)
@@ -195,7 +215,7 @@ func checkSwitchCases(modifiedFuncCheck []checkCases, funcList []string, typeLis
 	numberOfCase := 0
 	for idx := range modifiedFuncCheck {
 		for _, val := range modifiedFuncCheck[idx].cases {
-			if strings.Contains(val.funcName, "case") {
+			if strings.Contains(val.caseName, "case") {
 				numberOfCase++
 			}
 		}
@@ -208,11 +228,11 @@ func checkSwitchCases(modifiedFuncCheck []checkCases, funcList []string, typeLis
 	// filter case clause
 	for idx := range modifiedFuncCheck {
 		for _, val := range modifiedFuncCheck[idx].cases {
-			if strings.Contains(val.funcName, "case") &&
-				(val.value[0].path == "*ast.CaseClause" ||
-					val.value[0].path == "*ast.CaseClause -> *ast.SelectorExpr") {
-				//fmt.Println(val.value[0].value)
-				checkCaseClause = append(checkCaseClause, elem{val.funcName, val.value[0].value})
+			if strings.Contains(val.caseName, "case") &&
+				(strings.EqualFold(val.value[0].path, "*ast.CaseClause") ||
+					strings.EqualFold(val.value[0].path, "*ast.CaseClause -> *ast.SelectorExpr")) {
+				//fmt.Println(val.caseName, val.value[0].value)
+				checkCaseClause = append(checkCaseClause, elem{val.caseName, val.value[0].value})
 			}
 		}
 		funcCaseClause = append(funcCaseClause, basicCaseStr{modifiedFuncCheck[idx].funcName, checkCaseClause})

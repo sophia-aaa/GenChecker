@@ -108,6 +108,7 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 								if bool1 && bool2 {
 									fmt.Println("1 flag is ", flag)
 								}
+								// TODO
 							} else if listFunctions[i].value[idx].path+" -> *ast.SelectorExpr" == listFunctions[j].value[idx].path {
 								// This is a special case for modified elem list
 								// listFunctions[j].value[idx].path is listFunctions[i].value[idx].path " -> *ast.SelectorExpr"

@@ -1,7 +1,7 @@
 {*ast.File [storage]}
 
 
-{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 
 
 function name is Bools 
@@ -10,7 +10,8 @@ function name is Bools
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [bool]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [bool]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen bType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen bType]}
 
@@ -20,7 +21,9 @@ function name is SetB
 	 {*ast.StarExpr [Header SetB]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Bools i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Bools i x]}
 
 
 function name is GetB 
@@ -37,7 +40,8 @@ function name is Ints
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen iType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen iType]}
 
@@ -47,7 +51,9 @@ function name is SetI
 	 {*ast.StarExpr [Header SetI]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Ints i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Ints i x]}
 
 
 function name is GetI 
@@ -64,7 +70,8 @@ function name is Int8s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int8]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int8]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i8Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i8Type]}
 
@@ -74,7 +81,9 @@ function name is SetI8
 	 {*ast.StarExpr [Header SetI8]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int8]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int8s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int8s i x]}
 
 
 function name is GetI8 
@@ -91,7 +100,8 @@ function name is Int16s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int16]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int16]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i16Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i16Type]}
 
@@ -101,7 +111,9 @@ function name is SetI16
 	 {*ast.StarExpr [Header SetI16]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int16]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int16s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int16s i x]}
 
 
 function name is GetI16 
@@ -118,7 +130,8 @@ function name is Int32s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int32]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i32Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i32Type]}
 
@@ -128,7 +141,9 @@ function name is SetI32
 	 {*ast.StarExpr [Header SetI32]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int32s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int32s i x]}
 
 
 function name is GetI32 
@@ -145,7 +160,8 @@ function name is Int64s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int64]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [int64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i64Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen i64Type]}
 
@@ -155,7 +171,9 @@ function name is SetI64
 	 {*ast.StarExpr [Header SetI64]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int64s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int64s i x]}
 
 
 function name is GetI64 
@@ -172,7 +190,8 @@ function name is Uints
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen uType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen uType]}
 
@@ -182,7 +201,9 @@ function name is SetU
 	 {*ast.StarExpr [Header SetU]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uints i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uints i x]}
 
 
 function name is GetU 
@@ -199,7 +220,8 @@ function name is Uint8s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint8]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uint8]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u8Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u8Type]}
 
@@ -209,7 +231,9 @@ function name is SetU8
 	 {*ast.StarExpr [Header SetU8]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint8]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint8s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint8s i x]}
 
 
 function name is GetU8 
@@ -226,7 +250,8 @@ function name is Uint16s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint16]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uint16]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u16Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u16Type]}
 
@@ -236,7 +261,9 @@ function name is SetU16
 	 {*ast.StarExpr [Header SetU16]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint16]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint16s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint16s i x]}
 
 
 function name is GetU16 
@@ -253,7 +280,8 @@ function name is Uint32s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint32]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uint32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u32Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u32Type]}
 
@@ -263,7 +291,9 @@ function name is SetU32
 	 {*ast.StarExpr [Header SetU32]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint32s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint32s i x]}
 
 
 function name is GetU32 
@@ -280,7 +310,8 @@ function name is Uint64s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uint64]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u64Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen u64Type]}
 
@@ -290,7 +321,9 @@ function name is SetU64
 	 {*ast.StarExpr [Header SetU64]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint64s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint64s i x]}
 
 
 function name is GetU64 
@@ -307,7 +340,8 @@ function name is Uintptrs
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [uintptr]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen uintptrType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen uintptrType]}
 
@@ -317,7 +351,9 @@ function name is SetUintptr
 	 {*ast.StarExpr [Header SetUintptr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uintptr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uintptrs i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uintptrs i x]}
 
 
 function name is GetUintptr 
@@ -334,7 +370,8 @@ function name is Float32s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float32]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [float32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen f32Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen f32Type]}
 
@@ -344,7 +381,9 @@ function name is SetF32
 	 {*ast.StarExpr [Header SetF32]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Float32s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Float32s i x]}
 
 
 function name is GetF32 
@@ -361,7 +400,8 @@ function name is Float64s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [float64]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [float64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen f64Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen f64Type]}
 
@@ -371,7 +411,9 @@ function name is SetF64
 	 {*ast.StarExpr [Header SetF64]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x float64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Float64s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Float64s i x]}
 
 
 function name is GetF64 
@@ -388,7 +430,8 @@ function name is Complex64s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex64]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [complex64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen c64Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen c64Type]}
 
@@ -398,7 +441,9 @@ function name is SetC64
 	 {*ast.StarExpr [Header SetC64]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x complex64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Complex64s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Complex64s i x]}
 
 
 function name is GetC64 
@@ -415,7 +460,8 @@ function name is Complex128s
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [complex128]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [complex128]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen c128Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen c128Type]}
 
@@ -425,7 +471,9 @@ function name is SetC128
 	 {*ast.StarExpr [Header SetC128]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x complex128]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Complex128s i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Complex128s i x]}
 
 
 function name is GetC128 
@@ -442,7 +490,8 @@ function name is Strings
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen strType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen strType]}
 
@@ -452,7 +501,9 @@ function name is SetStr
 	 {*ast.StarExpr [Header SetStr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Strings i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Strings i x]}
 
 
 function name is GetStr 
@@ -469,7 +520,8 @@ function name is UnsafePointers
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [h Raw]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [h Raw]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen unsafePointerType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [h TypedLen unsafePointerType]}
 
@@ -479,7 +531,9 @@ function name is SetUnsafePointer
 	 {*ast.StarExpr [Header SetUnsafePointer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field -> *ast.SelectorExpr [x unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h UnsafePointers i x]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h UnsafePointers i x]}
 
 
 function name is GetUnsafePointer 
