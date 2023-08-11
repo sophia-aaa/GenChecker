@@ -137,13 +137,13 @@ func main() {
 			fmt.Println("This function has switch statement: ")
 			for ind, val := range caseList {
 				if len(caseList) == 1 {
-					fmt.Print("{ ", val.caseName, " }")
+					fmt.Print("{ ", val.funcName, " }")
 				} else if ind == len(caseList)-1 {
-					fmt.Println(val.caseName, "}")
+					fmt.Println(val.funcName, "}")
 				} else if ind == 0 {
-					fmt.Print("{ ", val.caseName, ", ")
+					fmt.Print("{ ", val.funcName, ", ")
 				} else {
-					fmt.Print(val.caseName, ", ")
+					fmt.Print(val.funcName, ", ")
 				}
 			}
 		}

@@ -35,6 +35,12 @@ type basicCaseStr struct {
 	value    []elem
 }
 
+type caseResult struct {
+	funcName  string
+	funcToken string
+	caseCol   []basicCaseStr
+}
+
 func buildAstDataStr(filename string) []basicStr {
 	// Commentgroups and comments are ignored
 	// because they interfere with comparing the content of the code.
@@ -195,12 +201,12 @@ func buildAstDataStr(filename string) []basicStr {
 			elem_list = append(elem_list, elem{astNode, astValue})
 			astNode = ""
 			astValue = []string{}
-			// I couldn't find a way to express "incomplete", so I customised it like this.
+			/* I couldn't find a way to express "incomplete", so I customised it like this.
 			if x.Incomplete == true {
 				elem_list = append(elem_list, elem{"*ast.InterfaceType.Incomplete", []string{"true"}})
 			} else {
 				elem_list = append(elem_list, elem{"*ast.InterfaceType.Incomplete", []string{"false"}})
-			}
+			}*/
 		case *ast.CaseClause, *ast.SwitchStmt:
 			// *ast.CaseClause -> *ast.SelectorExpr
 			if !strings.EqualFold(astNode, "") || len(astValue) > 0 {
@@ -324,11 +330,11 @@ func (v visitor) Visit(n ast.Node) ast.Visitor {
 		depth = int(v)
 		Tree2str = append(Tree2str, str)
 		if len(valExtracted) > 2 {
-			str = fmt.Sprintf("%s %v\n", reflect.TypeOf(n).String(), valExtracted[2])
-			str4cases = fmt.Sprintf("%s %v", reflect.TypeOf(n).String(), valExtracted[2])
+			str = fmt.Sprintf("%s %v %v\n", reflect.TypeOf(n).String(), valExtracted[2], n.Pos())
+			str4cases = fmt.Sprintf("%s %v %v", reflect.TypeOf(n).String(), valExtracted[2], n.Pos())
 		} else { // Function has no name!
-			str = fmt.Sprintf("%s %v\n", reflect.TypeOf(n).String(), "No Name")
-			str4cases = fmt.Sprintf("%s %v", reflect.TypeOf(n).String(), "No Name")
+			str = fmt.Sprintf("%s %v %v\n", reflect.TypeOf(n).String(), "No Name", n.Pos())
+			str4cases = fmt.Sprintf("%s %v %v", reflect.TypeOf(n).String(), "No Name", n.Pos())
 		}
 		Tree2str = append(Tree2str, str)
 		Tree2cases = append(Tree2cases, basicCases{depth, str4cases})
@@ -344,29 +350,26 @@ func (v visitor) Visit(n ast.Node) ast.Visitor {
 	return v + 1
 }
 
-type testFuncCase struct {
-	funcName string
-	caseCol  []testCase
+type funcCollection struct {
+	funcName  string
+	funcToken string
+	caseCol   []caseCollection
 }
 
-type testCase struct {
+type caseCollection struct {
 	caseName  string
 	caseValue []basicCases
 }
 
-func buildAstCaseStr(Tree2cases []basicCases) []checkCases {
+func buildAstCaseStr(Tree2cases []basicCases) []caseResult {
 	var funcName string
-	var path string
-	var astValueList []string
 	var depthFirstCase int
 	var caseName string
-	var elemList []elem
-	var caseCheck []basicCaseStr
-	var funcCheck []checkCases
 
-	var cases []testCase
+	var cases []caseCollection
 	var caseValues []basicCases
-	var resultFunc []testFuncCase
+	var resultFunc []funcCollection
+	var funcToken string
 	flag := true
 	count := 0
 	caseBegin := false
@@ -374,49 +377,26 @@ func buildAstCaseStr(Tree2cases []basicCases) []checkCases {
 	for _, val := range Tree2cases {
 		if val.depth == 1 && strings.Contains(val.value, "*ast.FuncDecl") { // function begins
 			if funcName != "" {
-
-				fmt.Println(funcName, " and path is: ", path, "\t", caseName)
-				elemList = append(elemList, elem{path, astValueList})
-				caseCheck = append(caseCheck, basicCaseStr{caseName, elemList})
-				funcCheck = append(funcCheck, checkCases{funcName, caseCheck})
-				//fmt.Println(path, " ", astValueList)
-				path = ""
-				caseName = ""
-				astValueList = []string{}
-				elemList = []elem{}
-				caseCheck = []basicCaseStr{}
+				// new
+				if len(caseValues) > 0 {
+					cases = append(cases, caseCollection{caseName, caseValues})
+				}
+				resultFunc = append(resultFunc, funcCollection{funcName, funcToken, cases})
+				caseValues = []basicCases{}
+				cases = []caseCollection{}
 				count = 0
 				depthFirstCase = 0
-
-				// new
-				cases = append(cases, testCase{caseName, caseValues})
-				resultFunc = append(resultFunc, testFuncCase{funcName, cases})
-				caseValues = []basicCases{}
-				cases = []testCase{}
-
 			}
 			valExtracted := strings.Split(val.value, " ")
 			funcName = valExtracted[1]
-			//fmt.Println()
-			//fmt.Println()
-			//fmt.Println(">> ", funcName, " <<")
+			funcToken = valExtracted[2]
+
 			flag = true
 			continue
 		}
 		if flag && (strings.Contains(val.value, "*ast.CaseClause")) { // to set a depth
 			// case in switch begins
-			if len(astValueList) > 0 || path != "" {
-				//fmt.Println(path, " ", astValueList)
-				elemList = append(elemList, elem{path, astValueList})
-				caseCheck = append(caseCheck, basicCaseStr{"", elemList})
-				path = ""
-				elemList = []elem{}
-				astValueList = []string{}
-
-			}
-
 			depthFirstCase = val.depth
-			path = val.value
 			flag = false
 			caseName = strconv.Itoa(count) + ".case"
 			caseBegin = true
@@ -424,23 +404,14 @@ func buildAstCaseStr(Tree2cases []basicCases) []checkCases {
 			continue
 		}
 		if depthFirstCase == val.depth && strings.Contains(val.value, "*ast.CaseClause") {
-			if len(astValueList) > 0 || path != "" {
-				//fmt.Println(path, " ", astValueList)
-				elemList = append(elemList, elem{path, astValueList})
-				caseCheck = append(caseCheck, basicCaseStr{caseName, elemList})
-				path = ""
-				elemList = []elem{}
-				astValueList = []string{}
-				count++
+			if len(caseValues) > 0 {
 				// new
-				cases = append(cases, testCase{caseName, caseValues})
+				cases = append(cases, caseCollection{caseName, caseValues})
 				//resultFunc = append(resultFunc, testFuncCase{funcName, cases})
 				caseValues = []basicCases{}
-
+				count++
 			}
 			caseName = strconv.Itoa(count) + ".case"
-			path = val.value
-
 			if strings.Contains(val.value, "default") {
 				caseBegin = false
 				continue
@@ -449,117 +420,105 @@ func buildAstCaseStr(Tree2cases []basicCases) []checkCases {
 			continue
 		}
 		if caseBegin && val.depth >= depthFirstCase {
-
 			// new
 			caseValues = append(caseValues, val)
-
-			if strings.Contains(val.value, "*ast.Ident") {
-				valExtracted := strings.Split(val.value, " ")
-				astValueList = append(astValueList, valExtracted[1])
-				continue
-			}
-
-			if strings.Contains(val.value, "*ast.BasicLit") {
-				if !strings.EqualFold(path, "") && len(astValueList) > 0 {
-					//fmt.Println(path, " ", astValueList)
-					elemList = append(elemList, elem{path, astValueList})
-					path = ""
-					astValueList = []string{}
-				}
-				valExtracted := strings.Split(val.value, " ")
-				fmt.Println("*ast.BasicLit", valExtracted)
-				if path == "" {
-					path = valExtracted[0]
-				} else {
-					path = path + " -> " + valExtracted[0]
-				}
-				if len(valExtracted) > 1 {
-					astBasicLitValue := valExtracted[1] + " " + valExtracted[2]
-					astValueList = append(astValueList, astBasicLitValue)
-					elemList = append(elemList, elem{path, astValueList})
-					path = ""
-					astValueList = []string{}
-				}
-				continue
-			}
-
-			if strings.Contains(val.value, "*ast.AssignStmt") || strings.Contains(val.value, "*ast.BinaryExpr") || strings.Contains(val.value, "*ast.UnaryExpr") {
-				if !strings.EqualFold(path, "") && len(astValueList) > 0 {
-					//fmt.Println(path, " ", astValueList)
-					elemList = append(elemList, elem{path, astValueList})
-					path = ""
-					astValueList = []string{}
-				}
-				valExtracted := strings.Split(val.value, " ")
-				if path == "" {
-					path = valExtracted[0]
-				} else {
-					path = path + " -> " + valExtracted[0]
-				}
-				astValueList = append(astValueList, valExtracted[1])
-				elemList = append(elemList, elem{path, astValueList})
-				path = ""
-				astValueList = []string{}
-				continue
-			}
-			if len(astValueList) > 0 {
-				//fmt.Println(path, " ", astValueList)
-				elemList = append(elemList, elem{path, astValueList})
-				path = ""
-				astValueList = []string{}
-			}
-			if path == "" {
-				path = val.value
-			} else {
-				path = path + " -> " + val.value
-			}
 		} else if caseBegin && val.depth < depthFirstCase {
 			caseBegin = false
 			if len(caseValues) > 0 {
-				cases = append(cases, testCase{caseName, caseValues})
+				cases = append(cases, caseCollection{caseName, caseValues})
 				caseValues = []basicCases{}
 			}
 		}
 
 	}
 	if funcName != "" {
-		elemList = append(elemList, elem{path, astValueList})
-		caseCheck = append(caseCheck, basicCaseStr{caseName, elemList})
-		funcCheck = append(funcCheck, checkCases{funcName, caseCheck})
-
 		if len(cases) > 0 {
 			//cases = append(cases, testCase{caseName, caseValues})
-			resultFunc = append(resultFunc, testFuncCase{funcName, cases})
+			resultFunc = append(resultFunc, funcCollection{funcName, funcToken, cases})
 			caseValues = []basicCases{}
-			cases = []testCase{}
+			cases = []caseCollection{}
 
 		}
 	}
-	/*for ind := range funcCheck {
-		fmt.Println("funcCheck[ind].funcName: ", funcCheck[ind].funcName)
-		if strings.EqualFold(funcCheck[ind].funcName, "Set") {
-			for _, val := range funcCheck[ind].cases {
-				fmt.Println("val.funcName: ", val.caseName)
-				for _, value := range val.value {
-					fmt.Println(value)
-				}
-			}
-			fmt.Println()
-			fmt.Println()
 
-		}
-	}*/
-
+	var listFunction []caseResult
+	caseList := []basicCaseStr{}
+	elemList := []elem{}
+	depthCompare := 0
+	path := ""
+	values := []string{}
 	for ind := range resultFunc {
 		fmt.Println(resultFunc[ind].funcName)
 		for _, val := range resultFunc[ind].caseCol {
 			fmt.Println("--- ", val.caseName, " ---")
-			for _, value := range val.caseValue {
+			for i, value := range val.caseValue {
 				fmt.Println(value)
+				if depthCompare <= value.depth {
+					if strings.Contains(value.value, " ") {
+						substring := strings.Split(value.value, " ")
+						if !strings.EqualFold(substring[0], "*ast.Ident") {
+							if strings.EqualFold(path, "") {
+								path = substring[0]
+							} else {
+								path += " -> " + substring[0]
+							}
+						}
+						for i := 1; i < len(substring); i++ {
+							values = append(values, substring[i])
+						}
+					} else {
+						if strings.EqualFold(path, "") {
+							path = value.value
+						} else {
+							path += " -> " + value.value
+						}
+					}
+					depthCompare = value.depth
+				} else {
+					if !strings.EqualFold(path, "") || len(values) != 0 { // append elemList
+						elemList = append(elemList, elem{path, values})
+						path = ""
+						values = []string{}
+					}
+					if strings.Contains(value.value, " ") {
+						substring := strings.Split(value.value, " ")
+						if !strings.EqualFold(substring[0], "*ast.Ident") {
+							if strings.EqualFold(path, "") {
+								path = substring[0]
+							} else {
+								path += " -> " + substring[0]
+							}
+						}
+						for i := 1; i < len(substring); i++ {
+							values = append(values, substring[i])
+						}
+					} else {
+						if strings.EqualFold(path, "") {
+							path = value.value
+						} else {
+							path += " -> " + value.value
+						}
+					}
+					depthCompare = value.depth
+				}
+				if i == len(val.caseValue)-1 {
+					if !strings.EqualFold(path, "") || len(values) != 0 {
+						elemList = append(elemList, elem{path, values})
+						path = ""
+						values = []string{}
+					}
+				}
 			}
+			caseList = append(caseList, basicCaseStr{val.caseName, elemList})
+			elemList = []elem{}
 		}
+		listFunction = append(listFunction, caseResult{resultFunc[ind].funcName, resultFunc[ind].funcToken, caseList})
+		caseList = []basicCaseStr{}
+		elemList = []elem{}
+		path = ""
+		values = []string{}
 	}
-	return funcCheck
+	return listFunction
 }
 
 func checkSelectorExpr(listFunctions []basicStr) []basicStr {
@@ -594,43 +553,6 @@ func checkSelectorExpr(listFunctions []basicStr) []basicStr {
 				modAstValue = []string{}
 			}
 			modListFunctions = append(modListFunctions, basicStr{modFuncName, modTokPos, modElemList})
-			modFuncName = ""
-			modElemList = []elem{}
-		}
-	}
-
-	return modListFunctions
-}
-
-func checkSelectorExprCase(listFunctions []basicCaseStr) []basicCaseStr {
-	var modElemList []elem
-	var modListFunctions []basicCaseStr
-	var modFuncName string
-	var modPath string
-	var modAstValue []string
-	if len(listFunctions) > 0 {
-		for l := range listFunctions {
-			modFuncName = listFunctions[l].caseName
-			for i := 0; i < len(listFunctions[l].value); i++ {
-				modPath = listFunctions[l].value[i].path
-				for _, val := range listFunctions[l].value[i].value {
-					modAstValue = append(modAstValue, val)
-				}
-
-				if i < len(listFunctions[l].value)-1 && listFunctions[l].value[i+1].path == "*ast.SelectorExpr" {
-					if listFunctions[l].value[i+1].value[0] == "unsafe" && listFunctions[l].value[i+1].value[1] == "Pointer" {
-						modPath += " -> *ast.SelectorExpr"
-						for _, selVal := range listFunctions[l].value[i+1].value {
-							modAstValue = append(modAstValue, selVal)
-						}
-						i++
-					}
-				}
-				modElemList = append(modElemList, elem{modPath, modAstValue})
-				modPath = ""
-				modAstValue = []string{}
-			}
-			modListFunctions = append(modListFunctions, basicCaseStr{modFuncName, modElemList})
 			modFuncName = ""
 			modElemList = []elem{}
 		}

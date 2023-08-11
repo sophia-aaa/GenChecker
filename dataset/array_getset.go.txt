@@ -14,7 +14,6 @@ function name is Set
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
 	 {*ast.BlockStmt []}
@@ -112,7 +111,6 @@ function name is Get
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array Get]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.FieldList -> *ast.Field*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
 	 {*ast.BlockStmt []}
@@ -172,7 +170,6 @@ function name is Memset
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array Memset]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [a t]}
@@ -423,7 +420,6 @@ function name is memsetIter
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array memsetIter]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.Field [it Iterator]}
 	 {*ast.FieldList -> *ast.Field [err error]}
 	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [i int]}
@@ -821,7 +817,6 @@ function name is Eq
 	 {*ast.SelectorExpr [main array Eq]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [other]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.AssignStmt [:= oa ok]}

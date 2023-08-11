@@ -11,7 +11,7 @@
 			3 *ast.BasicLit STRING "github.com/pkg/errors"
 		2 *ast.ImportSpec
 			3 *ast.BasicLit STRING "gorgonia.org/tensor/internal/storage"
-	1 *ast.FuncDecl Set
+	1 *ast.FuncDecl Set 232
 		2 *ast.CommentGroup
 			3 *ast.Comment
 		2 *ast.FieldList
@@ -385,7 +385,7 @@
 									9 *ast.Ident val
 									9 *ast.Ident Set
 								8 *ast.Ident xv
-	1 *ast.FuncDecl Get
+	1 *ast.FuncDecl Get 1645
 		2 *ast.CommentGroup
 			3 *ast.Comment
 		2 *ast.FieldList
@@ -641,7 +641,7 @@
 								8 *ast.SelectorExpr
 									9 *ast.Ident val
 									9 *ast.Ident Interface
-	1 *ast.FuncDecl Memset
+	1 *ast.FuncDecl Memset 2727
 		2 *ast.CommentGroup
 			3 *ast.Comment
 		2 *ast.FieldList
@@ -1245,7 +1245,7 @@
 							7 *ast.Ident xv
 			3 *ast.ReturnStmt
 				4 *ast.Ident nil
-	1 *ast.FuncDecl memsetIter
+	1 *ast.FuncDecl memsetIter 5468
 		2 *ast.FieldList
 			3 *ast.Field
 				4 *ast.Ident a
@@ -2386,7 +2386,7 @@
 								8 *ast.Ident handleNoOp
 								8 *ast.Ident err
 			3 *ast.ReturnStmt
-	1 *ast.FuncDecl Eq
+	1 *ast.FuncDecl Eq 9941
 		2 *ast.CommentGroup
 			3 *ast.Comment
 		2 *ast.FieldList
@@ -2934,7 +2934,7 @@
 						6 *ast.Ident true
 			3 *ast.ReturnStmt
 				4 *ast.Ident false
-	1 *ast.FuncDecl zeroIter
+	1 *ast.FuncDecl zeroIter 12557
 		2 *ast.FieldList
 			3 *ast.Field
 				4 *ast.Ident a
