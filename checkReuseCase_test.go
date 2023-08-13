@@ -15,31 +15,47 @@ type output struct {
 	caseResult []funcNameAndList
 }
 
-func BenchmarkTestCheckSwitchStatement_array_getset(b *testing.B) {
-	listFunctions := buildAstDataStr(fileNameList[2])
+func basicTestExecution_Switch(filename string) []basicStr {
+	listFunctions := buildAstDataStr(filename)
 	var funcList []string
 	for s := range listFunctions {
 		if listFunctions[s].funcName != "" {
 			funcList = append(funcList, listFunctions[s].funcName)
 		}
 	}
-	modListFunctions := checkSelectorExpr(listFunctions)
+	return checkSelectorExpr(listFunctions)
+}
+func BenchmarkTestCheckSwitchStatement_getset(b *testing.B) {
+	testCase := basicTestExecution_Switch(fileNameList[0])
 	for i := 0; i < b.N; i++ {
-		checkSwitchStatement(fileNameList[2], modListFunctions)
+		checkSwitchStatement(fileNameList[0], testCase)
 	}
 }
 
-func BenchmarkTestCheckSwitchStatement_eng_reduce(b *testing.B) {
-	listFunctions := buildAstDataStr(fileNameList[4])
-	var funcList []string
-	for s := range listFunctions {
-		if listFunctions[s].funcName != "" {
-			funcList = append(funcList, listFunctions[s].funcName)
-		}
-	}
-	modListFunctions := checkSelectorExpr(listFunctions)
+func BenchmarkTestCheckSwitchStatement_array(b *testing.B) {
+	testCase := basicTestExecution_Switch(fileNameList[1])
 	for i := 0; i < b.N; i++ {
-		checkSwitchStatement(fileNameList[4], modListFunctions)
+		checkSwitchStatement(fileNameList[1], testCase)
+	}
+}
+
+func BenchmarkTestCheckSwitchStatement_array_getset(b *testing.B) {
+	testCase := basicTestExecution_Switch(fileNameList[2])
+	for i := 0; i < b.N; i++ {
+		checkSwitchStatement(fileNameList[2], testCase)
+	}
+}
+
+func BenchmarkTestCheckSwitchStatement_eng_map(b *testing.B) {
+	testCase := basicTestExecution_Switch(fileNameList[3])
+	for i := 0; i < b.N; i++ {
+		checkSwitchStatement(fileNameList[3], testCase)
+	}
+}
+func BenchmarkTestCheckSwitchStatement_eng_reduce(b *testing.B) {
+	testCase := basicTestExecution_Switch(fileNameList[4])
+	for i := 0; i < b.N; i++ {
+		checkSwitchStatement(fileNameList[4], testCase)
 	}
 }
 
@@ -90,16 +106,8 @@ func TestCheckSwitchStatement(t *testing.T) {
 	}
 
 	for _, d := range data {
-		listFunctions := buildAstDataStr(d.filename)
-		var funcList []string
-		for s := range listFunctions {
-			if listFunctions[s].funcName != "" {
-				funcList = append(funcList, listFunctions[s].funcName)
-			}
-		}
-		// check leaf of SelectorExpr and unsafe Pointer
-		modListFunctions := checkSelectorExpr(listFunctions)
-		resBool, resultCase := checkSwitchStatement(d.filename, modListFunctions)
+		testCase := basicTestExecution_Switch(d.filename)
+		resBool, resultCase := checkSwitchStatement(d.filename, testCase)
 		for i := range resultCase {
 			if !strings.EqualFold(resultCase[i].funcName, d.want.caseResult[i].funcName) || !reflect.DeepEqual(resultCase[i].caseFiltered, d.want.caseResult[i].caseList) {
 				t.Errorf("result: %v, %v, %v \n wanted: %v, %v, %v", resBool, resultCase[i].funcName, resultCase[i].caseFiltered, d.want.result, d.want.caseResult[i].funcName, d.want.caseResult[i].caseList)

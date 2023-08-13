@@ -37,7 +37,6 @@ func checkSwitchStatement(filename string, listFunctions []basicStr) (bool, []ca
 			log.Fatal(err)
 		}
 
-		fmt.Println(filename)
 		var v visitor
 		ast.Walk(v, astTree)
 		if len(Tree2str) > 0 {
@@ -58,15 +57,6 @@ func checkSwitchStatement(filename string, listFunctions []basicStr) (bool, []ca
 			}
 			fmt.Println()
 		}
-
-		//fmt.Println(funcCheck)
-
-		fmt.Println()
-		fmt.Println()
-
-		fmt.Println()
-		fmt.Println()
-
 		return true, checkSwitchCases(funcCheck, typeList)
 
 	}
