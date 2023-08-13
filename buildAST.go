@@ -239,7 +239,9 @@ func buildAstDataStr(filename string) []basicStr {
 		return true
 	})
 	if nameFunction != "" { // add last function
-		elem_list = append(elem_list, elem{astNode, astValue})
+		if !strings.EqualFold(astNode, "") || len(astValue) > 0 {
+			elem_list = append(elem_list, elem{astNode, astValue})
+		}
 		listFunctions = append(listFunctions, basicStr{nameFunction, tokPos, elem_list})
 		elem_list = []elem{}
 		astNode = ""

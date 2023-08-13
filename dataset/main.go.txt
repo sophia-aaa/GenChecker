@@ -1,7 +1,7 @@
 {*ast.File [main]}
 
 
-{*ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
 
 
 function name is main 

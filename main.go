@@ -25,7 +25,6 @@ func main() {
 			funcList = append(funcList, listFunctions[s].funcName)
 		}
 	}
-
 	fmt.Println(len(funcList), " Function list: ")
 	for ind, val := range funcList {
 		if len(funcList) == 1 {
@@ -93,7 +92,6 @@ func main() {
 	// Check Generic Replacement
 	genCheck := checkGenerics(modListFunctions, funcList, typeList)
 	for s := range genCheck {
-		fmt.Println(len(genCheck[s]))
 		if len(genCheck[s]) > 1 {
 			//pattern1 = true
 			fmt.Println(genCheck[s])
