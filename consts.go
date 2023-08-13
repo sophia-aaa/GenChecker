@@ -208,4 +208,11 @@ var (
 			},
 		},
 	}
+	fileNameList = []string{
+		"dataset/getset.go",
+		"dataset/array.go",
+		"dataset/array_getset.go",
+		"dataset/eng_map.go",
+		"dataset/eng_reduce.go",
+	}
 )

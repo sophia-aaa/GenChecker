@@ -1,14 +1,15 @@
 {*ast.File [storage]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "sync"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/pkg/errors"]}
-{*ast.BasicLit [STRING "gorgonia.org/tensor/internal/storage"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/pkg/errors"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "gorgonia.org/tensor/internal/storage"]}
+{*ast.GenDecl -> *ast.TypeSpec [array]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [storage Header]}
+{*ast.Field [t Dtype]}
 
 
 function name is makeArray 
@@ -16,8 +17,7 @@ function name is makeArray
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t Dtype]}
 	 {*ast.Field [length int]}
 	 {*ast.FieldList -> *ast.Field [array]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr [malloc t length]}
 	 {*ast.AssignStmt [:= hdr]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [storage Header]}
@@ -32,8 +32,7 @@ function name is arrayFromSlice
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [array]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= xT]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= xT]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
@@ -73,8 +72,7 @@ function name is fromSlice
 	 {*ast.StarExpr [array fromSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType []}
-	 {*ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= xT]}
+	 {*ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= xT]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
@@ -97,17 +95,14 @@ function name is fromSliceOrArrayer
 	 {*ast.StarExpr [array fromSliceOrArrayer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType []}
-	 {*ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= T ok]}
+	 {*ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= T ok]}
 	 {*ast.TypeAssertExpr [x arrayer ok]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= xp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= xp]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [T arrPtr]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
 	 {*ast.CallExpr [malloc]}
 	 {*ast.SelectorExpr [xp t]}
@@ -132,8 +127,7 @@ function name is sliceInto
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i j int]}
 	 {*ast.Field [res]}
 	 {*ast.StarExpr [array]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= c]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= c]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Cap]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [||]}
@@ -144,7 +138,8 @@ function name is sliceInto
 	 {*ast.BinaryExpr [> j c]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
-	 {*ast.BasicLit [STRING "Cannot slice %v - index %d:%d is out of bounds" a i j]}
+	 {*ast.BasicLit [STRING "Cannot slice %v - index %d:%d is out of bounds"]}
+	 { [a i j]}
 	 {*ast.AssignStmt [:= s]}
 	 {*ast.BinaryExpr [* i]}
 	 {*ast.CallExpr [int]}
@@ -197,8 +192,7 @@ function name is swap
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [a t String]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ss]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ss]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [a hdr Strings]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.IndexExpr [ss i]}
@@ -244,8 +238,7 @@ function name is swap
 	 {*ast.IndexExpr [us j]}
 	 {*ast.IndexExpr [us j]}
 	 {*ast.IndexExpr [us i]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= size]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= size]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Size]}
 	 {*ast.AssignStmt [:= tmp]}
@@ -293,8 +286,7 @@ function name is MemSize
 function name is Data 
 	 {*ast.FieldList -> *ast.Field [a array Data]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field*ast.InterfaceType []}
-	 {*ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= shdr]}
+	 {*ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= shdr]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
 	 {*ast.KeyValueExpr [Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Uintptr]}
@@ -320,36 +312,29 @@ function name is Zero
 	 {*ast.BinaryExpr [==]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
 	 {*ast.SelectorExpr [reflect String]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ss]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ss]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Strings]}
 	 {*ast.RangeStmt [i ss]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [ss i]}
 	 {*ast.BasicLit [STRING ""]}
 	 {*ast.ReturnStmt -> *ast.IfStmt []}
 	 {*ast.UnaryExpr [!]}
 	 {*ast.CallExpr [isParameterizedKind]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ba]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ba]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a byteSlice]}
 	 {*ast.RangeStmt [i ba]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [ba i]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= l]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= l]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [a Len]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i l]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect NewAt]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [a t Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage ElementAt i]}
@@ -386,8 +371,7 @@ function name is malloc
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t Dtype]}
 	 {*ast.Field [length int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= size]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr [calcMemSize t length]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [make]}
@@ -456,16 +440,13 @@ function name is copyDense
 	 {*ast.CallExpr -> *ast.SelectorExpr [src Dtype]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
 	 {*ast.BasicLit [STRING "Cannot dopy DenseTensors of different types"]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= ms ok]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= ms ok]}
 	 {*ast.TypeAssertExpr [src MaskedTensor]}
 	 {*ast.BinaryExpr [&& ok]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ms IsMasked]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= md ok]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= md ok]}
 	 {*ast.TypeAssertExpr [dst MaskedTensor ok]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= dmask]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dmask]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [md Mask]}
 	 {*ast.AssignStmt [:= smask]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ms Mask]}
@@ -473,8 +454,7 @@ function name is copyDense
 	 {*ast.BinaryExpr [<]}
 	 {*ast.CallExpr [cap dmask]}
 	 {*ast.CallExpr [len smask]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= dmask]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= dmask]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [bool]}
 	 {*ast.CallExpr [len smask]}
@@ -484,8 +464,7 @@ function name is copyDense
 	 {*ast.ExprStmt -> *ast.CallExpr [copy dmask smask]}
 	 {*ast.AssignStmt [:= e]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src Engine]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [e Memcpy]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dst arrPtr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src arrPtr]}
@@ -507,24 +486,20 @@ function name is copyDenseSliced
 	 {*ast.CallExpr -> *ast.SelectorExpr [src Dtype]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
 	 {*ast.BasicLit [STRING "Cannot copy DenseTensors of different types"]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= ms ok]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= ms ok]}
 	 {*ast.TypeAssertExpr [src MaskedTensor]}
 	 {*ast.BinaryExpr [&& ok]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ms IsMasked]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= md ok]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= md ok]}
 	 {*ast.TypeAssertExpr [dst MaskedTensor ok]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= dmask]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dmask]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [md Mask]}
 	 {*ast.AssignStmt [:= smask]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ms Mask]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [<]}
 	 {*ast.CallExpr [cap dmask dend]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= dmask]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= dmask]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [bool dend]}
 	 {*ast.ExprStmt -> *ast.CallExpr [copy dmask]}
@@ -533,12 +508,10 @@ function name is copyDenseSliced
 	 {*ast.ExprStmt -> *ast.CallExpr [copy]}
 	 {*ast.SliceExpr [dmask dstart dend]}
 	 {*ast.SliceExpr [smask sstart send]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= e]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= e]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src Engine]}
 	 {*ast.BinaryExpr [!= e nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= darr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= darr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dst arr]}
 	 {*ast.AssignStmt [:= sarr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [src arr]}
@@ -549,8 +522,7 @@ function name is copyDenseSliced
 	 {*ast.TypeSwitchStmt -> *ast.ExprStmt -> *ast.TypeAssertExpr [e]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [NonStdEngine]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [e Memcpy]}
 	 {*ast.UnaryExpr [& da]}
 	 {*ast.UnaryExpr [& sa]}
@@ -602,24 +574,19 @@ function name is copyDenseIter
 	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf inaccessibleData src]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [== diter nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= diter]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= diter]}
 	 {*ast.CallExpr [FlatIteratorFromDense dst]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [== siter nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= siter]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= siter]}
 	 {*ast.CallExpr [FlatIteratorFromDense src]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= ms ok]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= ms ok]}
 	 {*ast.TypeAssertExpr [src MaskedTensor]}
 	 {*ast.BinaryExpr [&& ok]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ms IsMasked]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= md ok]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= md ok]}
 	 {*ast.TypeAssertExpr [dst MaskedTensor ok]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= dmask]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dmask]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [md Mask]}
 	 {*ast.AssignStmt [:= smask]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ms Mask]}
@@ -627,8 +594,7 @@ function name is copyDenseIter
 	 {*ast.BinaryExpr [<]}
 	 {*ast.CallExpr [cap dmask]}
 	 {*ast.CallExpr [len smask]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= dmask]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= dmask]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [bool]}
 	 {*ast.CallExpr [len smask]}
@@ -666,8 +632,7 @@ function name is scalarPool
 	 {*ast.IndexExpr [scalarRC size]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= pool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= pool]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [sync Pool]}
 	 {*ast.KeyValueExpr [New]}
@@ -685,8 +650,7 @@ function name is allocScalar
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= atype]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= atype]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf a]}
 	 {*ast.AssignStmt [:= size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [atype Size]}
@@ -703,8 +667,7 @@ function name is freeScalar
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [== bs nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.RangeStmt [i bs]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [bs i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.AssignStmt [:= size]}
@@ -724,8 +687,7 @@ function name is scalarToHeader
 	 {*ast.Field [newAlloc bool]}
 	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [raw]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.TypeSwitchStmt []}
-	 {*ast.AssignStmt [:= at]}
+	 {*ast.TypeSwitchStmt -> *ast.AssignStmt [:= at]}
 	 {*ast.TypeAssertExpr [a]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [Memory]}
@@ -733,8 +695,7 @@ function name is scalarToHeader
 	 {*ast.CallExpr -> *ast.SelectorExpr [storage FromMemory]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [at Uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [at MemSize]}
-	 {*ast.CaseClause []}
-	 {*ast.AssignStmt [= raw]}
+	 {*ast.CaseClause -> *ast.AssignStmt [= raw]}
 	 {*ast.CallExpr [allocScalar a]}
 	 {*ast.AssignStmt [= newAlloc true]}
 	 {*ast.AssignStmt [= hdr]}
@@ -753,8 +714,7 @@ function name is copyScalarToPrealloc
 	 {*ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.Field [bs]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= xV]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= xV]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf a]}
 	 {*ast.AssignStmt [:= xT]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf a]}

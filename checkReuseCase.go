@@ -37,6 +37,7 @@ func checkSwitchStatement(filename string, listFunctions []basicStr) (bool, []ca
 			log.Fatal(err)
 		}
 
+		fmt.Println(filename)
 		var v visitor
 		ast.Walk(v, astTree)
 		if len(Tree2str) > 0 {
@@ -49,17 +50,22 @@ func checkSwitchStatement(filename string, listFunctions []basicStr) (bool, []ca
 		if len(funcCheck) > 0 {
 			fmt.Println("Before checking")
 
-			for _, fnc := range funcCheck {
-				if len(fnc.cases) > 0 {
-					fmt.Println("This function has switch statement: ", fnc.funcName)
-				}
-				for i := range fnc.cases {
-					for j := i + 1; j < len(fnc.cases); j++ {
-					}
-
-				}
+			if len(funcCheck) > 0 {
+				fmt.Println("There is(are) (a) switch statement(s): ")
 			}
+			for _, fnc := range funcCheck {
+				fmt.Print(fnc.funcName, " ")
+			}
+			fmt.Println()
 		}
+
+		//fmt.Println(funcCheck)
+
+		fmt.Println()
+		fmt.Println()
+
+		fmt.Println()
+		fmt.Println()
 
 		return true, checkSwitchCases(funcCheck, typeList)
 
@@ -259,12 +265,12 @@ func checkSwitchCases(funcList []caseResult, typeList []string) []caseFilteredRe
 		for i := range funcList {
 			if strings.EqualFold(funcList[i].funcName, result[cntResult].funcName) &&
 				strings.EqualFold(funcList[i].funcToken, result[cntResult].funcToken) {
-				if len(funcList[i].cases) == len(result[cntResult].caseFiltered) {
+				if len(funcList[i].cases) > 0 && len(result[cntResult].caseFiltered) > 0 && len(funcList[i].cases) == len(result[cntResult].caseFiltered) {
 					fmt.Println()
 					fmt.Println("This function ", funcList[i].funcName, " has reused case clauses.")
 					count++
-					fmt.Println("Number of cases: ", len(result[i].caseFiltered))
-					fmt.Println(result[i].caseFiltered)
+					fmt.Println("Number of cases: ", len(result[cntResult].caseFiltered))
+					fmt.Println(result[cntResult].caseFiltered)
 					cntResult++
 				}
 			}
@@ -274,32 +280,6 @@ func checkSwitchCases(funcList []caseResult, typeList []string) []caseFilteredRe
 		}
 		fmt.Println()
 	}
-	/*cntInFnc := 0
-	if count > 0 {
-		if count == 1 {
-			for i := range funcList {
-				if len(funcList[i].cases) == len(result[i].caseFiltered) {
-					fmt.Println("The function", funcList[i].funcName, "contains a switch statement that handles different types with consistent case clauses.")
-
-				}
-			}
-			fmt.Println()
-		} else {
-			fmt.Println("The function ")
-			for i := range funcList {
-				if len(funcList[i].cases) == len(result[i].caseFiltered) {
-					cntInFnc++
-					if count == cntInFnc {
-						fmt.Print(funcList[i].funcName, " ")
-					} else {
-						fmt.Print(funcList[i].funcName, ", ")
-					}
-				}
-			}
-			fmt.Println("contain a switch statement that handles different types with consistent case clauses.")
-			fmt.Println()
-		}
-	}*/
 
 	return result
 

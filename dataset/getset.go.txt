@@ -21,8 +21,7 @@ function name is SetB
 	 {*ast.StarExpr [Header SetB]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Bools i x]}
 
 
@@ -51,8 +50,7 @@ function name is SetI
 	 {*ast.StarExpr [Header SetI]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Ints i x]}
 
 
@@ -81,8 +79,7 @@ function name is SetI8
 	 {*ast.StarExpr [Header SetI8]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int8]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int8s i x]}
 
 
@@ -111,8 +108,7 @@ function name is SetI16
 	 {*ast.StarExpr [Header SetI16]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int16]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int16s i x]}
 
 
@@ -141,8 +137,7 @@ function name is SetI32
 	 {*ast.StarExpr [Header SetI32]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int32s i x]}
 
 
@@ -171,8 +166,7 @@ function name is SetI64
 	 {*ast.StarExpr [Header SetI64]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x int64]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Int64s i x]}
 
 
@@ -201,8 +195,7 @@ function name is SetU
 	 {*ast.StarExpr [Header SetU]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uints i x]}
 
 
@@ -231,8 +224,7 @@ function name is SetU8
 	 {*ast.StarExpr [Header SetU8]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint8]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint8s i x]}
 
 
@@ -261,8 +253,7 @@ function name is SetU16
 	 {*ast.StarExpr [Header SetU16]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint16]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint16s i x]}
 
 
@@ -291,8 +282,7 @@ function name is SetU32
 	 {*ast.StarExpr [Header SetU32]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint32s i x]}
 
 
@@ -321,8 +311,7 @@ function name is SetU64
 	 {*ast.StarExpr [Header SetU64]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uint64]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uint64s i x]}
 
 
@@ -351,8 +340,7 @@ function name is SetUintptr
 	 {*ast.StarExpr [Header SetUintptr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x uintptr]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Uintptrs i x]}
 
 
@@ -381,8 +369,7 @@ function name is SetF32
 	 {*ast.StarExpr [Header SetF32]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x float32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Float32s i x]}
 
 
@@ -411,8 +398,7 @@ function name is SetF64
 	 {*ast.StarExpr [Header SetF64]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x float64]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Float64s i x]}
 
 
@@ -441,8 +427,7 @@ function name is SetC64
 	 {*ast.StarExpr [Header SetC64]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x complex64]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Complex64s i x]}
 
 
@@ -471,8 +456,7 @@ function name is SetC128
 	 {*ast.StarExpr [Header SetC128]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x complex128]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Complex128s i x]}
 
 
@@ -501,8 +485,7 @@ function name is SetStr
 	 {*ast.StarExpr [Header SetStr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field [x string]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h Strings i x]}
 
 
@@ -531,8 +514,7 @@ function name is SetUnsafePointer
 	 {*ast.StarExpr [Header SetUnsafePointer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.Field -> *ast.SelectorExpr [x unsafe Pointer]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [h UnsafePointers i x]}
 
 

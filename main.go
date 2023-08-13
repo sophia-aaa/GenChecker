@@ -94,7 +94,7 @@ func main() {
 	genCheck := checkGenerics(modListFunctions, funcList, typeList)
 	for s := range genCheck {
 		if len(genCheck[s]) > 1 {
-			pattern1 = true
+			//pattern1 = true
 			fmt.Print("These functions have a same structure and the code are reused:\n")
 			for ind, val := range genCheck[s] {
 				if len(genCheck[s]) == 1 {
@@ -133,6 +133,11 @@ func main() {
 	// This variable is for checking switch statement
 	existsSwitch, caseList := checkSwitchStatement(filename, modListFunctions)
 	if existsSwitch {
+		fmt.Println()
+		fmt.Println()
+		fmt.Println(caseList)
+		fmt.Println()
+		fmt.Println()
 		if len(caseList) > 0 {
 			fmt.Println("This function has switch statement: ")
 			for ind, val := range caseList {
