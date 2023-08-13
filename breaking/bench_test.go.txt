@@ -1,66 +1,90 @@
 {*ast.File [xdr_test]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "bytes"]}
-{*ast.ImportSpec [STRING "testing"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.ImportSpec [STRING "github.com/digitalocean/go-libvirt/internal/go-xdr/xdr2"]}
+
+
 
 
 function name is BenchmarkUnmarshal 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [BenchmarkUnmarshal]}
+	 { [BenchmarkUnmarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b StopTimer]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ImageHeader]}
+	 {*ast.GenDecl -> *ast.TypeSpec [ImageHeader]}
 	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Signature]}
-	 {*ast.ArrayType [INT 3 byte]}
+	 {*ast.ArrayType -> *ast.BasicLit [INT 3 byte]}
 	 {*ast.Field [Version uint32]}
 	 {*ast.Field [IsGrayscale bool]}
 	 {*ast.Field [NumSections uint32]}
-	 {*ast.AssignStmt [encodedData]}
-	 {*ast.CompositeLit -> *ast.ArrayType [byte INT 0xAB INT 0xCD INT 0xEF INT 0x00 INT 0x00 INT 0x00 INT 0x00 INT 0x02 INT 0x00 INT 0x00 INT 0x00 INT 0x01 INT 0x00 INT 0x00 INT 0x00 INT 0x0A]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [h ImageHeader]}
+	 {*ast.AssignStmt [:= encodedData]}
+	 {*ast.CompositeLit -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 0xAB]}
+	 {*ast.BasicLit [INT 0xCD]}
+	 {*ast.BasicLit [INT 0xEF]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x02]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x01]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x00]}
+	 {*ast.BasicLit [INT 0x0A]}
+	 {*ast.GenDecl -> *ast.ValueSpec [h ImageHeader]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b StartTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [r]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= r]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes NewReader encodedData]}
-	 {*ast.AssignStmt [_ _]}
+	 {*ast.AssignStmt [= _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [xdr Unmarshal r]}
-	 {*ast.UnaryExpr [h]}
+	 {*ast.UnaryExpr [& h]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
 	 {*ast.CallExpr [len encodedData]}
 
 
 function name is BenchmarkMarshal 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [BenchmarkMarshal]}
+	 { [BenchmarkMarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b StopTimer]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [ImageHeader]}
+	 {*ast.GenDecl -> *ast.TypeSpec [ImageHeader]}
 	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Signature]}
-	 {*ast.ArrayType [INT 3 byte]}
+	 {*ast.ArrayType -> *ast.BasicLit [INT 3 byte]}
 	 {*ast.Field [Version uint32]}
 	 {*ast.Field [IsGrayscale bool]}
 	 {*ast.Field [NumSections uint32]}
-	 {*ast.AssignStmt [h]}
+	 {*ast.AssignStmt [:= h]}
 	 {*ast.CompositeLit [ImageHeader]}
-	 {*ast.CompositeLit -> *ast.ArrayType [INT 3 byte INT 0xAB INT 0xCD INT 0xEF INT 2 true INT 10]}
-	 {*ast.AssignStmt [size]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.BasicLit [INT 3 byte]}
+	 {*ast.BasicLit [INT 0xAB]}
+	 {*ast.BasicLit [INT 0xCD]}
+	 {*ast.BasicLit [INT 0xEF]}
+	 {*ast.BasicLit [INT 2 true]}
+	 {*ast.BasicLit [INT 10]}
+	 {*ast.AssignStmt [:= size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof h]}
-	 {*ast.AssignStmt [w]}
+	 {*ast.AssignStmt [:= w]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes NewBuffer nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b StartTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Reset]}
-	 {*ast.AssignStmt [_ _]}
+	 {*ast.AssignStmt [= _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [xdr Marshal w]}
-	 {*ast.UnaryExpr [h]}
+	 {*ast.UnaryExpr [& h]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64 size]}
 

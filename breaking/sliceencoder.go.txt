@@ -1,37 +1,40 @@
 {*ast.File [jingo]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [SliceEncoder]}
-{*ast.StructType -> *ast.FieldList -> *ast.Field [instruction]}
-{*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [t unsafe Pointer]}
-{*ast.Field [w]}
-{*ast.StarExpr [Buffer]}
-{*ast.Field [tt]}
-{*ast.SelectorExpr [reflect Type]}
-{*ast.Field [offset uintptr]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "reflect"]}
+{*ast.BasicLit [STRING "unsafe"]}
+
+
 
 
 function name is Marshal 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [e]}
+	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder Marshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [w]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [p]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf s Pointer]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [e instruction p w]}
 
 
 function name is NewSliceEncoder 
-	 {*ast.CommentGroup -> *ast.Comment [NewSliceEncoder]}
+	 { [NewSliceEncoder]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [SliceEncoder]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [e]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [SliceEncoder]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [e tt]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [SliceEncoder]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= e]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [SliceEncoder]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e tt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf t]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [e offset]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e offset]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Size]}
 	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem]}
 	 {*ast.BlockStmt []}
@@ -69,78 +72,104 @@ function name is NewSliceEncoder
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [e ptrOtherInstr]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [e otherInstr]}
 	 {*ast.ReturnStmt [e]}
-	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [null]}
-	 {*ast.CallExpr -> *ast.ArrayType [byte STRING "null"]}
-	 {*ast.ValueSpec [zero]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.TypeSpec [sliceHeader]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
-	 {*ast.Field [Len int]}
-	 {*ast.Field [Cap int]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [null]}
+{*ast.CallExpr -> *ast.ArrayType [byte]}
+{*ast.BasicLit [STRING "null"]}
+{*ast.ValueSpec [zero]}
+{*ast.CallExpr [uintptr]}
+{*ast.BasicLit [INT 0]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [sliceHeader]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
+{*ast.Field [Len int]}
+{*ast.Field [Cap int]}
 
 
 function name is sliceInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder sliceInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [enc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [:= enc]}
 	 {*ast.CallExpr [NewSliceEncoder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Interface]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
-	 {*ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [enc Marshal s w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is structInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder structInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [enc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [:= enc]}
 	 {*ast.CallExpr [NewStructEncoder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Interface]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
-	 {*ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [enc Marshal s w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is stringInstr 
@@ -149,169 +178,232 @@ function name is stringInstr
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [conv]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i INT 0]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '"']}
-	 {*ast.IfStmt -> *ast.BinaryExpr [i zero]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Write]}
-	 {*ast.CallExpr -> *ast.ArrayType [byte STRING `","`]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [STRING `","`]}
 	 {*ast.ExprStmt -> *ast.CallExpr [conv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset w]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [i]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
-	 {*ast.SelectorExpr [sl Len INT 1]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '"']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== i]}
+	 {*ast.BinaryExpr [-]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.SelectorExpr [sl Len]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is otherInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder otherInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [conv ok]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [:= conv ok]}
 	 {*ast.IndexExpr [typeconv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Kind]}
-	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [! ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
 	 {*ast.ExprStmt -> *ast.CallExpr [conv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is timeInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder timeInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '"']}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
 	 {*ast.ExprStmt -> *ast.CallExpr [ptrTimeToBuf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '"']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is ptrSliceInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder ptrSliceInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [enc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [:= enc]}
 	 {*ast.CallExpr [NewSliceEncoder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Elem Interface]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
-	 {*ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Write null]}
 	 {*ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [enc Marshal s w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is ptrStrctInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder ptrStrctInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [enc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [:= enc]}
 	 {*ast.CallExpr [NewStructEncoder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Elem Interface]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
-	 {*ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Write null]}
 	 {*ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [enc Marshal s w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is ptrStringInstr 
@@ -320,107 +412,146 @@ function name is ptrStringInstr
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [conv]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
-	 {*ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Write null]}
-	 {*ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '"']}
+	 {*ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
 	 {*ast.ExprStmt -> *ast.CallExpr [conv s w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '"']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is ptrOtherInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder ptrOtherInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [conv ok]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [:= conv ok]}
 	 {*ast.IndexExpr [typeconv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Kind]}
-	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [! ok]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
-	 {*ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Write null]}
 	 {*ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr [conv s w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 
 function name is ptrTimeInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder ptrTimeInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [e instruction]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '[']}
-	 {*ast.AssignStmt [sl]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.CallExpr [uintptr INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i zero]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ',']}
-	 {*ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [> i zero]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [sl Data]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [i]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [* i]}
 	 {*ast.SelectorExpr [e offset]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Write null]}
-	 {*ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '"']}
+	 {*ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
 	 {*ast.ExprStmt -> *ast.CallExpr [ptrTimeToBuf s w]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR '"']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte CHAR ']']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w WriteByte]}
+	 {*ast.BasicLit [CHAR ']']}
 
 

@@ -1,17 +1,22 @@
 {*ast.File [qtquick]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "log"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "github.com/kitech/qt.go/qtrt"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "github.com/kitech/qt.go/qtcore"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "github.com/kitech/qt.go/qtnetwork"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "github.com/kitech/qt.go/qtgui"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "github.com/kitech/qt.go/qtqml"]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [QQuickImageResponse]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "log"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "github.com/kitech/qt.go/qtrt"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "github.com/kitech/qt.go/qtcore"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "github.com/kitech/qt.go/qtnetwork"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "github.com/kitech/qt.go/qtgui"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "github.com/kitech/qt.go/qtqml"]}
+{*ast.GenDecl -> *ast.TypeSpec [QQuickImageResponse]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [qtcore QObject]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [QQuickImageResponse_ITF]}
-{*ast.InterfaceType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [qtcore QObject_ITF]}
+{*ast.InterfaceType [QQuickImageResponse_PTR]}
+{*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [qtcore QObject_ITF]}
 {*ast.Field [QQuickImageResponse_PTR]}
 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [QQuickImageResponse]}
 
@@ -27,7 +32,8 @@ function name is GetCthis
 	 {*ast.FieldList -> *ast.Field [this]}
 	 {*ast.StarExpr [QQuickImageResponse GetCthis]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [this nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== this nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [this QObject GetCthis]}
 
@@ -36,7 +42,8 @@ function name is SetCthis
 	 {*ast.FieldList -> *ast.Field [this]}
 	 {*ast.StarExpr [QQuickImageResponse SetCthis]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cthis unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [this QObject]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [this QObject]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [qtcore NewQObjectFromPointer cthis]}
 
 
@@ -44,9 +51,11 @@ function name is NewQQuickImageResponseFromPointer
 	 { [NewQQuickImageResponseFromPointer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cthis unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [QQuickImageResponse]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [bcthis0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= bcthis0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [qtcore NewQObjectFromPointer cthis]}
-	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [QQuickImageResponse bcthis0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [QQuickImageResponse bcthis0]}
 
 
 function name is NewFromPointer 
@@ -57,11 +66,12 @@ function name is NewFromPointer
 
 
 function name is MetaObject 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [this]}
+	 {*ast.FieldList -> *ast.Field [this]}
 	 {*ast.StarExpr [QQuickImageResponse MetaObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [qtcore QMetaObject]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [rv err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6 STRING "_ZNK19QQuickImageResponse10metaObjectEv"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= rv err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6]}
+	 {*ast.BasicLit [STRING "_ZNK19QQuickImageResponse10metaObjectEv"]}
 	 {*ast.SelectorExpr [qtrt FFI_TYPE_POINTER]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [this GetCthis]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ErrPrint err rv]}
@@ -71,7 +81,7 @@ function name is MetaObject
 
 
 function name is NewForInherit 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [QQuickImageResponse NewForInherit]}
+	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [QQuickImageResponse NewForInherit]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [QQuickImageResponse]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [NewQQuickImageResponse]}
 
@@ -79,38 +89,44 @@ function name is NewForInherit
 function name is NewQQuickImageResponse 
 	 { [NewQQuickImageResponse]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [QQuickImageResponse]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [rv err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6 STRING "_ZN19QQuickImageResponseC2Ev"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= rv err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6]}
+	 {*ast.BasicLit [STRING "_ZN19QQuickImageResponseC2Ev"]}
 	 {*ast.SelectorExpr [qtrt FFI_TYPE_POINTER]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ErrPrint err rv]}
-	 {*ast.AssignStmt [gothis]}
+	 {*ast.AssignStmt [:= gothis]}
 	 {*ast.CallExpr [NewQQuickImageResponseFromPointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr [uintptr rv]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ConnectDestroyed gothis STRING "QQuickImageResponse"]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ConnectDestroyed gothis]}
+	 {*ast.BasicLit [STRING "QQuickImageResponse"]}
 	 {*ast.ReturnStmt [gothis]}
 
 
 function name is DeleteQQuickImageResponse 
-	 {*ast.CommentGroup -> *ast.Comment [DeleteQQuickImageResponse]}
+	 { [DeleteQQuickImageResponse]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [this]}
 	 {*ast.StarExpr [QQuickImageResponse]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [rv err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6 STRING "_ZN19QQuickImageResponseD2Ev"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= rv err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6]}
+	 {*ast.BasicLit [STRING "_ZN19QQuickImageResponseD2Ev"]}
 	 {*ast.SelectorExpr [qtrt FFI_TYPE_VOID]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [this GetCthis]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt Cmemset]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [this GetCthis INT 9 INT 16]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [this GetCthis]}
+	 {*ast.BasicLit [INT 9]}
+	 {*ast.BasicLit [INT 16]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ErrPrint err rv]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [this SetCthis nil]}
 
 
 function name is TextureFactory 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [this]}
+	 {*ast.FieldList -> *ast.Field [this]}
 	 {*ast.StarExpr [QQuickImageResponse TextureFactory]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [QQuickTextureFactory]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [rv err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6 STRING "_ZNK19QQuickImageResponse14textureFactoryEv"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= rv err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6]}
+	 {*ast.BasicLit [STRING "_ZNK19QQuickImageResponse14textureFactoryEv"]}
 	 {*ast.SelectorExpr [qtrt FFI_TYPE_POINTER]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [this GetCthis]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ErrPrint err rv]}
@@ -120,39 +136,42 @@ function name is TextureFactory
 
 
 function name is ErrorString 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [this]}
+	 {*ast.FieldList -> *ast.Field [this]}
 	 {*ast.StarExpr [QQuickImageResponse ErrorString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [rv err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6 STRING "_ZNK19QQuickImageResponse11errorStringEv"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= rv err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6]}
+	 {*ast.BasicLit [STRING "_ZNK19QQuickImageResponse11errorStringEv"]}
 	 {*ast.SelectorExpr [qtrt FFI_TYPE_POINTER]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [this GetCthis]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ErrPrint err rv]}
-	 {*ast.AssignStmt [rv2]}
+	 {*ast.AssignStmt [:= rv2]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [qtcore NewQStringFromPointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr [uintptr rv]}
-	 {*ast.AssignStmt [rv3]}
+	 {*ast.AssignStmt [:= rv3]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [rv2 ToUtf8 Data]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtcore DeleteQString rv2]}
 	 {*ast.ReturnStmt [rv3]}
 
 
 function name is Cancel 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [this]}
+	 {*ast.FieldList -> *ast.Field [this]}
 	 {*ast.StarExpr [QQuickImageResponse Cancel]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [rv err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6 STRING "_ZN19QQuickImageResponse6cancelEv"]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= rv err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6]}
+	 {*ast.BasicLit [STRING "_ZN19QQuickImageResponse6cancelEv"]}
 	 {*ast.SelectorExpr [qtrt FFI_TYPE_POINTER]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [this GetCthis]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ErrPrint err rv]}
 
 
 function name is Finished 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [this]}
+	 {*ast.FieldList -> *ast.Field [this]}
 	 {*ast.StarExpr [QQuickImageResponse Finished]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [rv err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6 STRING "_ZN19QQuickImageResponse8finishedEv"]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= rv err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [qtrt InvokeQtFunc6]}
+	 {*ast.BasicLit [STRING "_ZN19QQuickImageResponse8finishedEv"]}
 	 {*ast.SelectorExpr [qtrt FFI_TYPE_POINTER]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [this GetCthis]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt ErrPrint err rv]}
@@ -161,14 +180,18 @@ function name is Finished
 function name is init_unused_11553 
 	 { [init_unused_11553]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt [false]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf INT 123]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf]}
+	 {*ast.BasicLit [INT 123]}
 	 {*ast.IfStmt [false]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IfStmt [false]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Println INT 123]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Println]}
+	 {*ast.BasicLit [INT 123]}
 	 {*ast.IfStmt [false]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Println INT 123]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Println]}
+	 {*ast.BasicLit [INT 123]}
 	 {*ast.IfStmt [false]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [qtrt KeepMe]}
 	 {*ast.IfStmt [false]}

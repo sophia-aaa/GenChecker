@@ -1,1117 +1,1891 @@
 {*ast.File [win]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "syscall"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.ImportSpec [STRING "golang.org/x/sys/windows"]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DRIVERVERSION INT 0]}
-{*ast.ValueSpec [TECHNOLOGY INT 2]}
-{*ast.ValueSpec [HORZSIZE INT 4]}
-{*ast.ValueSpec [VERTSIZE INT 6]}
-{*ast.ValueSpec [HORZRES INT 8]}
-{*ast.ValueSpec [VERTRES INT 10]}
-{*ast.ValueSpec [LOGPIXELSX INT 88]}
-{*ast.ValueSpec [LOGPIXELSY INT 90]}
-{*ast.ValueSpec [BITSPIXEL INT 12]}
-{*ast.ValueSpec [PLANES INT 14]}
-{*ast.ValueSpec [NUMBRUSHES INT 16]}
-{*ast.ValueSpec [NUMPENS INT 18]}
-{*ast.ValueSpec [NUMFONTS INT 22]}
-{*ast.ValueSpec [NUMCOLORS INT 24]}
-{*ast.ValueSpec [NUMMARKERS INT 20]}
-{*ast.ValueSpec [ASPECTX INT 40]}
-{*ast.ValueSpec [ASPECTY INT 42]}
-{*ast.ValueSpec [ASPECTXY INT 44]}
-{*ast.ValueSpec [PDEVICESIZE INT 26]}
-{*ast.ValueSpec [CLIPCAPS INT 36]}
-{*ast.ValueSpec [SIZEPALETTE INT 104]}
-{*ast.ValueSpec [NUMRESERVED INT 106]}
-{*ast.ValueSpec [COLORRES INT 108]}
-{*ast.ValueSpec [PHYSICALWIDTH INT 110]}
-{*ast.ValueSpec [PHYSICALHEIGHT INT 111]}
-{*ast.ValueSpec [PHYSICALOFFSETX INT 112]}
-{*ast.ValueSpec [PHYSICALOFFSETY INT 113]}
-{*ast.ValueSpec [SCALINGFACTORX INT 114]}
-{*ast.ValueSpec [SCALINGFACTORY INT 115]}
-{*ast.ValueSpec [VREFRESH INT 116]}
-{*ast.ValueSpec [DESKTOPHORZRES INT 118]}
-{*ast.ValueSpec [DESKTOPVERTRES INT 117]}
-{*ast.ValueSpec [BLTALIGNMENT INT 119]}
-{*ast.ValueSpec [SHADEBLENDCAPS INT 120]}
-{*ast.ValueSpec [COLORMGMTCAPS INT 121]}
-{*ast.ValueSpec [RASTERCAPS INT 38]}
-{*ast.ValueSpec [CURVECAPS INT 28]}
-{*ast.ValueSpec [LINECAPS INT 30]}
-{*ast.ValueSpec [POLYGONALCAPS INT 32]}
-{*ast.ValueSpec [TEXTCAPS INT 34]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DT_PLOTTER INT 0]}
-{*ast.ValueSpec [DT_RASDISPLAY INT 1]}
-{*ast.ValueSpec [DT_RASPRINTER INT 2]}
-{*ast.ValueSpec [DT_RASCAMERA INT 3]}
-{*ast.ValueSpec [DT_CHARSTREAM INT 4]}
-{*ast.ValueSpec [DT_METAFILE INT 5]}
-{*ast.ValueSpec [DT_DISPFILE INT 6]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [SB_NONE INT 0x00]}
-{*ast.ValueSpec [SB_CONST_ALPHA INT 0x01]}
-{*ast.ValueSpec [SB_PIXEL_ALPHA INT 0x02]}
-{*ast.ValueSpec [SB_PREMULT_ALPHA INT 0x04]}
-{*ast.ValueSpec [SB_GRAD_RECT INT 0x10]}
-{*ast.ValueSpec [SB_GRAD_TRI INT 0x20]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [CM_NONE INT 0x00]}
-{*ast.ValueSpec [CM_DEVICE_ICM INT 0x01]}
-{*ast.ValueSpec [CM_GAMMA_RAMP INT 0x02]}
-{*ast.ValueSpec [CM_CMYK_COLOR INT 0x04]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [RC_BANDING INT 2]}
-{*ast.ValueSpec [RC_BITBLT INT 1]}
-{*ast.ValueSpec [RC_BITMAP64 INT 8]}
-{*ast.ValueSpec [RC_DI_BITMAP INT 128]}
-{*ast.ValueSpec [RC_DIBTODEV INT 512]}
-{*ast.ValueSpec [RC_FLOODFILL INT 4096]}
-{*ast.ValueSpec [RC_GDI20_OUTPUT INT 16]}
-{*ast.ValueSpec [RC_PALETTE INT 256]}
-{*ast.ValueSpec [RC_SCALING INT 4]}
-{*ast.ValueSpec [RC_STRETCHBLT INT 2048]}
-{*ast.ValueSpec [RC_STRETCHDIB INT 8192]}
-{*ast.ValueSpec [RC_DEVBITS INT 0x8000]}
-{*ast.ValueSpec [RC_OP_DX_OUTPUT INT 0x4000]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [CC_NONE INT 0]}
-{*ast.ValueSpec [CC_CIRCLES INT 1]}
-{*ast.ValueSpec [CC_PIE INT 2]}
-{*ast.ValueSpec [CC_CHORD INT 4]}
-{*ast.ValueSpec [CC_ELLIPSES INT 8]}
-{*ast.ValueSpec [CC_WIDE INT 16]}
-{*ast.ValueSpec [CC_STYLED INT 32]}
-{*ast.ValueSpec [CC_WIDESTYLED INT 64]}
-{*ast.ValueSpec [CC_INTERIORS INT 128]}
-{*ast.ValueSpec [CC_ROUNDRECT INT 256]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [LC_NONE INT 0]}
-{*ast.ValueSpec [LC_POLYLINE INT 2]}
-{*ast.ValueSpec [LC_MARKER INT 4]}
-{*ast.ValueSpec [LC_POLYMARKER INT 8]}
-{*ast.ValueSpec [LC_WIDE INT 16]}
-{*ast.ValueSpec [LC_STYLED INT 32]}
-{*ast.ValueSpec [LC_WIDESTYLED INT 64]}
-{*ast.ValueSpec [LC_INTERIORS INT 128]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [PC_NONE INT 0]}
-{*ast.ValueSpec [PC_POLYGON INT 1]}
-{*ast.ValueSpec [PC_POLYPOLYGON INT 256]}
-{*ast.ValueSpec [PC_PATHS INT 512]}
-{*ast.ValueSpec [PC_RECTANGLE INT 2]}
-{*ast.ValueSpec [PC_WINDPOLYGON INT 4]}
-{*ast.ValueSpec [PC_SCANLINE INT 8]}
-{*ast.ValueSpec [PC_TRAPEZOID INT 4]}
-{*ast.ValueSpec [PC_WIDE INT 16]}
-{*ast.ValueSpec [PC_STYLED INT 32]}
-{*ast.ValueSpec [PC_WIDESTYLED INT 64]}
-{*ast.ValueSpec [PC_INTERIORS INT 128]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [TC_OP_CHARACTER INT 1]}
-{*ast.ValueSpec [TC_OP_STROKE INT 2]}
-{*ast.ValueSpec [TC_CP_STROKE INT 4]}
-{*ast.ValueSpec [TC_CR_90 INT 8]}
-{*ast.ValueSpec [TC_CR_ANY INT 16]}
-{*ast.ValueSpec [TC_SF_X_YINDEP INT 32]}
-{*ast.ValueSpec [TC_SA_DOUBLE INT 64]}
-{*ast.ValueSpec [TC_SA_INTEGER INT 128]}
-{*ast.ValueSpec [TC_SA_CONTIN INT 256]}
-{*ast.ValueSpec [TC_EA_DOUBLE INT 512]}
-{*ast.ValueSpec [TC_IA_ABLE INT 1024]}
-{*ast.ValueSpec [TC_UA_ABLE INT 2048]}
-{*ast.ValueSpec [TC_SO_ABLE INT 4096]}
-{*ast.ValueSpec [TC_RA_ABLE INT 8192]}
-{*ast.ValueSpec [TC_VA_ABLE INT 16384]}
-{*ast.ValueSpec [TC_RESERVED INT 32768]}
-{*ast.ValueSpec [TC_SCROLLBLT INT 65536]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [BS_SOLID INT 0]}
-{*ast.ValueSpec [BS_NULL INT 1]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "syscall"]}
+{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
+{*ast.BasicLit [STRING "golang.org/x/sys/windows"]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DRIVERVERSION]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [TECHNOLOGY]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [HORZSIZE]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [VERTSIZE]}
+{*ast.BasicLit [INT 6]}
+{*ast.ValueSpec [HORZRES]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [VERTRES]}
+{*ast.BasicLit [INT 10]}
+{*ast.ValueSpec [LOGPIXELSX]}
+{*ast.BasicLit [INT 88]}
+{*ast.ValueSpec [LOGPIXELSY]}
+{*ast.BasicLit [INT 90]}
+{*ast.ValueSpec [BITSPIXEL]}
+{*ast.BasicLit [INT 12]}
+{*ast.ValueSpec [PLANES]}
+{*ast.BasicLit [INT 14]}
+{*ast.ValueSpec [NUMBRUSHES]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [NUMPENS]}
+{*ast.BasicLit [INT 18]}
+{*ast.ValueSpec [NUMFONTS]}
+{*ast.BasicLit [INT 22]}
+{*ast.ValueSpec [NUMCOLORS]}
+{*ast.BasicLit [INT 24]}
+{*ast.ValueSpec [NUMMARKERS]}
+{*ast.BasicLit [INT 20]}
+{*ast.ValueSpec [ASPECTX]}
+{*ast.BasicLit [INT 40]}
+{*ast.ValueSpec [ASPECTY]}
+{*ast.BasicLit [INT 42]}
+{*ast.ValueSpec [ASPECTXY]}
+{*ast.BasicLit [INT 44]}
+{*ast.ValueSpec [PDEVICESIZE]}
+{*ast.BasicLit [INT 26]}
+{*ast.ValueSpec [CLIPCAPS]}
+{*ast.BasicLit [INT 36]}
+{*ast.ValueSpec [SIZEPALETTE]}
+{*ast.BasicLit [INT 104]}
+{*ast.ValueSpec [NUMRESERVED]}
+{*ast.BasicLit [INT 106]}
+{*ast.ValueSpec [COLORRES]}
+{*ast.BasicLit [INT 108]}
+{*ast.ValueSpec [PHYSICALWIDTH]}
+{*ast.BasicLit [INT 110]}
+{*ast.ValueSpec [PHYSICALHEIGHT]}
+{*ast.BasicLit [INT 111]}
+{*ast.ValueSpec [PHYSICALOFFSETX]}
+{*ast.BasicLit [INT 112]}
+{*ast.ValueSpec [PHYSICALOFFSETY]}
+{*ast.BasicLit [INT 113]}
+{*ast.ValueSpec [SCALINGFACTORX]}
+{*ast.BasicLit [INT 114]}
+{*ast.ValueSpec [SCALINGFACTORY]}
+{*ast.BasicLit [INT 115]}
+{*ast.ValueSpec [VREFRESH]}
+{*ast.BasicLit [INT 116]}
+{*ast.ValueSpec [DESKTOPHORZRES]}
+{*ast.BasicLit [INT 118]}
+{*ast.ValueSpec [DESKTOPVERTRES]}
+{*ast.BasicLit [INT 117]}
+{*ast.ValueSpec [BLTALIGNMENT]}
+{*ast.BasicLit [INT 119]}
+{*ast.ValueSpec [SHADEBLENDCAPS]}
+{*ast.BasicLit [INT 120]}
+{*ast.ValueSpec [COLORMGMTCAPS]}
+{*ast.BasicLit [INT 121]}
+{*ast.ValueSpec [RASTERCAPS]}
+{*ast.BasicLit [INT 38]}
+{*ast.ValueSpec [CURVECAPS]}
+{*ast.BasicLit [INT 28]}
+{*ast.ValueSpec [LINECAPS]}
+{*ast.BasicLit [INT 30]}
+{*ast.ValueSpec [POLYGONALCAPS]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [TEXTCAPS]}
+{*ast.BasicLit [INT 34]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DT_PLOTTER]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [DT_RASDISPLAY]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DT_RASPRINTER]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [DT_RASCAMERA]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [DT_CHARSTREAM]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [DT_METAFILE]}
+{*ast.BasicLit [INT 5]}
+{*ast.ValueSpec [DT_DISPFILE]}
+{*ast.BasicLit [INT 6]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [SB_NONE]}
+{*ast.BasicLit [INT 0x00]}
+{*ast.ValueSpec [SB_CONST_ALPHA]}
+{*ast.BasicLit [INT 0x01]}
+{*ast.ValueSpec [SB_PIXEL_ALPHA]}
+{*ast.BasicLit [INT 0x02]}
+{*ast.ValueSpec [SB_PREMULT_ALPHA]}
+{*ast.BasicLit [INT 0x04]}
+{*ast.ValueSpec [SB_GRAD_RECT]}
+{*ast.BasicLit [INT 0x10]}
+{*ast.ValueSpec [SB_GRAD_TRI]}
+{*ast.BasicLit [INT 0x20]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [CM_NONE]}
+{*ast.BasicLit [INT 0x00]}
+{*ast.ValueSpec [CM_DEVICE_ICM]}
+{*ast.BasicLit [INT 0x01]}
+{*ast.ValueSpec [CM_GAMMA_RAMP]}
+{*ast.BasicLit [INT 0x02]}
+{*ast.ValueSpec [CM_CMYK_COLOR]}
+{*ast.BasicLit [INT 0x04]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [RC_BANDING]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [RC_BITBLT]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [RC_BITMAP64]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [RC_DI_BITMAP]}
+{*ast.BasicLit [INT 128]}
+{*ast.ValueSpec [RC_DIBTODEV]}
+{*ast.BasicLit [INT 512]}
+{*ast.ValueSpec [RC_FLOODFILL]}
+{*ast.BasicLit [INT 4096]}
+{*ast.ValueSpec [RC_GDI20_OUTPUT]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [RC_PALETTE]}
+{*ast.BasicLit [INT 256]}
+{*ast.ValueSpec [RC_SCALING]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [RC_STRETCHBLT]}
+{*ast.BasicLit [INT 2048]}
+{*ast.ValueSpec [RC_STRETCHDIB]}
+{*ast.BasicLit [INT 8192]}
+{*ast.ValueSpec [RC_DEVBITS]}
+{*ast.BasicLit [INT 0x8000]}
+{*ast.ValueSpec [RC_OP_DX_OUTPUT]}
+{*ast.BasicLit [INT 0x4000]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [CC_NONE]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [CC_CIRCLES]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [CC_PIE]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [CC_CHORD]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [CC_ELLIPSES]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [CC_WIDE]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [CC_STYLED]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [CC_WIDESTYLED]}
+{*ast.BasicLit [INT 64]}
+{*ast.ValueSpec [CC_INTERIORS]}
+{*ast.BasicLit [INT 128]}
+{*ast.ValueSpec [CC_ROUNDRECT]}
+{*ast.BasicLit [INT 256]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [LC_NONE]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [LC_POLYLINE]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [LC_MARKER]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [LC_POLYMARKER]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [LC_WIDE]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [LC_STYLED]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [LC_WIDESTYLED]}
+{*ast.BasicLit [INT 64]}
+{*ast.ValueSpec [LC_INTERIORS]}
+{*ast.BasicLit [INT 128]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [PC_NONE]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [PC_POLYGON]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [PC_POLYPOLYGON]}
+{*ast.BasicLit [INT 256]}
+{*ast.ValueSpec [PC_PATHS]}
+{*ast.BasicLit [INT 512]}
+{*ast.ValueSpec [PC_RECTANGLE]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [PC_WINDPOLYGON]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [PC_SCANLINE]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [PC_TRAPEZOID]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [PC_WIDE]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [PC_STYLED]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [PC_WIDESTYLED]}
+{*ast.BasicLit [INT 64]}
+{*ast.ValueSpec [PC_INTERIORS]}
+{*ast.BasicLit [INT 128]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [TC_OP_CHARACTER]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [TC_OP_STROKE]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [TC_CP_STROKE]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [TC_CR_90]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [TC_CR_ANY]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [TC_SF_X_YINDEP]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [TC_SA_DOUBLE]}
+{*ast.BasicLit [INT 64]}
+{*ast.ValueSpec [TC_SA_INTEGER]}
+{*ast.BasicLit [INT 128]}
+{*ast.ValueSpec [TC_SA_CONTIN]}
+{*ast.BasicLit [INT 256]}
+{*ast.ValueSpec [TC_EA_DOUBLE]}
+{*ast.BasicLit [INT 512]}
+{*ast.ValueSpec [TC_IA_ABLE]}
+{*ast.BasicLit [INT 1024]}
+{*ast.ValueSpec [TC_UA_ABLE]}
+{*ast.BasicLit [INT 2048]}
+{*ast.ValueSpec [TC_SO_ABLE]}
+{*ast.BasicLit [INT 4096]}
+{*ast.ValueSpec [TC_RA_ABLE]}
+{*ast.BasicLit [INT 8192]}
+{*ast.ValueSpec [TC_VA_ABLE]}
+{*ast.BasicLit [INT 16384]}
+{*ast.ValueSpec [TC_RESERVED]}
+{*ast.BasicLit [INT 32768]}
+{*ast.ValueSpec [TC_SCROLLBLT]}
+{*ast.BasicLit [INT 65536]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [BS_SOLID]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [BS_NULL]}
+{*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [BS_HOLLOW BS_NULL]}
-{*ast.ValueSpec [BS_HATCHED INT 2]}
-{*ast.ValueSpec [BS_PATTERN INT 3]}
-{*ast.ValueSpec [BS_INDEXED INT 4]}
-{*ast.ValueSpec [BS_DIBPATTERN INT 5]}
-{*ast.ValueSpec [BS_DIBPATTERNPT INT 6]}
-{*ast.ValueSpec [BS_PATTERN8X8 INT 7]}
-{*ast.ValueSpec [BS_DIBPATTERN8X8 INT 8]}
-{*ast.ValueSpec [BS_MONOPATTERN INT 9]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [HS_HORIZONTAL INT 0]}
-{*ast.ValueSpec [HS_VERTICAL INT 1]}
-{*ast.ValueSpec [HS_FDIAGONAL INT 2]}
-{*ast.ValueSpec [HS_BDIAGONAL INT 3]}
-{*ast.ValueSpec [HS_CROSS INT 4]}
-{*ast.ValueSpec [HS_DIAGCROSS INT 5]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [PS_COSMETIC INT 0x00000000]}
-{*ast.ValueSpec [PS_GEOMETRIC INT 0x00010000]}
-{*ast.ValueSpec [PS_TYPE_MASK INT 0x000F0000]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [PS_SOLID INT 0]}
-{*ast.ValueSpec [PS_DASH INT 1]}
-{*ast.ValueSpec [PS_DOT INT 2]}
-{*ast.ValueSpec [PS_DASHDOT INT 3]}
-{*ast.ValueSpec [PS_DASHDOTDOT INT 4]}
-{*ast.ValueSpec [PS_NULL INT 5]}
-{*ast.ValueSpec [PS_INSIDEFRAME INT 6]}
-{*ast.ValueSpec [PS_USERSTYLE INT 7]}
-{*ast.ValueSpec [PS_ALTERNATE INT 8]}
-{*ast.ValueSpec [PS_STYLE_MASK INT 0x0000000F]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [PS_ENDCAP_ROUND INT 0x00000000]}
-{*ast.ValueSpec [PS_ENDCAP_SQUARE INT 0x00000100]}
-{*ast.ValueSpec [PS_ENDCAP_FLAT INT 0x00000200]}
-{*ast.ValueSpec [PS_ENDCAP_MASK INT 0x00000F00]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [PS_JOIN_ROUND INT 0x00000000]}
-{*ast.ValueSpec [PS_JOIN_BEVEL INT 0x00001000]}
-{*ast.ValueSpec [PS_JOIN_MITER INT 0x00002000]}
-{*ast.ValueSpec [PS_JOIN_MASK INT 0x0000F000]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [PRF_NONCLIENT INT 0x00000002]}
-{*ast.ValueSpec [PRF_CLIENT INT 0x00000004]}
-{*ast.ValueSpec [PRF_ERASEBKGND INT 0x00000008]}
-{*ast.ValueSpec [PRF_CHILDREN INT 0x00000010]}
-{*ast.ValueSpec [PRF_OWNED INT 0x00000020]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [WHITE_BRUSH INT 0]}
-{*ast.ValueSpec [LTGRAY_BRUSH INT 1]}
-{*ast.ValueSpec [GRAY_BRUSH INT 2]}
-{*ast.ValueSpec [DKGRAY_BRUSH INT 3]}
-{*ast.ValueSpec [BLACK_BRUSH INT 4]}
-{*ast.ValueSpec [NULL_BRUSH INT 5]}
+{*ast.ValueSpec [BS_HATCHED]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [BS_PATTERN]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [BS_INDEXED]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [BS_DIBPATTERN]}
+{*ast.BasicLit [INT 5]}
+{*ast.ValueSpec [BS_DIBPATTERNPT]}
+{*ast.BasicLit [INT 6]}
+{*ast.ValueSpec [BS_PATTERN8X8]}
+{*ast.BasicLit [INT 7]}
+{*ast.ValueSpec [BS_DIBPATTERN8X8]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [BS_MONOPATTERN]}
+{*ast.BasicLit [INT 9]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [HS_HORIZONTAL]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [HS_VERTICAL]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [HS_FDIAGONAL]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [HS_BDIAGONAL]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [HS_CROSS]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [HS_DIAGCROSS]}
+{*ast.BasicLit [INT 5]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [PS_COSMETIC]}
+{*ast.BasicLit [INT 0x00000000]}
+{*ast.ValueSpec [PS_GEOMETRIC]}
+{*ast.BasicLit [INT 0x00010000]}
+{*ast.ValueSpec [PS_TYPE_MASK]}
+{*ast.BasicLit [INT 0x000F0000]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [PS_SOLID]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [PS_DASH]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [PS_DOT]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [PS_DASHDOT]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [PS_DASHDOTDOT]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [PS_NULL]}
+{*ast.BasicLit [INT 5]}
+{*ast.ValueSpec [PS_INSIDEFRAME]}
+{*ast.BasicLit [INT 6]}
+{*ast.ValueSpec [PS_USERSTYLE]}
+{*ast.BasicLit [INT 7]}
+{*ast.ValueSpec [PS_ALTERNATE]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [PS_STYLE_MASK]}
+{*ast.BasicLit [INT 0x0000000F]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [PS_ENDCAP_ROUND]}
+{*ast.BasicLit [INT 0x00000000]}
+{*ast.ValueSpec [PS_ENDCAP_SQUARE]}
+{*ast.BasicLit [INT 0x00000100]}
+{*ast.ValueSpec [PS_ENDCAP_FLAT]}
+{*ast.BasicLit [INT 0x00000200]}
+{*ast.ValueSpec [PS_ENDCAP_MASK]}
+{*ast.BasicLit [INT 0x00000F00]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [PS_JOIN_ROUND]}
+{*ast.BasicLit [INT 0x00000000]}
+{*ast.ValueSpec [PS_JOIN_BEVEL]}
+{*ast.BasicLit [INT 0x00001000]}
+{*ast.ValueSpec [PS_JOIN_MITER]}
+{*ast.BasicLit [INT 0x00002000]}
+{*ast.ValueSpec [PS_JOIN_MASK]}
+{*ast.BasicLit [INT 0x0000F000]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [PRF_NONCLIENT]}
+{*ast.BasicLit [INT 0x00000002]}
+{*ast.ValueSpec [PRF_CLIENT]}
+{*ast.BasicLit [INT 0x00000004]}
+{*ast.ValueSpec [PRF_ERASEBKGND]}
+{*ast.BasicLit [INT 0x00000008]}
+{*ast.ValueSpec [PRF_CHILDREN]}
+{*ast.BasicLit [INT 0x00000010]}
+{*ast.ValueSpec [PRF_OWNED]}
+{*ast.BasicLit [INT 0x00000020]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [WHITE_BRUSH]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [LTGRAY_BRUSH]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [GRAY_BRUSH]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [DKGRAY_BRUSH]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [BLACK_BRUSH]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [NULL_BRUSH]}
+{*ast.BasicLit [INT 5]}
 {*ast.ValueSpec [HOLLOW_BRUSH NULL_BRUSH]}
-{*ast.ValueSpec [WHITE_PEN INT 6]}
-{*ast.ValueSpec [BLACK_PEN INT 7]}
-{*ast.ValueSpec [NULL_PEN INT 8]}
-{*ast.ValueSpec [OEM_FIXED_FONT INT 10]}
-{*ast.ValueSpec [ANSI_FIXED_FONT INT 11]}
-{*ast.ValueSpec [ANSI_VAR_FONT INT 12]}
-{*ast.ValueSpec [SYSTEM_FONT INT 13]}
-{*ast.ValueSpec [DEVICE_DEFAULT_FONT INT 14]}
-{*ast.ValueSpec [DEFAULT_PALETTE INT 15]}
-{*ast.ValueSpec [SYSTEM_FIXED_FONT INT 16]}
-{*ast.ValueSpec [DEFAULT_GUI_FONT INT 17]}
-{*ast.ValueSpec [DC_BRUSH INT 18]}
-{*ast.ValueSpec [DC_PEN INT 19]}
-{*ast.GenDecl -> *ast.ValueSpec [LF_FACESIZE INT 32]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [FW_DONTCARE INT 0]}
-{*ast.ValueSpec [FW_THIN INT 100]}
-{*ast.ValueSpec [FW_EXTRALIGHT INT 200]}
+{*ast.ValueSpec [WHITE_PEN]}
+{*ast.BasicLit [INT 6]}
+{*ast.ValueSpec [BLACK_PEN]}
+{*ast.BasicLit [INT 7]}
+{*ast.ValueSpec [NULL_PEN]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [OEM_FIXED_FONT]}
+{*ast.BasicLit [INT 10]}
+{*ast.ValueSpec [ANSI_FIXED_FONT]}
+{*ast.BasicLit [INT 11]}
+{*ast.ValueSpec [ANSI_VAR_FONT]}
+{*ast.BasicLit [INT 12]}
+{*ast.ValueSpec [SYSTEM_FONT]}
+{*ast.BasicLit [INT 13]}
+{*ast.ValueSpec [DEVICE_DEFAULT_FONT]}
+{*ast.BasicLit [INT 14]}
+{*ast.ValueSpec [DEFAULT_PALETTE]}
+{*ast.BasicLit [INT 15]}
+{*ast.ValueSpec [SYSTEM_FIXED_FONT]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [DEFAULT_GUI_FONT]}
+{*ast.BasicLit [INT 17]}
+{*ast.ValueSpec [DC_BRUSH]}
+{*ast.BasicLit [INT 18]}
+{*ast.ValueSpec [DC_PEN]}
+{*ast.BasicLit [INT 19]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [LF_FACESIZE]}
+{*ast.BasicLit [INT 32]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [FW_DONTCARE]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [FW_THIN]}
+{*ast.BasicLit [INT 100]}
+{*ast.ValueSpec [FW_EXTRALIGHT]}
+{*ast.BasicLit [INT 200]}
 {*ast.ValueSpec [FW_ULTRALIGHT FW_EXTRALIGHT]}
-{*ast.ValueSpec [FW_LIGHT INT 300]}
-{*ast.ValueSpec [FW_NORMAL INT 400]}
-{*ast.ValueSpec [FW_REGULAR INT 400]}
-{*ast.ValueSpec [FW_MEDIUM INT 500]}
-{*ast.ValueSpec [FW_SEMIBOLD INT 600]}
+{*ast.ValueSpec [FW_LIGHT]}
+{*ast.BasicLit [INT 300]}
+{*ast.ValueSpec [FW_NORMAL]}
+{*ast.BasicLit [INT 400]}
+{*ast.ValueSpec [FW_REGULAR]}
+{*ast.BasicLit [INT 400]}
+{*ast.ValueSpec [FW_MEDIUM]}
+{*ast.BasicLit [INT 500]}
+{*ast.ValueSpec [FW_SEMIBOLD]}
+{*ast.BasicLit [INT 600]}
 {*ast.ValueSpec [FW_DEMIBOLD FW_SEMIBOLD]}
-{*ast.ValueSpec [FW_BOLD INT 700]}
-{*ast.ValueSpec [FW_EXTRABOLD INT 800]}
+{*ast.ValueSpec [FW_BOLD]}
+{*ast.BasicLit [INT 700]}
+{*ast.ValueSpec [FW_EXTRABOLD]}
+{*ast.BasicLit [INT 800]}
 {*ast.ValueSpec [FW_ULTRABOLD FW_EXTRABOLD]}
-{*ast.ValueSpec [FW_HEAVY INT 900]}
+{*ast.ValueSpec [FW_HEAVY]}
+{*ast.BasicLit [INT 900]}
 {*ast.ValueSpec [FW_BLACK FW_HEAVY]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [ANSI_CHARSET INT 0]}
-{*ast.ValueSpec [DEFAULT_CHARSET INT 1]}
-{*ast.ValueSpec [SYMBOL_CHARSET INT 2]}
-{*ast.ValueSpec [SHIFTJIS_CHARSET INT 128]}
-{*ast.ValueSpec [HANGEUL_CHARSET INT 129]}
-{*ast.ValueSpec [HANGUL_CHARSET INT 129]}
-{*ast.ValueSpec [GB2312_CHARSET INT 134]}
-{*ast.ValueSpec [CHINESEBIG5_CHARSET INT 136]}
-{*ast.ValueSpec [GREEK_CHARSET INT 161]}
-{*ast.ValueSpec [TURKISH_CHARSET INT 162]}
-{*ast.ValueSpec [HEBREW_CHARSET INT 177]}
-{*ast.ValueSpec [ARABIC_CHARSET INT 178]}
-{*ast.ValueSpec [BALTIC_CHARSET INT 186]}
-{*ast.ValueSpec [RUSSIAN_CHARSET INT 204]}
-{*ast.ValueSpec [THAI_CHARSET INT 222]}
-{*ast.ValueSpec [EASTEUROPE_CHARSET INT 238]}
-{*ast.ValueSpec [OEM_CHARSET INT 255]}
-{*ast.ValueSpec [JOHAB_CHARSET INT 130]}
-{*ast.ValueSpec [VIETNAMESE_CHARSET INT 163]}
-{*ast.ValueSpec [MAC_CHARSET INT 77]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [OUT_DEFAULT_PRECIS INT 0]}
-{*ast.ValueSpec [OUT_STRING_PRECIS INT 1]}
-{*ast.ValueSpec [OUT_CHARACTER_PRECIS INT 2]}
-{*ast.ValueSpec [OUT_STROKE_PRECIS INT 3]}
-{*ast.ValueSpec [OUT_TT_PRECIS INT 4]}
-{*ast.ValueSpec [OUT_DEVICE_PRECIS INT 5]}
-{*ast.ValueSpec [OUT_RASTER_PRECIS INT 6]}
-{*ast.ValueSpec [OUT_TT_ONLY_PRECIS INT 7]}
-{*ast.ValueSpec [OUT_OUTLINE_PRECIS INT 8]}
-{*ast.ValueSpec [OUT_PS_ONLY_PRECIS INT 10]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [CLIP_DEFAULT_PRECIS INT 0]}
-{*ast.ValueSpec [CLIP_CHARACTER_PRECIS INT 1]}
-{*ast.ValueSpec [CLIP_STROKE_PRECIS INT 2]}
-{*ast.ValueSpec [CLIP_MASK INT 15]}
-{*ast.ValueSpec [CLIP_LH_ANGLES INT 16]}
-{*ast.ValueSpec [CLIP_TT_ALWAYS INT 32]}
-{*ast.ValueSpec [CLIP_EMBEDDED INT 128]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DEFAULT_QUALITY INT 0]}
-{*ast.ValueSpec [DRAFT_QUALITY INT 1]}
-{*ast.ValueSpec [PROOF_QUALITY INT 2]}
-{*ast.ValueSpec [NONANTIALIASED_QUALITY INT 3]}
-{*ast.ValueSpec [ANTIALIASED_QUALITY INT 4]}
-{*ast.ValueSpec [CLEARTYPE_QUALITY INT 5]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DEFAULT_PITCH INT 0]}
-{*ast.ValueSpec [FIXED_PITCH INT 1]}
-{*ast.ValueSpec [VARIABLE_PITCH INT 2]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [FF_DECORATIVE INT 80]}
-{*ast.ValueSpec [FF_DONTCARE INT 0]}
-{*ast.ValueSpec [FF_MODERN INT 48]}
-{*ast.ValueSpec [FF_ROMAN INT 16]}
-{*ast.ValueSpec [FF_SCRIPT INT 64]}
-{*ast.ValueSpec [FF_SWISS INT 32]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DC_FIELDS INT 1]}
-{*ast.ValueSpec [DC_PAPERS INT 2]}
-{*ast.ValueSpec [DC_PAPERSIZE INT 3]}
-{*ast.ValueSpec [DC_MINEXTENT INT 4]}
-{*ast.ValueSpec [DC_MAXEXTENT INT 5]}
-{*ast.ValueSpec [DC_BINS INT 6]}
-{*ast.ValueSpec [DC_DUPLEX INT 7]}
-{*ast.ValueSpec [DC_SIZE INT 8]}
-{*ast.ValueSpec [DC_EXTRA INT 9]}
-{*ast.ValueSpec [DC_VERSION INT 10]}
-{*ast.ValueSpec [DC_DRIVER INT 11]}
-{*ast.ValueSpec [DC_BINNAMES INT 12]}
-{*ast.ValueSpec [DC_ENUMRESOLUTIONS INT 13]}
-{*ast.ValueSpec [DC_FILEDEPENDENCIES INT 14]}
-{*ast.ValueSpec [DC_TRUETYPE INT 15]}
-{*ast.ValueSpec [DC_PAPERNAMES INT 16]}
-{*ast.ValueSpec [DC_ORIENTATION INT 17]}
-{*ast.ValueSpec [DC_COPIES INT 18]}
-{*ast.ValueSpec [DC_BINADJUST INT 19]}
-{*ast.ValueSpec [DC_EMF_COMPLIANT INT 20]}
-{*ast.ValueSpec [DC_DATATYPE_PRODUCED INT 21]}
-{*ast.ValueSpec [DC_COLLATE INT 22]}
-{*ast.ValueSpec [DC_MANUFACTURER INT 23]}
-{*ast.ValueSpec [DC_MODEL INT 24]}
-{*ast.ValueSpec [DC_PERSONALITY INT 25]}
-{*ast.ValueSpec [DC_PRINTRATE INT 26]}
-{*ast.ValueSpec [DC_PRINTRATEUNIT INT 27]}
-{*ast.ValueSpec [DC_PRINTERMEM INT 28]}
-{*ast.ValueSpec [DC_MEDIAREADY INT 29]}
-{*ast.ValueSpec [DC_STAPLE INT 30]}
-{*ast.ValueSpec [DC_PRINTRATEPPM INT 31]}
-{*ast.ValueSpec [DC_COLORDEVICE INT 32]}
-{*ast.ValueSpec [DC_NUP INT 33]}
-{*ast.ValueSpec [DC_MEDIATYPENAMES INT 34]}
-{*ast.ValueSpec [DC_MEDIATYPES INT 35]}
-{*ast.GenDecl -> *ast.ValueSpec [CCHDEVICENAME INT 32]}
-{*ast.ValueSpec [CCHFORMNAME INT 32]}
-{*ast.GenDecl -> *ast.ValueSpec [DM_UPDATE INT 1]}
-{*ast.ValueSpec [DM_COPY INT 2]}
-{*ast.ValueSpec [DM_PROMPT INT 4]}
-{*ast.ValueSpec [DM_MODIFY INT 8]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [ANSI_CHARSET]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [DEFAULT_CHARSET]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [SYMBOL_CHARSET]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [SHIFTJIS_CHARSET]}
+{*ast.BasicLit [INT 128]}
+{*ast.ValueSpec [HANGEUL_CHARSET]}
+{*ast.BasicLit [INT 129]}
+{*ast.ValueSpec [HANGUL_CHARSET]}
+{*ast.BasicLit [INT 129]}
+{*ast.ValueSpec [GB2312_CHARSET]}
+{*ast.BasicLit [INT 134]}
+{*ast.ValueSpec [CHINESEBIG5_CHARSET]}
+{*ast.BasicLit [INT 136]}
+{*ast.ValueSpec [GREEK_CHARSET]}
+{*ast.BasicLit [INT 161]}
+{*ast.ValueSpec [TURKISH_CHARSET]}
+{*ast.BasicLit [INT 162]}
+{*ast.ValueSpec [HEBREW_CHARSET]}
+{*ast.BasicLit [INT 177]}
+{*ast.ValueSpec [ARABIC_CHARSET]}
+{*ast.BasicLit [INT 178]}
+{*ast.ValueSpec [BALTIC_CHARSET]}
+{*ast.BasicLit [INT 186]}
+{*ast.ValueSpec [RUSSIAN_CHARSET]}
+{*ast.BasicLit [INT 204]}
+{*ast.ValueSpec [THAI_CHARSET]}
+{*ast.BasicLit [INT 222]}
+{*ast.ValueSpec [EASTEUROPE_CHARSET]}
+{*ast.BasicLit [INT 238]}
+{*ast.ValueSpec [OEM_CHARSET]}
+{*ast.BasicLit [INT 255]}
+{*ast.ValueSpec [JOHAB_CHARSET]}
+{*ast.BasicLit [INT 130]}
+{*ast.ValueSpec [VIETNAMESE_CHARSET]}
+{*ast.BasicLit [INT 163]}
+{*ast.ValueSpec [MAC_CHARSET]}
+{*ast.BasicLit [INT 77]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [OUT_DEFAULT_PRECIS]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [OUT_STRING_PRECIS]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [OUT_CHARACTER_PRECIS]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [OUT_STROKE_PRECIS]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [OUT_TT_PRECIS]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [OUT_DEVICE_PRECIS]}
+{*ast.BasicLit [INT 5]}
+{*ast.ValueSpec [OUT_RASTER_PRECIS]}
+{*ast.BasicLit [INT 6]}
+{*ast.ValueSpec [OUT_TT_ONLY_PRECIS]}
+{*ast.BasicLit [INT 7]}
+{*ast.ValueSpec [OUT_OUTLINE_PRECIS]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [OUT_PS_ONLY_PRECIS]}
+{*ast.BasicLit [INT 10]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [CLIP_DEFAULT_PRECIS]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [CLIP_CHARACTER_PRECIS]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [CLIP_STROKE_PRECIS]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [CLIP_MASK]}
+{*ast.BasicLit [INT 15]}
+{*ast.ValueSpec [CLIP_LH_ANGLES]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [CLIP_TT_ALWAYS]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [CLIP_EMBEDDED]}
+{*ast.BasicLit [INT 128]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DEFAULT_QUALITY]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [DRAFT_QUALITY]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [PROOF_QUALITY]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [NONANTIALIASED_QUALITY]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [ANTIALIASED_QUALITY]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [CLEARTYPE_QUALITY]}
+{*ast.BasicLit [INT 5]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DEFAULT_PITCH]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [FIXED_PITCH]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [VARIABLE_PITCH]}
+{*ast.BasicLit [INT 2]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [FF_DECORATIVE]}
+{*ast.BasicLit [INT 80]}
+{*ast.ValueSpec [FF_DONTCARE]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [FF_MODERN]}
+{*ast.BasicLit [INT 48]}
+{*ast.ValueSpec [FF_ROMAN]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [FF_SCRIPT]}
+{*ast.BasicLit [INT 64]}
+{*ast.ValueSpec [FF_SWISS]}
+{*ast.BasicLit [INT 32]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DC_FIELDS]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DC_PAPERS]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [DC_PAPERSIZE]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [DC_MINEXTENT]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [DC_MAXEXTENT]}
+{*ast.BasicLit [INT 5]}
+{*ast.ValueSpec [DC_BINS]}
+{*ast.BasicLit [INT 6]}
+{*ast.ValueSpec [DC_DUPLEX]}
+{*ast.BasicLit [INT 7]}
+{*ast.ValueSpec [DC_SIZE]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [DC_EXTRA]}
+{*ast.BasicLit [INT 9]}
+{*ast.ValueSpec [DC_VERSION]}
+{*ast.BasicLit [INT 10]}
+{*ast.ValueSpec [DC_DRIVER]}
+{*ast.BasicLit [INT 11]}
+{*ast.ValueSpec [DC_BINNAMES]}
+{*ast.BasicLit [INT 12]}
+{*ast.ValueSpec [DC_ENUMRESOLUTIONS]}
+{*ast.BasicLit [INT 13]}
+{*ast.ValueSpec [DC_FILEDEPENDENCIES]}
+{*ast.BasicLit [INT 14]}
+{*ast.ValueSpec [DC_TRUETYPE]}
+{*ast.BasicLit [INT 15]}
+{*ast.ValueSpec [DC_PAPERNAMES]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [DC_ORIENTATION]}
+{*ast.BasicLit [INT 17]}
+{*ast.ValueSpec [DC_COPIES]}
+{*ast.BasicLit [INT 18]}
+{*ast.ValueSpec [DC_BINADJUST]}
+{*ast.BasicLit [INT 19]}
+{*ast.ValueSpec [DC_EMF_COMPLIANT]}
+{*ast.BasicLit [INT 20]}
+{*ast.ValueSpec [DC_DATATYPE_PRODUCED]}
+{*ast.BasicLit [INT 21]}
+{*ast.ValueSpec [DC_COLLATE]}
+{*ast.BasicLit [INT 22]}
+{*ast.ValueSpec [DC_MANUFACTURER]}
+{*ast.BasicLit [INT 23]}
+{*ast.ValueSpec [DC_MODEL]}
+{*ast.BasicLit [INT 24]}
+{*ast.ValueSpec [DC_PERSONALITY]}
+{*ast.BasicLit [INT 25]}
+{*ast.ValueSpec [DC_PRINTRATE]}
+{*ast.BasicLit [INT 26]}
+{*ast.ValueSpec [DC_PRINTRATEUNIT]}
+{*ast.BasicLit [INT 27]}
+{*ast.ValueSpec [DC_PRINTERMEM]}
+{*ast.BasicLit [INT 28]}
+{*ast.ValueSpec [DC_MEDIAREADY]}
+{*ast.BasicLit [INT 29]}
+{*ast.ValueSpec [DC_STAPLE]}
+{*ast.BasicLit [INT 30]}
+{*ast.ValueSpec [DC_PRINTRATEPPM]}
+{*ast.BasicLit [INT 31]}
+{*ast.ValueSpec [DC_COLORDEVICE]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [DC_NUP]}
+{*ast.BasicLit [INT 33]}
+{*ast.ValueSpec [DC_MEDIATYPENAMES]}
+{*ast.BasicLit [INT 34]}
+{*ast.ValueSpec [DC_MEDIATYPES]}
+{*ast.BasicLit [INT 35]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [CCHDEVICENAME]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [CCHFORMNAME]}
+{*ast.BasicLit [INT 32]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DM_UPDATE]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DM_COPY]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [DM_PROMPT]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [DM_MODIFY]}
+{*ast.BasicLit [INT 8]}
 {*ast.ValueSpec [DM_IN_BUFFER DM_MODIFY]}
 {*ast.ValueSpec [DM_IN_PROMPT DM_PROMPT]}
 {*ast.ValueSpec [DM_OUT_BUFFER DM_COPY]}
 {*ast.ValueSpec [DM_OUT_DEFAULT DM_UPDATE]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DM_ORIENTATION INT 0x00000001]}
-{*ast.ValueSpec [DM_PAPERSIZE INT 0x00000002]}
-{*ast.ValueSpec [DM_PAPERLENGTH INT 0x00000004]}
-{*ast.ValueSpec [DM_PAPERWIDTH INT 0x00000008]}
-{*ast.ValueSpec [DM_SCALE INT 0x00000010]}
-{*ast.ValueSpec [DM_POSITION INT 0x00000020]}
-{*ast.ValueSpec [DM_NUP INT 0x00000040]}
-{*ast.ValueSpec [DM_DISPLAYORIENTATION INT 0x00000080]}
-{*ast.ValueSpec [DM_COPIES INT 0x00000100]}
-{*ast.ValueSpec [DM_DEFAULTSOURCE INT 0x00000200]}
-{*ast.ValueSpec [DM_PRINTQUALITY INT 0x00000400]}
-{*ast.ValueSpec [DM_COLOR INT 0x00000800]}
-{*ast.ValueSpec [DM_DUPLEX INT 0x00001000]}
-{*ast.ValueSpec [DM_YRESOLUTION INT 0x00002000]}
-{*ast.ValueSpec [DM_TTOPTION INT 0x00004000]}
-{*ast.ValueSpec [DM_COLLATE INT 0x00008000]}
-{*ast.ValueSpec [DM_FORMNAME INT 0x00010000]}
-{*ast.ValueSpec [DM_LOGPIXELS INT 0x00020000]}
-{*ast.ValueSpec [DM_BITSPERPEL INT 0x00040000]}
-{*ast.ValueSpec [DM_PELSWIDTH INT 0x00080000]}
-{*ast.ValueSpec [DM_PELSHEIGHT INT 0x00100000]}
-{*ast.ValueSpec [DM_DISPLAYFLAGS INT 0x00200000]}
-{*ast.ValueSpec [DM_DISPLAYFREQUENCY INT 0x00400000]}
-{*ast.ValueSpec [DM_ICMMETHOD INT 0x00800000]}
-{*ast.ValueSpec [DM_ICMINTENT INT 0x01000000]}
-{*ast.ValueSpec [DM_MEDIATYPE INT 0x02000000]}
-{*ast.ValueSpec [DM_DITHERTYPE INT 0x04000000]}
-{*ast.ValueSpec [DM_PANNINGWIDTH INT 0x08000000]}
-{*ast.ValueSpec [DM_PANNINGHEIGHT INT 0x10000000]}
-{*ast.ValueSpec [DM_DISPLAYFIXEDOUTPUT INT 0x20000000]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMORIENT_PORTRAIT INT 1]}
-{*ast.ValueSpec [DMORIENT_LANDSCAPE INT 2]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_FIRST DMPAPER_LETTER]}
-{*ast.ValueSpec [DMPAPER_LETTER INT 1]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LETTERSMALL INT 2]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_TABLOID INT 3]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LEDGER INT 4]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LEGAL INT 5]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_STATEMENT INT 6]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_EXECUTIVE INT 7]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A3 INT 8]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A4 INT 9]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A4SMALL INT 10]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A5 INT 11]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B4 INT 12]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B5 INT 13]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_FOLIO INT 14]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_QUARTO INT 15]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_10X14 INT 16]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_11X17 INT 17]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_NOTE INT 18]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_9 INT 19]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_10 INT 20]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_11 INT 21]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_12 INT 22]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_14 INT 23]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_CSHEET INT 24]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_DSHEET INT 25]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ESHEET INT 26]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_DL INT 27]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_C5 INT 28]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_C3 INT 29]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_C4 INT 30]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_C6 INT 31]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_C65 INT 32]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_B4 INT 33]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_B5 INT 34]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_B6 INT 35]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_ITALY INT 36]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_MONARCH INT 37]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_PERSONAL INT 38]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_FANFOLD_US INT 39]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_FANFOLD_STD_GERMAN INT 40]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_FANFOLD_LGL_GERMAN INT 41]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ISO_B4 INT 42]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JAPANESE_POSTCARD INT 43]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_9X11 INT 44]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_10X11 INT 45]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_15X11 INT 46]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_ENV_INVITE INT 47]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_RESERVED_48 INT 48]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_RESERVED_49 INT 49]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LETTER_EXTRA INT 50]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LEGAL_EXTRA INT 51]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_TABLOID_EXTRA INT 52]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A4_EXTRA INT 53]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LETTER_TRANSVERSE INT 54]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A4_TRANSVERSE INT 55]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LETTER_EXTRA_TRANSVERSE INT 56]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A_PLUS INT 57]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B_PLUS INT 58]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LETTER_PLUS INT 59]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A4_PLUS INT 60]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A5_TRANSVERSE INT 61]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B5_TRANSVERSE INT 62]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A3_EXTRA INT 63]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A5_EXTRA INT 64]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B5_EXTRA INT 65]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A2 INT 66]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A3_TRANSVERSE INT 67]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A3_EXTRA_TRANSVERSE INT 68]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_DBL_JAPANESE_POSTCARD INT 69]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A6 INT 70]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_KAKU2 INT 71]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_KAKU3 INT 72]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_CHOU3 INT 73]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_CHOU4 INT 74]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LETTER_ROTATED INT 75]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A3_ROTATED INT 76]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A4_ROTATED INT 77]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A5_ROTATED INT 78]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B4_JIS_ROTATED INT 79]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B5_JIS_ROTATED INT 80]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JAPANESE_POSTCARD_ROTATED INT 81]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_DBL_JAPANESE_POSTCARD_ROTATED INT 82]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_A6_ROTATED INT 83]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_KAKU2_ROTATED INT 84]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_KAKU3_ROTATED INT 85]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_CHOU3_ROTATED INT 86]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_CHOU4_ROTATED INT 87]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B6_JIS INT 88]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_B6_JIS_ROTATED INT 89]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_12X11 INT 90]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_YOU4 INT 91]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_JENV_YOU4_ROTATED INT 92]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_P16K INT 93]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_P32K INT 94]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_P32KBIG INT 95]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_1 INT 96]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_2 INT 97]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_3 INT 98]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_4 INT 99]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_5 INT 100]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_6 INT 101]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_7 INT 102]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_8 INT 103]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_9 INT 104]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_10 INT 105]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_P16K_ROTATED INT 106]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_P32K_ROTATED INT 107]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_P32KBIG_ROTATED INT 108]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_1_ROTATED INT 109]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_2_ROTATED INT 110]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_3_ROTATED INT 111]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_4_ROTATED INT 112]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_5_ROTATED INT 113]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_6_ROTATED INT 114]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_7_ROTATED INT 115]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_8_ROTATED INT 116]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_9_ROTATED INT 117]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_PENV_10_ROTATED INT 118]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMPAPER_LAST DMPAPER_PENV_10_ROTATED]}
-{*ast.ValueSpec [DMPAPER_USER INT 256]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMBIN_FIRST DMBIN_UPPER]}
-{*ast.ValueSpec [DMBIN_UPPER INT 1]}
-{*ast.ValueSpec [DMBIN_ONLYONE INT 1]}
-{*ast.ValueSpec [DMBIN_LOWER INT 2]}
-{*ast.ValueSpec [DMBIN_MIDDLE INT 3]}
-{*ast.ValueSpec [DMBIN_MANUAL INT 4]}
-{*ast.ValueSpec [DMBIN_ENVELOPE INT 5]}
-{*ast.ValueSpec [DMBIN_ENVMANUAL INT 6]}
-{*ast.ValueSpec [DMBIN_AUTO INT 7]}
-{*ast.ValueSpec [DMBIN_TRACTOR INT 8]}
-{*ast.ValueSpec [DMBIN_SMALLFMT INT 9]}
-{*ast.ValueSpec [DMBIN_LARGEFMT INT 10]}
-{*ast.ValueSpec [DMBIN_LARGECAPACITY INT 11]}
-{*ast.ValueSpec [DMBIN_CASSETTE INT 14]}
-{*ast.ValueSpec [DMBIN_FORMSOURCE INT 15]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DM_ORIENTATION]}
+{*ast.BasicLit [INT 0x00000001]}
+{*ast.ValueSpec [DM_PAPERSIZE]}
+{*ast.BasicLit [INT 0x00000002]}
+{*ast.ValueSpec [DM_PAPERLENGTH]}
+{*ast.BasicLit [INT 0x00000004]}
+{*ast.ValueSpec [DM_PAPERWIDTH]}
+{*ast.BasicLit [INT 0x00000008]}
+{*ast.ValueSpec [DM_SCALE]}
+{*ast.BasicLit [INT 0x00000010]}
+{*ast.ValueSpec [DM_POSITION]}
+{*ast.BasicLit [INT 0x00000020]}
+{*ast.ValueSpec [DM_NUP]}
+{*ast.BasicLit [INT 0x00000040]}
+{*ast.ValueSpec [DM_DISPLAYORIENTATION]}
+{*ast.BasicLit [INT 0x00000080]}
+{*ast.ValueSpec [DM_COPIES]}
+{*ast.BasicLit [INT 0x00000100]}
+{*ast.ValueSpec [DM_DEFAULTSOURCE]}
+{*ast.BasicLit [INT 0x00000200]}
+{*ast.ValueSpec [DM_PRINTQUALITY]}
+{*ast.BasicLit [INT 0x00000400]}
+{*ast.ValueSpec [DM_COLOR]}
+{*ast.BasicLit [INT 0x00000800]}
+{*ast.ValueSpec [DM_DUPLEX]}
+{*ast.BasicLit [INT 0x00001000]}
+{*ast.ValueSpec [DM_YRESOLUTION]}
+{*ast.BasicLit [INT 0x00002000]}
+{*ast.ValueSpec [DM_TTOPTION]}
+{*ast.BasicLit [INT 0x00004000]}
+{*ast.ValueSpec [DM_COLLATE]}
+{*ast.BasicLit [INT 0x00008000]}
+{*ast.ValueSpec [DM_FORMNAME]}
+{*ast.BasicLit [INT 0x00010000]}
+{*ast.ValueSpec [DM_LOGPIXELS]}
+{*ast.BasicLit [INT 0x00020000]}
+{*ast.ValueSpec [DM_BITSPERPEL]}
+{*ast.BasicLit [INT 0x00040000]}
+{*ast.ValueSpec [DM_PELSWIDTH]}
+{*ast.BasicLit [INT 0x00080000]}
+{*ast.ValueSpec [DM_PELSHEIGHT]}
+{*ast.BasicLit [INT 0x00100000]}
+{*ast.ValueSpec [DM_DISPLAYFLAGS]}
+{*ast.BasicLit [INT 0x00200000]}
+{*ast.ValueSpec [DM_DISPLAYFREQUENCY]}
+{*ast.BasicLit [INT 0x00400000]}
+{*ast.ValueSpec [DM_ICMMETHOD]}
+{*ast.BasicLit [INT 0x00800000]}
+{*ast.ValueSpec [DM_ICMINTENT]}
+{*ast.BasicLit [INT 0x01000000]}
+{*ast.ValueSpec [DM_MEDIATYPE]}
+{*ast.BasicLit [INT 0x02000000]}
+{*ast.ValueSpec [DM_DITHERTYPE]}
+{*ast.BasicLit [INT 0x04000000]}
+{*ast.ValueSpec [DM_PANNINGWIDTH]}
+{*ast.BasicLit [INT 0x08000000]}
+{*ast.ValueSpec [DM_PANNINGHEIGHT]}
+{*ast.BasicLit [INT 0x10000000]}
+{*ast.ValueSpec [DM_DISPLAYFIXEDOUTPUT]}
+{*ast.BasicLit [INT 0x20000000]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DMORIENT_PORTRAIT]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DMORIENT_LANDSCAPE]}
+{*ast.BasicLit [INT 2]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DMPAPER_FIRST DMPAPER_LETTER]}
+{*ast.ValueSpec [DMPAPER_LETTER]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DMPAPER_LETTERSMALL]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [DMPAPER_TABLOID]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [DMPAPER_LEDGER]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [DMPAPER_LEGAL]}
+{*ast.BasicLit [INT 5]}
+{*ast.ValueSpec [DMPAPER_STATEMENT]}
+{*ast.BasicLit [INT 6]}
+{*ast.ValueSpec [DMPAPER_EXECUTIVE]}
+{*ast.BasicLit [INT 7]}
+{*ast.ValueSpec [DMPAPER_A3]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [DMPAPER_A4]}
+{*ast.BasicLit [INT 9]}
+{*ast.ValueSpec [DMPAPER_A4SMALL]}
+{*ast.BasicLit [INT 10]}
+{*ast.ValueSpec [DMPAPER_A5]}
+{*ast.BasicLit [INT 11]}
+{*ast.ValueSpec [DMPAPER_B4]}
+{*ast.BasicLit [INT 12]}
+{*ast.ValueSpec [DMPAPER_B5]}
+{*ast.BasicLit [INT 13]}
+{*ast.ValueSpec [DMPAPER_FOLIO]}
+{*ast.BasicLit [INT 14]}
+{*ast.ValueSpec [DMPAPER_QUARTO]}
+{*ast.BasicLit [INT 15]}
+{*ast.ValueSpec [DMPAPER_10X14]}
+{*ast.BasicLit [INT 16]}
+{*ast.ValueSpec [DMPAPER_11X17]}
+{*ast.BasicLit [INT 17]}
+{*ast.ValueSpec [DMPAPER_NOTE]}
+{*ast.BasicLit [INT 18]}
+{*ast.ValueSpec [DMPAPER_ENV_9]}
+{*ast.BasicLit [INT 19]}
+{*ast.ValueSpec [DMPAPER_ENV_10]}
+{*ast.BasicLit [INT 20]}
+{*ast.ValueSpec [DMPAPER_ENV_11]}
+{*ast.BasicLit [INT 21]}
+{*ast.ValueSpec [DMPAPER_ENV_12]}
+{*ast.BasicLit [INT 22]}
+{*ast.ValueSpec [DMPAPER_ENV_14]}
+{*ast.BasicLit [INT 23]}
+{*ast.ValueSpec [DMPAPER_CSHEET]}
+{*ast.BasicLit [INT 24]}
+{*ast.ValueSpec [DMPAPER_DSHEET]}
+{*ast.BasicLit [INT 25]}
+{*ast.ValueSpec [DMPAPER_ESHEET]}
+{*ast.BasicLit [INT 26]}
+{*ast.ValueSpec [DMPAPER_ENV_DL]}
+{*ast.BasicLit [INT 27]}
+{*ast.ValueSpec [DMPAPER_ENV_C5]}
+{*ast.BasicLit [INT 28]}
+{*ast.ValueSpec [DMPAPER_ENV_C3]}
+{*ast.BasicLit [INT 29]}
+{*ast.ValueSpec [DMPAPER_ENV_C4]}
+{*ast.BasicLit [INT 30]}
+{*ast.ValueSpec [DMPAPER_ENV_C6]}
+{*ast.BasicLit [INT 31]}
+{*ast.ValueSpec [DMPAPER_ENV_C65]}
+{*ast.BasicLit [INT 32]}
+{*ast.ValueSpec [DMPAPER_ENV_B4]}
+{*ast.BasicLit [INT 33]}
+{*ast.ValueSpec [DMPAPER_ENV_B5]}
+{*ast.BasicLit [INT 34]}
+{*ast.ValueSpec [DMPAPER_ENV_B6]}
+{*ast.BasicLit [INT 35]}
+{*ast.ValueSpec [DMPAPER_ENV_ITALY]}
+{*ast.BasicLit [INT 36]}
+{*ast.ValueSpec [DMPAPER_ENV_MONARCH]}
+{*ast.BasicLit [INT 37]}
+{*ast.ValueSpec [DMPAPER_ENV_PERSONAL]}
+{*ast.BasicLit [INT 38]}
+{*ast.ValueSpec [DMPAPER_FANFOLD_US]}
+{*ast.BasicLit [INT 39]}
+{*ast.ValueSpec [DMPAPER_FANFOLD_STD_GERMAN]}
+{*ast.BasicLit [INT 40]}
+{*ast.ValueSpec [DMPAPER_FANFOLD_LGL_GERMAN]}
+{*ast.BasicLit [INT 41]}
+{*ast.ValueSpec [DMPAPER_ISO_B4]}
+{*ast.BasicLit [INT 42]}
+{*ast.ValueSpec [DMPAPER_JAPANESE_POSTCARD]}
+{*ast.BasicLit [INT 43]}
+{*ast.ValueSpec [DMPAPER_9X11]}
+{*ast.BasicLit [INT 44]}
+{*ast.ValueSpec [DMPAPER_10X11]}
+{*ast.BasicLit [INT 45]}
+{*ast.ValueSpec [DMPAPER_15X11]}
+{*ast.BasicLit [INT 46]}
+{*ast.ValueSpec [DMPAPER_ENV_INVITE]}
+{*ast.BasicLit [INT 47]}
+{*ast.ValueSpec [DMPAPER_RESERVED_48]}
+{*ast.BasicLit [INT 48]}
+{*ast.ValueSpec [DMPAPER_RESERVED_49]}
+{*ast.BasicLit [INT 49]}
+{*ast.ValueSpec [DMPAPER_LETTER_EXTRA]}
+{*ast.BasicLit [INT 50]}
+{*ast.ValueSpec [DMPAPER_LEGAL_EXTRA]}
+{*ast.BasicLit [INT 51]}
+{*ast.ValueSpec [DMPAPER_TABLOID_EXTRA]}
+{*ast.BasicLit [INT 52]}
+{*ast.ValueSpec [DMPAPER_A4_EXTRA]}
+{*ast.BasicLit [INT 53]}
+{*ast.ValueSpec [DMPAPER_LETTER_TRANSVERSE]}
+{*ast.BasicLit [INT 54]}
+{*ast.ValueSpec [DMPAPER_A4_TRANSVERSE]}
+{*ast.BasicLit [INT 55]}
+{*ast.ValueSpec [DMPAPER_LETTER_EXTRA_TRANSVERSE]}
+{*ast.BasicLit [INT 56]}
+{*ast.ValueSpec [DMPAPER_A_PLUS]}
+{*ast.BasicLit [INT 57]}
+{*ast.ValueSpec [DMPAPER_B_PLUS]}
+{*ast.BasicLit [INT 58]}
+{*ast.ValueSpec [DMPAPER_LETTER_PLUS]}
+{*ast.BasicLit [INT 59]}
+{*ast.ValueSpec [DMPAPER_A4_PLUS]}
+{*ast.BasicLit [INT 60]}
+{*ast.ValueSpec [DMPAPER_A5_TRANSVERSE]}
+{*ast.BasicLit [INT 61]}
+{*ast.ValueSpec [DMPAPER_B5_TRANSVERSE]}
+{*ast.BasicLit [INT 62]}
+{*ast.ValueSpec [DMPAPER_A3_EXTRA]}
+{*ast.BasicLit [INT 63]}
+{*ast.ValueSpec [DMPAPER_A5_EXTRA]}
+{*ast.BasicLit [INT 64]}
+{*ast.ValueSpec [DMPAPER_B5_EXTRA]}
+{*ast.BasicLit [INT 65]}
+{*ast.ValueSpec [DMPAPER_A2]}
+{*ast.BasicLit [INT 66]}
+{*ast.ValueSpec [DMPAPER_A3_TRANSVERSE]}
+{*ast.BasicLit [INT 67]}
+{*ast.ValueSpec [DMPAPER_A3_EXTRA_TRANSVERSE]}
+{*ast.BasicLit [INT 68]}
+{*ast.ValueSpec [DMPAPER_DBL_JAPANESE_POSTCARD]}
+{*ast.BasicLit [INT 69]}
+{*ast.ValueSpec [DMPAPER_A6]}
+{*ast.BasicLit [INT 70]}
+{*ast.ValueSpec [DMPAPER_JENV_KAKU2]}
+{*ast.BasicLit [INT 71]}
+{*ast.ValueSpec [DMPAPER_JENV_KAKU3]}
+{*ast.BasicLit [INT 72]}
+{*ast.ValueSpec [DMPAPER_JENV_CHOU3]}
+{*ast.BasicLit [INT 73]}
+{*ast.ValueSpec [DMPAPER_JENV_CHOU4]}
+{*ast.BasicLit [INT 74]}
+{*ast.ValueSpec [DMPAPER_LETTER_ROTATED]}
+{*ast.BasicLit [INT 75]}
+{*ast.ValueSpec [DMPAPER_A3_ROTATED]}
+{*ast.BasicLit [INT 76]}
+{*ast.ValueSpec [DMPAPER_A4_ROTATED]}
+{*ast.BasicLit [INT 77]}
+{*ast.ValueSpec [DMPAPER_A5_ROTATED]}
+{*ast.BasicLit [INT 78]}
+{*ast.ValueSpec [DMPAPER_B4_JIS_ROTATED]}
+{*ast.BasicLit [INT 79]}
+{*ast.ValueSpec [DMPAPER_B5_JIS_ROTATED]}
+{*ast.BasicLit [INT 80]}
+{*ast.ValueSpec [DMPAPER_JAPANESE_POSTCARD_ROTATED]}
+{*ast.BasicLit [INT 81]}
+{*ast.ValueSpec [DMPAPER_DBL_JAPANESE_POSTCARD_ROTATED]}
+{*ast.BasicLit [INT 82]}
+{*ast.ValueSpec [DMPAPER_A6_ROTATED]}
+{*ast.BasicLit [INT 83]}
+{*ast.ValueSpec [DMPAPER_JENV_KAKU2_ROTATED]}
+{*ast.BasicLit [INT 84]}
+{*ast.ValueSpec [DMPAPER_JENV_KAKU3_ROTATED]}
+{*ast.BasicLit [INT 85]}
+{*ast.ValueSpec [DMPAPER_JENV_CHOU3_ROTATED]}
+{*ast.BasicLit [INT 86]}
+{*ast.ValueSpec [DMPAPER_JENV_CHOU4_ROTATED]}
+{*ast.BasicLit [INT 87]}
+{*ast.ValueSpec [DMPAPER_B6_JIS]}
+{*ast.BasicLit [INT 88]}
+{*ast.ValueSpec [DMPAPER_B6_JIS_ROTATED]}
+{*ast.BasicLit [INT 89]}
+{*ast.ValueSpec [DMPAPER_12X11]}
+{*ast.BasicLit [INT 90]}
+{*ast.ValueSpec [DMPAPER_JENV_YOU4]}
+{*ast.BasicLit [INT 91]}
+{*ast.ValueSpec [DMPAPER_JENV_YOU4_ROTATED]}
+{*ast.BasicLit [INT 92]}
+{*ast.ValueSpec [DMPAPER_P16K]}
+{*ast.BasicLit [INT 93]}
+{*ast.ValueSpec [DMPAPER_P32K]}
+{*ast.BasicLit [INT 94]}
+{*ast.ValueSpec [DMPAPER_P32KBIG]}
+{*ast.BasicLit [INT 95]}
+{*ast.ValueSpec [DMPAPER_PENV_1]}
+{*ast.BasicLit [INT 96]}
+{*ast.ValueSpec [DMPAPER_PENV_2]}
+{*ast.BasicLit [INT 97]}
+{*ast.ValueSpec [DMPAPER_PENV_3]}
+{*ast.BasicLit [INT 98]}
+{*ast.ValueSpec [DMPAPER_PENV_4]}
+{*ast.BasicLit [INT 99]}
+{*ast.ValueSpec [DMPAPER_PENV_5]}
+{*ast.BasicLit [INT 100]}
+{*ast.ValueSpec [DMPAPER_PENV_6]}
+{*ast.BasicLit [INT 101]}
+{*ast.ValueSpec [DMPAPER_PENV_7]}
+{*ast.BasicLit [INT 102]}
+{*ast.ValueSpec [DMPAPER_PENV_8]}
+{*ast.BasicLit [INT 103]}
+{*ast.ValueSpec [DMPAPER_PENV_9]}
+{*ast.BasicLit [INT 104]}
+{*ast.ValueSpec [DMPAPER_PENV_10]}
+{*ast.BasicLit [INT 105]}
+{*ast.ValueSpec [DMPAPER_P16K_ROTATED]}
+{*ast.BasicLit [INT 106]}
+{*ast.ValueSpec [DMPAPER_P32K_ROTATED]}
+{*ast.BasicLit [INT 107]}
+{*ast.ValueSpec [DMPAPER_P32KBIG_ROTATED]}
+{*ast.BasicLit [INT 108]}
+{*ast.ValueSpec [DMPAPER_PENV_1_ROTATED]}
+{*ast.BasicLit [INT 109]}
+{*ast.ValueSpec [DMPAPER_PENV_2_ROTATED]}
+{*ast.BasicLit [INT 110]}
+{*ast.ValueSpec [DMPAPER_PENV_3_ROTATED]}
+{*ast.BasicLit [INT 111]}
+{*ast.ValueSpec [DMPAPER_PENV_4_ROTATED]}
+{*ast.BasicLit [INT 112]}
+{*ast.ValueSpec [DMPAPER_PENV_5_ROTATED]}
+{*ast.BasicLit [INT 113]}
+{*ast.ValueSpec [DMPAPER_PENV_6_ROTATED]}
+{*ast.BasicLit [INT 114]}
+{*ast.ValueSpec [DMPAPER_PENV_7_ROTATED]}
+{*ast.BasicLit [INT 115]}
+{*ast.ValueSpec [DMPAPER_PENV_8_ROTATED]}
+{*ast.BasicLit [INT 116]}
+{*ast.ValueSpec [DMPAPER_PENV_9_ROTATED]}
+{*ast.BasicLit [INT 117]}
+{*ast.ValueSpec [DMPAPER_PENV_10_ROTATED]}
+{*ast.BasicLit [INT 118]}
+{*ast.ValueSpec [DMPAPER_LAST DMPAPER_PENV_10_ROTATED]}
+{*ast.ValueSpec [DMPAPER_USER]}
+{*ast.BasicLit [INT 256]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DMBIN_FIRST DMBIN_UPPER]}
+{*ast.ValueSpec [DMBIN_UPPER]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DMBIN_ONLYONE]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DMBIN_LOWER]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [DMBIN_MIDDLE]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [DMBIN_MANUAL]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [DMBIN_ENVELOPE]}
+{*ast.BasicLit [INT 5]}
+{*ast.ValueSpec [DMBIN_ENVMANUAL]}
+{*ast.BasicLit [INT 6]}
+{*ast.ValueSpec [DMBIN_AUTO]}
+{*ast.BasicLit [INT 7]}
+{*ast.ValueSpec [DMBIN_TRACTOR]}
+{*ast.BasicLit [INT 8]}
+{*ast.ValueSpec [DMBIN_SMALLFMT]}
+{*ast.BasicLit [INT 9]}
+{*ast.ValueSpec [DMBIN_LARGEFMT]}
+{*ast.BasicLit [INT 10]}
+{*ast.ValueSpec [DMBIN_LARGECAPACITY]}
+{*ast.BasicLit [INT 11]}
+{*ast.ValueSpec [DMBIN_CASSETTE]}
+{*ast.BasicLit [INT 14]}
+{*ast.ValueSpec [DMBIN_FORMSOURCE]}
+{*ast.BasicLit [INT 15]}
 {*ast.ValueSpec [DMBIN_LAST DMBIN_FORMSOURCE]}
-{*ast.ValueSpec [DMBIN_USER INT 256]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMRES_DRAFT]}
-{*ast.UnaryExpr [INT 1]}
+{*ast.ValueSpec [DMBIN_USER]}
+{*ast.BasicLit [INT 256]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DMRES_DRAFT]}
+{*ast.UnaryExpr [-]}
+{*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [DMRES_LOW]}
-{*ast.UnaryExpr [INT 2]}
+{*ast.UnaryExpr [-]}
+{*ast.BasicLit [INT 2]}
 {*ast.ValueSpec [DMRES_MEDIUM]}
-{*ast.UnaryExpr [INT 3]}
+{*ast.UnaryExpr [-]}
+{*ast.BasicLit [INT 3]}
 {*ast.ValueSpec [DMRES_HIGH]}
-{*ast.UnaryExpr [INT 4]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMCOLOR_MONOCHROME INT 1]}
-{*ast.ValueSpec [DMCOLOR_COLOR INT 2]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMDUP_SIMPLEX INT 1]}
-{*ast.ValueSpec [DMDUP_VERTICAL INT 2]}
-{*ast.ValueSpec [DMDUP_HORIZONTAL INT 3]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMTT_BITMAP INT 1]}
-{*ast.ValueSpec [DMTT_DOWNLOAD INT 2]}
-{*ast.ValueSpec [DMTT_SUBDEV INT 3]}
-{*ast.ValueSpec [DMTT_DOWNLOAD_OUTLINE INT 4]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DMCOLLATE_FALSE INT 0]}
-{*ast.ValueSpec [DMCOLLATE_TRUE INT 1]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [TRANSPARENT INT 1]}
-{*ast.ValueSpec [OPAQUE INT 2]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [SRCCOPY INT 0x00CC0020]}
-{*ast.ValueSpec [SRCPAINT INT 0x00EE0086]}
-{*ast.ValueSpec [SRCAND INT 0x008800C6]}
-{*ast.ValueSpec [SRCINVERT INT 0x00660046]}
-{*ast.ValueSpec [SRCERASE INT 0x00440328]}
-{*ast.ValueSpec [NOTSRCCOPY INT 0x00330008]}
-{*ast.ValueSpec [NOTSRCERASE INT 0x001100A6]}
-{*ast.ValueSpec [MERGECOPY INT 0x00C000CA]}
-{*ast.ValueSpec [MERGEPAINT INT 0x00BB0226]}
-{*ast.ValueSpec [PATCOPY INT 0x00F00021]}
-{*ast.ValueSpec [PATPAINT INT 0x00FB0A09]}
-{*ast.ValueSpec [PATINVERT INT 0x005A0049]}
-{*ast.ValueSpec [DSTINVERT INT 0x00550009]}
-{*ast.ValueSpec [BLACKNESS INT 0x00000042]}
-{*ast.ValueSpec [WHITENESS INT 0x00FF0062]}
-{*ast.ValueSpec [NOMIRRORBITMAP INT 0x80000000]}
-{*ast.ValueSpec [CAPTUREBLT INT 0x40000000]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [BLACKONWHITE INT 1]}
-{*ast.ValueSpec [WHITEONBLACK INT 2]}
-{*ast.ValueSpec [COLORONCOLOR INT 3]}
-{*ast.ValueSpec [HALFTONE INT 4]}
-{*ast.ValueSpec [MAXSTRETCHBLTMODE INT 4]}
+{*ast.UnaryExpr [-]}
+{*ast.BasicLit [INT 4]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DMCOLOR_MONOCHROME]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DMCOLOR_COLOR]}
+{*ast.BasicLit [INT 2]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DMDUP_SIMPLEX]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DMDUP_VERTICAL]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [DMDUP_HORIZONTAL]}
+{*ast.BasicLit [INT 3]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DMTT_BITMAP]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [DMTT_DOWNLOAD]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [DMTT_SUBDEV]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [DMTT_DOWNLOAD_OUTLINE]}
+{*ast.BasicLit [INT 4]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DMCOLLATE_FALSE]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [DMCOLLATE_TRUE]}
+{*ast.BasicLit [INT 1]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [TRANSPARENT]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [OPAQUE]}
+{*ast.BasicLit [INT 2]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [SRCCOPY]}
+{*ast.BasicLit [INT 0x00CC0020]}
+{*ast.ValueSpec [SRCPAINT]}
+{*ast.BasicLit [INT 0x00EE0086]}
+{*ast.ValueSpec [SRCAND]}
+{*ast.BasicLit [INT 0x008800C6]}
+{*ast.ValueSpec [SRCINVERT]}
+{*ast.BasicLit [INT 0x00660046]}
+{*ast.ValueSpec [SRCERASE]}
+{*ast.BasicLit [INT 0x00440328]}
+{*ast.ValueSpec [NOTSRCCOPY]}
+{*ast.BasicLit [INT 0x00330008]}
+{*ast.ValueSpec [NOTSRCERASE]}
+{*ast.BasicLit [INT 0x001100A6]}
+{*ast.ValueSpec [MERGECOPY]}
+{*ast.BasicLit [INT 0x00C000CA]}
+{*ast.ValueSpec [MERGEPAINT]}
+{*ast.BasicLit [INT 0x00BB0226]}
+{*ast.ValueSpec [PATCOPY]}
+{*ast.BasicLit [INT 0x00F00021]}
+{*ast.ValueSpec [PATPAINT]}
+{*ast.BasicLit [INT 0x00FB0A09]}
+{*ast.ValueSpec [PATINVERT]}
+{*ast.BasicLit [INT 0x005A0049]}
+{*ast.ValueSpec [DSTINVERT]}
+{*ast.BasicLit [INT 0x00550009]}
+{*ast.ValueSpec [BLACKNESS]}
+{*ast.BasicLit [INT 0x00000042]}
+{*ast.ValueSpec [WHITENESS]}
+{*ast.BasicLit [INT 0x00FF0062]}
+{*ast.ValueSpec [NOMIRRORBITMAP]}
+{*ast.BasicLit [INT 0x80000000]}
+{*ast.ValueSpec [CAPTUREBLT]}
+{*ast.BasicLit [INT 0x40000000]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [BLACKONWHITE]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [WHITEONBLACK]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [COLORONCOLOR]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [HALFTONE]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [MAXSTRETCHBLTMODE]}
+{*ast.BasicLit [INT 4]}
 {*ast.ValueSpec [STRETCH_ANDSCANS BLACKONWHITE]}
 {*ast.ValueSpec [STRETCH_ORSCANS WHITEONBLACK]}
 {*ast.ValueSpec [STRETCH_DELETESCANS COLORONCOLOR]}
 {*ast.ValueSpec [STRETCH_HALFTONE HALFTONE]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [BI_RGB INT 0]}
-{*ast.ValueSpec [BI_RLE8 INT 1]}
-{*ast.ValueSpec [BI_RLE4 INT 2]}
-{*ast.ValueSpec [BI_BITFIELDS INT 3]}
-{*ast.ValueSpec [BI_JPEG INT 4]}
-{*ast.ValueSpec [BI_PNG INT 5]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [DIB_RGB_COLORS INT 0]}
-{*ast.ValueSpec [DIB_PAL_COLORS INT 1]}
-{*ast.GenDecl -> *ast.ValueSpec [CBM_INIT INT 4]}
-{*ast.GenDecl -> *ast.ValueSpec [CLR_INVALID INT 0xFFFFFFFF]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [BI_RGB]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [BI_RLE8]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [BI_RLE4]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [BI_BITFIELDS]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [BI_JPEG]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [BI_PNG]}
+{*ast.BasicLit [INT 5]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [DIB_RGB_COLORS]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [DIB_PAL_COLORS]}
+{*ast.BasicLit [INT 1]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [CBM_INIT]}
+{*ast.BasicLit [INT 4]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [CLR_INVALID]}
+{*ast.BasicLit [INT 0xFFFFFFFF]}
 {*ast.ValueSpec [CLR_NONE CLR_INVALID]}
-{*ast.ValueSpec [CLR_DEFAULT INT 0xFF000000]}
-{*ast.GenDecl -> *ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment [PFD_TYPE_RGBA INT 0]}
-{*ast.ValueSpec [PFD_TYPE_COLORINDEX INT 1]}
-{*ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment [PFD_MAIN_PLANE INT 0]}
-{*ast.ValueSpec [PFD_OVERLAY_PLANE INT 1]}
+{*ast.ValueSpec [CLR_DEFAULT]}
+{*ast.BasicLit [INT 0xFF000000]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [PFD_TYPE_RGBA]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [PFD_TYPE_COLORINDEX]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [PFD_MAIN_PLANE]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [PFD_OVERLAY_PLANE]}
+{*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [PFD_UNDERLAY_PLANE]}
-{*ast.ParenExpr -> *ast.UnaryExpr [INT 1]}
-{*ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment [PFD_DOUBLEBUFFER INT 0x00000001]}
-{*ast.ValueSpec [PFD_STEREO INT 0x00000002]}
-{*ast.ValueSpec [PFD_DRAW_TO_WINDOW INT 0x00000004]}
-{*ast.ValueSpec [PFD_DRAW_TO_BITMAP INT 0x00000008]}
-{*ast.ValueSpec [PFD_SUPPORT_GDI INT 0x00000010]}
-{*ast.ValueSpec [PFD_SUPPORT_OPENGL INT 0x00000020]}
-{*ast.ValueSpec [PFD_GENERIC_FORMAT INT 0x00000040]}
-{*ast.ValueSpec [PFD_NEED_PALETTE INT 0x00000080]}
-{*ast.ValueSpec [PFD_NEED_SYSTEM_PALETTE INT 0x00000100]}
-{*ast.ValueSpec [PFD_SWAP_EXCHANGE INT 0x00000200]}
-{*ast.ValueSpec [PFD_SWAP_COPY INT 0x00000400]}
-{*ast.ValueSpec [PFD_SWAP_LAYER_BUFFERS INT 0x00000800]}
-{*ast.ValueSpec [PFD_GENERIC_ACCELERATED INT 0x00001000]}
-{*ast.ValueSpec [PFD_SUPPORT_DIRECTDRAW INT 0x00002000]}
-{*ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment [PFD_DEPTH_DONTCARE INT 0x20000000]}
-{*ast.ValueSpec [PFD_DOUBLEBUFFER_DONTCARE INT 0x40000000]}
-{*ast.ValueSpec [PFD_STEREO_DONTCARE INT 0x80000000]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [GRADIENT_FILL_RECT_H INT 0x00]}
-{*ast.ValueSpec [GRADIENT_FILL_RECT_V INT 0x01]}
-{*ast.ValueSpec [GRADIENT_FILL_TRIANGLE INT 0x02]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [RGN_AND INT 1]}
-{*ast.ValueSpec [RGN_OR INT 2]}
-{*ast.ValueSpec [RGN_XOR INT 3]}
-{*ast.ValueSpec [RGN_DIFF INT 4]}
-{*ast.ValueSpec [RGN_COPY INT 5]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [REGIONERROR INT 0]}
-{*ast.ValueSpec [NULLREGION INT 1]}
-{*ast.ValueSpec [SIMPLEREGION INT 2]}
-{*ast.ValueSpec [COMPLEXREGION INT 3]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [AC_SRC_ALPHA INT 0x1]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [FR_PRIVATE INT 0x10]}
-{*ast.ValueSpec [FR_NOT_ENUM INT 0x20]}
+{*ast.ParenExpr []}
+{*ast.UnaryExpr [-]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [PFD_DOUBLEBUFFER]}
+{*ast.BasicLit [INT 0x00000001]}
+{*ast.ValueSpec [PFD_STEREO]}
+{*ast.BasicLit [INT 0x00000002]}
+{*ast.ValueSpec [PFD_DRAW_TO_WINDOW]}
+{*ast.BasicLit [INT 0x00000004]}
+{*ast.ValueSpec [PFD_DRAW_TO_BITMAP]}
+{*ast.BasicLit [INT 0x00000008]}
+{*ast.ValueSpec [PFD_SUPPORT_GDI]}
+{*ast.BasicLit [INT 0x00000010]}
+{*ast.ValueSpec [PFD_SUPPORT_OPENGL]}
+{*ast.BasicLit [INT 0x00000020]}
+{*ast.ValueSpec [PFD_GENERIC_FORMAT]}
+{*ast.BasicLit [INT 0x00000040]}
+{*ast.ValueSpec [PFD_NEED_PALETTE]}
+{*ast.BasicLit [INT 0x00000080]}
+{*ast.ValueSpec [PFD_NEED_SYSTEM_PALETTE]}
+{*ast.BasicLit [INT 0x00000100]}
+{*ast.ValueSpec [PFD_SWAP_EXCHANGE]}
+{*ast.BasicLit [INT 0x00000200]}
+{*ast.ValueSpec [PFD_SWAP_COPY]}
+{*ast.BasicLit [INT 0x00000400]}
+{*ast.ValueSpec [PFD_SWAP_LAYER_BUFFERS]}
+{*ast.BasicLit [INT 0x00000800]}
+{*ast.ValueSpec [PFD_GENERIC_ACCELERATED]}
+{*ast.BasicLit [INT 0x00001000]}
+{*ast.ValueSpec [PFD_SUPPORT_DIRECTDRAW]}
+{*ast.BasicLit [INT 0x00002000]}
+{*ast.ValueSpec [PFD_DEPTH_DONTCARE]}
+{*ast.BasicLit [INT 0x20000000]}
+{*ast.ValueSpec [PFD_DOUBLEBUFFER_DONTCARE]}
+{*ast.BasicLit [INT 0x40000000]}
+{*ast.ValueSpec [PFD_STEREO_DONTCARE]}
+{*ast.BasicLit [INT 0x80000000]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [GRADIENT_FILL_RECT_H]}
+{*ast.BasicLit [INT 0x00]}
+{*ast.ValueSpec [GRADIENT_FILL_RECT_V]}
+{*ast.BasicLit [INT 0x01]}
+{*ast.ValueSpec [GRADIENT_FILL_TRIANGLE]}
+{*ast.BasicLit [INT 0x02]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [RGN_AND]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [RGN_OR]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [RGN_XOR]}
+{*ast.BasicLit [INT 3]}
+{*ast.ValueSpec [RGN_DIFF]}
+{*ast.BasicLit [INT 4]}
+{*ast.ValueSpec [RGN_COPY]}
+{*ast.BasicLit [INT 5]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [REGIONERROR]}
+{*ast.BasicLit [INT 0]}
+{*ast.ValueSpec [NULLREGION]}
+{*ast.BasicLit [INT 1]}
+{*ast.ValueSpec [SIMPLEREGION]}
+{*ast.BasicLit [INT 2]}
+{*ast.ValueSpec [COMPLEXREGION]}
+{*ast.BasicLit [INT 3]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [AC_SRC_ALPHA]}
+{*ast.BasicLit [INT 0x1]}
+
+
 
 
 function name is RGB 
 	 { [RGB]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [r g b byte]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [COLORREF r]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [COLORREF g INT 8]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.CallExpr [COLORREF b INT 16]}
-	 {*ast.GenDecl -> *ast.TypeSpec [COLORREF uint32]}
-	 {*ast.TypeSpec [HBITMAP HGDIOBJ]}
-	 {*ast.TypeSpec [HBRUSH HGDIOBJ]}
-	 {*ast.TypeSpec [HDC HANDLE]}
-	 {*ast.TypeSpec [HFONT HGDIOBJ]}
-	 {*ast.TypeSpec [HGDIOBJ HANDLE]}
-	 {*ast.TypeSpec [HENHMETAFILE HANDLE]}
-	 {*ast.TypeSpec [HPALETTE HGDIOBJ]}
-	 {*ast.TypeSpec [HPEN HGDIOBJ]}
-	 {*ast.TypeSpec [HRGN HGDIOBJ]}
-	 {*ast.TypeSpec [CLIPFORMAT uint16]}
-	 {*ast.GenDecl -> *ast.TypeSpec [PIXELFORMATDESCRIPTOR]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [NSize uint16]}
-	 {*ast.Field [NVersion uint16]}
-	 {*ast.Field [DwFlags uint32]}
-	 {*ast.Field [IPixelType byte]}
-	 {*ast.Field [CColorBits byte]}
-	 {*ast.Field [CRedBits byte]}
-	 {*ast.Field [CRedShift byte]}
-	 {*ast.Field [CGreenBits byte]}
-	 {*ast.Field [CGreenShift byte]}
-	 {*ast.Field [CBlueBits byte]}
-	 {*ast.Field [CBlueShift byte]}
-	 {*ast.Field [CAlphaBits byte]}
-	 {*ast.Field [CAlphaShift byte]}
-	 {*ast.Field [CAccumBits byte]}
-	 {*ast.Field [CAccumRedBits byte]}
-	 {*ast.Field [CAccumGreenBits byte]}
-	 {*ast.Field [CAccumBlueBits byte]}
-	 {*ast.Field [CAccumAlphaBits byte]}
-	 {*ast.Field [CDepthBits byte]}
-	 {*ast.Field [CStencilBits byte]}
-	 {*ast.Field [CAuxBuffers byte]}
-	 {*ast.Field [ILayerType byte]}
-	 {*ast.Field [BReserved byte]}
-	 {*ast.Field [DwLayerMask uint32]}
-	 {*ast.Field [DwVisibleMask uint32]}
-	 {*ast.Field [DwDamageMask uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [LOGFONT]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [LfHeight int32]}
-	 {*ast.Field [LfWidth int32]}
-	 {*ast.Field [LfEscapement int32]}
-	 {*ast.Field [LfOrientation int32]}
-	 {*ast.Field [LfWeight int32]}
-	 {*ast.Field [LfItalic byte]}
-	 {*ast.Field [LfUnderline byte]}
-	 {*ast.Field [LfStrikeOut byte]}
-	 {*ast.Field [LfCharSet byte]}
-	 {*ast.Field [LfOutPrecision byte]}
-	 {*ast.Field [LfClipPrecision byte]}
-	 {*ast.Field [LfQuality byte]}
-	 {*ast.Field [LfPitchAndFamily byte]}
-	 {*ast.Field [LfFaceName]}
-	 {*ast.ArrayType [LF_FACESIZE uint16]}
-	 {*ast.GenDecl -> *ast.TypeSpec [TEXTMETRIC]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [TmHeight int32]}
-	 {*ast.Field [TmAscent int32]}
-	 {*ast.Field [TmDescent int32]}
-	 {*ast.Field [TmInternalLeading int32]}
-	 {*ast.Field [TmExternalLeading int32]}
-	 {*ast.Field [TmAveCharWidth int32]}
-	 {*ast.Field [TmMaxCharWidth int32]}
-	 {*ast.Field [TmWeight int32]}
-	 {*ast.Field [TmOverhang int32]}
-	 {*ast.Field [TmDigitizedAspectX int32]}
-	 {*ast.Field [TmDigitizedAspectY int32]}
-	 {*ast.Field [TmFirstChar uint16]}
-	 {*ast.Field [TmLastChar uint16]}
-	 {*ast.Field [TmDefaultChar uint16]}
-	 {*ast.Field [TmBreakChar uint16]}
-	 {*ast.Field [TmItalic byte]}
-	 {*ast.Field [TmUnderlined byte]}
-	 {*ast.Field [TmStruckOut byte]}
-	 {*ast.Field [TmPitchAndFamily byte]}
-	 {*ast.Field [TmCharSet byte]}
-	 {*ast.GenDecl -> *ast.TypeSpec [DEVMODE]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [DmDeviceName]}
-	 {*ast.ArrayType [CCHDEVICENAME uint16]}
-	 {*ast.Field [DmSpecVersion uint16]}
-	 {*ast.Field [DmDriverVersion uint16]}
-	 {*ast.Field [DmSize uint16]}
-	 {*ast.Field [DmDriverExtra uint16]}
-	 {*ast.Field [DmFields uint32]}
-	 {*ast.Field [DmOrientation int16]}
-	 {*ast.Field [DmPaperSize int16]}
-	 {*ast.Field [DmPaperLength int16]}
-	 {*ast.Field [DmPaperWidth int16]}
-	 {*ast.Field [DmScale int16]}
-	 {*ast.Field [DmCopies int16]}
-	 {*ast.Field [DmDefaultSource int16]}
-	 {*ast.Field [DmPrintQuality int16]}
-	 {*ast.Field [DmColor int16]}
-	 {*ast.Field [DmDuplex int16]}
-	 {*ast.Field [DmYResolution int16]}
-	 {*ast.Field [DmTTOption int16]}
-	 {*ast.Field [DmCollate int16]}
-	 {*ast.Field [DmFormName]}
-	 {*ast.ArrayType [CCHFORMNAME uint16]}
-	 {*ast.Field [DmLogPixels uint16]}
-	 {*ast.Field [DmBitsPerPel uint32]}
-	 {*ast.Field [DmPelsWidth uint32]}
-	 {*ast.Field [DmPelsHeight uint32]}
-	 {*ast.Field [DmDisplayFlags uint32]}
-	 {*ast.Field [DmDisplayFrequency uint32]}
-	 {*ast.Field [DmICMMethod uint32]}
-	 {*ast.Field [DmICMIntent uint32]}
-	 {*ast.Field [DmMediaType uint32]}
-	 {*ast.Field [DmDitherType uint32]}
-	 {*ast.Field [DmReserved1 uint32]}
-	 {*ast.Field [DmReserved2 uint32]}
-	 {*ast.Field [DmPanningWidth uint32]}
-	 {*ast.Field [DmPanningHeight uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [POINT]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [X Y int32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [RECT]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Left Top Right Bottom int32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [SIZE]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CX CY int32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [DOCINFO]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CbSize int32]}
-	 {*ast.Field [LpszDocName]}
-	 {*ast.StarExpr [uint16]}
-	 {*ast.Field [LpszOutput]}
-	 {*ast.StarExpr [uint16]}
-	 {*ast.Field [LpszDatatype]}
-	 {*ast.StarExpr [uint16]}
-	 {*ast.Field [FwType uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [LOGBRUSH]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [LbStyle uint32]}
-	 {*ast.Field [LbColor COLORREF]}
-	 {*ast.Field [LbHatch uintptr]}
-	 {*ast.GenDecl -> *ast.TypeSpec [CIEXYZ]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CiexyzX CiexyzY CiexyzZ int32]}
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.GenDecl -> *ast.TypeSpec [CIEXYZTRIPLE]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CiexyzRed CiexyzGreen CiexyzBlue CIEXYZ]}
-	 {*ast.GenDecl -> *ast.TypeSpec [BITMAPINFOHEADER]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [BiSize uint32]}
-	 {*ast.Field [BiWidth int32]}
-	 {*ast.Field [BiHeight int32]}
-	 {*ast.Field [BiPlanes uint16]}
-	 {*ast.Field [BiBitCount uint16]}
-	 {*ast.Field [BiCompression uint32]}
-	 {*ast.Field [BiSizeImage uint32]}
-	 {*ast.Field [BiXPelsPerMeter int32]}
-	 {*ast.Field [BiYPelsPerMeter int32]}
-	 {*ast.Field [BiClrUsed uint32]}
-	 {*ast.Field [BiClrImportant uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [BITMAPV4HEADER]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [BITMAPINFOHEADER]}
-	 {*ast.Field [BV4RedMask uint32]}
-	 {*ast.Field [BV4GreenMask uint32]}
-	 {*ast.Field [BV4BlueMask uint32]}
-	 {*ast.Field [BV4AlphaMask uint32]}
-	 {*ast.Field [BV4CSType uint32]}
-	 {*ast.Field [BV4Endpoints CIEXYZTRIPLE]}
-	 {*ast.Field [BV4GammaRed uint32]}
-	 {*ast.Field [BV4GammaGreen uint32]}
-	 {*ast.Field [BV4GammaBlue uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [BITMAPV5HEADER]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [BITMAPV4HEADER]}
-	 {*ast.Field [BV5Intent uint32]}
-	 {*ast.Field [BV5ProfileData uint32]}
-	 {*ast.Field [BV5ProfileSize uint32]}
-	 {*ast.Field [BV5Reserved uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [RGBQUAD]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [RgbBlue byte]}
-	 {*ast.Field [RgbGreen byte]}
-	 {*ast.Field [RgbRed byte]}
-	 {*ast.Field [RgbReserved byte]}
-	 {*ast.GenDecl -> *ast.TypeSpec [BITMAPINFO]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [BmiHeader BITMAPINFOHEADER]}
-	 {*ast.Field [BmiColors]}
-	 {*ast.StarExpr [RGBQUAD]}
-	 {*ast.GenDecl -> *ast.TypeSpec [BITMAP]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [BmType int32]}
-	 {*ast.Field [BmWidth int32]}
-	 {*ast.Field [BmHeight int32]}
-	 {*ast.Field [BmWidthBytes int32]}
-	 {*ast.Field [BmPlanes uint16]}
-	 {*ast.Field [BmBitsPixel uint16]}
-	 {*ast.Field -> *ast.SelectorExpr [BmBits unsafe Pointer]}
-	 {*ast.GenDecl -> *ast.TypeSpec [DIBSECTION]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [DsBm BITMAP]}
-	 {*ast.Field [DsBmih BITMAPINFOHEADER]}
-	 {*ast.Field [DsBitfields]}
-	 {*ast.ArrayType [INT 3 uint32]}
-	 {*ast.Field [DshSection HANDLE]}
-	 {*ast.Field [DsOffset uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [ENHMETAHEADER]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [IType uint32]}
-	 {*ast.Field [NSize uint32]}
-	 {*ast.Field [RclBounds RECT]}
-	 {*ast.Field [RclFrame RECT]}
-	 {*ast.Field [DSignature uint32]}
-	 {*ast.Field [NVersion uint32]}
-	 {*ast.Field [NBytes uint32]}
-	 {*ast.Field [NRecords uint32]}
-	 {*ast.Field [NHandles uint16]}
-	 {*ast.Field [SReserved uint16]}
-	 {*ast.Field [NDescription uint32]}
-	 {*ast.Field [OffDescription uint32]}
-	 {*ast.Field [NPalEntries uint32]}
-	 {*ast.Field [SzlDevice SIZE]}
-	 {*ast.Field [SzlMillimeters SIZE]}
-	 {*ast.Field [CbPixelFormat uint32]}
-	 {*ast.Field [OffPixelFormat uint32]}
-	 {*ast.Field [BOpenGL uint32]}
-	 {*ast.Field [SzlMicrometers SIZE]}
-	 {*ast.GenDecl -> *ast.TypeSpec [TRIVERTEX]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [X int32]}
-	 {*ast.Field [Y int32]}
-	 {*ast.Field [Red uint16]}
-	 {*ast.Field [Green uint16]}
-	 {*ast.Field [Blue uint16]}
-	 {*ast.Field [Alpha uint16]}
-	 {*ast.GenDecl -> *ast.TypeSpec [GRADIENT_RECT]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [UpperLeft uint32]}
-	 {*ast.Field [LowerRight uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [GRADIENT_TRIANGLE]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Vertex1 uint32]}
-	 {*ast.Field [Vertex2 uint32]}
-	 {*ast.Field [Vertex3 uint32]}
-	 {*ast.GenDecl -> *ast.TypeSpec [BLENDFUNCTION]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [BlendOp byte]}
-	 {*ast.Field [BlendFlags byte]}
-	 {*ast.Field [SourceConstantAlpha byte]}
-	 {*ast.Field [AlphaFormat byte]}
-	 {*ast.GenDecl -> *ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment [libgdi32]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyDLL]}
-	 {*ast.ValueSpec [libmsimg32]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyDLL]}
-	 {*ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment [abortDoc]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [addFontResourceEx]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [addFontMemResourceEx]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [alphaBlend]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [bitBlt]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [choosePixelFormat]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [closeEnhMetaFile]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [combineRgn]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [copyEnhMetaFile]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createBitmap]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createCompatibleBitmap]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createBrushIndirect]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createCompatibleDC]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createDC]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createDIBSection]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createFontIndirect]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createEnhMetaFile]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createIC]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createPatternBrush]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [createRectRgn]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [deleteDC]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [deleteEnhMetaFile]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [deleteObject]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [ellipse]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [endDoc]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [endPage]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [excludeClipRect]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [extCreatePen]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [fillRgn]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [gdiFlush]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getBkColor]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getDeviceCaps]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getDIBits]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getEnhMetaFile]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getEnhMetaFileHeader]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getObject]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getPixel]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getRgnBox]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getStockObject]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getTextColor]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getTextExtentExPoint]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getTextExtentPoint32]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getTextMetrics]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [getViewportOrgEx]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [gradientFill]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [intersectClipRect]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [lineTo]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [moveToEx]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [playEnhMetaFile]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [polyline]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [rectangle]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [removeFontResourceEx]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [removeFontMemResourceEx]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [resetDC]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [restoreDC]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [roundRect]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [selectObject]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setBkColor]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setBkMode]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setBrushOrgEx]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setDIBits]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setPixel]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setPixelFormat]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setStretchBltMode]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setTextColor]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [setViewportOrgEx]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [saveDC]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [startDoc]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [startPage]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [stretchBlt]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [swapBuffers]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [textOut]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
-	 {*ast.ValueSpec [transparentBlt]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [COLORREF r]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [<<]}
+	 {*ast.CallExpr [COLORREF g]}
+	 {*ast.BasicLit [INT 8]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [<<]}
+	 {*ast.CallExpr [COLORREF b]}
+	 {*ast.BasicLit [INT 16]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [COLORREF uint32]}
+{*ast.TypeSpec [HBITMAP HGDIOBJ]}
+{*ast.TypeSpec [HBRUSH HGDIOBJ]}
+{*ast.TypeSpec [HDC HANDLE]}
+{*ast.TypeSpec [HFONT HGDIOBJ]}
+{*ast.TypeSpec [HGDIOBJ HANDLE]}
+{*ast.TypeSpec [HENHMETAFILE HANDLE]}
+{*ast.TypeSpec [HPALETTE HGDIOBJ]}
+{*ast.TypeSpec [HPEN HGDIOBJ]}
+{*ast.TypeSpec [HRGN HGDIOBJ]}
+{*ast.TypeSpec [CLIPFORMAT uint16]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [PIXELFORMATDESCRIPTOR]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [NSize uint16]}
+{*ast.Field [NVersion uint16]}
+{*ast.Field [DwFlags uint32]}
+{*ast.Field [IPixelType byte]}
+{*ast.Field [CColorBits byte]}
+{*ast.Field [CRedBits byte]}
+{*ast.Field [CRedShift byte]}
+{*ast.Field [CGreenBits byte]}
+{*ast.Field [CGreenShift byte]}
+{*ast.Field [CBlueBits byte]}
+{*ast.Field [CBlueShift byte]}
+{*ast.Field [CAlphaBits byte]}
+{*ast.Field [CAlphaShift byte]}
+{*ast.Field [CAccumBits byte]}
+{*ast.Field [CAccumRedBits byte]}
+{*ast.Field [CAccumGreenBits byte]}
+{*ast.Field [CAccumBlueBits byte]}
+{*ast.Field [CAccumAlphaBits byte]}
+{*ast.Field [CDepthBits byte]}
+{*ast.Field [CStencilBits byte]}
+{*ast.Field [CAuxBuffers byte]}
+{*ast.Field [ILayerType byte]}
+{*ast.Field [BReserved byte]}
+{*ast.Field [DwLayerMask uint32]}
+{*ast.Field [DwVisibleMask uint32]}
+{*ast.Field [DwDamageMask uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [LOGFONT]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [LfHeight int32]}
+{*ast.Field [LfWidth int32]}
+{*ast.Field [LfEscapement int32]}
+{*ast.Field [LfOrientation int32]}
+{*ast.Field [LfWeight int32]}
+{*ast.Field [LfItalic byte]}
+{*ast.Field [LfUnderline byte]}
+{*ast.Field [LfStrikeOut byte]}
+{*ast.Field [LfCharSet byte]}
+{*ast.Field [LfOutPrecision byte]}
+{*ast.Field [LfClipPrecision byte]}
+{*ast.Field [LfQuality byte]}
+{*ast.Field [LfPitchAndFamily byte]}
+{*ast.Field [LfFaceName]}
+{*ast.ArrayType [LF_FACESIZE uint16]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [TEXTMETRIC]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [TmHeight int32]}
+{*ast.Field [TmAscent int32]}
+{*ast.Field [TmDescent int32]}
+{*ast.Field [TmInternalLeading int32]}
+{*ast.Field [TmExternalLeading int32]}
+{*ast.Field [TmAveCharWidth int32]}
+{*ast.Field [TmMaxCharWidth int32]}
+{*ast.Field [TmWeight int32]}
+{*ast.Field [TmOverhang int32]}
+{*ast.Field [TmDigitizedAspectX int32]}
+{*ast.Field [TmDigitizedAspectY int32]}
+{*ast.Field [TmFirstChar uint16]}
+{*ast.Field [TmLastChar uint16]}
+{*ast.Field [TmDefaultChar uint16]}
+{*ast.Field [TmBreakChar uint16]}
+{*ast.Field [TmItalic byte]}
+{*ast.Field [TmUnderlined byte]}
+{*ast.Field [TmStruckOut byte]}
+{*ast.Field [TmPitchAndFamily byte]}
+{*ast.Field [TmCharSet byte]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [DEVMODE]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [DmDeviceName]}
+{*ast.ArrayType [CCHDEVICENAME uint16]}
+{*ast.Field [DmSpecVersion uint16]}
+{*ast.Field [DmDriverVersion uint16]}
+{*ast.Field [DmSize uint16]}
+{*ast.Field [DmDriverExtra uint16]}
+{*ast.Field [DmFields uint32]}
+{*ast.Field [DmOrientation int16]}
+{*ast.Field [DmPaperSize int16]}
+{*ast.Field [DmPaperLength int16]}
+{*ast.Field [DmPaperWidth int16]}
+{*ast.Field [DmScale int16]}
+{*ast.Field [DmCopies int16]}
+{*ast.Field [DmDefaultSource int16]}
+{*ast.Field [DmPrintQuality int16]}
+{*ast.Field [DmColor int16]}
+{*ast.Field [DmDuplex int16]}
+{*ast.Field [DmYResolution int16]}
+{*ast.Field [DmTTOption int16]}
+{*ast.Field [DmCollate int16]}
+{*ast.Field [DmFormName]}
+{*ast.ArrayType [CCHFORMNAME uint16]}
+{*ast.Field [DmLogPixels uint16]}
+{*ast.Field [DmBitsPerPel uint32]}
+{*ast.Field [DmPelsWidth uint32]}
+{*ast.Field [DmPelsHeight uint32]}
+{*ast.Field [DmDisplayFlags uint32]}
+{*ast.Field [DmDisplayFrequency uint32]}
+{*ast.Field [DmICMMethod uint32]}
+{*ast.Field [DmICMIntent uint32]}
+{*ast.Field [DmMediaType uint32]}
+{*ast.Field [DmDitherType uint32]}
+{*ast.Field [DmReserved1 uint32]}
+{*ast.Field [DmReserved2 uint32]}
+{*ast.Field [DmPanningWidth uint32]}
+{*ast.Field [DmPanningHeight uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [POINT]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [X Y int32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [RECT]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Left Top Right Bottom int32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [SIZE]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CX CY int32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [DOCINFO]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CbSize int32]}
+{*ast.Field [LpszDocName]}
+{*ast.StarExpr [uint16]}
+{*ast.Field [LpszOutput]}
+{*ast.StarExpr [uint16]}
+{*ast.Field [LpszDatatype]}
+{*ast.StarExpr [uint16]}
+{*ast.Field [FwType uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [LOGBRUSH]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [LbStyle uint32]}
+{*ast.Field [LbColor COLORREF]}
+{*ast.Field [LbHatch uintptr]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [CIEXYZ]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CiexyzX CiexyzY CiexyzZ int32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [CIEXYZTRIPLE]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CiexyzRed CiexyzGreen CiexyzBlue CIEXYZ]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [BITMAPINFOHEADER]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [BiSize uint32]}
+{*ast.Field [BiWidth int32]}
+{*ast.Field [BiHeight int32]}
+{*ast.Field [BiPlanes uint16]}
+{*ast.Field [BiBitCount uint16]}
+{*ast.Field [BiCompression uint32]}
+{*ast.Field [BiSizeImage uint32]}
+{*ast.Field [BiXPelsPerMeter int32]}
+{*ast.Field [BiYPelsPerMeter int32]}
+{*ast.Field [BiClrUsed uint32]}
+{*ast.Field [BiClrImportant uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [BITMAPV4HEADER]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [BITMAPINFOHEADER]}
+{*ast.Field [BV4RedMask uint32]}
+{*ast.Field [BV4GreenMask uint32]}
+{*ast.Field [BV4BlueMask uint32]}
+{*ast.Field [BV4AlphaMask uint32]}
+{*ast.Field [BV4CSType uint32]}
+{*ast.Field [BV4Endpoints CIEXYZTRIPLE]}
+{*ast.Field [BV4GammaRed uint32]}
+{*ast.Field [BV4GammaGreen uint32]}
+{*ast.Field [BV4GammaBlue uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [BITMAPV5HEADER]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [BITMAPV4HEADER]}
+{*ast.Field [BV5Intent uint32]}
+{*ast.Field [BV5ProfileData uint32]}
+{*ast.Field [BV5ProfileSize uint32]}
+{*ast.Field [BV5Reserved uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [RGBQUAD]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [RgbBlue byte]}
+{*ast.Field [RgbGreen byte]}
+{*ast.Field [RgbRed byte]}
+{*ast.Field [RgbReserved byte]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [BITMAPINFO]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [BmiHeader BITMAPINFOHEADER]}
+{*ast.Field [BmiColors]}
+{*ast.StarExpr [RGBQUAD]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [BITMAP]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [BmType int32]}
+{*ast.Field [BmWidth int32]}
+{*ast.Field [BmHeight int32]}
+{*ast.Field [BmWidthBytes int32]}
+{*ast.Field [BmPlanes uint16]}
+{*ast.Field [BmBitsPixel uint16]}
+{*ast.Field -> *ast.SelectorExpr [BmBits unsafe Pointer]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [DIBSECTION]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [DsBm BITMAP]}
+{*ast.Field [DsBmih BITMAPINFOHEADER]}
+{*ast.Field [DsBitfields]}
+{*ast.ArrayType -> *ast.BasicLit [INT 3 uint32]}
+{*ast.Field [DshSection HANDLE]}
+{*ast.Field [DsOffset uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [ENHMETAHEADER]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [IType uint32]}
+{*ast.Field [NSize uint32]}
+{*ast.Field [RclBounds RECT]}
+{*ast.Field [RclFrame RECT]}
+{*ast.Field [DSignature uint32]}
+{*ast.Field [NVersion uint32]}
+{*ast.Field [NBytes uint32]}
+{*ast.Field [NRecords uint32]}
+{*ast.Field [NHandles uint16]}
+{*ast.Field [SReserved uint16]}
+{*ast.Field [NDescription uint32]}
+{*ast.Field [OffDescription uint32]}
+{*ast.Field [NPalEntries uint32]}
+{*ast.Field [SzlDevice SIZE]}
+{*ast.Field [SzlMillimeters SIZE]}
+{*ast.Field [CbPixelFormat uint32]}
+{*ast.Field [OffPixelFormat uint32]}
+{*ast.Field [BOpenGL uint32]}
+{*ast.Field [SzlMicrometers SIZE]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [TRIVERTEX]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [X int32]}
+{*ast.Field [Y int32]}
+{*ast.Field [Red uint16]}
+{*ast.Field [Green uint16]}
+{*ast.Field [Blue uint16]}
+{*ast.Field [Alpha uint16]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [GRADIENT_RECT]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [UpperLeft uint32]}
+{*ast.Field [LowerRight uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [GRADIENT_TRIANGLE]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Vertex1 uint32]}
+{*ast.Field [Vertex2 uint32]}
+{*ast.Field [Vertex3 uint32]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [BLENDFUNCTION]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [BlendOp byte]}
+{*ast.Field [BlendFlags byte]}
+{*ast.Field [SourceConstantAlpha byte]}
+{*ast.Field [AlphaFormat byte]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [libgdi32]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyDLL]}
+{*ast.ValueSpec [libmsimg32]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyDLL]}
+{*ast.ValueSpec [abortDoc]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [addFontResourceEx]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [addFontMemResourceEx]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [alphaBlend]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [bitBlt]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [choosePixelFormat]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [closeEnhMetaFile]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [combineRgn]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [copyEnhMetaFile]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createBitmap]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createCompatibleBitmap]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createBrushIndirect]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createCompatibleDC]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createDC]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createDIBSection]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createFontIndirect]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createEnhMetaFile]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createIC]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createPatternBrush]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [createRectRgn]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [deleteDC]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [deleteEnhMetaFile]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [deleteObject]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [ellipse]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [endDoc]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [endPage]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [excludeClipRect]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [extCreatePen]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [fillRgn]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [gdiFlush]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getBkColor]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getDeviceCaps]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getDIBits]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getEnhMetaFile]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getEnhMetaFileHeader]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getObject]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getPixel]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getRgnBox]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getStockObject]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getTextColor]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getTextExtentExPoint]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getTextExtentPoint32]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getTextMetrics]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [getViewportOrgEx]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [gradientFill]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [intersectClipRect]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [lineTo]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [moveToEx]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [playEnhMetaFile]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [polyline]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [rectangle]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [removeFontResourceEx]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [removeFontMemResourceEx]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [resetDC]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [restoreDC]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [roundRect]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [selectObject]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setBkColor]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setBkMode]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setBrushOrgEx]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setDIBits]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setPixel]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setPixelFormat]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setStretchBltMode]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setTextColor]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [setViewportOrgEx]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [saveDC]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [startDoc]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [startPage]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [stretchBlt]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [swapBuffers]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [textOut]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
+{*ast.ValueSpec [transparentBlt]}
+{*ast.StarExpr -> *ast.SelectorExpr [windows LazyProc]}
 
 
 function name is init 
 	 { [init]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [libgdi32]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [windows NewLazySystemDLL STRING "gdi32.dll"]}
-	 {*ast.AssignStmt [libmsimg32]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [windows NewLazySystemDLL STRING "msimg32.dll"]}
-	 {*ast.AssignStmt [abortDoc]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "AbortDoc"]}
-	 {*ast.AssignStmt [addFontResourceEx]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "AddFontResourceExW"]}
-	 {*ast.AssignStmt [addFontMemResourceEx]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "AddFontMemResourceEx"]}
-	 {*ast.AssignStmt [bitBlt]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "BitBlt"]}
-	 {*ast.AssignStmt [choosePixelFormat]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "ChoosePixelFormat"]}
-	 {*ast.AssignStmt [closeEnhMetaFile]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CloseEnhMetaFile"]}
-	 {*ast.AssignStmt [combineRgn]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CombineRgn"]}
-	 {*ast.AssignStmt [copyEnhMetaFile]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CopyEnhMetaFileW"]}
-	 {*ast.AssignStmt [createBitmap]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateBitmap"]}
-	 {*ast.AssignStmt [createCompatibleBitmap]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateCompatibleBitmap"]}
-	 {*ast.AssignStmt [createBrushIndirect]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateBrushIndirect"]}
-	 {*ast.AssignStmt [createCompatibleDC]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateCompatibleDC"]}
-	 {*ast.AssignStmt [createDC]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateDCW"]}
-	 {*ast.AssignStmt [createDIBSection]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateDIBSection"]}
-	 {*ast.AssignStmt [createEnhMetaFile]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateEnhMetaFileW"]}
-	 {*ast.AssignStmt [createFontIndirect]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateFontIndirectW"]}
-	 {*ast.AssignStmt [createIC]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateICW"]}
-	 {*ast.AssignStmt [createPatternBrush]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreatePatternBrush"]}
-	 {*ast.AssignStmt [createRectRgn]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "CreateRectRgn"]}
-	 {*ast.AssignStmt [deleteDC]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "DeleteDC"]}
-	 {*ast.AssignStmt [deleteEnhMetaFile]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "DeleteEnhMetaFile"]}
-	 {*ast.AssignStmt [deleteObject]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "DeleteObject"]}
-	 {*ast.AssignStmt [ellipse]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "Ellipse"]}
-	 {*ast.AssignStmt [endDoc]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "EndDoc"]}
-	 {*ast.AssignStmt [endPage]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "EndPage"]}
-	 {*ast.AssignStmt [excludeClipRect]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "ExcludeClipRect"]}
-	 {*ast.AssignStmt [extCreatePen]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "ExtCreatePen"]}
-	 {*ast.AssignStmt [fillRgn]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "FillRgn"]}
-	 {*ast.AssignStmt [gdiFlush]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GdiFlush"]}
-	 {*ast.AssignStmt [getBkColor]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetBkColor"]}
-	 {*ast.AssignStmt [getDeviceCaps]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetDeviceCaps"]}
-	 {*ast.AssignStmt [getDIBits]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetDIBits"]}
-	 {*ast.AssignStmt [getEnhMetaFile]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetEnhMetaFileW"]}
-	 {*ast.AssignStmt [getEnhMetaFileHeader]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetEnhMetaFileHeader"]}
-	 {*ast.AssignStmt [getObject]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetObjectW"]}
-	 {*ast.AssignStmt [getPixel]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetPixel"]}
-	 {*ast.AssignStmt [getRgnBox]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetRgnBox"]}
-	 {*ast.AssignStmt [getStockObject]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetStockObject"]}
-	 {*ast.AssignStmt [getTextColor]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetTextColor"]}
-	 {*ast.AssignStmt [getTextExtentExPoint]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetTextExtentExPointW"]}
-	 {*ast.AssignStmt [getTextExtentPoint32]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetTextExtentPoint32W"]}
-	 {*ast.AssignStmt [getTextMetrics]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetTextMetricsW"]}
-	 {*ast.AssignStmt [getViewportOrgEx]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "GetViewportOrgEx"]}
-	 {*ast.AssignStmt [intersectClipRect]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "IntersectClipRect"]}
-	 {*ast.AssignStmt [lineTo]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "LineTo"]}
-	 {*ast.AssignStmt [moveToEx]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "MoveToEx"]}
-	 {*ast.AssignStmt [playEnhMetaFile]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "PlayEnhMetaFile"]}
-	 {*ast.AssignStmt [polyline]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "Polyline"]}
-	 {*ast.AssignStmt [rectangle]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "Rectangle"]}
-	 {*ast.AssignStmt [removeFontResourceEx]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "RemoveFontResourceExW"]}
-	 {*ast.AssignStmt [removeFontMemResourceEx]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "RemoveFontMemResourceEx"]}
-	 {*ast.AssignStmt [resetDC]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "ResetDCW"]}
-	 {*ast.AssignStmt [restoreDC]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "RestoreDC"]}
-	 {*ast.AssignStmt [roundRect]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "RoundRect"]}
-	 {*ast.AssignStmt [saveDC]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SaveDC"]}
-	 {*ast.AssignStmt [selectObject]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SelectObject"]}
-	 {*ast.AssignStmt [setBkColor]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetBkColor"]}
-	 {*ast.AssignStmt [setBkMode]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetBkMode"]}
-	 {*ast.AssignStmt [setBrushOrgEx]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetBrushOrgEx"]}
-	 {*ast.AssignStmt [setDIBits]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetDIBits"]}
-	 {*ast.AssignStmt [setPixel]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetPixel"]}
-	 {*ast.AssignStmt [setPixelFormat]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetPixelFormat"]}
-	 {*ast.AssignStmt [setStretchBltMode]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetStretchBltMode"]}
-	 {*ast.AssignStmt [setTextColor]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetTextColor"]}
-	 {*ast.AssignStmt [setViewportOrgEx]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SetViewportOrgEx"]}
-	 {*ast.AssignStmt [startDoc]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "StartDocW"]}
-	 {*ast.AssignStmt [startPage]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "StartPage"]}
-	 {*ast.AssignStmt [stretchBlt]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "StretchBlt"]}
-	 {*ast.AssignStmt [swapBuffers]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "SwapBuffers"]}
-	 {*ast.AssignStmt [textOut]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc STRING "TextOutW"]}
-	 {*ast.AssignStmt [alphaBlend]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libmsimg32 NewProc STRING "AlphaBlend"]}
-	 {*ast.AssignStmt [gradientFill]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libmsimg32 NewProc STRING "GradientFill"]}
-	 {*ast.AssignStmt [transparentBlt]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [libmsimg32 NewProc STRING "TransparentBlt"]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [= libgdi32]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [windows NewLazySystemDLL]}
+	 {*ast.BasicLit [STRING "gdi32.dll"]}
+	 {*ast.AssignStmt [= libmsimg32]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [windows NewLazySystemDLL]}
+	 {*ast.BasicLit [STRING "msimg32.dll"]}
+	 {*ast.AssignStmt [= abortDoc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "AbortDoc"]}
+	 {*ast.AssignStmt [= addFontResourceEx]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "AddFontResourceExW"]}
+	 {*ast.AssignStmt [= addFontMemResourceEx]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "AddFontMemResourceEx"]}
+	 {*ast.AssignStmt [= bitBlt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "BitBlt"]}
+	 {*ast.AssignStmt [= choosePixelFormat]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "ChoosePixelFormat"]}
+	 {*ast.AssignStmt [= closeEnhMetaFile]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CloseEnhMetaFile"]}
+	 {*ast.AssignStmt [= combineRgn]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CombineRgn"]}
+	 {*ast.AssignStmt [= copyEnhMetaFile]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CopyEnhMetaFileW"]}
+	 {*ast.AssignStmt [= createBitmap]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateBitmap"]}
+	 {*ast.AssignStmt [= createCompatibleBitmap]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateCompatibleBitmap"]}
+	 {*ast.AssignStmt [= createBrushIndirect]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateBrushIndirect"]}
+	 {*ast.AssignStmt [= createCompatibleDC]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateCompatibleDC"]}
+	 {*ast.AssignStmt [= createDC]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateDCW"]}
+	 {*ast.AssignStmt [= createDIBSection]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateDIBSection"]}
+	 {*ast.AssignStmt [= createEnhMetaFile]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateEnhMetaFileW"]}
+	 {*ast.AssignStmt [= createFontIndirect]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateFontIndirectW"]}
+	 {*ast.AssignStmt [= createIC]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateICW"]}
+	 {*ast.AssignStmt [= createPatternBrush]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreatePatternBrush"]}
+	 {*ast.AssignStmt [= createRectRgn]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "CreateRectRgn"]}
+	 {*ast.AssignStmt [= deleteDC]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "DeleteDC"]}
+	 {*ast.AssignStmt [= deleteEnhMetaFile]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "DeleteEnhMetaFile"]}
+	 {*ast.AssignStmt [= deleteObject]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "DeleteObject"]}
+	 {*ast.AssignStmt [= ellipse]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "Ellipse"]}
+	 {*ast.AssignStmt [= endDoc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "EndDoc"]}
+	 {*ast.AssignStmt [= endPage]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "EndPage"]}
+	 {*ast.AssignStmt [= excludeClipRect]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "ExcludeClipRect"]}
+	 {*ast.AssignStmt [= extCreatePen]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "ExtCreatePen"]}
+	 {*ast.AssignStmt [= fillRgn]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "FillRgn"]}
+	 {*ast.AssignStmt [= gdiFlush]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GdiFlush"]}
+	 {*ast.AssignStmt [= getBkColor]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetBkColor"]}
+	 {*ast.AssignStmt [= getDeviceCaps]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetDeviceCaps"]}
+	 {*ast.AssignStmt [= getDIBits]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetDIBits"]}
+	 {*ast.AssignStmt [= getEnhMetaFile]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetEnhMetaFileW"]}
+	 {*ast.AssignStmt [= getEnhMetaFileHeader]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetEnhMetaFileHeader"]}
+	 {*ast.AssignStmt [= getObject]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetObjectW"]}
+	 {*ast.AssignStmt [= getPixel]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetPixel"]}
+	 {*ast.AssignStmt [= getRgnBox]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetRgnBox"]}
+	 {*ast.AssignStmt [= getStockObject]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetStockObject"]}
+	 {*ast.AssignStmt [= getTextColor]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetTextColor"]}
+	 {*ast.AssignStmt [= getTextExtentExPoint]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetTextExtentExPointW"]}
+	 {*ast.AssignStmt [= getTextExtentPoint32]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetTextExtentPoint32W"]}
+	 {*ast.AssignStmt [= getTextMetrics]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetTextMetricsW"]}
+	 {*ast.AssignStmt [= getViewportOrgEx]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "GetViewportOrgEx"]}
+	 {*ast.AssignStmt [= intersectClipRect]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "IntersectClipRect"]}
+	 {*ast.AssignStmt [= lineTo]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "LineTo"]}
+	 {*ast.AssignStmt [= moveToEx]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "MoveToEx"]}
+	 {*ast.AssignStmt [= playEnhMetaFile]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "PlayEnhMetaFile"]}
+	 {*ast.AssignStmt [= polyline]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "Polyline"]}
+	 {*ast.AssignStmt [= rectangle]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "Rectangle"]}
+	 {*ast.AssignStmt [= removeFontResourceEx]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "RemoveFontResourceExW"]}
+	 {*ast.AssignStmt [= removeFontMemResourceEx]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "RemoveFontMemResourceEx"]}
+	 {*ast.AssignStmt [= resetDC]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "ResetDCW"]}
+	 {*ast.AssignStmt [= restoreDC]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "RestoreDC"]}
+	 {*ast.AssignStmt [= roundRect]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "RoundRect"]}
+	 {*ast.AssignStmt [= saveDC]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SaveDC"]}
+	 {*ast.AssignStmt [= selectObject]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SelectObject"]}
+	 {*ast.AssignStmt [= setBkColor]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetBkColor"]}
+	 {*ast.AssignStmt [= setBkMode]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetBkMode"]}
+	 {*ast.AssignStmt [= setBrushOrgEx]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetBrushOrgEx"]}
+	 {*ast.AssignStmt [= setDIBits]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetDIBits"]}
+	 {*ast.AssignStmt [= setPixel]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetPixel"]}
+	 {*ast.AssignStmt [= setPixelFormat]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetPixelFormat"]}
+	 {*ast.AssignStmt [= setStretchBltMode]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetStretchBltMode"]}
+	 {*ast.AssignStmt [= setTextColor]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetTextColor"]}
+	 {*ast.AssignStmt [= setViewportOrgEx]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SetViewportOrgEx"]}
+	 {*ast.AssignStmt [= startDoc]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "StartDocW"]}
+	 {*ast.AssignStmt [= startPage]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "StartPage"]}
+	 {*ast.AssignStmt [= stretchBlt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "StretchBlt"]}
+	 {*ast.AssignStmt [= swapBuffers]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "SwapBuffers"]}
+	 {*ast.AssignStmt [= textOut]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libgdi32 NewProc]}
+	 {*ast.BasicLit [STRING "TextOutW"]}
+	 {*ast.AssignStmt [= alphaBlend]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libmsimg32 NewProc]}
+	 {*ast.BasicLit [STRING "AlphaBlend"]}
+	 {*ast.AssignStmt [= gradientFill]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libmsimg32 NewProc]}
+	 {*ast.BasicLit [STRING "GradientFill"]}
+	 {*ast.AssignStmt [= transparentBlt]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [libmsimg32 NewProc]}
+	 {*ast.BasicLit [STRING "TransparentBlt"]}
 
 
 function name is AbortDoc 
 	 { [AbortDoc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [abortDoc Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [abortDoc Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1122,9 +1896,11 @@ function name is AddFontResourceEx
 	 {*ast.Field [fl uint32]}
 	 {*ast.Field -> *ast.SelectorExpr [pdv unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [addFontResourceEx Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [addFontResourceEx Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszFilename]}
 	 {*ast.CallExpr [uintptr fl]}
@@ -1140,13 +1916,17 @@ function name is AddFontMemResourceEx
 	 {*ast.Field [pNumFonts]}
 	 {*ast.StarExpr [uint32]}
 	 {*ast.FieldList -> *ast.Field [HANDLE]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [addFontMemResourceEx Addr INT 4 pFileView]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [addFontMemResourceEx Addr]}
+	 {*ast.BasicLit [INT 4 pFileView]}
 	 {*ast.CallExpr [uintptr cjSize]}
 	 {*ast.CallExpr [uintptr pvReserved]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer pNumFonts INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer pNumFonts]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HANDLE ret]}
 
 
@@ -1158,9 +1938,11 @@ function name is AlphaBlend
 	 {*ast.Field [nXOriginSrc nYOriginSrc nWidthSrc nHeightSrc int32]}
 	 {*ast.Field [ftn BLENDFUNCTION]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall12]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [alphaBlend Addr INT 11]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [alphaBlend Addr]}
+	 {*ast.BasicLit [INT 11]}
 	 {*ast.CallExpr [uintptr hdcDest]}
 	 {*ast.CallExpr [uintptr nXOriginDest]}
 	 {*ast.CallExpr [uintptr nYOriginDest]}
@@ -1176,8 +1958,11 @@ function name is AlphaBlend
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ftn INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.UnaryExpr [& ftn]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is BitBlt 
@@ -1188,9 +1973,11 @@ function name is BitBlt
 	 {*ast.Field [nXSrc nYSrc int32]}
 	 {*ast.Field [dwRop uint32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [bitBlt Addr INT 9]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [bitBlt Addr]}
+	 {*ast.BasicLit [INT 9]}
 	 {*ast.CallExpr [uintptr hdcDest]}
 	 {*ast.CallExpr [uintptr nXDest]}
 	 {*ast.CallExpr [uintptr nYDest]}
@@ -1200,7 +1987,9 @@ function name is BitBlt
 	 {*ast.CallExpr [uintptr nXSrc]}
 	 {*ast.CallExpr [uintptr nYSrc]}
 	 {*ast.CallExpr [uintptr dwRop]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is ChoosePixelFormat 
@@ -1209,12 +1998,15 @@ function name is ChoosePixelFormat
 	 {*ast.Field [ppfd]}
 	 {*ast.StarExpr [PIXELFORMATDESCRIPTOR]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [choosePixelFormat Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [choosePixelFormat Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ppfd INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ppfd]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1222,10 +2014,14 @@ function name is CloseEnhMetaFile
 	 { [CloseEnhMetaFile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [HENHMETAFILE]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [closeEnhMetaFile Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [closeEnhMetaFile Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HENHMETAFILE ret]}
 
 
@@ -1234,13 +2030,17 @@ function name is CombineRgn
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hrgnDest hrgnSrc1 hrgnSrc2 HRGN]}
 	 {*ast.Field [fnCombineMode int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [combineRgn Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [combineRgn Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr hrgnDest]}
 	 {*ast.CallExpr [uintptr hrgnSrc1]}
 	 {*ast.CallExpr [uintptr hrgnSrc2]}
-	 {*ast.CallExpr [uintptr fnCombineMode INT 0 INT 0]}
+	 {*ast.CallExpr [uintptr fnCombineMode]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1250,12 +2050,15 @@ function name is CopyEnhMetaFile
 	 {*ast.Field [lpszFile]}
 	 {*ast.StarExpr [uint16]}
 	 {*ast.FieldList -> *ast.Field [HENHMETAFILE]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [copyEnhMetaFile Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [copyEnhMetaFile Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hemfSrc]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszFile INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszFile]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HENHMETAFILE ret]}
 
 
@@ -1265,14 +2068,17 @@ function name is CreateBitmap
 	 {*ast.Field [cPlanes cBitsPerPel uint32]}
 	 {*ast.Field -> *ast.SelectorExpr [lpvBits unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [HBITMAP]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createBitmap Addr INT 5]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createBitmap Addr]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.CallExpr [uintptr nWidth]}
 	 {*ast.CallExpr [uintptr nHeight]}
 	 {*ast.CallExpr [uintptr cPlanes]}
 	 {*ast.CallExpr [uintptr cBitsPerPel]}
-	 {*ast.CallExpr [uintptr lpvBits INT 0]}
+	 {*ast.CallExpr [uintptr lpvBits]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HBITMAP ret]}
 
 
@@ -1281,9 +2087,11 @@ function name is CreateCompatibleBitmap
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nWidth nHeight int32]}
 	 {*ast.FieldList -> *ast.Field [HBITMAP]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createCompatibleBitmap Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createCompatibleBitmap Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nWidth]}
 	 {*ast.CallExpr [uintptr nHeight]}
@@ -1295,11 +2103,15 @@ function name is CreateBrushIndirect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [lplb]}
 	 {*ast.StarExpr [LOGBRUSH]}
 	 {*ast.FieldList -> *ast.Field [HBRUSH]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createBrushIndirect Addr INT 1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createBrushIndirect Addr]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lplb INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lplb]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HBRUSH ret]}
 
 
@@ -1307,10 +2119,14 @@ function name is CreateCompatibleDC
 	 { [CreateCompatibleDC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createCompatibleDC Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createCompatibleDC Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HDC ret]}
 
 
@@ -1321,9 +2137,11 @@ function name is CreateDC
 	 {*ast.Field [lpInitData]}
 	 {*ast.StarExpr [DEVMODE]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createDC Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createDC Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszDriver]}
 	 {*ast.CallExpr [uintptr]}
@@ -1331,7 +2149,9 @@ function name is CreateDC
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszOutput]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpInitData INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpInitData]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HDC ret]}
 
 
@@ -1346,9 +2166,11 @@ function name is CreateDIBSection
 	 {*ast.Field [hSection HANDLE]}
 	 {*ast.Field [dwOffset uint32]}
 	 {*ast.FieldList -> *ast.Field [HBITMAP]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createDIBSection Addr INT 6]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createDIBSection Addr]}
+	 {*ast.BasicLit [INT 6]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer pbmih]}
@@ -1370,16 +2192,20 @@ function name is CreateEnhMetaFile
 	 {*ast.Field [lpDescription]}
 	 {*ast.StarExpr [uint16]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createEnhMetaFile Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createEnhMetaFile Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr hdcRef]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpFilename]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpRect]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpDescription INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpDescription]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HDC ret]}
 
 
@@ -1388,11 +2214,15 @@ function name is CreateFontIndirect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [lplf]}
 	 {*ast.StarExpr [LOGFONT]}
 	 {*ast.FieldList -> *ast.Field [HFONT]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createFontIndirect Addr INT 1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createFontIndirect Addr]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lplf INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lplf]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HFONT ret]}
 
 
@@ -1403,9 +2233,11 @@ function name is CreateIC
 	 {*ast.Field [lpdvmInit]}
 	 {*ast.StarExpr [DEVMODE]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createIC Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createIC Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszDriver]}
 	 {*ast.CallExpr [uintptr]}
@@ -1413,7 +2245,9 @@ function name is CreateIC
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszOutput]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpdvmInit INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpdvmInit]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HDC ret]}
 
 
@@ -1421,10 +2255,14 @@ function name is CreatePatternBrush
 	 { [CreatePatternBrush]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hbmp HBITMAP]}
 	 {*ast.FieldList -> *ast.Field [HBRUSH]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createPatternBrush Addr INT 1]}
-	 {*ast.CallExpr [uintptr hbmp INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createPatternBrush Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hbmp]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HBRUSH ret]}
 
 
@@ -1432,13 +2270,17 @@ function name is CreateRectRgn
 	 { [CreateRectRgn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [HRGN]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [createRectRgn Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [createRectRgn Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr nLeftRect]}
 	 {*ast.CallExpr [uintptr nTopRect]}
 	 {*ast.CallExpr [uintptr nRightRect]}
-	 {*ast.CallExpr [uintptr nBottomRect INT 0 INT 0]}
+	 {*ast.CallExpr [uintptr nBottomRect]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HRGN ret]}
 
 
@@ -1446,33 +2288,51 @@ function name is DeleteDC
 	 { [DeleteDC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [deleteDC Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [deleteDC Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is DeleteEnhMetaFile 
 	 { [DeleteEnhMetaFile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hemf HENHMETAFILE]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [deleteEnhMetaFile Addr INT 1]}
-	 {*ast.CallExpr [uintptr hemf INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [deleteEnhMetaFile Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hemf]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is DeleteObject 
 	 { [DeleteObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hObject HGDIOBJ]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [deleteObject Addr INT 1]}
-	 {*ast.CallExpr [uintptr hObject INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [deleteObject Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hObject]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is Ellipse 
@@ -1480,25 +2340,34 @@ function name is Ellipse
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [ellipse Addr INT 5]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [ellipse Addr]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nLeftRect]}
 	 {*ast.CallExpr [uintptr nTopRect]}
 	 {*ast.CallExpr [uintptr nRightRect]}
-	 {*ast.CallExpr [uintptr nBottomRect INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr [uintptr nBottomRect]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is EndDoc 
 	 { [EndDoc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [endDoc Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [endDoc Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1506,10 +2375,14 @@ function name is EndPage
 	 { [EndPage]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [endPage Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [endPage Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1518,14 +2391,17 @@ function name is ExcludeClipRect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [excludeClipRect Addr INT 5]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [excludeClipRect Addr]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nLeftRect]}
 	 {*ast.CallExpr [uintptr nTopRect]}
 	 {*ast.CallExpr [uintptr nRightRect]}
-	 {*ast.CallExpr [uintptr nBottomRect INT 0]}
+	 {*ast.CallExpr [uintptr nBottomRect]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1538,16 +2414,19 @@ function name is ExtCreatePen
 	 {*ast.Field [lpStyle]}
 	 {*ast.StarExpr [uint32]}
 	 {*ast.FieldList -> *ast.Field [HPEN]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [extCreatePen Addr INT 5]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [extCreatePen Addr]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.CallExpr [uintptr dwPenStyle]}
 	 {*ast.CallExpr [uintptr dwWidth]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lplb]}
 	 {*ast.CallExpr [uintptr dwStyleCount]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpStyle INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpStyle]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HPEN ret]}
 
 
@@ -1557,32 +2436,47 @@ function name is FillRgn
 	 {*ast.Field [hrgn HRGN]}
 	 {*ast.Field [hbr HBRUSH]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fillRgn Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fillRgn Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr hrgn]}
 	 {*ast.CallExpr [uintptr hbr]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is GdiFlush 
 	 { [GdiFlush]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [gdiFlush Addr INT 0 INT 0 INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [gdiFlush Addr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is GetBkColor 
 	 { [GetBkColor]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getBkColor Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getBkColor Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [COLORREF ret]}
 
 
@@ -1591,11 +2485,14 @@ function name is GetDeviceCaps
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nIndex int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getDeviceCaps Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getDeviceCaps Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
-	 {*ast.CallExpr [uintptr nIndex INT 0]}
+	 {*ast.CallExpr [uintptr nIndex]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1611,9 +2508,11 @@ function name is GetDIBits
 	 {*ast.StarExpr [BITMAPINFO]}
 	 {*ast.Field [uUsage uint32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getDIBits Addr INT 7]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getDIBits Addr]}
+	 {*ast.BasicLit [INT 7]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr hbmp]}
 	 {*ast.CallExpr [uintptr uStartScan]}
@@ -1622,7 +2521,9 @@ function name is GetDIBits
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpvBits]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpbi]}
-	 {*ast.CallExpr [uintptr uUsage INT 0 INT 0]}
+	 {*ast.CallExpr [uintptr uUsage]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1631,11 +2532,15 @@ function name is GetEnhMetaFile
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [lpszMetaFile]}
 	 {*ast.StarExpr [uint16]}
 	 {*ast.FieldList -> *ast.Field [HENHMETAFILE]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getEnhMetaFile Addr INT 1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getEnhMetaFile Addr]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszMetaFile INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszMetaFile]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HENHMETAFILE ret]}
 
 
@@ -1646,9 +2551,11 @@ function name is GetEnhMetaFileHeader
 	 {*ast.Field [lpemh]}
 	 {*ast.StarExpr [ENHMETAHEADER]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getEnhMetaFileHeader Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getEnhMetaFileHeader Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hemf]}
 	 {*ast.CallExpr [uintptr cbBuffer]}
 	 {*ast.CallExpr [uintptr]}
@@ -1662,9 +2569,11 @@ function name is GetObject
 	 {*ast.Field [cbBuffer uintptr]}
 	 {*ast.Field -> *ast.SelectorExpr [lpvObject unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getObject Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getObject Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hgdiobj]}
 	 {*ast.CallExpr [uintptr cbBuffer]}
 	 {*ast.CallExpr [uintptr lpvObject]}
@@ -1676,9 +2585,11 @@ function name is GetPixel
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nXPos nYPos int32]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getPixel Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getPixel Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nXPos]}
 	 {*ast.CallExpr [uintptr nYPos]}
@@ -1691,12 +2602,15 @@ function name is GetRgnBox
 	 {*ast.Field [lprc]}
 	 {*ast.StarExpr [RECT]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getRgnBox Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getRgnBox Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hrgn]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lprc INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lprc]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1704,10 +2618,14 @@ function name is GetStockObject
 	 { [GetStockObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fnObject int32]}
 	 {*ast.FieldList -> *ast.Field [HGDIOBJ]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getStockObject Addr INT 1]}
-	 {*ast.CallExpr [uintptr fnObject INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getStockObject Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr fnObject]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HGDIOBJ ret]}
 
 
@@ -1715,10 +2633,14 @@ function name is GetTextColor
 	 { [GetTextColor]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getTextColor Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getTextColor Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [COLORREF ret]}
 
 
@@ -1733,9 +2655,11 @@ function name is GetTextExtentExPoint
 	 {*ast.Field [lpSize]}
 	 {*ast.StarExpr [SIZE]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getTextExtentExPoint Addr INT 7]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getTextExtentExPoint Addr]}
+	 {*ast.BasicLit [INT 7]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszStr]}
@@ -1746,8 +2670,12 @@ function name is GetTextExtentExPoint
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer alpDx]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpSize INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpSize]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is GetTextExtentPoint32 
@@ -1759,16 +2687,22 @@ function name is GetTextExtentPoint32
 	 {*ast.Field [lpSize]}
 	 {*ast.StarExpr [SIZE]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getTextExtentPoint32 Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getTextExtentPoint32 Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpString]}
 	 {*ast.CallExpr [uintptr c]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpSize INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpSize]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is GetTextMetrics 
@@ -1777,13 +2711,18 @@ function name is GetTextMetrics
 	 {*ast.Field [lptm]}
 	 {*ast.StarExpr [TEXTMETRIC]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getTextMetrics Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getTextMetrics Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lptm INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lptm]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is GetViewportOrgEx 
@@ -1792,13 +2731,18 @@ function name is GetViewportOrgEx
 	 {*ast.Field [lpPoint]}
 	 {*ast.StarExpr [POINT]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [getViewportOrgEx Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [getViewportOrgEx Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpPoint INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpPoint]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is GradientFill 
@@ -1810,9 +2754,11 @@ function name is GradientFill
 	 {*ast.Field -> *ast.SelectorExpr [pMesh unsafe Pointer]}
 	 {*ast.Field [nMesh ulMode uint32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [gradientFill Addr INT 6]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [gradientFill Addr]}
+	 {*ast.BasicLit [INT 6]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer pVertex]}
@@ -1820,7 +2766,9 @@ function name is GradientFill
 	 {*ast.CallExpr [uintptr pMesh]}
 	 {*ast.CallExpr [uintptr nMesh]}
 	 {*ast.CallExpr [uintptr ulMode]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is IntersectClipRect 
@@ -1828,14 +2776,17 @@ function name is IntersectClipRect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [intersectClipRect Addr INT 5]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [intersectClipRect Addr]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nLeftRect]}
 	 {*ast.CallExpr [uintptr nTopRect]}
 	 {*ast.CallExpr [uintptr nRightRect]}
-	 {*ast.CallExpr [uintptr nBottomRect INT 0]}
+	 {*ast.CallExpr [uintptr nBottomRect]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -1844,13 +2795,17 @@ function name is LineTo
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nXEnd nYEnd int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [lineTo Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [lineTo Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nXEnd]}
 	 {*ast.CallExpr [uintptr nYEnd]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is MoveToEx 
@@ -1860,15 +2815,21 @@ function name is MoveToEx
 	 {*ast.Field [lpPoint]}
 	 {*ast.StarExpr [POINT]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [moveToEx Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [moveToEx Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr x]}
 	 {*ast.CallExpr [uintptr y]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpPoint INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpPoint]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is PlayEnhMetaFile 
@@ -1878,14 +2839,18 @@ function name is PlayEnhMetaFile
 	 {*ast.Field [lpRect]}
 	 {*ast.StarExpr [RECT]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [playEnhMetaFile Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [playEnhMetaFile Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr hemf]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpRect]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is Polyline 
@@ -1894,13 +2859,17 @@ function name is Polyline
 	 {*ast.Field -> *ast.SelectorExpr [lppt unsafe Pointer]}
 	 {*ast.Field [cPoints int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [polyline Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [polyline Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr lppt]}
 	 {*ast.CallExpr [uintptr cPoints]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is Rectangle_ 
@@ -1908,15 +2877,20 @@ function name is Rectangle_
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [rectangle Addr INT 5]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [rectangle Addr]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nLeftRect]}
 	 {*ast.CallExpr [uintptr nTopRect]}
 	 {*ast.CallExpr [uintptr nRightRect]}
-	 {*ast.CallExpr [uintptr nBottomRect INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr [uintptr nBottomRect]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is RemoveFontResourceEx 
@@ -1926,25 +2900,35 @@ function name is RemoveFontResourceEx
 	 {*ast.Field [fl uint32]}
 	 {*ast.Field -> *ast.SelectorExpr [pdv unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [removeFontResourceEx Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [removeFontResourceEx Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpszFilename]}
 	 {*ast.CallExpr [uintptr fl]}
 	 {*ast.CallExpr [uintptr pdv]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is RemoveFontMemResourceEx 
 	 { [RemoveFontMemResourceEx]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [h HANDLE]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [removeFontMemResourceEx Addr INT 1]}
-	 {*ast.CallExpr [uintptr h INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [removeFontMemResourceEx Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr h]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is ResetDC 
@@ -1953,12 +2937,15 @@ function name is ResetDC
 	 {*ast.Field [lpInitData]}
 	 {*ast.StarExpr [DEVMODE]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [resetDC Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [resetDC Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpInitData INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpInitData]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HDC ret]}
 
 
@@ -1967,12 +2954,17 @@ function name is RestoreDC
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nSaveDC int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [restoreDC Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [restoreDC Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
-	 {*ast.CallExpr [uintptr nSaveDC INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr [uintptr nSaveDC]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is RoundRect 
@@ -1980,27 +2972,37 @@ function name is RoundRect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect nWidth nHeight int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [roundRect Addr INT 7]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [roundRect Addr]}
+	 {*ast.BasicLit [INT 7]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nLeftRect]}
 	 {*ast.CallExpr [uintptr nTopRect]}
 	 {*ast.CallExpr [uintptr nRightRect]}
 	 {*ast.CallExpr [uintptr nBottomRect]}
 	 {*ast.CallExpr [uintptr nWidth]}
-	 {*ast.CallExpr [uintptr nHeight INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr [uintptr nHeight]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is SaveDC 
 	 { [SaveDC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [saveDC Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [saveDC Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -2009,11 +3011,14 @@ function name is SelectObject
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [hgdiobj HGDIOBJ]}
 	 {*ast.FieldList -> *ast.Field [HGDIOBJ]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [selectObject Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [selectObject Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
-	 {*ast.CallExpr [uintptr hgdiobj INT 0]}
+	 {*ast.CallExpr [uintptr hgdiobj]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [HGDIOBJ ret]}
 
 
@@ -2022,11 +3027,14 @@ function name is SetBkColor
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [crColor COLORREF]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setBkColor Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setBkColor Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
-	 {*ast.CallExpr [uintptr crColor INT 0]}
+	 {*ast.CallExpr [uintptr crColor]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [COLORREF ret]}
 
 
@@ -2035,11 +3043,14 @@ function name is SetBkMode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [iBkMode int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setBkMode Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setBkMode Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
-	 {*ast.CallExpr [uintptr iBkMode INT 0]}
+	 {*ast.CallExpr [uintptr iBkMode]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -2050,15 +3061,21 @@ function name is SetBrushOrgEx
 	 {*ast.Field [lppt]}
 	 {*ast.StarExpr [POINT]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setBrushOrgEx Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setBrushOrgEx Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nXOrg]}
 	 {*ast.CallExpr [uintptr nYOrg]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lppt INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lppt]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is SetDIBits 
@@ -2072,9 +3089,11 @@ function name is SetDIBits
 	 {*ast.StarExpr [BITMAPINFO]}
 	 {*ast.Field [fuColorUse uint32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setDIBits Addr INT 7]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setDIBits Addr]}
+	 {*ast.BasicLit [INT 7]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr hbmp]}
 	 {*ast.CallExpr [uintptr uStartScan]}
@@ -2083,7 +3102,9 @@ function name is SetDIBits
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpvBits]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpbmi]}
-	 {*ast.CallExpr [uintptr fuColorUse INT 0 INT 0]}
+	 {*ast.CallExpr [uintptr fuColorUse]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -2093,13 +3114,17 @@ function name is SetPixel
 	 {*ast.Field [X Y int32]}
 	 {*ast.Field [crColor COLORREF]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setPixel Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setPixel Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr X]}
 	 {*ast.CallExpr [uintptr Y]}
-	 {*ast.CallExpr [uintptr crColor INT 0 INT 0]}
+	 {*ast.CallExpr [uintptr crColor]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [COLORREF ret]}
 
 
@@ -2110,14 +3135,18 @@ function name is SetPixelFormat
 	 {*ast.Field [ppfd]}
 	 {*ast.StarExpr [PIXELFORMATDESCRIPTOR]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setPixelFormat Addr INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setPixelFormat Addr]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr iPixelFormat]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ppfd]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is SetStretchBltMode 
@@ -2125,11 +3154,14 @@ function name is SetStretchBltMode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [iStretchMode int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setStretchBltMode Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setStretchBltMode Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
-	 {*ast.CallExpr [uintptr iStretchMode INT 0]}
+	 {*ast.CallExpr [uintptr iStretchMode]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -2138,11 +3170,14 @@ function name is SetTextColor
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [crColor COLORREF]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setTextColor Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setTextColor Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
-	 {*ast.CallExpr [uintptr crColor INT 0]}
+	 {*ast.CallExpr [uintptr crColor]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [COLORREF ret]}
 
 
@@ -2153,14 +3188,18 @@ function name is SetViewportOrgEx
 	 {*ast.Field [lpPoint]}
 	 {*ast.StarExpr [POINT]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [setViewportOrgEx Addr INT 4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [setViewportOrgEx Addr]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr x]}
 	 {*ast.CallExpr [uintptr y]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpPoint INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpPoint]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [COLORREF ret]}
 
 
@@ -2170,12 +3209,15 @@ function name is StartDoc
 	 {*ast.Field [lpdi]}
 	 {*ast.StarExpr [DOCINFO]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [startDoc Addr INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [startDoc Addr]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpdi INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpdi]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -2183,10 +3225,14 @@ function name is StartPage
 	 { [StartPage]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [startPage Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [startPage Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [int32 ret]}
 
 
@@ -2198,9 +3244,11 @@ function name is StretchBlt
 	 {*ast.Field [nXOriginSrc nYOriginSrc nWidthSrc nHeightSrc int32]}
 	 {*ast.Field [dwRop uint32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall12]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [stretchBlt Addr INT 11]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [stretchBlt Addr]}
+	 {*ast.BasicLit [INT 11]}
 	 {*ast.CallExpr [uintptr hdcDest]}
 	 {*ast.CallExpr [uintptr nXOriginDest]}
 	 {*ast.CallExpr [uintptr nYOriginDest]}
@@ -2211,19 +3259,28 @@ function name is StretchBlt
 	 {*ast.CallExpr [uintptr nYOriginSrc]}
 	 {*ast.CallExpr [uintptr nWidthSrc]}
 	 {*ast.CallExpr [uintptr nHeightSrc]}
-	 {*ast.CallExpr [uintptr dwRop INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr [uintptr dwRop]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is SwapBuffers 
 	 { [SwapBuffers]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [swapBuffers Addr INT 1]}
-	 {*ast.CallExpr [uintptr hdc INT 0 INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [swapBuffers Addr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CallExpr [uintptr hdc]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is TextOut 
@@ -2234,16 +3291,21 @@ function name is TextOut
 	 {*ast.StarExpr [uint16]}
 	 {*ast.Field [cchString int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [textOut Addr INT 5]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [textOut Addr]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.CallExpr [uintptr hdc]}
 	 {*ast.CallExpr [uintptr nXStart]}
 	 {*ast.CallExpr [uintptr nYStart]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer lpString]}
-	 {*ast.CallExpr [uintptr cchString INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr [uintptr cchString]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is TransparentBlt 
@@ -2254,9 +3316,11 @@ function name is TransparentBlt
 	 {*ast.Field [xoriginSrc yoriginSrc wSrc hSrc int32]}
 	 {*ast.Field [crTransparent uint32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret _ _]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall12]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [transparentBlt Addr INT 11]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [transparentBlt Addr]}
+	 {*ast.BasicLit [INT 11]}
 	 {*ast.CallExpr [uintptr hdcDest]}
 	 {*ast.CallExpr [uintptr xoriginDest]}
 	 {*ast.CallExpr [uintptr yoriginDest]}
@@ -2267,7 +3331,10 @@ function name is TransparentBlt
 	 {*ast.CallExpr [uintptr yoriginSrc]}
 	 {*ast.CallExpr [uintptr wSrc]}
 	 {*ast.CallExpr [uintptr hSrc]}
-	 {*ast.CallExpr [uintptr crTransparent INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [ret INT 0]}
+	 {*ast.CallExpr [uintptr crTransparent]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!= ret]}
+	 {*ast.BasicLit [INT 0]}
 
 

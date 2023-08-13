@@ -111,7 +111,7 @@ func main() {
 		}
 	}
 
-	checkDataFunc := checkData(modListFunctions)
+	checkDataFunc := checkDataPattern(modListFunctions)
 	if len(checkDataFunc) > 0 {
 		pattern2 = true
 		fmt.Print("\nThere exists (a) function(s) with reflect.SliceHeader and Interface of return value. It recommends to use Generics Slice : ")

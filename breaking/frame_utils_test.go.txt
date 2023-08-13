@@ -1,23 +1,27 @@
 {*ast.File [tchannel]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.ImportSpec [STRING "sync"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.ImportSpec [STRING "github.com/prashantv/protectmem"]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
+{*ast.BasicLit -> *ast.ImportSpec [STRING "sync"]}
+{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
+{*ast.BasicLit [STRING "github.com/prashantv/protectmem"]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [protectMemAllocs]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [frameAlloc]}
 {*ast.StarExpr -> *ast.SelectorExpr [protectmem Allocation]}
 {*ast.Field [bufferAlloc]}
 {*ast.StarExpr -> *ast.SelectorExpr [protectmem Allocation]}
-{*ast.GenDecl -> *ast.TypeSpec [ProtectMemFramePool]}
-{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [sync Mutex]}
-{*ast.Field [allocations]}
-{*ast.MapType -> *ast.StarExpr [Frame protectMemAllocs]}
+
+
 
 
 function name is NewProtectMemFramePool 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewProtectMemFramePool]}
+	 { [NewProtectMemFramePool]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [FramePool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [ProtectMemFramePool]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [ProtectMemFramePool]}
 	 {*ast.KeyValueExpr [allocations]}
 	 {*ast.CallExpr [make]}
 	 {*ast.MapType -> *ast.StarExpr [Frame protectMemAllocs]}
@@ -27,24 +31,30 @@ function name is Get
 	 {*ast.FieldList -> *ast.Field [p]}
 	 {*ast.StarExpr [ProtectMemFramePool Get]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Frame]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [frameAlloc]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= frameAlloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [protectmem Allocate]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
 	 {*ast.CompositeLit [Frame]}
-	 {*ast.AssignStmt [f]}
+	 {*ast.AssignStmt [:= f]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Frame]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [frameAlloc Ptr]}
-	 {*ast.AssignStmt [bufferAlloc]}
+	 {*ast.AssignStmt [:= bufferAlloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [protectmem AllocateSlice]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [f buffer MaxFramePayloadSize]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [f buffer]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [f buffer MaxFramePayloadSize]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [f buffer]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [f buffer MaxFramePayloadSize]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [f Payload]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [f Payload]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [f buffer FrameHeaderSize]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [f headerBuffer]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [f headerBuffer]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [f buffer FrameHeaderSize]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [p Lock]}
-	 {*ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [p allocations f]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [p allocations f]}
 	 {*ast.CompositeLit [protectMemAllocs]}
 	 {*ast.KeyValueExpr [frameAlloc frameAlloc]}
 	 {*ast.KeyValueExpr [bufferAlloc bufferAlloc]}
@@ -58,14 +68,16 @@ function name is Release
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [f]}
 	 {*ast.StarExpr [Frame]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [p Lock]}
-	 {*ast.AssignStmt [allocs ok]}
+	 {*ast.AssignStmt [:= allocs ok]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [p allocations f]}
 	 {*ast.ExprStmt -> *ast.CallExpr [delete]}
 	 {*ast.SelectorExpr [p allocations f]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [p Unlock]}
-	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf STRING "released frame that was not allocated by pool: %v"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
+	 {*ast.BasicLit [STRING "released frame that was not allocated by pool: %v"]}
 	 {*ast.SelectorExpr [f Header]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [allocs bufferAlloc Protect]}
 	 {*ast.SelectorExpr [protectmem None]}

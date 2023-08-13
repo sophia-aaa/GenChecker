@@ -1,48 +1,81 @@
 {*ast.File [codec]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.ImportSpec [_ STRING "runtime"]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.ImportSpec [STRING "sync/atomic"]}
-{*ast.ImportSpec [STRING "time"]}
-{*ast.ImportSpec [STRING "unsafe"]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec [_]}
+{*ast.BasicLit [STRING "runtime"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync/atomic"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.ValueSpec [safeMode false]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.ValueSpec [helperUnsafeDirectAssignMapEntry true]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [unsafeFlagStickyRO]}
-{*ast.BinaryExpr [INT 1 INT 5]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [helperUnsafeDirectAssignMapEntry true]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [unsafeFlagStickyRO]}
+{*ast.BinaryExpr [<<]}
+{*ast.BasicLit [INT 1]}
+{*ast.BasicLit [INT 5]}
 {*ast.ValueSpec [unsafeFlagEmbedRO]}
-{*ast.BinaryExpr [INT 1 INT 6]}
+{*ast.BinaryExpr [<<]}
+{*ast.BasicLit [INT 1]}
+{*ast.BasicLit [INT 6]}
 {*ast.ValueSpec [unsafeFlagIndir]}
-{*ast.BinaryExpr [INT 1 INT 7]}
+{*ast.BinaryExpr [<<]}
+{*ast.BasicLit [INT 1]}
+{*ast.BasicLit [INT 7]}
 {*ast.ValueSpec [unsafeFlagAddr]}
-{*ast.BinaryExpr [INT 1 INT 8]}
+{*ast.BinaryExpr [<<]}
+{*ast.BasicLit [INT 1]}
+{*ast.BasicLit [INT 8]}
 {*ast.ValueSpec [unsafeFlagRO]}
-{*ast.BinaryExpr [unsafeFlagStickyRO unsafeFlagEmbedRO]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.ValueSpec [transientSizeMax INT 64]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [transientValueHasStringSlice false]}
+{*ast.BinaryExpr [| unsafeFlagStickyRO unsafeFlagEmbedRO]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [transientSizeMax]}
+{*ast.BasicLit [INT 64]}
+{*ast.GenDecl -> *ast.ValueSpec [transientValueHasStringSlice false]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [unsafeString]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
 {*ast.Field [Len int]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [unsafeSlice]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
 {*ast.Field [Len int]}
 {*ast.Field [Cap int]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [unsafeIntf]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [unsafeReflectValue]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [unsafeIntf]}
 {*ast.Field [flag uintptr]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [unsafeRuntimeType]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [unsafeRuntimeType]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [size uintptr]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.ValueSpec [unsafeZeroAddr]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [unsafeZeroAddr]}
 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-{*ast.UnaryExpr -> *ast.IndexExpr [unsafeZeroArr INT 0]}
+{*ast.UnaryExpr [&]}
+{*ast.IndexExpr [unsafeZeroArr]}
+{*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [unsafeZeroSlice]}
-{*ast.CompositeLit [unsafeSlice unsafeZeroAddr INT 0 INT 0]}
+{*ast.CompositeLit [unsafeSlice unsafeZeroAddr]}
+{*ast.BasicLit [INT 0]}
+{*ast.BasicLit [INT 0]}
 {*ast.GenDecl -> *ast.TypeSpec [unsafePerTypeElem]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [arr]}
 {*ast.ArrayType [transientSizeMax byte]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.Field [slice unsafeSlice]}
-{*ast.CommentGroup -> *ast.Comment []}
+{*ast.Field [slice unsafeSlice]}
 
 
 function name is addrFor 
@@ -51,25 +84,38 @@ function name is addrFor
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [k]}
 	 {*ast.SelectorExpr [reflect Kind]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [k]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== k]}
 	 {*ast.SelectorExpr [reflect String]}
-	 {*ast.BinaryExpr [k]}
+	 {*ast.BinaryExpr [== k]}
 	 {*ast.SelectorExpr [reflect Slice]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [x slice]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x slice]}
 	 {*ast.CompositeLit [unsafeSlice]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x slice]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x arr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x slice]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x arr]}
 	 {*ast.CompositeLit -> *ast.ArrayType [transientSizeMax byte]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x arr]}
-	 {*ast.GenDecl -> *ast.TypeSpec [perType]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [elems]}
-	 {*ast.ArrayType [INT 2 unsafePerTypeElem]}
-	 {*ast.GenDecl -> *ast.TypeSpec [decPerType]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [perType]}
-	 {*ast.GenDecl -> *ast.TypeSpec [encPerType]}
-	 {*ast.StructType -> *ast.FieldList []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x arr]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [perType]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [elems]}
+{*ast.ArrayType -> *ast.BasicLit [INT 2]}
+{ [unsafePerTypeElem]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [decPerType]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [perType]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [encPerType]}
+{*ast.StructType -> *ast.FieldList []}
 
 
 function name is TransientAddrK 
@@ -81,7 +127,9 @@ function name is TransientAddrK
 	 {*ast.SelectorExpr [reflect Kind]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [reflect Value]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [rvZeroAddrTransientAnyK t k]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [x elems INT 0 addrFor k]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [x elems]}
+	 {*ast.BasicLit [INT 0]}
+	 { [addrFor k]}
 
 
 function name is TransientAddr2K 
@@ -93,7 +141,9 @@ function name is TransientAddr2K
 	 {*ast.SelectorExpr [reflect Kind]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [reflect Value]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [rvZeroAddrTransientAnyK t k]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [x elems INT 1 addrFor k]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [x elems]}
+	 {*ast.BasicLit [INT 1]}
+	 { [addrFor k]}
 
 
 function name is AddressableRO 
@@ -105,17 +155,18 @@ function name is AddressableRO
 
 
 function name is byteAt 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [byteAt]}
+	 { [byteAt]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.Field [index uint]}
 	 {*ast.FieldList -> *ast.Field [byte]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b Data]}
+	 {*ast.UnaryExpr [& b Data]}
 	 {*ast.CallExpr [uintptr index]}
 
 
@@ -125,19 +176,23 @@ function name is byteSliceOf
 	 {*ast.ArrayType [byte]}
 	 {*ast.Field [start end uint]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [s Data]}
+	 {*ast.UnaryExpr [& b]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [s Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [s Data]}
 	 {*ast.CallExpr [uintptr start]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [s Len]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [s Len]}
 	 {*ast.CallExpr [int]}
-	 {*ast.BinaryExpr [end start]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [s Cap]}
+	 {*ast.BinaryExpr [- end start]}
+	 {*ast.AssignStmt [-=]}
+	 {*ast.SelectorExpr [s Cap]}
 	 {*ast.CallExpr [int start]}
 	 {*ast.ReturnStmt [b]}
 
@@ -148,39 +203,42 @@ function name is setByteAt
 	 {*ast.ArrayType [byte]}
 	 {*ast.Field [index uint]}
 	 {*ast.Field [val byte]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [byte]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b Data]}
+	 {*ast.UnaryExpr [& b Data]}
 	 {*ast.CallExpr [uintptr index val]}
 
 
 function name is stringView 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [stringView]}
+	 { [stringView]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
+	 {*ast.UnaryExpr [& v]}
 
 
 function name is bytesView 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [bytesView]}
+	 { [bytesView]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v string]}
 	 {*ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [sx]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= sx]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt [bx]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [:= bx]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bx Data]}
+	 {*ast.UnaryExpr [& b]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bx Data]}
 	 {*ast.SelectorExpr [bx Len]}
 	 {*ast.SelectorExpr [bx Cap]}
 	 {*ast.SelectorExpr [sx Data]}
@@ -196,72 +254,85 @@ function name is byteSliceSameData
 	 {*ast.Field [v2]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v1 Data]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v2 Data]}
+	 {*ast.UnaryExpr [& v1 Data]}
+	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [& v2 Data]}
 
 
 function name is okBytes2 
 	 { [okBytes2]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [INT 2 byte]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 2 byte]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.BasicLit [INT 2]}
+	 { [byte]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 2]}
+	 { [byte]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b Data]}
+	 {*ast.UnaryExpr [& b Data]}
 
 
 function name is okBytes3 
 	 { [okBytes3]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [INT 3 byte]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 3 byte]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.BasicLit [INT 3]}
+	 { [byte]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 3]}
+	 { [byte]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b Data]}
+	 {*ast.UnaryExpr [& b Data]}
 
 
 function name is okBytes4 
 	 { [okBytes4]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [INT 4 byte]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 4 byte]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.BasicLit [INT 4]}
+	 { [byte]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 4]}
+	 { [byte]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b Data]}
+	 {*ast.UnaryExpr [& b Data]}
 
 
 function name is okBytes8 
 	 { [okBytes8]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [INT 8 byte]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 8 byte]}
+	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.BasicLit [INT 8]}
+	 { [byte]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 8]}
+	 { [byte]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b Data]}
+	 {*ast.UnaryExpr [& b Data]}
 
 
 function name is isNil 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [isNil]}
+	 { [isNil]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [rv]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [isnil bool]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ui]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [ui]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt [isnil]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [ui ptr nil]}
-	 {*ast.IfStmt -> *ast.UnaryExpr [isnil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [rv isnil]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [= isnil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [ui ptr nil]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [! isnil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= rv isnil]}
 	 {*ast.CallExpr [unsafeIsNilIntfOrSlice ui v]}
 	 {*ast.ReturnStmt []}
 
@@ -271,29 +342,38 @@ function name is unsafeIsNilIntfOrSlice
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ui]}
 	 {*ast.StarExpr [unsafeIntf]}
 	 {*ast.Field [v]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [rv]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [isnil bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [rv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= rv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf v]}
-	 {*ast.AssignStmt [tk]}
+	 {*ast.AssignStmt [:= tk]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [rv Kind]}
-	 {*ast.AssignStmt [isnil]}
-	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [tk]}
+	 {*ast.AssignStmt [= isnil]}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== tk]}
 	 {*ast.SelectorExpr [reflect Interface]}
-	 {*ast.BinaryExpr [tk]}
+	 {*ast.BinaryExpr [== tk]}
 	 {*ast.SelectorExpr [reflect Slice]}
-	 {*ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [ui ptr nil]}
 	 {*ast.ReturnStmt []}
 
 
 function name is rvRefPtr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment [rvRefPtr]}
+	 { [rvRefPtr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.StarExpr [unsafeReflectValue]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [v flag unsafeFlagIndir INT 0]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [v flag unsafeFlagIndir]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [v ptr]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [v ptr]}
@@ -302,35 +382,43 @@ function name is rvRefPtr
 function name is eq4i 
 	 { [eq4i]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i0 i1]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v0]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v0]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [i0]}
-	 {*ast.AssignStmt [v1]}
+	 {*ast.UnaryExpr [& i0]}
+	 {*ast.AssignStmt [:= v1]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [i1]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [v0 typ]}
+	 {*ast.UnaryExpr [& i1]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [v0 typ]}
 	 {*ast.SelectorExpr [v1 typ]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [v0 ptr]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [v0 ptr]}
 	 {*ast.SelectorExpr [v1 ptr]}
 
 
 function name is rv4iptr 
 	 { [rv4iptr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv unsafeIntf]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv unsafeIntf]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [i]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv flag]}
+	 {*ast.UnaryExpr [& i]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv flag]}
 	 {*ast.CallExpr [uintptr rkindPtr]}
 	 {*ast.ReturnStmt []}
 
@@ -338,18 +426,22 @@ function name is rv4iptr
 function name is rv4istr 
 	 { [rv4istr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv unsafeIntf]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv unsafeIntf]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [i]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv flag]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr rkindString unsafeFlagIndir]}
+	 {*ast.UnaryExpr [& i]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr rkindString unsafeFlagIndir]}
 	 {*ast.ReturnStmt []}
 
 
@@ -358,19 +450,28 @@ function name is rv2i
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [i]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [refBitset isset]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [refBitset isset]}
 	 {*ast.CallExpr [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [rv Kind]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [urv flag unsafeFlagIndir INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [urv ptr]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [urv flag unsafeFlagIndir]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [urv ptr]}
-	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.InterfaceType -> *ast.FieldList -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [urv unsafeIntf]}
+	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [urv unsafeIntf]}
 
 
 function name is rvAddr 
@@ -380,18 +481,23 @@ function name is rvAddr
 	 {*ast.Field [ptrType]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
-	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [urv flag unsafeFlagRO]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [urv flag unsafeFlagRO]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [reflect Ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv typ]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ptrType ptr]}
+	 {*ast.UnaryExpr [& ptrType ptr]}
 	 {*ast.ReturnStmt [rv]}
 
 
@@ -400,14 +506,22 @@ function name is rvIsNil
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [urv flag unsafeFlagIndir INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [urv flag unsafeFlagIndir]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [urv ptr nil]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [urv ptr nil]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [urv ptr nil]}
 
 
 function name is rvSetSliceLen 
@@ -415,11 +529,12 @@ function name is rvSetSliceLen
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [length int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeString]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeString]}
 	 {*ast.SelectorExpr [urv ptr Len length]}
 
 
@@ -431,17 +546,22 @@ function name is rvZeroAddrK
 	 {*ast.SelectorExpr [reflect Kind]}
 	 {*ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv typ]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [t ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [uintptr k unsafeFlagIndir unsafeFlagAddr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv ptr]}
+	 {*ast.UnaryExpr [& t ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr k unsafeFlagIndir unsafeFlagAddr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CallExpr [unsafeNew]}
 	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.ReturnStmt []}
@@ -456,17 +576,22 @@ function name is rvZeroAddrTransientAnyK
 	 {*ast.Field -> *ast.SelectorExpr [addr unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv typ]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [t ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [uintptr k unsafeFlagIndir unsafeFlagAddr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv ptr addr]}
+	 {*ast.UnaryExpr [& t ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr k unsafeFlagIndir unsafeFlagAddr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr addr]}
 	 {*ast.ReturnStmt []}
 
 
@@ -478,62 +603,76 @@ function name is rvZeroK
 	 {*ast.SelectorExpr [reflect Kind]}
 	 {*ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv typ]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [t ptr]}
+	 {*ast.UnaryExpr [& t ptr]}
 	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [refBitset isset]}
 	 {*ast.CallExpr [byte k]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
 	 {*ast.CallExpr [uintptr k]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [rtsize2]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [<=]}
+	 {*ast.CallExpr [rtsize2]}
 	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr [len unsafeZeroArr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr k unsafeFlagIndir]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv ptr unsafeZeroAddr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [uintptr k unsafeFlagIndir unsafeFlagAddr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr k unsafeFlagIndir]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr unsafeZeroAddr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr k unsafeFlagIndir unsafeFlagAddr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CallExpr [unsafeNew]}
 	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.ReturnStmt []}
 
 
 function name is rvConvert 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [rvConvert]}
+	 { [rvConvert]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv typ]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [t ptr]}
+	 {*ast.UnaryExpr [& t ptr]}
 	 {*ast.ReturnStmt [v]}
 
 
 function name is rvAddressableReadonly 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment [rvAddressableReadonly]}
+	 { [rvAddressableReadonly]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv flag]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [uv flag unsafeFlagAddr]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.SelectorExpr [uv flag unsafeFlagAddr]}
 	 {*ast.ReturnStmt [v]}
 
 
@@ -552,17 +691,18 @@ function name is rt2id
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rt ptr]}
+	 {*ast.UnaryExpr [& rt ptr]}
 
 
 function name is i2rtid 
 	 { [i2rtid]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uintptr]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [uintptr]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [i typ]}
+	 {*ast.UnaryExpr [& i typ]}
 
 
 function name is unsafeCmpZero 
@@ -570,24 +710,30 @@ function name is unsafeCmpZero
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [size int]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [s1]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [s1]}
 	 {*ast.CompositeLit [unsafeString ptr size]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [s2]}
+	 {*ast.GenDecl -> *ast.ValueSpec [s2]}
 	 {*ast.CompositeLit [unsafeString unsafeZeroAddr size]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [size]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [> size]}
 	 {*ast.CallExpr [len unsafeZeroArr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [arr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= arr]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte size]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [s2 Data]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [s2 Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr [arr INT 0]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [s1]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr [arr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [s2]}
+	 {*ast.UnaryExpr [& s1]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [& s2]}
 
 
 function name is isEmptyValue 
@@ -598,11 +744,14 @@ function name is isEmptyValue
 	 {*ast.StarExpr [TypeInfos]}
 	 {*ast.Field [recursive bool]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [urv flag INT 0]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [true]}
 	 {*ast.IfStmt [recursive]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [isEmptyValueFallbackRecur urv v tinfos]}
@@ -622,74 +771,125 @@ function name is isEmptyValueFallbackRecur
 	 {*ast.Field [tinfos]}
 	 {*ast.StarExpr [TypeInfos]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [recursive true]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [recursive true]}
 	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr [v Kind]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Invalid]}
 	 {*ast.ReturnStmt [true]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect String]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeString]}
-	 {*ast.SelectorExpr [urv ptr Len INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeString]}
+	 {*ast.SelectorExpr [urv ptr Len]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Slice]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
-	 {*ast.SelectorExpr [urv ptr Len INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
+	 {*ast.SelectorExpr [urv ptr Len]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
-	 {*ast.ReturnStmt -> *ast.UnaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool]}
+	 {*ast.ReturnStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool]}
 	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int16]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int32]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int64]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint8]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint16]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint32]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint64]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uintptr]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uintptr]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uintptr]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float32]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float64]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64]}
-	 {*ast.SelectorExpr [urv ptr INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex64]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [unsafeCmpZero]}
-	 {*ast.SelectorExpr [urv ptr INT 8]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 8]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex128]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [unsafeCmpZero]}
-	 {*ast.SelectorExpr [urv ptr INT 16]}
+	 {*ast.SelectorExpr [urv ptr]}
+	 {*ast.BasicLit [INT 16]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Struct]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [tinfos nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [tinfos defTypeInfos]}
-	 {*ast.AssignStmt [ti]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== tinfos nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= tinfos defTypeInfos]}
+	 {*ast.AssignStmt [:= ti]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [tinfos find]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [urv typ]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [ti nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ti]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== ti nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= ti]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [tinfos load]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [v Type]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [unsafeCmpZero]}
@@ -698,43 +898,74 @@ function name is isEmptyValueFallbackRecur
 	 {*ast.SelectorExpr [ti size]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Interface]}
 	 {*ast.SelectorExpr [reflect Ptr]}
-	 {*ast.AssignStmt [isnil]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [urv ptr nil]}
-	 {*ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.AssignStmt [:= isnil]}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [urv ptr nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [recursive]}
-	 {*ast.UnaryExpr [isnil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.SelectorExpr [urv ptr nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&& recursive]}
+	 {*ast.UnaryExpr [! isnil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [isEmptyValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [v Elem tinfos recursive]}
 	 {*ast.ReturnStmt [isnil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect UnsafePointer]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [urv ptr nil]}
-	 {*ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [urv ptr nil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [urv ptr nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Chan]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [urv ptr nil]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len_chan]}
-	 {*ast.CallExpr [rvRefPtr urv INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [urv ptr nil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len_chan]}
+	 {*ast.CallExpr [rvRefPtr urv]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Map]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [urv ptr nil]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len_map]}
-	 {*ast.CallExpr [rvRefPtr urv INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [urv ptr nil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len_map]}
+	 {*ast.CallExpr [rvRefPtr urv]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Array]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [v Len INT 0]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [urv ptr nil]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [urv typ nil]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [rtsize2]}
-	 {*ast.SelectorExpr [urv typ INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [v Len]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [urv ptr nil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [urv typ nil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [rtsize2]}
+	 {*ast.SelectorExpr [urv typ]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CallExpr [unsafeCmpZero]}
 	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr [rtsize2]}
 	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.ReturnStmt [false]}
-	 {*ast.GenDecl -> *ast.TypeSpec [structFieldInfos]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [c unsafe Pointer]}
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field -> *ast.SelectorExpr [s unsafe Pointer]}
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [length int]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [structFieldInfos]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [c unsafe Pointer]}
+{*ast.Field -> *ast.SelectorExpr [s unsafe Pointer]}
+{*ast.Field [length int]}
 
 
 function name is load 
@@ -742,19 +973,22 @@ function name is load
 	 {*ast.StarExpr [structFieldInfos load]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [source sorted]}
 	 {*ast.ArrayType -> *ast.StarExpr [structFieldInfo]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [s]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [sorted]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x s]}
+	 {*ast.UnaryExpr [& sorted]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x s]}
 	 {*ast.SelectorExpr [s Data]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x length]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x length]}
 	 {*ast.SelectorExpr [s Len]}
-	 {*ast.AssignStmt [s]}
+	 {*ast.AssignStmt [= s]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x c]}
+	 {*ast.UnaryExpr [& source]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x c]}
 	 {*ast.SelectorExpr [s Data]}
 
 
@@ -763,9 +997,10 @@ function name is sorted
 	 {*ast.StarExpr [structFieldInfos sorted]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.ArrayType -> *ast.StarExpr [structFieldInfo]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
+	 {*ast.UnaryExpr [& v]}
 	 {*ast.CompositeLit [unsafeSlice]}
 	 {*ast.SelectorExpr [x s]}
 	 {*ast.SelectorExpr [x length]}
@@ -778,16 +1013,19 @@ function name is source
 	 {*ast.StarExpr [structFieldInfos source]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.ArrayType -> *ast.StarExpr [structFieldInfo]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
+	 {*ast.UnaryExpr [& v]}
 	 {*ast.CompositeLit [unsafeSlice]}
 	 {*ast.SelectorExpr [x c]}
 	 {*ast.SelectorExpr [x length]}
 	 {*ast.SelectorExpr [x length]}
-	 {*ast.ReturnStmt -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [atomicTypeInfoSlice]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
-	 {*ast.CommentGroup -> *ast.Comment []}
+	 {*ast.ReturnStmt []}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [atomicTypeInfoSlice]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 
 
 function name is load 
@@ -795,11 +1033,13 @@ function name is load
 	 {*ast.StarExpr [atomicTypeInfoSlice load]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [s]}
 	 {*ast.ArrayType [rtid2ti]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [x2]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= x2]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadPointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x v]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [x2 nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [s]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x v]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= x2 nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= s]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [rtid2ti x2]}
 	 {*ast.ReturnStmt []}
 
@@ -810,12 +1050,14 @@ function name is store
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p]}
 	 {*ast.ArrayType [rtid2ti]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StorePointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x v]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x v]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [p]}
-	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [atomicRtidFnSlice]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
-	 {*ast.CommentGroup -> *ast.Comment []}
+	 {*ast.UnaryExpr [& p]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [atomicRtidFnSlice]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 
 
 function name is load 
@@ -823,11 +1065,13 @@ function name is load
 	 {*ast.StarExpr [atomicRtidFnSlice load]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [s]}
 	 {*ast.ArrayType [codecRtidFn]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [x2]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= x2]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadPointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x v]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [x2 nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [s]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x v]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= x2 nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= s]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [codecRtidFn x2]}
 	 {*ast.ReturnStmt []}
 
@@ -838,24 +1082,28 @@ function name is store
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p]}
 	 {*ast.ArrayType [codecRtidFn]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StorePointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x v]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x v]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [p]}
-	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [atomicClsErr]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
-	 {*ast.CommentGroup -> *ast.Comment []}
+	 {*ast.UnaryExpr [& p]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [atomicClsErr]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 
 
 function name is load 
 	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [atomicClsErr load]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [e clsErr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [x2]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= x2]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [clsErr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadPointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x v]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [x2 nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [e]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x v]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= x2 nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= e]}
 	 {*ast.StarExpr [x2]}
 	 {*ast.ReturnStmt []}
 
@@ -865,41 +1113,59 @@ function name is store
 	 {*ast.StarExpr [atomicClsErr store]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p clsErr]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StorePointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x v]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x v]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [p]}
-	 {*ast.GenDecl -> *ast.TypeSpec [unsafeDecNakedWrapper]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [fauxUnion]}
-	 {*ast.Field [ru ri rf rl rs rb rt]}
-	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.CommentGroup -> *ast.Comment []}
+	 {*ast.UnaryExpr [& p]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [unsafeDecNakedWrapper]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [fauxUnion]}
+{*ast.Field [ru ri rf rl rs rb rt]}
+{*ast.SelectorExpr [reflect Value]}
 
 
 function name is init 
 	 {*ast.FieldList -> *ast.Field [n]}
 	 {*ast.StarExpr [unsafeDecNakedWrapper init]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [n ru]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [n ru]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [rv4iptr]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n u Elem]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [n ri]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n u Elem]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [n ri]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [rv4iptr]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n i Elem]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [n rf]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n i Elem]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [n rf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [rv4iptr]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n f Elem]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [n rl]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n f Elem]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [n rl]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [rv4iptr]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n l Elem]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [n rs]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n l Elem]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [n rs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [rv4iptr]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n s Elem]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [n rt]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n s Elem]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [n rt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [rv4iptr]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n t Elem]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [n rb]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n t Elem]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [n rb]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [rv4iptr]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n b Elem]}
-	 {*ast.GenDecl -> *ast.ValueSpec [defUnsafeDecNakedWrapper unsafeDecNakedWrapper]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n b Elem]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [defUnsafeDecNakedWrapper unsafeDecNakedWrapper]}
 
 
 function name is init 
@@ -912,13 +1178,15 @@ function name is ru
 	 {*ast.StarExpr [fauxUnion ru]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= v]}
 	 {*ast.SelectorExpr [defUnsafeDecNakedWrapper ru]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v ptr]}
+	 {*ast.UnaryExpr [& v ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n u]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n u]}
 	 {*ast.ReturnStmt []}
 
 
@@ -927,13 +1195,15 @@ function name is ri
 	 {*ast.StarExpr [fauxUnion ri]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= v]}
 	 {*ast.SelectorExpr [defUnsafeDecNakedWrapper ri]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v ptr]}
+	 {*ast.UnaryExpr [& v ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n i]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n i]}
 	 {*ast.ReturnStmt []}
 
 
@@ -942,13 +1212,15 @@ function name is rf
 	 {*ast.StarExpr [fauxUnion rf]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= v]}
 	 {*ast.SelectorExpr [defUnsafeDecNakedWrapper rf]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v ptr]}
+	 {*ast.UnaryExpr [& v ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n f]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n f]}
 	 {*ast.ReturnStmt []}
 
 
@@ -957,13 +1229,15 @@ function name is rl
 	 {*ast.StarExpr [fauxUnion rl]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= v]}
 	 {*ast.SelectorExpr [defUnsafeDecNakedWrapper rl]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v ptr]}
+	 {*ast.UnaryExpr [& v ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n l]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n l]}
 	 {*ast.ReturnStmt []}
 
 
@@ -972,13 +1246,15 @@ function name is rs
 	 {*ast.StarExpr [fauxUnion rs]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= v]}
 	 {*ast.SelectorExpr [defUnsafeDecNakedWrapper rs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v ptr]}
+	 {*ast.UnaryExpr [& v ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n s]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n s]}
 	 {*ast.ReturnStmt []}
 
 
@@ -987,13 +1263,15 @@ function name is rt
 	 {*ast.StarExpr [fauxUnion rt]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= v]}
 	 {*ast.SelectorExpr [defUnsafeDecNakedWrapper rt]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v ptr]}
+	 {*ast.UnaryExpr [& v ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n t]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n t]}
 	 {*ast.ReturnStmt []}
 
 
@@ -1002,27 +1280,30 @@ function name is rb
 	 {*ast.StarExpr [fauxUnion rb]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= v]}
 	 {*ast.SelectorExpr [defUnsafeDecNakedWrapper rb]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v ptr]}
+	 {*ast.UnaryExpr [& v ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n b]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n b]}
 	 {*ast.ReturnStmt []}
 
 
 function name is rvSetBytes 
-	 {*ast.CommentGroup -> *ast.Comment [rvSetBytes]}
+	 { [rvSetBytes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [byte]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [byte]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1031,11 +1312,12 @@ function name is rvSetString
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1044,11 +1326,12 @@ function name is rvSetBool
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1058,11 +1341,12 @@ function name is rvSetTime
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v]}
 	 {*ast.SelectorExpr [time Time]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1071,11 +1355,12 @@ function name is rvSetFloat32
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1084,11 +1369,12 @@ function name is rvSetFloat64
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v float64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1097,11 +1383,12 @@ function name is rvSetComplex64
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v complex64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [complex64]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [complex64]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1110,11 +1397,12 @@ function name is rvSetComplex128
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v complex128]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [complex128]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [complex128]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1123,11 +1411,12 @@ function name is rvSetInt
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1136,11 +1425,12 @@ function name is rvSetInt8
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v int8]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1149,11 +1439,12 @@ function name is rvSetInt16
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v int16]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1162,11 +1453,12 @@ function name is rvSetInt32
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1175,11 +1467,12 @@ function name is rvSetInt64
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1188,11 +1481,12 @@ function name is rvSetUint
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v uint]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1201,11 +1495,12 @@ function name is rvSetUintptr
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v uintptr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uintptr]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uintptr]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1214,11 +1509,12 @@ function name is rvSetUint8
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v uint8]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1227,11 +1523,12 @@ function name is rvSetUint16
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v uint16]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1240,11 +1537,12 @@ function name is rvSetUint32
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v uint32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
@@ -1253,16 +1551,17 @@ function name is rvSetUint64
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v uint64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.SelectorExpr [urv ptr v]}
 
 
 function name is rvSetZero 
-	 {*ast.CommentGroup -> *ast.Comment [rvSetZero]}
+	 { [rvSetZero]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [rvSetDirectZero rv]}
@@ -1278,25 +1577,34 @@ function name is rvSetIntf
 
 
 function name is rvSetDirect 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [rvSetDirect]}
+	 { [rvSetDirect]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt [uv]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [uv flag unsafeFlagIndir INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [uv flag unsafeFlagIndir]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.SelectorExpr [uv ptr]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [uv ptr unsafeZeroAddr]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [urv ptr unsafeZeroAddr]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [uv ptr unsafeZeroAddr]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [urv ptr unsafeZeroAddr]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [typedmemclr]}
 	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr [urv ptr]}
@@ -1307,21 +1615,23 @@ function name is rvSetDirect
 
 
 function name is rvSetDirectZero 
-	 {*ast.CommentGroup -> *ast.Comment [rvSetDirectZero]}
+	 { [rvSetDirectZero]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [urv ptr unsafeZeroAddr]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [urv ptr unsafeZeroAddr]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [typedmemclr]}
 	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr [urv ptr]}
 
 
 function name is rvMakeSlice 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [rvMakeSlice]}
+	 { [rvMakeSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [ti]}
@@ -1330,53 +1640,61 @@ function name is rvMakeSlice
 	 {*ast.FieldList -> *ast.Field [_]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [set bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt [ux]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [:= ux]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr [urv ptr]}
-	 {*ast.AssignStmt [t]}
+	 {*ast.AssignStmt [:= t]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [ti elem ptr]}
-	 {*ast.AssignStmt [s]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [ti elem ptr]}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CompositeLit [unsafeSlice]}
 	 {*ast.CallExpr [newarray t xcap xlen xcap]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [ux Len INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.SelectorExpr [ux Len]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [typedslicecopy t s]}
 	 {*ast.StarExpr [ux]}
-	 {*ast.AssignStmt -> *ast.StarExpr [ux s]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [ux s]}
 	 {*ast.ReturnStmt [rv true]}
 
 
 function name is rvSlice 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [rvSlice]}
+	 { [rvSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [length int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x]}
-	 {*ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.AssignStmt [ux]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x]}
+	 {*ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.AssignStmt [:= ux]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
-	 {*ast.AssignStmt -> *ast.StarExpr [ux]}
+	 {*ast.UnaryExpr [& x]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [ux]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr [urv ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ux Len length]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ux Len length]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ux]}
 	 {*ast.ReturnStmt [rv]}
 
 
 function name is rvGrowSlice 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [rvGrowSlice]}
+	 { [rvGrowSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [ti]}
@@ -1386,21 +1704,24 @@ function name is rvGrowSlice
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [newcap int]}
 	 {*ast.Field [set bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt [ux]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [:= ux]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr [urv ptr]}
-	 {*ast.AssignStmt [t]}
+	 {*ast.AssignStmt [:= t]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [ti elem ptr]}
-	 {*ast.AssignStmt -> *ast.StarExpr [ux]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [ti elem ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [ux]}
 	 {*ast.CallExpr [unsafeGrowslice t]}
 	 {*ast.StarExpr [ux cap incr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ux Len]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ux Len]}
 	 {*ast.SelectorExpr [ux Cap]}
 	 {*ast.ReturnStmt [rv]}
 	 {*ast.SelectorExpr [ux Cap true]}
@@ -1415,28 +1736,36 @@ function name is rvSliceIndex
 	 {*ast.StarExpr [typeInfo]}
 	 {*ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt [uv]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv ptr]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr [urv ptr Data]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [int]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.CallExpr [int]}
 	 {*ast.SelectorExpr [ti elemsize i]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv typ]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [ti elem ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv flag]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [ti elem ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [ti elemkind unsafeFlagIndir unsafeFlagAddr]}
 	 {*ast.ReturnStmt []}
 
@@ -1447,20 +1776,24 @@ function name is rvSliceZeroCap
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv typ]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [t ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.UnaryExpr [& t ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [reflect Slice unsafeFlagIndir]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [unsafeZeroSlice]}
+	 {*ast.UnaryExpr [& unsafeZeroSlice]}
 	 {*ast.ReturnStmt []}
 
 
@@ -1469,10 +1802,10 @@ function name is rvLenSlice
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr [urv ptr Len]}
 
@@ -1482,10 +1815,10 @@ function name is rvCapSlice
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr [urv ptr Cap]}
 
@@ -1499,52 +1832,63 @@ function name is rvArrayIndex
 	 {*ast.StarExpr [typeInfo]}
 	 {*ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt [uv]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv ptr]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CallExpr [uintptr]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [int]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.CallExpr [int]}
 	 {*ast.SelectorExpr [ti elemsize i]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv typ]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [ti elem ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv flag]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [ti elem ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [ti elemkind unsafeFlagIndir unsafeFlagAddr]}
 	 {*ast.ReturnStmt []}
 
 
 function name is rvGetArrayBytes 
-	 {*ast.CommentGroup -> *ast.Comment [rvGetArrayBytes]}
+	 { [rvGetArrayBytes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [scratch]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [bs]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt [bx]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [:= bx]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [bs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bx Data]}
+	 {*ast.UnaryExpr [& bs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bx Data]}
 	 {*ast.SelectorExpr [urv ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bx Len]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bx Len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [rv Len]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bx Cap]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bx Cap]}
 	 {*ast.SelectorExpr [bx Len]}
 	 {*ast.ReturnStmt []}
 
@@ -1555,26 +1899,31 @@ function name is rvGetArray4Slice
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [v]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= t]}
 	 {*ast.CallExpr [reflectArrayOf]}
 	 {*ast.CallExpr [rvLenSlice rv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [rv Type Elem]}
-	 {*ast.AssignStmt [uv]}
+	 {*ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv flag]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [reflect Array unsafeFlagIndir unsafeFlagAddr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv typ]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [t ptr]}
-	 {*ast.AssignStmt [urv]}
+	 {*ast.UnaryExpr [& t ptr]}
+	 {*ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [uv ptr]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [uv ptr]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.ReturnStmt []}
@@ -1585,22 +1934,26 @@ function name is rvGetSlice4Array
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [v]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [uv]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt [urv]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt [s]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr [uv ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [s Data]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [s Data]}
 	 {*ast.SelectorExpr [urv ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [s Len]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [s Len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [rv Len]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [s Cap]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [s Cap]}
 	 {*ast.SelectorExpr [s Len]}
 
 
@@ -1613,15 +1966,15 @@ function name is rvCopySlice
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [typedslicecopy]}
 	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [elemType ptr]}
+	 {*ast.UnaryExpr [& elemType ptr]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [dest ptr]}
+	 {*ast.UnaryExpr [& dest ptr]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeSlice]}
 	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [src ptr]}
+	 {*ast.UnaryExpr [& src ptr]}
 
 
 function name is rvGetBool 
@@ -1629,10 +1982,10 @@ function name is rvGetBool
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1642,10 +1995,10 @@ function name is rvGetBytes
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [byte]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1655,10 +2008,10 @@ function name is rvGetTime
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [time Time]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1668,10 +2021,10 @@ function name is rvGetString
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1681,10 +2034,10 @@ function name is rvGetFloat64
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [float64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1694,10 +2047,10 @@ function name is rvGetFloat32
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1707,10 +2060,10 @@ function name is rvGetComplex64
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [complex64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [complex64]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1720,10 +2073,10 @@ function name is rvGetComplex128
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [complex128]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [complex128]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1733,10 +2086,10 @@ function name is rvGetInt
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1746,10 +2099,10 @@ function name is rvGetInt8
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [int8]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1759,10 +2112,10 @@ function name is rvGetInt16
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [int16]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1772,10 +2125,10 @@ function name is rvGetInt32
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1785,10 +2138,10 @@ function name is rvGetInt64
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1798,10 +2151,10 @@ function name is rvGetUint
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [uint]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1811,10 +2164,10 @@ function name is rvGetUint8
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [uint8]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1824,10 +2177,10 @@ function name is rvGetUint16
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [uint16]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1837,10 +2190,10 @@ function name is rvGetUint32
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1850,10 +2203,10 @@ function name is rvGetUint64
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1863,10 +2216,10 @@ function name is rvGetUintptr
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [uintptr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
+	 {*ast.UnaryExpr [& rv]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uintptr]}
 	 {*ast.SelectorExpr [v ptr]}
 
@@ -1880,65 +2233,82 @@ function name is rvLenMap
 	 {*ast.CallExpr [rvRefPtr]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.GenDecl -> *ast.TypeSpec [unsafeMapIter]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [mtyp mptr unsafe Pointer]}
-	 {*ast.Field [k v]}
-	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.Field [kisref bool]}
-	 {*ast.Field [visref bool]}
-	 {*ast.Field [mapvalues bool]}
-	 {*ast.Field [done bool]}
-	 {*ast.Field [started bool]}
-	 {*ast.Field [_]}
-	 {*ast.ArrayType [INT 3 byte]}
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Field [it]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [key unsafe Pointer]}
-	 {*ast.Field -> *ast.SelectorExpr [value unsafe Pointer]}
-	 {*ast.Field [_]}
-	 {*ast.ArrayType [INT 20 uintptr]}
-	 {*ast.CommentGroup -> *ast.Comment []}
+	 {*ast.UnaryExpr [& rv]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [unsafeMapIter]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [mtyp mptr unsafe Pointer]}
+{*ast.Field [k v]}
+{*ast.SelectorExpr [reflect Value]}
+{*ast.Field [kisref bool]}
+{*ast.Field [visref bool]}
+{*ast.Field [mapvalues bool]}
+{*ast.Field [done bool]}
+{*ast.Field [started bool]}
+{*ast.Field [_]}
+{*ast.ArrayType -> *ast.BasicLit [INT 3]}
+{ [byte]}
+{*ast.Field [it]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [key unsafe Pointer]}
+{*ast.Field -> *ast.SelectorExpr [value unsafe Pointer]}
+{*ast.Field [_]}
+{*ast.ArrayType -> *ast.BasicLit [INT 20]}
+{ [uintptr]}
 
 
 function name is Next 
 	 {*ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr [unsafeMapIter Next]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [r bool]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [t nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== t nil]}
 	 {*ast.SelectorExpr [t done]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IfStmt -> *ast.SelectorExpr [t started]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [mapiternext]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [t it]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t started true]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [t done]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [t it key nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [t it]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t started true]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t done]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [t it key nil]}
 	 {*ast.IfStmt -> *ast.SelectorExpr [t done]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IfStmt -> *ast.BinaryExpr [helperUnsafeDirectAssignMapEntry]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [|| helperUnsafeDirectAssignMapEntry]}
 	 {*ast.SelectorExpr [t kisref]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [t k ptr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [t k ptr]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [t it key]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [k]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= k]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [t k]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [t k]}
 	 {*ast.ExprStmt -> *ast.CallExpr [typedmemmove]}
 	 {*ast.SelectorExpr [k typ]}
 	 {*ast.SelectorExpr [k ptr]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [t it key]}
 	 {*ast.IfStmt -> *ast.SelectorExpr [t mapvalues]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [helperUnsafeDirectAssignMapEntry]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [|| helperUnsafeDirectAssignMapEntry]}
 	 {*ast.SelectorExpr [t visref]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [t v ptr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [t v ptr]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [t it value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [t v]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [t v]}
 	 {*ast.ExprStmt -> *ast.CallExpr [typedmemmove]}
 	 {*ast.SelectorExpr [v typ]}
 	 {*ast.SelectorExpr [v ptr]}
@@ -1965,8 +2335,11 @@ function name is Value
 function name is Done 
 	 {*ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr [unsafeMapIter Done]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.GenDecl -> *ast.TypeSpec [mapIter]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [unsafeMapIter]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [mapIter]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [unsafeMapIter]}
 
 
 function name is mapRange 
@@ -1977,69 +2350,92 @@ function name is mapRange
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.Field [mapvalues bool]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.CallExpr [rvIsNil m]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t done true]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t done false]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [t started false]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [t mapvalues mapvalues]}
-	 {*ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t done true]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t done false]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t started false]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t mapvalues mapvalues]}
+	 {*ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [m]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [t mtyp]}
+	 {*ast.UnaryExpr [& m]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t mtyp]}
 	 {*ast.SelectorExpr [urv typ]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [t mptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t mptr]}
 	 {*ast.CallExpr [rvRefPtr urv]}
 	 {*ast.ExprStmt -> *ast.CallExpr [mapiterinit]}
 	 {*ast.SelectorExpr [t mtyp]}
 	 {*ast.SelectorExpr [t mptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [t it]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [t k k]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [t kisref]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [t it]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t k k]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t kisref]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [refBitset isset]}
 	 {*ast.CallExpr [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [k Kind]}
 	 {*ast.IfStmt [mapvalues]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t v v]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [t visref]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t v v]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t visref]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [refBitset isset]}
 	 {*ast.CallExpr [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [v Kind]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [t v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [t v]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [reflect Value]}
 
 
 function name is unsafeMapKVPtr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [unsafeMapKVPtr]}
+	 { [unsafeMapKVPtr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [urv]}
 	 {*ast.StarExpr [unsafeReflectValue]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [urv flag unsafeFlagIndir INT 0]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [urv flag unsafeFlagIndir]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [urv ptr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [urv ptr]}
 
 
 function name is mapAddrLoopvarRV 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [mapAddrLoopvarRV]}
+	 { [mapAddrLoopvarRV]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.Field [k]}
 	 {*ast.SelectorExpr [reflect Kind]}
 	 {*ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [urv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [uintptr k unsafeFlagIndir unsafeFlagAddr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv typ]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.CallExpr [uintptr k unsafeFlagIndir unsafeFlagAddr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [t ptr]}
-	 {*ast.IfStmt -> *ast.UnaryExpr [helperUnsafeDirectAssignMapEntry]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [urv ptr]}
+	 {*ast.UnaryExpr [& t ptr]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [! helperUnsafeDirectAssignMapEntry]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CallExpr [unsafeNew]}
 	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.ReturnStmt []}
@@ -2052,14 +2448,18 @@ function name is jsondriver
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [jsonEncDriver]}
 	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [e e ptr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [e e ptr]}
 
 
 function name is zerocopystate 
 	 {*ast.FieldList -> *ast.Field [d]}
 	 {*ast.StarExpr [Decoder zerocopystate]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [d decByteState decByteStateZerocopy]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [d decByteState decByteStateZerocopy]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [d h ZeroCopy]}
 
 
@@ -2069,7 +2469,10 @@ function name is stringZC
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [s string]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [d decByteState decByteStateZerocopy]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [d decByteState decByteStateZerocopy]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [d h ZeroCopy]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [stringView v]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [d string v]}
@@ -2083,14 +2486,22 @@ function name is mapKeyString
 	 {*ast.Field [kstrbs kstr2bs]}
 	 {*ast.StarExpr -> *ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [d zerocopystate]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr [callFnRvk true]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [d decByteState decByteStateReuseBuf]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr [kstrbs]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [d zerocopystate]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr [callFnRvk true]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [d decByteState decByteStateReuseBuf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr [kstrbs]}
 	 {*ast.CallExpr [append]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr [kstrbs INT 0]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr [kstrbs]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ParenExpr -> *ast.StarExpr [kstr2bs]}
-	 {*ast.AssignStmt -> *ast.StarExpr [kstr2bs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [kstr2bs]}
 	 {*ast.StarExpr [kstrbs]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [stringView]}
 	 {*ast.StarExpr [kstr2bs]}
@@ -2103,7 +2514,8 @@ function name is jsondriver
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [jsonDecDriver]}
 	 {*ast.SelectorExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [d d ptr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [d d ptr]}
 
 
 function name is rvField 
@@ -2113,26 +2525,35 @@ function name is rvField
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field [rv]}
 	 {*ast.SelectorExpr [reflect Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uv]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= uv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v]}
-	 {*ast.AssignStmt [urv]}
+	 {*ast.UnaryExpr [& v]}
+	 {*ast.AssignStmt [:= urv]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeReflectValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [rv]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv flag]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [uv flag]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [unsafeFlagStickyRO unsafeFlagIndir unsafeFlagAddr]}
+	 {*ast.UnaryExpr [& rv]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv flag]}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [uv flag]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [|]}
+	 {*ast.BinaryExpr [| unsafeFlagStickyRO unsafeFlagIndir unsafeFlagAddr]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [n kind]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv typ]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv typ]}
 	 {*ast.SelectorExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [unsafeIntf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [n typ ptr]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [urv ptr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [n typ ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [uv ptr]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [n offset]}
@@ -2143,8 +2564,9 @@ function name is len_map_chan
 	 { [len_map_chan]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [m unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [m nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== m nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int m]}
 
 
@@ -2171,13 +2593,13 @@ function name is unsafeNew
 
 
 function name is memmove 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [memmove]}
+	 { [memmove]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [to from unsafe Pointer]}
 	 {*ast.Field [n uintptr]}
 
 
 function name is mallocgc 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [mallocgc]}
+	 { [mallocgc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size uintptr]}
 	 {*ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 	 {*ast.Field [needzero bool]}
@@ -2185,34 +2607,34 @@ function name is mallocgc
 
 
 function name is newarray 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [newarray]}
+	 { [newarray]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 	 {*ast.Field [n int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 
 
 function name is mapiterinit 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [mapiterinit]}
+	 { [mapiterinit]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [m unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [it unsafe Pointer]}
 
 
 function name is mapiternext 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [mapiternext]}
+	 { [mapiternext]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [it unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [key unsafe Pointer]}
 
 
 function name is mapdelete 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [mapdelete]}
+	 { [mapdelete]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [m unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [key unsafe Pointer]}
 
 
 function name is mapassign 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [mapassign]}
+	 { [mapassign]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [m unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [key unsafe Pointer]}
@@ -2220,7 +2642,7 @@ function name is mapassign
 
 
 function name is mapaccess2 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [mapaccess2]}
+	 { [mapaccess2]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [m unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [key unsafe Pointer]}
@@ -2229,20 +2651,20 @@ function name is mapaccess2
 
 
 function name is typedslicecopy 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [typedslicecopy]}
+	 { [typedslicecopy]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [elemType unsafe Pointer]}
 	 {*ast.Field [dst src unsafeSlice]}
 	 {*ast.FieldList -> *ast.Field [int]}
 
 
 function name is typedmemmove 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [typedmemmove]}
+	 { [typedmemmove]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [dst src unsafe Pointer]}
 
 
 function name is typedmemclr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [typedmemclr]}
+	 { [typedmemclr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [typ unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [dst unsafe Pointer]}
 

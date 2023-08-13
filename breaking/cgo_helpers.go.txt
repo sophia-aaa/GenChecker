@@ -1,14 +1,19 @@
 {*ast.File [ultralight]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ImportSpec [STRING "C"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "runtime"]}
-{*ast.ImportSpec [STRING "sync"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [cgoAllocMap]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "C"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "runtime"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.TypeSpec [cgoAllocMap]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [mux]}
 {*ast.SelectorExpr [sync RWMutex]}
 {*ast.Field [m]}
 {*ast.MapType -> *ast.SelectorExpr [unsafe Pointer]}
-{*ast.StructType -> *ast.FieldList -> *ast.GenDecl -> *ast.ValueSpec [cgoAllocsUnknown]}
+{*ast.StructType -> *ast.FieldList []}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [cgoAllocsUnknown]}
 {*ast.CallExpr [new cgoAllocMap]}
 
 
@@ -17,11 +22,15 @@ function name is Add
 	 {*ast.StarExpr [cgoAllocMap Add]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a mux Lock]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [a m nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [a m]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [a m nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [a m]}
 	 {*ast.CallExpr [make]}
 	 {*ast.MapType -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [a m ptr]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [a m ptr]}
 	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a mux Unlock]}
 
 
@@ -30,9 +39,11 @@ function name is IsEmpty
 	 {*ast.StarExpr [cgoAllocMap IsEmpty]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a mux RLock]}
-	 {*ast.AssignStmt [isEmpty]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len]}
-	 {*ast.SelectorExpr [a m INT 0]}
+	 {*ast.AssignStmt [:= isEmpty]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [a m]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a mux RUnlock]}
 	 {*ast.ReturnStmt [isEmpty]}
 
@@ -42,17 +53,23 @@ function name is Borrow
 	 {*ast.StarExpr [cgoAllocMap Borrow]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [b nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== b nil]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [b IsEmpty]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b mux Lock]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a mux Lock]}
 	 {*ast.RangeStmt [ptr]}
 	 {*ast.SelectorExpr [b m]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [a m nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [a m]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [a m nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [a m]}
 	 {*ast.CallExpr [make]}
 	 {*ast.MapType -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.SelectorExpr [a m ptr]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [a m ptr]}
 	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.ExprStmt -> *ast.CallExpr [delete]}
 	 {*ast.SelectorExpr [b m ptr]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a mux Unlock]}
@@ -77,10 +94,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULUpdateCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLUpdateCallback7E1C6355Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLUpdateCallback7E1C6355Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLUpdateCallback7E1C6355Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLUpdateCallback7E1C6355Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULUpdateCallback]}
 	 {*ast.SelectorExpr [C ULUpdateCallback_7e1c6355 nil]}
 
@@ -91,10 +110,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULUpdateCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLUpdateCallback7E1C6355Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLUpdateCallback7E1C6355Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLUpdateCallback7E1C6355Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLUpdateCallback7E1C6355Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULUpdateCallback]}
 	 {*ast.SelectorExpr [C ULUpdateCallback_7e1c6355 nil]}
 
@@ -107,14 +128,16 @@ function name is NewULUpdateCallbackRef
 
 
 function name is uLUpdateCallback7E1C6355 
-	 {*ast.CommentGroup -> *ast.Comment [uLUpdateCallback7E1C6355]}
+	 { [uLUpdateCallback7E1C6355]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLUpdateCallback7E1C6355Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data7e1c6355]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLUpdateCallback7E1C6355Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data7e1c6355]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLUpdateCallback7E1C6355Func user_data7e1c6355]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLUpdateCallback7E1C6355Func ULUpdateCallback]}
 
 
@@ -124,10 +147,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULCloseCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLCloseCallback195B2F9Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLCloseCallback195B2F9Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLCloseCallback195B2F9Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLCloseCallback195B2F9Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULCloseCallback]}
 	 {*ast.SelectorExpr [C ULCloseCallback_195b2f9 nil]}
 
@@ -138,10 +163,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULCloseCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLCloseCallback195B2F9Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLCloseCallback195B2F9Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLCloseCallback195B2F9Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLCloseCallback195B2F9Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULCloseCallback]}
 	 {*ast.SelectorExpr [C ULCloseCallback_195b2f9 nil]}
 
@@ -154,14 +181,16 @@ function name is NewULCloseCallbackRef
 
 
 function name is uLCloseCallback195B2F9 
-	 {*ast.CommentGroup -> *ast.Comment [uLCloseCallback195B2F9]}
+	 { [uLCloseCallback195B2F9]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLCloseCallback195B2F9Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data195b2f9]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLCloseCallback195B2F9Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data195b2f9]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLCloseCallback195B2F9Func user_data195b2f9]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLCloseCallback195B2F9Func ULCloseCallback]}
 
 
@@ -171,10 +200,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULResizeCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLResizeCallback6E7309D9Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLResizeCallback6E7309D9Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLResizeCallback6E7309D9Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLResizeCallback6E7309D9Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULResizeCallback]}
 	 {*ast.SelectorExpr [C ULResizeCallback_6e7309d9 nil]}
 
@@ -185,10 +216,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULResizeCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLResizeCallback6E7309D9Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLResizeCallback6E7309D9Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLResizeCallback6E7309D9Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLResizeCallback6E7309D9Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULResizeCallback]}
 	 {*ast.SelectorExpr [C ULResizeCallback_6e7309d9 nil]}
 
@@ -201,22 +234,24 @@ function name is NewULResizeCallbackRef
 
 
 function name is uLResizeCallback6E7309D9 
-	 {*ast.CommentGroup -> *ast.Comment [uLResizeCallback6E7309D9]}
+	 { [uLResizeCallback6E7309D9]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [cwidth]}
 	 {*ast.SelectorExpr [C uint]}
 	 {*ast.Field [cheight]}
 	 {*ast.SelectorExpr [C uint]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLResizeCallback6E7309D9Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data6e7309d9]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLResizeCallback6E7309D9Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data6e7309d9]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [width6e7309d9]}
+	 {*ast.AssignStmt [:= width6e7309d9]}
 	 {*ast.CallExpr -> *ast.ParenExpr [uint32 cwidth]}
-	 {*ast.AssignStmt [height6e7309d9]}
+	 {*ast.AssignStmt [:= height6e7309d9]}
 	 {*ast.CallExpr -> *ast.ParenExpr [uint32 cheight]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLResizeCallback6E7309D9Func user_data6e7309d9 width6e7309d9 height6e7309d9]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLResizeCallback6E7309D9Func ULResizeCallback]}
 
 
@@ -226,10 +261,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULChangeTitleCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLChangeTitleCallbackBD58034CFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLChangeTitleCallbackBD58034CFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLChangeTitleCallbackBD58034CFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLChangeTitleCallbackBD58034CFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULChangeTitleCallback]}
 	 {*ast.SelectorExpr [C ULChangeTitleCallback_bd58034c nil]}
 
@@ -240,10 +277,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULChangeTitleCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLChangeTitleCallbackBD58034CFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLChangeTitleCallbackBD58034CFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLChangeTitleCallbackBD58034CFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLChangeTitleCallbackBD58034CFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULChangeTitleCallback]}
 	 {*ast.SelectorExpr [C ULChangeTitleCallback_bd58034c nil]}
 
@@ -256,26 +295,28 @@ function name is NewULChangeTitleCallbackRef
 
 
 function name is uLChangeTitleCallbackBD58034C 
-	 {*ast.CommentGroup -> *ast.Comment [uLChangeTitleCallbackBD58034C]}
+	 { [uLChangeTitleCallbackBD58034C]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
 	 {*ast.Field [ctitle]}
 	 {*ast.SelectorExpr [C ULString]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLChangeTitleCallbackBD58034CFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_databd58034c]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLChangeTitleCallbackBD58034CFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_databd58034c]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [callerbd58034c]}
+	 {*ast.AssignStmt [:= callerbd58034c]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
-	 {*ast.AssignStmt [titlebd58034c]}
+	 {*ast.UnaryExpr [& ccaller]}
+	 {*ast.AssignStmt [:= titlebd58034c]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ctitle]}
+	 {*ast.UnaryExpr [& ctitle]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLChangeTitleCallbackBD58034CFunc user_databd58034c callerbd58034c titlebd58034c]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLChangeTitleCallbackBD58034CFunc ULChangeTitleCallback]}
 
 
@@ -285,10 +326,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULChangeURLCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLChangeURLCallback4EC32B80Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLChangeURLCallback4EC32B80Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLChangeURLCallback4EC32B80Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLChangeURLCallback4EC32B80Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULChangeURLCallback]}
 	 {*ast.SelectorExpr [C ULChangeURLCallback_4ec32b80 nil]}
 
@@ -299,10 +342,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULChangeURLCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLChangeURLCallback4EC32B80Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLChangeURLCallback4EC32B80Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLChangeURLCallback4EC32B80Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLChangeURLCallback4EC32B80Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULChangeURLCallback]}
 	 {*ast.SelectorExpr [C ULChangeURLCallback_4ec32b80 nil]}
 
@@ -315,26 +360,28 @@ function name is NewULChangeURLCallbackRef
 
 
 function name is uLChangeURLCallback4EC32B80 
-	 {*ast.CommentGroup -> *ast.Comment [uLChangeURLCallback4EC32B80]}
+	 { [uLChangeURLCallback4EC32B80]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
 	 {*ast.Field [curl]}
 	 {*ast.SelectorExpr [C ULString]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLChangeURLCallback4EC32B80Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data4ec32b80]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLChangeURLCallback4EC32B80Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data4ec32b80]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [caller4ec32b80]}
+	 {*ast.AssignStmt [:= caller4ec32b80]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
-	 {*ast.AssignStmt [url4ec32b80]}
+	 {*ast.UnaryExpr [& ccaller]}
+	 {*ast.AssignStmt [:= url4ec32b80]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [curl]}
+	 {*ast.UnaryExpr [& curl]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLChangeURLCallback4EC32B80Func user_data4ec32b80 caller4ec32b80 url4ec32b80]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLChangeURLCallback4EC32B80Func ULChangeURLCallback]}
 
 
@@ -344,10 +391,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULChangeTooltipCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLChangeTooltipCallback12CA407Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLChangeTooltipCallback12CA407Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLChangeTooltipCallback12CA407Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLChangeTooltipCallback12CA407Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULChangeTooltipCallback]}
 	 {*ast.SelectorExpr [C ULChangeTooltipCallback_12ca407 nil]}
 
@@ -358,10 +407,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULChangeTooltipCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLChangeTooltipCallback12CA407Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLChangeTooltipCallback12CA407Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLChangeTooltipCallback12CA407Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLChangeTooltipCallback12CA407Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULChangeTooltipCallback]}
 	 {*ast.SelectorExpr [C ULChangeTooltipCallback_12ca407 nil]}
 
@@ -374,26 +425,28 @@ function name is NewULChangeTooltipCallbackRef
 
 
 function name is uLChangeTooltipCallback12CA407 
-	 {*ast.CommentGroup -> *ast.Comment [uLChangeTooltipCallback12CA407]}
+	 { [uLChangeTooltipCallback12CA407]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
 	 {*ast.Field [ctooltip]}
 	 {*ast.SelectorExpr [C ULString]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLChangeTooltipCallback12CA407Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data12ca407]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLChangeTooltipCallback12CA407Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data12ca407]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [caller12ca407]}
+	 {*ast.AssignStmt [:= caller12ca407]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
-	 {*ast.AssignStmt [tooltip12ca407]}
+	 {*ast.UnaryExpr [& ccaller]}
+	 {*ast.AssignStmt [:= tooltip12ca407]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ctooltip]}
+	 {*ast.UnaryExpr [& ctooltip]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLChangeTooltipCallback12CA407Func user_data12ca407 caller12ca407 tooltip12ca407]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLChangeTooltipCallback12CA407Func ULChangeTooltipCallback]}
 
 
@@ -403,10 +456,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULChangeCursorCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLChangeCursorCallback1A7011DFFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLChangeCursorCallback1A7011DFFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLChangeCursorCallback1A7011DFFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLChangeCursorCallback1A7011DFFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULChangeCursorCallback]}
 	 {*ast.SelectorExpr [C ULChangeCursorCallback_1a7011df nil]}
 
@@ -417,10 +472,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULChangeCursorCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLChangeCursorCallback1A7011DFFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLChangeCursorCallback1A7011DFFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLChangeCursorCallback1A7011DFFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLChangeCursorCallback1A7011DFFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULChangeCursorCallback]}
 	 {*ast.SelectorExpr [C ULChangeCursorCallback_1a7011df nil]}
 
@@ -433,24 +490,26 @@ function name is NewULChangeCursorCallbackRef
 
 
 function name is uLChangeCursorCallback1A7011DF 
-	 {*ast.CommentGroup -> *ast.Comment [uLChangeCursorCallback1A7011DF]}
+	 { [uLChangeCursorCallback1A7011DF]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
 	 {*ast.Field [ccursor]}
 	 {*ast.SelectorExpr [C ULCursor]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLChangeCursorCallback1A7011DFFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data1a7011df]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLChangeCursorCallback1A7011DFFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data1a7011df]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [caller1a7011df]}
+	 {*ast.AssignStmt [:= caller1a7011df]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
-	 {*ast.AssignStmt [cursor1a7011df]}
+	 {*ast.UnaryExpr [& ccaller]}
+	 {*ast.AssignStmt [:= cursor1a7011df]}
 	 {*ast.CallExpr -> *ast.ParenExpr [ULCursor ccursor]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLChangeCursorCallback1A7011DFFunc user_data1a7011df caller1a7011df cursor1a7011df]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLChangeCursorCallback1A7011DFFunc ULChangeCursorCallback]}
 
 
@@ -460,10 +519,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULAddConsoleMessageCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLAddConsoleMessageCallback44B8DD01Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLAddConsoleMessageCallback44B8DD01Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLAddConsoleMessageCallback44B8DD01Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLAddConsoleMessageCallback44B8DD01Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULAddConsoleMessageCallback]}
 	 {*ast.SelectorExpr [C ULAddConsoleMessageCallback_44b8dd01 nil]}
 
@@ -474,10 +535,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULAddConsoleMessageCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLAddConsoleMessageCallback44B8DD01Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLAddConsoleMessageCallback44B8DD01Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLAddConsoleMessageCallback44B8DD01Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLAddConsoleMessageCallback44B8DD01Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULAddConsoleMessageCallback]}
 	 {*ast.SelectorExpr [C ULAddConsoleMessageCallback_44b8dd01 nil]}
 
@@ -490,7 +553,7 @@ function name is NewULAddConsoleMessageCallbackRef
 
 
 function name is uLAddConsoleMessageCallback44B8DD01 
-	 {*ast.CommentGroup -> *ast.Comment [uLAddConsoleMessageCallback44B8DD01]}
+	 { [uLAddConsoleMessageCallback44B8DD01]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
@@ -506,32 +569,34 @@ function name is uLAddConsoleMessageCallback44B8DD01
 	 {*ast.SelectorExpr [C uint]}
 	 {*ast.Field [csource_id]}
 	 {*ast.SelectorExpr [C ULString]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLAddConsoleMessageCallback44B8DD01Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data44b8dd01]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLAddConsoleMessageCallback44B8DD01Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data44b8dd01]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [caller44b8dd01]}
+	 {*ast.AssignStmt [:= caller44b8dd01]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
-	 {*ast.AssignStmt [source44b8dd01]}
+	 {*ast.UnaryExpr [& ccaller]}
+	 {*ast.AssignStmt [:= source44b8dd01]}
 	 {*ast.CallExpr -> *ast.ParenExpr [ULMessageSource csource]}
-	 {*ast.AssignStmt [level44b8dd01]}
+	 {*ast.AssignStmt [:= level44b8dd01]}
 	 {*ast.CallExpr -> *ast.ParenExpr [ULMessageLevel clevel]}
-	 {*ast.AssignStmt [message44b8dd01]}
+	 {*ast.AssignStmt [:= message44b8dd01]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cmessage]}
-	 {*ast.AssignStmt [line_number44b8dd01]}
+	 {*ast.UnaryExpr [& cmessage]}
+	 {*ast.AssignStmt [:= line_number44b8dd01]}
 	 {*ast.CallExpr -> *ast.ParenExpr [uint32 cline_number]}
-	 {*ast.AssignStmt [column_number44b8dd01]}
+	 {*ast.AssignStmt [:= column_number44b8dd01]}
 	 {*ast.CallExpr -> *ast.ParenExpr [uint32 ccolumn_number]}
-	 {*ast.AssignStmt [source_id44b8dd01]}
+	 {*ast.AssignStmt [:= source_id44b8dd01]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [csource_id]}
+	 {*ast.UnaryExpr [& csource_id]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLAddConsoleMessageCallback44B8DD01Func user_data44b8dd01 caller44b8dd01 source44b8dd01 level44b8dd01 message44b8dd01 line_number44b8dd01 column_number44b8dd01 source_id44b8dd01]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLAddConsoleMessageCallback44B8DD01Func ULAddConsoleMessageCallback]}
 
 
@@ -541,10 +606,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULBeginLoadingCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLBeginLoadingCallback70D8C0ADFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLBeginLoadingCallback70D8C0ADFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLBeginLoadingCallback70D8C0ADFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLBeginLoadingCallback70D8C0ADFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULBeginLoadingCallback]}
 	 {*ast.SelectorExpr [C ULBeginLoadingCallback_70d8c0ad nil]}
 
@@ -555,10 +622,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULBeginLoadingCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLBeginLoadingCallback70D8C0ADFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLBeginLoadingCallback70D8C0ADFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLBeginLoadingCallback70D8C0ADFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLBeginLoadingCallback70D8C0ADFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULBeginLoadingCallback]}
 	 {*ast.SelectorExpr [C ULBeginLoadingCallback_70d8c0ad nil]}
 
@@ -571,20 +640,22 @@ function name is NewULBeginLoadingCallbackRef
 
 
 function name is uLBeginLoadingCallback70D8C0AD 
-	 {*ast.CommentGroup -> *ast.Comment [uLBeginLoadingCallback70D8C0AD]}
+	 { [uLBeginLoadingCallback70D8C0AD]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLBeginLoadingCallback70D8C0ADFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data70d8c0ad]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLBeginLoadingCallback70D8C0ADFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data70d8c0ad]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [caller70d8c0ad]}
+	 {*ast.AssignStmt [:= caller70d8c0ad]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
+	 {*ast.UnaryExpr [& ccaller]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLBeginLoadingCallback70D8C0ADFunc user_data70d8c0ad caller70d8c0ad]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLBeginLoadingCallback70D8C0ADFunc ULBeginLoadingCallback]}
 
 
@@ -594,10 +665,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULFinishLoadingCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLFinishLoadingCallback1ED4ECAEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLFinishLoadingCallback1ED4ECAEFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLFinishLoadingCallback1ED4ECAEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLFinishLoadingCallback1ED4ECAEFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULFinishLoadingCallback]}
 	 {*ast.SelectorExpr [C ULFinishLoadingCallback_1ed4ecae nil]}
 
@@ -608,10 +681,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULFinishLoadingCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLFinishLoadingCallback1ED4ECAEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLFinishLoadingCallback1ED4ECAEFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLFinishLoadingCallback1ED4ECAEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLFinishLoadingCallback1ED4ECAEFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULFinishLoadingCallback]}
 	 {*ast.SelectorExpr [C ULFinishLoadingCallback_1ed4ecae nil]}
 
@@ -624,20 +699,22 @@ function name is NewULFinishLoadingCallbackRef
 
 
 function name is uLFinishLoadingCallback1ED4ECAE 
-	 {*ast.CommentGroup -> *ast.Comment [uLFinishLoadingCallback1ED4ECAE]}
+	 { [uLFinishLoadingCallback1ED4ECAE]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLFinishLoadingCallback1ED4ECAEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data1ed4ecae]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLFinishLoadingCallback1ED4ECAEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data1ed4ecae]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [caller1ed4ecae]}
+	 {*ast.AssignStmt [:= caller1ed4ecae]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
+	 {*ast.UnaryExpr [& ccaller]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLFinishLoadingCallback1ED4ECAEFunc user_data1ed4ecae caller1ed4ecae]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLFinishLoadingCallback1ED4ECAEFunc ULFinishLoadingCallback]}
 
 
@@ -647,10 +724,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULUpdateHistoryCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLUpdateHistoryCallback6E105364Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLUpdateHistoryCallback6E105364Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLUpdateHistoryCallback6E105364Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLUpdateHistoryCallback6E105364Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULUpdateHistoryCallback]}
 	 {*ast.SelectorExpr [C ULUpdateHistoryCallback_6e105364 nil]}
 
@@ -661,10 +740,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULUpdateHistoryCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLUpdateHistoryCallback6E105364Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLUpdateHistoryCallback6E105364Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLUpdateHistoryCallback6E105364Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLUpdateHistoryCallback6E105364Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULUpdateHistoryCallback]}
 	 {*ast.SelectorExpr [C ULUpdateHistoryCallback_6e105364 nil]}
 
@@ -677,20 +758,22 @@ function name is NewULUpdateHistoryCallbackRef
 
 
 function name is uLUpdateHistoryCallback6E105364 
-	 {*ast.CommentGroup -> *ast.Comment [uLUpdateHistoryCallback6E105364]}
+	 { [uLUpdateHistoryCallback6E105364]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLUpdateHistoryCallback6E105364Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data6e105364]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLUpdateHistoryCallback6E105364Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data6e105364]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [caller6e105364]}
+	 {*ast.AssignStmt [:= caller6e105364]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
+	 {*ast.UnaryExpr [& ccaller]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLUpdateHistoryCallback6E105364Func user_data6e105364 caller6e105364]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLUpdateHistoryCallback6E105364Func ULUpdateHistoryCallback]}
 
 
@@ -700,10 +783,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C ULDOMReadyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLDOMReadyCallback6432C207Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLDOMReadyCallback6432C207Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLDOMReadyCallback6432C207Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLDOMReadyCallback6432C207Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C ULDOMReadyCallback]}
 	 {*ast.SelectorExpr [C ULDOMReadyCallback_6432c207 nil]}
 
@@ -714,10 +799,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C ULDOMReadyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [uLDOMReadyCallback6432C207Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [uLDOMReadyCallback6432C207Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== uLDOMReadyCallback6432C207Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= uLDOMReadyCallback6432C207Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C ULDOMReadyCallback]}
 	 {*ast.SelectorExpr [C ULDOMReadyCallback_6432c207 nil]}
 
@@ -730,20 +817,22 @@ function name is NewULDOMReadyCallbackRef
 
 
 function name is uLDOMReadyCallback6432C207 
-	 {*ast.CommentGroup -> *ast.Comment [uLDOMReadyCallback6432C207]}
+	 { [uLDOMReadyCallback6432C207]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cuser_data unsafe Pointer]}
 	 {*ast.Field [ccaller]}
 	 {*ast.SelectorExpr [C ULView]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [uLDOMReadyCallback6432C207Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [user_data6432c207]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= uLDOMReadyCallback6432C207Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= user_data6432c207]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cuser_data]}
-	 {*ast.AssignStmt [caller6432c207]}
+	 {*ast.AssignStmt [:= caller6432c207]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ULView]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ccaller]}
+	 {*ast.UnaryExpr [& ccaller]}
 	 {*ast.ExprStmt -> *ast.CallExpr [uLDOMReadyCallback6432C207Func user_data6432c207 caller6432c207]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [uLDOMReadyCallback6432C207Func ULDOMReadyCallback]}
 
 
@@ -753,10 +842,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSTypedArrayBytesDeallocator]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSTypedArrayBytesDeallocator68D51F83Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSTypedArrayBytesDeallocator68D51F83Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSTypedArrayBytesDeallocator68D51F83Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSTypedArrayBytesDeallocator68D51F83Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSTypedArrayBytesDeallocator]}
 	 {*ast.SelectorExpr [C JSTypedArrayBytesDeallocator_68d51f83 nil]}
 
@@ -767,10 +858,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSTypedArrayBytesDeallocator]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSTypedArrayBytesDeallocator68D51F83Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSTypedArrayBytesDeallocator68D51F83Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSTypedArrayBytesDeallocator68D51F83Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSTypedArrayBytesDeallocator68D51F83Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSTypedArrayBytesDeallocator]}
 	 {*ast.SelectorExpr [C JSTypedArrayBytesDeallocator_68d51f83 nil]}
 
@@ -783,18 +876,20 @@ function name is NewJSTypedArrayBytesDeallocatorRef
 
 
 function name is jSTypedArrayBytesDeallocator68D51F83 
-	 {*ast.CommentGroup -> *ast.Comment [jSTypedArrayBytesDeallocator68D51F83]}
+	 { [jSTypedArrayBytesDeallocator68D51F83]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cbytes unsafe Pointer]}
 	 {*ast.Field -> *ast.SelectorExpr [cdeallocatorContext unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSTypedArrayBytesDeallocator68D51F83Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [bytes68d51f83]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSTypedArrayBytesDeallocator68D51F83Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= bytes68d51f83]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cbytes]}
-	 {*ast.AssignStmt [deallocatorContext68d51f83]}
+	 {*ast.AssignStmt [:= deallocatorContext68d51f83]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cdeallocatorContext]}
 	 {*ast.ExprStmt -> *ast.CallExpr [jSTypedArrayBytesDeallocator68D51F83Func bytes68d51f83 deallocatorContext68d51f83]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSTypedArrayBytesDeallocator68D51F83Func JSTypedArrayBytesDeallocator]}
 
 
@@ -804,10 +899,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectInitializeCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectInitializeCallback5793B16Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectInitializeCallback5793B16Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectInitializeCallback5793B16Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectInitializeCallback5793B16Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectInitializeCallback]}
 	 {*ast.SelectorExpr [C JSObjectInitializeCallback_5793b16 nil]}
 
@@ -818,10 +915,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectInitializeCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectInitializeCallback5793B16Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectInitializeCallback5793B16Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectInitializeCallback5793B16Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectInitializeCallback5793B16Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectInitializeCallback]}
 	 {*ast.SelectorExpr [C JSObjectInitializeCallback_5793b16 nil]}
 
@@ -834,22 +933,24 @@ function name is NewJSObjectInitializeCallbackRef
 
 
 function name is jSObjectInitializeCallback5793B16 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectInitializeCallback5793B16]}
+	 { [jSObjectInitializeCallback5793B16]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cobject]}
 	 {*ast.SelectorExpr [C JSObjectRef]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectInitializeCallback5793B16Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctx5793b16]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectInitializeCallback5793B16Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctx5793b16]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [object5793b16]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= object5793b16]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cobject]}
+	 {*ast.UnaryExpr [& cobject]}
 	 {*ast.ExprStmt -> *ast.CallExpr [jSObjectInitializeCallback5793B16Func ctx5793b16 object5793b16]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectInitializeCallback5793B16Func JSObjectInitializeCallback]}
 
 
@@ -859,10 +960,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectFinalizeCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectFinalizeCallback93DA0AEAFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectFinalizeCallback93DA0AEAFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectFinalizeCallback93DA0AEAFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectFinalizeCallback93DA0AEAFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectFinalizeCallback]}
 	 {*ast.SelectorExpr [C JSObjectFinalizeCallback_93da0aea nil]}
 
@@ -873,10 +976,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectFinalizeCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectFinalizeCallback93DA0AEAFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectFinalizeCallback93DA0AEAFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectFinalizeCallback93DA0AEAFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectFinalizeCallback93DA0AEAFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectFinalizeCallback]}
 	 {*ast.SelectorExpr [C JSObjectFinalizeCallback_93da0aea nil]}
 
@@ -889,16 +994,18 @@ function name is NewJSObjectFinalizeCallbackRef
 
 
 function name is jSObjectFinalizeCallback93DA0AEA 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectFinalizeCallback93DA0AEA]}
+	 { [jSObjectFinalizeCallback93DA0AEA]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cobject]}
 	 {*ast.SelectorExpr [C JSObjectRef]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectFinalizeCallback93DA0AEAFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [object93da0aea]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectFinalizeCallback93DA0AEAFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= object93da0aea]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cobject]}
+	 {*ast.UnaryExpr [& cobject]}
 	 {*ast.ExprStmt -> *ast.CallExpr [jSObjectFinalizeCallback93DA0AEAFunc object93da0aea]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectFinalizeCallback93DA0AEAFunc JSObjectFinalizeCallback]}
 
 
@@ -908,10 +1015,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectHasPropertyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectHasPropertyCallback340BFA95Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectHasPropertyCallback340BFA95Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectHasPropertyCallback340BFA95Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectHasPropertyCallback340BFA95Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectHasPropertyCallback]}
 	 {*ast.SelectorExpr [C JSObjectHasPropertyCallback_340bfa95 nil]}
 
@@ -922,10 +1031,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectHasPropertyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectHasPropertyCallback340BFA95Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectHasPropertyCallback340BFA95Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectHasPropertyCallback340BFA95Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectHasPropertyCallback340BFA95Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectHasPropertyCallback]}
 	 {*ast.SelectorExpr [C JSObjectHasPropertyCallback_340bfa95 nil]}
 
@@ -938,7 +1049,7 @@ function name is NewJSObjectHasPropertyCallbackRef
 
 
 function name is jSObjectHasPropertyCallback340BFA95 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectHasPropertyCallback340BFA95]}
+	 { [jSObjectHasPropertyCallback340BFA95]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cobject]}
@@ -946,30 +1057,34 @@ function name is jSObjectHasPropertyCallback340BFA95
 	 {*ast.Field [cpropertyName]}
 	 {*ast.SelectorExpr [C JSStringRef]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C _Bool]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectHasPropertyCallback340BFA95Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctx340bfa95]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectHasPropertyCallback340BFA95Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctx340bfa95]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [object340bfa95]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= object340bfa95]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cobject]}
-	 {*ast.AssignStmt [propertyName340bfa95]}
+	 {*ast.UnaryExpr [& cobject]}
+	 {*ast.AssignStmt [:= propertyName340bfa95]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSStringRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cpropertyName]}
-	 {*ast.AssignStmt [ret340bfa95]}
+	 {*ast.UnaryExpr [& cpropertyName]}
+	 {*ast.AssignStmt [:= ret340bfa95]}
 	 {*ast.CallExpr [jSObjectHasPropertyCallback340BFA95Func ctx340bfa95 object340bfa95 propertyName340bfa95]}
-	 {*ast.AssignStmt [ret _]}
+	 {*ast.AssignStmt [:= ret _]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C _Bool ret340bfa95 cgoAllocsUnknown]}
 	 {*ast.ReturnStmt [ret]}
-	 {*ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectHasPropertyCallback340BFA95Func JSObjectHasPropertyCallback]}
-	 {*ast.GenDecl -> *ast.TypeSpec [sliceHeader]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
-	 {*ast.Field [Len int]}
-	 {*ast.Field [Cap int]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [sliceHeader]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
+{*ast.Field [Len int]}
+{*ast.Field [Cap int]}
 
 
 function name is PassRef 
@@ -978,10 +1093,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectGetPropertyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectGetPropertyCallback5CAEC716Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectGetPropertyCallback5CAEC716Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectGetPropertyCallback5CAEC716Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectGetPropertyCallback5CAEC716Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectGetPropertyCallback]}
 	 {*ast.SelectorExpr [C JSObjectGetPropertyCallback_5caec716 nil]}
 
@@ -992,10 +1109,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectGetPropertyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectGetPropertyCallback5CAEC716Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectGetPropertyCallback5CAEC716Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectGetPropertyCallback5CAEC716Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectGetPropertyCallback5CAEC716Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectGetPropertyCallback]}
 	 {*ast.SelectorExpr [C JSObjectGetPropertyCallback_5caec716 nil]}
 
@@ -1008,7 +1127,7 @@ function name is NewJSObjectGetPropertyCallbackRef
 
 
 function name is jSObjectGetPropertyCallback5CAEC716 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectGetPropertyCallback5CAEC716]}
+	 { [jSObjectGetPropertyCallback5CAEC716]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cobject]}
@@ -1018,36 +1137,41 @@ function name is jSObjectGetPropertyCallback5CAEC716
 	 {*ast.Field [cexception]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C JSValueRef]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectGetPropertyCallback5CAEC716Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctx5caec716]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectGetPropertyCallback5CAEC716Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctx5caec716]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [object5caec716]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= object5caec716]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cobject]}
-	 {*ast.AssignStmt [propertyName5caec716]}
+	 {*ast.UnaryExpr [& cobject]}
+	 {*ast.AssignStmt [:= propertyName5caec716]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSStringRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cpropertyName]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [exception5caec716]}
+	 {*ast.UnaryExpr [& cpropertyName]}
+	 {*ast.GenDecl -> *ast.ValueSpec [exception5caec716]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxfc4425b]}
+	 {*ast.AssignStmt [:= hxfc4425b]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [exception5caec716]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxfc4425b Data]}
+	 {*ast.UnaryExpr [& exception5caec716]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxfc4425b Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cexception]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxfc4425b Cap INT 0x7fffffff]}
-	 {*ast.AssignStmt [ret5caec716]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxfc4425b Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.AssignStmt [:= ret5caec716]}
 	 {*ast.CallExpr [jSObjectGetPropertyCallback5CAEC716Func ctx5caec716 object5caec716 propertyName5caec716 exception5caec716]}
-	 {*ast.AssignStmt [ret _]}
+	 {*ast.AssignStmt [:= ret _]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ret5caec716 cgoAllocsUnknown]}
+	 {*ast.UnaryExpr [& ret5caec716 cgoAllocsUnknown]}
 	 {*ast.ReturnStmt [ret]}
-	 {*ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectGetPropertyCallback5CAEC716Func JSObjectGetPropertyCallback]}
 
 
@@ -1057,10 +1181,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectSetPropertyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectSetPropertyCallbackA684F1FEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectSetPropertyCallbackA684F1FEFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectSetPropertyCallbackA684F1FEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectSetPropertyCallbackA684F1FEFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectSetPropertyCallback]}
 	 {*ast.SelectorExpr [C JSObjectSetPropertyCallback_a684f1fe nil]}
 
@@ -1071,10 +1197,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectSetPropertyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectSetPropertyCallbackA684F1FEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectSetPropertyCallbackA684F1FEFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectSetPropertyCallbackA684F1FEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectSetPropertyCallbackA684F1FEFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectSetPropertyCallback]}
 	 {*ast.SelectorExpr [C JSObjectSetPropertyCallback_a684f1fe nil]}
 
@@ -1087,7 +1215,7 @@ function name is NewJSObjectSetPropertyCallbackRef
 
 
 function name is jSObjectSetPropertyCallbackA684F1FE 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectSetPropertyCallbackA684F1FE]}
+	 { [jSObjectSetPropertyCallbackA684F1FE]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cobject]}
@@ -1099,38 +1227,43 @@ function name is jSObjectSetPropertyCallbackA684F1FE
 	 {*ast.Field [cexception]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C _Bool]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectSetPropertyCallbackA684F1FEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctxa684f1fe]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectSetPropertyCallbackA684F1FEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctxa684f1fe]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [objecta684f1fe]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= objecta684f1fe]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cobject]}
-	 {*ast.AssignStmt [propertyNamea684f1fe]}
+	 {*ast.UnaryExpr [& cobject]}
+	 {*ast.AssignStmt [:= propertyNamea684f1fe]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSStringRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cpropertyName]}
-	 {*ast.AssignStmt [valuea684f1fe]}
+	 {*ast.UnaryExpr [& cpropertyName]}
+	 {*ast.AssignStmt [:= valuea684f1fe]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSValueRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cvalue]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [exceptiona684f1fe]}
+	 {*ast.UnaryExpr [& cvalue]}
+	 {*ast.GenDecl -> *ast.ValueSpec [exceptiona684f1fe]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxf95e7c8]}
+	 {*ast.AssignStmt [:= hxf95e7c8]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [exceptiona684f1fe]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxf95e7c8 Data]}
+	 {*ast.UnaryExpr [& exceptiona684f1fe]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxf95e7c8 Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cexception]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxf95e7c8 Cap INT 0x7fffffff]}
-	 {*ast.AssignStmt [reta684f1fe]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxf95e7c8 Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.AssignStmt [:= reta684f1fe]}
 	 {*ast.CallExpr [jSObjectSetPropertyCallbackA684F1FEFunc ctxa684f1fe objecta684f1fe propertyNamea684f1fe valuea684f1fe exceptiona684f1fe]}
-	 {*ast.AssignStmt [ret _]}
+	 {*ast.AssignStmt [:= ret _]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C _Bool reta684f1fe cgoAllocsUnknown]}
 	 {*ast.ReturnStmt [ret]}
-	 {*ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectSetPropertyCallbackA684F1FEFunc JSObjectSetPropertyCallback]}
 
 
@@ -1140,10 +1273,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectDeletePropertyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectDeletePropertyCallbackB0108EBEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectDeletePropertyCallbackB0108EBEFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectDeletePropertyCallbackB0108EBEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectDeletePropertyCallbackB0108EBEFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectDeletePropertyCallback]}
 	 {*ast.SelectorExpr [C JSObjectDeletePropertyCallback_b0108ebe nil]}
 
@@ -1154,10 +1289,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectDeletePropertyCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectDeletePropertyCallbackB0108EBEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectDeletePropertyCallbackB0108EBEFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectDeletePropertyCallbackB0108EBEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectDeletePropertyCallbackB0108EBEFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectDeletePropertyCallback]}
 	 {*ast.SelectorExpr [C JSObjectDeletePropertyCallback_b0108ebe nil]}
 
@@ -1170,7 +1307,7 @@ function name is NewJSObjectDeletePropertyCallbackRef
 
 
 function name is jSObjectDeletePropertyCallbackB0108EBE 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectDeletePropertyCallbackB0108EBE]}
+	 { [jSObjectDeletePropertyCallbackB0108EBE]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cobject]}
@@ -1180,34 +1317,39 @@ function name is jSObjectDeletePropertyCallbackB0108EBE
 	 {*ast.Field [cexception]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C _Bool]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectDeletePropertyCallbackB0108EBEFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctxb0108ebe]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectDeletePropertyCallbackB0108EBEFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctxb0108ebe]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [objectb0108ebe]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= objectb0108ebe]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cobject]}
-	 {*ast.AssignStmt [propertyNameb0108ebe]}
+	 {*ast.UnaryExpr [& cobject]}
+	 {*ast.AssignStmt [:= propertyNameb0108ebe]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSStringRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cpropertyName]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [exceptionb0108ebe]}
+	 {*ast.UnaryExpr [& cpropertyName]}
+	 {*ast.GenDecl -> *ast.ValueSpec [exceptionb0108ebe]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxff2234b]}
+	 {*ast.AssignStmt [:= hxff2234b]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [exceptionb0108ebe]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxff2234b Data]}
+	 {*ast.UnaryExpr [& exceptionb0108ebe]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxff2234b Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cexception]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxff2234b Cap INT 0x7fffffff]}
-	 {*ast.AssignStmt [retb0108ebe]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxff2234b Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.AssignStmt [:= retb0108ebe]}
 	 {*ast.CallExpr [jSObjectDeletePropertyCallbackB0108EBEFunc ctxb0108ebe objectb0108ebe propertyNameb0108ebe exceptionb0108ebe]}
-	 {*ast.AssignStmt [ret _]}
+	 {*ast.AssignStmt [:= ret _]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C _Bool retb0108ebe cgoAllocsUnknown]}
 	 {*ast.ReturnStmt [ret]}
-	 {*ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectDeletePropertyCallbackB0108EBEFunc JSObjectDeletePropertyCallback]}
 
 
@@ -1217,10 +1359,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectGetPropertyNamesCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectGetPropertyNamesCallbackE77D2329Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectGetPropertyNamesCallbackE77D2329Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectGetPropertyNamesCallbackE77D2329Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectGetPropertyNamesCallbackE77D2329Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectGetPropertyNamesCallback]}
 	 {*ast.SelectorExpr [C JSObjectGetPropertyNamesCallback_e77d2329 nil]}
 
@@ -1231,10 +1375,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectGetPropertyNamesCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectGetPropertyNamesCallbackE77D2329Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectGetPropertyNamesCallbackE77D2329Func x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectGetPropertyNamesCallbackE77D2329Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectGetPropertyNamesCallbackE77D2329Func x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectGetPropertyNamesCallback]}
 	 {*ast.SelectorExpr [C JSObjectGetPropertyNamesCallback_e77d2329 nil]}
 
@@ -1247,28 +1393,30 @@ function name is NewJSObjectGetPropertyNamesCallbackRef
 
 
 function name is jSObjectGetPropertyNamesCallbackE77D2329 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectGetPropertyNamesCallbackE77D2329]}
+	 { [jSObjectGetPropertyNamesCallbackE77D2329]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cobject]}
 	 {*ast.SelectorExpr [C JSObjectRef]}
 	 {*ast.Field [cpropertyNames]}
 	 {*ast.SelectorExpr [C JSPropertyNameAccumulatorRef]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectGetPropertyNamesCallbackE77D2329Func nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctxe77d2329]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectGetPropertyNamesCallbackE77D2329Func nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctxe77d2329]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [objecte77d2329]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= objecte77d2329]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cobject]}
-	 {*ast.AssignStmt [propertyNamese77d2329]}
+	 {*ast.UnaryExpr [& cobject]}
+	 {*ast.AssignStmt [:= propertyNamese77d2329]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSPropertyNameAccumulatorRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cpropertyNames]}
+	 {*ast.UnaryExpr [& cpropertyNames]}
 	 {*ast.ExprStmt -> *ast.CallExpr [jSObjectGetPropertyNamesCallbackE77D2329Func ctxe77d2329 objecte77d2329 propertyNamese77d2329]}
-	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectGetPropertyNamesCallbackE77D2329Func JSObjectGetPropertyNamesCallback]}
 
 
@@ -1278,10 +1426,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectCallAsFunctionCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectCallAsFunctionCallback89F9469BFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectCallAsFunctionCallback89F9469BFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectCallAsFunctionCallback89F9469BFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectCallAsFunctionCallback89F9469BFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectCallAsFunctionCallback]}
 	 {*ast.SelectorExpr [C JSObjectCallAsFunctionCallback_89f9469b nil]}
 
@@ -1292,10 +1442,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectCallAsFunctionCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectCallAsFunctionCallback89F9469BFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectCallAsFunctionCallback89F9469BFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectCallAsFunctionCallback89F9469BFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectCallAsFunctionCallback89F9469BFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectCallAsFunctionCallback]}
 	 {*ast.SelectorExpr [C JSObjectCallAsFunctionCallback_89f9469b nil]}
 
@@ -1308,7 +1460,7 @@ function name is NewJSObjectCallAsFunctionCallbackRef
 
 
 function name is jSObjectCallAsFunctionCallback89F9469B 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectCallAsFunctionCallback89F9469B]}
+	 { [jSObjectCallAsFunctionCallback89F9469B]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cfunction]}
@@ -1322,49 +1474,58 @@ function name is jSObjectCallAsFunctionCallback89F9469B
 	 {*ast.Field [cexception]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C JSValueRef]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectCallAsFunctionCallback89F9469BFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctx89f9469b]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectCallAsFunctionCallback89F9469BFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctx89f9469b]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [function89f9469b]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= function89f9469b]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cfunction]}
-	 {*ast.AssignStmt [thisObject89f9469b]}
+	 {*ast.UnaryExpr [& cfunction]}
+	 {*ast.AssignStmt [:= thisObject89f9469b]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cthisObject]}
-	 {*ast.AssignStmt [argumentCount89f9469b]}
+	 {*ast.UnaryExpr [& cthisObject]}
+	 {*ast.AssignStmt [:= argumentCount89f9469b]}
 	 {*ast.CallExpr -> *ast.ParenExpr [uint cargumentCount]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [arguments89f9469b]}
+	 {*ast.GenDecl -> *ast.ValueSpec [arguments89f9469b]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxff73280]}
+	 {*ast.AssignStmt [:= hxff73280]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [arguments89f9469b]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxff73280 Data]}
+	 {*ast.UnaryExpr [& arguments89f9469b]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxff73280 Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer carguments]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxff73280 Cap INT 0x7fffffff]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxff73280 Len]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxff73280 Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxff73280 Len]}
 	 {*ast.CallExpr [int argumentCount89f9469b]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [exception89f9469b]}
+	 {*ast.GenDecl -> *ast.ValueSpec [exception89f9469b]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxfa9955c]}
+	 {*ast.AssignStmt [:= hxfa9955c]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [exception89f9469b]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxfa9955c Data]}
+	 {*ast.UnaryExpr [& exception89f9469b]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxfa9955c Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cexception]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxfa9955c Cap INT 0x7fffffff]}
-	 {*ast.AssignStmt [ret89f9469b]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxfa9955c Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.AssignStmt [:= ret89f9469b]}
 	 {*ast.CallExpr [jSObjectCallAsFunctionCallback89F9469BFunc ctx89f9469b function89f9469b thisObject89f9469b argumentCount89f9469b arguments89f9469b exception89f9469b]}
-	 {*ast.AssignStmt [ret _]}
+	 {*ast.AssignStmt [:= ret _]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ret89f9469b cgoAllocsUnknown]}
+	 {*ast.UnaryExpr [& ret89f9469b cgoAllocsUnknown]}
 	 {*ast.ReturnStmt [ret]}
-	 {*ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectCallAsFunctionCallback89F9469BFunc JSObjectCallAsFunctionCallback]}
 
 
@@ -1374,10 +1535,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectCallAsConstructorCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectCallAsConstructorCallback45F4B71FFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectCallAsConstructorCallback45F4B71FFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectCallAsConstructorCallback45F4B71FFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectCallAsConstructorCallback45F4B71FFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectCallAsConstructorCallback]}
 	 {*ast.SelectorExpr [C JSObjectCallAsConstructorCallback_45f4b71f nil]}
 
@@ -1388,10 +1551,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectCallAsConstructorCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectCallAsConstructorCallback45F4B71FFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectCallAsConstructorCallback45F4B71FFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectCallAsConstructorCallback45F4B71FFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectCallAsConstructorCallback45F4B71FFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectCallAsConstructorCallback]}
 	 {*ast.SelectorExpr [C JSObjectCallAsConstructorCallback_45f4b71f nil]}
 
@@ -1404,7 +1569,7 @@ function name is NewJSObjectCallAsConstructorCallbackRef
 
 
 function name is jSObjectCallAsConstructorCallback45F4B71F 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectCallAsConstructorCallback45F4B71F]}
+	 { [jSObjectCallAsConstructorCallback45F4B71F]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cconstructor]}
@@ -1416,43 +1581,51 @@ function name is jSObjectCallAsConstructorCallback45F4B71F
 	 {*ast.Field [cexception]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C JSObjectRef]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectCallAsConstructorCallback45F4B71FFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctx45f4b71f]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectCallAsConstructorCallback45F4B71FFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctx45f4b71f]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [constructor45f4b71f]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= constructor45f4b71f]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cconstructor]}
-	 {*ast.AssignStmt [argumentCount45f4b71f]}
+	 {*ast.UnaryExpr [& cconstructor]}
+	 {*ast.AssignStmt [:= argumentCount45f4b71f]}
 	 {*ast.CallExpr -> *ast.ParenExpr [uint cargumentCount]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [arguments45f4b71f]}
+	 {*ast.GenDecl -> *ast.ValueSpec [arguments45f4b71f]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxfa3f05c]}
+	 {*ast.AssignStmt [:= hxfa3f05c]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [arguments45f4b71f]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxfa3f05c Data]}
+	 {*ast.UnaryExpr [& arguments45f4b71f]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxfa3f05c Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer carguments]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxfa3f05c Cap INT 0x7fffffff]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [exception45f4b71f]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxfa3f05c Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.GenDecl -> *ast.ValueSpec [exception45f4b71f]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxf0d18b7]}
+	 {*ast.AssignStmt [:= hxf0d18b7]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [exception45f4b71f]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxf0d18b7 Data]}
+	 {*ast.UnaryExpr [& exception45f4b71f]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxf0d18b7 Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cexception]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxf0d18b7 Cap INT 0x7fffffff]}
-	 {*ast.AssignStmt [ret45f4b71f]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxf0d18b7 Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.AssignStmt [:= ret45f4b71f]}
 	 {*ast.CallExpr [jSObjectCallAsConstructorCallback45F4B71FFunc ctx45f4b71f constructor45f4b71f argumentCount45f4b71f arguments45f4b71f exception45f4b71f]}
-	 {*ast.AssignStmt [ret _]}
+	 {*ast.AssignStmt [:= ret _]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ret45f4b71f cgoAllocsUnknown]}
+	 {*ast.UnaryExpr [& ret45f4b71f cgoAllocsUnknown]}
 	 {*ast.ReturnStmt [ret]}
-	 {*ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectCallAsConstructorCallback45F4B71FFunc JSObjectCallAsConstructorCallback]}
 
 
@@ -1462,10 +1635,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectHasInstanceCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectHasInstanceCallbackAA527D2EFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectHasInstanceCallbackAA527D2EFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectHasInstanceCallbackAA527D2EFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectHasInstanceCallbackAA527D2EFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectHasInstanceCallback]}
 	 {*ast.SelectorExpr [C JSObjectHasInstanceCallback_aa527d2e nil]}
 
@@ -1476,10 +1651,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectHasInstanceCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectHasInstanceCallbackAA527D2EFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectHasInstanceCallbackAA527D2EFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectHasInstanceCallbackAA527D2EFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectHasInstanceCallbackAA527D2EFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectHasInstanceCallback]}
 	 {*ast.SelectorExpr [C JSObjectHasInstanceCallback_aa527d2e nil]}
 
@@ -1492,7 +1669,7 @@ function name is NewJSObjectHasInstanceCallbackRef
 
 
 function name is jSObjectHasInstanceCallbackAA527D2E 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectHasInstanceCallbackAA527D2E]}
+	 { [jSObjectHasInstanceCallbackAA527D2E]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cconstructor]}
@@ -1502,34 +1679,39 @@ function name is jSObjectHasInstanceCallbackAA527D2E
 	 {*ast.Field [cexception]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C _Bool]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectHasInstanceCallbackAA527D2EFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctxaa527d2e]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectHasInstanceCallbackAA527D2EFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctxaa527d2e]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [constructoraa527d2e]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= constructoraa527d2e]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cconstructor]}
-	 {*ast.AssignStmt [possibleInstanceaa527d2e]}
+	 {*ast.UnaryExpr [& cconstructor]}
+	 {*ast.AssignStmt [:= possibleInstanceaa527d2e]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSValueRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cpossibleInstance]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [exceptionaa527d2e]}
+	 {*ast.UnaryExpr [& cpossibleInstance]}
+	 {*ast.GenDecl -> *ast.ValueSpec [exceptionaa527d2e]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxf2fab0d]}
+	 {*ast.AssignStmt [:= hxf2fab0d]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [exceptionaa527d2e]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxf2fab0d Data]}
+	 {*ast.UnaryExpr [& exceptionaa527d2e]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxf2fab0d Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cexception]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxf2fab0d Cap INT 0x7fffffff]}
-	 {*ast.AssignStmt [retaa527d2e]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxf2fab0d Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.AssignStmt [:= retaa527d2e]}
 	 {*ast.CallExpr [jSObjectHasInstanceCallbackAA527D2EFunc ctxaa527d2e constructoraa527d2e possibleInstanceaa527d2e exceptionaa527d2e]}
-	 {*ast.AssignStmt [ret _]}
+	 {*ast.AssignStmt [:= ret _]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C _Bool retaa527d2e cgoAllocsUnknown]}
 	 {*ast.ReturnStmt [ret]}
-	 {*ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectHasInstanceCallbackAA527D2EFunc JSObjectHasInstanceCallback]}
 
 
@@ -1539,10 +1721,12 @@ function name is PassRef
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSObjectConvertToTypeCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectConvertToTypeCallbackD379D61CFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectConvertToTypeCallbackD379D61CFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectConvertToTypeCallbackD379D61CFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectConvertToTypeCallbackD379D61CFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSObjectConvertToTypeCallback]}
 	 {*ast.SelectorExpr [C JSObjectConvertToTypeCallback_d379d61c nil]}
 
@@ -1553,10 +1737,12 @@ function name is PassValue
 	 {*ast.SelectorExpr [C JSObjectConvertToTypeCallback]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [jSObjectConvertToTypeCallbackD379D61CFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [jSObjectConvertToTypeCallbackD379D61CFunc x]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== jSObjectConvertToTypeCallbackD379D61CFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= jSObjectConvertToTypeCallbackD379D61CFunc x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSObjectConvertToTypeCallback]}
 	 {*ast.SelectorExpr [C JSObjectConvertToTypeCallback_d379d61c nil]}
 
@@ -1569,7 +1755,7 @@ function name is NewJSObjectConvertToTypeCallbackRef
 
 
 function name is jSObjectConvertToTypeCallbackD379D61C 
-	 {*ast.CommentGroup -> *ast.Comment [jSObjectConvertToTypeCallbackD379D61C]}
+	 { [jSObjectConvertToTypeCallbackD379D61C]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cctx]}
 	 {*ast.SelectorExpr [C JSContextRef]}
 	 {*ast.Field [cobject]}
@@ -1579,125 +1765,167 @@ function name is jSObjectConvertToTypeCallbackD379D61C
 	 {*ast.Field [cexception]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C JSValueRef]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [jSObjectConvertToTypeCallbackD379D61CFunc nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ctxd379d61c]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= jSObjectConvertToTypeCallbackD379D61CFunc nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ctxd379d61c]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSContextRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cctx]}
-	 {*ast.AssignStmt [objectd379d61c]}
+	 {*ast.UnaryExpr [& cctx]}
+	 {*ast.AssignStmt [:= objectd379d61c]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSObjectRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [cobject]}
-	 {*ast.AssignStmt [_typed379d61c]}
+	 {*ast.UnaryExpr [& cobject]}
+	 {*ast.AssignStmt [:= _typed379d61c]}
 	 {*ast.CallExpr -> *ast.ParenExpr [JSType c_type]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [exceptiond379d61c]}
+	 {*ast.GenDecl -> *ast.ValueSpec [exceptiond379d61c]}
 	 {*ast.ArrayType [JSValueRef]}
-	 {*ast.AssignStmt [hxf69fe70]}
+	 {*ast.AssignStmt [:= hxf69fe70]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [exceptiond379d61c]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxf69fe70 Data]}
+	 {*ast.UnaryExpr [& exceptiond379d61c]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxf69fe70 Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cexception]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [hxf69fe70 Cap INT 0x7fffffff]}
-	 {*ast.AssignStmt [retd379d61c]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [hxf69fe70 Cap]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
+	 {*ast.AssignStmt [:= retd379d61c]}
 	 {*ast.CallExpr [jSObjectConvertToTypeCallbackD379D61CFunc ctxd379d61c objectd379d61c _typed379d61c exceptiond379d61c]}
-	 {*ast.AssignStmt [ret _]}
+	 {*ast.AssignStmt [:= ret _]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSValueRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [retd379d61c cgoAllocsUnknown]}
+	 {*ast.UnaryExpr [& retd379d61c cgoAllocsUnknown]}
 	 {*ast.ReturnStmt [ret]}
-	 {*ast.ExprStmt -> *ast.CallExpr [panic STRING "callback func has not been set (race?)"]}
+	 {*ast.ExprStmt -> *ast.CallExpr [panic]}
+	 {*ast.BasicLit [STRING "callback func has not been set (race?)"]}
 	 {*ast.GenDecl -> *ast.ValueSpec [jSObjectConvertToTypeCallbackD379D61CFunc JSObjectConvertToTypeCallback]}
 
 
 function name is allocJSStaticValueMemory 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [allocJSStaticValueMemory]}
+	 { [allocJSStaticValueMemory]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [mem err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= mem err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C calloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t n]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C size_t sizeOfJSStaticValueValue]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.BinaryExpr [STRING "memory alloc error: "]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BasicLit [STRING "memory alloc error: "]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [err Error]}
 	 {*ast.ReturnStmt [mem]}
-	 {*ast.GenDecl -> *ast.ValueSpec [sizeOfJSStaticValueValue]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
-	 {*ast.CompositeLit -> *ast.ArrayType [INT 1]}
-	 {*ast.SelectorExpr [C JSStaticValue]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [sizeOfJSStaticValueValue]}
+{*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
+{*ast.CompositeLit -> *ast.ArrayType -> *ast.BasicLit [INT 1]}
+{*ast.SelectorExpr [C JSStaticValue]}
 
 
 function name is unpackPCharString 
-	 {*ast.CommentGroup -> *ast.Comment [unpackPCharString]}
+	 { [unpackPCharString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [str string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.Field -> *ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= str]}
 	 {*ast.CallExpr [safeString str]}
-	 {*ast.AssignStmt [h]}
+	 {*ast.AssignStmt [:= h]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [stringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [str]}
+	 {*ast.UnaryExpr [& str]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.SelectorExpr [h Data cgoAllocsUnknown]}
-	 {*ast.GenDecl -> *ast.TypeSpec [stringHeader]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
-	 {*ast.Field [Len int]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [stringHeader]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
+{*ast.Field [Len int]}
 
 
 function name is safeString 
-	 {*ast.CommentGroup -> *ast.Comment [safeString]}
+	 { [safeString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [str string]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [len str INT 0]}
-	 {*ast.BinaryExpr -> *ast.IndexExpr [str]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len str INT 1 CHAR '\x00']}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str]}
-	 {*ast.BinaryExpr [str STRING "\x00"]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len str INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str STRING "\x00"]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len str]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.IndexExpr [str]}
+	 {*ast.BinaryExpr [-]}
+	 {*ast.CallExpr [len str]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [CHAR '\x00']}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= str]}
+	 {*ast.BinaryExpr [+ str]}
+	 {*ast.BasicLit [STRING "\x00"]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len str]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= str]}
+	 {*ast.BasicLit [STRING "\x00"]}
 	 {*ast.ReturnStmt [str]}
 
 
 function name is packPCharString 
-	 {*ast.CommentGroup -> *ast.Comment [packPCharString]}
+	 { [packPCharString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.FieldList -> *ast.Field [raw string]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [p nil]}
-	 {*ast.BinaryExpr -> *ast.StarExpr [p INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [h]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [!= p nil]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.StarExpr [p]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= h]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [stringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [raw]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [h Data]}
+	 {*ast.UnaryExpr [& raw]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [h Data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
-	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.StarExpr [p INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [p]}
+	 {*ast.ForStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.StarExpr [p]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= p]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p INT 1]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [h Len]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [h Len]}
 	 {*ast.CallExpr [int]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [-]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer p]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.SelectorExpr [h Data]}
-	 {*ast.ReturnStmt -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [RawString string]}
+	 {*ast.ReturnStmt []}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [RawString string]}
 
 
 function name is Copy 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [raw RawString Copy]}
+	 {*ast.FieldList -> *ast.Field [raw RawString Copy]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len raw INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING ""]}
-	 {*ast.AssignStmt [h]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len raw]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
+	 {*ast.AssignStmt [:= h]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [stringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [raw]}
+	 {*ast.UnaryExpr [& raw]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C GoStringN]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.SelectorExpr [h Data]}
@@ -1706,663 +1934,805 @@ function name is Copy
 
 
 function name is Ref 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSStaticValue Ref]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticValue]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [x ref34655956]}
 
 
 function name is Free 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSStaticValue Free]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [x nil]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [x allocs34655956 nil]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [!= x nil]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x allocs34655956 nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr -> *ast.SelectorExpr [x allocs34655956]}
 	 {*ast.StarExpr [cgoAllocMap Free]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ref34655956 nil]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ref34655956 nil]}
 
 
 function name is NewJSStaticValueRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewJSStaticValueRef]}
+	 { [NewJSStaticValueRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ref unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [JSStaticValue]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [ref nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== ref nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.AssignStmt [obj]}
+	 {*ast.AssignStmt [:= obj]}
 	 {*ast.CallExpr [new JSStaticValue]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [obj ref34655956]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [obj ref34655956]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ref]}
 	 {*ast.ReturnStmt [obj]}
 
 
 function name is PassRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSStaticValue PassRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticValue]}
 	 {*ast.Field -> *ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref34655956 nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x ref34655956 nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [x ref34655956 nil]}
-	 {*ast.AssignStmt [mem34655956]}
-	 {*ast.CallExpr [allocJSStaticValueMemory INT 1]}
-	 {*ast.AssignStmt [ref34655956]}
+	 {*ast.AssignStmt [:= mem34655956]}
+	 {*ast.CallExpr [allocJSStaticValueMemory]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= ref34655956]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticValue mem34655956]}
-	 {*ast.AssignStmt [allocs34655956]}
+	 {*ast.AssignStmt [:= allocs34655956]}
 	 {*ast.CallExpr [new cgoAllocMap]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs34655956 Add mem34655956]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cname_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cname_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref34655956 name cname_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref34655956 name cname_allocs]}
 	 {*ast.CallExpr [unpackPCharString]}
 	 {*ast.SelectorExpr [x Name]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs34655956 Borrow cname_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cgetProperty_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cgetProperty_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref34655956 getProperty cgetProperty_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref34655956 getProperty cgetProperty_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x GetProperty PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs34655956 Borrow cgetProperty_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [csetProperty_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [csetProperty_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref34655956 setProperty csetProperty_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref34655956 setProperty csetProperty_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x SetProperty PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs34655956 Borrow csetProperty_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cattributes_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cattributes_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref34655956 attributes cattributes_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref34655956 attributes cattributes_allocs]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSPropertyAttributes]}
 	 {*ast.SelectorExpr [x Attributes cgoAllocsUnknown]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs34655956 Borrow cattributes_allocs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ref34655956 ref34655956]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x allocs34655956 allocs34655956]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ref34655956 ref34655956]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x allocs34655956 allocs34655956]}
 	 {*ast.ReturnStmt [ref34655956 allocs34655956]}
 
 
 function name is PassValue 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [x JSStaticValue PassValue]}
+	 {*ast.FieldList -> *ast.Field [x JSStaticValue PassValue]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C JSStaticValue]}
 	 {*ast.Field -> *ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref34655956 nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x ref34655956 nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.SelectorExpr [x ref34655956 nil]}
-	 {*ast.AssignStmt [ref allocs]}
+	 {*ast.AssignStmt [:= ref allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [x PassRef]}
 	 {*ast.ReturnStmt -> *ast.StarExpr [ref allocs]}
 
 
 function name is Deref 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSStaticValue Deref]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref34655956 nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [x Name]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [x ref34655956 nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x Name]}
 	 {*ast.CallExpr [packPCharString]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref34655956 name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x GetProperty]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x GetProperty]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectGetPropertyCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref34655956 getProperty]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x SetProperty]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref34655956 getProperty]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x SetProperty]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectSetPropertyCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref34655956 setProperty]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x Attributes]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref34655956 setProperty]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x Attributes]}
 	 {*ast.CallExpr -> *ast.ParenExpr [JSPropertyAttributes]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref34655956 attributes]}
 
 
 function name is allocJSStaticFunctionMemory 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [allocJSStaticFunctionMemory]}
+	 { [allocJSStaticFunctionMemory]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [mem err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= mem err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C calloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t n]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C size_t sizeOfJSStaticFunctionValue]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.BinaryExpr [STRING "memory alloc error: "]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BasicLit [STRING "memory alloc error: "]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [err Error]}
 	 {*ast.ReturnStmt [mem]}
-	 {*ast.GenDecl -> *ast.ValueSpec [sizeOfJSStaticFunctionValue]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
-	 {*ast.CompositeLit -> *ast.ArrayType [INT 1]}
-	 {*ast.SelectorExpr [C JSStaticFunction]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [sizeOfJSStaticFunctionValue]}
+{*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
+{*ast.CompositeLit -> *ast.ArrayType -> *ast.BasicLit [INT 1]}
+{*ast.SelectorExpr [C JSStaticFunction]}
 
 
 function name is Ref 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSStaticFunction Ref]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticFunction]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [x ref6b5f4953]}
 
 
 function name is Free 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSStaticFunction Free]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [x nil]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [x allocs6b5f4953 nil]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [!= x nil]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x allocs6b5f4953 nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr -> *ast.SelectorExpr [x allocs6b5f4953]}
 	 {*ast.StarExpr [cgoAllocMap Free]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ref6b5f4953 nil]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ref6b5f4953 nil]}
 
 
 function name is NewJSStaticFunctionRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewJSStaticFunctionRef]}
+	 { [NewJSStaticFunctionRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ref unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [JSStaticFunction]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [ref nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== ref nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.AssignStmt [obj]}
+	 {*ast.AssignStmt [:= obj]}
 	 {*ast.CallExpr [new JSStaticFunction]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [obj ref6b5f4953]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [obj ref6b5f4953]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticFunction]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ref]}
 	 {*ast.ReturnStmt [obj]}
 
 
 function name is PassRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSStaticFunction PassRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticFunction]}
 	 {*ast.Field -> *ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref6b5f4953 nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x ref6b5f4953 nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [x ref6b5f4953 nil]}
-	 {*ast.AssignStmt [mem6b5f4953]}
-	 {*ast.CallExpr [allocJSStaticFunctionMemory INT 1]}
-	 {*ast.AssignStmt [ref6b5f4953]}
+	 {*ast.AssignStmt [:= mem6b5f4953]}
+	 {*ast.CallExpr [allocJSStaticFunctionMemory]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= ref6b5f4953]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticFunction mem6b5f4953]}
-	 {*ast.AssignStmt [allocs6b5f4953]}
+	 {*ast.AssignStmt [:= allocs6b5f4953]}
 	 {*ast.CallExpr [new cgoAllocMap]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs6b5f4953 Add mem6b5f4953]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cname_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cname_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref6b5f4953 name cname_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref6b5f4953 name cname_allocs]}
 	 {*ast.CallExpr [unpackPCharString]}
 	 {*ast.SelectorExpr [x Name]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs6b5f4953 Borrow cname_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ccallAsFunction_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [ccallAsFunction_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref6b5f4953 callAsFunction ccallAsFunction_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref6b5f4953 callAsFunction ccallAsFunction_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x CallAsFunction PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs6b5f4953 Borrow ccallAsFunction_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cattributes_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cattributes_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref6b5f4953 attributes cattributes_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref6b5f4953 attributes cattributes_allocs]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSPropertyAttributes]}
 	 {*ast.SelectorExpr [x Attributes cgoAllocsUnknown]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs6b5f4953 Borrow cattributes_allocs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ref6b5f4953 ref6b5f4953]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x allocs6b5f4953 allocs6b5f4953]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ref6b5f4953 ref6b5f4953]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x allocs6b5f4953 allocs6b5f4953]}
 	 {*ast.ReturnStmt [ref6b5f4953 allocs6b5f4953]}
 
 
 function name is PassValue 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [x JSStaticFunction PassValue]}
+	 {*ast.FieldList -> *ast.Field [x JSStaticFunction PassValue]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C JSStaticFunction]}
 	 {*ast.Field -> *ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref6b5f4953 nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x ref6b5f4953 nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.SelectorExpr [x ref6b5f4953 nil]}
-	 {*ast.AssignStmt [ref allocs]}
+	 {*ast.AssignStmt [:= ref allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [x PassRef]}
 	 {*ast.ReturnStmt -> *ast.StarExpr [ref allocs]}
 
 
 function name is Deref 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSStaticFunction Deref]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref6b5f4953 nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [x Name]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [x ref6b5f4953 nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x Name]}
 	 {*ast.CallExpr [packPCharString]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref6b5f4953 name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x CallAsFunction]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x CallAsFunction]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectCallAsFunctionCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref6b5f4953 callAsFunction]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x Attributes]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref6b5f4953 callAsFunction]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x Attributes]}
 	 {*ast.CallExpr -> *ast.ParenExpr [JSPropertyAttributes]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref6b5f4953 attributes]}
 
 
 function name is allocJSClassDefinitionMemory 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [allocJSClassDefinitionMemory]}
+	 { [allocJSClassDefinitionMemory]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [mem err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= mem err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C calloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t n]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C size_t sizeOfJSClassDefinitionValue]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.BinaryExpr [STRING "memory alloc error: "]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BasicLit [STRING "memory alloc error: "]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [err Error]}
 	 {*ast.ReturnStmt [mem]}
-	 {*ast.GenDecl -> *ast.ValueSpec [sizeOfJSClassDefinitionValue]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
-	 {*ast.CompositeLit -> *ast.ArrayType [INT 1]}
-	 {*ast.SelectorExpr [C JSClassDefinition]}
-	 {*ast.GenDecl -> *ast.ValueSpec [sizeOfPtr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.StructType -> *ast.FieldList []}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [sizeOfJSClassDefinitionValue]}
+{*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
+{*ast.CompositeLit -> *ast.ArrayType -> *ast.BasicLit [INT 1]}
+{*ast.SelectorExpr [C JSClassDefinition]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [sizeOfPtr]}
+{*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
+{*ast.UnaryExpr [&]}
+{*ast.CompositeLit -> *ast.StructType -> *ast.FieldList []}
 
 
 function name is unpackSJSStaticValue 
-	 {*ast.CommentGroup -> *ast.Comment [unpackSJSStaticValue]}
+	 { [unpackSJSStaticValue]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.ArrayType [JSStaticValue]}
 	 {*ast.FieldList -> *ast.Field [unpacked]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSStaticValue]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.AssignStmt [allocs]}
+	 {*ast.AssignStmt [= allocs]}
 	 {*ast.CallExpr [new cgoAllocMap]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [runtime SetFinalizer]}
-	 {*ast.UnaryExpr [unpacked]}
+	 {*ast.UnaryExpr [& unpacked]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticValue]}
 	 {*ast.BlockStmt -> *ast.GoStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Free]}
-	 {*ast.AssignStmt [len0]}
+	 {*ast.AssignStmt [:= len0]}
 	 {*ast.CallExpr [len x]}
-	 {*ast.AssignStmt [mem0]}
+	 {*ast.AssignStmt [:= mem0]}
 	 {*ast.CallExpr [allocJSStaticValueMemory len0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Add mem0]}
-	 {*ast.AssignStmt [h0]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [sliceHeader]}
+	 {*ast.AssignStmt [:= h0]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [sliceHeader]}
 	 {*ast.KeyValueExpr [Data mem0]}
 	 {*ast.KeyValueExpr [Cap len0]}
 	 {*ast.KeyValueExpr [Len len0]}
-	 {*ast.AssignStmt [v0]}
+	 {*ast.AssignStmt [:= v0]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [C JSStaticValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer h0]}
 	 {*ast.RangeStmt [i0 x]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [allocs0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= allocs0]}
 	 {*ast.CallExpr [new cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [v0 i0 allocs0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [v0 i0 allocs0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [x i0 PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Borrow allocs0]}
-	 {*ast.AssignStmt [h]}
+	 {*ast.AssignStmt [:= h]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v0]}
-	 {*ast.AssignStmt [unpacked]}
+	 {*ast.UnaryExpr [& v0]}
+	 {*ast.AssignStmt [= unpacked]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticValue]}
 	 {*ast.SelectorExpr [h Data]}
 	 {*ast.ReturnStmt []}
 
 
 function name is unpackSJSStaticFunction 
-	 {*ast.CommentGroup -> *ast.Comment [unpackSJSStaticFunction]}
+	 { [unpackSJSStaticFunction]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.ArrayType [JSStaticFunction]}
 	 {*ast.FieldList -> *ast.Field [unpacked]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSStaticFunction]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.AssignStmt [allocs]}
+	 {*ast.AssignStmt [= allocs]}
 	 {*ast.CallExpr [new cgoAllocMap]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [runtime SetFinalizer]}
-	 {*ast.UnaryExpr [unpacked]}
+	 {*ast.UnaryExpr [& unpacked]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticFunction]}
 	 {*ast.BlockStmt -> *ast.GoStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Free]}
-	 {*ast.AssignStmt [len0]}
+	 {*ast.AssignStmt [:= len0]}
 	 {*ast.CallExpr [len x]}
-	 {*ast.AssignStmt [mem0]}
+	 {*ast.AssignStmt [:= mem0]}
 	 {*ast.CallExpr [allocJSStaticFunctionMemory len0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Add mem0]}
-	 {*ast.AssignStmt [h0]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [sliceHeader]}
+	 {*ast.AssignStmt [:= h0]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [sliceHeader]}
 	 {*ast.KeyValueExpr [Data mem0]}
 	 {*ast.KeyValueExpr [Cap len0]}
 	 {*ast.KeyValueExpr [Len len0]}
-	 {*ast.AssignStmt [v0]}
+	 {*ast.AssignStmt [:= v0]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [C JSStaticFunction]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer h0]}
 	 {*ast.RangeStmt [i0 x]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [allocs0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= allocs0]}
 	 {*ast.CallExpr [new cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [v0 i0 allocs0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [v0 i0 allocs0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [x i0 PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Borrow allocs0]}
-	 {*ast.AssignStmt [h]}
+	 {*ast.AssignStmt [:= h]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v0]}
-	 {*ast.AssignStmt [unpacked]}
+	 {*ast.UnaryExpr [& v0]}
+	 {*ast.AssignStmt [= unpacked]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSStaticFunction]}
 	 {*ast.SelectorExpr [h Data]}
 	 {*ast.ReturnStmt []}
 
 
 function name is packSJSStaticValue 
-	 {*ast.CommentGroup -> *ast.Comment [packSJSStaticValue]}
+	 { [packSJSStaticValue]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.ArrayType [JSStaticValue]}
 	 {*ast.Field [ptr0]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSStaticValue]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [m INT 0x7fffffff]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [m]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
 	 {*ast.RangeStmt [i0 v]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ptr1]}
-	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BinaryExpr [m sizeOfJSStaticValueValue]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ptr1]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType []}
+	 {*ast.BinaryExpr [/ m sizeOfJSStaticValueValue]}
 	 {*ast.SelectorExpr [C JSStaticValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ptr0 i0]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [v i0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [v i0]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSStaticValueRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ptr1]}
+	 {*ast.UnaryExpr [& ptr1]}
 
 
 function name is packSJSStaticFunction 
-	 {*ast.CommentGroup -> *ast.Comment [packSJSStaticFunction]}
+	 { [packSJSStaticFunction]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.ArrayType [JSStaticFunction]}
 	 {*ast.Field [ptr0]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSStaticFunction]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [m INT 0x7fffffff]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [m]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
 	 {*ast.RangeStmt [i0 v]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ptr1]}
-	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BinaryExpr [m sizeOfJSStaticFunctionValue]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ptr1]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType []}
+	 {*ast.BinaryExpr [/ m sizeOfJSStaticFunctionValue]}
 	 {*ast.SelectorExpr [C JSStaticFunction]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ptr0 i0]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [v i0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [v i0]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSStaticFunctionRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ptr1]}
+	 {*ast.UnaryExpr [& ptr1]}
 
 
 function name is Ref 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSClassDefinition Ref]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C JSClassDefinition]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [x ref192c18d5]}
 
 
 function name is Free 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSClassDefinition Free]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [x nil]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [x allocs192c18d5 nil]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [!= x nil]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x allocs192c18d5 nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.TypeAssertExpr -> *ast.SelectorExpr [x allocs192c18d5]}
 	 {*ast.StarExpr [cgoAllocMap Free]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ref192c18d5 nil]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ref192c18d5 nil]}
 
 
 function name is NewJSClassDefinitionRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewJSClassDefinitionRef]}
+	 { [NewJSClassDefinitionRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ref unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [JSClassDefinition]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [ref nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== ref nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.AssignStmt [obj]}
+	 {*ast.AssignStmt [:= obj]}
 	 {*ast.CallExpr [new JSClassDefinition]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [obj ref192c18d5]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [obj ref192c18d5]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSClassDefinition]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ref]}
 	 {*ast.ReturnStmt [obj]}
 
 
 function name is PassRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSClassDefinition PassRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [C JSClassDefinition]}
 	 {*ast.Field -> *ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref192c18d5 nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x ref192c18d5 nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [x ref192c18d5 nil]}
-	 {*ast.AssignStmt [mem192c18d5]}
-	 {*ast.CallExpr [allocJSClassDefinitionMemory INT 1]}
-	 {*ast.AssignStmt [ref192c18d5]}
+	 {*ast.AssignStmt [:= mem192c18d5]}
+	 {*ast.CallExpr [allocJSClassDefinitionMemory]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= ref192c18d5]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSClassDefinition mem192c18d5]}
-	 {*ast.AssignStmt [allocs192c18d5]}
+	 {*ast.AssignStmt [:= allocs192c18d5]}
 	 {*ast.CallExpr [new cgoAllocMap]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Add mem192c18d5]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cversion_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cversion_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 version cversion_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 version cversion_allocs]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.SelectorExpr [x Version cgoAllocsUnknown]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cversion_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cattributes_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cattributes_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 attributes cattributes_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 attributes cattributes_allocs]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C JSClassAttributes]}
 	 {*ast.SelectorExpr [x Attributes cgoAllocsUnknown]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cattributes_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cclassName_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cclassName_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 className cclassName_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 className cclassName_allocs]}
 	 {*ast.CallExpr [unpackPCharString]}
 	 {*ast.SelectorExpr [x ClassName]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cclassName_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cparentClass_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cparentClass_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 parentClass cparentClass_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 parentClass cparentClass_allocs]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSClassRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [x ParentClass cgoAllocsUnknown]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [x ParentClass cgoAllocsUnknown]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cparentClass_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cstaticValues_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cstaticValues_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 staticValues cstaticValues_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 staticValues cstaticValues_allocs]}
 	 {*ast.CallExpr [unpackSJSStaticValue]}
 	 {*ast.SelectorExpr [x StaticValues]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cstaticValues_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cstaticFunctions_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cstaticFunctions_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 staticFunctions cstaticFunctions_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 staticFunctions cstaticFunctions_allocs]}
 	 {*ast.CallExpr [unpackSJSStaticFunction]}
 	 {*ast.SelectorExpr [x StaticFunctions]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cstaticFunctions_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cinitialize_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cinitialize_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 initialize cinitialize_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 initialize cinitialize_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x Initialize PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cinitialize_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cfinalize_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cfinalize_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 finalize cfinalize_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 finalize cfinalize_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x Finalize PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cfinalize_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [chasProperty_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [chasProperty_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 hasProperty chasProperty_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 hasProperty chasProperty_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x HasProperty PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow chasProperty_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cgetProperty_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cgetProperty_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 getProperty cgetProperty_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 getProperty cgetProperty_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x GetProperty PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cgetProperty_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [csetProperty_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [csetProperty_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 setProperty csetProperty_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 setProperty csetProperty_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x SetProperty PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow csetProperty_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cdeleteProperty_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cdeleteProperty_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 deleteProperty cdeleteProperty_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 deleteProperty cdeleteProperty_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x DeleteProperty PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cdeleteProperty_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cgetPropertyNames_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cgetPropertyNames_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 getPropertyNames cgetPropertyNames_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 getPropertyNames cgetPropertyNames_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x GetPropertyNames PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cgetPropertyNames_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ccallAsFunction_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [ccallAsFunction_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 callAsFunction ccallAsFunction_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 callAsFunction ccallAsFunction_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x CallAsFunction PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow ccallAsFunction_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ccallAsConstructor_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [ccallAsConstructor_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 callAsConstructor ccallAsConstructor_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 callAsConstructor ccallAsConstructor_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x CallAsConstructor PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow ccallAsConstructor_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [chasInstance_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [chasInstance_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 hasInstance chasInstance_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 hasInstance chasInstance_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x HasInstance PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow chasInstance_allocs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cconvertToType_allocs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cconvertToType_allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [ref192c18d5 convertToType cconvertToType_allocs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [ref192c18d5 convertToType cconvertToType_allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ConvertToType PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs192c18d5 Borrow cconvertToType_allocs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ref192c18d5 ref192c18d5]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x allocs192c18d5 allocs192c18d5]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ref192c18d5 ref192c18d5]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x allocs192c18d5 allocs192c18d5]}
 	 {*ast.ReturnStmt [ref192c18d5 allocs192c18d5]}
 
 
 function name is PassValue 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [x JSClassDefinition PassValue]}
+	 {*ast.FieldList -> *ast.Field [x JSClassDefinition PassValue]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C JSClassDefinition]}
 	 {*ast.Field -> *ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref192c18d5 nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [x ref192c18d5 nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.SelectorExpr [x ref192c18d5 nil]}
-	 {*ast.AssignStmt [ref allocs]}
+	 {*ast.AssignStmt [:= ref allocs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [x PassRef]}
 	 {*ast.ReturnStmt -> *ast.StarExpr [ref allocs]}
 
 
 function name is Deref 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [x]}
+	 {*ast.FieldList -> *ast.Field [x]}
 	 {*ast.StarExpr [JSClassDefinition Deref]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [x ref192c18d5 nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [x Version]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [x ref192c18d5 nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x Version]}
 	 {*ast.CallExpr -> *ast.ParenExpr [int32]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 version]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x Attributes]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x Attributes]}
 	 {*ast.CallExpr -> *ast.ParenExpr [JSClassAttributes]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 attributes]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ClassName]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ClassName]}
 	 {*ast.CallExpr [packPCharString]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 className]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ParentClass]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ParentClass]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [JSClassRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 parentClass]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 parentClass]}
 	 {*ast.ExprStmt -> *ast.CallExpr [packSJSStaticValue]}
 	 {*ast.SelectorExpr [x StaticValues]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 staticValues]}
 	 {*ast.ExprStmt -> *ast.CallExpr [packSJSStaticFunction]}
 	 {*ast.SelectorExpr [x StaticFunctions]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 staticFunctions]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x Initialize]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x Initialize]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectInitializeCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 initialize]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x Finalize]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 initialize]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x Finalize]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectFinalizeCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 finalize]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x HasProperty]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 finalize]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x HasProperty]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectHasPropertyCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 hasProperty]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x GetProperty]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 hasProperty]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x GetProperty]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectGetPropertyCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 getProperty]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x SetProperty]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 getProperty]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x SetProperty]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectSetPropertyCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 setProperty]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x DeleteProperty]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 setProperty]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x DeleteProperty]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectDeletePropertyCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 deleteProperty]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x GetPropertyNames]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 deleteProperty]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x GetPropertyNames]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectGetPropertyNamesCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 getPropertyNames]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x CallAsFunction]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 getPropertyNames]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x CallAsFunction]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectCallAsFunctionCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 callAsFunction]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x CallAsConstructor]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 callAsFunction]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x CallAsConstructor]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectCallAsConstructorCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 callAsConstructor]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x HasInstance]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 callAsConstructor]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x HasInstance]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectHasInstanceCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 hasInstance]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [x ConvertToType]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 hasInstance]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [x ConvertToType]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSObjectConvertToTypeCallbackRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 convertToType]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [x ref192c18d5 convertToType]}
 
 
 function name is unpackArgSJSClassDefinition 
-	 {*ast.CommentGroup -> *ast.Comment [unpackArgSJSClassDefinition]}
+	 { [unpackArgSJSClassDefinition]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.ArrayType [JSClassDefinition]}
 	 {*ast.FieldList -> *ast.Field [unpacked]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSClassDefinition]}
 	 {*ast.Field [allocs]}
 	 {*ast.StarExpr [cgoAllocMap]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [x nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== x nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil nil]}
-	 {*ast.AssignStmt [allocs]}
+	 {*ast.AssignStmt [= allocs]}
 	 {*ast.CallExpr [new cgoAllocMap]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [runtime SetFinalizer]}
-	 {*ast.UnaryExpr [unpacked]}
+	 {*ast.UnaryExpr [& unpacked]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSClassDefinition]}
 	 {*ast.BlockStmt -> *ast.GoStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Free]}
-	 {*ast.AssignStmt [len0]}
+	 {*ast.AssignStmt [:= len0]}
 	 {*ast.CallExpr [len x]}
-	 {*ast.AssignStmt [mem0]}
+	 {*ast.AssignStmt [:= mem0]}
 	 {*ast.CallExpr [allocJSClassDefinitionMemory len0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Add mem0]}
-	 {*ast.AssignStmt [h0]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [sliceHeader]}
+	 {*ast.AssignStmt [:= h0]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [sliceHeader]}
 	 {*ast.KeyValueExpr [Data mem0]}
 	 {*ast.KeyValueExpr [Cap len0]}
 	 {*ast.KeyValueExpr [Len len0]}
-	 {*ast.AssignStmt [v0]}
+	 {*ast.AssignStmt [:= v0]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [C JSClassDefinition]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer h0]}
 	 {*ast.RangeStmt [i0 x]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [allocs0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= allocs0]}
 	 {*ast.CallExpr [new cgoAllocMap]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [v0 i0 allocs0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [v0 i0 allocs0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [x i0 PassValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [allocs Borrow allocs0]}
-	 {*ast.AssignStmt [h]}
+	 {*ast.AssignStmt [:= h]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [v0]}
-	 {*ast.AssignStmt [unpacked]}
+	 {*ast.UnaryExpr [& v0]}
+	 {*ast.AssignStmt [= unpacked]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C JSClassDefinition]}
 	 {*ast.SelectorExpr [h Data]}
 	 {*ast.ReturnStmt []}
 
 
 function name is packSJSClassDefinition 
-	 {*ast.CommentGroup -> *ast.Comment [packSJSClassDefinition]}
+	 { [packSJSClassDefinition]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.ArrayType [JSClassDefinition]}
 	 {*ast.Field [ptr0]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C JSClassDefinition]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [m INT 0x7fffffff]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [m]}
+	 {*ast.BasicLit [INT 0x7fffffff]}
 	 {*ast.RangeStmt [i0 v]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ptr1]}
-	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BinaryExpr [m sizeOfJSClassDefinitionValue]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ptr1]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType []}
+	 {*ast.BinaryExpr [/ m sizeOfJSClassDefinitionValue]}
 	 {*ast.SelectorExpr [C JSClassDefinition]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer ptr0 i0]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [v i0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [v i0]}
 	 {*ast.StarExpr -> *ast.CallExpr [NewJSClassDefinitionRef]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [ptr1]}
+	 {*ast.UnaryExpr [& ptr1]}
 
 

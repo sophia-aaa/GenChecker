@@ -1,7 +1,9 @@
 {*ast.File [cache]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.ImportSpec [STRING "C"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.ImportSpec [STRING "github.com/jmhodges/levigo"]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "C"]}
+
+
 
 
 function name is setMaxFileSize 
@@ -9,7 +11,8 @@ function name is setMaxFileSize
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [o]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [levigo Options]}
 	 {*ast.Field [maxFileSize int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [p]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C struct_leveldb_options_t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [o Opt]}

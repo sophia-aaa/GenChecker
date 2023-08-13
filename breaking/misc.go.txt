@@ -1,0 +1,6 @@
+{*ast.File [bencode]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+
+

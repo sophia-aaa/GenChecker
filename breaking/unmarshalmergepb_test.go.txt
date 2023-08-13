@@ -1,19 +1,36 @@
 {*ast.File [unmarshalmerge]}
-{*ast.GenDecl -> *ast.ImportSpec [fmt STRING "fmt"]}
-{*ast.ImportSpec [_ STRING "github.com/gogo/protobuf/gogoproto"]}
-{*ast.ImportSpec [github_com_gogo_protobuf_jsonpb STRING "github.com/gogo/protobuf/jsonpb"]}
-{*ast.ImportSpec [github_com_gogo_protobuf_proto STRING "github.com/gogo/protobuf/proto"]}
-{*ast.ImportSpec [proto STRING "github.com/gogo/protobuf/proto"]}
-{*ast.ImportSpec [go_parser STRING "go/parser"]}
-{*ast.ImportSpec [math STRING "math"]}
-{*ast.ImportSpec [math_rand STRING "math/rand"]}
-{*ast.ImportSpec [testing STRING "testing"]}
-{*ast.ImportSpec [time STRING "time"]}
-{*ast.ImportSpec [unsafe STRING "unsafe"]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [_]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec [fmt]}
+{*ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec [_]}
+{*ast.BasicLit [STRING "github.com/gogo/protobuf/gogoproto"]}
+{*ast.ImportSpec [github_com_gogo_protobuf_jsonpb]}
+{*ast.BasicLit [STRING "github.com/gogo/protobuf/jsonpb"]}
+{*ast.ImportSpec [github_com_gogo_protobuf_proto]}
+{*ast.BasicLit [STRING "github.com/gogo/protobuf/proto"]}
+{*ast.ImportSpec [proto]}
+{*ast.BasicLit [STRING "github.com/gogo/protobuf/proto"]}
+{*ast.ImportSpec [go_parser]}
+{*ast.BasicLit [STRING "go/parser"]}
+{*ast.ImportSpec [math]}
+{*ast.BasicLit [STRING "math"]}
+{*ast.ImportSpec [math_rand]}
+{*ast.BasicLit [STRING "math/rand"]}
+{*ast.ImportSpec [testing]}
+{*ast.BasicLit [STRING "testing"]}
+{*ast.ImportSpec [time]}
+{*ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec [unsafe]}
+{*ast.BasicLit [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ValueSpec [_]}
 {*ast.SelectorExpr [proto Marshal]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [_]}
 {*ast.SelectorExpr [fmt Errorf]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [_]}
 {*ast.SelectorExpr [math Inf]}
 
@@ -22,53 +39,75 @@ function name is TestBigProto
 	 { [TestBigProto]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBig popr false]}
-	 {*ast.AssignStmt [dAtA err]}
+	 {*ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Big]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Big]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [littlefuzz]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= littlefuzz]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.CallExpr [len dAtA]}
 	 {*ast.ExprStmt -> *ast.CallExpr [copy littlefuzz dAtA]}
 	 {*ast.RangeStmt [i dAtA]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [dAtA i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [dAtA i]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len littlefuzz INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [fuzzamount INT 100]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i fuzzamount]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len littlefuzz]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= fuzzamount]}
+	 {*ast.BasicLit [INT 100]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i fuzzamount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [littlefuzz]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [littlefuzz]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
 	 {*ast.CallExpr [len littlefuzz]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.AssignStmt [littlefuzz]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.AssignStmt [= littlefuzz]}
 	 {*ast.CallExpr [append littlefuzz]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.AssignStmt [_]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.AssignStmt [= _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal littlefuzz msg]}
 
 
@@ -76,34 +115,43 @@ function name is BenchmarkBigProtoMarshal
 	 { [BenchmarkBigProtoMarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource INT 616]}
-	 {*ast.AssignStmt [total INT 0]}
-	 {*ast.AssignStmt [pops]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
+	 {*ast.BasicLit [INT 616]}
+	 {*ast.AssignStmt [:= total]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= pops]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.StarExpr [Big INT 10000]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i INT 10000]}
+	 {*ast.ArrayType -> *ast.StarExpr [Big]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
+	 {*ast.BasicLit [INT 10000]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [pops i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [pops i]}
 	 {*ast.CallExpr [NewPopulatedBig popr false]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b ResetTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [dAtA err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal]}
 	 {*ast.IndexExpr [pops]}
-	 {*ast.BinaryExpr [i INT 10000]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt [total]}
+	 {*ast.AssignStmt [+= total]}
 	 {*ast.CallExpr [len dAtA]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
-	 {*ast.BinaryExpr [total]}
+	 {*ast.BinaryExpr [/ total]}
 	 {*ast.SelectorExpr [b N]}
 
 
@@ -111,42 +159,54 @@ function name is BenchmarkBigProtoUnmarshal
 	 { [BenchmarkBigProtoUnmarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource INT 616]}
-	 {*ast.AssignStmt [total INT 0]}
-	 {*ast.AssignStmt [datas]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
+	 {*ast.BasicLit [INT 616]}
+	 {*ast.AssignStmt [:= total]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= datas]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.ArrayType [byte INT 10000]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i INT 10000]}
+	 {*ast.ArrayType -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
+	 {*ast.BasicLit [INT 10000]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [dAtA err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal]}
 	 {*ast.CallExpr [NewPopulatedBig popr false]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [datas i dAtA]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Big]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [datas i dAtA]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Big]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b ResetTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [total]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= total]}
 	 {*ast.CallExpr [len]}
 	 {*ast.IndexExpr [datas]}
-	 {*ast.BinaryExpr [i INT 10000]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal]}
 	 {*ast.IndexExpr [datas]}
-	 {*ast.BinaryExpr [i INT 10000 msg]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 { [msg]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
-	 {*ast.BinaryExpr [total]}
+	 {*ast.BinaryExpr [/ total]}
 	 {*ast.SelectorExpr [b N]}
 
 
@@ -154,53 +214,75 @@ function name is TestBigUnsafeProto
 	 { [TestBigUnsafeProto]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr false]}
-	 {*ast.AssignStmt [dAtA err]}
+	 {*ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [BigUnsafe]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [BigUnsafe]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [littlefuzz]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= littlefuzz]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.CallExpr [len dAtA]}
 	 {*ast.ExprStmt -> *ast.CallExpr [copy littlefuzz dAtA]}
 	 {*ast.RangeStmt [i dAtA]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [dAtA i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [dAtA i]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len littlefuzz INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [fuzzamount INT 100]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i fuzzamount]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len littlefuzz]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= fuzzamount]}
+	 {*ast.BasicLit [INT 100]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i fuzzamount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [littlefuzz]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [littlefuzz]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
 	 {*ast.CallExpr [len littlefuzz]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.AssignStmt [littlefuzz]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.AssignStmt [= littlefuzz]}
 	 {*ast.CallExpr [append littlefuzz]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.AssignStmt [_]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.AssignStmt [= _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal littlefuzz msg]}
 
 
@@ -208,34 +290,43 @@ function name is BenchmarkBigUnsafeProtoMarshal
 	 { [BenchmarkBigUnsafeProtoMarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource INT 616]}
-	 {*ast.AssignStmt [total INT 0]}
-	 {*ast.AssignStmt [pops]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
+	 {*ast.BasicLit [INT 616]}
+	 {*ast.AssignStmt [:= total]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= pops]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.StarExpr [BigUnsafe INT 10000]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i INT 10000]}
+	 {*ast.ArrayType -> *ast.StarExpr [BigUnsafe]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
+	 {*ast.BasicLit [INT 10000]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [pops i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [pops i]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr false]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b ResetTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [dAtA err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal]}
 	 {*ast.IndexExpr [pops]}
-	 {*ast.BinaryExpr [i INT 10000]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt [total]}
+	 {*ast.AssignStmt [+= total]}
 	 {*ast.CallExpr [len dAtA]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
-	 {*ast.BinaryExpr [total]}
+	 {*ast.BinaryExpr [/ total]}
 	 {*ast.SelectorExpr [b N]}
 
 
@@ -243,42 +334,54 @@ function name is BenchmarkBigUnsafeProtoUnmarshal
 	 { [BenchmarkBigUnsafeProtoUnmarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource INT 616]}
-	 {*ast.AssignStmt [total INT 0]}
-	 {*ast.AssignStmt [datas]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
+	 {*ast.BasicLit [INT 616]}
+	 {*ast.AssignStmt [:= total]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= datas]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.ArrayType [byte INT 10000]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i INT 10000]}
+	 {*ast.ArrayType -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
+	 {*ast.BasicLit [INT 10000]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [dAtA err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr false]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [datas i dAtA]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [BigUnsafe]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [datas i dAtA]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [BigUnsafe]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b ResetTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [total]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= total]}
 	 {*ast.CallExpr [len]}
 	 {*ast.IndexExpr [datas]}
-	 {*ast.BinaryExpr [i INT 10000]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal]}
 	 {*ast.IndexExpr [datas]}
-	 {*ast.BinaryExpr [i INT 10000 msg]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 { [msg]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
-	 {*ast.BinaryExpr [total]}
+	 {*ast.BinaryExpr [/ total]}
 	 {*ast.SelectorExpr [b N]}
 
 
@@ -286,53 +389,75 @@ function name is TestSubProto
 	 { [TestSubProto]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedSub popr false]}
-	 {*ast.AssignStmt [dAtA err]}
+	 {*ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Sub]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Sub]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [littlefuzz]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= littlefuzz]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.CallExpr [len dAtA]}
 	 {*ast.ExprStmt -> *ast.CallExpr [copy littlefuzz dAtA]}
 	 {*ast.RangeStmt [i dAtA]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [dAtA i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [dAtA i]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len littlefuzz INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [fuzzamount INT 100]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i fuzzamount]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len littlefuzz]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= fuzzamount]}
+	 {*ast.BasicLit [INT 100]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i fuzzamount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [littlefuzz]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [littlefuzz]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
 	 {*ast.CallExpr [len littlefuzz]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.AssignStmt [littlefuzz]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.AssignStmt [= littlefuzz]}
 	 {*ast.CallExpr [append littlefuzz]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.AssignStmt [_]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.AssignStmt [= _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal littlefuzz msg]}
 
 
@@ -340,34 +465,43 @@ function name is BenchmarkSubProtoMarshal
 	 { [BenchmarkSubProtoMarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource INT 616]}
-	 {*ast.AssignStmt [total INT 0]}
-	 {*ast.AssignStmt [pops]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
+	 {*ast.BasicLit [INT 616]}
+	 {*ast.AssignStmt [:= total]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= pops]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.StarExpr [Sub INT 10000]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i INT 10000]}
+	 {*ast.ArrayType -> *ast.StarExpr [Sub]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
+	 {*ast.BasicLit [INT 10000]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [pops i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [pops i]}
 	 {*ast.CallExpr [NewPopulatedSub popr false]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b ResetTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [dAtA err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal]}
 	 {*ast.IndexExpr [pops]}
-	 {*ast.BinaryExpr [i INT 10000]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt [total]}
+	 {*ast.AssignStmt [+= total]}
 	 {*ast.CallExpr [len dAtA]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
-	 {*ast.BinaryExpr [total]}
+	 {*ast.BinaryExpr [/ total]}
 	 {*ast.SelectorExpr [b N]}
 
 
@@ -375,42 +509,54 @@ function name is BenchmarkSubProtoUnmarshal
 	 { [BenchmarkSubProtoUnmarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource INT 616]}
-	 {*ast.AssignStmt [total INT 0]}
-	 {*ast.AssignStmt [datas]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
+	 {*ast.BasicLit [INT 616]}
+	 {*ast.AssignStmt [:= total]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= datas]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.ArrayType [byte INT 10000]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i INT 10000]}
+	 {*ast.ArrayType -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
+	 {*ast.BasicLit [INT 10000]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [dAtA err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal]}
 	 {*ast.CallExpr [NewPopulatedSub popr false]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [datas i dAtA]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Sub]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [datas i dAtA]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Sub]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b ResetTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [total]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= total]}
 	 {*ast.CallExpr [len]}
 	 {*ast.IndexExpr [datas]}
-	 {*ast.BinaryExpr [i INT 10000]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal]}
 	 {*ast.IndexExpr [datas]}
-	 {*ast.BinaryExpr [i INT 10000 msg]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 { [msg]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
-	 {*ast.BinaryExpr [total]}
+	 {*ast.BinaryExpr [/ total]}
 	 {*ast.SelectorExpr [b N]}
 
 
@@ -418,53 +564,75 @@ function name is TestIntMergeProto
 	 { [TestIntMergeProto]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr false]}
-	 {*ast.AssignStmt [dAtA err]}
+	 {*ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [IntMerge]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [IntMerge]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [littlefuzz]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= littlefuzz]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.CallExpr [len dAtA]}
 	 {*ast.ExprStmt -> *ast.CallExpr [copy littlefuzz dAtA]}
 	 {*ast.RangeStmt [i dAtA]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [dAtA i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [dAtA i]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len littlefuzz INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [fuzzamount INT 100]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i fuzzamount]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len littlefuzz]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= fuzzamount]}
+	 {*ast.BasicLit [INT 100]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i fuzzamount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [littlefuzz]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [littlefuzz]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
 	 {*ast.CallExpr [len littlefuzz]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.AssignStmt [littlefuzz]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.AssignStmt [= littlefuzz]}
 	 {*ast.CallExpr [append littlefuzz]}
 	 {*ast.CallExpr [byte]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn INT 256]}
-	 {*ast.AssignStmt [_]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [popr Intn]}
+	 {*ast.BasicLit [INT 256]}
+	 {*ast.AssignStmt [= _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal littlefuzz msg]}
 
 
@@ -472,34 +640,43 @@ function name is BenchmarkIntMergeProtoMarshal
 	 { [BenchmarkIntMergeProtoMarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource INT 616]}
-	 {*ast.AssignStmt [total INT 0]}
-	 {*ast.AssignStmt [pops]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
+	 {*ast.BasicLit [INT 616]}
+	 {*ast.AssignStmt [:= total]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= pops]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.StarExpr [IntMerge INT 10000]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i INT 10000]}
+	 {*ast.ArrayType -> *ast.StarExpr [IntMerge]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
+	 {*ast.BasicLit [INT 10000]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [pops i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [pops i]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr false]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b ResetTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [dAtA err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal]}
 	 {*ast.IndexExpr [pops]}
-	 {*ast.BinaryExpr [i INT 10000]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt [total]}
+	 {*ast.AssignStmt [+= total]}
 	 {*ast.CallExpr [len dAtA]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
-	 {*ast.BinaryExpr [total]}
+	 {*ast.BinaryExpr [/ total]}
 	 {*ast.SelectorExpr [b N]}
 
 
@@ -507,42 +684,54 @@ function name is BenchmarkIntMergeProtoUnmarshal
 	 { [BenchmarkIntMergeProtoUnmarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing B]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource INT 616]}
-	 {*ast.AssignStmt [total INT 0]}
-	 {*ast.AssignStmt [datas]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
+	 {*ast.BasicLit [INT 616]}
+	 {*ast.AssignStmt [:= total]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= datas]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.ArrayType [byte INT 10000]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i INT 10000]}
+	 {*ast.ArrayType -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
+	 {*ast.BasicLit [INT 10000]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [dAtA err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr false]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [datas i dAtA]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [IntMerge]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [datas i dAtA]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [IntMerge]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b ResetTimer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [b N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [total]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= total]}
 	 {*ast.CallExpr [len]}
 	 {*ast.IndexExpr [datas]}
-	 {*ast.BinaryExpr [i INT 10000]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal]}
 	 {*ast.IndexExpr [datas]}
-	 {*ast.BinaryExpr [i INT 10000 msg]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [% i]}
+	 {*ast.BasicLit [INT 10000]}
+	 { [msg]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b SetBytes]}
 	 {*ast.CallExpr [int64]}
-	 {*ast.BinaryExpr [total]}
+	 {*ast.BinaryExpr [/ total]}
 	 {*ast.SelectorExpr [b N]}
 
 
@@ -550,470 +739,621 @@ function name is TestBigJSON
 	 { [TestBigJSON]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBig popr true]}
-	 {*ast.AssignStmt [marshaler]}
+	 {*ast.AssignStmt [:= marshaler]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [github_com_gogo_protobuf_jsonpb Marshaler]}
-	 {*ast.AssignStmt [jsondata err]}
+	 {*ast.AssignStmt [:= jsondata err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [marshaler MarshalToString p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Big]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Big]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_jsonpb UnmarshalString jsondata msg]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Json Equal %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Json Equal %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestBigUnsafeJSON 
 	 { [TestBigUnsafeJSON]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr true]}
-	 {*ast.AssignStmt [marshaler]}
+	 {*ast.AssignStmt [:= marshaler]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [github_com_gogo_protobuf_jsonpb Marshaler]}
-	 {*ast.AssignStmt [jsondata err]}
+	 {*ast.AssignStmt [:= jsondata err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [marshaler MarshalToString p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [BigUnsafe]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [BigUnsafe]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_jsonpb UnmarshalString jsondata msg]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Json Equal %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Json Equal %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestSubJSON 
 	 { [TestSubJSON]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedSub popr true]}
-	 {*ast.AssignStmt [marshaler]}
+	 {*ast.AssignStmt [:= marshaler]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [github_com_gogo_protobuf_jsonpb Marshaler]}
-	 {*ast.AssignStmt [jsondata err]}
+	 {*ast.AssignStmt [:= jsondata err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [marshaler MarshalToString p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Sub]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Sub]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_jsonpb UnmarshalString jsondata msg]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Json Equal %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Json Equal %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestIntMergeJSON 
 	 { [TestIntMergeJSON]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr true]}
-	 {*ast.AssignStmt [marshaler]}
+	 {*ast.AssignStmt [:= marshaler]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [github_com_gogo_protobuf_jsonpb Marshaler]}
-	 {*ast.AssignStmt [jsondata err]}
+	 {*ast.AssignStmt [:= jsondata err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [marshaler MarshalToString p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [IntMerge]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [IntMerge]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_jsonpb UnmarshalString jsondata msg]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Json Equal %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Json Equal %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestBigProtoText 
 	 { [TestBigProtoText]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBig popr true]}
-	 {*ast.AssignStmt [dAtA]}
+	 {*ast.AssignStmt [:= dAtA]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto MarshalTextString p]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Big]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Big]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto UnmarshalText dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestBigProtoCompactText 
 	 { [TestBigProtoCompactText]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBig popr true]}
-	 {*ast.AssignStmt [dAtA]}
+	 {*ast.AssignStmt [:= dAtA]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto CompactTextString p]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Big]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Big]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto UnmarshalText dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestBigUnsafeProtoText 
 	 { [TestBigUnsafeProtoText]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr true]}
-	 {*ast.AssignStmt [dAtA]}
+	 {*ast.AssignStmt [:= dAtA]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto MarshalTextString p]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [BigUnsafe]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [BigUnsafe]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto UnmarshalText dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestBigUnsafeProtoCompactText 
 	 { [TestBigUnsafeProtoCompactText]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr true]}
-	 {*ast.AssignStmt [dAtA]}
+	 {*ast.AssignStmt [:= dAtA]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto CompactTextString p]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [BigUnsafe]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [BigUnsafe]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto UnmarshalText dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestSubProtoText 
 	 { [TestSubProtoText]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedSub popr true]}
-	 {*ast.AssignStmt [dAtA]}
+	 {*ast.AssignStmt [:= dAtA]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto MarshalTextString p]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Sub]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Sub]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto UnmarshalText dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestSubProtoCompactText 
 	 { [TestSubProtoCompactText]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedSub popr true]}
-	 {*ast.AssignStmt [dAtA]}
+	 {*ast.AssignStmt [:= dAtA]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto CompactTextString p]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Sub]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Sub]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto UnmarshalText dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestIntMergeProtoText 
 	 { [TestIntMergeProtoText]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr true]}
-	 {*ast.AssignStmt [dAtA]}
+	 {*ast.AssignStmt [:= dAtA]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto MarshalTextString p]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [IntMerge]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [IntMerge]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto UnmarshalText dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestIntMergeProtoCompactText 
 	 { [TestIntMergeProtoCompactText]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [seed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= seed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource seed]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr true]}
-	 {*ast.AssignStmt [dAtA]}
+	 {*ast.AssignStmt [:= dAtA]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto CompactTextString p]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [IntMerge]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [IntMerge]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto UnmarshalText dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, err = %v" seed err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, err = %v"]}
+	 { [seed err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !VerboseProto %#v, since %v" seed msg p err]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "seed = %d, %#v !Proto %#v" seed msg p]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !VerboseProto %#v, since %v"]}
+	 { [seed msg p err]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [p Equal msg]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "seed = %d, %#v !Proto %#v"]}
+	 { [seed msg p]}
 
 
 function name is TestBigVerboseEqual 
 	 { [TestBigVerboseEqual]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBig popr false]}
-	 {*ast.AssignStmt [dAtA err]}
+	 {*ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Big]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Big]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "%#v !VerboseEqual %#v, since %v" msg p err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "%#v !VerboseEqual %#v, since %v"]}
+	 { [msg p err]}
 
 
 function name is TestBigUnsafeVerboseEqual 
 	 { [TestBigUnsafeVerboseEqual]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [bigendian uint32 INT 0x01020304]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [byte]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [bigendian uint32]}
+	 {*ast.BasicLit [INT 0x01020304]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [bigendian INT 1]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Skip STRING "unsafe does not work on big endian architectures"]}
-	 {*ast.AssignStmt [popr]}
+	 {*ast.UnaryExpr [& bigendian]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Skip]}
+	 {*ast.BasicLit [STRING "unsafe does not work on big endian architectures"]}
+	 {*ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr false]}
-	 {*ast.AssignStmt [dAtA err]}
+	 {*ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [BigUnsafe]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [BigUnsafe]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "%#v !VerboseEqual %#v, since %v" msg p err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "%#v !VerboseEqual %#v, since %v"]}
+	 { [msg p err]}
 
 
 function name is TestSubVerboseEqual 
 	 { [TestSubVerboseEqual]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedSub popr false]}
-	 {*ast.AssignStmt [dAtA err]}
+	 {*ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [Sub]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Sub]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "%#v !VerboseEqual %#v, since %v" msg p err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "%#v !VerboseEqual %#v, since %v"]}
+	 { [msg p err]}
 
 
 function name is TestIntMergeVerboseEqual 
 	 { [TestIntMergeVerboseEqual]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr false]}
-	 {*ast.AssignStmt [dAtA err]}
+	 {*ast.AssignStmt [:= dAtA err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Marshal p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.AssignStmt [msg]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [IntMerge]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= msg]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [IntMerge]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [github_com_gogo_protobuf_proto Unmarshal dAtA msg]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p VerboseEqual msg]}
-	 {*ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "%#v !VerboseEqual %#v, since %v" msg p err]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "%#v !VerboseEqual %#v, since %v"]}
+	 { [msg p err]}
 
 
 function name is TestBigGoString 
 	 { [TestBigGoString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBig popr false]}
-	 {*ast.AssignStmt [s1]}
+	 {*ast.AssignStmt [:= s1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p GoString]}
-	 {*ast.AssignStmt [s2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%#v" p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s1 s2]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "GoString want %v got %v" s1 s2]}
-	 {*ast.AssignStmt [_ err]}
+	 {*ast.AssignStmt [:= s2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [STRING "%#v"]}
+	 { [p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= s1 s2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "GoString want %v got %v"]}
+	 { [s1 s2]}
+	 {*ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [go_parser ParseExpr s1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal err]}
 
 
@@ -1021,21 +1361,27 @@ function name is TestBigUnsafeGoString
 	 { [TestBigUnsafeGoString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr false]}
-	 {*ast.AssignStmt [s1]}
+	 {*ast.AssignStmt [:= s1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p GoString]}
-	 {*ast.AssignStmt [s2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%#v" p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s1 s2]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "GoString want %v got %v" s1 s2]}
-	 {*ast.AssignStmt [_ err]}
+	 {*ast.AssignStmt [:= s2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [STRING "%#v"]}
+	 { [p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= s1 s2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "GoString want %v got %v"]}
+	 { [s1 s2]}
+	 {*ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [go_parser ParseExpr s1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal err]}
 
 
@@ -1043,21 +1389,27 @@ function name is TestSubGoString
 	 { [TestSubGoString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedSub popr false]}
-	 {*ast.AssignStmt [s1]}
+	 {*ast.AssignStmt [:= s1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p GoString]}
-	 {*ast.AssignStmt [s2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%#v" p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s1 s2]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "GoString want %v got %v" s1 s2]}
-	 {*ast.AssignStmt [_ err]}
+	 {*ast.AssignStmt [:= s2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [STRING "%#v"]}
+	 { [p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= s1 s2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "GoString want %v got %v"]}
+	 { [s1 s2]}
+	 {*ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [go_parser ParseExpr s1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal err]}
 
 
@@ -1065,21 +1417,27 @@ function name is TestIntMergeGoString
 	 { [TestIntMergeGoString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr false]}
-	 {*ast.AssignStmt [s1]}
+	 {*ast.AssignStmt [:= s1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p GoString]}
-	 {*ast.AssignStmt [s2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%#v" p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s1 s2]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "GoString want %v got %v" s1 s2]}
-	 {*ast.AssignStmt [_ err]}
+	 {*ast.AssignStmt [:= s2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [STRING "%#v"]}
+	 { [p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= s1 s2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "GoString want %v got %v"]}
+	 { [s1 s2]}
+	 {*ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [go_parser ParseExpr s1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatal err]}
 
 
@@ -1087,71 +1445,91 @@ function name is TestBigStringer
 	 { [TestBigStringer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBig popr false]}
-	 {*ast.AssignStmt [s1]}
+	 {*ast.AssignStmt [:= s1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p String]}
-	 {*ast.AssignStmt [s2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%v" p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s1 s2]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "String want %v got %v" s1 s2]}
+	 {*ast.AssignStmt [:= s2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [STRING "%v"]}
+	 { [p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= s1 s2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "String want %v got %v"]}
+	 { [s1 s2]}
 
 
 function name is TestBigUnsafeStringer 
 	 { [TestBigUnsafeStringer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedBigUnsafe popr false]}
-	 {*ast.AssignStmt [s1]}
+	 {*ast.AssignStmt [:= s1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p String]}
-	 {*ast.AssignStmt [s2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%v" p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s1 s2]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "String want %v got %v" s1 s2]}
+	 {*ast.AssignStmt [:= s2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [STRING "%v"]}
+	 { [p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= s1 s2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "String want %v got %v"]}
+	 { [s1 s2]}
 
 
 function name is TestSubStringer 
 	 { [TestSubStringer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedSub popr false]}
-	 {*ast.AssignStmt [s1]}
+	 {*ast.AssignStmt [:= s1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p String]}
-	 {*ast.AssignStmt [s2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%v" p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s1 s2]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "String want %v got %v" s1 s2]}
+	 {*ast.AssignStmt [:= s2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [STRING "%v"]}
+	 { [p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= s1 s2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "String want %v got %v"]}
+	 { [s1 s2]}
 
 
 function name is TestIntMergeStringer 
 	 { [TestIntMergeStringer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [popr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= popr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [math_rand NewSource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [time Now UnixNano]}
-	 {*ast.AssignStmt [p]}
+	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr [NewPopulatedIntMerge popr false]}
-	 {*ast.AssignStmt [s1]}
+	 {*ast.AssignStmt [:= s1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p String]}
-	 {*ast.AssignStmt [s2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf STRING "%v" p]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [s1 s2]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf STRING "String want %v got %v" s1 s2]}
+	 {*ast.AssignStmt [:= s2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
+	 {*ast.BasicLit [STRING "%v"]}
+	 { [p]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= s1 s2]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
+	 {*ast.BasicLit [STRING "String want %v got %v"]}
+	 { [s1 s2]}
 
 

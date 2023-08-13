@@ -1,101 +1,123 @@
-{*ast.File -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment [hack]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.TypeSpec [StringArena]}
-{*ast.StructType -> *ast.FieldList -> *ast.Field [buf]}
-{*ast.ArrayType [byte]}
-{*ast.Field [str string]}
+{*ast.File [hack]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "reflect"]}
+{*ast.BasicLit [STRING "unsafe"]}
+
+
 
 
 function name is NewStringArena 
-	 {*ast.CommentGroup -> *ast.Comment [NewStringArena]}
+	 { [NewStringArena]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [StringArena]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [sa]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [StringArena]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= sa]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [StringArena]}
 	 {*ast.KeyValueExpr [buf]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [byte INT 0 size]}
-	 {*ast.AssignStmt [pbytes]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 0 size]}
+	 {*ast.AssignStmt [:= pbytes]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [sa buf]}
-	 {*ast.AssignStmt [pstring]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [sa buf]}
+	 {*ast.AssignStmt [:= pstring]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect StringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [sa str]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [pstring Data]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [sa str]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [pstring Data]}
 	 {*ast.SelectorExpr [pbytes Data]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [pstring Len]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [pstring Len]}
 	 {*ast.SelectorExpr [pbytes Cap]}
 	 {*ast.ReturnStmt [sa]}
 
 
 function name is NewString 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [sa]}
+	 {*ast.FieldList -> *ast.Field [sa]}
 	 {*ast.StarExpr [StringArena NewString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len b INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING ""]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len b]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [sa buf]}
 	 {*ast.CallExpr [len b]}
 	 {*ast.CallExpr [cap]}
 	 {*ast.SelectorExpr [sa buf]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [string b]}
-	 {*ast.AssignStmt [start]}
+	 {*ast.AssignStmt [:= start]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [sa buf]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [sa buf]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [sa buf]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [sa buf b]}
 	 {*ast.ReturnStmt -> *ast.SliceExpr -> *ast.SelectorExpr [sa str start]}
-	 {*ast.BinaryExpr [start]}
+	 {*ast.BinaryExpr [+ start]}
 	 {*ast.CallExpr [len b]}
 
 
 function name is SpaceLeft 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [sa]}
+	 {*ast.FieldList -> *ast.Field [sa]}
 	 {*ast.StarExpr [StringArena SpaceLeft]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr [cap]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [-]}
+	 {*ast.CallExpr [cap]}
 	 {*ast.SelectorExpr [sa buf]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [sa buf]}
 
 
 function name is String 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [String]}
+	 { [String]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [s string]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len b INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING ""]}
-	 {*ast.AssignStmt [pbytes]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len b]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
+	 {*ast.AssignStmt [:= pbytes]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b]}
-	 {*ast.AssignStmt [pstring]}
+	 {*ast.UnaryExpr [& b]}
+	 {*ast.AssignStmt [:= pstring]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect StringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [s]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [pstring Data]}
+	 {*ast.UnaryExpr [& s]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [pstring Data]}
 	 {*ast.SelectorExpr [pbytes Data]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [pstring Len]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [pstring Len]}
 	 {*ast.SelectorExpr [pbytes Len]}
 	 {*ast.ReturnStmt []}
 
 
 function name is StringPointer 
-	 {*ast.CommentGroup -> *ast.Comment [StringPointer]}
+	 { [StringPointer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [pstring]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= pstring]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect StringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [s]}
+	 {*ast.UnaryExpr [& s]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [pstring Data]}
 

@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-func checkData(listFunctions []basicStr) []string {
+func checkDataPattern(listFunctions []basicStr) []string {
 	dataCheck1 := false   // check reflect.SliceHeader
 	var dataVar1 string   // save the variable name for reflect.SliceHeader
 	var dataAssign string // a variable which assigns to dataVar1

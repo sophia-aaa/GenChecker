@@ -1,14 +1,15 @@
 {*ast.File [jlexer]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+
+
 
 
 function name is bytesToStr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment [bytesToStr]}
+	 { [bytesToStr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [data]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [data]}
+	 {*ast.UnaryExpr [& data]}
 
 

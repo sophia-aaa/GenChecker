@@ -1,13 +1,6 @@
 {*ast.File [io]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "math"]}
-{*ast.ImportSpec [STRING "os"]}
-{*ast.ImportSpec [STRING "path/filepath"]}
-{*ast.ImportSpec [STRING "reflect"]}
-{*ast.ImportSpec [STRING "testing"]}
-{*ast.ImportSpec [STRING "time"]}
-{*ast.ImportSpec [STRING "github.com/stretchr/testify/assert"]}
-{*ast.ImportSpec [. STRING "gopkg.in/check.v1"]}
-{*ast.ImportSpec [STRING "github.com/alpacahq/marketstore/v4/utils"]}
+
+
 
 
 function name is TestVariableBoundaryCases 
@@ -15,75 +8,110 @@ function name is TestVariableBoundaryCases
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Parallel]}
-	 {*ast.AssignStmt [t1]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time Date INT 2008]}
-	 {*ast.SelectorExpr [time January INT 3 INT 16 INT 24 INT 3]}
-	 {*ast.BinaryExpr [INT 1000 INT 255970]}
+	 {*ast.AssignStmt [:= t1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Date]}
+	 {*ast.BasicLit [INT 2008]}
+	 {*ast.SelectorExpr [time January]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.BasicLit [INT 16]}
+	 {*ast.BasicLit [INT 24]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.BasicLit [INT 1000]}
+	 {*ast.BasicLit [INT 255970]}
 	 {*ast.SelectorExpr [time UTC]}
-	 {*ast.AssignStmt [index]}
+	 {*ast.AssignStmt [:= index]}
 	 {*ast.CallExpr [TimeToIndex t1]}
 	 {*ast.SelectorExpr [time Minute]}
-	 {*ast.AssignStmt [oTime1]}
+	 {*ast.AssignStmt [:= oTime1]}
 	 {*ast.CallExpr [IndexToTime index]}
-	 {*ast.SelectorExpr [time Minute INT 2008]}
+	 {*ast.SelectorExpr [time Minute]}
+	 {*ast.BasicLit [INT 2008]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [oTime1 Minute INT 24]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [oTime1 Minute]}
+	 {*ast.BasicLit [INT 24]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [oTime1 Second INT 0]}
-	 {*ast.AssignStmt [ticks]}
-	 {*ast.CallExpr [GetIntervalTicks32Bit t1 index INT 1440]}
-	 {*ast.AssignStmt [seconds]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [oTime1 Second]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= ticks]}
+	 {*ast.CallExpr [GetIntervalTicks32Bit t1 index]}
+	 {*ast.BasicLit [INT 1440]}
+	 {*ast.AssignStmt [:= seconds]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t1 Second]}
-	 {*ast.AssignStmt [nanos]}
+	 {*ast.AssignStmt [:= nanos]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t1 Nanosecond]}
-	 {*ast.AssignStmt [fractionalSeconds]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [float64 seconds]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [float64 nanos FLOAT 1000000000.]}
-	 {*ast.AssignStmt [fractionalInterval]}
-	 {*ast.BinaryExpr [fractionalSeconds FLOAT 60.]}
-	 {*ast.AssignStmt [intervalTicks]}
+	 {*ast.AssignStmt [:= fractionalSeconds]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [float64 seconds]}
+	 {*ast.BinaryExpr [/]}
+	 {*ast.CallExpr [float64 nanos]}
+	 {*ast.BasicLit [FLOAT 1000000000.]}
+	 {*ast.AssignStmt [:= fractionalInterval]}
+	 {*ast.BinaryExpr [/ fractionalSeconds]}
+	 {*ast.BasicLit [FLOAT 60.]}
+	 {*ast.AssignStmt [:= intervalTicks]}
 	 {*ast.CallExpr [uint32]}
-	 {*ast.BinaryExpr [fractionalInterval]}
+	 {*ast.BinaryExpr [* fractionalInterval]}
 	 {*ast.SelectorExpr [math MaxUint32]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t intervalTicks ticks]}
-	 {*ast.AssignStmt [t1]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time Date INT 2008]}
-	 {*ast.SelectorExpr [time January INT 3 INT 16 INT 24 INT 59]}
-	 {*ast.BinaryExpr [INT 1000 INT 839106]}
+	 {*ast.AssignStmt [= t1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Date]}
+	 {*ast.BasicLit [INT 2008]}
+	 {*ast.SelectorExpr [time January]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.BasicLit [INT 16]}
+	 {*ast.BasicLit [INT 24]}
+	 {*ast.BasicLit [INT 59]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.BasicLit [INT 1000]}
+	 {*ast.BasicLit [INT 839106]}
 	 {*ast.SelectorExpr [time UTC]}
-	 {*ast.AssignStmt [index]}
+	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t1]}
 	 {*ast.SelectorExpr [time Minute]}
-	 {*ast.AssignStmt [oTime1]}
+	 {*ast.AssignStmt [= oTime1]}
 	 {*ast.CallExpr [IndexToTime index]}
-	 {*ast.SelectorExpr [time Minute INT 2008]}
+	 {*ast.SelectorExpr [time Minute]}
+	 {*ast.BasicLit [INT 2008]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [oTime1 Minute INT 24]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [oTime1 Minute]}
+	 {*ast.BasicLit [INT 24]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [oTime1 Second INT 0]}
-	 {*ast.AssignStmt [ticks]}
-	 {*ast.CallExpr [GetIntervalTicks32Bit t1 index INT 1440]}
-	 {*ast.AssignStmt [seconds]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [oTime1 Second]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [= ticks]}
+	 {*ast.CallExpr [GetIntervalTicks32Bit t1 index]}
+	 {*ast.BasicLit [INT 1440]}
+	 {*ast.AssignStmt [= seconds]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t1 Second]}
-	 {*ast.AssignStmt [nanos]}
+	 {*ast.AssignStmt [= nanos]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t1 Nanosecond]}
-	 {*ast.AssignStmt [fractionalSeconds]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [float64 seconds]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [float64 nanos FLOAT 1000000000.]}
-	 {*ast.AssignStmt [fractionalInterval]}
-	 {*ast.BinaryExpr [fractionalSeconds FLOAT 60.]}
-	 {*ast.AssignStmt [intervalTicks]}
+	 {*ast.AssignStmt [= fractionalSeconds]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [float64 seconds]}
+	 {*ast.BinaryExpr [/]}
+	 {*ast.CallExpr [float64 nanos]}
+	 {*ast.BasicLit [FLOAT 1000000000.]}
+	 {*ast.AssignStmt [= fractionalInterval]}
+	 {*ast.BinaryExpr [/ fractionalSeconds]}
+	 {*ast.BasicLit [FLOAT 60.]}
+	 {*ast.AssignStmt [= intervalTicks]}
 	 {*ast.CallExpr [uint32]}
-	 {*ast.BinaryExpr [fractionalInterval]}
+	 {*ast.BinaryExpr [* fractionalInterval]}
 	 {*ast.SelectorExpr [math MaxUint32]}
-	 {*ast.AssignStmt [diff]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [int64 intervalTicks]}
+	 {*ast.AssignStmt [:= diff]}
+	 {*ast.BinaryExpr [-]}
+	 {*ast.CallExpr [int64 intervalTicks]}
 	 {*ast.CallExpr [int64 ticks]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [diff INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [diff]}
-	 {*ast.UnaryExpr [diff]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [< diff]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [= diff]}
+	 {*ast.UnaryExpr [- diff]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr [diff INT 2]}
+	 {*ast.BinaryExpr [< diff]}
+	 {*ast.BasicLit [INT 2]}
 
 
 function name is TestGenerics 
@@ -91,66 +119,148 @@ function name is TestGenerics
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Parallel]}
-	 {*ast.AssignStmt [input]}
-	 {*ast.CompositeLit -> *ast.ArrayType [float64 INT 1 INT 2 INT 3 INT 4 INT 5 INT 6 INT 7 INT 8 INT 9 INT 10]}
-	 {*ast.AssignStmt [output err]}
-	 {*ast.CallExpr [DownSizeSlice input INT 6 LAST]}
-	 {*ast.AssignStmt [expected]}
-	 {*ast.CompositeLit -> *ast.ArrayType [float64 INT 5 INT 6 INT 7 INT 8 INT 9 INT 10]}
+	 {*ast.AssignStmt [:= input]}
+	 {*ast.CompositeLit -> *ast.ArrayType [float64]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
+	 {*ast.BasicLit [INT 7]}
+	 {*ast.BasicLit [INT 8]}
+	 {*ast.BasicLit [INT 9]}
+	 {*ast.BasicLit [INT 10]}
+	 {*ast.AssignStmt [:= output err]}
+	 {*ast.CallExpr [DownSizeSlice input]}
+	 {*ast.BasicLit [INT 6 LAST]}
+	 {*ast.AssignStmt [:= expected]}
+	 {*ast.CompositeLit -> *ast.ArrayType [float64]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
+	 {*ast.BasicLit [INT 7]}
+	 {*ast.BasicLit [INT 8]}
+	 {*ast.BasicLit [INT 9]}
+	 {*ast.BasicLit [INT 10]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual output expected]}
-	 {*ast.AssignStmt [output err]}
-	 {*ast.CallExpr [DownSizeSlice input INT 6 FIRST]}
-	 {*ast.AssignStmt [expected]}
-	 {*ast.CompositeLit -> *ast.ArrayType [float64 INT 1 INT 2 INT 3 INT 4 INT 5 INT 6]}
+	 {*ast.AssignStmt [= output err]}
+	 {*ast.CallExpr [DownSizeSlice input]}
+	 {*ast.BasicLit [INT 6 FIRST]}
+	 {*ast.AssignStmt [= expected]}
+	 {*ast.CompositeLit -> *ast.ArrayType [float64]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual output expected Equals]}
-	 {*ast.AssignStmt [input2]}
-	 {*ast.CompositeLit -> *ast.ArrayType [uint32 INT 1 INT 2 INT 3 INT 4 INT 5 INT 6 INT 7 INT 8 INT 9 INT 10]}
-	 {*ast.AssignStmt [output2 err]}
-	 {*ast.CallExpr [DownSizeSlice input2 INT 6 FIRST]}
-	 {*ast.AssignStmt [expected2]}
-	 {*ast.CompositeLit -> *ast.ArrayType [uint32 INT 1 INT 2 INT 3 INT 4 INT 5 INT 6]}
+	 {*ast.AssignStmt [:= input2]}
+	 {*ast.CompositeLit -> *ast.ArrayType [uint32]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
+	 {*ast.BasicLit [INT 7]}
+	 {*ast.BasicLit [INT 8]}
+	 {*ast.BasicLit [INT 9]}
+	 {*ast.BasicLit [INT 10]}
+	 {*ast.AssignStmt [:= output2 err]}
+	 {*ast.CallExpr [DownSizeSlice input2]}
+	 {*ast.BasicLit [INT 6 FIRST]}
+	 {*ast.AssignStmt [:= expected2]}
+	 {*ast.CompositeLit -> *ast.ArrayType [uint32]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual output2 expected2]}
-	 {*ast.AssignStmt [input3]}
-	 {*ast.CompositeLit -> *ast.ArrayType [string STRING "1" STRING "2" STRING "3" STRING "4" STRING "5" STRING "6" STRING "7" STRING "8" STRING "9" STRING "10"]}
-	 {*ast.AssignStmt [output3 err]}
-	 {*ast.CallExpr [DownSizeSlice input3 INT 6 FIRST]}
-	 {*ast.AssignStmt [expected3]}
-	 {*ast.CompositeLit -> *ast.ArrayType [string STRING "1" STRING "2" STRING "3" STRING "4" STRING "5" STRING "6"]}
+	 {*ast.AssignStmt [:= input3]}
+	 {*ast.CompositeLit -> *ast.ArrayType [string]}
+	 {*ast.BasicLit [STRING "1"]}
+	 {*ast.BasicLit [STRING "2"]}
+	 {*ast.BasicLit [STRING "3"]}
+	 {*ast.BasicLit [STRING "4"]}
+	 {*ast.BasicLit [STRING "5"]}
+	 {*ast.BasicLit [STRING "6"]}
+	 {*ast.BasicLit [STRING "7"]}
+	 {*ast.BasicLit [STRING "8"]}
+	 {*ast.BasicLit [STRING "9"]}
+	 {*ast.BasicLit [STRING "10"]}
+	 {*ast.AssignStmt [:= output3 err]}
+	 {*ast.CallExpr [DownSizeSlice input3]}
+	 {*ast.BasicLit [INT 6 FIRST]}
+	 {*ast.AssignStmt [:= expected3]}
+	 {*ast.CompositeLit -> *ast.ArrayType [string]}
+	 {*ast.BasicLit [STRING "1"]}
+	 {*ast.BasicLit [STRING "2"]}
+	 {*ast.BasicLit [STRING "3"]}
+	 {*ast.BasicLit [STRING "4"]}
+	 {*ast.BasicLit [STRING "5"]}
+	 {*ast.BasicLit [STRING "6"]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual output3 expected3]}
-	 {*ast.AssignStmt [_ err]}
-	 {*ast.CallExpr [DownSizeSlice STRING "Should not work" INT 100 FIRST]}
+	 {*ast.AssignStmt [= _ err]}
+	 {*ast.CallExpr [DownSizeSlice]}
+	 {*ast.BasicLit [STRING "Should not work"]}
+	 {*ast.BasicLit [INT 100 FIRST]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NotNil t err]}
 
 
 function name is makeTestCS 
 	 { [makeTestCS]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [ColumnSeries]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [col1]}
-	 {*ast.CompositeLit -> *ast.ArrayType [float32 INT 1 INT 2 INT 3]}
-	 {*ast.AssignStmt [col2]}
-	 {*ast.CompositeLit -> *ast.ArrayType [float64 INT 1 INT 2 INT 3]}
-	 {*ast.AssignStmt [col3]}
-	 {*ast.CompositeLit -> *ast.ArrayType [int32 INT 1 INT 2 INT 3]}
-	 {*ast.AssignStmt [col4]}
-	 {*ast.CompositeLit -> *ast.ArrayType [int64 INT 1 INT 2 INT 3]}
-	 {*ast.AssignStmt [col5]}
-	 {*ast.CompositeLit -> *ast.ArrayType [byte INT 1 INT 2 INT 3]}
-	 {*ast.AssignStmt [csA]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= col1]}
+	 {*ast.CompositeLit -> *ast.ArrayType [float32]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.AssignStmt [:= col2]}
+	 {*ast.CompositeLit -> *ast.ArrayType [float64]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.AssignStmt [:= col3]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int32]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.AssignStmt [:= col4]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int64]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.AssignStmt [:= col5]}
+	 {*ast.CompositeLit -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.AssignStmt [:= csA]}
 	 {*ast.CallExpr [NewColumnSeries]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn STRING "Epoch" col4]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn STRING "One" col1]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn STRING "Two" col2]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn STRING "Three" col3]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn STRING "Four" col4]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn STRING "Five" col5]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
+	 {*ast.BasicLit [STRING "Epoch" col4]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
+	 {*ast.BasicLit [STRING "One" col1]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
+	 {*ast.BasicLit [STRING "Two" col2]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
+	 {*ast.BasicLit [STRING "Three" col3]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
+	 {*ast.BasicLit [STRING "Four" col4]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
+	 {*ast.BasicLit [STRING "Five" col5]}
 	 {*ast.ReturnStmt [csA]}
 
 
@@ -159,71 +269,95 @@ function name is TestSerializeColumnsToRows
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Parallel]}
-	 {*ast.AssignStmt [csA]}
+	 {*ast.AssignStmt [:= csA]}
 	 {*ast.CallExpr [makeTestCS]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [csA Len INT 3]}
-	 {*ast.AssignStmt [dsv]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [csA Len]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.AssignStmt [:= dsv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [csA GetDataShapes]}
-	 {*ast.AssignStmt [UnalignedBytesPerRow]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [INT 8 INT 4 INT 8 INT 4 INT 8 INT 1]}
-	 {*ast.AssignStmt [data reclen err]}
+	 {*ast.AssignStmt [:= UnalignedBytesPerRow]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BasicLit [INT 8]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 8]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 8]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= data reclen err]}
 	 {*ast.CallExpr [SerializeColumnsToRows csA dsv false]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr [reclen UnalignedBytesPerRow]}
+	 {*ast.BinaryExpr [== reclen UnalignedBytesPerRow]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [reclen INT 3]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [* reclen]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [len data]}
-	 {*ast.AssignStmt [AlignedBytesPerRow]}
+	 {*ast.AssignStmt [:= AlignedBytesPerRow]}
 	 {*ast.CallExpr [AlignedSize UnalignedBytesPerRow]}
-	 {*ast.AssignStmt [data reclen err]}
+	 {*ast.AssignStmt [= data reclen err]}
 	 {*ast.CallExpr [SerializeColumnsToRows csA dsv true]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr [reclen AlignedBytesPerRow]}
+	 {*ast.BinaryExpr [== reclen AlignedBytesPerRow]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [reclen INT 3]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [* reclen]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [len data]}
-	 {*ast.AssignStmt [csB]}
+	 {*ast.AssignStmt [:= csB]}
 	 {*ast.CallExpr [makeTestCS]}
-	 {*ast.AssignStmt [err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [csB Remove STRING "Three"]}
+	 {*ast.AssignStmt [= err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [csB Remove]}
+	 {*ast.BasicLit [STRING "Three"]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
-	 {*ast.AssignStmt [dsvProjected]}
+	 {*ast.AssignStmt [:= dsvProjected]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [csB GetDataShapes]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [expectedLen int]}
+	 {*ast.GenDecl -> *ast.ValueSpec [expectedLen int]}
 	 {*ast.RangeStmt [_ shape dsvProjected]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [expectedLen]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [+= expectedLen]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [shape Len]}
-	 {*ast.AssignStmt [expectedLen]}
+	 {*ast.AssignStmt [= expectedLen]}
 	 {*ast.CallExpr [AlignedSize expectedLen]}
-	 {*ast.AssignStmt [data reclen err]}
+	 {*ast.AssignStmt [= data reclen err]}
 	 {*ast.CallExpr [SerializeColumnsToRows csA dsvProjected true]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr [reclen expectedLen]}
+	 {*ast.BinaryExpr [== reclen expectedLen]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [reclen INT 3]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [* reclen]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [len data]}
-	 {*ast.AssignStmt [err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [csB CoerceColumnType STRING "Two" BYTE]}
+	 {*ast.AssignStmt [= err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [csB CoerceColumnType]}
+	 {*ast.BasicLit [STRING "Two" BYTE]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
-	 {*ast.AssignStmt [dsvProjected]}
+	 {*ast.AssignStmt [= dsvProjected]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [csB GetDataShapes]}
-	 {*ast.AssignStmt [expectedLen INT 0]}
+	 {*ast.AssignStmt [= expectedLen]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.RangeStmt [_ shape dsvProjected]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [expectedLen]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [+= expectedLen]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [shape Len]}
-	 {*ast.AssignStmt [expectedLen]}
+	 {*ast.AssignStmt [= expectedLen]}
 	 {*ast.CallExpr [AlignedSize expectedLen]}
-	 {*ast.AssignStmt [data reclen err]}
+	 {*ast.AssignStmt [= data reclen err]}
 	 {*ast.CallExpr [SerializeColumnsToRows csA dsvProjected true]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr [reclen expectedLen]}
+	 {*ast.BinaryExpr [== reclen expectedLen]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [reclen INT 3]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [* reclen]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.CallExpr [len data]}
 
 
@@ -232,53 +366,65 @@ function name is TestTimeBucketInfo
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Parallel]}
-	 {*ast.AssignStmt [tempDir]}
+	 {*ast.AssignStmt [:= tempDir]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t TempDir]}
-	 {*ast.AssignStmt [timeframe]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [utils NewTimeframe STRING "1Min"]}
-	 {*ast.AssignStmt [filePath]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [filepath Join tempDir STRING "2018.bin"]}
-	 {*ast.AssignStmt [description STRING "testing"]}
-	 {*ast.AssignStmt [year]}
-	 {*ast.CallExpr [int16 INT 2018]}
-	 {*ast.AssignStmt [dsv]}
+	 {*ast.AssignStmt [:= timeframe]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [utils NewTimeframe]}
+	 {*ast.BasicLit [STRING "1Min"]}
+	 {*ast.AssignStmt [:= filePath]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [filepath Join tempDir]}
+	 {*ast.BasicLit [STRING "2018.bin"]}
+	 {*ast.AssignStmt [:= description]}
+	 {*ast.BasicLit [STRING "testing"]}
+	 {*ast.AssignStmt [:= year]}
+	 {*ast.CallExpr [int16]}
+	 {*ast.BasicLit [INT 2018]}
+	 {*ast.AssignStmt [:= dsv]}
 	 {*ast.CallExpr [NewDataShapeVector]}
-	 {*ast.CompositeLit -> *ast.ArrayType [string STRING "Open" STRING "Close"]}
+	 {*ast.CompositeLit -> *ast.ArrayType [string]}
+	 {*ast.BasicLit [STRING "Open"]}
+	 {*ast.BasicLit [STRING "Close"]}
 	 {*ast.CompositeLit -> *ast.ArrayType [EnumElementType FLOAT32 FLOAT32]}
-	 {*ast.AssignStmt [recType FIXED]}
-	 {*ast.AssignStmt [tbi]}
+	 {*ast.AssignStmt [:= recType FIXED]}
+	 {*ast.AssignStmt [:= tbi]}
 	 {*ast.CallExpr [NewTimeBucketInfo]}
 	 {*ast.StarExpr [timeframe filePath description year dsv recType]}
-	 {*ast.AssignStmt [testFilePath err]}
+	 {*ast.AssignStmt [:= testFilePath err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [os Create filePath]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr [WriteHeader testFilePath tbi]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
-	 {*ast.AssignStmt [tbi2]}
+	 {*ast.AssignStmt [:= tbi2]}
 	 {*ast.CompositeLit [TimeBucketInfo]}
 	 {*ast.KeyValueExpr [Year year]}
 	 {*ast.KeyValueExpr [Path filePath]}
-	 {*ast.AssignStmt [nElements]}
+	 {*ast.AssignStmt [:= nElements]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [tbi2 GetNelements]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t nElements]}
-	 {*ast.CallExpr [int32 INT 2]}
+	 {*ast.CallExpr [int32]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [tbi2 GetVariableRecordLength]}
-	 {*ast.CallExpr [int32 INT 0]}
-	 {*ast.AssignStmt [fcopy]}
+	 {*ast.CallExpr [int32]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= fcopy]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [tbi2 GetDeepCopy]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [fcopy timeframe Nanoseconds]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [tbi timeframe Nanoseconds]}
-	 {*ast.AssignStmt [dsv2]}
+	 {*ast.AssignStmt [:= dsv2]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [tbi2 GetDataShapes]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv2 INT 0 String]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv INT 0 String]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv2]}
+	 {*ast.BasicLit [INT 0 String]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv]}
+	 {*ast.BasicLit [INT 0 String]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv2 INT 0 Equal]}
-	 {*ast.IndexExpr [dsv INT 0 true]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv2]}
+	 {*ast.BasicLit [INT 0 Equal]}
+	 {*ast.IndexExpr [dsv]}
+	 {*ast.BasicLit [INT 0 true]}
 
 
 function name is TestIndexAndOffset 
@@ -286,127 +432,174 @@ function name is TestIndexAndOffset
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Parallel]}
-	 {*ast.AssignStmt [recSize]}
-	 {*ast.CallExpr [int32 INT 28]}
-	 {*ast.AssignStmt [loc _]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time LoadLocation STRING "America/New_York"]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [utils InstanceConfig Timezone loc]}
-	 {*ast.AssignStmt [t0]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time Date INT 2018]}
-	 {*ast.SelectorExpr [time January INT 1 INT 0 INT 0 INT 0 INT 0 loc]}
-	 {*ast.AssignStmt [index]}
+	 {*ast.AssignStmt [:= recSize]}
+	 {*ast.CallExpr [int32]}
+	 {*ast.BasicLit [INT 28]}
+	 {*ast.AssignStmt [:= loc _]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time LoadLocation]}
+	 {*ast.BasicLit [STRING "America/New_York"]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [utils InstanceConfig Timezone loc]}
+	 {*ast.AssignStmt [:= t0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Date]}
+	 {*ast.BasicLit [INT 2018]}
+	 {*ast.SelectorExpr [time January]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.AssignStmt [:= index]}
 	 {*ast.CallExpr [TimeToIndex t0]}
 	 {*ast.SelectorExpr [time Minute]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t index]}
-	 {*ast.CallExpr [int64 INT 1]}
-	 {*ast.AssignStmt [oT0]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= oT0]}
 	 {*ast.CallExpr [IndexToTime index]}
-	 {*ast.SelectorExpr [time Minute INT 2018]}
+	 {*ast.SelectorExpr [time Minute]}
+	 {*ast.BasicLit [INT 2018]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oT0 t0]}
-	 {*ast.AssignStmt [offset]}
+	 {*ast.AssignStmt [:= offset]}
 	 {*ast.CallExpr [TimeToOffset t0]}
 	 {*ast.SelectorExpr [time Minute recSize]}
-	 {*ast.AssignStmt [oO0]}
+	 {*ast.AssignStmt [:= oO0]}
 	 {*ast.CallExpr [IndexToOffset index recSize]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oO0 offset]}
-	 {*ast.AssignStmt [epoch]}
+	 {*ast.AssignStmt [:= epoch]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t0 Unix]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr [EpochToOffset epoch]}
 	 {*ast.SelectorExpr [time Minute recSize offset]}
-	 {*ast.AssignStmt [t1]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time Date INT 2018]}
-	 {*ast.SelectorExpr [time January INT 1 INT 0 INT 5 INT 0 INT 0 loc]}
-	 {*ast.AssignStmt [index]}
+	 {*ast.AssignStmt [:= t1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Date]}
+	 {*ast.BasicLit [INT 2018]}
+	 {*ast.SelectorExpr [time January]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t1]}
-	 {*ast.BinaryExpr [INT 5]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.SelectorExpr [time Minute]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t index]}
-	 {*ast.CallExpr [int64 INT 2]}
-	 {*ast.AssignStmt [oT1]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.AssignStmt [:= oT1]}
 	 {*ast.CallExpr [IndexToTime index]}
-	 {*ast.BinaryExpr [INT 5]}
-	 {*ast.SelectorExpr [time Minute INT 2018]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.SelectorExpr [time Minute]}
+	 {*ast.BasicLit [INT 2018]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oT1 t1]}
-	 {*ast.AssignStmt [offset]}
+	 {*ast.AssignStmt [= offset]}
 	 {*ast.CallExpr [TimeToOffset t1]}
-	 {*ast.BinaryExpr [INT 5]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.SelectorExpr [time Minute recSize]}
-	 {*ast.AssignStmt [oO1]}
+	 {*ast.AssignStmt [:= oO1]}
 	 {*ast.CallExpr [IndexToOffset index recSize]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oO1 offset]}
-	 {*ast.AssignStmt [epoch]}
+	 {*ast.AssignStmt [= epoch]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t1 Unix]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr [EpochToOffset epoch]}
-	 {*ast.BinaryExpr [INT 5]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.BasicLit [INT 5]}
 	 {*ast.SelectorExpr [time Minute recSize offset]}
-	 {*ast.AssignStmt [t2]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time Date INT 2018]}
-	 {*ast.SelectorExpr [time February INT 5 INT 0 INT 0 INT 0 INT 0 loc]}
-	 {*ast.AssignStmt [index]}
+	 {*ast.AssignStmt [:= t2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Date]}
+	 {*ast.BasicLit [INT 2018]}
+	 {*ast.SelectorExpr [time February]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t2]}
 	 {*ast.SelectorExpr [utils Day]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t index]}
-	 {*ast.CallExpr [int64 INT 35]}
-	 {*ast.AssignStmt [oT2]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 35]}
+	 {*ast.AssignStmt [:= oT2]}
 	 {*ast.CallExpr [IndexToTime index]}
-	 {*ast.SelectorExpr [utils Day INT 2018]}
+	 {*ast.SelectorExpr [utils Day]}
+	 {*ast.BasicLit [INT 2018]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.BinaryExpr [oT2 t2 true]}
-	 {*ast.AssignStmt [offset]}
+	 {*ast.BinaryExpr [== oT2 t2 true]}
+	 {*ast.AssignStmt [= offset]}
 	 {*ast.CallExpr [TimeToOffset t2]}
 	 {*ast.SelectorExpr [utils Day recSize]}
-	 {*ast.AssignStmt [oO2]}
+	 {*ast.AssignStmt [:= oO2]}
 	 {*ast.CallExpr [IndexToOffset index recSize]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oO2 offset]}
-	 {*ast.AssignStmt [epoch]}
+	 {*ast.AssignStmt [= epoch]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t2 Unix]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr [EpochToOffset epoch]}
 	 {*ast.SelectorExpr [utils Day recSize offset]}
-	 {*ast.AssignStmt [t3]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time Date INT 2018]}
-	 {*ast.SelectorExpr [time December INT 31 INT 0 INT 0 INT 0 INT 0 loc]}
-	 {*ast.AssignStmt [index]}
+	 {*ast.AssignStmt [:= t3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Date]}
+	 {*ast.BasicLit [INT 2018]}
+	 {*ast.SelectorExpr [time December]}
+	 {*ast.BasicLit [INT 31]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t3]}
 	 {*ast.SelectorExpr [utils Day]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t index]}
-	 {*ast.CallExpr [int64 INT 364]}
-	 {*ast.AssignStmt [oT3]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 364]}
+	 {*ast.AssignStmt [:= oT3]}
 	 {*ast.CallExpr [IndexToTime index]}
-	 {*ast.SelectorExpr [utils Day INT 2018]}
+	 {*ast.SelectorExpr [utils Day]}
+	 {*ast.BasicLit [INT 2018]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oT3 t3]}
-	 {*ast.AssignStmt [offset]}
+	 {*ast.AssignStmt [= offset]}
 	 {*ast.CallExpr [TimeToOffset t3]}
 	 {*ast.SelectorExpr [utils Day recSize]}
-	 {*ast.AssignStmt [oO3]}
+	 {*ast.AssignStmt [:= oO3]}
 	 {*ast.CallExpr [IndexToOffset index recSize]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oO3 offset]}
-	 {*ast.AssignStmt [epoch]}
+	 {*ast.AssignStmt [= epoch]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t3 Unix]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr [EpochToOffset epoch]}
 	 {*ast.SelectorExpr [utils Day recSize offset]}
-	 {*ast.AssignStmt [t4]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time Date INT 2018]}
-	 {*ast.SelectorExpr [time December INT 31 INT 23 INT 59 INT 0 INT 0 loc]}
-	 {*ast.AssignStmt [index]}
+	 {*ast.AssignStmt [:= t4]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Date]}
+	 {*ast.BasicLit [INT 2018]}
+	 {*ast.SelectorExpr [time December]}
+	 {*ast.BasicLit [INT 31]}
+	 {*ast.BasicLit [INT 23]}
+	 {*ast.BasicLit [INT 59]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t4]}
 	 {*ast.SelectorExpr [time Minute]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t index]}
-	 {*ast.CallExpr [int64 INT 525600]}
-	 {*ast.AssignStmt [oT4]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 525600]}
+	 {*ast.AssignStmt [:= oT4]}
 	 {*ast.CallExpr [IndexToTime index]}
-	 {*ast.SelectorExpr [time Minute INT 2018]}
+	 {*ast.SelectorExpr [time Minute]}
+	 {*ast.BasicLit [INT 2018]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oT4 t4]}
-	 {*ast.AssignStmt [offset]}
+	 {*ast.AssignStmt [= offset]}
 	 {*ast.CallExpr [TimeToOffset t4]}
 	 {*ast.SelectorExpr [time Minute recSize]}
-	 {*ast.AssignStmt [oO4]}
+	 {*ast.AssignStmt [:= oO4]}
 	 {*ast.CallExpr [IndexToOffset index recSize]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t oO4 offset]}
-	 {*ast.AssignStmt [epoch]}
+	 {*ast.AssignStmt [= epoch]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t4 Unix]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr [EpochToOffset epoch]}
@@ -418,23 +611,26 @@ function name is TestUnion
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Parallel]}
-	 {*ast.AssignStmt [csA]}
+	 {*ast.AssignStmt [:= csA]}
 	 {*ast.CallExpr [makeTestCS]}
-	 {*ast.AssignStmt [csB]}
+	 {*ast.AssignStmt [:= csB]}
 	 {*ast.CallExpr [makeTestCS]}
-	 {*ast.AssignStmt [cs]}
+	 {*ast.AssignStmt [:= cs]}
 	 {*ast.CallExpr [ColumnSeriesUnion csA csB]}
 	 {*ast.RangeStmt [name col]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cs GetColumns]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf col Kind]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf col Kind]}
 	 {*ast.SelectorExpr [reflect Slice]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [av]}
+	 {*ast.BlockStmt -> *ast.BranchStmt []}
+	 {*ast.AssignStmt [:= av]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [csA columns name]}
-	 {*ast.AssignStmt [bv]}
+	 {*ast.AssignStmt [:= bv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [csB columns name]}
-	 {*ast.AssignStmt [cv]}
+	 {*ast.AssignStmt [:= cv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf col]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [av Len]}
@@ -442,8 +638,10 @@ function name is TestUnion
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bv Len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cv Len]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cv Len]}
 	 {*ast.IncDecStmt [i]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
@@ -453,62 +651,104 @@ function name is TestUnion
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [bv Index i Interface]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [cv Index i Interface]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [csA RestrictLength INT 2 LAST]}
-	 {*ast.AssignStmt [cs]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [csA RestrictLength]}
+	 {*ast.BasicLit [INT 2 LAST]}
+	 {*ast.AssignStmt [= cs]}
 	 {*ast.CallExpr [ColumnSeriesUnion csA csB]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr [len]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 0]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csB GetEpoch INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csB GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 1]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csA GetEpoch INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csA GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 2]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csA GetEpoch INT 1]}
-	 {*ast.AssignStmt [col1]}
-	 {*ast.CompositeLit -> *ast.ArrayType [float32 INT 4 INT 5 INT 6]}
-	 {*ast.AssignStmt [col2]}
-	 {*ast.CompositeLit -> *ast.ArrayType [float64 INT 4 INT 5 INT 6]}
-	 {*ast.AssignStmt [col3]}
-	 {*ast.CompositeLit -> *ast.ArrayType [int32 INT 4 INT 5 INT 6]}
-	 {*ast.AssignStmt [col4]}
-	 {*ast.CompositeLit -> *ast.ArrayType [int64 INT 4 INT 5 INT 6]}
-	 {*ast.AssignStmt [col5]}
-	 {*ast.CompositeLit -> *ast.ArrayType [byte INT 4 INT 5 INT 6]}
-	 {*ast.AssignStmt [csC]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csA GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= col1]}
+	 {*ast.CompositeLit -> *ast.ArrayType [float32]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
+	 {*ast.AssignStmt [:= col2]}
+	 {*ast.CompositeLit -> *ast.ArrayType [float64]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
+	 {*ast.AssignStmt [:= col3]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int32]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
+	 {*ast.AssignStmt [:= col4]}
+	 {*ast.CompositeLit -> *ast.ArrayType [int64]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
+	 {*ast.AssignStmt [:= col5]}
+	 {*ast.CompositeLit -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.BasicLit [INT 6]}
+	 {*ast.AssignStmt [:= csC]}
 	 {*ast.CallExpr [NewColumnSeries]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn STRING "Epoch" col4]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn STRING "One" col1]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn STRING "Two" col2]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn STRING "Three" col3]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn STRING "Four" col4]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn STRING "Five" col5]}
-	 {*ast.AssignStmt [cs]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
+	 {*ast.BasicLit [STRING "Epoch" col4]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
+	 {*ast.BasicLit [STRING "One" col1]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
+	 {*ast.BasicLit [STRING "Two" col2]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
+	 {*ast.BasicLit [STRING "Three" col3]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
+	 {*ast.BasicLit [STRING "Four" col4]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
+	 {*ast.BasicLit [STRING "Five" col5]}
+	 {*ast.AssignStmt [= cs]}
 	 {*ast.CallExpr [ColumnSeriesUnion csB csC]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr [len]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 6]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 6]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 0]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csB GetEpoch INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csB GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 1]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csB GetEpoch INT 1]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csB GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 2]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csB GetEpoch INT 2]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csB GetEpoch]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 3]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csC GetEpoch INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csC GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 4]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csC GetEpoch INT 1]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csC GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 5]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csC GetEpoch INT 2]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [csC GetEpoch]}
+	 {*ast.BasicLit [INT 2]}
 
 
 function name is TestSliceByEpoch 
@@ -516,95 +756,123 @@ function name is TestSliceByEpoch
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Parallel]}
-	 {*ast.AssignStmt [cs]}
+	 {*ast.AssignStmt [:= cs]}
 	 {*ast.CallExpr [makeTestCS]}
-	 {*ast.AssignStmt [start]}
-	 {*ast.CallExpr [int64 INT 2]}
-	 {*ast.AssignStmt [slc err]}
+	 {*ast.AssignStmt [:= start]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.AssignStmt [:= slc err]}
 	 {*ast.CallExpr [SliceColumnSeriesByEpoch]}
 	 {*ast.StarExpr [cs]}
-	 {*ast.UnaryExpr [start nil]}
+	 {*ast.UnaryExpr [& start nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NotNil t slc]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch INT 0]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 1]}
-	 {*ast.AssignStmt [start]}
-	 {*ast.CallExpr [int64 INT 0]}
-	 {*ast.AssignStmt [slc err]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= start]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [= slc err]}
 	 {*ast.CallExpr [SliceColumnSeriesByEpoch]}
 	 {*ast.StarExpr [cs]}
-	 {*ast.UnaryExpr [start nil]}
+	 {*ast.UnaryExpr [& start nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NotNil t slc]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch INT 0]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 0]}
-	 {*ast.AssignStmt [end]}
-	 {*ast.CallExpr [int64 INT 3]}
-	 {*ast.AssignStmt [slc err]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= end]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.AssignStmt [= slc err]}
 	 {*ast.CallExpr [SliceColumnSeriesByEpoch]}
 	 {*ast.StarExpr [cs nil]}
-	 {*ast.UnaryExpr [end]}
+	 {*ast.UnaryExpr [& end]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NotNil t slc]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len INT 2]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch INT 1]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 1]}
-	 {*ast.AssignStmt [end]}
-	 {*ast.CallExpr [int64 INT 4]}
-	 {*ast.AssignStmt [slc err]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= end]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.AssignStmt [= slc err]}
 	 {*ast.CallExpr [SliceColumnSeriesByEpoch]}
 	 {*ast.StarExpr [cs nil]}
-	 {*ast.UnaryExpr [end]}
+	 {*ast.UnaryExpr [& end]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NotNil t slc]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch INT 2]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 2]}
-	 {*ast.AssignStmt [start]}
-	 {*ast.CallExpr [int64 INT 2]}
-	 {*ast.AssignStmt [end]}
-	 {*ast.CallExpr [int64 INT 3]}
-	 {*ast.AssignStmt [slc err]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.AssignStmt [= start]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.AssignStmt [= end]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 3]}
+	 {*ast.AssignStmt [= slc err]}
 	 {*ast.CallExpr [SliceColumnSeriesByEpoch]}
 	 {*ast.StarExpr [cs]}
-	 {*ast.UnaryExpr [start]}
-	 {*ast.UnaryExpr [end]}
+	 {*ast.UnaryExpr [& start]}
+	 {*ast.UnaryExpr [& end]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NotNil t slc]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len INT 1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch INT 0]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 1]}
-	 {*ast.AssignStmt [start]}
-	 {*ast.CallExpr [int64 INT 0]}
-	 {*ast.AssignStmt [end]}
-	 {*ast.CallExpr [int64 INT 4]}
-	 {*ast.AssignStmt [slc err]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= start]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [= end]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 4]}
+	 {*ast.AssignStmt [= slc err]}
 	 {*ast.CallExpr [SliceColumnSeriesByEpoch]}
 	 {*ast.StarExpr [cs]}
-	 {*ast.UnaryExpr [start]}
-	 {*ast.UnaryExpr [end]}
+	 {*ast.UnaryExpr [& start]}
+	 {*ast.UnaryExpr [& end]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NotNil t slc]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len INT 3]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [slc Len]}
+	 {*ast.BasicLit [INT 3]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch INT 0]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch INT 2]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 2]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [slc GetEpoch]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 2]}
 
 
 function name is TestApplyTimeQual 
@@ -612,36 +880,46 @@ function name is TestApplyTimeQual
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Parallel]}
-	 {*ast.AssignStmt [cs]}
+	 {*ast.AssignStmt [:= cs]}
 	 {*ast.CallExpr [makeTestCS]}
-	 {*ast.AssignStmt [tq]}
+	 {*ast.AssignStmt [:= tq]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [epoch int64]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr [epoch]}
-	 {*ast.CallExpr [int64 INT 2]}
-	 {*ast.AssignStmt [tqCS]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [== epoch]}
+	 {*ast.CallExpr [int64]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.AssignStmt [:= tqCS]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cs ApplyTimeQual tq]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [tqCS Len INT 1]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [tqCS Len]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [tqCS GetEpoch INT 0]}
-	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch INT 1]}
-	 {*ast.AssignStmt [one ok]}
-	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [tqCS GetColumn STRING "One"]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [tqCS GetEpoch]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetEpoch]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= one ok]}
+	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [tqCS GetColumn]}
+	 {*ast.BasicLit [STRING "One"]}
 	 {*ast.ArrayType [float32]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t ok]}
-	 {*ast.AssignStmt [one2 ok]}
-	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetColumn STRING "One"]}
+	 {*ast.AssignStmt [:= one2 ok]}
+	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs GetColumn]}
+	 {*ast.BasicLit [STRING "One"]}
 	 {*ast.ArrayType [float32]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t ok]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.IndexExpr [one INT 0]}
-	 {*ast.IndexExpr [one2 INT 1]}
-	 {*ast.AssignStmt [tq]}
+	 {*ast.IndexExpr [one]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr [one2]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= tq]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [epoch int64]}
 	 {*ast.FieldList -> *ast.Field [bool]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs ApplyTimeQual tq Len INT 0]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [cs ApplyTimeQual tq Len]}
+	 {*ast.BasicLit [INT 0]}
 
 

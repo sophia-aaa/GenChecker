@@ -30,6 +30,11 @@ type basicStr struct {
 	value     []elem
 }
 
+type basicFunc struct {
+	funcName  string
+	funcToken token.Pos // to distinguish same name function
+}
+
 type basicCaseStr struct {
 	caseName string
 	value    []elem
@@ -38,7 +43,13 @@ type basicCaseStr struct {
 type caseResult struct {
 	funcName  string
 	funcToken string
-	caseCol   []basicCaseStr
+	cases     []basicCaseStr
+}
+
+type caseFilteredResult struct {
+	funcName     string
+	funcToken    string
+	caseFiltered []string
 }
 
 func buildAstDataStr(filename string) []basicStr {
@@ -60,7 +71,6 @@ func buildAstDataStr(filename string) []basicStr {
 	var listFunctions []basicStr
 	var astValue []string
 	genDeclBool := false
-	fileStart := false
 
 	ast.Inspect(astTree, func(node ast.Node) bool {
 		switch x := node.(type) {
@@ -72,7 +82,6 @@ func buildAstDataStr(filename string) []basicStr {
 			} else {
 				astNode += " -> " + reflect.TypeOf(x).String()
 			}
-			fileStart = true
 		case *ast.GenDecl:
 			if !genDeclBool {
 				if astNode != "" || len(astValue) != 0 { // if a new root meets
@@ -81,9 +90,11 @@ func buildAstDataStr(filename string) []basicStr {
 					elem_list = []elem{}
 					astNode = ""
 					astValue = []string{}
+
+					nameFunction = ""
+					tokPos = x.Pos()
+
 				}
-				nameFunction = ""
-				tokPos = x.Pos()
 			} else { // within function
 				if len(astValue) != 0 {
 					elem_list = append(elem_list, elem{astNode, astValue})
@@ -99,32 +110,21 @@ func buildAstDataStr(filename string) []basicStr {
 		case *ast.DeclStmt:
 			genDeclBool = true
 		case *ast.FuncDecl:
-			//	fmt.Println(x, "\t\t", reflect.TypeOf(x).String())
-			//	fmt.Println(fset.Position(x.Pos()), fset.Position(x.End()))
-			if fileStart {
+			if len(elem_list) > 0 || astNode != "" || len(astValue) != 0 { // if a new root meets
 				if astNode != "" || len(astValue) != 0 {
 					elem_list = append(elem_list, elem{astNode, astValue})
-					elem_list = []elem{}
-					astNode = ""
-					astValue = []string{}
 				}
-				listFunctions = append(listFunctions, basicStr{nameFunction, tokPos, elem_list})
-				fileStart = false
-				elem_list = []elem{}
-				astNode = ""
-				astValue = []string{}
-			} else if astNode != "" || len(astValue) != 0 { // if a new root meets
-				elem_list = append(elem_list, elem{astNode, astValue})
 				listFunctions = append(listFunctions, basicStr{nameFunction, tokPos, elem_list})
 				elem_list = []elem{}
 				astNode = ""
 				astValue = []string{}
 			}
 			nameFunction = x.Name.String()
+
 			tokPos = x.Pos()
 		//fmt.Println(x.Name.String(), "\t", rune(x.Pos()))
 		case *ast.AssignStmt:
-			if astNode != "" || len(astValue) != 0 {
+			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
 				astNode = ""
 				astValue = []string{}
@@ -136,7 +136,7 @@ func buildAstDataStr(filename string) []basicStr {
 			}
 			astValue = append(astValue, x.Tok.String())
 		case *ast.BinaryExpr:
-			if astNode != "" || len(astValue) != 0 {
+			if !strings.EqualFold(astNode, "") || len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
 				astNode = ""
 				astValue = []string{}
@@ -149,7 +149,7 @@ func buildAstDataStr(filename string) []basicStr {
 			astValue = append(astValue, x.Op.String())
 			genDeclBool = false
 		case *ast.UnaryExpr:
-			if astNode != "" || len(astValue) != 0 {
+			if !strings.EqualFold(astNode, "") || len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
 				astNode = ""
 				astValue = []string{}
@@ -182,6 +182,7 @@ func buildAstDataStr(filename string) []basicStr {
 			elem_list = append(elem_list, elem{astNode, astValue})
 			astNode = ""
 			astValue = []string{}
+			genDeclBool = false
 		case *ast.InterfaceType:
 			if len(astValue) != 0 {
 				elem_list = append(elem_list, elem{astNode, astValue})
@@ -361,7 +362,7 @@ type caseCollection struct {
 	caseValue []basicCases
 }
 
-func buildAstCaseStr(Tree2cases []basicCases) []caseResult {
+func buildAstCaseStr(Tree2cases []basicCases, funcNameList []basicFunc) []caseResult {
 	var funcName string
 	var depthFirstCase int
 	var caseName string
@@ -376,12 +377,17 @@ func buildAstCaseStr(Tree2cases []basicCases) []caseResult {
 
 	for _, val := range Tree2cases {
 		if val.depth == 1 && strings.Contains(val.value, "*ast.FuncDecl") { // function begins
-			if funcName != "" {
+			if checkDuplicateInFuncString(funcNameList, funcName, funcToken) {
 				// new
 				if len(caseValues) > 0 {
 					cases = append(cases, caseCollection{caseName, caseValues})
 				}
 				resultFunc = append(resultFunc, funcCollection{funcName, funcToken, cases})
+				caseValues = []basicCases{}
+				cases = []caseCollection{}
+				count = 0
+				depthFirstCase = 0
+			} else {
 				caseValues = []basicCases{}
 				cases = []caseCollection{}
 				count = 0
@@ -420,6 +426,7 @@ func buildAstCaseStr(Tree2cases []basicCases) []caseResult {
 			continue
 		}
 		if caseBegin && val.depth >= depthFirstCase {
+
 			// new
 			caseValues = append(caseValues, val)
 		} else if caseBegin && val.depth < depthFirstCase {
@@ -448,23 +455,44 @@ func buildAstCaseStr(Tree2cases []basicCases) []caseResult {
 	path := ""
 	values := []string{}
 	for ind := range resultFunc {
-		fmt.Println(resultFunc[ind].funcName)
 		for _, val := range resultFunc[ind].caseCol {
-			fmt.Println("--- ", val.caseName, " ---")
 			for i, value := range val.caseValue {
-				fmt.Println(value)
 				if depthCompare <= value.depth {
 					if strings.Contains(value.value, " ") {
+
 						substring := strings.Split(value.value, " ")
-						if !strings.EqualFold(substring[0], "*ast.Ident") {
+						//fmt.Println("substring ", substring)
+						if strings.EqualFold(substring[0], "*ast.Ident") {
+							for i := 1; i < len(substring); i++ {
+								values = append(values, substring[i])
+							}
+
+						} else {
 							if strings.EqualFold(path, "") {
 								path = substring[0]
 							} else {
 								path += " -> " + substring[0]
 							}
-						}
-						for i := 1; i < len(substring); i++ {
-							values = append(values, substring[i])
+							if strings.EqualFold(substring[0], "*ast.BasicLit") {
+								basicLitValue := ""
+								if len(substring) > 2 {
+									for i := 2; i < len(substring); i++ {
+										if i == len(substring)-1 {
+											basicLitValue += substring[i]
+										} else {
+											basicLitValue += substring[i] + " "
+										}
+									}
+									values = append(values, substring[1])
+									values = append(values, basicLitValue)
+								}
+
+							} else {
+								for i := 1; i < len(substring); i++ {
+									values = append(values, substring[i])
+								}
+							}
+
 						}
 					} else {
 						if strings.EqualFold(path, "") {
@@ -489,9 +517,26 @@ func buildAstCaseStr(Tree2cases []basicCases) []caseResult {
 								path += " -> " + substring[0]
 							}
 						}
-						for i := 1; i < len(substring); i++ {
-							values = append(values, substring[i])
+						if strings.EqualFold(substring[0], "*ast.BasicLit") {
+							basicLitValue := ""
+							if len(substring) > 2 {
+								for i := 2; i < len(substring); i++ {
+									if i == len(substring)-1 {
+										basicLitValue += substring[i]
+									} else {
+										basicLitValue += substring[i] + " "
+									}
+								}
+								values = append(values, substring[1])
+								values = append(values, basicLitValue)
+							}
+
+						} else {
+							for i := 1; i < len(substring); i++ {
+								values = append(values, substring[i])
+							}
 						}
+
 					} else {
 						if strings.EqualFold(path, "") {
 							path = value.value

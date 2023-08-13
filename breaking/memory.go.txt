@@ -1,10 +1,13 @@
 {*ast.File [avutil]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ImportSpec [STRING "C"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "unsafe"]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "C"]}
+
+
 
 
 function name is AvMalloc 
-	 {*ast.CommentGroup -> *ast.Comment [AvMalloc]}
+	 { [AvMalloc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s uintptr]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
@@ -22,38 +25,38 @@ function name is AvMallocArray
 
 
 function name is AvRealloc 
-	 {*ast.CommentGroup -> *ast.Comment [AvRealloc]}
+	 { [AvRealloc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p]}
 	 {*ast.StarExpr [int]}
 	 {*ast.Field [s uintptr]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_realloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [p]}
+	 {*ast.UnaryExpr [& p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t s]}
 
 
 function name is AvReallocF 
-	 {*ast.CommentGroup -> *ast.Comment [AvReallocF]}
+	 { [AvReallocF]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p int]}
 	 {*ast.Field [n e uintptr]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_realloc_f]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [p]}
+	 {*ast.UnaryExpr [& p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t n]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t e]}
 
 
 function name is AvReallocp 
-	 {*ast.CommentGroup -> *ast.Comment [AvReallocp]}
+	 { [AvReallocp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p int]}
 	 {*ast.Field [s uintptr]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C av_reallocp]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [p]}
+	 {*ast.UnaryExpr [& p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t s]}
 
 
@@ -64,7 +67,7 @@ function name is AvReallocArray
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_realloc_array]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [p]}
+	 {*ast.UnaryExpr [& p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t n]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t s]}
 
@@ -77,19 +80,19 @@ function name is AvReallocpArray
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C av_reallocp_array]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [p]}
+	 {*ast.UnaryExpr [& p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t n]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t s]}
 
 
 function name is AvFree 
-	 {*ast.CommentGroup -> *ast.Comment [AvFree]}
+	 { [AvFree]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_free p]}
 
 
 function name is AvMallocz 
-	 {*ast.CommentGroup -> *ast.Comment [AvMallocz]}
+	 { [AvMallocz]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s uintptr]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_mallocz]}
@@ -97,7 +100,7 @@ function name is AvMallocz
 
 
 function name is AvCalloc 
-	 {*ast.CommentGroup -> *ast.Comment [AvCalloc]}
+	 { [AvCalloc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n s uintptr]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_calloc]}
@@ -115,7 +118,7 @@ function name is AvMalloczArray
 
 
 function name is AvStrdup 
-	 {*ast.CommentGroup -> *ast.Comment [AvStrdup]}
+	 { [AvStrdup]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C GoString]}
@@ -124,7 +127,7 @@ function name is AvStrdup
 
 
 function name is AvStrndup 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [AvStrndup]}
+	 { [AvStrndup]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.Field [l uintptr]}
 	 {*ast.FieldList -> *ast.Field [string]}
@@ -135,7 +138,7 @@ function name is AvStrndup
 
 
 function name is AvMemdup 
-	 {*ast.CommentGroup -> *ast.Comment [AvMemdup]}
+	 { [AvMemdup]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [p]}
 	 {*ast.StarExpr [int]}
 	 {*ast.Field [s uintptr]}
@@ -146,13 +149,13 @@ function name is AvMemdup
 
 
 function name is AvFreep 
-	 {*ast.CommentGroup -> *ast.Comment [AvFreep]}
+	 { [AvFreep]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_freep p]}
 
 
 function name is AvDynarrayAdd 
-	 {*ast.CommentGroup -> *ast.Comment [AvDynarrayAdd]}
+	 { [AvDynarrayAdd]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [t unsafe Pointer]}
 	 {*ast.Field [n]}
 	 {*ast.StarExpr [int]}
@@ -163,7 +166,7 @@ function name is AvDynarrayAdd
 
 
 function name is AvDynarrayAddNofree 
-	 {*ast.CommentGroup -> *ast.Comment [AvDynarrayAddNofree]}
+	 { [AvDynarrayAddNofree]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
 	 {*ast.Field [n]}
 	 {*ast.StarExpr [int]}
@@ -173,11 +176,11 @@ function name is AvDynarrayAddNofree
 	 {*ast.CallExpr -> *ast.SelectorExpr [C av_dynarray_add_nofree p]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [n e]}
+	 {*ast.UnaryExpr [& n e]}
 
 
 function name is AvDynarray2Add 
-	 {*ast.CommentGroup -> *ast.Comment [AvDynarray2Add]}
+	 { [AvDynarray2Add]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field [n]}
@@ -188,15 +191,15 @@ function name is AvDynarray2Add
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_dynarray2_add t]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [n]}
+	 {*ast.UnaryExpr [& n]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C size_t e]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C uint8_t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [d]}
+	 {*ast.UnaryExpr [& d]}
 
 
 function name is AvSizeMult 
-	 {*ast.CommentGroup -> *ast.Comment [AvSizeMult]}
+	 { [AvSizeMult]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [a b uintptr]}
 	 {*ast.Field [r]}
 	 {*ast.StarExpr [uintptr]}
@@ -210,14 +213,14 @@ function name is AvSizeMult
 
 
 function name is AvMaxAlloc 
-	 {*ast.CommentGroup -> *ast.Comment [AvMaxAlloc]}
+	 { [AvMaxAlloc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [m uintptr]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_max_alloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t m]}
 
 
 function name is AvMemcpyBackptr 
-	 {*ast.CommentGroup -> *ast.Comment [AvMemcpyBackptr]}
+	 { [AvMemcpyBackptr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [d]}
 	 {*ast.StarExpr [uintptr]}
 	 {*ast.Field [b c int]}
@@ -229,7 +232,7 @@ function name is AvMemcpyBackptr
 
 
 function name is AvFastRealloc 
-	 {*ast.CommentGroup -> *ast.Comment [AvFastRealloc]}
+	 { [AvFastRealloc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
 	 {*ast.Field [s]}
 	 {*ast.StarExpr [uint]}
@@ -242,7 +245,7 @@ function name is AvFastRealloc
 
 
 function name is AvFastMalloc 
-	 {*ast.CommentGroup -> *ast.Comment [AvFastMalloc]}
+	 { [AvFastMalloc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [p unsafe Pointer]}
 	 {*ast.Field [s]}
 	 {*ast.StarExpr [uint]}

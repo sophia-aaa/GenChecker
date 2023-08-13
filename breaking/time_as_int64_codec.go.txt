@@ -1,20 +1,25 @@
 {*ast.File [extra]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "github.com/json-iterator/go"]}
-{*ast.ImportSpec [STRING "time"]}
-{*ast.ImportSpec [STRING "unsafe"]}
+
+
 
 
 function name is RegisterTimeAsInt64Codec 
-	 {*ast.CommentGroup -> *ast.Comment [RegisterTimeAsInt64Codec]}
+	 { [RegisterTimeAsInt64Codec]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [precision]}
 	 {*ast.SelectorExpr [time Duration]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeEncoder STRING "time.Time"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [timeAsInt64Codec precision]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "time.Time"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [timeAsInt64Codec precision]}
-	 {*ast.GenDecl -> *ast.TypeSpec [timeAsInt64Codec]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [precision]}
-	 {*ast.SelectorExpr [time Duration]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeEncoder]}
+	 {*ast.BasicLit [STRING "time.Time"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [timeAsInt64Codec precision]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "time.Time"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [timeAsInt64Codec precision]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [timeAsInt64Codec]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [precision]}
+{*ast.SelectorExpr [time Duration]}
 
 
 function name is Decode 
@@ -23,11 +28,15 @@ function name is Decode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [nanoseconds]}
-	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadInt64]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= nanoseconds]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [codec precision Nanoseconds]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time ptr]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [time Unix INT 0 nanoseconds]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time ptr]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [time Unix]}
+	 {*ast.BasicLit [INT 0 nanoseconds]}
 
 
 function name is IsEmpty 
@@ -35,9 +44,13 @@ function name is IsEmpty
 	 {*ast.StarExpr [timeAsInt64Codec IsEmpty]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ts]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ts]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time ptr]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [ts UnixNano INT 0]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [ts UnixNano]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is Encode 
@@ -46,10 +59,12 @@ function name is Encode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [stream]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Stream]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ts]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= ts]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time ptr]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteInt64]}
-	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [ts UnixNano]}
+	 {*ast.BinaryExpr [/]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [ts UnixNano]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [codec precision Nanoseconds]}
 
 

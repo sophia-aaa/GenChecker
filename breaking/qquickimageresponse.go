@@ -33,10 +33,9 @@ import "github.com/kitech/qt.go/qtqml"
 
 //  ext block end
 
-//  body block begin
+//  body block begin-
 
 /*
-
  */
 type QQuickImageResponse struct {
 	*qtcore.QObject
@@ -72,7 +71,6 @@ func (*QQuickImageResponse) NewFromPointer(cthis unsafe.Pointer) *QQuickImageRes
 // [8] const QMetaObject * metaObject() const
 
 /*
-
  */
 func (this *QQuickImageResponse) MetaObject() *qtcore.QMetaObject /*777 const QMetaObject **/ {
 	rv, err := qtrt.InvokeQtFunc6("_ZNK19QQuickImageResponse10metaObjectEv", qtrt.FFI_TYPE_POINTER, this.GetCthis())
@@ -86,7 +84,6 @@ func (this *QQuickImageResponse) MetaObject() *qtcore.QMetaObject /*777 const QM
 // [-2] void QQuickImageResponse()
 
 /*
-
  */
 func (*QQuickImageResponse) NewForInherit() *QQuickImageResponse {
 	return NewQQuickImageResponse()
@@ -105,7 +102,6 @@ func NewQQuickImageResponse() *QQuickImageResponse {
 // [-2] void ~QQuickImageResponse()
 
 /*
-
  */
 func DeleteQQuickImageResponse(this *QQuickImageResponse) {
 	rv, err := qtrt.InvokeQtFunc6("_ZN19QQuickImageResponseD2Ev", qtrt.FFI_TYPE_VOID, this.GetCthis())
@@ -120,7 +116,6 @@ func DeleteQQuickImageResponse(this *QQuickImageResponse) {
 // [8] QQuickTextureFactory * textureFactory() const
 
 /*
-
  */
 func (this *QQuickImageResponse) TextureFactory() *QQuickTextureFactory /*777 QQuickTextureFactory **/ {
 	rv, err := qtrt.InvokeQtFunc6("_ZNK19QQuickImageResponse14textureFactoryEv", qtrt.FFI_TYPE_POINTER, this.GetCthis())
@@ -134,7 +129,6 @@ func (this *QQuickImageResponse) TextureFactory() *QQuickTextureFactory /*777 QQ
 // [8] QString errorString() const
 
 /*
-
  */
 func (this *QQuickImageResponse) ErrorString() string {
 	rv, err := qtrt.InvokeQtFunc6("_ZNK19QQuickImageResponse11errorStringEv", qtrt.FFI_TYPE_POINTER, this.GetCthis())
@@ -151,7 +145,6 @@ func (this *QQuickImageResponse) ErrorString() string {
 // [-2] void cancel()
 
 /*
-
  */
 func (this *QQuickImageResponse) Cancel() {
 	rv, err := qtrt.InvokeQtFunc6("_ZN19QQuickImageResponse6cancelEv", qtrt.FFI_TYPE_POINTER, this.GetCthis())
@@ -164,7 +157,6 @@ func (this *QQuickImageResponse) Cancel() {
 // [-2] void finished()
 
 /*
-
  */
 func (this *QQuickImageResponse) Finished() {
 	rv, err := qtrt.InvokeQtFunc6("_ZN19QQuickImageResponse8finishedEv", qtrt.FFI_TYPE_POINTER, this.GetCthis())

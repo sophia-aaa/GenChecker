@@ -1,9 +1,16 @@
 {*ast.File [v1alpha3]}
-{*ast.GenDecl -> *ast.ImportSpec [time STRING "time"]}
-{*ast.ImportSpec [unsafe STRING "unsafe"]}
-{*ast.ImportSpec [v1beta2 STRING "github.com/docker/compose-on-kubernetes/api/compose/v1beta2"]}
-{*ast.ImportSpec [conversion STRING "k8s.io/apimachinery/pkg/conversion"]}
-{*ast.ImportSpec [runtime STRING "k8s.io/apimachinery/pkg/runtime"]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec [time]}
+{*ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec [unsafe]}
+{*ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec [v1beta2]}
+{*ast.BasicLit [STRING "github.com/docker/compose-on-kubernetes/api/compose/v1beta2"]}
+{*ast.ImportSpec [conversion]}
+{*ast.BasicLit [STRING "k8s.io/apimachinery/pkg/conversion"]}
+{*ast.ImportSpec [runtime]}
+{*ast.BasicLit [STRING "k8s.io/apimachinery/pkg/runtime"]}
 
 
 function name is init 
@@ -12,16 +19,17 @@ function name is init
 
 
 function name is RegisterConversions 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [RegisterConversions]}
+	 { [RegisterConversions]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [runtime Scheme]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ComposeFile nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ComposeFile nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_ComposeFile_To_v1beta2_ComposeFile]}
@@ -29,14 +37,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [ComposeFile]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ComposeFile scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ComposeFile nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ComposeFile nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_ComposeFile_To_v1alpha3_ComposeFile]}
@@ -44,14 +53,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ComposeFile]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [ComposeFile scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ConfigObjConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ConfigObjConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_ConfigObjConfig_To_v1beta2_ConfigObjConfig]}
@@ -59,14 +69,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [ConfigObjConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ConfigObjConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ConfigObjConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ConfigObjConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_ConfigObjConfig_To_v1alpha3_ConfigObjConfig]}
@@ -74,14 +85,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ConfigObjConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [ConfigObjConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Constraint nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraint nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_Constraint_To_v1beta2_Constraint]}
@@ -89,14 +101,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [Constraint]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraint scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraint nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Constraint nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_Constraint_To_v1alpha3_Constraint]}
@@ -104,14 +117,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraint]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [Constraint scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Constraints nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraints nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_Constraints_To_v1beta2_Constraints]}
@@ -119,14 +133,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [Constraints]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraints scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraints nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Constraints nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_Constraints_To_v1alpha3_Constraints]}
@@ -134,14 +149,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraints]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [Constraints scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [DeployConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 DeployConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_DeployConfig_To_v1beta2_DeployConfig]}
@@ -149,14 +165,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [DeployConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 DeployConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 DeployConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [DeployConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_DeployConfig_To_v1alpha3_DeployConfig]}
@@ -164,14 +181,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 DeployConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [DeployConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [External nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 External nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_External_To_v1beta2_External]}
@@ -179,14 +197,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [External]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 External scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 External nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [External nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_External_To_v1alpha3_External]}
@@ -194,14 +213,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 External]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [External scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [FileObjectConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileObjectConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_FileObjectConfig_To_v1beta2_FileObjectConfig]}
@@ -209,14 +229,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [FileObjectConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileObjectConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileObjectConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [FileObjectConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_FileObjectConfig_To_v1alpha3_FileObjectConfig]}
@@ -224,14 +245,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileObjectConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [FileObjectConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [FileReferenceConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileReferenceConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_FileReferenceConfig_To_v1beta2_FileReferenceConfig]}
@@ -239,14 +261,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [FileReferenceConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileReferenceConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileReferenceConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [FileReferenceConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_FileReferenceConfig_To_v1alpha3_FileReferenceConfig]}
@@ -254,14 +277,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileReferenceConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [FileReferenceConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [HealthCheckConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 HealthCheckConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_HealthCheckConfig_To_v1beta2_HealthCheckConfig]}
@@ -269,14 +293,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [HealthCheckConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 HealthCheckConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 HealthCheckConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [HealthCheckConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_HealthCheckConfig_To_v1alpha3_HealthCheckConfig]}
@@ -284,14 +309,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 HealthCheckConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [HealthCheckConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Owner nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Owner nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_Owner_To_v1beta2_Owner]}
@@ -299,14 +325,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [Owner]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Owner scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Owner nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Owner nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_Owner_To_v1alpha3_Owner]}
@@ -314,14 +341,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Owner]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [Owner scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Placement nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Placement nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_Placement_To_v1beta2_Placement]}
@@ -329,14 +357,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [Placement]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Placement scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Placement nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Placement nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_Placement_To_v1alpha3_Placement]}
@@ -344,14 +373,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Placement]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [Placement scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Resource nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resource nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_Resource_To_v1beta2_Resource]}
@@ -359,14 +389,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [Resource]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resource scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resource nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Resource nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_Resource_To_v1alpha3_Resource]}
@@ -374,14 +405,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resource]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [Resource scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Resources nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resources nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_Resources_To_v1beta2_Resources]}
@@ -389,14 +421,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [Resources]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resources scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resources nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Resources nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_Resources_To_v1alpha3_Resources]}
@@ -404,14 +437,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resources]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [Resources scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [RestartPolicy nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 RestartPolicy nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_RestartPolicy_To_v1beta2_RestartPolicy]}
@@ -419,14 +453,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [RestartPolicy]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 RestartPolicy scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 RestartPolicy nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [RestartPolicy nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_RestartPolicy_To_v1alpha3_RestartPolicy]}
@@ -434,14 +469,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 RestartPolicy]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [RestartPolicy scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Scale nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Scale nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_Scale_To_v1beta2_Scale]}
@@ -449,14 +485,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [Scale]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Scale scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Scale nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Scale nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_Scale_To_v1alpha3_Scale]}
@@ -464,14 +501,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Scale]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [Scale scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [SecretConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 SecretConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_SecretConfig_To_v1beta2_SecretConfig]}
@@ -479,14 +517,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [SecretConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 SecretConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 SecretConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [SecretConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_SecretConfig_To_v1alpha3_SecretConfig]}
@@ -494,14 +533,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 SecretConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [SecretConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServiceConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_ServiceConfig_To_v1beta2_ServiceConfig]}
@@ -509,14 +549,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [ServiceConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServiceConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_ServiceConfig_To_v1alpha3_ServiceConfig]}
@@ -524,14 +565,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [ServiceConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServiceConfigObjConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfigObjConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_ServiceConfigObjConfig_To_v1beta2_ServiceConfigObjConfig]}
@@ -539,14 +581,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [ServiceConfigObjConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfigObjConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfigObjConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServiceConfigObjConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_ServiceConfigObjConfig_To_v1alpha3_ServiceConfigObjConfig]}
@@ -554,14 +597,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfigObjConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [ServiceConfigObjConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServicePortConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServicePortConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_ServicePortConfig_To_v1beta2_ServicePortConfig]}
@@ -569,14 +613,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [ServicePortConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServicePortConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServicePortConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServicePortConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_ServicePortConfig_To_v1alpha3_ServicePortConfig]}
@@ -584,14 +629,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServicePortConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [ServicePortConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServiceSecretConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceSecretConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_ServiceSecretConfig_To_v1beta2_ServiceSecretConfig]}
@@ -599,14 +645,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [ServiceSecretConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceSecretConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceSecretConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServiceSecretConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_ServiceSecretConfig_To_v1alpha3_ServiceSecretConfig]}
@@ -614,14 +661,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceSecretConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [ServiceSecretConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServiceVolumeConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceVolumeConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_ServiceVolumeConfig_To_v1beta2_ServiceVolumeConfig]}
@@ -629,14 +677,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [ServiceVolumeConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceVolumeConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceVolumeConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [ServiceVolumeConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_ServiceVolumeConfig_To_v1alpha3_ServiceVolumeConfig]}
@@ -644,14 +693,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceVolumeConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [ServiceVolumeConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Stack nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Stack nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_Stack_To_v1beta2_Stack]}
@@ -659,14 +709,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [Stack]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Stack scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Stack nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Stack nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_Stack_To_v1alpha3_Stack]}
@@ -674,14 +725,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Stack]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [Stack scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [StackList nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackList nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_StackList_To_v1beta2_StackList]}
@@ -689,14 +741,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [StackList]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackList scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackList nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [StackList nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_StackList_To_v1alpha3_StackList]}
@@ -704,14 +757,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackList]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [StackList scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [StackSpec nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackSpec nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_StackSpec_To_v1beta2_StackSpec]}
@@ -719,14 +773,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [StackSpec]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackSpec scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackSpec nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [StackSpec nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_StackSpec_To_v1alpha3_StackSpec]}
@@ -734,14 +789,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackSpec]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [StackSpec scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [StackStatus nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackStatus nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_StackStatus_To_v1beta2_StackStatus]}
@@ -749,14 +805,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [StackStatus]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackStatus scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackStatus nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [StackStatus nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_StackStatus_To_v1alpha3_StackStatus]}
@@ -764,14 +821,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackStatus]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [StackStatus scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [UpdateConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 UpdateConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1alpha3_UpdateConfig_To_v1beta2_UpdateConfig]}
@@ -779,14 +837,15 @@ function name is RegisterConversions
 	 {*ast.StarExpr [UpdateConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 UpdateConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s AddGeneratedConversionFunc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 UpdateConfig nil]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [UpdateConfig nil]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [a b]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [scope]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [scope]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [Convert_v1beta2_UpdateConfig_To_v1alpha3_UpdateConfig]}
@@ -794,7 +853,7 @@ function name is RegisterConversions
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 UpdateConfig]}
 	 {*ast.TypeAssertExpr [b]}
 	 {*ast.StarExpr [UpdateConfig scope]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
 	 {*ast.ReturnStmt [nil]}
 
@@ -808,15 +867,17 @@ function name is autoConvert_v1alpha3_ComposeFile_To_v1beta2_ComposeFile
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ObjectMeta]}
 	 {*ast.SelectorExpr [in ObjectMeta]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out ComposeFile]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ComposeFile]}
 	 {*ast.SelectorExpr [in ComposeFile]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_ComposeFile_To_v1beta2_ComposeFile 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_ComposeFile_To_v1beta2_ComposeFile]}
+	 { [Convert_v1alpha3_ComposeFile_To_v1beta2_ComposeFile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [ComposeFile]}
 	 {*ast.Field [out]}
@@ -836,15 +897,17 @@ function name is autoConvert_v1beta2_ComposeFile_To_v1alpha3_ComposeFile
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ObjectMeta]}
 	 {*ast.SelectorExpr [in ObjectMeta]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out ComposeFile]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ComposeFile]}
 	 {*ast.SelectorExpr [in ComposeFile]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_ComposeFile_To_v1alpha3_ComposeFile 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_ComposeFile_To_v1alpha3_ComposeFile]}
+	 { [Convert_v1beta2_ComposeFile_To_v1alpha3_ComposeFile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ComposeFile]}
 	 {*ast.Field [out]}
@@ -864,25 +927,31 @@ function name is autoConvert_v1alpha3_ConfigObjConfig_To_v1beta2_ConfigObjConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out File]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out File]}
 	 {*ast.SelectorExpr [in File]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_External_To_v1beta2_External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out External s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in External]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out External s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_ConfigObjConfig_To_v1beta2_ConfigObjConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_ConfigObjConfig_To_v1beta2_ConfigObjConfig]}
+	 { [Convert_v1alpha3_ConfigObjConfig_To_v1beta2_ConfigObjConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [ConfigObjConfig]}
 	 {*ast.Field [out]}
@@ -902,25 +971,31 @@ function name is autoConvert_v1beta2_ConfigObjConfig_To_v1alpha3_ConfigObjConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out File]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out File]}
 	 {*ast.SelectorExpr [in File]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_External_To_v1alpha3_External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out External s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in External]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out External s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_ConfigObjConfig_To_v1alpha3_ConfigObjConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_ConfigObjConfig_To_v1alpha3_ConfigObjConfig]}
+	 { [Convert_v1beta2_ConfigObjConfig_To_v1alpha3_ConfigObjConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ConfigObjConfig]}
 	 {*ast.Field [out]}
@@ -940,15 +1015,17 @@ function name is autoConvert_v1alpha3_Constraint_To_v1beta2_Constraint
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Value]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Value]}
 	 {*ast.SelectorExpr [in Value]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Operator]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Operator]}
 	 {*ast.SelectorExpr [in Operator]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_Constraint_To_v1beta2_Constraint 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_Constraint_To_v1beta2_Constraint]}
+	 { [Convert_v1alpha3_Constraint_To_v1beta2_Constraint]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [Constraint]}
 	 {*ast.Field [out]}
@@ -968,15 +1045,17 @@ function name is autoConvert_v1beta2_Constraint_To_v1alpha3_Constraint
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Value]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Value]}
 	 {*ast.SelectorExpr [in Value]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Operator]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Operator]}
 	 {*ast.SelectorExpr [in Operator]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_Constraint_To_v1alpha3_Constraint 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_Constraint_To_v1alpha3_Constraint]}
+	 { [Convert_v1beta2_Constraint_To_v1alpha3_Constraint]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraint]}
 	 {*ast.Field [out]}
@@ -996,28 +1075,33 @@ function name is autoConvert_v1alpha3_Constraints_To_v1beta2_Constraints
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OperatingSystem]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out OperatingSystem]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in OperatingSystem]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Architecture]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Architecture]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Architecture]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Hostname]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Hostname]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Hostname]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out MatchLabels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out MatchLabels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string]}
 	 {*ast.SelectorExpr [v1beta2 Constraint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in MatchLabels]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in MatchLabels]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_Constraints_To_v1beta2_Constraints 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_Constraints_To_v1beta2_Constraints]}
+	 { [Convert_v1alpha3_Constraints_To_v1beta2_Constraints]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [Constraints]}
 	 {*ast.Field [out]}
@@ -1037,27 +1121,32 @@ function name is autoConvert_v1beta2_Constraints_To_v1alpha3_Constraints
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out OperatingSystem]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out OperatingSystem]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Constraint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in OperatingSystem]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Architecture]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Architecture]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Constraint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Architecture]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Hostname]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Hostname]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Constraint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Hostname]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out MatchLabels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out MatchLabels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string Constraint]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in MatchLabels]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in MatchLabels]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_Constraints_To_v1alpha3_Constraints 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_Constraints_To_v1alpha3_Constraints]}
+	 { [Convert_v1beta2_Constraints_To_v1alpha3_Constraints]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraints]}
 	 {*ast.Field [out]}
@@ -1077,41 +1166,51 @@ function name is autoConvert_v1alpha3_DeployConfig_To_v1beta2_DeployConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.SelectorExpr [in Mode]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Replicas]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Replicas]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Replicas]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out UpdateConfig]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out UpdateConfig]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 UpdateConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in UpdateConfig]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_Resources_To_v1beta2_Resources]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Resources]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Resources s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Resources]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Resources s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out RestartPolicy]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out RestartPolicy]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 RestartPolicy]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in RestartPolicy]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_Placement_To_v1beta2_Placement]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Placement]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Placement s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Placement]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Placement s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_DeployConfig_To_v1beta2_DeployConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_DeployConfig_To_v1beta2_DeployConfig]}
+	 { [Convert_v1alpha3_DeployConfig_To_v1beta2_DeployConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [DeployConfig]}
 	 {*ast.Field [out]}
@@ -1131,41 +1230,51 @@ function name is autoConvert_v1beta2_DeployConfig_To_v1alpha3_DeployConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.SelectorExpr [in Mode]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Replicas]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Replicas]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Replicas]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out UpdateConfig]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out UpdateConfig]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [UpdateConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in UpdateConfig]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_Resources_To_v1alpha3_Resources]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Resources]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Resources s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Resources]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Resources s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out RestartPolicy]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out RestartPolicy]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [RestartPolicy]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in RestartPolicy]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_Placement_To_v1alpha3_Placement]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Placement]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Placement s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Placement]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Placement s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_DeployConfig_To_v1alpha3_DeployConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_DeployConfig_To_v1alpha3_DeployConfig]}
+	 { [Convert_v1beta2_DeployConfig_To_v1alpha3_DeployConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 DeployConfig]}
 	 {*ast.Field [out]}
@@ -1185,15 +1294,17 @@ function name is autoConvert_v1alpha3_External_To_v1beta2_External
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out External]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out External]}
 	 {*ast.SelectorExpr [in External]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_External_To_v1beta2_External 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_External_To_v1beta2_External]}
+	 { [Convert_v1alpha3_External_To_v1beta2_External]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [External]}
 	 {*ast.Field [out]}
@@ -1213,15 +1324,17 @@ function name is autoConvert_v1beta2_External_To_v1alpha3_External
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out External]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out External]}
 	 {*ast.SelectorExpr [in External]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_External_To_v1alpha3_External 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_External_To_v1alpha3_External]}
+	 { [Convert_v1beta2_External_To_v1alpha3_External]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 External]}
 	 {*ast.Field [out]}
@@ -1241,25 +1354,31 @@ function name is autoConvert_v1alpha3_FileObjectConfig_To_v1beta2_FileObjectConf
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out File]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out File]}
 	 {*ast.SelectorExpr [in File]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_External_To_v1beta2_External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out External s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in External]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out External s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_FileObjectConfig_To_v1beta2_FileObjectConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_FileObjectConfig_To_v1beta2_FileObjectConfig]}
+	 { [Convert_v1alpha3_FileObjectConfig_To_v1beta2_FileObjectConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [FileObjectConfig]}
 	 {*ast.Field [out]}
@@ -1279,25 +1398,31 @@ function name is autoConvert_v1beta2_FileObjectConfig_To_v1alpha3_FileObjectConf
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out File]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out File]}
 	 {*ast.SelectorExpr [in File]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_External_To_v1alpha3_External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out External s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in External]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out External s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_FileObjectConfig_To_v1alpha3_FileObjectConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_FileObjectConfig_To_v1alpha3_FileObjectConfig]}
+	 { [Convert_v1beta2_FileObjectConfig_To_v1alpha3_FileObjectConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileObjectConfig]}
 	 {*ast.Field [out]}
@@ -1317,15 +1442,20 @@ function name is autoConvert_v1alpha3_FileReferenceConfig_To_v1beta2_FileReferen
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Source]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Source]}
 	 {*ast.SelectorExpr [in Source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out UID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out UID]}
 	 {*ast.SelectorExpr [in UID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out GID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out GID]}
 	 {*ast.SelectorExpr [in GID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Mode]}
@@ -1333,7 +1463,7 @@ function name is autoConvert_v1alpha3_FileReferenceConfig_To_v1beta2_FileReferen
 
 
 function name is Convert_v1alpha3_FileReferenceConfig_To_v1beta2_FileReferenceConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_FileReferenceConfig_To_v1beta2_FileReferenceConfig]}
+	 { [Convert_v1alpha3_FileReferenceConfig_To_v1beta2_FileReferenceConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [FileReferenceConfig]}
 	 {*ast.Field [out]}
@@ -1353,15 +1483,20 @@ function name is autoConvert_v1beta2_FileReferenceConfig_To_v1alpha3_FileReferen
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Source]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Source]}
 	 {*ast.SelectorExpr [in Source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out UID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out UID]}
 	 {*ast.SelectorExpr [in UID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out GID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out GID]}
 	 {*ast.SelectorExpr [in GID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Mode]}
@@ -1369,7 +1504,7 @@ function name is autoConvert_v1beta2_FileReferenceConfig_To_v1alpha3_FileReferen
 
 
 function name is Convert_v1beta2_FileReferenceConfig_To_v1alpha3_FileReferenceConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_FileReferenceConfig_To_v1alpha3_FileReferenceConfig]}
+	 { [Convert_v1beta2_FileReferenceConfig_To_v1alpha3_FileReferenceConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 FileReferenceConfig]}
 	 {*ast.Field [out]}
@@ -1389,19 +1524,24 @@ function name is autoConvert_v1alpha3_HealthCheckConfig_To_v1beta2_HealthCheckCo
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Test]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Test]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Test]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Timeout]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Test]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Timeout]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Duration]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Timeout]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Interval]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Interval]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Duration]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Interval]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Retries]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Retries]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Retries]}
@@ -1409,7 +1549,7 @@ function name is autoConvert_v1alpha3_HealthCheckConfig_To_v1beta2_HealthCheckCo
 
 
 function name is Convert_v1alpha3_HealthCheckConfig_To_v1beta2_HealthCheckConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_HealthCheckConfig_To_v1beta2_HealthCheckConfig]}
+	 { [Convert_v1alpha3_HealthCheckConfig_To_v1beta2_HealthCheckConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [HealthCheckConfig]}
 	 {*ast.Field [out]}
@@ -1429,19 +1569,24 @@ function name is autoConvert_v1beta2_HealthCheckConfig_To_v1alpha3_HealthCheckCo
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Test]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Test]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Test]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Timeout]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Test]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Timeout]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Duration]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Timeout]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Interval]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Interval]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Duration]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Interval]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Retries]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Retries]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Retries]}
@@ -1449,7 +1594,7 @@ function name is autoConvert_v1beta2_HealthCheckConfig_To_v1alpha3_HealthCheckCo
 
 
 function name is Convert_v1beta2_HealthCheckConfig_To_v1alpha3_HealthCheckConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_HealthCheckConfig_To_v1alpha3_HealthCheckConfig]}
+	 { [Convert_v1beta2_HealthCheckConfig_To_v1alpha3_HealthCheckConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 HealthCheckConfig]}
 	 {*ast.Field [out]}
@@ -1469,15 +1614,17 @@ function name is autoConvert_v1alpha3_Owner_To_v1beta2_Owner
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ObjectMeta]}
 	 {*ast.SelectorExpr [in ObjectMeta]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Owner]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Owner]}
 	 {*ast.SelectorExpr [in Owner]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_Owner_To_v1beta2_Owner 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_Owner_To_v1beta2_Owner]}
+	 { [Convert_v1alpha3_Owner_To_v1beta2_Owner]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [Owner]}
 	 {*ast.Field [out]}
@@ -1497,15 +1644,17 @@ function name is autoConvert_v1beta2_Owner_To_v1alpha3_Owner
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ObjectMeta]}
 	 {*ast.SelectorExpr [in ObjectMeta]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Owner]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Owner]}
 	 {*ast.SelectorExpr [in Owner]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_Owner_To_v1alpha3_Owner 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_Owner_To_v1alpha3_Owner]}
+	 { [Convert_v1beta2_Owner_To_v1alpha3_Owner]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Owner]}
 	 {*ast.Field [out]}
@@ -1525,7 +1674,8 @@ function name is autoConvert_v1alpha3_Placement_To_v1beta2_Placement
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Constraints]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Constraints]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Constraints]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Constraints]}
@@ -1533,7 +1683,7 @@ function name is autoConvert_v1alpha3_Placement_To_v1beta2_Placement
 
 
 function name is Convert_v1alpha3_Placement_To_v1beta2_Placement 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_Placement_To_v1beta2_Placement]}
+	 { [Convert_v1alpha3_Placement_To_v1beta2_Placement]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [Placement]}
 	 {*ast.Field [out]}
@@ -1553,7 +1703,8 @@ function name is autoConvert_v1beta2_Placement_To_v1alpha3_Placement
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Constraints]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Constraints]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Constraints]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Constraints]}
@@ -1561,7 +1712,7 @@ function name is autoConvert_v1beta2_Placement_To_v1alpha3_Placement
 
 
 function name is Convert_v1beta2_Placement_To_v1alpha3_Placement 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_Placement_To_v1alpha3_Placement]}
+	 { [Convert_v1beta2_Placement_To_v1alpha3_Placement]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Placement]}
 	 {*ast.Field [out]}
@@ -1581,15 +1732,17 @@ function name is autoConvert_v1alpha3_Resource_To_v1beta2_Resource
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out NanoCPUs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out NanoCPUs]}
 	 {*ast.SelectorExpr [in NanoCPUs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out MemoryBytes]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out MemoryBytes]}
 	 {*ast.SelectorExpr [in MemoryBytes]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_Resource_To_v1beta2_Resource 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_Resource_To_v1beta2_Resource]}
+	 { [Convert_v1alpha3_Resource_To_v1beta2_Resource]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [Resource]}
 	 {*ast.Field [out]}
@@ -1609,15 +1762,17 @@ function name is autoConvert_v1beta2_Resource_To_v1alpha3_Resource
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out NanoCPUs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out NanoCPUs]}
 	 {*ast.SelectorExpr [in NanoCPUs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out MemoryBytes]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out MemoryBytes]}
 	 {*ast.SelectorExpr [in MemoryBytes]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_Resource_To_v1alpha3_Resource 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_Resource_To_v1alpha3_Resource]}
+	 { [Convert_v1beta2_Resource_To_v1alpha3_Resource]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resource]}
 	 {*ast.Field [out]}
@@ -1637,11 +1792,13 @@ function name is autoConvert_v1alpha3_Resources_To_v1beta2_Resources
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Limits]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Limits]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Limits]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Reservations]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Reservations]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Reservations]}
@@ -1649,7 +1806,7 @@ function name is autoConvert_v1alpha3_Resources_To_v1beta2_Resources
 
 
 function name is Convert_v1alpha3_Resources_To_v1beta2_Resources 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_Resources_To_v1beta2_Resources]}
+	 { [Convert_v1alpha3_Resources_To_v1beta2_Resources]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [Resources]}
 	 {*ast.Field [out]}
@@ -1669,11 +1826,13 @@ function name is autoConvert_v1beta2_Resources_To_v1alpha3_Resources
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Limits]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Limits]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Resource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Limits]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Reservations]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Reservations]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Resource]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Reservations]}
@@ -1681,7 +1840,7 @@ function name is autoConvert_v1beta2_Resources_To_v1alpha3_Resources
 
 
 function name is Convert_v1beta2_Resources_To_v1alpha3_Resources 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_Resources_To_v1alpha3_Resources]}
+	 { [Convert_v1beta2_Resources_To_v1alpha3_Resources]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Resources]}
 	 {*ast.Field [out]}
@@ -1701,13 +1860,14 @@ function name is autoConvert_v1alpha3_RestartPolicy_To_v1beta2_RestartPolicy
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Condition]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Condition]}
 	 {*ast.SelectorExpr [in Condition]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_RestartPolicy_To_v1beta2_RestartPolicy 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_RestartPolicy_To_v1beta2_RestartPolicy]}
+	 { [Convert_v1alpha3_RestartPolicy_To_v1beta2_RestartPolicy]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [RestartPolicy]}
 	 {*ast.Field [out]}
@@ -1727,13 +1887,14 @@ function name is autoConvert_v1beta2_RestartPolicy_To_v1alpha3_RestartPolicy
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Condition]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Condition]}
 	 {*ast.SelectorExpr [in Condition]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_RestartPolicy_To_v1alpha3_RestartPolicy 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_RestartPolicy_To_v1alpha3_RestartPolicy]}
+	 { [Convert_v1beta2_RestartPolicy_To_v1alpha3_RestartPolicy]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 RestartPolicy]}
 	 {*ast.Field [out]}
@@ -1753,21 +1914,26 @@ function name is autoConvert_v1alpha3_Scale_To_v1beta2_Scale
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ObjectMeta]}
 	 {*ast.SelectorExpr [in ObjectMeta]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Spec]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Spec]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Status]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Spec]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Status]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Status]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_Scale_To_v1beta2_Scale 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_Scale_To_v1beta2_Scale]}
+	 { [Convert_v1alpha3_Scale_To_v1beta2_Scale]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [Scale]}
 	 {*ast.Field [out]}
@@ -1787,21 +1953,26 @@ function name is autoConvert_v1beta2_Scale_To_v1alpha3_Scale
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ObjectMeta]}
 	 {*ast.SelectorExpr [in ObjectMeta]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Spec]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Spec]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Status]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Spec]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Status]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Status]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Status]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_Scale_To_v1alpha3_Scale 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_Scale_To_v1alpha3_Scale]}
+	 { [Convert_v1beta2_Scale_To_v1alpha3_Scale]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Scale]}
 	 {*ast.Field [out]}
@@ -1821,25 +1992,31 @@ function name is autoConvert_v1alpha3_SecretConfig_To_v1beta2_SecretConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out File]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out File]}
 	 {*ast.SelectorExpr [in File]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_External_To_v1beta2_External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out External s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in External]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out External s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_SecretConfig_To_v1beta2_SecretConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_SecretConfig_To_v1beta2_SecretConfig]}
+	 { [Convert_v1alpha3_SecretConfig_To_v1beta2_SecretConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [SecretConfig]}
 	 {*ast.Field [out]}
@@ -1859,25 +2036,31 @@ function name is autoConvert_v1beta2_SecretConfig_To_v1alpha3_SecretConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out File]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out File]}
 	 {*ast.SelectorExpr [in File]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_External_To_v1alpha3_External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in External]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out External s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in External]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out External s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_SecretConfig_To_v1alpha3_SecretConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_SecretConfig_To_v1alpha3_SecretConfig]}
+	 { [Convert_v1beta2_SecretConfig_To_v1alpha3_SecretConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 SecretConfig]}
 	 {*ast.Field [out]}
@@ -1897,92 +2080,131 @@ function name is autoConvert_v1alpha3_ServiceConfig_To_v1beta2_ServiceConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out CapAdd]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out CapAdd]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in CapAdd]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out CapDrop]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in CapAdd]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out CapDrop]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in CapDrop]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Command]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in CapDrop]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Command]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Command]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Configs]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Command]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Configs]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [v1beta2 ServiceConfigObjConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Configs]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Configs]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_DeployConfig_To_v1beta2_DeployConfig]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Deploy]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Deploy s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Deploy]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Deploy s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Entrypoint]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Entrypoint]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Entrypoint]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Environment]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Entrypoint]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Environment]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string]}
 	 {*ast.StarExpr [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Environment]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out ExtraHosts]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Environment]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ExtraHosts]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in ExtraHosts]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Hostname]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in ExtraHosts]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Hostname]}
 	 {*ast.SelectorExpr [in Hostname]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out HealthCheck]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out HealthCheck]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 HealthCheckConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in HealthCheck]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Image]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Image]}
 	 {*ast.SelectorExpr [in Image]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Ipc]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Ipc]}
 	 {*ast.SelectorExpr [in Ipc]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Pid]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Pid]}
 	 {*ast.SelectorExpr [in Pid]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Ports]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Ports]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [v1beta2 ServicePortConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Ports]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Privileged]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Ports]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Privileged]}
 	 {*ast.SelectorExpr [in Privileged]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out ReadOnly]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ReadOnly]}
 	 {*ast.SelectorExpr [in ReadOnly]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Secrets]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Secrets]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [v1beta2 ServiceSecretConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Secrets]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out StdinOpen]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Secrets]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out StdinOpen]}
 	 {*ast.SelectorExpr [in StdinOpen]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out StopGracePeriod]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out StopGracePeriod]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Duration]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in StopGracePeriod]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Tmpfs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Tmpfs]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Tmpfs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Tty]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Tmpfs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Tty]}
 	 {*ast.SelectorExpr [in Tty]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out User]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out User]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in User]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Volumes]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Volumes]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.SelectorExpr [v1beta2 ServiceVolumeConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Volumes]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out WorkingDir]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Volumes]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out WorkingDir]}
 	 {*ast.SelectorExpr [in WorkingDir]}
 	 {*ast.ReturnStmt [nil]}
 
@@ -1996,98 +2218,137 @@ function name is autoConvert_v1beta2_ServiceConfig_To_v1alpha3_ServiceConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Name]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Name]}
 	 {*ast.SelectorExpr [in Name]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out CapAdd]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out CapAdd]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in CapAdd]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out CapDrop]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in CapAdd]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out CapDrop]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in CapDrop]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Command]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in CapDrop]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Command]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Command]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Configs]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Command]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Configs]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [ServiceConfigObjConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Configs]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Configs]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_DeployConfig_To_v1alpha3_DeployConfig]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Deploy]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Deploy s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Deploy]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Deploy s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Entrypoint]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Entrypoint]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Entrypoint]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Environment]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Entrypoint]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Environment]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string]}
 	 {*ast.StarExpr [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Environment]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out ExtraHosts]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Environment]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ExtraHosts]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in ExtraHosts]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Hostname]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in ExtraHosts]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Hostname]}
 	 {*ast.SelectorExpr [in Hostname]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out HealthCheck]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out HealthCheck]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [HealthCheckConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in HealthCheck]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Image]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Image]}
 	 {*ast.SelectorExpr [in Image]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Ipc]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Ipc]}
 	 {*ast.SelectorExpr [in Ipc]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Labels]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Labels]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Pid]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Labels]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Pid]}
 	 {*ast.SelectorExpr [in Pid]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Ports]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Ports]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [ServicePortConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Ports]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Privileged]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Ports]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Privileged]}
 	 {*ast.SelectorExpr [in Privileged]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out ReadOnly]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ReadOnly]}
 	 {*ast.SelectorExpr [in ReadOnly]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Secrets]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Secrets]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [ServiceSecretConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Secrets]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out StdinOpen]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Secrets]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out StdinOpen]}
 	 {*ast.SelectorExpr [in StdinOpen]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out StopGracePeriod]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out StopGracePeriod]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Duration]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in StopGracePeriod]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Tmpfs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Tmpfs]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Tmpfs]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Tty]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Tmpfs]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Tty]}
 	 {*ast.SelectorExpr [in Tty]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out User]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out User]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in User]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Volumes]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Volumes]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [ServiceVolumeConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Volumes]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out WorkingDir]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Volumes]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out WorkingDir]}
 	 {*ast.SelectorExpr [in WorkingDir]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_ServiceConfig_To_v1alpha3_ServiceConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_ServiceConfig_To_v1alpha3_ServiceConfig]}
+	 { [Convert_v1beta2_ServiceConfig_To_v1alpha3_ServiceConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfig]}
 	 {*ast.Field [out]}
@@ -2107,15 +2368,20 @@ function name is autoConvert_v1alpha3_ServiceConfigObjConfig_To_v1beta2_ServiceC
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Source]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Source]}
 	 {*ast.SelectorExpr [in Source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out UID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out UID]}
 	 {*ast.SelectorExpr [in UID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out GID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out GID]}
 	 {*ast.SelectorExpr [in GID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Mode]}
@@ -2123,7 +2389,7 @@ function name is autoConvert_v1alpha3_ServiceConfigObjConfig_To_v1beta2_ServiceC
 
 
 function name is Convert_v1alpha3_ServiceConfigObjConfig_To_v1beta2_ServiceConfigObjConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_ServiceConfigObjConfig_To_v1beta2_ServiceConfigObjConfig]}
+	 { [Convert_v1alpha3_ServiceConfigObjConfig_To_v1beta2_ServiceConfigObjConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [ServiceConfigObjConfig]}
 	 {*ast.Field [out]}
@@ -2143,15 +2409,20 @@ function name is autoConvert_v1beta2_ServiceConfigObjConfig_To_v1alpha3_ServiceC
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Source]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Source]}
 	 {*ast.SelectorExpr [in Source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out UID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out UID]}
 	 {*ast.SelectorExpr [in UID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out GID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out GID]}
 	 {*ast.SelectorExpr [in GID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Mode]}
@@ -2159,7 +2430,7 @@ function name is autoConvert_v1beta2_ServiceConfigObjConfig_To_v1alpha3_ServiceC
 
 
 function name is Convert_v1beta2_ServiceConfigObjConfig_To_v1alpha3_ServiceConfigObjConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_ServiceConfigObjConfig_To_v1alpha3_ServiceConfigObjConfig]}
+	 { [Convert_v1beta2_ServiceConfigObjConfig_To_v1alpha3_ServiceConfigObjConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceConfigObjConfig]}
 	 {*ast.Field [out]}
@@ -2179,19 +2450,23 @@ function name is autoConvert_v1alpha3_ServicePortConfig_To_v1beta2_ServicePortCo
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.SelectorExpr [in Mode]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Published]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Published]}
 	 {*ast.SelectorExpr [in Published]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Protocol]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Protocol]}
 	 {*ast.SelectorExpr [in Protocol]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_ServicePortConfig_To_v1beta2_ServicePortConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_ServicePortConfig_To_v1beta2_ServicePortConfig]}
+	 { [Convert_v1alpha3_ServicePortConfig_To_v1beta2_ServicePortConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [ServicePortConfig]}
 	 {*ast.Field [out]}
@@ -2211,19 +2486,23 @@ function name is autoConvert_v1beta2_ServicePortConfig_To_v1alpha3_ServicePortCo
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.SelectorExpr [in Mode]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Published]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Published]}
 	 {*ast.SelectorExpr [in Published]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Protocol]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Protocol]}
 	 {*ast.SelectorExpr [in Protocol]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_ServicePortConfig_To_v1alpha3_ServicePortConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_ServicePortConfig_To_v1alpha3_ServicePortConfig]}
+	 { [Convert_v1beta2_ServicePortConfig_To_v1alpha3_ServicePortConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServicePortConfig]}
 	 {*ast.Field [out]}
@@ -2243,15 +2522,20 @@ function name is autoConvert_v1alpha3_ServiceSecretConfig_To_v1beta2_ServiceSecr
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Source]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Source]}
 	 {*ast.SelectorExpr [in Source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out UID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out UID]}
 	 {*ast.SelectorExpr [in UID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out GID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out GID]}
 	 {*ast.SelectorExpr [in GID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Mode]}
@@ -2259,7 +2543,7 @@ function name is autoConvert_v1alpha3_ServiceSecretConfig_To_v1beta2_ServiceSecr
 
 
 function name is Convert_v1alpha3_ServiceSecretConfig_To_v1beta2_ServiceSecretConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_ServiceSecretConfig_To_v1beta2_ServiceSecretConfig]}
+	 { [Convert_v1alpha3_ServiceSecretConfig_To_v1beta2_ServiceSecretConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [ServiceSecretConfig]}
 	 {*ast.Field [out]}
@@ -2279,15 +2563,20 @@ function name is autoConvert_v1beta2_ServiceSecretConfig_To_v1alpha3_ServiceSecr
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Source]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Source]}
 	 {*ast.SelectorExpr [in Source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out UID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out UID]}
 	 {*ast.SelectorExpr [in UID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out GID]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out GID]}
 	 {*ast.SelectorExpr [in GID]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Mode]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Mode]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Mode]}
@@ -2295,7 +2584,7 @@ function name is autoConvert_v1beta2_ServiceSecretConfig_To_v1alpha3_ServiceSecr
 
 
 function name is Convert_v1beta2_ServiceSecretConfig_To_v1alpha3_ServiceSecretConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_ServiceSecretConfig_To_v1alpha3_ServiceSecretConfig]}
+	 { [Convert_v1beta2_ServiceSecretConfig_To_v1alpha3_ServiceSecretConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceSecretConfig]}
 	 {*ast.Field [out]}
@@ -2315,19 +2604,23 @@ function name is autoConvert_v1alpha3_ServiceVolumeConfig_To_v1beta2_ServiceVolu
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Type]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Type]}
 	 {*ast.SelectorExpr [in Type]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Source]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Source]}
 	 {*ast.SelectorExpr [in Source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out ReadOnly]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ReadOnly]}
 	 {*ast.SelectorExpr [in ReadOnly]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_ServiceVolumeConfig_To_v1beta2_ServiceVolumeConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_ServiceVolumeConfig_To_v1beta2_ServiceVolumeConfig]}
+	 { [Convert_v1alpha3_ServiceVolumeConfig_To_v1beta2_ServiceVolumeConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [ServiceVolumeConfig]}
 	 {*ast.Field [out]}
@@ -2347,19 +2640,23 @@ function name is autoConvert_v1beta2_ServiceVolumeConfig_To_v1alpha3_ServiceVolu
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Type]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Type]}
 	 {*ast.SelectorExpr [in Type]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Source]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Source]}
 	 {*ast.SelectorExpr [in Source]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Target]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Target]}
 	 {*ast.SelectorExpr [in Target]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out ReadOnly]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ReadOnly]}
 	 {*ast.SelectorExpr [in ReadOnly]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_ServiceVolumeConfig_To_v1alpha3_ServiceVolumeConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_ServiceVolumeConfig_To_v1alpha3_ServiceVolumeConfig]}
+	 { [Convert_v1beta2_ServiceVolumeConfig_To_v1alpha3_ServiceVolumeConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 ServiceVolumeConfig]}
 	 {*ast.Field [out]}
@@ -2379,23 +2676,31 @@ function name is autoConvert_v1alpha3_Stack_To_v1beta2_Stack
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ObjectMeta]}
 	 {*ast.SelectorExpr [in ObjectMeta]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [in Spec nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [in out]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec]}
-	 {*ast.AssignStmt -> *ast.StarExpr [out]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [in Spec nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= in out]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Spec]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [out]}
 	 {*ast.CallExpr [new]}
 	 {*ast.SelectorExpr [v1beta2 StackSpec]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_StackSpec_To_v1beta2_StackSpec]}
 	 {*ast.StarExpr [in]}
 	 {*ast.StarExpr [out s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Spec nil]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Status]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Spec nil]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Status]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackStatus]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Status]}
@@ -2403,7 +2708,7 @@ function name is autoConvert_v1alpha3_Stack_To_v1beta2_Stack
 
 
 function name is Convert_v1alpha3_Stack_To_v1beta2_Stack 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_Stack_To_v1beta2_Stack]}
+	 { [Convert_v1alpha3_Stack_To_v1beta2_Stack]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [Stack]}
 	 {*ast.Field [out]}
@@ -2423,22 +2728,30 @@ function name is autoConvert_v1beta2_Stack_To_v1alpha3_Stack
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ObjectMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ObjectMeta]}
 	 {*ast.SelectorExpr [in ObjectMeta]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [in Spec nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [in out]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Spec]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Spec]}
-	 {*ast.AssignStmt -> *ast.StarExpr [out]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [in Spec nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= in out]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Spec]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Spec]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [out]}
 	 {*ast.CallExpr [new StackSpec]}
-	 {*ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_StackSpec_To_v1alpha3_StackSpec]}
 	 {*ast.StarExpr [in]}
 	 {*ast.StarExpr [out s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Spec nil]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Status]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Spec nil]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Status]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [StackStatus]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Status]}
@@ -2446,7 +2759,7 @@ function name is autoConvert_v1beta2_Stack_To_v1alpha3_Stack
 
 
 function name is Convert_v1beta2_Stack_To_v1alpha3_Stack 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_Stack_To_v1alpha3_Stack]}
+	 { [Convert_v1beta2_Stack_To_v1alpha3_Stack]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 Stack]}
 	 {*ast.Field [out]}
@@ -2466,31 +2779,40 @@ function name is autoConvert_v1alpha3_StackList_To_v1beta2_StackList
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ListMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ListMeta]}
 	 {*ast.SelectorExpr [in ListMeta]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [in Items nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [in out]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Items]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Items]}
-	 {*ast.AssignStmt -> *ast.StarExpr [out]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [in Items nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= in out]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Items]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Items]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [out]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType -> *ast.SelectorExpr [v1beta2 Stack]}
 	 {*ast.CallExpr [len]}
 	 {*ast.StarExpr [in]}
 	 {*ast.RangeStmt [i]}
 	 {*ast.StarExpr [in]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_Stack_To_v1beta2_Stack]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [in i]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [out i s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [in i]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [out i s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Items nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Items nil]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_StackList_To_v1beta2_StackList 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_StackList_To_v1beta2_StackList]}
+	 { [Convert_v1alpha3_StackList_To_v1beta2_StackList]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [StackList]}
 	 {*ast.Field [out]}
@@ -2510,31 +2832,40 @@ function name is autoConvert_v1beta2_StackList_To_v1alpha3_StackList
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out ListMeta]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out ListMeta]}
 	 {*ast.SelectorExpr [in ListMeta]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [in Items nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [in out]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Items]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Items]}
-	 {*ast.AssignStmt -> *ast.StarExpr [out]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [in Items nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= in out]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Items]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Items]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [out]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [Stack]}
 	 {*ast.CallExpr [len]}
 	 {*ast.StarExpr [in]}
 	 {*ast.RangeStmt [i]}
 	 {*ast.StarExpr [in]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_Stack_To_v1alpha3_Stack]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [in i]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [out i s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [in i]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [out i s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Items nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Items nil]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_StackList_To_v1alpha3_StackList 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_StackList_To_v1alpha3_StackList]}
+	 { [Convert_v1beta2_StackList_To_v1alpha3_StackList]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackList]}
 	 {*ast.Field [out]}
@@ -2554,39 +2885,51 @@ function name is autoConvert_v1alpha3_StackSpec_To_v1beta2_StackSpec
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [in Services nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [in out]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Services]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Services]}
-	 {*ast.AssignStmt -> *ast.StarExpr [out]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [in Services nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= in out]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Services]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Services]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [out]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType -> *ast.SelectorExpr [v1beta2 ServiceConfig]}
 	 {*ast.CallExpr [len]}
 	 {*ast.StarExpr [in]}
 	 {*ast.RangeStmt [i]}
 	 {*ast.StarExpr [in]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1alpha3_ServiceConfig_To_v1beta2_ServiceConfig]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [in i]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [out i s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [in i]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [out i s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Services nil]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Secrets]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Services nil]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Secrets]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string]}
 	 {*ast.SelectorExpr [v1beta2 SecretConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Secrets]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Configs]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Secrets]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Configs]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string]}
 	 {*ast.SelectorExpr [v1beta2 ConfigObjConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Configs]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Configs]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_StackSpec_To_v1beta2_StackSpec 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_StackSpec_To_v1beta2_StackSpec]}
+	 { [Convert_v1alpha3_StackSpec_To_v1beta2_StackSpec]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [StackSpec]}
 	 {*ast.Field [out]}
@@ -2606,37 +2949,49 @@ function name is autoConvert_v1beta2_StackSpec_To_v1alpha3_StackSpec
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [in Services nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [in out]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Services]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [out Services]}
-	 {*ast.AssignStmt -> *ast.StarExpr [out]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [in Services nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= in out]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Services]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [out Services]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr [out]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [ServiceConfig]}
 	 {*ast.CallExpr [len]}
 	 {*ast.StarExpr [in]}
 	 {*ast.RangeStmt [i]}
 	 {*ast.StarExpr [in]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr [Convert_v1beta2_ServiceConfig_To_v1alpha3_ServiceConfig]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [in i]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [out i s]}
-	 {*ast.BinaryExpr [err nil]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [in i]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.ParenExpr -> *ast.StarExpr [out i s]}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Services nil]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Secrets]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Services nil]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Secrets]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string SecretConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Secrets]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Configs]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Secrets]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Configs]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.MapType [string ConfigObjConfig]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [in Configs]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [in Configs]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_StackSpec_To_v1alpha3_StackSpec 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_StackSpec_To_v1alpha3_StackSpec]}
+	 { [Convert_v1beta2_StackSpec_To_v1alpha3_StackSpec]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackSpec]}
 	 {*ast.Field [out]}
@@ -2656,16 +3011,18 @@ function name is autoConvert_v1alpha3_StackStatus_To_v1beta2_StackStatus
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Phase]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Phase]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [v1beta2 StackPhase]}
 	 {*ast.SelectorExpr [in Phase]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Message]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Message]}
 	 {*ast.SelectorExpr [in Message]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1alpha3_StackStatus_To_v1beta2_StackStatus 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_StackStatus_To_v1beta2_StackStatus]}
+	 { [Convert_v1alpha3_StackStatus_To_v1beta2_StackStatus]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [StackStatus]}
 	 {*ast.Field [out]}
@@ -2685,16 +3042,18 @@ function name is autoConvert_v1beta2_StackStatus_To_v1alpha3_StackStatus
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Phase]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Phase]}
 	 {*ast.CallExpr [StackPhase]}
 	 {*ast.SelectorExpr [in Phase]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [out Message]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Message]}
 	 {*ast.SelectorExpr [in Message]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is Convert_v1beta2_StackStatus_To_v1alpha3_StackStatus 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_StackStatus_To_v1alpha3_StackStatus]}
+	 { [Convert_v1beta2_StackStatus_To_v1alpha3_StackStatus]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 StackStatus]}
 	 {*ast.Field [out]}
@@ -2714,7 +3073,8 @@ function name is autoConvert_v1alpha3_UpdateConfig_To_v1beta2_UpdateConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Parallelism]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Parallelism]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Parallelism]}
@@ -2722,7 +3082,7 @@ function name is autoConvert_v1alpha3_UpdateConfig_To_v1beta2_UpdateConfig
 
 
 function name is Convert_v1alpha3_UpdateConfig_To_v1beta2_UpdateConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1alpha3_UpdateConfig_To_v1beta2_UpdateConfig]}
+	 { [Convert_v1alpha3_UpdateConfig_To_v1beta2_UpdateConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr [UpdateConfig]}
 	 {*ast.Field [out]}
@@ -2742,7 +3102,8 @@ function name is autoConvert_v1beta2_UpdateConfig_To_v1alpha3_UpdateConfig
 	 {*ast.Field [s]}
 	 {*ast.SelectorExpr [conversion Scope]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [out Parallelism]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [out Parallelism]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [in Parallelism]}
@@ -2750,7 +3111,7 @@ function name is autoConvert_v1beta2_UpdateConfig_To_v1alpha3_UpdateConfig
 
 
 function name is Convert_v1beta2_UpdateConfig_To_v1alpha3_UpdateConfig 
-	 {*ast.CommentGroup -> *ast.Comment [Convert_v1beta2_UpdateConfig_To_v1alpha3_UpdateConfig]}
+	 { [Convert_v1beta2_UpdateConfig_To_v1alpha3_UpdateConfig]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [v1beta2 UpdateConfig]}
 	 {*ast.Field [out]}

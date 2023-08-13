@@ -1,17 +1,17 @@
 {*ast.File [jsonparser]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.ImportSpec [STRING "strconv"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.ImportSpec [STRING "runtime"]}
+
+
 
 
 function name is equalStr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment [equalStr]}
+	 { [equalStr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.ArrayType [byte]}
 	 {*ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer b s]}
 
 
@@ -23,11 +23,12 @@ function name is parseFloat
 	 {*ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv ParseFloat]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer b INT 64]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer b]}
+	 {*ast.BasicLit [INT 64]}
 
 
 function name is bytesToString 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [bytesToString]}
+	 { [bytesToString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr -> *ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [string]}
@@ -39,22 +40,28 @@ function name is StringToBytes
 	 { [StringToBytes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [b]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= b]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [byte INT 0 INT 0]}
-	 {*ast.AssignStmt [bh]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= bh]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [b]}
-	 {*ast.AssignStmt [sh]}
+	 {*ast.UnaryExpr [& b]}
+	 {*ast.AssignStmt [:= sh]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect StringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [s]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bh Data]}
+	 {*ast.UnaryExpr [& s]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bh Data]}
 	 {*ast.SelectorExpr [sh Data]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bh Cap]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bh Cap]}
 	 {*ast.SelectorExpr [sh Len]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bh Len]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bh Len]}
 	 {*ast.SelectorExpr [sh Len]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [runtime KeepAlive s]}
 	 {*ast.ReturnStmt [b]}

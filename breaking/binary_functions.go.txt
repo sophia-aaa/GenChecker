@@ -1,50 +1,53 @@
 {*ast.File [json]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "bytes"]}
-{*ast.ImportSpec [STRING "encoding/binary"]}
-{*ast.ImportSpec [STRING "encoding/hex"]}
-{*ast.ImportSpec [STRING "fmt"]}
-{*ast.ImportSpec [STRING "sort"]}
-{*ast.ImportSpec [STRING "strconv"]}
-{*ast.ImportSpec [STRING "unicode/utf8"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.ImportSpec [STRING "github.com/pingcap/errors"]}
-{*ast.ImportSpec [STRING "github.com/XiaoMi/Gaea/util/hack"]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "bytes"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "encoding/binary"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "encoding/hex"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sort"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strconv"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unicode/utf8"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/pingcap/errors"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/XiaoMi/Gaea/util/hack"]}
 
 
 function name is Type 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [bj BinaryJSON Type]}
+	 {*ast.FieldList -> *ast.Field [bj BinaryJSON Type]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [bj TypeCode]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [TypeCodeObject]}
-	 {*ast.ReturnStmt [STRING "OBJECT"]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "OBJECT"]}
 	 {*ast.CaseClause [TypeCodeArray]}
-	 {*ast.ReturnStmt [STRING "ARRAY"]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "ARRAY"]}
 	 {*ast.CaseClause [TypeCodeLiteral]}
-	 {*ast.SwitchStmt -> *ast.IndexExpr -> *ast.SelectorExpr [bj Value INT 0]}
+	 {*ast.SwitchStmt -> *ast.IndexExpr -> *ast.SelectorExpr [bj Value]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [LiteralNil]}
-	 {*ast.ReturnStmt [STRING "NULL"]}
-	 {*ast.CaseClause -> *ast.ReturnStmt [STRING "BOOLEAN"]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "NULL"]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.BasicLit [STRING "BOOLEAN"]}
 	 {*ast.CaseClause [TypeCodeInt64]}
-	 {*ast.ReturnStmt [STRING "INTEGER"]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "INTEGER"]}
 	 {*ast.CaseClause [TypeCodeUint64]}
-	 {*ast.ReturnStmt [STRING "UNSIGNED INTEGER"]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "UNSIGNED INTEGER"]}
 	 {*ast.CaseClause [TypeCodeFloat64]}
-	 {*ast.ReturnStmt [STRING "DOUBLE"]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "DOUBLE"]}
 	 {*ast.CaseClause [TypeCodeString]}
-	 {*ast.ReturnStmt [STRING "STRING"]}
-	 {*ast.CaseClause -> *ast.AssignStmt [msg]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "STRING"]}
+	 {*ast.CaseClause -> *ast.AssignStmt [:= msg]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf unknownTypeCodeErrorMsg]}
 	 {*ast.SelectorExpr [bj TypeCode]}
 	 {*ast.ExprStmt -> *ast.CallExpr [panic msg]}
 
 
 function name is Quote 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [bj BinaryJSON Quote]}
+	 {*ast.FieldList -> *ast.Field [bj BinaryJSON Quote]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= str]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [hack String]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetString]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strconv Quote]}
@@ -52,90 +55,126 @@ function name is Quote
 
 
 function name is Unquote 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [bj BinaryJSON Unquote]}
+	 {*ast.FieldList -> *ast.Field [bj BinaryJSON Unquote]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [error]}
 	 {*ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [bj TypeCode]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [TypeCodeString]}
-	 {*ast.AssignStmt [tmp]}
+	 {*ast.AssignStmt [:= tmp]}
 	 {*ast.CallExpr [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [hack String]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetString]}
-	 {*ast.AssignStmt [s err]}
+	 {*ast.AssignStmt [:= s err]}
 	 {*ast.CallExpr [unquoteString tmp]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING ""]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [errors Trace err]}
-	 {*ast.AssignStmt [slen]}
+	 {*ast.AssignStmt [:= slen]}
 	 {*ast.CallExpr [len s]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [slen INT 1]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [head tail]}
-	 {*ast.IndexExpr [s INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [> slen]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= head tail]}
 	 {*ast.IndexExpr [s]}
-	 {*ast.BinaryExpr [slen INT 1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [head CHAR '"']}
-	 {*ast.BinaryExpr [tail CHAR '"']}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr [s INT 1]}
-	 {*ast.BinaryExpr [slen INT 1 nil]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IndexExpr [s]}
+	 {*ast.BinaryExpr [- slen]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [== head]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.BinaryExpr [== tail]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr [s]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BinaryExpr [- slen]}
+	 {*ast.BasicLit [INT 1]}
+	 { [nil]}
 	 {*ast.ReturnStmt [s nil]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [bj String nil]}
 
 
 function name is unquoteString 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [unquoteString]}
+	 { [unquoteString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [ret]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret]}
 	 {*ast.CallExpr [new]}
 	 {*ast.SelectorExpr [bytes Buffer]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [len s]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.IndexExpr [s i CHAR '\\']}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.IndexExpr [s i]}
+	 {*ast.BasicLit [CHAR '\\']}
 	 {*ast.BlockStmt -> *ast.IncDecStmt [i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [i]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== i]}
 	 {*ast.CallExpr [len s]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING ""]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Missing a closing quotation mark in string"]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Missing a closing quotation mark in string"]}
 	 {*ast.SwitchStmt -> *ast.IndexExpr [s i]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause [CHAR '"']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte CHAR '"']}
-	 {*ast.CaseClause [CHAR 'b']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte CHAR '\b']}
-	 {*ast.CaseClause [CHAR 'f']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte CHAR '\f']}
-	 {*ast.CaseClause [CHAR 'n']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte CHAR '\n']}
-	 {*ast.CaseClause [CHAR 'r']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte CHAR '\r']}
-	 {*ast.CaseClause [CHAR 't']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte CHAR '\t']}
-	 {*ast.CaseClause [CHAR '\\']}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte CHAR '\\']}
-	 {*ast.CaseClause [CHAR 'u']}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [i INT 4]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '"']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'b']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
+	 {*ast.BasicLit [CHAR '\b']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'f']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
+	 {*ast.BasicLit [CHAR '\f']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'n']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
+	 {*ast.BasicLit [CHAR '\n']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'r']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
+	 {*ast.BasicLit [CHAR '\r']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 't']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
+	 {*ast.BasicLit [CHAR '\t']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '\\']}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
+	 {*ast.BasicLit [CHAR '\\']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'u']}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.BinaryExpr [+ i]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CallExpr [len s]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING ""]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf STRING "Invalid unicode: %s"]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors Errorf]}
+	 {*ast.BasicLit [STRING "Invalid unicode: %s"]}
 	 {*ast.SliceExpr [s]}
-	 {*ast.BinaryExpr [i INT 1]}
-	 {*ast.AssignStmt [char size err]}
+	 {*ast.BinaryExpr [+ i]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= char size err]}
 	 {*ast.CallExpr [decodeEscapedUnicode]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [hack Slice]}
 	 {*ast.SliceExpr [s]}
-	 {*ast.BinaryExpr [i INT 1]}
-	 {*ast.BinaryExpr [i INT 5]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING ""]}
+	 {*ast.BinaryExpr [+ i]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BinaryExpr [+ i]}
+	 {*ast.BasicLit [INT 5]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [errors Trace err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret Write]}
-	 {*ast.SliceExpr [char INT 0 size]}
-	 {*ast.AssignStmt [i INT 4]}
+	 {*ast.SliceExpr [char]}
+	 {*ast.BasicLit [INT 0]}
+	 { [size]}
+	 {*ast.AssignStmt [+= i]}
+	 {*ast.BasicLit [INT 4]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
 	 {*ast.IndexExpr [s i]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ret WriteByte]}
@@ -144,60 +183,86 @@ function name is unquoteString
 
 
 function name is decodeEscapedUnicode 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [decodeEscapedUnicode]}
+	 { [decodeEscapedUnicode]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [char]}
-	 {*ast.ArrayType [INT 4 byte]}
+	 {*ast.ArrayType -> *ast.BasicLit [INT 4]}
+	 { [byte]}
 	 {*ast.Field [size int]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [size err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= size err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [hex Decode]}
-	 {*ast.SliceExpr [char INT 0 INT 2 s]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [err nil]}
-	 {*ast.BinaryExpr [size INT 2]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [char INT 0]}
+	 {*ast.SliceExpr [char]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 2]}
+	 { [s]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BinaryExpr [!= size]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [char]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [errors Trace err]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [unicode uint16]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.GenDecl -> *ast.ValueSpec [unicode uint16]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [binary Read]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes NewReader]}
-	 {*ast.SliceExpr [char INT 0 INT 2]}
+	 {*ast.SliceExpr [char]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.SelectorExpr [binary BigEndian]}
-	 {*ast.UnaryExpr [unicode]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [char INT 0]}
+	 {*ast.UnaryExpr [& unicode]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [char]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [errors Trace err]}
-	 {*ast.AssignStmt [size]}
+	 {*ast.AssignStmt [= size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [utf8 RuneLen]}
 	 {*ast.CallExpr [rune unicode]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [utf8 EncodeRune]}
-	 {*ast.SliceExpr [char INT 0 size]}
+	 {*ast.SliceExpr [char]}
+	 {*ast.BasicLit [INT 0]}
+	 { [size]}
 	 {*ast.CallExpr [rune unicode]}
 	 {*ast.ReturnStmt []}
 
 
 function name is Extract 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [bj BinaryJSON Extract]}
+	 {*ast.FieldList -> *ast.Field [bj BinaryJSON Extract]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [pathExprList]}
 	 {*ast.ArrayType [PathExpression]}
 	 {*ast.FieldList -> *ast.Field [ret BinaryJSON]}
 	 {*ast.Field [found bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= buf]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0 INT 1]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.RangeStmt [_ pathExpr pathExprList]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj extractTo buf pathExpr]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len buf INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [found false]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr [len pathExprList INT 1]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len buf INT 1]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [found true]}
-	 {*ast.AssignStmt [ret]}
-	 {*ast.IndexExpr [buf INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [found true]}
-	 {*ast.AssignStmt [ret]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len buf]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= found false]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len pathExprList]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len buf]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= found true]}
+	 {*ast.AssignStmt [= ret]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= found true]}
+	 {*ast.AssignStmt [= ret]}
 	 {*ast.CallExpr [buildBinaryArray buf]}
 	 {*ast.ReturnStmt []}
 
@@ -208,65 +273,98 @@ function name is extractTo
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.Field [pathExpr PathExpression]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
-	 {*ast.SelectorExpr [pathExpr legs INT 0]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [pathExpr legs]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [append buf bj]}
-	 {*ast.AssignStmt [currentLeg subPathExpr]}
+	 {*ast.AssignStmt [:= currentLeg subPathExpr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [pathExpr popOneLeg]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [currentLeg typ pathLegIndex]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [bj TypeCode TypeCodeArray]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [currentLeg arrayIndex INT 0]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [currentLeg arrayIndex arrayIndexAsterisk]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [currentLeg typ pathLegIndex]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [bj TypeCode TypeCodeArray]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [<=]}
+	 {*ast.SelectorExpr [currentLeg arrayIndex]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [currentLeg arrayIndex arrayIndexAsterisk]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj extractTo buf subPathExpr]}
 	 {*ast.ReturnStmt [buf]}
-	 {*ast.AssignStmt [elemCount]}
+	 {*ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetElemCount]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [currentLeg arrayIndex arrayIndexAsterisk]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [currentLeg arrayIndex arrayIndexAsterisk]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [bj arrayGetElem i extractTo buf subPathExpr]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [currentLeg arrayIndex elemCount]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [currentLeg arrayIndex elemCount]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [bj arrayGetElem]}
 	 {*ast.SelectorExpr [currentLeg arrayIndex extractTo buf subPathExpr]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [currentLeg typ pathLegKey]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [bj TypeCode TypeCodeObject]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elemCount]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [currentLeg typ pathLegKey]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [bj TypeCode TypeCodeObject]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetElemCount]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [currentLeg dotKey STRING "*"]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [currentLeg dotKey]}
+	 {*ast.BasicLit [STRING "*"]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [bj objectGetVal i extractTo buf subPathExpr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [child ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= child ok]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj objectSearchKey]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [hack Slice]}
 	 {*ast.SelectorExpr [currentLeg dotKey]}
 	 {*ast.IfStmt [ok]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [child extractTo buf subPathExpr]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [currentLeg typ pathLegDoubleAsterisk]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [currentLeg typ pathLegDoubleAsterisk]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj extractTo buf subPathExpr]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [bj TypeCode TypeCodeArray]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elemCount]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [bj TypeCode TypeCodeArray]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetElemCount]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [bj arrayGetElem i extractTo buf pathExpr]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [bj TypeCode TypeCodeObject]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elemCount]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [bj TypeCode TypeCodeObject]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetElemCount]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [bj objectGetVal i extractTo buf pathExpr]}
 	 {*ast.ReturnStmt [buf]}
 
@@ -277,15 +375,20 @@ function name is objectSearchKey
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
 	 {*ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elemCount]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetElemCount]}
-	 {*ast.AssignStmt [idx]}
+	 {*ast.AssignStmt [:= idx]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [sort Search elemCount]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [bj objectGetKey i key INT 0]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [idx elemCount]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [>=]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [bj objectGetKey i key]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [< idx elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Equal]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj objectGetKey idx key]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [bj objectGetVal idx true]}
@@ -297,26 +400,30 @@ function name is buildBinaryArray
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [elems]}
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [totalSize]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len elems valEntrySize]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= totalSize]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.CallExpr [len elems valEntrySize]}
 	 {*ast.RangeStmt [_ elem elems]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [elem TypeCode TypeCodeLiteral]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [totalSize]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [elem TypeCode TypeCodeLiteral]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= totalSize]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [elem Value]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.AssignStmt [:= buf]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len elems valEntrySize totalSize]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.CallExpr [len elems valEntrySize totalSize]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint32 buf]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.CallExpr [len elems]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint32]}
 	 {*ast.SliceExpr [buf dataSizeOff]}
 	 {*ast.CallExpr [uint32 totalSize]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [buildBinaryElements buf headerSize elems]}
 	 {*ast.ReturnStmt -> *ast.CompositeLit [BinaryJSON]}
 	 {*ast.KeyValueExpr [TypeCode TypeCodeArray]}
@@ -332,22 +439,29 @@ function name is buildBinaryElements
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
 	 {*ast.BlockStmt -> *ast.RangeStmt [i elem elems]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [buf]}
-	 {*ast.BinaryExpr [entryStart]}
-	 {*ast.BinaryExpr [i valEntrySize]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [+ entryStart]}
+	 {*ast.BinaryExpr [* i valEntrySize]}
 	 {*ast.SelectorExpr [elem TypeCode]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [elem TypeCode TypeCodeLiteral]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [buf]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [entryStart]}
-	 {*ast.BinaryExpr [i valEntrySize valTypeSize]}
-	 {*ast.IndexExpr -> *ast.SelectorExpr [elem Value INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [elem TypeCode TypeCodeLiteral]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+ entryStart]}
+	 {*ast.BinaryExpr [* i valEntrySize valTypeSize]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [elem Value]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint32]}
 	 {*ast.SliceExpr [buf]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [entryStart]}
-	 {*ast.BinaryExpr [i valEntrySize valTypeSize]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+ entryStart]}
+	 {*ast.BinaryExpr [* i valEntrySize valTypeSize]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.CallExpr [len buf]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [append buf]}
 	 {*ast.SelectorExpr [elem Value]}
 	 {*ast.ReturnStmt [buf]}
@@ -360,24 +474,30 @@ function name is buildBinaryObject
 	 {*ast.Field [elems]}
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [totalSize]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len elems]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [keyEntrySize valEntrySize]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= totalSize]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.CallExpr [len elems]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [+ keyEntrySize valEntrySize]}
 	 {*ast.RangeStmt [i elem elems]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [elem TypeCode TypeCodeLiteral]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [totalSize]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [elem TypeCode TypeCodeLiteral]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= totalSize]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [elem Value]}
-	 {*ast.AssignStmt [totalSize]}
+	 {*ast.AssignStmt [+= totalSize]}
 	 {*ast.CallExpr [len]}
 	 {*ast.IndexExpr [keys i]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.AssignStmt [:= buf]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len elems]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [keyEntrySize valEntrySize totalSize]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.CallExpr [len elems]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [+ keyEntrySize valEntrySize totalSize]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint32 buf]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.CallExpr [len elems]}
@@ -387,22 +507,24 @@ function name is buildBinaryObject
 	 {*ast.RangeStmt [i key keys]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint32]}
 	 {*ast.SliceExpr [buf]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr [i keyEntrySize]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [* i keyEntrySize]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.CallExpr [len buf]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint16]}
 	 {*ast.SliceExpr [buf]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr [i keyEntrySize keyLenOff]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [* i keyEntrySize keyLenOff]}
 	 {*ast.CallExpr [uint16]}
 	 {*ast.CallExpr [len key]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [append buf key]}
-	 {*ast.AssignStmt [entryStart]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len elems keyEntrySize]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.AssignStmt [:= entryStart]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.CallExpr [len elems keyEntrySize]}
+	 {*ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [buildBinaryElements buf entryStart elems]}
 	 {*ast.ReturnStmt -> *ast.CompositeLit [BinaryJSON]}
 	 {*ast.KeyValueExpr [TypeCode TypeCodeObject]}
@@ -410,7 +532,7 @@ function name is buildBinaryObject
 
 
 function name is Modify 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [bj BinaryJSON Modify]}
+	 {*ast.FieldList -> *ast.Field [bj BinaryJSON Modify]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [pathExprList]}
 	 {*ast.ArrayType [PathExpression]}
 	 {*ast.Field [values]}
@@ -418,63 +540,77 @@ function name is Modify
 	 {*ast.Field [mt ModifyType]}
 	 {*ast.FieldList -> *ast.Field [retj BinaryJSON]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len pathExprList]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.CallExpr [len pathExprList]}
 	 {*ast.CallExpr [len values]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [retj]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Incorrect parameter count"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Incorrect parameter count"]}
 	 {*ast.RangeStmt [_ pathExpr pathExprList]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [pathExpr flags containsAnyAsterisk]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [retj]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Invalid path expression"]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Invalid path expression"]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [len pathExprList]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [pathExpr value]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= pathExpr value]}
 	 {*ast.IndexExpr [pathExprList i]}
 	 {*ast.IndexExpr [values i]}
-	 {*ast.AssignStmt [modifier]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [binaryModifier]}
+	 {*ast.AssignStmt [:= modifier]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [binaryModifier]}
 	 {*ast.KeyValueExpr [bj bj]}
 	 {*ast.SwitchStmt [mt]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [ModifyInsert]}
-	 {*ast.AssignStmt [bj]}
+	 {*ast.AssignStmt [= bj]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [modifier insert pathExpr value]}
 	 {*ast.CaseClause [ModifyReplace]}
-	 {*ast.AssignStmt [bj]}
+	 {*ast.AssignStmt [= bj]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [modifier replace pathExpr value]}
 	 {*ast.CaseClause [ModifySet]}
-	 {*ast.AssignStmt [bj]}
+	 {*ast.AssignStmt [= bj]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [modifier set pathExpr value]}
 	 {*ast.ReturnStmt [bj nil]}
 
 
 function name is Remove 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [bj BinaryJSON Remove]}
+	 {*ast.FieldList -> *ast.Field [bj BinaryJSON Remove]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [pathExprList]}
 	 {*ast.ArrayType [PathExpression]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
 	 {*ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.RangeStmt [_ pathExpr pathExprList]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len]}
-	 {*ast.SelectorExpr [pathExpr legs INT 0]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len]}
+	 {*ast.SelectorExpr [pathExpr legs]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [bj]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Invalid path expression"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Invalid path expression"]}
 	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [pathExpr flags containsAnyAsterisk]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [bj]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Invalid path expression"]}
-	 {*ast.AssignStmt [modifer]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [binaryModifier]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Invalid path expression"]}
+	 {*ast.AssignStmt [:= modifer]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [binaryModifier]}
 	 {*ast.KeyValueExpr [bj bj]}
-	 {*ast.AssignStmt [bj]}
+	 {*ast.AssignStmt [= bj]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [modifer remove pathExpr]}
 	 {*ast.ReturnStmt [bj nil]}
-	 {*ast.GenDecl -> *ast.TypeSpec [binaryModifier]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [bj BinaryJSON]}
-	 {*ast.Field [modifyPtr]}
-	 {*ast.StarExpr [byte]}
-	 {*ast.Field [modifyValue BinaryJSON]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [binaryModifier]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [bj BinaryJSON]}
+{*ast.Field [modifyPtr]}
+{*ast.StarExpr [byte]}
+{*ast.Field [modifyValue BinaryJSON]}
 
 
 function name is set 
@@ -483,15 +619,26 @@ function name is set
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [path PathExpression]}
 	 {*ast.Field [newBj BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [result]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= result]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0 INT 1]}
-	 {*ast.AssignStmt [result]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= result]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [bm bj extractTo result path]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len result INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [bm modifyPtr]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.IndexExpr [result INT 0 Value INT 0]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bm modifyValue newBj]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len result]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyPtr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr -> *ast.IndexExpr [result]}
+	 {*ast.BasicLit [INT 0]}
+	 { [Value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyValue newBj]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [bm rebuild]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [bm doInsert path newBj]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [bm rebuild]}
@@ -503,16 +650,27 @@ function name is replace
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [path PathExpression]}
 	 {*ast.Field [newBj BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [result]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= result]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0 INT 1]}
-	 {*ast.AssignStmt [result]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= result]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [bm bj extractTo result path]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len result INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len result]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [bm bj]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bm modifyPtr]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.IndexExpr [result INT 0 Value INT 0]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bm modifyValue newBj]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyPtr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr -> *ast.IndexExpr [result]}
+	 {*ast.BasicLit [INT 0]}
+	 { [Value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyValue newBj]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [bm rebuild]}
 
 
@@ -522,97 +680,136 @@ function name is insert
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [path PathExpression]}
 	 {*ast.Field [newBj BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [result]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= result]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0 INT 1]}
-	 {*ast.AssignStmt [result]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= result]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [bm bj extractTo result path]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len result INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len result]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [bm bj]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [bm doInsert path newBj]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [bm rebuild]}
 
 
 function name is doInsert 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [bm]}
+	 {*ast.FieldList -> *ast.Field [bm]}
 	 {*ast.StarExpr [binaryModifier doInsert]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [path PathExpression]}
 	 {*ast.Field [newBj BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [parentPath lastLeg]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= parentPath lastLeg]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [path popOneLastLeg]}
-	 {*ast.AssignStmt [result]}
+	 {*ast.AssignStmt [:= result]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0 INT 1]}
-	 {*ast.AssignStmt [result]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= result]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [bm bj extractTo result parentPath]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len result INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [parentBj]}
-	 {*ast.IndexExpr [result INT 0]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [lastLeg typ pathLegIndex]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [bm modifyPtr]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [parentBj Value INT 0]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [parentBj TypeCode TypeCodeArray]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [bm modifyValue]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len result]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [:= parentBj]}
+	 {*ast.IndexExpr [result]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [lastLeg typ pathLegIndex]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyPtr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [parentBj Value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [parentBj TypeCode TypeCodeArray]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyValue]}
 	 {*ast.CallExpr [buildBinaryArray]}
 	 {*ast.CompositeLit -> *ast.ArrayType [BinaryJSON parentBj newBj]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt [elemCount]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj GetElemCount]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.AssignStmt [:= elems]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0]}
-	 {*ast.BinaryExpr [elemCount INT 1]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [+ elemCount]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elems]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= elems]}
 	 {*ast.CallExpr [append elems]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj arrayGetElem i]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.AssignStmt [= elems]}
 	 {*ast.CallExpr [append elems newBj]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bm modifyValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyValue]}
 	 {*ast.CallExpr [buildBinaryArray elems]}
-	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [parentBj TypeCode TypeCodeObject]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [bm modifyPtr]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [parentBj Value INT 0]}
-	 {*ast.AssignStmt [elemCount]}
+	 {*ast.ReturnStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [parentBj TypeCode TypeCodeObject]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyPtr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [parentBj Value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj GetElemCount]}
-	 {*ast.AssignStmt [insertKey]}
+	 {*ast.AssignStmt [:= insertKey]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [hack Slice]}
 	 {*ast.SelectorExpr [lastLeg dotKey]}
-	 {*ast.AssignStmt [insertIdx]}
+	 {*ast.AssignStmt [:= insertIdx]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [sort Search elemCount]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj objectGetKey i insertKey INT 0]}
-	 {*ast.AssignStmt [keys]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [>=]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj objectGetKey i insertKey]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= keys]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.ArrayType [byte INT 0]}
-	 {*ast.BinaryExpr [elemCount INT 1]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.ArrayType -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [+ elemCount]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= elems]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0]}
-	 {*ast.BinaryExpr [elemCount INT 1]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [+ elemCount]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i insertIdx]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [keys]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== i insertIdx]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= keys]}
 	 {*ast.CallExpr [append keys insertKey]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.AssignStmt [= elems]}
 	 {*ast.CallExpr [append elems newBj]}
-	 {*ast.AssignStmt [keys]}
+	 {*ast.AssignStmt [= keys]}
 	 {*ast.CallExpr [append keys]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj objectGetKey i]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.AssignStmt [= elems]}
 	 {*ast.CallExpr [append elems]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj objectGetVal i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [insertIdx elemCount]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [keys]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== insertIdx elemCount]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= keys]}
 	 {*ast.CallExpr [append keys insertKey]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.AssignStmt [= elems]}
 	 {*ast.CallExpr [append elems newBj]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bm modifyValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyValue]}
 	 {*ast.CallExpr [buildBinaryObject keys elems]}
 
 
@@ -621,12 +818,17 @@ function name is remove
 	 {*ast.StarExpr [binaryModifier remove]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [path PathExpression]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [result]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= result]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0 INT 1]}
-	 {*ast.AssignStmt [result]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= result]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [bm bj extractTo result path]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len result INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len result]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [bm bj]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [bm doRemove path]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [bm rebuild]}
@@ -636,80 +838,113 @@ function name is doRemove
 	 {*ast.FieldList -> *ast.Field [bm]}
 	 {*ast.StarExpr [binaryModifier doRemove]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [path PathExpression]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [parentPath lastLeg]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= parentPath lastLeg]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [path popOneLastLeg]}
-	 {*ast.AssignStmt [result]}
+	 {*ast.AssignStmt [:= result]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0 INT 1]}
-	 {*ast.AssignStmt [result]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [= result]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [bm bj extractTo result parentPath]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len result INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [parentBj]}
-	 {*ast.IndexExpr [result INT 0]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [lastLeg typ pathLegIndex]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [parentBj TypeCode TypeCodeArray]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [bm modifyPtr]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [parentBj Value INT 0]}
-	 {*ast.AssignStmt [elemCount]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len result]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [:= parentBj]}
+	 {*ast.IndexExpr [result]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [lastLeg typ pathLegIndex]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [parentBj TypeCode TypeCodeArray]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyPtr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [parentBj Value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj GetElemCount]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.AssignStmt [:= elems]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0]}
-	 {*ast.BinaryExpr [elemCount INT 1]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [- elemCount]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [i]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!= i]}
 	 {*ast.SelectorExpr [lastLeg arrayIndex]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elems]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= elems]}
 	 {*ast.CallExpr [append elems]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj arrayGetElem i]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bm modifyValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyValue]}
 	 {*ast.CallExpr [buildBinaryArray elems]}
-	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [parentBj TypeCode TypeCodeObject]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt -> *ast.SelectorExpr [bm modifyPtr]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [parentBj Value INT 0]}
-	 {*ast.AssignStmt [elemCount]}
+	 {*ast.ReturnStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [parentBj TypeCode TypeCodeObject]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyPtr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [parentBj Value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj GetElemCount]}
-	 {*ast.AssignStmt [removeKey]}
+	 {*ast.AssignStmt [:= removeKey]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [hack Slice]}
 	 {*ast.SelectorExpr [lastLeg dotKey]}
-	 {*ast.AssignStmt [keys]}
+	 {*ast.AssignStmt [:= keys]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.ArrayType [byte INT 0]}
-	 {*ast.BinaryExpr [elemCount INT 1]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.ArrayType -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [+ elemCount]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= elems]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0]}
-	 {*ast.BinaryExpr [elemCount INT 1]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [+ elemCount]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [key]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= key]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj objectGetKey i]}
-	 {*ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [bytes Equal key removeKey]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [keys]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Equal key removeKey]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= keys]}
 	 {*ast.CallExpr [append keys]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj objectGetKey i]}
-	 {*ast.AssignStmt [elems]}
+	 {*ast.AssignStmt [= elems]}
 	 {*ast.CallExpr [append elems]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [parentBj objectGetVal i]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bm modifyValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyValue]}
 	 {*ast.CallExpr [buildBinaryObject keys elems]}
 
 
 function name is rebuild 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [bm]}
+	 {*ast.FieldList -> *ast.Field [bm]}
 	 {*ast.StarExpr [binaryModifier rebuild]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= buf]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [byte INT 0]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [bm bj Value]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [bm modifyValue Value]}
-	 {*ast.AssignStmt [value tpCode]}
+	 {*ast.AssignStmt [:= value tpCode]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bm rebuildTo buf]}
 	 {*ast.ReturnStmt -> *ast.CompositeLit [BinaryJSON]}
 	 {*ast.KeyValueExpr [TypeCode tpCode]}
@@ -723,17 +958,24 @@ function name is rebuildTo
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
 	 {*ast.Field [TypeCode]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [bm modifyPtr]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [bm bj Value INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [bm modifyPtr nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [bm modifyPtr]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [bm bj Value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm modifyPtr nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [append buf]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [bm modifyValue Value]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [bm modifyValue TypeCode]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [bm modifyPtr nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [bm modifyPtr nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [append buf]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [bm bj Value]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [bm bj TypeCode]}
-	 {*ast.AssignStmt [bj]}
+	 {*ast.AssignStmt [:= bj]}
 	 {*ast.SelectorExpr [bm bj]}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [bj TypeCode]}
 	 {*ast.BlockStmt []}
@@ -741,167 +983,214 @@ function name is rebuildTo
 	 {*ast.ReturnStmt -> *ast.CallExpr [append buf]}
 	 {*ast.SelectorExpr [bj Value]}
 	 {*ast.SelectorExpr [bj TypeCode]}
-	 {*ast.AssignStmt [docOff]}
+	 {*ast.AssignStmt [:= docOff]}
 	 {*ast.CallExpr [len buf]}
-	 {*ast.AssignStmt [elemCount]}
+	 {*ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetElemCount]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [valEntryStart int]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [bj TypeCode TypeCodeArray]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [copySize]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr [elemCount valEntrySize]}
-	 {*ast.AssignStmt [valEntryStart headerSize]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.GenDecl -> *ast.ValueSpec [valEntryStart int]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [bj TypeCode TypeCodeArray]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= copySize]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [* elemCount valEntrySize]}
+	 {*ast.AssignStmt [= valEntryStart headerSize]}
+	 {*ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [append buf]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [bj Value copySize]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [copySize]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr [elemCount]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr [keyEntrySize valEntrySize]}
-	 {*ast.AssignStmt [valEntryStart]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr [elemCount keyEntrySize]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= copySize]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [* elemCount]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [+ keyEntrySize valEntrySize]}
+	 {*ast.AssignStmt [= valEntryStart]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [* elemCount keyEntrySize]}
+	 {*ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [append buf]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [bj Value copySize]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [elemCount INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [firstKeyOff]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [> elemCount]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= firstKeyOff]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [endian Uint32]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [bj Value headerSize]}
-	 {*ast.AssignStmt [lastKeyOff]}
+	 {*ast.AssignStmt [:= lastKeyOff]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [endian Uint32]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [bj Value]}
-	 {*ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [elemCount INT 1 keyEntrySize]}
-	 {*ast.AssignStmt [lastKeyLen]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [- elemCount]}
+	 {*ast.BasicLit [INT 1]}
+	 { [keyEntrySize]}
+	 {*ast.AssignStmt [:= lastKeyLen]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [endian Uint16]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [bj Value]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [headerSize]}
-	 {*ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr [elemCount INT 1 keyEntrySize keyLenOff]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+ headerSize]}
+	 {*ast.BinaryExpr [*]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [- elemCount]}
+	 {*ast.BasicLit [INT 1]}
+	 { [keyEntrySize keyLenOff]}
+	 {*ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [append buf]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [bj Value firstKeyOff]}
-	 {*ast.BinaryExpr [lastKeyOff lastKeyLen]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.BinaryExpr [+ lastKeyOff lastKeyLen]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [valEntryOff]}
-	 {*ast.BinaryExpr [valEntryStart]}
-	 {*ast.BinaryExpr [i valEntrySize]}
-	 {*ast.AssignStmt [elem]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= valEntryOff]}
+	 {*ast.BinaryExpr [+ valEntryStart]}
+	 {*ast.BinaryExpr [* i valEntrySize]}
+	 {*ast.AssignStmt [:= elem]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj valEntryGet valEntryOff]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [bm bj elem]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [tpCode TypeCode]}
-	 {*ast.AssignStmt [valOff]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len buf docOff]}
-	 {*ast.AssignStmt [buf tpCode]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [bm bj elem]}
+	 {*ast.GenDecl -> *ast.ValueSpec [tpCode TypeCode]}
+	 {*ast.AssignStmt [:= valOff]}
+	 {*ast.BinaryExpr [-]}
+	 {*ast.CallExpr [len buf docOff]}
+	 {*ast.AssignStmt [= buf tpCode]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bm rebuildTo buf]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [buf]}
-	 {*ast.BinaryExpr [docOff valEntryOff tpCode]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [tpCode TypeCodeLiteral]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [lastIdx]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len buf INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [buf]}
+	 {*ast.BinaryExpr [+ docOff valEntryOff tpCode]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== tpCode TypeCodeLiteral]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= lastIdx]}
+	 {*ast.BinaryExpr [-]}
+	 {*ast.CallExpr [len buf]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint32]}
 	 {*ast.SliceExpr [buf]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [docOff valEntryOff valTypeSize]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+ docOff valEntryOff valTypeSize]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.IndexExpr [buf lastIdx]}
-	 {*ast.AssignStmt [buf]}
+	 {*ast.AssignStmt [= buf]}
 	 {*ast.SliceExpr [buf lastIdx]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint32]}
 	 {*ast.SliceExpr [buf]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [docOff valEntryOff valTypeSize]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+ docOff valEntryOff valTypeSize]}
 	 {*ast.CallExpr [uint32 valOff]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [endian PutUint32]}
 	 {*ast.SliceExpr [buf]}
-	 {*ast.BinaryExpr [docOff dataSizeOff]}
+	 {*ast.BinaryExpr [+ docOff dataSizeOff]}
 	 {*ast.CallExpr [uint32]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [len buf docOff]}
+	 {*ast.BinaryExpr [-]}
+	 {*ast.CallExpr [len buf docOff]}
 	 {*ast.ReturnStmt [buf]}
 	 {*ast.SelectorExpr [bj TypeCode]}
-	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.ValueSpec [floatEpsilon FLOAT 1.e-8]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [floatEpsilon]}
+{*ast.BasicLit [FLOAT 1.e-8]}
 
 
 function name is compareFloat64PrecisionLoss 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [compareFloat64PrecisionLoss]}
+	 { [compareFloat64PrecisionLoss]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x y float64]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [x y floatEpsilon]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [y x floatEpsilon]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [x y INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr [INT 1]}
-	 {*ast.ReturnStmt [INT 1]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.BinaryExpr [- x y floatEpsilon]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.BinaryExpr [- y x floatEpsilon]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.BinaryExpr [- x y]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [-]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 1]}
 
 
 function name is CompareBinary 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [CompareBinary]}
+	 { [CompareBinary]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [left right BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [precedence1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= precedence1]}
 	 {*ast.IndexExpr [jsonTypePrecedences]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [left Type]}
-	 {*ast.AssignStmt [precedence2]}
+	 {*ast.AssignStmt [:= precedence2]}
 	 {*ast.IndexExpr [jsonTypePrecedences]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [right Type]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cmp int]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [precedence1 precedence2]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [precedence1]}
-	 {*ast.IndexExpr [jsonTypePrecedences STRING "NULL"]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cmp INT 0]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cmp int]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== precedence1 precedence2]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== precedence1]}
+	 {*ast.IndexExpr [jsonTypePrecedences]}
+	 {*ast.BasicLit [STRING "NULL"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cmp]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [left TypeCode]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [TypeCodeLiteral]}
-	 {*ast.AssignStmt [cmp]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [int]}
-	 {*ast.IndexExpr -> *ast.SelectorExpr [right Value INT 0]}
+	 {*ast.AssignStmt [= cmp]}
+	 {*ast.BinaryExpr [-]}
 	 {*ast.CallExpr [int]}
-	 {*ast.IndexExpr -> *ast.SelectorExpr [left Value INT 0]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [right Value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.CallExpr [int]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [left Value]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause [TypeCodeInt64 TypeCodeUint64 TypeCodeFloat64]}
-	 {*ast.AssignStmt [leftFloat]}
+	 {*ast.AssignStmt [:= leftFloat]}
 	 {*ast.CallExpr [i64AsFloat64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [left GetInt64]}
 	 {*ast.SelectorExpr [left TypeCode]}
-	 {*ast.AssignStmt [rightFloat]}
+	 {*ast.AssignStmt [:= rightFloat]}
 	 {*ast.CallExpr [i64AsFloat64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [right GetInt64]}
 	 {*ast.SelectorExpr [right TypeCode]}
-	 {*ast.AssignStmt [cmp]}
+	 {*ast.AssignStmt [= cmp]}
 	 {*ast.CallExpr [compareFloat64PrecisionLoss leftFloat rightFloat]}
 	 {*ast.CaseClause [TypeCodeString]}
-	 {*ast.AssignStmt [cmp]}
+	 {*ast.AssignStmt [= cmp]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [left GetString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [right GetString]}
 	 {*ast.CaseClause [TypeCodeArray]}
-	 {*ast.AssignStmt [leftCount]}
+	 {*ast.AssignStmt [:= leftCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [left GetElemCount]}
-	 {*ast.AssignStmt [rightCount]}
+	 {*ast.AssignStmt [:= rightCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [right GetElemCount]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [i leftCount]}
-	 {*ast.BinaryExpr [i rightCount]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [< i leftCount]}
+	 {*ast.BinaryExpr [< i rightCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elem1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= elem1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [left arrayGetElem i]}
-	 {*ast.AssignStmt [elem2]}
+	 {*ast.AssignStmt [:= elem2]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [right arrayGetElem i]}
-	 {*ast.AssignStmt [cmp]}
+	 {*ast.AssignStmt [= cmp]}
 	 {*ast.CallExpr [CompareBinary elem1 elem2]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cmp INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= cmp]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [cmp]}
-	 {*ast.AssignStmt [cmp]}
-	 {*ast.BinaryExpr [leftCount rightCount]}
+	 {*ast.AssignStmt [= cmp]}
+	 {*ast.BinaryExpr [- leftCount rightCount]}
 	 {*ast.CaseClause [TypeCodeObject]}
-	 {*ast.AssignStmt [cmp]}
+	 {*ast.AssignStmt [= cmp]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
 	 {*ast.SelectorExpr [left Value]}
 	 {*ast.SelectorExpr [right Value]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cmp]}
-	 {*ast.BinaryExpr [precedence1 precedence2]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cmp]}
+	 {*ast.BinaryExpr [- precedence1 precedence2]}
 	 {*ast.ReturnStmt [cmp]}
 
 
@@ -916,44 +1205,57 @@ function name is i64AsFloat64
 	 {*ast.CaseClause [TypeCodeLiteral TypeCodeInt64]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [float64 i64]}
 	 {*ast.CaseClause [TypeCodeUint64]}
-	 {*ast.AssignStmt [u64]}
+	 {*ast.AssignStmt [:= u64]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [i64]}
+	 {*ast.UnaryExpr [& i64]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [float64 u64]}
 	 {*ast.CaseClause [TypeCodeFloat64]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [i64]}
-	 {*ast.CaseClause -> *ast.AssignStmt [msg]}
+	 {*ast.UnaryExpr [& i64]}
+	 {*ast.CaseClause -> *ast.AssignStmt [:= msg]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf unknownTypeCodeErrorMsg typeCode]}
 	 {*ast.ExprStmt -> *ast.CallExpr [panic msg]}
 
 
 function name is MergeBinary 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment [MergeBinary]}
+	 { [MergeBinary]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bjs]}
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [remain bjs]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [objects]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [remain bjs]}
+	 {*ast.GenDecl -> *ast.ValueSpec [objects]}
 	 {*ast.ArrayType [BinaryJSON]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [results]}
+	 {*ast.GenDecl -> *ast.ValueSpec [results]}
 	 {*ast.ArrayType [BinaryJSON]}
-	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.CallExpr [len remain INT 0]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr [remain INT 0 TypeCode TypeCodeObject]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [results]}
+	 {*ast.ForStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len remain]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [remain]}
+	 {*ast.BasicLit [INT 0]}
+	 { [TypeCode TypeCodeObject]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= results]}
 	 {*ast.CallExpr [append results]}
-	 {*ast.IndexExpr [remain INT 0]}
-	 {*ast.AssignStmt [remain]}
-	 {*ast.SliceExpr [remain INT 1]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [objects remain]}
+	 {*ast.IndexExpr [remain]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [= remain]}
+	 {*ast.SliceExpr [remain]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= objects remain]}
 	 {*ast.CallExpr [getAdjacentObjects remain]}
-	 {*ast.AssignStmt [results]}
+	 {*ast.AssignStmt [= results]}
 	 {*ast.CallExpr [append results]}
 	 {*ast.CallExpr [mergeBinaryObject objects]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len results INT 1]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr [results INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [len results]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr [results]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [mergeBinaryArray results]}
 
 
@@ -963,11 +1265,14 @@ function name is getAdjacentObjects
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [objects remain]}
 	 {*ast.ArrayType [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [len bjs]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.IndexExpr [bjs i TypeCode TypeCodeObject]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [bjs i TypeCode TypeCodeObject]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr [bjs i]}
 	 {*ast.SliceExpr [bjs i]}
 	 {*ast.ReturnStmt [bjs nil]}
@@ -978,25 +1283,30 @@ function name is mergeBinaryArray
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [elems]}
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= buf]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType [BinaryJSON INT 0]}
+	 {*ast.ArrayType [BinaryJSON]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CallExpr [len elems]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [len elems]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elem]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= elem]}
 	 {*ast.IndexExpr [elems i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [elem TypeCode TypeCodeArray]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [elem TypeCode TypeCodeArray]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [append buf elem]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [childCount]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= childCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [elem GetElemCount]}
-	 {*ast.ForStmt -> *ast.AssignStmt [j INT 0]}
-	 {*ast.BinaryExpr [j childCount]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= j]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< j childCount]}
 	 {*ast.IncDecStmt [j]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [append buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [elem arrayGetElem j]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [buildBinaryArray buf]}
@@ -1007,176 +1317,222 @@ function name is mergeBinaryObject
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [objects]}
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [BinaryJSON]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [keyValMap]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= keyValMap]}
 	 {*ast.CallExpr [make]}
 	 {*ast.MapType [string BinaryJSON]}
-	 {*ast.AssignStmt [keys]}
+	 {*ast.AssignStmt [:= keys]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.ArrayType [byte INT 0]}
+	 {*ast.ArrayType -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CallExpr [len keyValMap]}
 	 {*ast.RangeStmt [_ obj objects]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [elemCount]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= elemCount]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj GetElemCount]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i elemCount]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i elemCount]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [key]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= key]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj objectGetKey i]}
-	 {*ast.AssignStmt [val]}
+	 {*ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj objectGetVal i]}
-	 {*ast.IfStmt -> *ast.AssignStmt [old ok]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= old ok]}
 	 {*ast.IndexExpr [keyValMap]}
 	 {*ast.CallExpr [string key ok]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [keyValMap]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [keyValMap]}
 	 {*ast.CallExpr [string key]}
 	 {*ast.CallExpr [MergeBinary]}
 	 {*ast.CompositeLit -> *ast.ArrayType [BinaryJSON old val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [keyValMap]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [keyValMap]}
 	 {*ast.CallExpr [string key val]}
-	 {*ast.AssignStmt [keys]}
+	 {*ast.AssignStmt [= keys]}
 	 {*ast.CallExpr [append keys key]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sort Slice keys]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [i j int]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Compare]}
 	 {*ast.IndexExpr [keys i]}
-	 {*ast.IndexExpr [keys j INT 0]}
-	 {*ast.AssignStmt [values]}
+	 {*ast.IndexExpr [keys j]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= values]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [BinaryJSON]}
 	 {*ast.CallExpr [len keys]}
 	 {*ast.RangeStmt [i key keys]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [values i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [values i]}
 	 {*ast.IndexExpr [keyValMap]}
 	 {*ast.CallExpr [string key]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [buildBinaryObject keys values]}
 
 
 function name is PeekBytesAsJSON 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [PeekBytesAsJSON]}
+	 { [PeekBytesAsJSON]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [n int]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len b INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Cant peek from empty bytes"]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [<=]}
+	 {*ast.CallExpr [len b]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Cant peek from empty bytes"]}
 	 {*ast.ReturnStmt []}
-	 {*ast.SwitchStmt -> *ast.AssignStmt [c]}
+	 {*ast.SwitchStmt -> *ast.AssignStmt [:= c]}
 	 {*ast.CallExpr [TypeCode]}
-	 {*ast.IndexExpr [b INT 0 c]}
+	 {*ast.IndexExpr [b]}
+	 {*ast.BasicLit [INT 0]}
+	 { [c]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [TypeCodeObject TypeCodeArray]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len b]}
-	 {*ast.BinaryExpr [valTypeSize headerSize]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [size]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>=]}
+	 {*ast.CallExpr [len b]}
+	 {*ast.BinaryExpr [+ valTypeSize headerSize]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [endian Uint32]}
 	 {*ast.SliceExpr [b]}
-	 {*ast.BinaryExpr [valTypeSize dataSizeOff]}
-	 {*ast.AssignStmt [n]}
-	 {*ast.BinaryExpr [valTypeSize]}
+	 {*ast.BinaryExpr [+ valTypeSize dataSizeOff]}
+	 {*ast.AssignStmt [= n]}
+	 {*ast.BinaryExpr [+ valTypeSize]}
 	 {*ast.CallExpr [int size]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [TypeCodeString]}
-	 {*ast.AssignStmt [strLen lenLen]}
+	 {*ast.AssignStmt [:= strLen lenLen]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [binary Uvarint]}
 	 {*ast.SliceExpr [b valTypeSize]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [valTypeSize]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BinaryExpr [+ valTypeSize]}
 	 {*ast.CallExpr [int strLen lenLen nil]}
 	 {*ast.CaseClause [TypeCodeInt64 TypeCodeUint64 TypeCodeFloat64]}
-	 {*ast.AssignStmt [n]}
-	 {*ast.BinaryExpr [valTypeSize INT 8]}
+	 {*ast.AssignStmt [= n]}
+	 {*ast.BinaryExpr [+ valTypeSize]}
+	 {*ast.BasicLit [INT 8]}
 	 {*ast.ReturnStmt []}
 	 {*ast.CaseClause [TypeCodeLiteral]}
-	 {*ast.AssignStmt [n]}
-	 {*ast.BinaryExpr [valTypeSize INT 1]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt [err]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Invalid JSON bytes"]}
+	 {*ast.AssignStmt [= n]}
+	 {*ast.BinaryExpr [+ valTypeSize]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [= err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Invalid JSON bytes"]}
 	 {*ast.ReturnStmt []}
 
 
 function name is ContainsBinary 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment [ContainsBinary]}
+	 { [ContainsBinary]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [obj target BinaryJSON]}
 	 {*ast.FieldList -> *ast.Field [bool]}
 	 {*ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [obj TypeCode]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [TypeCodeObject]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [target TypeCode TypeCodeObject]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [len]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [target TypeCode TypeCodeObject]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [target GetElemCount]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i len]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [key]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= key]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [target objectGetKey i]}
-	 {*ast.AssignStmt [val]}
+	 {*ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [target objectGetVal i]}
-	 {*ast.IfStmt -> *ast.AssignStmt [exp exists]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= exp exists]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj objectSearchKey key]}
-	 {*ast.BinaryExpr -> *ast.UnaryExpr [exists]}
-	 {*ast.UnaryExpr -> *ast.CallExpr [ContainsBinary exp val]}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.UnaryExpr [! exists]}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr [ContainsBinary exp val]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
 	 {*ast.ReturnStmt [true]}
 	 {*ast.ReturnStmt [false]}
 	 {*ast.CaseClause [TypeCodeArray]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [target TypeCode TypeCodeArray]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [len]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [target TypeCode TypeCodeArray]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [target GetElemCount]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i len]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [ContainsBinary obj]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr [ContainsBinary obj]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [target arrayGetElem i]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [false]}
 	 {*ast.ReturnStmt [true]}
-	 {*ast.AssignStmt [len]}
+	 {*ast.AssignStmt [:= len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj GetElemCount]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i len]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i len]}
 	 {*ast.IncDecStmt [i]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.CallExpr [ContainsBinary]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj arrayGetElem i target]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [true]}
 	 {*ast.ReturnStmt [false]}
-	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr [CompareBinary obj target INT 0]}
+	 {*ast.CaseClause -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [CompareBinary obj target]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is GetElemDepth 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [bj BinaryJSON GetElemDepth]}
+	 {*ast.FieldList -> *ast.Field [bj BinaryJSON GetElemDepth]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [bj TypeCode]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause [TypeCodeObject]}
-	 {*ast.AssignStmt [len]}
+	 {*ast.AssignStmt [:= len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetElemCount]}
-	 {*ast.AssignStmt [maxDepth INT 0]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i len]}
+	 {*ast.AssignStmt [:= maxDepth]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [obj]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= obj]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj objectGetVal i]}
-	 {*ast.AssignStmt [depth]}
+	 {*ast.AssignStmt [:= depth]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj GetElemDepth]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [depth maxDepth]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [maxDepth depth]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [maxDepth INT 1]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [> depth maxDepth]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= maxDepth depth]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [+ maxDepth]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.CaseClause [TypeCodeArray]}
-	 {*ast.AssignStmt [len]}
+	 {*ast.AssignStmt [:= len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj GetElemCount]}
-	 {*ast.AssignStmt [maxDepth INT 0]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i len]}
+	 {*ast.AssignStmt [:= maxDepth]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [obj]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= obj]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bj arrayGetElem i]}
-	 {*ast.AssignStmt [depth]}
+	 {*ast.AssignStmt [:= depth]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj GetElemDepth]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [depth maxDepth]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [maxDepth depth]}
-	 {*ast.ReturnStmt -> *ast.BinaryExpr [maxDepth INT 1]}
-	 {*ast.CaseClause -> *ast.ReturnStmt [INT 1]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [> depth maxDepth]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= maxDepth depth]}
+	 {*ast.ReturnStmt []}
+	 {*ast.BinaryExpr [+ maxDepth]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.BasicLit [INT 1]}
+	 { []}
 
 

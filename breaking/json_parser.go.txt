@@ -1,232 +1,337 @@
 {*ast.File [responses]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "encoding/json"]}
-{*ast.ImportSpec [STRING "github.com/json-iterator/go"]}
-{*ast.ImportSpec [STRING "io"]}
-{*ast.ImportSpec [STRING "math"]}
-{*ast.ImportSpec [STRING "strconv"]}
-{*ast.ImportSpec [STRING "strings"]}
-{*ast.ImportSpec [STRING "sync"]}
-{*ast.ImportSpec [STRING "unsafe"]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "encoding/json"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/json-iterator/go"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "io"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "math"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strconv"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strings"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.ValueSpec [maxUint]}
-{*ast.UnaryExpr -> *ast.CallExpr [uint INT 0]}
+{*ast.UnaryExpr [^]}
+{*ast.CallExpr [uint]}
+{*ast.BasicLit [INT 0]}
 {*ast.GenDecl -> *ast.ValueSpec [maxInt]}
 {*ast.CallExpr [int]}
-{*ast.BinaryExpr [maxUint INT 1]}
+{*ast.BinaryExpr [>> maxUint]}
+{*ast.BasicLit [INT 1]}
 {*ast.GenDecl -> *ast.ValueSpec [minInt]}
-{*ast.BinaryExpr -> *ast.UnaryExpr [maxInt INT 1]}
+{*ast.BinaryExpr [-]}
+{*ast.UnaryExpr [- maxInt]}
+{*ast.BasicLit [INT 1]}
 {*ast.GenDecl -> *ast.ValueSpec [jsonParser]}
 {*ast.SelectorExpr [jsoniter API]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [initJson]}
-{*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [sync Once]}
+{*ast.UnaryExpr [&]}
+{*ast.CompositeLit -> *ast.SelectorExpr [sync Once]}
 
 
 function name is initJsonParserOnce 
 	 { [initJsonParserOnce]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [initJson Do]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [registerBetterFuzzyDecoder]}
-	 {*ast.AssignStmt [jsonParser]}
+	 {*ast.AssignStmt [= jsonParser]}
 	 {*ast.SelectorExpr [jsoniter ConfigCompatibleWithStandardLibrary]}
 
 
 function name is registerBetterFuzzyDecoder 
 	 { [registerBetterFuzzyDecoder]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "string"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyStringDecoder]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "bool"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [fuzzyBoolDecoder]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "float32"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyFloat32Decoder]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "float64"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyFloat64Decoder]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "int"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "string"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyStringDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "bool"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [fuzzyBoolDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "float32"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyFloat32Decoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "float64"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyFloat64Decoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "int"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64 maxInt]}
-	 {*ast.BinaryExpr [val]}
+	 {*ast.BinaryExpr [< val]}
 	 {*ast.CallExpr [float64 minInt]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode int" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int ptr]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode int"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int ptr]}
 	 {*ast.CallExpr [int val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "uint"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "uint"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64 maxUint]}
-	 {*ast.BinaryExpr [val INT 0]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode uint" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint ptr]}
+	 {*ast.BinaryExpr [< val]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode uint"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint ptr]}
 	 {*ast.CallExpr [uint val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "int8"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "int8"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MaxInt8]}
-	 {*ast.BinaryExpr [val]}
+	 {*ast.BinaryExpr [< val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MinInt8]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode int8" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8 ptr]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode int8"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8 ptr]}
 	 {*ast.CallExpr [int8 val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8 ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt8]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "uint8"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "uint8"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MaxUint8]}
-	 {*ast.BinaryExpr [val INT 0]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode uint8" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8 ptr]}
+	 {*ast.BinaryExpr [< val]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode uint8"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8 ptr]}
 	 {*ast.CallExpr [uint8 val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8 ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint8]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "int16"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "int16"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MaxInt16]}
-	 {*ast.BinaryExpr [val]}
+	 {*ast.BinaryExpr [< val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MinInt16]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode int16" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16 ptr]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode int16"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16 ptr]}
 	 {*ast.CallExpr [int16 val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16 ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt16]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "uint16"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "uint16"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MaxUint16]}
-	 {*ast.BinaryExpr [val INT 0]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode uint16" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16 ptr]}
+	 {*ast.BinaryExpr [< val]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode uint16"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16 ptr]}
 	 {*ast.CallExpr [uint16 val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16 ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint16]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "int32"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "int32"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MaxInt32]}
-	 {*ast.BinaryExpr [val]}
+	 {*ast.BinaryExpr [< val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MinInt32]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode int32" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32 ptr]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode int32"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32 ptr]}
 	 {*ast.CallExpr [int32 val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32 ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt32]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "uint32"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "uint32"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MaxUint32]}
-	 {*ast.BinaryExpr [val INT 0]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode uint32" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32 ptr]}
+	 {*ast.BinaryExpr [< val]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode uint32"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32 ptr]}
 	 {*ast.CallExpr [uint32 val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32 ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint32]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "int64"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "int64"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MaxInt64]}
-	 {*ast.BinaryExpr [val]}
+	 {*ast.BinaryExpr [< val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MinInt64]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode int64" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64 ptr]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode int64"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64 ptr]}
 	 {*ast.CallExpr [int64 val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64 ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt64]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder STRING "uint64"]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit [nullableFuzzyIntegerDecoder]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
+	 {*ast.BasicLit [STRING "uint64"]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
 	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 	 {*ast.BlockStmt -> *ast.IfStmt [isFloat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [val]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [> val]}
 	 {*ast.CallExpr [float64]}
 	 {*ast.SelectorExpr [math MaxUint64]}
-	 {*ast.BinaryExpr [val INT 0]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzy decode uint64" STRING "exceed range"]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64 ptr]}
+	 {*ast.BinaryExpr [< val]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzy decode uint64"]}
+	 {*ast.BasicLit [STRING "exceed range"]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64 ptr]}
 	 {*ast.CallExpr [uint64 val]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64 ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint64]}
-	 {*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyStringDecoder]}
-	 {*ast.StructType -> *ast.FieldList []}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyStringDecoder]}
+{*ast.StructType -> *ast.FieldList []}
 
 
 function name is Decode 
@@ -235,28 +340,35 @@ function name is Decode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [valueType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= valueType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter WhatIsNext]}
 	 {*ast.SwitchStmt [valueType]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NumberValue]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [number]}
+	 {*ast.GenDecl -> *ast.ValueSpec [number]}
 	 {*ast.SelectorExpr [json Number]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadVal]}
-	 {*ast.UnaryExpr [number]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string ptr]}
+	 {*ast.UnaryExpr [& number]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string ptr]}
 	 {*ast.CallExpr [string number]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter StringValue]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadString]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter BoolValue]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [strconv FormatBool]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadBool]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NilValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadNil]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string ptr STRING ""]}
-	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzyStringDecoder" STRING "not number or string or bool"]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string ptr]}
+	 {*ast.BasicLit [STRING ""]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzyStringDecoder"]}
+	 {*ast.BasicLit [STRING "not number or string or bool"]}
 	 {*ast.GenDecl -> *ast.TypeSpec [fuzzyBoolDecoder]}
 	 {*ast.StructType -> *ast.FieldList []}
 
@@ -267,40 +379,62 @@ function name is Decode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [valueType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= valueType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter WhatIsNext]}
 	 {*ast.SwitchStmt [valueType]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter BoolValue]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadBool]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NumberValue]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [number]}
+	 {*ast.GenDecl -> *ast.ValueSpec [number]}
 	 {*ast.SelectorExpr [json Number]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadVal]}
-	 {*ast.UnaryExpr [number]}
-	 {*ast.AssignStmt [num err]}
+	 {*ast.UnaryExpr [& number]}
+	 {*ast.AssignStmt [:= num err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [number Int64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzyBoolDecoder" STRING "get value from json.number failed"]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [num INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr false]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr true]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzyBoolDecoder"]}
+	 {*ast.BasicLit [STRING "get value from json.number failed"]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== num]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr false]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr true]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter StringValue]}
-	 {*ast.AssignStmt [strValue]}
+	 {*ast.AssignStmt [:= strValue]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [strings ToLower]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadString]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [strValue STRING "true"]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr true]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [strValue STRING "false"]}
-	 {*ast.BinaryExpr [strValue STRING ""]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr false]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzyBoolDecoder"]}
-	 {*ast.BinaryExpr [STRING "unsupported bool value: " strValue]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== strValue]}
+	 {*ast.BasicLit [STRING "true"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr true]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== strValue]}
+	 {*ast.BasicLit [STRING "false"]}
+	 {*ast.BinaryExpr [== strValue]}
+	 {*ast.BasicLit [STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr false]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzyBoolDecoder"]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.BasicLit [STRING "unsupported bool value: "]}
+	 { [strValue]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NilValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadNil]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr false]}
-	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzyBoolDecoder" STRING "not number or string or nil"]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [bool ptr false]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzyBoolDecoder"]}
+	 {*ast.BasicLit [STRING "not number or string or nil"]}
 	 {*ast.GenDecl -> *ast.TypeSpec [tolerateEmptyArrayDecoder]}
 	 {*ast.StructType -> *ast.FieldList -> *ast.Field [valDecoder]}
 	 {*ast.SelectorExpr [jsoniter ValDecoder]}
@@ -312,21 +446,26 @@ function name is Decode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter WhatIsNext]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [iter WhatIsNext]}
 	 {*ast.SelectorExpr [jsoniter ArrayValue]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter Skip]}
-	 {*ast.AssignStmt [newIter]}
+	 {*ast.AssignStmt [:= newIter]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool BorrowIterator]}
-	 {*ast.CallExpr -> *ast.ArrayType [byte STRING "{}"]}
+	 {*ast.CallExpr -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [STRING "{}"]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool ReturnIterator newIter]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [decoder valDecoder Decode ptr newIter]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [decoder valDecoder Decode ptr iter]}
-	 {*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyIntegerDecoder]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [fun]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
-	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
-	 {*ast.Field [iter]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyIntegerDecoder]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [fun]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
+{*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+{*ast.Field [iter]}
+{*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 
 
 function name is Decode 
@@ -335,46 +474,64 @@ function name is Decode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [valueType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= valueType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter WhatIsNext]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [str string]}
+	 {*ast.GenDecl -> *ast.ValueSpec [str string]}
 	 {*ast.SwitchStmt [valueType]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NumberValue]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [number]}
+	 {*ast.GenDecl -> *ast.ValueSpec [number]}
 	 {*ast.SelectorExpr [json Number]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadVal]}
-	 {*ast.UnaryExpr [number]}
-	 {*ast.AssignStmt [str]}
+	 {*ast.UnaryExpr [& number]}
+	 {*ast.AssignStmt [= str]}
 	 {*ast.CallExpr [string number]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter StringValue]}
-	 {*ast.AssignStmt [str]}
+	 {*ast.AssignStmt [= str]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadString]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [str STRING ""]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str STRING "0"]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== str]}
+	 {*ast.BasicLit [STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= str]}
+	 {*ast.BasicLit [STRING "0"]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter BoolValue]}
 	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadBool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str STRING "1"]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str STRING "0"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= str]}
+	 {*ast.BasicLit [STRING "1"]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= str]}
+	 {*ast.BasicLit [STRING "0"]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NilValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadNil]}
-	 {*ast.AssignStmt [str STRING "0"]}
-	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "fuzzyIntegerDecoder" STRING "not number or string"]}
-	 {*ast.AssignStmt [newIter]}
+	 {*ast.AssignStmt [= str]}
+	 {*ast.BasicLit [STRING "0"]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "fuzzyIntegerDecoder"]}
+	 {*ast.BasicLit [STRING "not number or string"]}
+	 {*ast.AssignStmt [:= newIter]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool BorrowIterator]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte str]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool ReturnIterator newIter]}
-	 {*ast.AssignStmt [isFloat]}
-	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [strings IndexByte str CHAR '.']}
-	 {*ast.UnaryExpr [INT 1]}
+	 {*ast.AssignStmt [:= isFloat]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [strings IndexByte str]}
+	 {*ast.BasicLit [CHAR '.']}
+	 {*ast.UnaryExpr [-]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [decoder fun isFloat ptr newIter]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [newIter Error nil]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [newIter Error]}
-	 {*ast.SelectorExpr [io EOF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [iter Error]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [newIter Error nil]}
+	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [newIter Error]}
-	 {*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyFloat32Decoder]}
-	 {*ast.StructType -> *ast.FieldList []}
+	 {*ast.SelectorExpr [io EOF]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [iter Error]}
+	 {*ast.SelectorExpr [newIter Error]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyFloat32Decoder]}
+{*ast.StructType -> *ast.FieldList []}
 
 
 function name is Decode 
@@ -383,38 +540,57 @@ function name is Decode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [valueType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= valueType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter WhatIsNext]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [str string]}
+	 {*ast.GenDecl -> *ast.ValueSpec [str string]}
 	 {*ast.SwitchStmt [valueType]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NumberValue]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat32]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter StringValue]}
-	 {*ast.AssignStmt [str]}
+	 {*ast.AssignStmt [= str]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadString]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [str STRING ""]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr INT 0]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt [newIter]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== str]}
+	 {*ast.BasicLit [STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= newIter]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool BorrowIterator]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte str]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool ReturnIterator newIter]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [newIter ReadFloat32]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [newIter Error nil]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [newIter Error]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [newIter Error nil]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [newIter Error]}
 	 {*ast.SelectorExpr [io EOF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [iter Error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [iter Error]}
 	 {*ast.SelectorExpr [newIter Error]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter BoolValue]}
 	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadBool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr INT 1]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NilValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadNil]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr INT 0]}
-	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "nullableFuzzyFloat32Decoder" STRING "not number or string"]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float32 ptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "nullableFuzzyFloat32Decoder"]}
+	 {*ast.BasicLit [STRING "not number or string"]}
 	 {*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyFloat64Decoder]}
 	 {*ast.StructType -> *ast.FieldList []}
 
@@ -425,37 +601,57 @@ function name is Decode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [valueType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= valueType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter WhatIsNext]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [str string]}
+	 {*ast.GenDecl -> *ast.ValueSpec [str string]}
 	 {*ast.SwitchStmt [valueType]}
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NumberValue]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadFloat64]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter StringValue]}
-	 {*ast.AssignStmt [str]}
+	 {*ast.AssignStmt [= str]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadString]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [str STRING ""]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr INT 0]}
-	 {*ast.ReturnStmt -> *ast.AssignStmt [newIter]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== str]}
+	 {*ast.BasicLit [STRING ""]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= newIter]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool BorrowIterator]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte str]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool ReturnIterator newIter]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [newIter ReadFloat64]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [newIter Error nil]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [newIter Error]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [newIter Error nil]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [newIter Error]}
 	 {*ast.SelectorExpr [io EOF]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [iter Error]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [iter Error]}
 	 {*ast.SelectorExpr [newIter Error]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter BoolValue]}
 	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadBool]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr INT 1]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr INT 0]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [jsoniter NilValue]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReadNil]}
-	 {*ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr INT 0]}
-	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError STRING "nullableFuzzyFloat32Decoder" STRING "not number or string"]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
+	 {*ast.BasicLit [STRING "nullableFuzzyFloat32Decoder"]}
+	 {*ast.BasicLit [STRING "not number or string"]}
+	 { []}
 
 

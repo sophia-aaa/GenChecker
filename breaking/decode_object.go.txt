@@ -1,17 +1,21 @@
 {*ast.File [gojay]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.ImportSpec [STRING "unsafe"]}
+
+
 
 
 function name is DecodeObject 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.FieldList -> *ast.Field [dec]}
 	 {*ast.StarExpr [Decoder DecodeObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [j UnmarshalerJSONObject]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [dec isPooled INT 1]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [dec isPooled]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
-	 {*ast.CallExpr [InvalidUsagePooledDecoderError STRING "Invalid usage of pooled decoder"]}
-	 {*ast.AssignStmt [_ err]}
+	 {*ast.CallExpr [InvalidUsagePooledDecoderError]}
+	 {*ast.BasicLit [STRING "Invalid usage of pooled decoder"]}
+	 {*ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec decodeObject j]}
 	 {*ast.ReturnStmt [err]}
 
@@ -22,9 +26,13 @@ function name is decodeObject
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [j UnmarshalerJSONObject]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [keys]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= keys]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [j NKeys]}
-	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.ForStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
@@ -32,75 +40,132 @@ function name is decodeObject
 	 {*ast.SwitchStmt -> *ast.IndexExpr -> *ast.SelectorExpr [dec data]}
 	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause [CHAR ' ' CHAR '\n' CHAR '\t' CHAR '\r' CHAR ',']}
-	 {*ast.CaseClause [CHAR '{']}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec cursor INT 1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [keys INT 0]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR ' ']}
+	 {*ast.BasicLit [CHAR '\n']}
+	 {*ast.BasicLit [CHAR '\t']}
+	 {*ast.BasicLit [CHAR '\r']}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '{']}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== keys]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ForStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [k done err]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= k done err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec nextKey]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.IfStmt [done]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [j UnmarshalJSONObject dec k]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [dec err err]}
-	 {*ast.ReturnStmt [INT 0 err]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec called INT 1 INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec err err]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipData]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.BlockStmt -> *ast.IncDecStmt -> *ast.SelectorExpr [dec keysDone]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec called INT 0]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.AssignStmt [&=]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ForStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec keysDone keys]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [k done err]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec keysDone keys]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= k done err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec nextKey]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.IfStmt [done]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [j UnmarshalJSONObject dec k]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [dec err err]}
-	 {*ast.ReturnStmt [INT 0 err]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec called INT 1 INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec err err]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipData]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.BlockStmt -> *ast.IncDecStmt -> *ast.SelectorExpr [dec keysDone]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec called INT 0]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec child INT 1 INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [end err]}
+	 {*ast.AssignStmt [&=]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [dec child]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= end err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipObject]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor end]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor end]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [dec cursor err]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.CaseClause [CHAR 'n']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'n']}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec assertNull]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.CaseClause -> *ast.AssignStmt -> *ast.SelectorExpr [dec err]}
+	 {*ast.CaseClause []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec makeInvalidUnmarshalErr j]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipData]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.ReturnStmt [INT 0]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec raiseInvalidJSONErr]}
 	 {*ast.SelectorExpr [dec cursor]}
 
@@ -109,20 +174,31 @@ function name is decodeObjectNull
 	 {*ast.FieldList -> *ast.Field [dec]}
 	 {*ast.StarExpr [Decoder decodeObjectNull]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [vv]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= vv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf v]}
-	 {*ast.AssignStmt [vvt]}
+	 {*ast.AssignStmt [:= vvt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [vv Type]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [vvt Kind]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [vvt Kind]}
 	 {*ast.SelectorExpr [reflect Ptr]}
-	 {*ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [vvt Elem Kind]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [vvt Elem Kind]}
 	 {*ast.SelectorExpr [reflect Ptr]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [dec err ErrUnmarshalPtrExpected]}
-	 {*ast.ReturnStmt [INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec err ErrUnmarshalPtrExpected]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0]}
 	 {*ast.SelectorExpr [dec err]}
-	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.ForStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
@@ -130,94 +206,154 @@ function name is decodeObjectNull
 	 {*ast.SwitchStmt -> *ast.IndexExpr -> *ast.SelectorExpr [dec data]}
 	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause [CHAR ' ' CHAR '\n' CHAR '\t' CHAR '\r' CHAR ',']}
-	 {*ast.CaseClause [CHAR '{']}
-	 {*ast.AssignStmt [elt]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR ' ']}
+	 {*ast.BasicLit [CHAR '\n']}
+	 {*ast.BasicLit [CHAR '\t']}
+	 {*ast.BasicLit [CHAR '\r']}
+	 {*ast.BasicLit [CHAR ',']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '{']}
+	 {*ast.AssignStmt [:= elt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [vv Elem]}
-	 {*ast.AssignStmt [n]}
+	 {*ast.AssignStmt [:= n]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [elt Type Elem]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [elt Set n]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [j UnmarshalerJSONObject]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [ok bool]}
-	 {*ast.IfStmt -> *ast.AssignStmt [j ok]}
+	 {*ast.GenDecl -> *ast.ValueSpec [j UnmarshalerJSONObject]}
+	 {*ast.GenDecl -> *ast.ValueSpec [ok bool]}
+	 {*ast.IfStmt []}
+	 {*ast.AssignStmt [= j ok]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [n Interface UnmarshalerJSONObject]}
-	 {*ast.UnaryExpr [ok]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [dec err]}
+	 {*ast.UnaryExpr [! ok]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec makeInvalidUnmarshalErr]}
 	 {*ast.CallExpr -> *ast.ParenExpr [UnmarshalerJSONObject nil]}
-	 {*ast.ReturnStmt [INT 0]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0]}
 	 {*ast.SelectorExpr [dec err]}
-	 {*ast.AssignStmt [keys]}
+	 {*ast.AssignStmt [:= keys]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [j NKeys]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec cursor INT 1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [keys INT 0]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== keys]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ForStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [k done err]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= k done err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec nextKey]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.IfStmt [done]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [j UnmarshalJSONObject dec k]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [dec err err]}
-	 {*ast.ReturnStmt [INT 0 err]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec called INT 1 INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec err err]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipData]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.BlockStmt -> *ast.IncDecStmt -> *ast.SelectorExpr [dec keysDone]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec called INT 0]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BinaryExpr -> *ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.AssignStmt [&=]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ForStmt []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec keysDone keys]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [k done err]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec keysDone keys]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= k done err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec nextKey]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.IfStmt [done]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [j UnmarshalJSONObject dec k]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr [dec err err]}
-	 {*ast.ReturnStmt [INT 0 err]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec called INT 1 INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec err err]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipData]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.BlockStmt -> *ast.IncDecStmt -> *ast.SelectorExpr [dec keysDone]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec called INT 0]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec child INT 1 INT 0]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [end err]}
+	 {*ast.AssignStmt [&=]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.BinaryExpr [&]}
+	 {*ast.SelectorExpr [dec child]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= end err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipObject]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor end]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor end]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [dec cursor err]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.CaseClause [CHAR 'n']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'n']}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec assertNull]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.CaseClause -> *ast.AssignStmt -> *ast.SelectorExpr [dec err]}
+	 {*ast.CaseClause []}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec makeInvalidUnmarshalErr]}
 	 {*ast.CallExpr -> *ast.ParenExpr [UnmarshalerJSONObject nil]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipData]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0 err]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0 err]}
 	 {*ast.ReturnStmt -> *ast.SelectorExpr [dec cursor nil]}
-	 {*ast.ReturnStmt [INT 0]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec raiseInvalidJSONErr]}
 	 {*ast.SelectorExpr [dec cursor]}
 
@@ -227,49 +363,82 @@ function name is skipObject
 	 {*ast.StarExpr [Decoder skipObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [objectsOpen INT 1]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [objectsClosed INT 0]}
-	 {*ast.ForStmt -> *ast.AssignStmt [j]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [objectsOpen]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.GenDecl -> *ast.ValueSpec [objectsClosed]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= j]}
 	 {*ast.SelectorExpr [dec cursor]}
-	 {*ast.BinaryExpr -> *ast.BinaryExpr [j]}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [< j]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
 	 {*ast.IncDecStmt [j]}
 	 {*ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.IndexExpr -> *ast.SelectorExpr [dec data j]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause [CHAR '}']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '}']}
 	 {*ast.IncDecStmt [objectsClosed]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [objectsOpen objectsClosed]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr [j INT 1 nil]}
-	 {*ast.CaseClause [CHAR '{']}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== objectsOpen objectsClosed]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [+ j]}
+	 {*ast.BasicLit [INT 1 nil]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '{']}
 	 {*ast.IncDecStmt [objectsOpen]}
-	 {*ast.CaseClause [CHAR '"']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '"']}
 	 {*ast.IncDecStmt [j]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [isInEscapeSeq bool]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [isFirstQuote true]}
-	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [j]}
+	 {*ast.GenDecl -> *ast.ValueSpec [isInEscapeSeq bool]}
+	 {*ast.GenDecl -> *ast.ValueSpec [isFirstQuote true]}
+	 {*ast.ForStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [< j]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
 	 {*ast.IncDecStmt [j]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [dec data j CHAR '"']}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [dec data]}
-	 {*ast.BinaryExpr [j INT 1 CHAR '\\']}
-	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.UnaryExpr [isInEscapeSeq]}
-	 {*ast.UnaryExpr [isFirstQuote]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.BlockStmt -> *ast.AssignStmt [isInEscapeSeq false]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [dec data j]}
+	 {*ast.BasicLit [CHAR '"']}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [dec data]}
+	 {*ast.BinaryExpr [- j]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [CHAR '\\']}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.UnaryExpr [! isInEscapeSeq]}
+	 {*ast.UnaryExpr [! isFirstQuote]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.BlockStmt []}
+	 {*ast.AssignStmt [= isInEscapeSeq false]}
 	 {*ast.IfStmt [isFirstQuote]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [isFirstQuote false]}
-	 {*ast.AssignStmt [ct INT 0]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i]}
-	 {*ast.BinaryExpr [j INT 1]}
-	 {*ast.BinaryExpr [i INT 0]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [= isFirstQuote false]}
+	 {*ast.AssignStmt [:= ct]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.ForStmt []}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.BinaryExpr [- j]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BinaryExpr [> i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [dec data i CHAR '\\']}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [dec data i]}
+	 {*ast.BasicLit [CHAR '\\']}
 	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.IncDecStmt [ct]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [ct INT 1 INT 0]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [isInEscapeSeq true]}
-	 {*ast.CaseClause -> *ast.BranchStmt -> *ast.ReturnStmt [INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.BinaryExpr [& ct]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.BranchStmt []}
+	 {*ast.AssignStmt [= isInEscapeSeq true]}
+	 {*ast.CaseClause -> *ast.BranchStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec raiseInvalidJSONErr]}
 	 {*ast.SelectorExpr [dec cursor]}
 
@@ -280,7 +449,10 @@ function name is nextKey
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [bool]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.BlockStmt -> *ast.ForStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
@@ -288,42 +460,66 @@ function name is nextKey
 	 {*ast.SwitchStmt -> *ast.IndexExpr -> *ast.SelectorExpr [dec data]}
 	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause [CHAR ' ' CHAR '\n' CHAR '\t' CHAR '\r' CHAR ',']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR ' ']}
+	 {*ast.BasicLit [CHAR '\n']}
+	 {*ast.BasicLit [CHAR '\t']}
+	 {*ast.BasicLit [CHAR '\r']}
+	 {*ast.BasicLit [CHAR ',']}
 	 {*ast.BranchStmt []}
-	 {*ast.CaseClause [CHAR '"']}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec cursor INT 1]}
-	 {*ast.AssignStmt [start end err]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '"']}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= start end err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec getString]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING "" false err]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [found byte]}
-	 {*ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING "" false err]}
+	 {*ast.GenDecl -> *ast.ValueSpec [found byte]}
+	 {*ast.ForStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.IndexExpr -> *ast.SelectorExpr [dec data]}
-	 {*ast.SelectorExpr [dec cursor CHAR ':']}
-	 {*ast.BlockStmt -> *ast.AssignStmt [found INT 1]}
-	 {*ast.BranchStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [found INT 1 INT 0]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [dec data]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BasicLit [CHAR ':']}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [|= found]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BranchStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.BinaryExpr [& found]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.AssignStmt [d]}
+	 {*ast.AssignStmt [:= d]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [dec data start]}
-	 {*ast.BinaryExpr [end INT 1]}
+	 {*ast.BinaryExpr [- end]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [string]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [d false nil]}
-	 {*ast.ReturnStmt [STRING "" false]}
+	 {*ast.UnaryExpr [& d false nil]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "" false]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec raiseInvalidJSONErr]}
 	 {*ast.SelectorExpr [dec cursor]}
-	 {*ast.CaseClause [CHAR '}']}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec cursor INT 1]}
-	 {*ast.ReturnStmt [STRING "" true nil]}
-	 {*ast.CaseClause -> *ast.ReturnStmt [STRING "" false]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '}']}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "" true nil]}
+	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.BasicLit [STRING "" false]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec raiseInvalidJSONErr]}
 	 {*ast.SelectorExpr [dec cursor]}
-	 {*ast.ReturnStmt [STRING "" false]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [STRING "" false]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec raiseInvalidJSONErr]}
 	 {*ast.SelectorExpr [dec cursor]}
 
@@ -332,7 +528,10 @@ function name is skipData
 	 {*ast.FieldList -> *ast.Field [dec]}
 	 {*ast.StarExpr [Decoder skipData]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [dec cursor]}
+	 {*ast.BlockStmt -> *ast.ForStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [<]}
+	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.SelectorExpr [dec length]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec read]}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
@@ -340,66 +539,97 @@ function name is skipData
 	 {*ast.SwitchStmt -> *ast.IndexExpr -> *ast.SelectorExpr [dec data]}
 	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause [CHAR ' ' CHAR '\n' CHAR '\t' CHAR '\r' CHAR ',']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR ' ']}
+	 {*ast.BasicLit [CHAR '\n']}
+	 {*ast.BasicLit [CHAR '\t']}
+	 {*ast.BasicLit [CHAR '\r']}
+	 {*ast.BasicLit [CHAR ',']}
 	 {*ast.BranchStmt []}
-	 {*ast.CaseClause [CHAR 'n']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'n']}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec assertNull]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause [CHAR 't']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 't']}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec assertTrue]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause [CHAR 'f']}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR 'f']}
 	 {*ast.IncDecStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec assertFalse]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CaseClause [CHAR '{']}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec cursor INT 1]}
-	 {*ast.AssignStmt [end err]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '{']}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= end err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipObject]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor end]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor end]}
 	 {*ast.ReturnStmt [err]}
-	 {*ast.CaseClause [CHAR '"']}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec cursor INT 1]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '"']}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipString]}
 	 {*ast.ReturnStmt [err]}
-	 {*ast.CaseClause [CHAR '[']}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [dec cursor INT 1]}
-	 {*ast.AssignStmt [end err]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '[']}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.SelectorExpr [dec cursor]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= end err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipArray]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor end]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor end]}
 	 {*ast.ReturnStmt [err]}
-	 {*ast.CaseClause [CHAR '0' CHAR '1' CHAR '2' CHAR '3' CHAR '4' CHAR '5' CHAR '6' CHAR '7' CHAR '8' CHAR '9' CHAR '-']}
-	 {*ast.AssignStmt [end err]}
+	 {*ast.CaseClause -> *ast.BasicLit [CHAR '0']}
+	 {*ast.BasicLit [CHAR '1']}
+	 {*ast.BasicLit [CHAR '2']}
+	 {*ast.BasicLit [CHAR '3']}
+	 {*ast.BasicLit [CHAR '4']}
+	 {*ast.BasicLit [CHAR '5']}
+	 {*ast.BasicLit [CHAR '6']}
+	 {*ast.BasicLit [CHAR '7']}
+	 {*ast.BasicLit [CHAR '8']}
+	 {*ast.BasicLit [CHAR '9']}
+	 {*ast.BasicLit [CHAR '-']}
+	 {*ast.AssignStmt [:= end err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec skipNumber]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor end]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor end]}
 	 {*ast.ReturnStmt [err]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [dec raiseInvalidJSONErr]}
 	 {*ast.SelectorExpr [dec cursor]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [dec raiseInvalidJSONErr]}
 	 {*ast.SelectorExpr [dec cursor]}
-	 {*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.TypeSpec [DecodeObjectFunc]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Decoder]}
-	 {*ast.Field [string]}
-	 {*ast.FieldList -> *ast.Field [error]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [DecodeObjectFunc]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Decoder]}
+{*ast.Field [string]}
+{*ast.FieldList -> *ast.Field [error]}
 
 
 function name is UnmarshalJSONObject 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [f DecodeObjectFunc UnmarshalJSONObject]}
+	 {*ast.FieldList -> *ast.Field [f DecodeObjectFunc UnmarshalJSONObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dec]}
 	 {*ast.StarExpr [Decoder]}
 	 {*ast.Field [k string]}
@@ -408,13 +638,13 @@ function name is UnmarshalJSONObject
 
 
 function name is NKeys 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [f DecodeObjectFunc NKeys]}
+	 {*ast.FieldList -> *ast.Field [f DecodeObjectFunc NKeys]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 0]}
 
 
 function name is AddObject 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.FieldList -> *ast.Field [dec]}
 	 {*ast.StarExpr [Decoder AddObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v UnmarshalerJSONObject]}
 	 {*ast.FieldList -> *ast.Field [error]}
@@ -422,56 +652,84 @@ function name is AddObject
 
 
 function name is AddObjectNull 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.FieldList -> *ast.Field [dec]}
 	 {*ast.StarExpr [Decoder AddObjectNull]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [dec ObjectNull v]}
 
 
 function name is Object 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.FieldList -> *ast.Field [dec]}
 	 {*ast.StarExpr [Decoder Object]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [value UnmarshalerJSONObject]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [initialKeysDone]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= initialKeysDone]}
 	 {*ast.SelectorExpr [dec keysDone]}
-	 {*ast.AssignStmt [initialChild]}
+	 {*ast.AssignStmt [:= initialChild]}
 	 {*ast.SelectorExpr [dec child]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec keysDone INT 0]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec called INT 0]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec child INT 1]}
-	 {*ast.AssignStmt [newCursor err]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec keysDone]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [|=]}
+	 {*ast.SelectorExpr [dec child]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= newCursor err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec decodeObject value]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor newCursor]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec keysDone initialKeysDone]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec child initialChild]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec called INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor newCursor]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec keysDone initialKeysDone]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec child initialChild]}
+	 {*ast.AssignStmt [|=]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ReturnStmt [nil]}
 
 
 function name is ObjectNull 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [dec]}
+	 {*ast.FieldList -> *ast.Field [dec]}
 	 {*ast.StarExpr [Decoder ObjectNull]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [initialKeysDone]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
+	 {*ast.BlockStmt []}
+	 {*ast.AssignStmt [:= initialKeysDone]}
 	 {*ast.SelectorExpr [dec keysDone]}
-	 {*ast.AssignStmt [initialChild]}
+	 {*ast.AssignStmt [:= initialChild]}
 	 {*ast.SelectorExpr [dec child]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec keysDone INT 0]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec called INT 0]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec child INT 1]}
-	 {*ast.AssignStmt [newCursor err]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec keysDone]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [|=]}
+	 {*ast.SelectorExpr [dec child]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= newCursor err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dec decodeObjectNull v]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [err]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec cursor newCursor]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec keysDone initialKeysDone]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec child initialChild]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [dec called INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec cursor newCursor]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec keysDone initialKeysDone]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [dec child initialChild]}
+	 {*ast.AssignStmt [|=]}
+	 {*ast.SelectorExpr [dec called]}
+	 {*ast.BasicLit [INT 1]}
 	 {*ast.ReturnStmt [nil]}
 
 

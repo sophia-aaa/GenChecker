@@ -1,6 +1,14 @@
 {*ast.File [storage]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
+{*ast.BasicLit -> *ast.ImportSpec [STRING "reflect"]}
+{*ast.BasicLit -> *ast.ImportSpec [STRING "sync"]}
+{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
+{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/pkg/errors"]}
+{*ast.BasicLit [STRING "gorgonia.org/tensor/internal/storage"]}
+
+
 
 
 function name is makeArray 
@@ -23,7 +31,6 @@ function name is arrayFromSlice
 	 { [arrayFromSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [array]}
 	 {*ast.BlockStmt []}
 	 {*ast.AssignStmt [:= xT]}
@@ -66,7 +73,6 @@ function name is fromSlice
 	 {*ast.StarExpr [array fromSlice]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.BlockStmt []}
 	 {*ast.AssignStmt [:= xT]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
@@ -91,7 +97,6 @@ function name is fromSliceOrArrayer
 	 {*ast.StarExpr [array fromSliceOrArrayer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.AssignStmt [:= T ok]}
 	 {*ast.TypeAssertExpr [x arrayer ok]}
@@ -139,8 +144,7 @@ function name is sliceInto
 	 {*ast.BinaryExpr [> j c]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [panic]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
-	 {*ast.BasicLit [STRING "Cannot slice %v - index %d:%d is out of bounds"]}
-	 { [a i j]}
+	 {*ast.BasicLit [STRING "Cannot slice %v - index %d:%d is out of bounds" a i j]}
 	 {*ast.AssignStmt [:= s]}
 	 {*ast.BinaryExpr [* i]}
 	 {*ast.CallExpr [int]}
@@ -266,7 +270,7 @@ function name is swap
 	 {*ast.SliceExpr [bs js je tmp]}
 
 
-function name is MemSize 
+function name is Uintptr 
 	 {*ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr [array Uintptr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uintptr]}
@@ -275,6 +279,9 @@ function name is MemSize
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a Header Raw]}
 	 {*ast.BasicLit [INT 0]}
+
+
+function name is MemSize 
 	 {*ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr [array MemSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uintptr]}
@@ -286,7 +293,6 @@ function name is MemSize
 function name is Data 
 	 {*ast.FieldList -> *ast.Field [a array Data]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.BlockStmt []}
 	 {*ast.AssignStmt [:= shdr]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
@@ -666,7 +672,6 @@ function name is scalarPool
 	 {*ast.CompositeLit -> *ast.SelectorExpr [sync Pool]}
 	 {*ast.KeyValueExpr [New]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [make]}
 	 {*ast.ArrayType [byte size]}
 	 {*ast.AssignStmt [=]}
@@ -679,7 +684,6 @@ function name is allocScalar
 	 { [allocScalar]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
 	 {*ast.BlockStmt []}
 	 {*ast.AssignStmt [:= atype]}
@@ -715,7 +719,6 @@ function name is scalarToHeader
 	 { [scalarToHeader]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [hdr]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [storage Header]}
 	 {*ast.Field [newAlloc bool]}
@@ -748,7 +751,6 @@ function name is copyScalarToPrealloc
 	 { [copyScalarToPrealloc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [a]}
 	 {*ast.InterfaceType []}
-	 {*ast.InterfaceType.Incomplete [false]}
 	 {*ast.FieldList -> *ast.Field [bs]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.BlockStmt []}

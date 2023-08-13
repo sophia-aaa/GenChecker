@@ -2,6 +2,7 @@ package main
 
 import (
 	"go/token"
+	"strconv"
 	"strings"
 )
 
@@ -37,7 +38,8 @@ func isSameString(strArr []string, str string) bool {
 	return false
 }
 
-func funcNameDivider(funcWordList []string, str string) []string {
+func funcNameDivider(str string) []string {
+	var funcWordList []string
 	funcWord := ""
 	for _, val := range str {
 		if 'A' <= val && val <= 'Z' {
@@ -50,4 +52,23 @@ func funcNameDivider(funcWordList []string, str string) []string {
 		}
 	}
 	return funcWordList
+}
+
+func checkDuplicateInFunc(list []basicFunc, funcName string, funcPos token.Pos) bool {
+	for ind := range list {
+		if strings.EqualFold(funcName, list[ind].funcName) && (funcPos == list[ind].funcToken) {
+			return true
+		}
+	}
+	return false
+}
+
+func checkDuplicateInFuncString(list []basicFunc, funcName string, funcPos string) bool {
+	funcPosInt, _ := strconv.Atoi(funcPos)
+	for ind := range list {
+		if strings.EqualFold(funcName, list[ind].funcName) && funcPosInt == int(list[ind].funcToken) {
+			return true
+		}
+	}
+	return false
 }

@@ -1,26 +1,38 @@
 {*ast.File [avcodec]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.Comment -> *ast.ImportSpec [STRING "C"]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "errors"]}
-{*ast.ImportSpec [STRING "strings"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.ImportSpec [STRING "github.com/imkira/go-libav/avutil"]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "C"]}
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "errors"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strings"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/imkira/go-libav/avutil"]}
 {*ast.GenDecl -> *ast.ValueSpec [ErrAllocationError]}
-{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "allocation error"]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+{*ast.BasicLit [STRING "allocation error"]}
 {*ast.ValueSpec [ErrEncoderNotFound]}
-{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "encoder not found"]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+{*ast.BasicLit [STRING "encoder not found"]}
 {*ast.ValueSpec [ErrDecoderNotFound]}
-{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "decoder not found"]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+{*ast.BasicLit [STRING "decoder not found"]}
 {*ast.ValueSpec [ErrBitStreamFilterNotFound]}
-{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "bitstreamfilter not found"]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+{*ast.BasicLit [STRING "bitstreamfilter not found"]}
 {*ast.GenDecl -> *ast.TypeSpec [CodecID]}
 {*ast.SelectorExpr [C enum_AVCodecID]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [CodecIDNone CodecID]}
 {*ast.SelectorExpr [C AV_CODEC_ID_NONE]}
 {*ast.ValueSpec [CodecIDMJpeg CodecID]}
 {*ast.SelectorExpr [C AV_CODEC_ID_MJPEG]}
 {*ast.ValueSpec [CodecIDLJpeg CodecID]}
 {*ast.SelectorExpr [C AV_CODEC_ID_LJPEG]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [Flags int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [FlagUnaligned Flags]}
 {*ast.SelectorExpr [C CODEC_FLAG_UNALIGNED]}
 {*ast.ValueSpec [FlagQScale Flags]}
@@ -57,7 +69,11 @@
 {*ast.SelectorExpr [C CODEC_FLAG_INTERLACED_ME]}
 {*ast.ValueSpec [FlagClosedGOP Flags]}
 {*ast.SelectorExpr [C CODEC_FLAG_CLOSED_GOP]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [Flags2 int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [Flag2Fast Flags2]}
 {*ast.SelectorExpr [C CODEC_FLAG2_FAST]}
 {*ast.ValueSpec [Flag2NoOutput Flags2]}
@@ -76,7 +92,11 @@
 {*ast.SelectorExpr [C CODEC_FLAG2_EXPORT_MVS]}
 {*ast.ValueSpec [Flag2SkipManual Flags2]}
 {*ast.SelectorExpr [C CODEC_FLAG2_SKIP_MANUAL]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [Capabilities int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [CapabilityDrawHorizBand Capabilities]}
 {*ast.SelectorExpr [C CODEC_CAP_DRAW_HORIZ_BAND]}
 {*ast.ValueSpec [CapabilityDR1 Capabilities]}
@@ -111,7 +131,11 @@
 {*ast.SelectorExpr [C CODEC_CAP_INTRA_ONLY]}
 {*ast.ValueSpec [CapabilityLossless Capabilities]}
 {*ast.SelectorExpr [C CODEC_CAP_LOSSLESS]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [Compliance int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [ComplianceVeryStrict Compliance]}
 {*ast.SelectorExpr [C FF_COMPLIANCE_VERY_STRICT]}
 {*ast.ValueSpec [ComplianceStrict Compliance]}
@@ -122,8 +146,12 @@
 {*ast.SelectorExpr [C FF_COMPLIANCE_UNOFFICIAL]}
 {*ast.ValueSpec [ComplianceExperimental Compliance]}
 {*ast.SelectorExpr [C FF_COMPLIANCE_EXPERIMENTAL]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [PacketSideDataType]}
 {*ast.SelectorExpr [C enum_AVPacketSideDataType]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [PacketSideDataPalette PacketSideDataType]}
 {*ast.SelectorExpr [C AV_PKT_DATA_PALETTE]}
 {*ast.ValueSpec [PacketSideDataNewExtraData PacketSideDataType]}
@@ -156,12 +184,20 @@
 {*ast.SelectorExpr [C AV_PKT_DATA_WEBVTT_SETTINGS]}
 {*ast.ValueSpec [PacketSideDataMetaDataUpdate PacketSideDataType]}
 {*ast.SelectorExpr [C AV_PKT_DATA_METADATA_UPDATE]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [PacketFlags int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [PacketFlagKey PacketFlags]}
 {*ast.SelectorExpr [C AV_PKT_FLAG_KEY]}
 {*ast.ValueSpec [PacketFlagCorrupt PacketFlags]}
 {*ast.SelectorExpr [C AV_PKT_FLAG_CORRUPT]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [DCTAlgorithm int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [DCTAlgorithmAuto DCTAlgorithm]}
 {*ast.SelectorExpr [C FF_DCT_AUTO]}
 {*ast.ValueSpec [DCTAlgorithmFastInt DCTAlgorithm]}
@@ -174,7 +210,11 @@
 {*ast.SelectorExpr [C FF_DCT_ALTIVEC]}
 {*ast.ValueSpec [DCTAlgorithmFAAN DCTAlgorithm]}
 {*ast.SelectorExpr [C FF_DCT_FAAN]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [IDCTAlgorithm int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [IDCTAlgorithmAuto IDCTAlgorithm]}
 {*ast.SelectorExpr [C FF_IDCT_AUTO]}
 {*ast.ValueSpec [IDCTAlgorithmInt IDCTAlgorithm]}
@@ -211,21 +251,35 @@
 {*ast.SelectorExpr [C GO_FF_IDCT_SIMPLEALPHA]}
 {*ast.ValueSpec [IDCTAlgorithmSimpleAuto IDCTAlgorithm]}
 {*ast.SelectorExpr [C FF_IDCT_SIMPLEAUTO]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [ThreadType int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [ThreadTypeFrame ThreadType]}
 {*ast.SelectorExpr [C FF_THREAD_FRAME]}
 {*ast.ValueSpec [ThreadTypeSlice ThreadType]}
 {*ast.SelectorExpr [C FF_THREAD_SLICE]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [ProfileUnknown int]}
 {*ast.SelectorExpr [C FF_PROFILE_UNKNOWN]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [SubtitlesEncodingMode int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [SubtitlesEncodingModeDoNothing SubtitlesEncodingMode]}
 {*ast.SelectorExpr [C FF_SUB_CHARENC_MODE_DO_NOTHING]}
 {*ast.ValueSpec [SubtitlesEncodingModeAutomatic SubtitlesEncodingMode]}
 {*ast.SelectorExpr [C FF_SUB_CHARENC_MODE_AUTOMATIC]}
 {*ast.ValueSpec [SubtitlesEncodingModePreDecoder SubtitlesEncodingMode]}
 {*ast.SelectorExpr [C FF_SUB_CHARENC_MODE_PRE_DECODER]}
+
+
 {*ast.GenDecl -> *ast.TypeSpec [CodecProps int]}
+
+
 {*ast.GenDecl -> *ast.ValueSpec [CodecPropIntraOnly CodecProps]}
 {*ast.SelectorExpr [C AV_CODEC_PROP_INTRA_ONLY]}
 {*ast.ValueSpec [CodecPropLossy CodecProps]}
@@ -261,16 +315,20 @@ function name is Version
 function name is RegisterAll 
 	 { [RegisterAll]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C avcodec_register_all]}
-	 {*ast.GenDecl -> *ast.TypeSpec [PacketSideData]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CAVPacketSideData]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [C AVPacketSideData]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [PacketSideData]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CAVPacketSideData]}
+{*ast.StarExpr -> *ast.SelectorExpr [C AVPacketSideData]}
 
 
 function name is NewPacketSideDataFromC 
 	 { [NewPacketSideDataFromC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cPSD unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [PacketSideData]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [PacketSideData]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [PacketSideData]}
 	 {*ast.KeyValueExpr [CAVPacketSideData]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVPacketSideData cPSD]}
 
@@ -287,7 +345,8 @@ function name is SetData
 	 {*ast.FieldList -> *ast.Field [psd]}
 	 {*ast.StarExpr [PacketSideData SetData]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [data unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [psd CAVPacketSideData data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [psd CAVPacketSideData data]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C uint8_t data]}
 
 
@@ -303,7 +362,8 @@ function name is SetSize
 	 {*ast.FieldList -> *ast.Field [psd]}
 	 {*ast.StarExpr [PacketSideData SetSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [psd CAVPacketSideData size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [psd CAVPacketSideData size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int size]}
 
 
@@ -319,21 +379,25 @@ function name is SetType
 	 {*ast.FieldList -> *ast.Field [psd]}
 	 {*ast.StarExpr [PacketSideData SetType]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t PacketSideDataType]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [psd CAVPacketSideData _type]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [psd CAVPacketSideData _type]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVPacketSideDataType t]}
-	 {*ast.GenDecl -> *ast.TypeSpec [Packet]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CAVPacket]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [C AVPacket]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [Packet]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CAVPacket]}
+{*ast.StarExpr -> *ast.SelectorExpr [C AVPacket]}
 
 
 function name is NewPacket 
 	 { [NewPacket]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Packet]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cPkt]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cPkt]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVPacket]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C av_packet_alloc]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cPkt nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cPkt nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil ErrAllocationError]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewPacketFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cPkt nil]}
@@ -343,7 +407,9 @@ function name is NewPacketFromC
 	 { [NewPacketFromC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cPkt unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Packet]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Packet]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Packet]}
 	 {*ast.KeyValueExpr [CAVPacket]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVPacket cPkt]}
 
@@ -352,7 +418,8 @@ function name is Free
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet Free]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_packet_free]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [pkt CAVPacket]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [pkt CAVPacket]}
 
 
 function name is Ref 
@@ -361,11 +428,13 @@ function name is Ref
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dst]}
 	 {*ast.StarExpr [Packet]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [code]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= code]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C av_packet_ref]}
 	 {*ast.SelectorExpr [dst CAVPacket]}
 	 {*ast.SelectorExpr [pkt CAVPacket]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [code INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [< code]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [avutil NewErrorFromCode]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [avutil ErrorCode code]}
 	 {*ast.ReturnStmt [nil]}
@@ -382,16 +451,20 @@ function name is ConsumeData
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet ConsumeData]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket data]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [data nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket size]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= data nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [-=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int size]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket data]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket data]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C uint8_t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr data]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr data]}
 	 {*ast.CallExpr [uintptr size]}
 
 
@@ -400,14 +473,16 @@ function name is RescaleTime
 	 {*ast.StarExpr [Packet RescaleTime]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [srcTimeBase dstTimeBase]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [src]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= src]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVRational]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [srcTimeBase CAVRational]}
-	 {*ast.AssignStmt [dst]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [srcTimeBase CAVRational]}
+	 {*ast.AssignStmt [:= dst]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVRational]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [dstTimeBase CAVRational]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [dstTimeBase CAVRational]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_packet_rescale_ts]}
 	 {*ast.SelectorExpr [pkt CAVPacket]}
 	 {*ast.StarExpr [src]}
@@ -426,7 +501,8 @@ function name is SetPTS
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetPTS]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [pts int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket pts]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket pts]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t pts]}
 
 
@@ -442,7 +518,8 @@ function name is SetDTS
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetDTS]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dts int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket dts]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket dts]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t dts]}
 
 
@@ -458,7 +535,8 @@ function name is SetDuration
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetDuration]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [duration int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket duration]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket duration]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t duration]}
 
 
@@ -474,7 +552,8 @@ function name is SetData
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetData]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [data unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket data]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C uint8_t data]}
 
 
@@ -490,7 +569,8 @@ function name is SetSize
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int size]}
 
 
@@ -498,25 +578,30 @@ function name is SideData
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SideData]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.StarExpr [PacketSideData]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [count]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= count]}
 	 {*ast.CallExpr [int]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket side_data_elems]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [count INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [<= count]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.AssignStmt [psds]}
+	 {*ast.AssignStmt [:= psds]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.StarExpr [PacketSideData INT 0 count]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i count]}
+	 {*ast.ArrayType -> *ast.StarExpr [PacketSideData]}
+	 {*ast.BasicLit [INT 0]}
+	 { [count]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i count]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cPSD]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cPSD]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C go_av_packetsidedata_get]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket side_data]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.AssignStmt [psd]}
+	 {*ast.AssignStmt [:= psd]}
 	 {*ast.CallExpr [NewPacketSideDataFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cPSD]}
-	 {*ast.AssignStmt [psds]}
+	 {*ast.AssignStmt [= psds]}
 	 {*ast.CallExpr [append psds psd]}
 	 {*ast.ReturnStmt [psds]}
 
@@ -533,7 +618,8 @@ function name is SetStreamIndex
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetStreamIndex]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [streamIndex int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket stream_index]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket stream_index]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int streamIndex]}
 
 
@@ -549,7 +635,8 @@ function name is SetFlags
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetFlags]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [flags PacketFlags]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket flags]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket flags]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int flags]}
 
 
@@ -565,7 +652,8 @@ function name is SetPosition
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetPosition]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [position int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket pos]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket pos]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t position]}
 
 
@@ -581,18 +669,23 @@ function name is SetConvergenceDuration
 	 {*ast.FieldList -> *ast.Field [pkt]}
 	 {*ast.StarExpr [Packet SetConvergenceDuration]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [convergenceDuration int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket convergence_duration]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [pkt CAVPacket convergence_duration]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t convergenceDuration]}
-	 {*ast.GenDecl -> *ast.TypeSpec [Profile]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CAVProfile]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [C AVProfile]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [Profile]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CAVProfile]}
+{*ast.StarExpr -> *ast.SelectorExpr [C AVProfile]}
 
 
 function name is NewProfileFromC 
 	 { [NewProfileFromC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cProfile unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Profile]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Profile]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Profile]}
 	 {*ast.KeyValueExpr [CAVProfile]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVProfile cProfile]}
 
@@ -601,7 +694,7 @@ function name is Name
 	 {*ast.FieldList -> *ast.Field [p]}
 	 {*ast.StarExpr [Profile Name]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [name _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= name _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [p NameOK]}
 	 {*ast.ReturnStmt [name]}
 
@@ -621,16 +714,20 @@ function name is ID
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [int]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [p CAVProfile profile]}
-	 {*ast.GenDecl -> *ast.TypeSpec [Codec]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CAVCodec]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [C AVCodec]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [Codec]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CAVCodec]}
+{*ast.StarExpr -> *ast.SelectorExpr [C AVCodec]}
 
 
 function name is NewCodecFromC 
 	 { [NewCodecFromC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cCodec unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Codec]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Codec]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Codec]}
 	 {*ast.KeyValueExpr [CAVCodec]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVCodec cCodec]}
 
@@ -639,10 +736,11 @@ function name is FindEncoderByID
 	 { [FindEncoderByID]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [codecID CodecID]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Codec]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cCodec]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cCodec]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_find_encoder]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVCodecID codecID]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cCodec nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cCodec nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewCodecFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cCodec]}
@@ -652,13 +750,14 @@ function name is FindEncoderByName
 	 { [FindEncoderByName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Codec]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cName]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cName]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString name]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cName]}
-	 {*ast.AssignStmt [cCodec]}
+	 {*ast.AssignStmt [:= cCodec]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_find_encoder_by_name cName]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cCodec nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cCodec nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewCodecFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cCodec]}
@@ -668,10 +767,11 @@ function name is FindDecoderByID
 	 { [FindDecoderByID]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [codecID CodecID]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Codec]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cCodec]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cCodec]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_find_decoder]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVCodecID codecID]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cCodec nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cCodec nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewCodecFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cCodec]}
@@ -681,13 +781,14 @@ function name is FindDecoderByName
 	 { [FindDecoderByName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Codec]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cName]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cName]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString name]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cName]}
-	 {*ast.AssignStmt [cCodec]}
+	 {*ast.AssignStmt [:= cCodec]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_find_decoder_by_name cName]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cCodec nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cCodec nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewCodecFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cCodec]}
@@ -697,7 +798,9 @@ function name is PrivateClass
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [Codec PrivateClass]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [avutil Class]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodec priv_class nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodec priv_class nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [avutil NewClassFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
@@ -708,7 +811,7 @@ function name is Name
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [Codec Name]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= str _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [c NameOk]}
 	 {*ast.ReturnStmt [str]}
 
@@ -750,21 +853,30 @@ function name is SupportedFrameRates
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [Codec SupportedFrameRates]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [frameRates]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [frameRates]}
 	 {*ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cFrameRate]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cFrameRate]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C go_av_rational_get]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodec supported_framerates]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [cFrameRate nil]}
-	 {*ast.ParenExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.SelectorExpr [cFrameRate num INT 0]}
-	 {*ast.BinaryExpr -> *ast.SelectorExpr [cFrameRate den INT 0]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [frameRate]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== cFrameRate nil]}
+	 {*ast.ParenExpr []}
+	 {*ast.BinaryExpr [&&]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [cFrameRate num]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [cFrameRate den]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= frameRate]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [avutil NewRationalFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cFrameRate]}
-	 {*ast.AssignStmt [frameRates]}
+	 {*ast.AssignStmt [= frameRates]}
 	 {*ast.CallExpr [append frameRates frameRate]}
 	 {*ast.ReturnStmt [frameRates]}
 
@@ -773,21 +885,25 @@ function name is SupportedPixelFormats
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [Codec SupportedPixelFormats]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [avutil PixelFormat]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [pixelFormats]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [pixelFormats]}
 	 {*ast.ArrayType -> *ast.SelectorExpr [avutil PixelFormat]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cPixelFormat]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cPixelFormat]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C go_av_pixfmt_get]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodec pix_fmts]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cPixelFormat nil]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [pixelFormat]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cPixelFormat nil]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= pixelFormat]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [avutil PixelFormat]}
 	 {*ast.StarExpr [cPixelFormat]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [pixelFormat]}
-	 {*ast.UnaryExpr [INT 1]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [pixelFormats]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== pixelFormat]}
+	 {*ast.UnaryExpr [-]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [= pixelFormats]}
 	 {*ast.CallExpr [append pixelFormats pixelFormat]}
 	 {*ast.ReturnStmt [pixelFormats]}
 
@@ -796,20 +912,24 @@ function name is SupportedSampleRates
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [Codec SupportedSampleRates]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [int]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [sampleRates]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [sampleRates]}
 	 {*ast.ArrayType [int]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cSampleRate]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cSampleRate]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C go_av_int_get]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodec supported_samplerates]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cSampleRate nil]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [sampleRate]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cSampleRate nil]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= sampleRate]}
 	 {*ast.CallExpr -> *ast.ParenExpr [int]}
 	 {*ast.StarExpr [cSampleRate]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [sampleRate INT 0]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [sampleRates]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== sampleRate]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [= sampleRates]}
 	 {*ast.CallExpr [append sampleRates sampleRate]}
 	 {*ast.ReturnStmt [sampleRates]}
 
@@ -818,21 +938,25 @@ function name is SupportedSampleFormats
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [Codec SupportedSampleFormats]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [avutil SampleFormat]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [sampleFormats]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [sampleFormats]}
 	 {*ast.ArrayType -> *ast.SelectorExpr [avutil SampleFormat]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cSampleFormat]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cSampleFormat]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C go_av_samplefmt_get]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodec sample_fmts]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cSampleFormat nil]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [sampleFormat]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cSampleFormat nil]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= sampleFormat]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [avutil SampleFormat]}
 	 {*ast.StarExpr [cSampleFormat]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [sampleFormat]}
-	 {*ast.UnaryExpr [INT 1]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [sampleFormats]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== sampleFormat]}
+	 {*ast.UnaryExpr [-]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [= sampleFormats]}
 	 {*ast.CallExpr [append sampleFormats sampleFormat]}
 	 {*ast.ReturnStmt [sampleFormats]}
 
@@ -841,20 +965,24 @@ function name is SupportedChannelLayouts
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [Codec SupportedChannelLayouts]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.SelectorExpr [avutil ChannelLayout]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [channelLayouts]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [channelLayouts]}
 	 {*ast.ArrayType -> *ast.SelectorExpr [avutil ChannelLayout]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cChannelLayout]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cChannelLayout]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C go_av_uint64_get]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodec channel_layouts]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cChannelLayout nil]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [channelLayout]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cChannelLayout nil]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= channelLayout]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [avutil ChannelLayout]}
 	 {*ast.StarExpr [cChannelLayout]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [channelLayout INT 0]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [channelLayouts]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== channelLayout]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [= channelLayouts]}
 	 {*ast.CallExpr [append channelLayouts channelLayout]}
 	 {*ast.ReturnStmt [channelLayouts]}
 
@@ -863,21 +991,25 @@ function name is Profiles
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [Codec Profiles]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.StarExpr [Profile]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [profiles]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [profiles]}
 	 {*ast.ArrayType -> *ast.StarExpr [Profile]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cProfile]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cProfile]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C go_av_profile_get]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodec profiles]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [cProfile nil]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [int]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== cProfile nil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [int]}
 	 {*ast.SelectorExpr [cProfile profile ProfileUnknown]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [profile]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= profile]}
 	 {*ast.CallExpr [NewProfileFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cProfile]}
-	 {*ast.AssignStmt [profiles]}
+	 {*ast.AssignStmt [= profiles]}
 	 {*ast.CallExpr [append profiles profile]}
 	 {*ast.ReturnStmt [profiles]}
 
@@ -887,7 +1019,7 @@ function name is ProfileName
 	 {*ast.StarExpr [Codec ProfileName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [id int]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [name _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= name _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [c ProfileNameOK id]}
 	 {*ast.ReturnStmt [name]}
 
@@ -902,10 +1034,12 @@ function name is ProfileNameOK
 	 {*ast.CallExpr -> *ast.SelectorExpr [C av_get_profile_name]}
 	 {*ast.SelectorExpr [c CAVCodec]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int id]}
-	 {*ast.GenDecl -> *ast.TypeSpec [Context]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CAVCodecContext]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [C AVCodecContext]}
-	 {*ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [avutil OptionAccessor]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [Context]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CAVCodecContext]}
+{*ast.StarExpr -> *ast.SelectorExpr [C AVCodecContext]}
+{*ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [avutil OptionAccessor]}
 
 
 function name is NewContextWithCodec 
@@ -914,14 +1048,16 @@ function name is NewContextWithCodec
 	 {*ast.StarExpr [Codec]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Context]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cCodec]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [cCodec]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C AVCodec]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [codec nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cCodec]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= codec nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cCodec]}
 	 {*ast.SelectorExpr [codec CAVCodec]}
-	 {*ast.AssignStmt [cCtx]}
+	 {*ast.AssignStmt [:= cCtx]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_alloc_context3 cCodec]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cCtx nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cCtx nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil ErrAllocationError]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewContextFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cCtx nil]}
@@ -931,7 +1067,9 @@ function name is NewContextFromC
 	 { [NewContextFromC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cCtx unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Context]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Context]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Context]}
 	 {*ast.KeyValueExpr [CAVCodecContext]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVCodecContext cCtx]}
 	 {*ast.KeyValueExpr [OptionAccessor]}
@@ -941,9 +1079,12 @@ function name is NewContextFromC
 function name is Free 
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context Free]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [ctx CAVCodecContext nil]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [ctx CAVCodecContext nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C avcodec_free_context]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [ctx CAVCodecContext]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [ctx CAVCodecContext]}
 
 
 function name is Open 
@@ -963,21 +1104,25 @@ function name is OpenWithCodec
 	 {*ast.Field [options]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [avutil Dictionary]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cCodec]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [cCodec]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C AVCodec]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [codec nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cCodec]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= codec nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cCodec]}
 	 {*ast.SelectorExpr [codec CAVCodec]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cOptions]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cOptions]}
 	 {*ast.StarExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVDictionary]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [options nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cOptions]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= options nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cOptions]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVDictionary]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [options Pointer]}
-	 {*ast.AssignStmt [code]}
+	 {*ast.AssignStmt [:= code]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_open2]}
 	 {*ast.SelectorExpr [ctx CAVCodecContext cCodec cOptions]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [code INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [< code]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [avutil NewErrorFromCode]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [avutil ErrorCode code]}
 	 {*ast.ReturnStmt [nil]}
@@ -989,10 +1134,11 @@ function name is OpenForEncoding
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [options]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [avutil Dictionary]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [encoder]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= encoder]}
 	 {*ast.CallExpr [FindEncoderByID]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ctx CodecID]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [encoder nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== encoder nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [ErrEncoderNotFound]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [ctx OpenWithCodec encoder options]}
 
@@ -1003,10 +1149,11 @@ function name is OpenForDecoding
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [options]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [avutil Dictionary]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [decoder]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= decoder]}
 	 {*ast.CallExpr [FindDecoderByID]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ctx CodecID]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [decoder nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== decoder nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [ErrDecoderNotFound]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [ctx OpenWithCodec decoder options]}
 
@@ -1022,7 +1169,9 @@ function name is Class
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context Class]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [avutil Class]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext av_class nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext av_class nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [avutil NewClassFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
@@ -1042,7 +1191,8 @@ function name is SetCodecType
 	 {*ast.StarExpr [Context SetCodecType]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [codecType]}
 	 {*ast.SelectorExpr [avutil MediaType]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec_type]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec_type]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVMediaType codecType]}
 
 
@@ -1050,7 +1200,9 @@ function name is Codec
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context Codec]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Codec]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewCodecFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
@@ -1062,12 +1214,14 @@ function name is SetCodec
 	 {*ast.StarExpr [Context SetCodec]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [codec]}
 	 {*ast.StarExpr [Codec]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cCodec]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [cCodec]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C AVCodec]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [codec nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cCodec]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= codec nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cCodec]}
 	 {*ast.SelectorExpr [codec CAVCodec]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec cCodec]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec cCodec]}
 
 
 function name is CodecID 
@@ -1082,7 +1236,8 @@ function name is SetCodecID
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetCodecID]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [id CodecID]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec_id]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec_id]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVCodecID id]}
 
 
@@ -1098,7 +1253,8 @@ function name is SetCodecTag
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetCodecTag]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [codecTag uint]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec_tag]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec_tag]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C uint codecTag]}
 
 
@@ -1114,7 +1270,8 @@ function name is SetPrivData
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetPrivData]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [privData unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext priv_data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext priv_data]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [unsafe Pointer privData]}
 
 
@@ -1130,7 +1287,8 @@ function name is SetOpaque
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetOpaque]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [opaque unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext opaque opaque]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext opaque opaque]}
 
 
 function name is BitRate 
@@ -1145,7 +1303,8 @@ function name is SetBitRate
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBitRate]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bitRate int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bit_rate]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bit_rate]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t bitRate]}
 
 
@@ -1161,7 +1320,8 @@ function name is SetBitRateTolerance
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBitRateTolerance]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bitRateTolerance int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bit_rate_tolerance]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bit_rate_tolerance]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bitRateTolerance]}
 
 
@@ -1177,7 +1337,8 @@ function name is SetGlobalQuality
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetGlobalQuality]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [globalQuality int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext global_quality]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext global_quality]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int globalQuality]}
 
 
@@ -1193,7 +1354,8 @@ function name is SetCompressionLevel
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetCompressionLevel]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [compressionLevel int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext compression_level]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext compression_level]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int compressionLevel]}
 
 
@@ -1209,7 +1371,8 @@ function name is SetFlags
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFlags]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [flags Flags]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext flags]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext flags]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int flags]}
 
 
@@ -1225,7 +1388,8 @@ function name is SetFlags2
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFlags2]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [flags2 Flags2]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext flags2]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext flags2]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int flags2]}
 
 
@@ -1241,7 +1405,8 @@ function name is SetExtraData
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetExtraData]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [data unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext extradata]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext extradata]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C uint8_t data]}
 
 
@@ -1257,7 +1422,8 @@ function name is SetExtraDataSize
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetExtraDataSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [extraDataSize int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext extradata_size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext extradata_size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int extraDataSize]}
 
 
@@ -1267,7 +1433,8 @@ function name is TimeBase
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [avutil NewRationalFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext time_base]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext time_base]}
 
 
 function name is SetTimeBase 
@@ -1275,10 +1442,12 @@ function name is SetTimeBase
 	 {*ast.StarExpr [Context SetTimeBase]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [timeBase]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext time_base num]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext time_base num]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [timeBase Numerator]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext time_base den]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext time_base den]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [timeBase Denominator]}
 
@@ -1311,7 +1480,8 @@ function name is SetWidth
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetWidth]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [width int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext width]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext width]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int width]}
 
 
@@ -1327,7 +1497,8 @@ function name is SetHeight
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetHeight]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [height int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext height]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext height]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int height]}
 
 
@@ -1343,7 +1514,8 @@ function name is SetCodedWidth
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetCodedWidth]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [codedWidth int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext coded_width]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext coded_width]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int codedWidth]}
 
 
@@ -1359,7 +1531,8 @@ function name is SetCodedHeight
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetCodedHeight]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [codedHeight int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext coded_height]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext coded_height]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int codedHeight]}
 
 
@@ -1375,7 +1548,8 @@ function name is SetGOPSize
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetGOPSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [gOPSize int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext gop_size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext gop_size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int gOPSize]}
 
 
@@ -1392,7 +1566,8 @@ function name is SetPixelFormat
 	 {*ast.StarExpr [Context SetPixelFormat]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [pixelFormat]}
 	 {*ast.SelectorExpr [avutil PixelFormat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext pix_fmt]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext pix_fmt]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVPixelFormat pixelFormat]}
 
 
@@ -1408,7 +1583,8 @@ function name is SetMaxBFrames
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMaxBFrames]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [maxBFrames int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext max_b_frames]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext max_b_frames]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int maxBFrames]}
 
 
@@ -1424,7 +1600,8 @@ function name is SetBQuantFactor
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBQuantFactor]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bQuantFactor float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext b_quant_factor]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext b_quant_factor]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float bQuantFactor]}
 
 
@@ -1440,7 +1617,8 @@ function name is SetBFrameStrategy
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBFrameStrategy]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bFrameStrategy int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext b_frame_strategy]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext b_frame_strategy]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bFrameStrategy]}
 
 
@@ -1456,7 +1634,8 @@ function name is SetBQuantOffset
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBQuantOffset]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bQuantOffset float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext b_quant_offset]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext b_quant_offset]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float bQuantOffset]}
 
 
@@ -1472,7 +1651,8 @@ function name is SetHasBFrames
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetHasBFrames]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hasBFrames int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext has_b_frames]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext has_b_frames]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int hasBFrames]}
 
 
@@ -1488,7 +1668,8 @@ function name is SetMPEGQuant
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMPEGQuant]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [mPEGQuant int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mpeg_quant]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mpeg_quant]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int mPEGQuant]}
 
 
@@ -1504,7 +1685,8 @@ function name is SetIQuantFactor
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetIQuantFactor]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [iQuantFactor float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext i_quant_factor]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext i_quant_factor]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float iQuantFactor]}
 
 
@@ -1520,7 +1702,8 @@ function name is SetIQuantOffset
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetIQuantOffset]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [iQuantOffset float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext i_quant_offset]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext i_quant_offset]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float iQuantOffset]}
 
 
@@ -1536,7 +1719,8 @@ function name is SetLumiMasking
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetLumiMasking]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [lumiMasking float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext lumi_masking]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext lumi_masking]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float lumiMasking]}
 
 
@@ -1552,7 +1736,8 @@ function name is SetTemporalCplxMasking
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetTemporalCplxMasking]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [temporalCplxMasking float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext temporal_cplx_masking]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext temporal_cplx_masking]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float temporalCplxMasking]}
 
 
@@ -1568,7 +1753,8 @@ function name is SetSpatialCplxMasking
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSpatialCplxMasking]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [spatialCplxMasking float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext spatial_cplx_masking]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext spatial_cplx_masking]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float spatialCplxMasking]}
 
 
@@ -1584,7 +1770,8 @@ function name is SetPMasking
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetPMasking]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [pMasking float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext p_masking]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext p_masking]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float pMasking]}
 
 
@@ -1600,7 +1787,8 @@ function name is SetDarkMasking
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetDarkMasking]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [darkMasking float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext dark_masking]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext dark_masking]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float darkMasking]}
 
 
@@ -1616,7 +1804,8 @@ function name is SetSliceCount
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSliceCount]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [sliceCount int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext slice_count]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext slice_count]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int sliceCount]}
 
 
@@ -1632,7 +1821,8 @@ function name is SetPredictionMethod
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetPredictionMethod]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [predictionMethod int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext prediction_method]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext prediction_method]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int predictionMethod]}
 
 
@@ -1648,7 +1838,8 @@ function name is SetSliceOffset
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSliceOffset]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [sliceOffset unsafe Pointer]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext slice_offset]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext slice_offset]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C int sliceOffset]}
 
 
@@ -1658,7 +1849,8 @@ function name is SampleAspectRatio
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [avutil NewRationalFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_aspect_ratio]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_aspect_ratio]}
 
 
 function name is SetSampleAspectRatio 
@@ -1666,10 +1858,12 @@ function name is SetSampleAspectRatio
 	 {*ast.StarExpr [Context SetSampleAspectRatio]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [aspectRatio]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_aspect_ratio num]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_aspect_ratio num]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [aspectRatio Numerator]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_aspect_ratio den]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_aspect_ratio den]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [aspectRatio Denominator]}
 
@@ -1686,7 +1880,8 @@ function name is SetMECmp
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMECmp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [meCmp int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_cmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_cmp]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int meCmp]}
 
 
@@ -1702,7 +1897,8 @@ function name is SetMESubCmp
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMESubCmp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [meSubCmp int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_sub_cmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_sub_cmp]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int meSubCmp]}
 
 
@@ -1718,7 +1914,8 @@ function name is SetMBCmp
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMBCmp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [mbCmp int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mb_cmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mb_cmp]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int mbCmp]}
 
 
@@ -1734,7 +1931,8 @@ function name is SetILDCTCmp
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetILDCTCmp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ildctCmp int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext ildct_cmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext ildct_cmp]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int ildctCmp]}
 
 
@@ -1750,7 +1948,8 @@ function name is SetDiaSize
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetDiaSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [diaSize int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext dia_size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext dia_size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int diaSize]}
 
 
@@ -1766,7 +1965,8 @@ function name is SetLastPredictorCount
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetLastPredictorCount]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [count int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext last_predictor_count]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext last_predictor_count]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int count]}
 
 
@@ -1782,7 +1982,8 @@ function name is SetPreME
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetPreME]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [preME int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext pre_me]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext pre_me]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int preME]}
 
 
@@ -1798,7 +1999,8 @@ function name is SetMEPreCmp
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMEPreCmp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [mePreCmp int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_pre_cmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_pre_cmp]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int mePreCmp]}
 
 
@@ -1814,7 +2016,8 @@ function name is SetPreDiaSize
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetPreDiaSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [preDiaSize int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext pre_dia_size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext pre_dia_size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int preDiaSize]}
 
 
@@ -1830,7 +2033,8 @@ function name is SetMESubpelQuality
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMESubpelQuality]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [meSubpelQuality int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_subpel_quality]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_subpel_quality]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int meSubpelQuality]}
 
 
@@ -1846,7 +2050,8 @@ function name is SetMERange
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMERange]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [meRange int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_range]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_range]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int meRange]}
 
 
@@ -1862,7 +2067,8 @@ function name is SetMBDecision
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMBDecision]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [mbDecision int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mb_decision]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mb_decision]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int mbDecision]}
 
 
@@ -1878,7 +2084,8 @@ function name is SetScenechangeThreshold
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetScenechangeThreshold]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [threshold int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext scenechange_threshold]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext scenechange_threshold]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int threshold]}
 
 
@@ -1894,7 +2101,8 @@ function name is SetNoiseReduction
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetNoiseReduction]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [reduction int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext noise_reduction]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext noise_reduction]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int reduction]}
 
 
@@ -1910,7 +2118,8 @@ function name is SetIntraDCPrecision
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetIntraDCPrecision]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [precision int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext intra_dc_precision]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext intra_dc_precision]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int precision]}
 
 
@@ -1926,7 +2135,8 @@ function name is SetSkipTop
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSkipTop]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [skip int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_top]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_top]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int skip]}
 
 
@@ -1942,7 +2152,8 @@ function name is SetSkipBottom
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSkipBottom]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [skip int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_bottom]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_bottom]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int skip]}
 
 
@@ -1958,7 +2169,8 @@ function name is SetMBLmin
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMBLmin]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [min int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mb_lmin]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mb_lmin]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int min]}
 
 
@@ -1974,7 +2186,8 @@ function name is SetMBLmax
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMBLmax]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [max int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mb_lmax]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mb_lmax]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int max]}
 
 
@@ -1990,7 +2203,8 @@ function name is SetMEPenaltyCompensation
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMEPenaltyCompensation]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [compensation int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_penalty_compensation]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext me_penalty_compensation]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int compensation]}
 
 
@@ -2006,7 +2220,8 @@ function name is SetBidirRefine
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBidirRefine]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [refine int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bidir_refine]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bidir_refine]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int refine]}
 
 
@@ -2022,7 +2237,8 @@ function name is SetBrdScale
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBrdScale]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [brdScale int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext brd_scale]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext brd_scale]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int brdScale]}
 
 
@@ -2038,7 +2254,8 @@ function name is SetKeyIntMin
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetKeyIntMin]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [min int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext keyint_min]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext keyint_min]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int min]}
 
 
@@ -2054,7 +2271,8 @@ function name is SetRefs
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRefs]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [refs int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext refs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext refs]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int refs]}
 
 
@@ -2070,7 +2288,8 @@ function name is SetChromaOffset
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetChromaOffset]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [offset int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext chromaoffset]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext chromaoffset]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int offset]}
 
 
@@ -2086,7 +2305,8 @@ function name is SetMV0Threshold
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMV0Threshold]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [threshold int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mv0_threshold]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mv0_threshold]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int threshold]}
 
 
@@ -2102,7 +2322,8 @@ function name is SetBSensitivity
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBSensitivity]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [sensivity int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext b_sensitivity]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext b_sensitivity]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int sensivity]}
 
 
@@ -2119,7 +2340,8 @@ function name is SetChromaSampleLocation
 	 {*ast.StarExpr [Context SetChromaSampleLocation]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [location]}
 	 {*ast.SelectorExpr [avutil ChromaLocation]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext chroma_sample_location]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext chroma_sample_location]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVChromaLocation location]}
 
 
@@ -2135,7 +2357,8 @@ function name is SetSlices
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSlices]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slices int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext slices]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext slices]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int slices]}
 
 
@@ -2151,7 +2374,8 @@ function name is SetSampleRate
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSampleRate]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [rate int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_rate]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_rate]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int rate]}
 
 
@@ -2167,7 +2391,8 @@ function name is SetChannels
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetChannels]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [channels int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext channels]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext channels]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int channels]}
 
 
@@ -2184,7 +2409,8 @@ function name is SetSampleFormat
 	 {*ast.StarExpr [Context SetSampleFormat]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [format]}
 	 {*ast.SelectorExpr [avutil SampleFormat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_fmt]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sample_fmt]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVSampleFormat format]}
 
 
@@ -2200,7 +2426,8 @@ function name is SetFrameSize
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFrameSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int size]}
 
 
@@ -2216,7 +2443,8 @@ function name is SetFrameNumber
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFrameNumber]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [number int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_number]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_number]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int number]}
 
 
@@ -2232,7 +2460,8 @@ function name is SetBlockAlign
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBlockAlign]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [blockAlign int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext block_align]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext block_align]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int blockAlign]}
 
 
@@ -2248,7 +2477,8 @@ function name is SetCutoff
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetCutoff]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [cutoff int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext cutoff]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext cutoff]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int cutoff]}
 
 
@@ -2265,7 +2495,8 @@ function name is SetChannelLayout
 	 {*ast.StarExpr [Context SetChannelLayout]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [layout]}
 	 {*ast.SelectorExpr [avutil ChannelLayout]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext channel_layout]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext channel_layout]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C uint64_t layout]}
 
 
@@ -2282,7 +2513,8 @@ function name is SetRequestChannelLayout
 	 {*ast.StarExpr [Context SetRequestChannelLayout]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [layout]}
 	 {*ast.SelectorExpr [avutil ChannelLayout]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext request_channel_layout]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext request_channel_layout]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C uint64_t layout]}
 
 
@@ -2299,7 +2531,8 @@ function name is SetRequestSampleFormat
 	 {*ast.StarExpr [Context SetRequestSampleFormat]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [format]}
 	 {*ast.SelectorExpr [avutil SampleFormat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext request_sample_fmt]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext request_sample_fmt]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVSampleFormat format]}
 
 
@@ -2307,20 +2540,25 @@ function name is RefCountedFrames
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context RefCountedFrames]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext refcounted_frames]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [C int INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext refcounted_frames]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is SetRefCountedFrames 
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRefCountedFrames]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [refCounted bool]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cRefCounted]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [cRefCounted]}
 	 {*ast.SelectorExpr [C int]}
 	 {*ast.IfStmt [refCounted]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cRefCounted]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [C int INT 1]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext refcounted_frames cRefCounted]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cRefCounted]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext refcounted_frames cRefCounted]}
 
 
 function name is QCompress 
@@ -2335,7 +2573,8 @@ function name is SetQCompress
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetQCompress]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [qcompress float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext qcompress]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext qcompress]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float qcompress]}
 
 
@@ -2351,7 +2590,8 @@ function name is SetQBlur
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetQBlur]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [qblur float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext qblur]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext qblur]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float qblur]}
 
 
@@ -2367,7 +2607,8 @@ function name is SetQMin
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetQMin]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [qmin int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext qmin]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext qmin]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int qmin]}
 
 
@@ -2383,7 +2624,8 @@ function name is SetQMax
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetQMax]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [qmax int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext qmax]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext qmax]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int qmax]}
 
 
@@ -2399,7 +2641,8 @@ function name is SetMaxQDiff
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMaxQDiff]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [max int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext max_qdiff]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext max_qdiff]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int max]}
 
 
@@ -2415,7 +2658,8 @@ function name is SetRCBufferSize
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRCBufferSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_buffer_size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_buffer_size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int size]}
 
 
@@ -2431,7 +2675,8 @@ function name is SetRCOverrideCount
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRCOverrideCount]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [count int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_override_count]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_override_count]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int count]}
 
 
@@ -2447,7 +2692,8 @@ function name is SetRCMaxRate
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRCMaxRate]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [max int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_max_rate]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_max_rate]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t max]}
 
 
@@ -2463,7 +2709,8 @@ function name is SetRCMinRate
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRCMinRate]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [min int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_min_rate]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_min_rate]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t min]}
 
 
@@ -2479,7 +2726,8 @@ function name is SetRCMaxAvailableVBVUse
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRCMaxAvailableVBVUse]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [max float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_max_available_vbv_use]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_max_available_vbv_use]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float max]}
 
 
@@ -2495,7 +2743,8 @@ function name is SetRCMinVBVOverflowUse
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRCMinVBVOverflowUse]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [min float32]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_min_vbv_overflow_use]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_min_vbv_overflow_use]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C float min]}
 
 
@@ -2511,7 +2760,8 @@ function name is SetRCInitialBufferOccupancy
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRCInitialBufferOccupancy]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [initial int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_initial_buffer_occupancy]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rc_initial_buffer_occupancy]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int initial]}
 
 
@@ -2527,7 +2777,8 @@ function name is SetContextModel
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetContextModel]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [contextModel int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext context_model]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext context_model]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int contextModel]}
 
 
@@ -2543,7 +2794,8 @@ function name is SetFrameSkipThreshold
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFrameSkipThreshold]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [threshold int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_skip_threshold]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_skip_threshold]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int threshold]}
 
 
@@ -2559,7 +2811,8 @@ function name is SetFrameSkipFactor
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFrameSkipFactor]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [factor int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_skip_factor]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_skip_factor]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int factor]}
 
 
@@ -2575,7 +2828,8 @@ function name is SetFrameSkipExp
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFrameSkipExp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [skip int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_skip_exp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_skip_exp]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int skip]}
 
 
@@ -2591,7 +2845,8 @@ function name is SetFrameSkipCmp
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFrameSkipCmp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [skip int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_skip_cmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_skip_cmp]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int skip]}
 
 
@@ -2607,7 +2862,8 @@ function name is SetTrellis
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetTrellis]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [trellis int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext trellis]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext trellis]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int trellis]}
 
 
@@ -2623,7 +2879,8 @@ function name is SetMinPredictionOrder
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMinPredictionOrder]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [min int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext min_prediction_order]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext min_prediction_order]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int min]}
 
 
@@ -2639,7 +2896,8 @@ function name is SetMaxPredictionOrder
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMaxPredictionOrder]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [max int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext max_prediction_order]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext max_prediction_order]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int max]}
 
 
@@ -2655,7 +2913,8 @@ function name is SetTimecodeFrameStart
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetTimecodeFrameStart]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [start int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext timecode_frame_start]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext timecode_frame_start]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t start]}
 
 
@@ -2671,7 +2930,8 @@ function name is SetRTPPayloadSize
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetRTPPayloadSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rtp_payload_size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext rtp_payload_size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int size]}
 
 
@@ -2687,7 +2947,8 @@ function name is SetMVBits
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMVBits]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bits int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mv_bits]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext mv_bits]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bits]}
 
 
@@ -2703,7 +2964,8 @@ function name is SetHeaderBits
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetHeaderBits]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bits int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext header_bits]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext header_bits]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bits]}
 
 
@@ -2719,7 +2981,8 @@ function name is SetITexBits
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetITexBits]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bits int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext i_tex_bits]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext i_tex_bits]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bits]}
 
 
@@ -2735,7 +2998,8 @@ function name is SetPTexBits
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetPTexBits]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bits int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext p_tex_bits]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext p_tex_bits]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bits]}
 
 
@@ -2751,7 +3015,8 @@ function name is SetICount
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetICount]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [count int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext i_count]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext i_count]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int count]}
 
 
@@ -2767,7 +3032,8 @@ function name is SetPCount
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetPCount]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [count int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext p_count]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext p_count]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int count]}
 
 
@@ -2783,7 +3049,8 @@ function name is SetSkipCount
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSkipCount]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [skip int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_count]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_count]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int skip]}
 
 
@@ -2799,7 +3066,8 @@ function name is SetMiscBits
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetMiscBits]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bits int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext misc_bits]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext misc_bits]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bits]}
 
 
@@ -2815,7 +3083,8 @@ function name is SetFrameBits
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetFrameBits]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bits int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_bits]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext frame_bits]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bits]}
 
 
@@ -2831,7 +3100,8 @@ function name is SetStrictStdCompliance
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetStrictStdCompliance]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [compliance Compliance]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext strict_std_compliance]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext strict_std_compliance]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int compliance]}
 
 
@@ -2847,7 +3117,8 @@ function name is SetReorderedOpaque
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetReorderedOpaque]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [opaque int64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext reordered_opaque]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext reordered_opaque]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int64_t opaque]}
 
 
@@ -2863,7 +3134,8 @@ function name is SetDCTAlgorithm
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetDCTAlgorithm]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [algo DCTAlgorithm]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext dct_algo]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext dct_algo]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int algo]}
 
 
@@ -2879,7 +3151,8 @@ function name is SetIDCTAlgorithm
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetIDCTAlgorithm]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [algo IDCTAlgorithm]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext idct_algo]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext idct_algo]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int algo]}
 
 
@@ -2895,7 +3168,8 @@ function name is SetBitsPerCodedSample
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBitsPerCodedSample]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bits int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bits_per_coded_sample]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bits_per_coded_sample]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bits]}
 
 
@@ -2911,7 +3185,8 @@ function name is SetBitsPerRawSample
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetBitsPerRawSample]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [bits int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bits_per_raw_sample]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext bits_per_raw_sample]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int bits]}
 
 
@@ -2927,7 +3202,8 @@ function name is SetLowRes
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetLowRes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [res int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext lowres]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext lowres]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int res]}
 
 
@@ -2943,7 +3219,8 @@ function name is SetThreadCount
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetThreadCount]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [count int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext thread_count]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext thread_count]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int count]}
 
 
@@ -2959,7 +3236,8 @@ function name is SetThreadType
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetThreadType]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [threadType ThreadType]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext thread_type]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext thread_type]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int threadType]}
 
 
@@ -2975,7 +3253,8 @@ function name is SetActiveThreadType
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetActiveThreadType]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [threadType ThreadType]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext active_thread_type]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext active_thread_type]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int threadType]}
 
 
@@ -2991,7 +3270,8 @@ function name is SetThreadSafeCallbacks
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetThreadSafeCallbacks]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [count int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext thread_safe_callbacks]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext thread_safe_callbacks]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int count]}
 
 
@@ -3007,7 +3287,8 @@ function name is SetNSSEWeight
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetNSSEWeight]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [weight int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext nsse_weight]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext nsse_weight]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int weight]}
 
 
@@ -3023,7 +3304,8 @@ function name is SetProfile
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetProfile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [profile int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext profile]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext profile]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int profile]}
 
 
@@ -3039,7 +3321,8 @@ function name is SetLevel
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetLevel]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [level int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext level]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext level]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int level]}
 
 
@@ -3055,7 +3338,8 @@ function name is SetSubtitleHeaderSize
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSubtitleHeaderSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext subtitle_header_size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext subtitle_header_size]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int size]}
 
 
@@ -3071,7 +3355,8 @@ function name is SetVBVDelay
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetVBVDelay]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [delay uint64]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext vbv_delay]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext vbv_delay]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C uint64_t delay]}
 
 
@@ -3079,20 +3364,25 @@ function name is SideDataOnlyPackets
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SideDataOnlyPackets]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext side_data_only_packets]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [C int INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext side_data_only_packets]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is SetSideDataOnlyPackets 
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSideDataOnlyPackets]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [sideDataOnly bool]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cSideDataOnly]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [cSideDataOnly]}
 	 {*ast.SelectorExpr [C int]}
 	 {*ast.IfStmt [sideDataOnly]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cSideDataOnly]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [C int INT 1]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext side_data_only_packets cSideDataOnly]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cSideDataOnly]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext side_data_only_packets cSideDataOnly]}
 
 
 function name is InitialPadding 
@@ -3107,7 +3397,8 @@ function name is SetInitialPadding
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetInitialPadding]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [initialPadding int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext initial_padding]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext initial_padding]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int initialPadding]}
 
 
@@ -3117,7 +3408,8 @@ function name is FrameRate
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [avutil NewRationalFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext framerate]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext framerate]}
 
 
 function name is SetFrameRate 
@@ -3125,10 +3417,12 @@ function name is SetFrameRate
 	 {*ast.StarExpr [Context SetFrameRate]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [frameRate]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [avutil Rational]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext framerate num]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext framerate num]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [frameRate Numerator]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext framerate den]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext framerate den]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [frameRate Denominator]}
 
@@ -3170,7 +3464,8 @@ function name is SetSubtitlesEncodingMode
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSubtitlesEncodingMode]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [mode SubtitlesEncodingMode]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sub_charenc_mode]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext sub_charenc_mode]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int mode]}
 
 
@@ -3178,20 +3473,25 @@ function name is SkipAlpha
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SkipAlpha]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_alpha]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [C int INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_alpha]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.BasicLit [INT 0]}
 
 
 function name is SetSkipAlpha 
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSkipAlpha]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [skip bool]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cSkip]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [cSkip]}
 	 {*ast.SelectorExpr [C int]}
 	 {*ast.IfStmt [skip]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cSkip]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [C int INT 1]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_alpha cSkip]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cSkip]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [C int]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext skip_alpha cSkip]}
 
 
 function name is SeekPreRoll 
@@ -3206,7 +3506,8 @@ function name is SetSeekPreRoll
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context SetSeekPreRoll]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [seek int]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext seek_preroll]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext seek_preroll]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int seek]}
 
 
@@ -3215,20 +3516,27 @@ function name is CodecWhitelist
 	 {*ast.StarExpr [Context CodecWhitelist]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [cStringSplit]}
-	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec_whitelist STRING ","]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext codec_whitelist]}
+	 {*ast.BasicLit [STRING ","]}
 
 
 function name is StatsIn 
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context StatsIn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_in nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_in nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.AssignStmt [length]}
+	 {*ast.AssignStmt [:= length]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C strlen]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_in]}
-	 {*ast.ReturnStmt -> *ast.SliceExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BinaryExpr [INT 1 INT 30 byte]}
+	 {*ast.ReturnStmt -> *ast.SliceExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType []}
+	 {*ast.BinaryExpr [<<]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 30]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_in length length]}
 
@@ -3241,30 +3549,45 @@ function name is SetStatsIn
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_freep]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_in]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len in INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.AssignStmt [length]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_in]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
 	 {*ast.CallExpr [len in]}
-	 {*ast.AssignStmt [cIn]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [:= length]}
+	 {*ast.CallExpr [len in]}
+	 {*ast.AssignStmt [:= cIn]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C av_malloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t]}
-	 {*ast.BinaryExpr [length INT 1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cIn nil]}
+	 {*ast.BinaryExpr [+ length]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cIn nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [ErrAllocationError]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len in INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len in]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C memcpy]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cIn]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr [in INT 0]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr [in]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t length]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C memset]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cIn]}
-	 {*ast.CallExpr [uintptr length INT 0 INT 1]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_in cIn]}
+	 {*ast.CallExpr [uintptr length]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_in cIn]}
 	 {*ast.ReturnStmt [nil]}
 
 
@@ -3272,13 +3595,19 @@ function name is StatsOut
 	 {*ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.StarExpr [Context StatsOut]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_out nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_out nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.AssignStmt [length]}
+	 {*ast.AssignStmt [:= length]}
 	 {*ast.CallExpr [int]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C strlen]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_out]}
-	 {*ast.ReturnStmt -> *ast.SliceExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BinaryExpr [INT 1 INT 30 byte]}
+	 {*ast.ReturnStmt -> *ast.SliceExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType []}
+	 {*ast.BinaryExpr [<<]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BasicLit [INT 30]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_out length length]}
 
@@ -3291,30 +3620,45 @@ function name is SetStatsOut
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C av_freep]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_out]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len out INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.AssignStmt [length]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_out]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
 	 {*ast.CallExpr [len out]}
-	 {*ast.AssignStmt [cOut]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
+	 {*ast.AssignStmt [:= length]}
+	 {*ast.CallExpr [len out]}
+	 {*ast.AssignStmt [:= cOut]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C av_malloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t]}
-	 {*ast.BinaryExpr [length INT 1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cOut nil]}
+	 {*ast.BinaryExpr [+ length]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cOut nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [ErrAllocationError]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len out INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len out]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C memcpy]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cOut]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr [out INT 0]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr [out]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t length]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [C memset]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [uintptr]}
+	 {*ast.BinaryExpr [+]}
+	 {*ast.CallExpr [uintptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cOut]}
-	 {*ast.CallExpr [uintptr length INT 0 INT 1]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_out cOut]}
+	 {*ast.CallExpr [uintptr length]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [ctx CAVCodecContext stats_out cOut]}
 	 {*ast.ReturnStmt [nil]}
 
 
@@ -3324,8 +3668,10 @@ function name is cStringToStringOk
 	 {*ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr [cStr nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING "" false]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [== cStr nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
+	 { [false]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [C GoString cStr true]}
 
 
@@ -3335,21 +3681,26 @@ function name is cStringSplit
 	 {*ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.Field [sep string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str ok]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= str ok]}
 	 {*ast.CallExpr [cStringToStringOk cStr]}
-	 {*ast.IfStmt -> *ast.UnaryExpr [ok]}
+	 {*ast.IfStmt []}
+	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [strings Split str sep]}
-	 {*ast.GenDecl -> *ast.TypeSpec [CodecDescriptor]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [CAVCodecDescriptor]}
-	 {*ast.StarExpr -> *ast.SelectorExpr [C AVCodecDescriptor]}
+
+
+{*ast.GenDecl -> *ast.TypeSpec [CodecDescriptor]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [CAVCodecDescriptor]}
+{*ast.StarExpr -> *ast.SelectorExpr [C AVCodecDescriptor]}
 
 
 function name is NewCodecDescriptorFromC 
 	 { [NewCodecDescriptorFromC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [cCodec unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [CodecDescriptor]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [CodecDescriptor]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [CodecDescriptor]}
 	 {*ast.KeyValueExpr [CAVCodecDescriptor]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C AVCodecDescriptor cCodec]}
 
@@ -3374,7 +3725,7 @@ function name is Name
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [CodecDescriptor Name]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= str _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [c NameOk]}
 	 {*ast.ReturnStmt [str]}
 
@@ -3392,7 +3743,7 @@ function name is LongName
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [CodecDescriptor LongName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [str _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= str _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [c LongNameOk]}
 	 {*ast.ReturnStmt [str]}
 
@@ -3418,18 +3769,22 @@ function name is MimeTypes
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [CodecDescriptor MimeTypes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodecDescriptor mime_types nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodecDescriptor mime_types nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [mimeTypes]}
+	 {*ast.GenDecl -> *ast.ValueSpec [mimeTypes]}
 	 {*ast.ArrayType [string]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [mimeType]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= mimeType]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C get_list_at]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodecDescriptor mime_types]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [mimeType nil]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [mimeTypes]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== mimeType nil]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [= mimeTypes]}
 	 {*ast.CallExpr [append mimeTypes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString mimeType]}
 	 {*ast.ReturnStmt [mimeTypes]}
@@ -3439,21 +3794,25 @@ function name is Profiles
 	 {*ast.FieldList -> *ast.Field [c]}
 	 {*ast.StarExpr [CodecDescriptor Profiles]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.StarExpr [Profile]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [profiles]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [profiles]}
 	 {*ast.ArrayType -> *ast.StarExpr [Profile]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cProfile]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cProfile]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C go_av_profile_get]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [c CAVCodecDescriptor profiles]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C int i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr [cProfile nil]}
-	 {*ast.BinaryExpr -> *ast.CallExpr [int]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== cProfile nil]}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr [int]}
 	 {*ast.SelectorExpr [cProfile profile ProfileUnknown]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [profile]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= profile]}
 	 {*ast.CallExpr [NewProfileFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cProfile]}
-	 {*ast.AssignStmt [profiles]}
+	 {*ast.AssignStmt [= profiles]}
 	 {*ast.CallExpr [append profiles profile]}
 	 {*ast.ReturnStmt [profiles]}
 
@@ -3462,10 +3821,11 @@ function name is CodecDescriptorByID
 	 { [CodecDescriptorByID]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [codecID CodecID]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [CodecDescriptor]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cCodecDescriptor]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cCodecDescriptor]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_descriptor_get]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVCodecID codecID]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cCodecDescriptor nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cCodecDescriptor nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewCodecDescriptorFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cCodecDescriptor]}
@@ -3475,13 +3835,14 @@ function name is CodecDescriptorByName
 	 { [CodecDescriptorByName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [CodecDescriptor]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cName]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cName]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString name]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cName]}
-	 {*ast.AssignStmt [cCodecDescriptor]}
+	 {*ast.AssignStmt [:= cCodecDescriptor]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_descriptor_get_by_name cName]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [cCodecDescriptor nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== cCodecDescriptor nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [NewCodecDescriptorFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer cCodecDescriptor]}
@@ -3490,14 +3851,15 @@ function name is CodecDescriptorByName
 function name is CodecDescriptors 
 	 { [CodecDescriptors]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType -> *ast.StarExpr [CodecDescriptor]}
-	 {*ast.BlockStmt -> *ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [prev]}
+	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [prev]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C AVCodecDescriptor]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [descriptors]}
+	 {*ast.GenDecl -> *ast.ValueSpec [descriptors]}
 	 {*ast.ArrayType -> *ast.StarExpr [CodecDescriptor]}
-	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [prev]}
+	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [= prev]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_descriptor_next prev]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [prev nil]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [descriptors]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== prev nil]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [= descriptors]}
 	 {*ast.CallExpr [append descriptors]}
 	 {*ast.CallExpr [NewCodecDescriptorFromC]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer prev]}
@@ -3512,7 +3874,7 @@ function name is FindBestPixelFormat
 	 {*ast.SelectorExpr [avutil PixelFormat]}
 	 {*ast.Field [alpha bool]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [avutil PixelFormat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [best]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= best]}
 	 {*ast.CallExpr [findBestPixelFormatWithLossFlags list src alpha nil]}
 	 {*ast.ReturnStmt [best]}
 
@@ -3528,9 +3890,9 @@ function name is FindBestPixelFormatWithLossFlags
 	 {*ast.SelectorExpr [avutil LossFlags]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [avutil PixelFormat]}
 	 {*ast.Field -> *ast.SelectorExpr [avutil LossFlags]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [best]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= best]}
 	 {*ast.CallExpr [findBestPixelFormatWithLossFlags list src alpha]}
-	 {*ast.UnaryExpr [lossFlags]}
+	 {*ast.UnaryExpr [& lossFlags]}
 	 {*ast.ReturnStmt [best lossFlags]}
 
 
@@ -3544,42 +3906,52 @@ function name is findBestPixelFormatWithLossFlags
 	 {*ast.Field [lossFlags]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [avutil LossFlags]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [avutil PixelFormat]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= size]}
 	 {*ast.CallExpr [len list]}
-	 {*ast.AssignStmt [value]}
+	 {*ast.AssignStmt [:= value]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType -> *ast.SelectorExpr [C enum_AVPixelFormat]}
-	 {*ast.BinaryExpr [size INT 1]}
-	 {*ast.BinaryExpr [size INT 1]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i size]}
+	 {*ast.BinaryExpr [+ size]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.BinaryExpr [+ size]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i size]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [value i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [value i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C enum_AVPixelFormat]}
 	 {*ast.IndexExpr [list i]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [value size]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [value size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C enum_AVPixelFormat]}
 	 {*ast.SelectorExpr [avutil PixelFormatNone]}
-	 {*ast.AssignStmt [cList]}
+	 {*ast.AssignStmt [:= cList]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [C enum_AVPixelFormat]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr -> *ast.IndexExpr [value INT 0]}
-	 {*ast.AssignStmt [cSrc]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.IndexExpr [value]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= cSrc]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C enum_AVPixelFormat src]}
-	 {*ast.AssignStmt [cAlpha]}
+	 {*ast.AssignStmt [:= cAlpha]}
 	 {*ast.CallExpr [boolToCInt alpha]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [cLossFlags]}
+	 {*ast.GenDecl -> *ast.ValueSpec [cLossFlags]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C int]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [lossFlags nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [cLossFlagsVal]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= lossFlags nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cLossFlagsVal]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.SelectorExpr [C int]}
 	 {*ast.StarExpr [lossFlags]}
-	 {*ast.AssignStmt [cLossFlags]}
-	 {*ast.UnaryExpr [cLossFlagsVal]}
-	 {*ast.AssignStmt [best]}
+	 {*ast.AssignStmt [= cLossFlags]}
+	 {*ast.UnaryExpr [& cLossFlagsVal]}
+	 {*ast.AssignStmt [:= best]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C avcodec_find_best_pix_fmt_of_list cList cSrc cAlpha cLossFlags]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [lossFlags nil]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.StarExpr [lossFlags]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= lossFlags nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.StarExpr [lossFlags]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [avutil LossFlags]}
 	 {*ast.StarExpr [cLossFlags]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [avutil PixelFormat best]}
@@ -3590,7 +3962,8 @@ function name is boolToCInt
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b bool]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C int]}
 	 {*ast.BlockStmt -> *ast.IfStmt [b]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [INT 1]}
-	 {*ast.ReturnStmt [INT 0]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 1]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0]}
+	 { []}
 
 

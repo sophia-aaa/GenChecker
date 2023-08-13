@@ -1,37 +1,43 @@
 {*ast.File [hrpc]}
-{*ast.GenDecl -> *ast.ImportSpec [STRING "bytes"]}
-{*ast.ImportSpec [STRING "context"]}
-{*ast.ImportSpec [STRING "encoding/binary"]}
-{*ast.ImportSpec [STRING "errors"]}
-{*ast.ImportSpec [STRING "fmt"]}
-{*ast.ImportSpec [STRING "reflect"]}
-{*ast.ImportSpec [STRING "strings"]}
-{*ast.ImportSpec [STRING "unsafe"]}
-{*ast.ImportSpec [STRING "bfs/libs/gohbase/filter"]}
-{*ast.ImportSpec [STRING "bfs/libs/gohbase/pb"]}
-{*ast.ImportSpec [STRING "github.com/golang/protobuf/proto"]}
-{*ast.GenDecl -> *ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment [ErrNotAStruct]}
-{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "data must be a struct"]}
-{*ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment [ErrUnsupportedUints]}
-{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "uints are unsupported on your platform"]}
-{*ast.ValueSpec -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment [ErrUnsupportedInts]}
-{*ast.CallExpr -> *ast.SelectorExpr [errors New STRING "ints are unsupported on your platform"]}
-{*ast.GenDecl -> *ast.CommentGroup -> *ast.Comment -> *ast.TypeSpec [Mutate]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "bytes"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "context"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "encoding/binary"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "errors"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strings"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "bfs/libs/gohbase/filter"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "bfs/libs/gohbase/pb"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/golang/protobuf/proto"]}
+{*ast.GenDecl -> *ast.ValueSpec [ErrNotAStruct]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+{*ast.BasicLit [STRING "data must be a struct"]}
+{*ast.ValueSpec [ErrUnsupportedUints]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+{*ast.BasicLit [STRING "uints are unsupported on your platform"]}
+{*ast.ValueSpec [ErrUnsupportedInts]}
+{*ast.CallExpr -> *ast.SelectorExpr [errors New]}
+{*ast.BasicLit [STRING "ints are unsupported on your platform"]}
+{*ast.GenDecl -> *ast.TypeSpec [Mutate]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [base]}
 {*ast.Field [row]}
 {*ast.StarExpr -> *ast.ArrayType [byte]}
 {*ast.Field [mutationType]}
 {*ast.SelectorExpr [pb MutationProto_MutationType]}
-{*ast.CommentGroup -> *ast.Comment -> *ast.Field -> *ast.CommentGroup -> *ast.Comment [values]}
+{*ast.Field [values]}
 {*ast.MapType [string]}
 {*ast.MapType [string]}
 {*ast.ArrayType [byte]}
-{*ast.Field -> *ast.CommentGroup -> *ast.Comment -> *ast.Comment [data]}
-{*ast.InterfaceType -> *ast.FieldList []}
+{*ast.Field [data]}
+{*ast.InterfaceType []}
+{*ast.FieldList []}
 
 
 function name is baseMutate 
-	 {*ast.CommentGroup -> *ast.Comment [baseMutate]}
+	 { [baseMutate]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key]}
@@ -41,9 +47,12 @@ function name is baseMutate
 	 {*ast.MapType [string]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.Field [data]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.Field [callType CallType]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field [callType CallType]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit [Mutate]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit [Mutate]}
 	 {*ast.KeyValueExpr [base]}
 	 {*ast.CompositeLit [base]}
 	 {*ast.KeyValueExpr [table table]}
@@ -55,7 +64,7 @@ function name is baseMutate
 
 
 function name is NewPut 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewPut]}
+	 { [NewPut]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key]}
@@ -66,15 +75,16 @@ function name is NewPut
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [m]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= m]}
 	 {*ast.CallExpr [baseMutate ctx table key values nil CallTypePut]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_PUT]}
 	 {*ast.ReturnStmt [m nil]}
 
 
 function name is NewPutStr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewPutStr]}
+	 { [NewPutStr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
@@ -90,26 +100,30 @@ function name is NewPutStr
 
 
 function name is NewPutStrRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [NewPutStrRef]}
+	 { [NewPutStrRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
 	 {*ast.Field [data]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [isAStruct data]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr [isAStruct data]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil ErrNotAStruct]}
-	 {*ast.AssignStmt [m]}
+	 {*ast.AssignStmt [:= m]}
 	 {*ast.CallExpr [baseMutate ctx]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte table]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte key nil data CallTypePut]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_PUT]}
 	 {*ast.ReturnStmt [m nil]}
 
 
 function name is NewDel 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewDel]}
+	 { [NewDel]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key]}
@@ -120,15 +134,16 @@ function name is NewDel
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [m]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= m]}
 	 {*ast.CallExpr [baseMutate ctx table key values nil CallTypeDelete]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_DELETE]}
 	 {*ast.ReturnStmt [m nil]}
 
 
 function name is NewDelStr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewDelStr]}
+	 { [NewDelStr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
@@ -144,20 +159,24 @@ function name is NewDelStr
 
 
 function name is NewDelStrRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [NewDelStrRef]}
+	 { [NewDelStrRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
 	 {*ast.Field [data]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [isAStruct data]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr [isAStruct data]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil ErrNotAStruct]}
-	 {*ast.AssignStmt [m]}
+	 {*ast.AssignStmt [:= m]}
 	 {*ast.CallExpr [baseMutate ctx]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte table]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte key nil data CallTypeDelete]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_DELETE]}
 	 {*ast.ReturnStmt [m nil]}
 
@@ -174,16 +193,17 @@ function name is NewApp
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [m]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= m]}
 	 {*ast.CallExpr [baseMutate ctx table]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte key values nil CallTypeAppend]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_APPEND]}
 	 {*ast.ReturnStmt [m nil]}
 
 
 function name is NewAppStr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.Comment [NewAppStr]}
+	 { [NewAppStr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
@@ -199,26 +219,30 @@ function name is NewAppStr
 
 
 function name is NewAppStrRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewAppStrRef]}
+	 { [NewAppStrRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
 	 {*ast.Field [data]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [isAStruct data]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr [isAStruct data]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil ErrNotAStruct]}
-	 {*ast.AssignStmt [m]}
+	 {*ast.AssignStmt [:= m]}
 	 {*ast.CallExpr [baseMutate ctx]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte table]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte key nil data CallTypeAppend]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_APPEND]}
 	 {*ast.ReturnStmt [m nil]}
 
 
 function name is NewIncStrSingle 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewIncStrSingle]}
+	 { [NewIncStrSingle]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
@@ -227,16 +251,19 @@ function name is NewIncStrSingle
 	 {*ast.Field [amount int64]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= buf]}
 	 {*ast.CallExpr [new]}
 	 {*ast.SelectorExpr [bytes Buffer]}
-	 {*ast.AssignStmt [err]}
+	 {*ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [binary Write buf]}
 	 {*ast.SelectorExpr [binary BigEndian amount]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf STRING "binary.Write failed: %s" err]}
-	 {*ast.AssignStmt [value]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
+	 {*ast.BasicLit [STRING "binary.Write failed: %s"]}
+	 { [err]}
+	 {*ast.AssignStmt [:= value]}
 	 {*ast.CompositeLit -> *ast.MapType [string]}
 	 {*ast.MapType [string]}
 	 {*ast.ArrayType [byte]}
@@ -260,15 +287,16 @@ function name is NewInc
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [m]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= m]}
 	 {*ast.CallExpr [baseMutate ctx table key values nil CallTypeIncrement]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_INCREMENT]}
 	 {*ast.ReturnStmt [m nil]}
 
 
 function name is NewIncStr 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewIncStr]}
+	 { [NewIncStr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
@@ -284,174 +312,219 @@ function name is NewIncStr
 
 
 function name is NewIncStrRef 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [NewIncStrRef]}
+	 { [NewIncStrRef]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ctx]}
 	 {*ast.SelectorExpr [context Context]}
 	 {*ast.Field [table key string]}
 	 {*ast.Field [data]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Mutate]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr [isAStruct data]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.UnaryExpr [!]}
+	 {*ast.CallExpr [isAStruct data]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil ErrNotAStruct]}
-	 {*ast.AssignStmt [m]}
+	 {*ast.AssignStmt [:= m]}
 	 {*ast.CallExpr [baseMutate ctx]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte table]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte key nil data CallTypeIncrement]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_INCREMENT]}
 	 {*ast.ReturnStmt [m nil]}
 
 
 function name is GetName 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.FieldList -> *ast.Field [m]}
+	 {*ast.FieldList -> *ast.Field [m]}
 	 {*ast.StarExpr [Mutate GetName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt [STRING "Mutate"]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [STRING "Mutate"]}
 
 
 function name is Serialize 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [m]}
+	 {*ast.FieldList -> *ast.Field [m]}
 	 {*ast.StarExpr [Mutate Serialize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [m data nil]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [m data nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [m serialize]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [m serializeWithReflect]}
 
 
 function name is serialize 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [m]}
+	 {*ast.FieldList -> *ast.Field [m]}
 	 {*ast.StarExpr [Mutate serialize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [bytevalues]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= bytevalues]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [pb MutationProto_ColumnValue]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [m values]}
-	 {*ast.AssignStmt [i INT 0]}
+	 {*ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.RangeStmt [k v]}
 	 {*ast.SelectorExpr [m values]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [qualvals]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= qualvals]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [pb MutationProto_ColumnValue_QualifierValue]}
 	 {*ast.CallExpr [len v]}
-	 {*ast.AssignStmt [j INT 0]}
+	 {*ast.AssignStmt [:= j]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.RangeStmt [k1 v1 v]}
-	 {*ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr [qualvals j]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto_ColumnValue_QualifierValue]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr [qualvals j]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto_ColumnValue_QualifierValue]}
 	 {*ast.KeyValueExpr [Qualifier]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte k1]}
 	 {*ast.KeyValueExpr [Value v1]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_DELETE]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [tmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tmp]}
 	 {*ast.SelectorExpr [pb MutationProto_DELETE_MULTIPLE_VERSIONS]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr -> *ast.IndexExpr [qualvals j DeleteType]}
-	 {*ast.UnaryExpr [tmp]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr -> *ast.IndexExpr [qualvals j DeleteType]}
+	 {*ast.UnaryExpr [& tmp]}
 	 {*ast.IncDecStmt [j]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [bytevalues i]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto_ColumnValue]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [bytevalues i]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto_ColumnValue]}
 	 {*ast.KeyValueExpr [Family]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte k]}
 	 {*ast.KeyValueExpr [QualifierValue qualvals]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.AssignStmt [mutate]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutateRequest]}
+	 {*ast.AssignStmt [:= mutate]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutateRequest]}
 	 {*ast.KeyValueExpr [Region]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [m regionSpecifier]}
 	 {*ast.KeyValueExpr [Mutation]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto]}
 	 {*ast.KeyValueExpr [Row]}
 	 {*ast.SelectorExpr [m key]}
 	 {*ast.KeyValueExpr [MutateType]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.KeyValueExpr [ColumnValue bytevalues]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [proto Marshal mutate]}
 
 
 function name is serializeWithReflect 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [m]}
+	 {*ast.FieldList -> *ast.Field [m]}
 	 {*ast.StarExpr [Mutate serializeWithReflect]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [typeOf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= typeOf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf]}
 	 {*ast.SelectorExpr [m data]}
-	 {*ast.AssignStmt [valueOf]}
+	 {*ast.AssignStmt [:= valueOf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect Indirect]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf]}
 	 {*ast.SelectorExpr [m data]}
-	 {*ast.AssignStmt [columns]}
+	 {*ast.AssignStmt [:= columns]}
 	 {*ast.CallExpr [make]}
 	 {*ast.MapType [string]}
 	 {*ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [pb MutationProto_ColumnValue_QualifierValue]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [typeOf NumField]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [field]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= field]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [typeOf Field i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [field PkgPath STRING ""]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [tagval]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [field Tag Get STRING "hbase"]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [tagval STRING ""]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [cnames]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [strings SplitN tagval STRING ":" INT 2]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr [len cnames INT 2]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.SelectorExpr [field PkgPath]}
+	 {*ast.BasicLit [STRING ""]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= tagval]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [field Tag Get]}
+	 {*ast.BasicLit [STRING "hbase"]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [== tagval]}
+	 {*ast.BasicLit [STRING ""]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= cnames]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [strings SplitN tagval]}
+	 {*ast.BasicLit [STRING ":"]}
+	 {*ast.BasicLit [INT 2]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!=]}
+	 {*ast.CallExpr [len cnames]}
+	 {*ast.BasicLit [INT 2]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf STRING "Invalid column family and column qualifier: \"%s\"" cnames]}
-	 {*ast.AssignStmt [cfamily]}
-	 {*ast.IndexExpr [cnames INT 0]}
-	 {*ast.AssignStmt [cqualifier]}
-	 {*ast.IndexExpr [cnames INT 1]}
-	 {*ast.AssignStmt [binaryValue err]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
+	 {*ast.BasicLit [STRING "Invalid column family and column qualifier: \"%s\""]}
+	 { [cnames]}
+	 {*ast.AssignStmt [:= cfamily]}
+	 {*ast.IndexExpr [cnames]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.AssignStmt [:= cqualifier]}
+	 {*ast.IndexExpr [cnames]}
+	 {*ast.BasicLit [INT 1]}
+	 {*ast.AssignStmt [:= binaryValue err]}
 	 {*ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [valueOf Field i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil err]}
-	 {*ast.AssignStmt [qualVal]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto_ColumnValue_QualifierValue]}
+	 {*ast.AssignStmt [:= qualVal]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto_ColumnValue_QualifierValue]}
 	 {*ast.KeyValueExpr [Qualifier]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte cqualifier]}
 	 {*ast.KeyValueExpr [Value binaryValue]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.SelectorExpr [pb MutationProto_DELETE]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [tmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tmp]}
 	 {*ast.SelectorExpr [pb MutationProto_DELETE_MULTIPLE_VERSIONS]}
-	 {*ast.AssignStmt -> *ast.SelectorExpr [qualVal DeleteType]}
-	 {*ast.UnaryExpr [tmp]}
-	 {*ast.AssignStmt -> *ast.IndexExpr [columns cfamily]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.SelectorExpr [qualVal DeleteType]}
+	 {*ast.UnaryExpr [& tmp]}
+	 {*ast.AssignStmt [=]}
+	 {*ast.IndexExpr [columns cfamily]}
 	 {*ast.CallExpr [append]}
 	 {*ast.IndexExpr [columns cfamily qualVal]}
-	 {*ast.AssignStmt [pbcolumns]}
+	 {*ast.AssignStmt [:= pbcolumns]}
 	 {*ast.CallExpr [make]}
-	 {*ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [pb MutationProto_ColumnValue INT 0]}
+	 {*ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [pb MutationProto_ColumnValue]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.CallExpr [len columns]}
 	 {*ast.RangeStmt [k v columns]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [colval]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto_ColumnValue]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= colval]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto_ColumnValue]}
 	 {*ast.KeyValueExpr [Family]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte k]}
 	 {*ast.KeyValueExpr [QualifierValue v]}
-	 {*ast.AssignStmt [pbcolumns]}
+	 {*ast.AssignStmt [= pbcolumns]}
 	 {*ast.CallExpr [append pbcolumns colval]}
-	 {*ast.AssignStmt [mutate]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutateRequest]}
+	 {*ast.AssignStmt [:= mutate]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutateRequest]}
 	 {*ast.KeyValueExpr [Region]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [m regionSpecifier]}
 	 {*ast.KeyValueExpr [Mutation]}
-	 {*ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutationProto]}
 	 {*ast.KeyValueExpr [Row]}
 	 {*ast.SelectorExpr [m key]}
 	 {*ast.KeyValueExpr [MutateType]}
-	 {*ast.UnaryExpr -> *ast.SelectorExpr [m mutationType]}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.SelectorExpr [m mutationType]}
 	 {*ast.KeyValueExpr [ColumnValue pbcolumns]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [proto Marshal mutate]}
 
 
 function name is valueToBytes 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment [valueToBytes]}
+	 { [valueToBytes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [val]}
 	 {*ast.SelectorExpr [reflect Value]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
@@ -461,30 +534,34 @@ function name is valueToBytes
 	 {*ast.BlockStmt []}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Bool]}
 	 {*ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [val Bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CompositeLit -> *ast.ArrayType [byte INT 1 nil]}
-	 {*ast.ReturnStmt -> *ast.CompositeLit -> *ast.ArrayType [byte INT 0 nil]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CompositeLit -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 1]}
+	 { [nil]}
+	 {*ast.ReturnStmt -> *ast.CompositeLit -> *ast.ArrayType [byte]}
+	 {*ast.BasicLit [INT 0]}
+	 { [nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint]}
 	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val UnsafeAddr]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause [INT 8]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint8]}
+	 {*ast.CaseClause -> *ast.BasicLit [INT 8]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint8]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Convert]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
-	 {*ast.CaseClause [INT 16]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint16]}
+	 {*ast.CaseClause -> *ast.BasicLit [INT 16]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint16]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Convert]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
-	 {*ast.CaseClause [INT 32]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint32]}
+	 {*ast.CaseClause -> *ast.BasicLit [INT 32]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint32]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Convert]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
-	 {*ast.CaseClause [INT 64]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint64]}
+	 {*ast.CaseClause -> *ast.BasicLit [INT 64]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint64]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Convert]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
@@ -494,172 +571,198 @@ function name is valueToBytes
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val UnsafeAddr]}
 	 {*ast.BlockStmt []}
-	 {*ast.CaseClause [INT 8]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint8]}
+	 {*ast.CaseClause -> *ast.BasicLit [INT 8]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint8]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Convert]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
-	 {*ast.CaseClause [INT 16]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint16]}
+	 {*ast.CaseClause -> *ast.BasicLit [INT 16]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint16]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Convert]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
-	 {*ast.CaseClause [INT 32]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint32]}
+	 {*ast.CaseClause -> *ast.BasicLit [INT 32]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint32]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Convert]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
-	 {*ast.CaseClause [INT 64]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint64]}
+	 {*ast.CaseClause -> *ast.BasicLit [INT 64]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint64]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Convert]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf x]}
 	 {*ast.CaseClause -> *ast.ReturnStmt [nil ErrUnsupportedInts]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int8]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x int8]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x int8]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface int8]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 1 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 1]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint8]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint8]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint8]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface uint8]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 1 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 1]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int16]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x int16]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x int16]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface int16]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 2 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 2]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint16]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint16]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint16]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface uint16]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 2 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 2]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int32]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x int32]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x int32]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface int32]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 4 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 4]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint32]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint32]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint32]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface uint32]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 4 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 4]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float32]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x float32]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x float32]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface float32]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 4 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 4]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Int64]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x int64]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x int64]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface int64]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 8 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 8]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Uint64]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x uint64]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x uint64]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface uint64]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 8 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 8]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Float64]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x float64]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x float64]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface float64]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 8 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 8]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex64]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x complex64]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x complex64]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface complex64]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 8 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 8]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Complex128]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [x complex128]}
-	 {*ast.AssignStmt [x]}
+	 {*ast.GenDecl -> *ast.ValueSpec [x complex128]}
+	 {*ast.AssignStmt [= x]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Interface complex128]}
-	 {*ast.AssignStmt [memory]}
-	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [INT 16 byte]}
+	 {*ast.AssignStmt [:= memory]}
+	 {*ast.SliceExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 16]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.UnaryExpr [x]}
+	 {*ast.UnaryExpr [& x]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [copyOf memory nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Ptr]}
 	 {*ast.ReturnStmt -> *ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Elem]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Array]}
 	 {*ast.SelectorExpr [reflect Slice]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Len INT 0]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [val Len]}
+	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CompositeLit -> *ast.ArrayType [byte nil]}
-	 {*ast.AssignStmt [kind]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Index INT 0 Kind]}
-	 {*ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BinaryExpr [kind]}
+	 {*ast.AssignStmt [:= kind]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Index]}
+	 {*ast.BasicLit [INT 0]}
+	 { [Kind]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [||]}
+	 {*ast.BinaryExpr [== kind]}
 	 {*ast.SelectorExpr [reflect Array]}
-	 {*ast.BinaryExpr [kind]}
+	 {*ast.BinaryExpr [== kind]}
 	 {*ast.SelectorExpr [reflect Slice]}
-	 {*ast.BinaryExpr [kind]}
+	 {*ast.BinaryExpr [== kind]}
 	 {*ast.SelectorExpr [reflect String]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf STRING "Slices and arrays of type %s is unsupported"]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Index INT 0 Type Name]}
-	 {*ast.DeclStmt -> *ast.GenDecl -> *ast.ValueSpec [allbytes]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
+	 {*ast.BasicLit [STRING "Slices and arrays of type %s is unsupported"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Index]}
+	 {*ast.BasicLit [INT 0]}
+	 { [Type Name]}
+	 {*ast.GenDecl -> *ast.ValueSpec [allbytes]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.ForStmt -> *ast.AssignStmt [i INT 0]}
-	 {*ast.BinaryExpr [i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [INT 0]}
+	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [morebytes err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= morebytes err]}
 	 {*ast.CallExpr [valueToBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Index i]}
-	 {*ast.IfStmt -> *ast.BinaryExpr [err nil]}
+	 {*ast.IfStmt []}
+	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil err]}
-	 {*ast.AssignStmt [allbytes]}
+	 {*ast.AssignStmt [= allbytes]}
 	 {*ast.CallExpr [append allbytes morebytes]}
 	 {*ast.ReturnStmt [allbytes nil]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect String]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ArrayType [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val String nil]}
 	 {*ast.ReturnStmt [nil]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf STRING "Unsupported type %s, %d"]}
+	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
+	 {*ast.BasicLit [STRING "Unsupported type %s, %d"]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [val Type Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [val Kind]}
 
@@ -669,7 +772,7 @@ function name is copyOf
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [memory]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt -> *ast.AssignStmt [memcpy]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= memcpy]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.CallExpr [len memory]}
@@ -680,34 +783,42 @@ function name is copyOf
 function name is isAStruct 
 	 { [isAStruct]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [data]}
-	 {*ast.InterfaceType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf data Kind]}
+	 {*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.BinaryExpr [==]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf data Kind]}
 	 {*ast.SelectorExpr [reflect Struct]}
 
 
 function name is NewResponse 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [m]}
+	 {*ast.FieldList -> *ast.Field [m]}
 	 {*ast.StarExpr [Mutate NewResponse]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [proto Message]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.UnaryExpr -> *ast.CompositeLit -> *ast.SelectorExpr [pb MutateResponse]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt []}
+	 {*ast.UnaryExpr [&]}
+	 {*ast.CompositeLit -> *ast.SelectorExpr [pb MutateResponse]}
 
 
 function name is SetFilter 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [m]}
+	 {*ast.FieldList -> *ast.Field [m]}
 	 {*ast.StarExpr [Mutate SetFilter]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ft]}
 	 {*ast.SelectorExpr [filter Filter]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Cannot set filter on mutate operation."]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Cannot set filter on mutate operation."]}
 
 
 function name is SetFamilies 
-	 {*ast.CommentGroup -> *ast.Comment -> *ast.Comment -> *ast.FieldList -> *ast.Field [m]}
+	 {*ast.FieldList -> *ast.Field [m]}
 	 {*ast.StarExpr [Mutate SetFamilies]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fam]}
 	 {*ast.MapType [string]}
 	 {*ast.ArrayType [string]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New STRING "Cannot set families on mutate operation."]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New]}
+	 {*ast.BasicLit [STRING "Cannot set families on mutate operation."]}
+	 { []}
 
 

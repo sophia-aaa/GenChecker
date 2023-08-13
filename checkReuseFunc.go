@@ -55,11 +55,10 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 											flag = true
 										} else {
 											// values are not type or word, but string values
-											if strings.Contains(listFunctions[i].value[idx].value[idxValue], " ") || strings.Contains(listFunctions[j].value[idx].value[idxValue], " ") {
-												if !strings.EqualFold(listFunctions[i].value[idx].value[idxValue], listFunctions[j].value[idx].value[idxValue]) {
-													flag = false
-													break
-												}
+											if strings.Contains(listFunctions[i].value[idx].value[idxValue], " ") || strings.Contains(listFunctions[j].value[idx].value[idxValue], " ") ||
+												strings.Contains(listFunctions[i].value[idx].value[idxValue], "_") || strings.Contains(listFunctions[j].value[idx].value[idxValue], "_") {
+												flag = false
+												break
 											} else {
 												// compare ast.Ident Name
 												if strings.EqualFold(listFunctions[i].funcName, listFunctions[i].value[idx].value[idxValue]) && strings.EqualFold(listFunctions[j].funcName, listFunctions[j].value[idx].value[idxValue]) {
@@ -95,7 +94,11 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 										a, b := 0, 0
 										for ; a < length; a++ {
 											if !strings.EqualFold(listFunctions[i].value[idx].value[a], listFunctions[j].value[idx].value[b]) {
-												if contains(typeList, listFunctions[i].value[idx].value[a]) {
+												if strings.Contains(listFunctions[i].value[idx].value[a], " ") || strings.Contains(listFunctions[j].value[idx].value[b], " ") ||
+													strings.Contains(listFunctions[i].value[idx].value[a], "_") || strings.Contains(listFunctions[j].value[idx].value[b], "_") {
+													flag = false
+													break
+												} else if contains(typeList, listFunctions[i].value[idx].value[a]) {
 													if !checkUnsafeUsages(listFunctions[j].value[idx].value[b]) {
 														flag = false
 														break
@@ -105,6 +108,13 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 													} else {
 														b++
 													}
+												} else if strings.EqualFold(listFunctions[i].funcName, listFunctions[i].value[idx].value[a]) && strings.EqualFold(listFunctions[j].funcName, listFunctions[j].value[idx].value[b]) {
+													flag = true
+												} else if contains(typeList, listFunctions[i].value[idx].value[a]) && contains(typeList, listFunctions[j].value[idx].value[b]) {
+													flag = true
+												} else {
+													flag = false
+													break
 												}
 											}
 											b++
@@ -121,7 +131,11 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 										for ; a < length; a++ {
 											if !strings.EqualFold(listFunctions[j].value[idx].value[a], listFunctions[i].value[idx].value[b]) {
 												if contains(typeList, listFunctions[j].value[idx].value[a]) {
-													if !checkUnsafeUsages(listFunctions[i].value[idx].value[b]) {
+													if strings.Contains(listFunctions[j].value[idx].value[a], " ") || strings.Contains(listFunctions[i].value[idx].value[b], " ") ||
+														strings.Contains(listFunctions[j].value[idx].value[a], "_") || strings.Contains(listFunctions[i].value[idx].value[b], "_") {
+														flag = false
+														break
+													} else if !checkUnsafeUsages(listFunctions[i].value[idx].value[b]) {
 														flag = false
 														break
 													} else if b+1 < length && !checkUnsafeUsages(listFunctions[i].value[idx].value[b+1]) {
@@ -130,6 +144,13 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 													} else {
 														b++
 													}
+												} else if strings.EqualFold(listFunctions[i].funcName, listFunctions[i].value[idx].value[b]) && strings.EqualFold(listFunctions[j].funcName, listFunctions[j].value[idx].value[a]) {
+													flag = true
+												} else if contains(typeList, listFunctions[i].value[idx].value[b]) && contains(typeList, listFunctions[j].value[idx].value[a]) {
+													flag = true
+												} else {
+													flag = false
+													break
 												}
 											}
 											b++
