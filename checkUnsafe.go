@@ -8,7 +8,7 @@ func checkUnsafeUsages(str string) bool {
 	return contains([]string{"unsafe", "Pointer"}, str)
 }
 
-func buildUnsafeList(modListFunctions []basicStr) []basicFunc {
+func buildUnsafePointerList(modListFunctions []basicStr) []basicFunc {
 	var unsafeList []basicFunc
 
 	for ind := range modListFunctions {
@@ -24,6 +24,22 @@ func buildUnsafeList(modListFunctions []basicStr) []basicFunc {
 						}
 					}
 					firstBool = false
+				}
+			}
+		}
+	}
+
+	return unsafeList
+}
+
+func buildUnsafeList(modListFunctions []basicStr) []basicFunc {
+	var unsafeList []basicFunc
+
+	for ind := range modListFunctions {
+		for _, val := range modListFunctions[ind].value {
+			for i := range val.value {
+				if strings.EqualFold(val.value[i], "unsafe") {
+					unsafeList = append(unsafeList, basicFunc{modListFunctions[ind].funcName, modListFunctions[ind].funcToken})
 				}
 			}
 		}

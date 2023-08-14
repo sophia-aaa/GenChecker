@@ -1,4 +1,4 @@
-package dataset
+package hiddenDanger
 
 type GenHeader[T any] struct {
 	List []T

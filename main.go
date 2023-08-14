@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// filename, err := os.ReadFile(os.Args[2])
-	// command must be like this: go run . - "dataset/getset.go"
+	// command must be like this: go run . - "hiddenDanger/getset.go"
 	filename := os.Args[2]
 
 	var pattern1 bool
@@ -68,7 +68,7 @@ func main() {
 	// check leaf of SelectorExpr and unsafe Pointer
 	modListFunctions := checkSelectorExpr(listFunctions)
 	createTextFile(filename, modListFunctions)
-	unsafeList := buildUnsafeList(modListFunctions)
+	unsafeList := buildUnsafePointerList(modListFunctions)
 
 	if len(unsafeList) > 0 {
 		fmt.Println(len(unsafeList), " This function contains unsafe.Pointer:")
@@ -89,6 +89,7 @@ func main() {
 		fmt.Println()
 	}
 
+	patternB2S(filename, modListFunctions, unsafeList)
 	// Check Generic Replacement
 	genCheck := checkGenerics(modListFunctions, funcList, typeList)
 	for s := range genCheck {

@@ -1,0 +1,34 @@
+{*ast.File [dataset]}
+
+
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "C"]}
+{*ast.GenDecl -> *ast.TypeSpec [GenHeader]}
+{*ast.FieldList -> *ast.Field [T any]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [List]}
+{*ast.ArrayType [T]}
+
+
+function name is Object 
+	 {*ast.FieldList -> *ast.Field [g]}
+	 {*ast.StarExpr -> *ast.IndexExpr [GenHeader T Object]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [T]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.SelectorExpr [g List]}
+
+
+function name is SetGI 
+	 {*ast.FieldList -> *ast.Field [g]}
+	 {*ast.StarExpr -> *ast.IndexExpr [GenHeader T SetGI]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
+	 {*ast.Field [x T]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
+	 {*ast.IndexExpr -> *ast.SelectorExpr [g List i x]}
+
+
+function name is GetGI 
+	 {*ast.FieldList -> *ast.Field [g]}
+	 {*ast.IndexExpr [GenHeader T GetGI]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
+	 {*ast.FieldList -> *ast.Field [T]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.IndexExpr -> *ast.SelectorExpr [g List i]}
+
+

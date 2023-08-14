@@ -40,7 +40,7 @@ func TestBuildAst(t *testing.T) {
 		funcName string
 		expected []basicStr
 	}{
-		{"dataset/main.go", []basicStr{{"", 0, []elem{{"*ast.File", []string{"main"}}}},
+		{"hiddenDanger/main.go", []basicStr{{"", 0, []elem{{"*ast.File", []string{"main"}}}},
 			{"", 15, []elem{{"*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit", []string{"STRING", "\"fmt\""}}}},
 			{"main", 29, []elem{
 				{"", []string{"main"}},
