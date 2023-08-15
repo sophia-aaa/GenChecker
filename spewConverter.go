@@ -330,8 +330,8 @@ func spewConversion(str string) string {
 
 	}
 
-	// This return value is of string type, so it cannot be used directly by ast.Inspect or astutil
-	// This value needs to be printed on the terminal and then copied
-	// Once you have copied the value, you can use it with ast.Inspect or astutil package
+	// This return value is of string type, so it cannot be used directly by ast.Inspect or astutil.
+	// This value needs to be printed on the terminal and then copied.
+	// Once you have copied the value, you can use it with ast.Inspect or astutil package.
 	return result
 }

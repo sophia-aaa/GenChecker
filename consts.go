@@ -6,6 +6,11 @@ import (
 )
 
 var (
+	// Name your slice here
+	sliceName = "Raw"
+	// Name your type here
+	typeName = "T"
+
 	typeList = []string{
 		"bool", "bType", "int", "iType", "int8", "i8Type", "int16", "i16Type", "int32", "i32Type", "int64", "i64Type", "uint", "uType",
 		"uint8", "u8Type", "uint16", "u16Type", "uint32", "u32Type", "uint64", "u64Type", "uintptr", "uintptrType",

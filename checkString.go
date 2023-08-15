@@ -2,6 +2,7 @@ package main
 
 import (
 	"go/token"
+	"reflect"
 	"strconv"
 	"strings"
 )
@@ -63,10 +64,28 @@ func checkDuplicateInFunc(list []basicFunc, funcName string, funcPos token.Pos) 
 	return false
 }
 
+func checkDuplicateInFuncGen(list []funcNamePos, funcName string, funcPos token.Pos) bool {
+	for ind := range list {
+		if strings.EqualFold(funcName, list[ind].funcName) && (funcPos == list[ind].funcPos) {
+			return true
+		}
+	}
+	return false
+}
+
 func checkDuplicateInFuncString(list []basicFunc, funcName string, funcPos string) bool {
 	funcPosInt, _ := strconv.Atoi(funcPos)
 	for ind := range list {
 		if strings.EqualFold(funcName, list[ind].funcName) && funcPosInt == int(list[ind].funcToken) {
+			return true
+		}
+	}
+	return false
+}
+
+func checkReplaceFunc(lists []pattern3Result, nameList []funcNamePos) bool {
+	for _, val := range lists {
+		if reflect.DeepEqual(val, nameList) {
 			return true
 		}
 	}

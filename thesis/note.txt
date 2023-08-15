@@ -1,31 +1,70 @@
-func deriveCompareComplex32(this, that complex64) int {
-	if thisr, thatr := real(this), real(that); thisr == thatr {
-		if thisi, thati := imag(this), imag(that); thisi == thati {
-			return 0
-		} else if thisi < thati {
-			return -1
-		} else {
-			return 1
-		}
-	} else if thisr < thatr {
-		return -1
-	} else {
-		return 1
-	}
-}
-
-func deriveCompareComplex64(this, that complex128) int {
-	if thisr, thatr := real(this), real(that); thisr == thatr {
-		if thisi, thati := imag(this), imag(that); thisi == thati {
-			return 0
-		} else if thisi < thati {
-			return -1
-		} else {
-			return 1
-		}
-	} else if thisr < thatr {
-		return -1
-	} else {
-		return 1
-	}
-}
+&ast.FuncDecl  {
+Recv: &ast.FieldList  {
+List: []*ast.Field  {
+&ast.Field  {
+Names: []*ast.Ident  {
+&ast.Ident {
+ Name: "g",
+},
+},
+Type: &ast.IndexExpr  {
+X: &ast.Ident {
+ Name: "GenHeader",
+},
+Index: &ast.Ident {
+ Name: "T",
+},
+},
+},
+},
+},
+Name: &ast.Ident {
+ Name: "GetGI",
+},
+Type: &ast.FuncType  {
+Params: &ast.FieldList  {
+List: []*ast.Field  {
+&ast.Field  {
+Names: []*ast.Ident  {
+&ast.Ident {
+ Name: "i",
+},
+},
+Type: &ast.Ident {
+ Name: "int",
+},
+},
+},
+},
+Results: &ast.FieldList  {
+List: []*ast.Field  {
+&ast.Field  {
+Type: &ast.Ident {
+ Name: "T",
+},
+},
+},
+},
+},
+Body: &ast.BlockStmt  {
+List: []ast.Stmt  {
+&ast.ReturnStmt  {
+Results: []ast.Expr  {
+&ast.IndexExpr  {
+X: &ast.SelectorExpr  {
+X: &ast.Ident {
+ Name: "g",
+},
+Sel: &ast.Ident {
+ Name: "List",
+},
+},
+Index: &ast.Ident {
+ Name: "i",
+},
+},
+},
+},
+},
+},
+},
