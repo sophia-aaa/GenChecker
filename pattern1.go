@@ -73,6 +73,12 @@ func patternObjectSlice(fnc basicStr) *ast.FuncDecl {
 		}
 	}
 
+	/*
+		Identifier names in the examples below may differ from actual code identifier names! This node looks like
+		func (g *GenHeader[T]) Object() []T {
+			return g.List
+		}
+	*/
 	if flag2 && len(receiverParam) > 1 {
 		resultNode = &ast.FuncDecl{
 			Recv: &ast.FieldList{
@@ -187,7 +193,6 @@ func patternSet(fnc basicStr) *ast.FuncDecl {
 		if flag1 {
 			if strings.EqualFold(elems.path, "*ast.Field") &&
 				(len(elems.value) == 2 || (contains(elems.value, "unsafe") && contains(elems.value, "Pointer"))) {
-
 				if !flag2 {
 					retValue = elems.value
 					flag2 = true
@@ -211,6 +216,13 @@ func patternSet(fnc basicStr) *ast.FuncDecl {
 			}
 		}
 	}
+
+	/*
+		Identifier names in the examples below may differ from actual code identifier names! This node looks like
+		func (g *GenHeader[T]) SetGI(i int, x T) {
+			g.List[i] = x
+		}
+	*/
 	if flag3 && len(receiverParam) > 1 {
 		resultNode = &ast.FuncDecl{
 			Recv: &ast.FieldList{
@@ -364,6 +376,12 @@ func patternGet(fnc basicStr) *ast.FuncDecl {
 		}
 	}
 
+	/*
+		Identifier names in the examples below may differ from actual code identifier names! This node looks like
+		func (g *GenHeader[T]) GetGI(i int) T {
+			return g.List[i]
+		}
+	*/
 	if flag3 && len(receiverParam) > 1 {
 		resultNode = &ast.FuncDecl{
 			Recv: &ast.FieldList{

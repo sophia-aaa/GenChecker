@@ -243,24 +243,12 @@ func main() {
 		}
 	}
 
-	checkDataFunc := checkDataPattern(modListFunctions)
-	if len(checkDataFunc) > 0 {
-		pattern2 = true
-		fmt.Print("\nThere exists (a) function(s) with reflect.SliceHeader and Interface of return value. It recommends to use Generics Slice : ")
-		for ind, val := range checkDataFunc {
-			if len(checkDataFunc) == 1 {
-				fmt.Print("{ ", val, " }")
-			} else if ind == len(checkDataFunc)-1 {
-				fmt.Println(val, "}")
-			} else if ind == 0 {
-				fmt.Print("{ ", val, ", ")
-			} else {
-				fmt.Print(val, ", ")
-			}
-
+	for _, val := range modListFunctions {
+		if patternGenSlice(val) != nil {
+			fmt.Println("This function ", val.funcName, " has (a) function(s) with reflect.SliceHeader and Interface of return value. \nIt recommends to use Generics Slice.\nNo replacement because of Generics Replacement Suggestion.\n\n")
 		}
-		fmt.Println()
 	}
+	fmt.Println()
 
 	// This variable is for checking switch statement
 	existsSwitch, caseList := checkSwitchStatement(filename, modListFunctions)

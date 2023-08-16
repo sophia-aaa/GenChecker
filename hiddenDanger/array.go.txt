@@ -285,7 +285,7 @@ function name is MemSize
 
 function name is Data 
 	 {*ast.FieldList -> *ast.Field [a array Data]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field*ast.InterfaceType []}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= shdr]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [reflect SliceHeader]}
 	 {*ast.KeyValueExpr [Data]}
@@ -636,7 +636,7 @@ function name is scalarPool
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [sync Pool]}
 	 {*ast.KeyValueExpr [New]}
-	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field*ast.InterfaceType []}
+	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [make]}
 	 {*ast.ArrayType [byte size]}
 	 {*ast.AssignStmt [=]}

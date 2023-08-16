@@ -189,7 +189,11 @@ func buildAstDataStr(filename string) []basicStr {
 				astNode = ""
 				astValue = []string{}
 			}
-			astNode += reflect.TypeOf(x).String()
+			if astNode == "" {
+				astNode += reflect.TypeOf(x).String()
+			} else {
+				astNode += " -> " + reflect.TypeOf(x).String()
+			}
 			if len(x.Methods.List) > 0 {
 				for _, val := range x.Methods.List {
 					if len(val.Names) > 0 {
