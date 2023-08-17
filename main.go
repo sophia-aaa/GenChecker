@@ -172,14 +172,14 @@ func main() {
 						patternArraySetNode = patternArraySet(val)
 						funcInfoList := []funcNamePos{funcNamePos{val.funcName, val.funcToken}}
 						if patternArraySetNode != nil {
-							fmt.Println("There is Set pattern.", val.funcName)
+							fmt.Println("This function ", val.funcName, " has a Set pattern.")
 							if !checkReplaceFunc(toReplace, funcInfoList) {
 								toReplace = append(toReplace, pattern3Result{patternArraySetNode, funcInfoList})
 							}
 						}
 						patternArrayGetNode = patternArrayGet(val)
 						if patternArrayGetNode != nil {
-							fmt.Println("There is Get pattern.", val.funcName, "\n", patternArrayGetNode)
+							fmt.Println("This function ", val.funcName, " has a Get pattern.")
 
 							if !checkReplaceFunc(toReplace, funcInfoList) {
 								toReplace = append(toReplace, pattern3Result{patternArrayGetNode, funcInfoList})
@@ -187,14 +187,14 @@ func main() {
 						}
 						patternMemsetNode = patternMemset(val)
 						if patternMemsetNode != nil {
-							fmt.Println("There is Memset pattern.")
+							fmt.Println("This function ", val.funcName, " has a Memset pattern.")
 							if !checkReplaceFunc(toReplace, funcInfoList) {
 								toReplace = append(toReplace, pattern3Result{patternMemsetNode, funcInfoList})
 							}
 						}
 						patternMemsetIterNode = patternMemsetIter(val)
 						if patternMemsetIterNode != nil {
-							fmt.Println("There is MemsetIter pattern.")
+							fmt.Println("This function ", val.funcName, " has a memsetIter pattern.")
 							if !checkReplaceFunc(toReplace, funcInfoList) {
 								toReplace = append(toReplace, pattern3Result{patternMemsetIterNode, funcInfoList})
 							}
@@ -204,7 +204,7 @@ func main() {
 					}
 				}
 			}
-			fmt.Println("This function has a switch statement with reused cases: ")
+			fmt.Println("\nThis function has a switch statement with reused cases: ")
 			for ind, val := range caseList {
 				if len(caseList) == 1 {
 					fmt.Print("{ ", val.funcName, " }")
@@ -248,7 +248,6 @@ func main() {
 			if d, ok := n.(*ast.FuncDecl); ok {
 				if checkDuplicateInFuncGen(toResult.funcRemove, d.Name.String(), d.Pos()) {
 					if count == 0 {
-						fmt.Println(d.Name.String())
 						for _, val := range toResult.nodes {
 							c.InsertBefore(val)
 						}
@@ -257,7 +256,7 @@ func main() {
 					count++
 				}
 			}
-			if _, ok := n.(*ast.GenDecl); ok {
+			/*if _, ok := n.(*ast.GenDecl); ok {
 				c.InsertBefore(&ast.GenDecl{
 					Tok: token.TYPE,
 					Specs: []ast.Spec{
@@ -279,40 +278,15 @@ func main() {
 					},
 				},
 				)
-			}
+			}*/
 			return true
 		}, nil)
-		test := true
+		/* test
 		ast.Inspect(node, func(n ast.Node) bool {
 			switch x := n.(type) {
-			case *ast.File:
-				if test {
-					x.Decls = append(x.Decls, &ast.GenDecl{
-						Tok: token.TYPE,
-						Specs: []ast.Spec{
-							&ast.TypeSpec{
-								Name: &ast.Ident{
-									Name: "GenHeader",
-									Obj: &ast.Object{
-										Kind: ast.Typ,
-										Name: "GenHeader",
-									},
-								},
-
-								Type: &ast.ArrayType{
-									Len: &ast.Ident{
-										Name: "T",
-									},
-								},
-							},
-						},
-					})
-					test = false
-				}
-
 			case *ast.GenDecl:
 				for i := range x.Specs {
-					if strings.EqualFold(x.Specs[i].(*ast.TypeSpec).Name.String(), "\"unsafe\"") {
+					if _, ok := x.Specs[i].(*ast.ImportSpec); ok && strings.EqualFold(x.Specs[i].(*ast.ImportSpec).Name.String(), "\"unsafe\"") {
 						if len(x.Specs) == 1 {
 							x.Specs = []ast.Spec{}
 						} else {
@@ -324,7 +298,7 @@ func main() {
 
 			}
 			return true
-		})
+		}) */
 
 		newName := filename[0:len(filename)-3] + "_replaced.go"
 
@@ -345,7 +319,7 @@ func main() {
 
 	for _, val := range modListFunctions {
 		if patternGenSlice(val) != nil {
-			fmt.Println("This function ", val.funcName, " has (a) function(s) with reflect.SliceHeader and Interface of return value. \nIt recommends to use Generics Slice.\nNo replacement because of Generics Replacement Suggestion.\n\n")
+			fmt.Println("\nThis function ", val.funcName, " has (a) function(s) with reflect.SliceHeader and Interface of return value. \nIt recommends to use Generics Slice.\nNo replacement because of Generics Replacement Suggestion.\n\n")
 		}
 	}
 	fmt.Println()
