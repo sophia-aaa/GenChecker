@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -188,8 +189,10 @@ func spewConversion(str string) string {
 		trimmedStr += val + "\n"
 
 	}
-
-	// split must be with this symbol )
+	//fmt.Println("************************")
+	//fmt.Println(trimmedStr)
+	//fmt.Println("************************")
+	// split must be with this symbol ) *******
 	substrings := strings.Split(trimmedStr, ")")
 
 	var candidate []string
@@ -198,6 +201,8 @@ func spewConversion(str string) string {
 	newString := ""
 	for _, val := range substrings {
 
+		fmt.Println("------------------------------")
+		fmt.Println(val)
 		//out := []rune(val)
 		for ind, c := range val {
 			//ch, _ := utf8.DecodeRuneInString(c)
@@ -236,6 +241,8 @@ func spewConversion(str string) string {
 			newString += " "
 			candidate = append(candidate, newString)
 		}
+		fmt.Println("---->")
+		fmt.Println(newString)
 		newString = ""
 	}
 
@@ -261,13 +268,14 @@ func spewConversion(str string) string {
 					tokFlag = true
 				} else if tokFlag {
 					toAdd += tokenConversion(strVal)
+					//fmt.Println(val)
 					tokFlag = false
 				} else {
 					toAdd += strVal + " "
 				}
 			}
 		}
-		if strings.Contains(val, "Value:") || strings.Contains(val, "Incomplete:") || strings.Contains(val, "Text:") {
+		if /*strings.Contains(val, "Value:") || */ strings.Contains(val, "Incomplete:") || strings.Contains(val, "Text:") {
 			flagValue = true
 			strCheck := strings.Split(val, " ")
 			for ind, strVal := range strCheck {
@@ -275,6 +283,19 @@ func spewConversion(str string) string {
 					toAdd += strVal + string(rune(' '))
 				} else if ind == len(strCheck)-1 {
 					toAdd += strVal + string(rune(','))
+				}
+			}
+		}
+		if strings.Contains(val, "Value: string") {
+			flagBool = true
+			strCheck := strings.Split(val, " ")
+			for ind, strVal := range strCheck {
+				if strings.Contains(strVal, "string") {
+					continue
+				} else if ind == len(strCheck)-1 {
+					toAdd += strVal + ","
+				} else {
+					toAdd += strVal + " "
 				}
 			}
 		}
@@ -330,8 +351,6 @@ func spewConversion(str string) string {
 
 	}
 
-	// This return value is of string type, so it cannot be used directly by ast.Inspect or astutil.
-	// This value needs to be printed on the terminal and then copied.
-	// Once you have copied the value, you can use it with ast.Inspect or astutil package.
+	//fmt.Println(result)
 	return result
 }

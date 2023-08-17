@@ -31,6 +31,10 @@ func main() {
 	var patternObjectNode *ast.FuncDecl
 	var patternSetNode *ast.FuncDecl
 	var patternGetNode *ast.FuncDecl
+	var patternArraySetNode *ast.FuncDecl
+	var patternArrayGetNode *ast.FuncDecl
+	var patternMemsetNode *ast.FuncDecl
+	var patternMemsetIterNode *ast.FuncDecl
 
 	var toReplace []pattern3Result
 	listFunctions := buildAstDataStr(filename)
@@ -157,6 +161,64 @@ func main() {
 			}
 		}
 	}
+
+	// This variable is for checking switch statement
+	existsSwitch, caseList := checkSwitchStatement(filename, modListFunctions)
+	if existsSwitch {
+		if len(caseList) > 0 {
+			for _, val := range modListFunctions {
+				for _, cases := range caseList {
+					if strings.EqualFold(val.funcName, cases.funcName) {
+						patternArraySetNode = patternArraySet(val)
+						funcInfoList := []funcNamePos{funcNamePos{val.funcName, val.funcToken}}
+						if patternArraySetNode != nil {
+							fmt.Println("There is Set pattern.", val.funcName)
+							if !checkReplaceFunc(toReplace, funcInfoList) {
+								toReplace = append(toReplace, pattern3Result{patternArraySetNode, funcInfoList})
+							}
+						}
+						patternArrayGetNode = patternArrayGet(val)
+						if patternArrayGetNode != nil {
+							fmt.Println("There is Get pattern.", val.funcName, "\n", patternArrayGetNode)
+
+							if !checkReplaceFunc(toReplace, funcInfoList) {
+								toReplace = append(toReplace, pattern3Result{patternArrayGetNode, funcInfoList})
+							}
+						}
+						patternMemsetNode = patternMemset(val)
+						if patternMemsetNode != nil {
+							fmt.Println("There is Memset pattern.")
+							if !checkReplaceFunc(toReplace, funcInfoList) {
+								toReplace = append(toReplace, pattern3Result{patternMemsetNode, funcInfoList})
+							}
+						}
+						patternMemsetIterNode = patternMemsetIter(val)
+						if patternMemsetIterNode != nil {
+							fmt.Println("There is MemsetIter pattern.")
+							if !checkReplaceFunc(toReplace, funcInfoList) {
+								toReplace = append(toReplace, pattern3Result{patternMemsetIterNode, funcInfoList})
+							}
+						}
+						patternEq(val)
+						patternReduce(val)
+					}
+				}
+			}
+			fmt.Println("This function has a switch statement with reused cases: ")
+			for ind, val := range caseList {
+				if len(caseList) == 1 {
+					fmt.Print("{ ", val.funcName, " }")
+				} else if ind == len(caseList)-1 {
+					fmt.Println(val.funcName, "}")
+				} else if ind == 0 {
+					fmt.Print("{ ", val.funcName, ", ")
+				} else {
+					fmt.Print(val.funcName, ", ")
+				}
+			}
+		}
+	}
+
 	var nodeList []*ast.FuncDecl
 	var removeNameList []funcNamePos
 	var toResult patternReplace
@@ -167,6 +229,7 @@ func main() {
 		}
 
 	}
+	toReplace = []pattern3Result{}
 	toResult = patternReplace{nodeList, removeNameList}
 
 	if len(toResult.nodes) > 0 {
@@ -178,48 +241,25 @@ func main() {
 		//count := 0
 		//var tmp *ast.Decl
 		count := 0
+
 		astutil.Apply(node, func(c *astutil.Cursor) bool {
 			n := c.Node()
 
 			if d, ok := n.(*ast.FuncDecl); ok {
 				if checkDuplicateInFuncGen(toResult.funcRemove, d.Name.String(), d.Pos()) {
 					if count == 0 {
+						fmt.Println(d.Name.String())
 						for _, val := range toResult.nodes {
 							c.InsertBefore(val)
 						}
 					}
 					c.Delete()
 					count++
-
 				}
 			}
 			return true
 		}, nil)
 
-		/*ast.Inspect(node, func(n ast.Node) bool {
-			switch x := n.(type) {
-			case *ast.File:
-				for _, val := range x.Decls {
-					if fnc, ok := val.(*ast.FuncDecl); ok {
-						for _, value := range toResult {
-							if strings.EqualFold(value.funcName0.funcName, fnc.Name.String()) {
-								fnc = value.nodes
-							}
-
-						}
-
-					}
-
-				}
-
-			case *ast.FuncDecl:
-
-			}
-			return true
-		})*/
-
-		// TODO
-		// 파일을 굳이 저장안하고 노드만 저장한 이후에 파일 변경해도 될듯?
 		newName := filename[0:len(filename)-3] + "_replaced.go"
 
 		newFile, err := os.Create(newName)
@@ -243,44 +283,5 @@ func main() {
 		}
 	}
 	fmt.Println()
-
-	// This variable is for checking switch statement
-	existsSwitch, caseList := checkSwitchStatement(filename, modListFunctions)
-	if existsSwitch {
-		if len(caseList) > 0 {
-			for _, val := range modListFunctions {
-				for _, cases := range caseList {
-					if strings.EqualFold(val.funcName, cases.funcName) {
-						if patternArraySet(val) != nil {
-							fmt.Println("Array Set replacement is ready: ", val.funcName)
-						}
-						if patternArrayGet(val) != nil {
-							fmt.Println("Array Get replacement is ready: ", val.funcName)
-						}
-						if patternMemset(val) != nil {
-							fmt.Println("Memset replacement is ready: ", val.funcName)
-						}
-						if patternMemsetIter(val) != nil {
-							fmt.Println("memsetIter replacement is ready: ", val.funcName)
-						}
-						patternEq(val)
-						patternReduce(val)
-					}
-				}
-			}
-			fmt.Println("This function has switch statement: ")
-			for ind, val := range caseList {
-				if len(caseList) == 1 {
-					fmt.Print("{ ", val.funcName, " }")
-				} else if ind == len(caseList)-1 {
-					fmt.Println(val.funcName, "}")
-				} else if ind == 0 {
-					fmt.Print("{ ", val.funcName, ", ")
-				} else {
-					fmt.Print(val.funcName, ", ")
-				}
-			}
-		}
-	}
 
 }
