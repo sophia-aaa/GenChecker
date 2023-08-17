@@ -57,15 +57,30 @@ func checkSwitchStatement(filename string, listFunctions []basicStr) (bool, []ca
 			}
 			fmt.Println()
 		}
-		return true, checkSwitchCases(funcCheck, typeList)
+		return true, checkSwitchCases(filename, funcCheck, typeList)
 
 	}
 
 	return false, []caseFilteredResult{}
 }
 
-func checkSwitchCases(funcList []caseResult, typeList []string) []caseFilteredResult {
+func checkSwitchCases(filename string, funcList []caseResult, typeList []string) []caseFilteredResult {
 	//var funcResult []caseFilteredResult
+
+	createCasesTextFile(filename, funcList)
+	/*for _, val := range funcList {
+		fmt.Println("function name: ", val.funcName)
+		for i, value := range val.cases {
+			if i < 2 {
+				fmt.Println(value.caseName)
+				for _, cases := range value.value {
+					fmt.Print(cases.path, "\t", cases.value)
+					fmt.Println()
+				}
+			}
+		}
+		fmt.Println()
+	}*/
 
 	var result []caseFilteredResult
 	var caseList []string

@@ -77,3 +77,45 @@ func createTextFileFromString(filename string, strList []string) {
 		}
 	}
 }
+
+func createCasesTextFile(filename string, funcList []caseResult) {
+	f, err := os.Create(filename + "_cases.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}(f)
+
+	var str string
+
+	for _, val := range funcList {
+		str = "function name: " + val.funcName + "\n"
+		_, err2 := f.WriteString(str)
+		if err2 != nil {
+			log.Fatal(err2)
+		}
+		for _, value := range val.cases {
+			str = fmt.Sprintln("  ", value.caseName)
+			_, err2 := f.WriteString(str)
+			if err2 != nil {
+				log.Fatal(err2)
+			}
+			for _, cases := range value.value {
+				str = fmt.Sprintln("    ", cases.path, "\t", cases.value)
+				_, err2 := f.WriteString(str)
+				if err2 != nil {
+					log.Fatal(err2)
+				}
+			}
+		}
+		str = fmt.Sprintln("\n")
+		_, err2 = f.WriteString(str)
+		if err2 != nil {
+			log.Fatal(err2)
+		}
+	}
+}

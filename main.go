@@ -32,12 +32,6 @@ func main() {
 	var patternSetNode *ast.FuncDecl
 	var patternGetNode *ast.FuncDecl
 
-	var pattern1 bool
-
-	var pattern2 bool
-	var pattern3 bool // pattern4 overlapped but somewhat diffrent
-	var pattern4 bool
-
 	var toReplace []pattern3Result
 	listFunctions := buildAstDataStr(filename)
 
@@ -254,6 +248,26 @@ func main() {
 	existsSwitch, caseList := checkSwitchStatement(filename, modListFunctions)
 	if existsSwitch {
 		if len(caseList) > 0 {
+			for _, val := range modListFunctions {
+				for _, cases := range caseList {
+					if strings.EqualFold(val.funcName, cases.funcName) {
+						if patternArraySet(val) != nil {
+							fmt.Println("Array Set replacement is ready: ", val.funcName)
+						}
+						if patternArrayGet(val) != nil {
+							fmt.Println("Array Get replacement is ready: ", val.funcName)
+						}
+						if patternMemset(val) != nil {
+							fmt.Println("Memset replacement is ready: ", val.funcName)
+						}
+						if patternMemsetIter(val) != nil {
+							fmt.Println("memsetIter replacement is ready: ", val.funcName)
+						}
+						patternEq(val)
+						patternReduce(val)
+					}
+				}
+			}
 			fmt.Println("This function has switch statement: ")
 			for ind, val := range caseList {
 				if len(caseList) == 1 {
@@ -269,18 +283,4 @@ func main() {
 		}
 	}
 
-	if pattern1 {
-		fmt.Println("pattern1")
-		//replacePattern(filename, 1)
-	}
-	if pattern2 {
-		fmt.Println("pattern2")
-		//replacePattern(filename, 2)
-	}
-	if pattern3 {
-		fmt.Println("pattern3")
-	}
-	if pattern4 {
-		fmt.Println("pattern4")
-	}
 }

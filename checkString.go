@@ -30,6 +30,18 @@ func contains2D(strArr [][]funcNamePos, str string, pos token.Pos) bool {
 	return false
 }
 
+func istValueInArr(strArr []string, str string) bool {
+	for _, val := range strArr {
+		if val == str {
+			return true
+		}
+		if strings.Contains(strings.ToLower(val), strings.ToLower(str)) {
+			return true
+		}
+	}
+	return false
+}
+
 func isSameString(strArr []string, str string) bool {
 	for _, val := range strArr {
 		if strings.EqualFold(val, str) {

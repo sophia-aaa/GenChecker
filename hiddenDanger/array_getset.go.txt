@@ -109,7 +109,7 @@ function name is Get
 	 {*ast.FieldList -> *ast.Field [a]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [main array Get]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.FieldList -> *ast.Field*ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.BlockStmt []}
 	 {*ast.SwitchStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [a t Kind]}
 	 {*ast.BlockStmt []}
