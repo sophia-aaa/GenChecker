@@ -257,8 +257,74 @@ func main() {
 					count++
 				}
 			}
+			if _, ok := n.(*ast.GenDecl); ok {
+				c.InsertBefore(&ast.GenDecl{
+					Tok: token.TYPE,
+					Specs: []ast.Spec{
+						&ast.TypeSpec{
+							Name: &ast.Ident{
+								Name: "GenHeader",
+								Obj: &ast.Object{
+									Kind: ast.Typ,
+									Name: "GenHeader",
+								},
+							},
+
+							Type: &ast.ArrayType{
+								Len: &ast.Ident{
+									Name: "T",
+								},
+							},
+						},
+					},
+				},
+				)
+			}
 			return true
 		}, nil)
+		test := true
+		ast.Inspect(node, func(n ast.Node) bool {
+			switch x := n.(type) {
+			case *ast.File:
+				if test {
+					x.Decls = append(x.Decls, &ast.GenDecl{
+						Tok: token.TYPE,
+						Specs: []ast.Spec{
+							&ast.TypeSpec{
+								Name: &ast.Ident{
+									Name: "GenHeader",
+									Obj: &ast.Object{
+										Kind: ast.Typ,
+										Name: "GenHeader",
+									},
+								},
+
+								Type: &ast.ArrayType{
+									Len: &ast.Ident{
+										Name: "T",
+									},
+								},
+							},
+						},
+					})
+					test = false
+				}
+
+			case *ast.GenDecl:
+				for i := range x.Specs {
+					if strings.EqualFold(x.Specs[i].(*ast.TypeSpec).Name.String(), "\"unsafe\"") {
+						if len(x.Specs) == 1 {
+							x.Specs = []ast.Spec{}
+						} else {
+							x.Specs = append(x.Specs[:i], x.Specs[i+1:]...)
+						}
+						//x.Specs[i].(*ast.ImportSpec).Path = &ast.BasicLit{}
+					}
+				}
+
+			}
+			return true
+		})
 
 		newName := filename[0:len(filename)-3] + "_replaced.go"
 
