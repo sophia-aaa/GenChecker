@@ -1,11 +1,15 @@
 {*ast.File [diodes]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "log"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "sync/atomic"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "log"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync/atomic"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.TypeSpec [ManyToOne]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [writeIndex uint64]}
+{*ast.Field [readIndex uint64]}
+{*ast.Field [buffer]}
+{*ast.ArrayType -> *ast.SelectorExpr [unsafe Pointer]}
+{*ast.Field [alerter Alerter]}
 
 
 function name is NewManyToOne 
@@ -15,12 +19,10 @@ function name is NewManyToOne
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [ManyToOne]}
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [== alerter nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= alerter]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= alerter]}
 	 {*ast.CallExpr [AlertFunc]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [ManyToOne]}
 	 {*ast.KeyValueExpr [buffer]}
@@ -38,8 +40,7 @@ function name is Set
 	 {*ast.FieldList -> *ast.Field [d]}
 	 {*ast.StarExpr [ManyToOne Set]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [data GenericDataType]}
-	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= writeIndex]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [:= writeIndex]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [atomic AddUint64]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.SelectorExpr [d writeIndex]}
@@ -67,8 +68,7 @@ function name is Set
 	 {*ast.SelectorExpr [d buffer]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Println]}
 	 {*ast.BasicLit [STRING "Diode set collision: consider using a larger diode"]}
-	 {*ast.BranchStmt []}
-	 {*ast.AssignStmt [:= newBucket]}
+	 {*ast.BranchStmt -> *ast.AssignStmt [:= newBucket]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [bucket]}
 	 {*ast.KeyValueExpr [data data]}
@@ -89,8 +89,7 @@ function name is TryNext
 	 {*ast.StarExpr [ManyToOne TryNext]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [data GenericDataType]}
 	 {*ast.Field [ok bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= idx]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= idx]}
 	 {*ast.BinaryExpr [%]}
 	 {*ast.SelectorExpr [d readIndex]}
 	 {*ast.CallExpr [uint64]}
@@ -113,8 +112,7 @@ function name is TryNext
 	 {*ast.BinaryExpr [>]}
 	 {*ast.SelectorExpr [result seq]}
 	 {*ast.SelectorExpr [d readIndex]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= dropped]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= dropped]}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.SelectorExpr [result seq]}
 	 {*ast.SelectorExpr [d readIndex]}

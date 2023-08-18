@@ -2,12 +2,13 @@
 
 
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [IProvideClassInfo]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [IUnknown]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [IProvideClassInfoVtbl]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [IUnknownVtbl]}
+{*ast.Field [GetClassInfo uintptr]}
 
 
 function name is VTable 
@@ -25,8 +26,7 @@ function name is GetClassInfo
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [cinfo]}
 	 {*ast.StarExpr [ITypeInfo]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= cinfo err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= cinfo err]}
 	 {*ast.CallExpr [getClassInfo v]}
 	 {*ast.ReturnStmt []}
 

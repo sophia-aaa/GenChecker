@@ -2,8 +2,7 @@
 
 
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "C"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 
 
 function name is AvMalloc 

@@ -1,19 +1,37 @@
 {*ast.File [main]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "context"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "encoding/json"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "flag"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "io/ioutil"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "log"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "net"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "net/http"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "os"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "path"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "runtime"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "golang.org/x/xerrors"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "nhooyr.io/websocket"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "nhooyr.io/websocket/wsjson"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "go.coder.com/cli"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "go.coder.com/flog"]}
 
 
 function name is runNativeMsgHost 
 	 { [runNativeMsgHost]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= l err]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= l err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [net Listen]}
 	 {*ast.BasicLit [STRING "tcp"]}
 	 {*ast.BasicLit [STRING "localhost:0"]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal]}
-	 {*ast.BasicLit [STRING "failed to listen: %v" err]}
+	 {*ast.BasicLit [STRING "failed to listen: %v"]}
+	 { [err]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [l Close]}
 	 {*ast.AssignStmt [:= url]}
 	 {*ast.BinaryExpr [+]}
@@ -22,19 +40,23 @@ function name is runNativeMsgHost
 	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr [writeNativeHostMessage]}
 	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.Field [URL string]}
-	 {*ast.BasicLit [STRING `json:"url"` url]}
+	 {*ast.BasicLit [STRING `json:"url"`]}
+	 { [url]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal]}
-	 {*ast.BasicLit [STRING "%v" err]}
+	 {*ast.BasicLit [STRING "%v"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= m]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [http NewServeMux]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [m HandleFunc]}
-	 {*ast.BasicLit [STRING "/api/v1/run" handleRun]}
+	 {*ast.BasicLit [STRING "/api/v1/run"]}
+	 { [handleRun]}
 	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [http Serve l m]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal]}
-	 {*ast.BasicLit [STRING "failed to serve: %v" err]}
+	 {*ast.BasicLit [STRING "failed to serve: %v"]}
+	 { [err]}
 
 
 function name is writeNativeHostMessage 
@@ -42,18 +64,19 @@ function name is writeNativeHostMessage
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [v]}
 	 {*ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= b err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= b err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [json Marshal v]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf]}
-	 {*ast.BasicLit [STRING "failed to marshal url: %w" err]}
+	 {*ast.BasicLit [STRING "failed to marshal url: %w"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= msgLen]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.CallExpr [len b]}
 	 {*ast.AssignStmt [:= msgLenHostByteOrder]}
-	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 4 byte]}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 4]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [& msgLen]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [os Stdout Write]}
@@ -73,8 +96,7 @@ function name is handleRun
 	 {*ast.SelectorExpr [http ResponseWriter]}
 	 {*ast.Field [r]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [http Request]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= c err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= c err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [websocket Accept w r]}
 	 {*ast.CompositeLit -> *ast.SelectorExpr [websocket AcceptOptions]}
 	 {*ast.KeyValueExpr [InsecureSkipVerify true]}
@@ -98,7 +120,8 @@ function name is handleRun
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
-	 {*ast.BasicLit [STRING "failed to read request: %v\n" err]}
+	 {*ast.BasicLit [STRING "failed to read request: %v\n"]}
+	 { [err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Close]}
 	 {*ast.SelectorExpr [websocket StatusInvalidFramePayloadData]}
 	 {*ast.BasicLit [STRING "failed to read"]}
@@ -108,10 +131,8 @@ function name is handleRun
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Close]}
 	 {*ast.SelectorExpr [websocket StatusNormalClosure]}
 	 {*ast.BasicLit [STRING ""]}
-
-
-{*ast.GenDecl -> *ast.TypeSpec [installExtHostCmd]}
-{*ast.StructType -> *ast.FieldList []}
+	 {*ast.GenDecl -> *ast.TypeSpec [installExtHostCmd]}
+	 {*ast.StructType -> *ast.FieldList []}
 
 
 function name is Spec 
@@ -131,8 +152,7 @@ function name is Run
 	 {*ast.StarExpr [installExtHostCmd Run]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fl]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [flag FlagSet]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= binPath err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= binPath err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [os Executable]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
@@ -143,7 +163,8 @@ function name is Run
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal]}
-	 {*ast.BasicLit [STRING "failed to get chrome native message host manifest directory: %v" err]}
+	 {*ast.BasicLit [STRING "failed to get chrome native message host manifest directory: %v"]}
+	 { [err]}
 	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr [installManifests nativeHostDirsChrome]}
 	 {*ast.BasicLit [STRING "com.coder.sail.json"]}
@@ -151,13 +172,15 @@ function name is Run
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal]}
-	 {*ast.BasicLit [STRING "failed to write chrome manifest files: %v" err]}
+	 {*ast.BasicLit [STRING "failed to write chrome manifest files: %v"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= nativeHostDirsFirefox err]}
 	 {*ast.CallExpr [nativeMessageHostManifestDirectoriesFirefox]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal]}
-	 {*ast.BasicLit [STRING "failed to get firefox native message host manifest directory: %v" err]}
+	 {*ast.BasicLit [STRING "failed to get firefox native message host manifest directory: %v"]}
+	 { [err]}
 	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr [installManifests nativeHostDirsFirefox]}
 	 {*ast.BasicLit [STRING "com.coder.sail.json"]}
@@ -165,7 +188,8 @@ function name is Run
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Fatal]}
-	 {*ast.BasicLit [STRING "failed to write firefox manifest files: %v" err]}
+	 {*ast.BasicLit [STRING "failed to write firefox manifest files: %v"]}
+	 { [err]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flog Info]}
 	 {*ast.BasicLit [STRING "Successfully installed manifests."]}
 
@@ -174,14 +198,14 @@ function name is nativeMessageHostManifestDirectoriesChrome
 	 { [nativeMessageHostManifestDirectoriesChrome]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= homeDir err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= homeDir err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [os UserHomeDir]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf]}
-	 {*ast.BasicLit [STRING "failed to get user home dir: %w" err]}
+	 {*ast.BasicLit [STRING "failed to get user home dir: %w"]}
+	 { [err]}
 	 {*ast.GenDecl -> *ast.ValueSpec [chromeDir string]}
 	 {*ast.GenDecl -> *ast.ValueSpec [chromeBetaDir string]}
 	 {*ast.GenDecl -> *ast.ValueSpec [chromeDevDir string]}
@@ -251,21 +275,22 @@ function name is chromeManifest
 		"allowed_origins": [
 			"chrome-extension://deeepphleikpinikcbjplcgojfhkcmna/"
 		]
-	}` binPath]}
+	}`]}
+	 { [binPath]}
 
 
 function name is nativeMessageHostManifestDirectoriesFirefox 
 	 { [nativeMessageHostManifestDirectoriesFirefox]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= homeDir err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= homeDir err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [os UserHomeDir]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf]}
-	 {*ast.BasicLit [STRING "failed to get user home dir: %w" err]}
+	 {*ast.BasicLit [STRING "failed to get user home dir: %w"]}
+	 { [err]}
 	 {*ast.GenDecl -> *ast.ValueSpec [firefoxDir string]}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [runtime GOOS]}
 	 {*ast.BlockStmt []}
@@ -301,7 +326,8 @@ function name is firefoxManifest
 		"allowed_extensions": [
 			"sail@coder.com"
 		]
-	}` binPath]}
+	}`]}
+	 { [binPath]}
 
 
 function name is installManifests 
@@ -311,21 +337,20 @@ function name is installManifests
 	 {*ast.Field [file string]}
 	 {*ast.Field [content string]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= data]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte content]}
 	 {*ast.RangeStmt [_ dir nativeHostDirs]}
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [== dir]}
 	 {*ast.BasicLit [STRING ""]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [os MkdirAll dir]}
 	 {*ast.BasicLit [INT 0755]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf]}
-	 {*ast.BasicLit [STRING "failed to ensure manifest directory exists: %w" err]}
+	 {*ast.BasicLit [STRING "failed to ensure manifest directory exists: %w"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= dst]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [path Join dir file]}
 	 {*ast.AssignStmt [= err]}
@@ -334,7 +359,8 @@ function name is installManifests
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [xerrors Errorf]}
-	 {*ast.BasicLit [STRING "failed to write native messaging host manifest: %w" err]}
+	 {*ast.BasicLit [STRING "failed to write native messaging host manifest: %w"]}
+	 { [err]}
 	 {*ast.ReturnStmt [nil]}
 
 

@@ -1,12 +1,10 @@
 {*ast.File [testutils]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "testing"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/gocql/gocql"]}
-{*ast.BasicLit [STRING "github.com/stretchr/testify/assert"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "testing"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/gocql/gocql"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/stretchr/testify/assert"]}
 {*ast.GenDecl -> *ast.TypeSpec [UDTField]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [Name string]}
 {*ast.Field [Type]}
@@ -16,6 +14,14 @@
 {*ast.Field [Err bool]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [UDTTestCase]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Obj]}
+{*ast.SelectorExpr [gocql UDTMarshaler]}
+{*ast.Field [ObjName string]}
+{*ast.Field [New]}
+{*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [gocql UDTUnmarshaler]}
+{*ast.Field [Fields]}
+{*ast.ArrayType [UDTField]}
 
 
 function name is Run 
@@ -24,8 +30,7 @@ function name is Run
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.BlockStmt -> *ast.RangeStmt [_ ff]}
 	 {*ast.SelectorExpr [testCase Fields]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= field ff]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= field ff]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Run]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.BinaryExpr [+]}
@@ -34,8 +39,7 @@ function name is Run
 	 {*ast.SelectorExpr [field Name]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= nt]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= nt]}
 	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.Field [proto byte]}
 	 {*ast.Field [typ]}
 	 {*ast.SelectorExpr [gocql Type]}

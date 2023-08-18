@@ -2,45 +2,23 @@
 
 
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "net"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "time"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "sync/atomic"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec [log]}
 {*ast.BasicLit [STRING "github.com/sirupsen/logrus"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "github.com/gorilla/websocket"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "container/list"]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [CLIENT_TIMEOUT]}
 {*ast.ParenExpr []}
 {*ast.BinaryExpr [*]}
 {*ast.BasicLit [INT 60]}
 {*ast.BasicLit [INT 6]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [MESSAGE_QUEUE_LIMIT]}
 {*ast.BasicLit [INT 300]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [MESSAGE_QUEUE_BLOCK_LIMIT]}
 {*ast.BasicLit [INT 30]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [Conn]}
 {*ast.InterfaceType [Close SetReadDeadline SetWriteDeadline ReadMessage WriteMessage]}
 {*ast.FieldList -> *ast.Field [Close]}
@@ -62,6 +40,8 @@
 {*ast.FieldList -> *ast.Field [error]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [NetConn]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [net Conn]}
 
 
 function name is ReadMessage 
@@ -140,8 +120,7 @@ function name is Client
 	 {*ast.FieldList -> *ast.Field [client]}
 	 {*ast.StarExpr [Connection Client]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Client]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= p]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer client]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [Client p]}
 
@@ -159,8 +138,7 @@ function name is isSender
 	 {*ast.SelectorExpr [msg cmd MSG_IM]}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [msg cmd MSG_GROUP_IM]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= m]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= m]}
 	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [msg body]}
 	 {*ast.StarExpr [IMMessage]}
 	 {*ast.IfStmt []}
@@ -174,8 +152,7 @@ function name is isSender
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [msg cmd MSG_CUSTOMER_V2]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= m]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= m]}
 	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [msg body]}
 	 {*ast.StarExpr [CustomerMessageV2]}
 	 {*ast.IfStmt []}
@@ -200,8 +177,7 @@ function name is SendGroupMessage
 	 {*ast.StarExpr [Group]}
 	 {*ast.Field [msg]}
 	 {*ast.StarExpr [Message]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= appid]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= appid]}
 	 {*ast.SelectorExpr [client appid]}
 	 {*ast.ExprStmt -> *ast.CallExpr [PublishGroupMessage appid]}
 	 {*ast.SelectorExpr [group gid msg]}
@@ -216,8 +192,7 @@ function name is SendMessage
 	 {*ast.Field [msg]}
 	 {*ast.StarExpr [Message]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= appid]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= appid]}
 	 {*ast.SelectorExpr [client appid]}
 	 {*ast.ExprStmt -> *ast.CallExpr [PublishMessage appid uid msg]}
 	 {*ast.ExprStmt -> *ast.CallExpr [DispatchMessageToPeer msg uid appid]}
@@ -233,8 +208,7 @@ function name is EnqueueNonBlockContinueMessage
 	 {*ast.Field [sub_msg]}
 	 {*ast.StarExpr [Message]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= closed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= closed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.SelectorExpr [client closed]}
@@ -268,8 +242,7 @@ function name is EnqueueNonBlockContinueMessage
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= blocking]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= queue_limit MESSAGE_QUEUE_BLOCK_LIMIT]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= queue_limit MESSAGE_QUEUE_BLOCK_LIMIT]}
 	 {*ast.AssignStmt [:= dropped false]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [client mutex Lock]}
 	 {*ast.IfStmt []}
@@ -319,8 +292,7 @@ function name is EnqueueMessage
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
 	 {*ast.StarExpr [Message]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= closed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= closed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.SelectorExpr [client closed]}
@@ -370,8 +342,7 @@ function name is EnqueueMessages
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msgs]}
 	 {*ast.ArrayType -> *ast.StarExpr [Message]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= closed]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= closed]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadInt32]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.SelectorExpr [client closed]}
@@ -433,8 +404,7 @@ function name is send
 	 {*ast.StarExpr [Connection send]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [m]}
 	 {*ast.StarExpr [Message]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+=]}
 	 {*ast.SelectorExpr [client sequence]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.AssignStmt [:= msg m]}
@@ -442,8 +412,7 @@ function name is send
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [msg version]}
 	 {*ast.SelectorExpr [client version]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= msg]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= msg]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [Message]}
 	 {*ast.KeyValueExpr [cmd]}
@@ -501,7 +470,8 @@ function name is send
 	 {*ast.BasicLit [STRING "send msg:"]}
 	 {*ast.CallExpr [Command]}
 	 {*ast.SelectorExpr [msg cmd]}
-	 {*ast.BasicLit [STRING " tcp err:" err]}
+	 {*ast.BasicLit [STRING " tcp err:"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= r]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [timer Stop]}
 	 {*ast.IfStmt []}

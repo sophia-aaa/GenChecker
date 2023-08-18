@@ -1,0 +1,10 @@
+function name: NewSliceEncoder
+   0.case
+     *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [timeType e timeInstr]
+     *ast.ReturnStmt 	 [e]
+   1.case
+     *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [escapeStringType e stringInstr]
+      	 [ptrEscapeStringToBuf]
+     *ast.ReturnStmt 	 [e]
+
+

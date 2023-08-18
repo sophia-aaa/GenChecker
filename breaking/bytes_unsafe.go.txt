@@ -1,6 +1,10 @@
 {*ast.File [jsonparser]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strconv"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "runtime"]}
 
 
 function name is equalStr 
@@ -40,8 +44,7 @@ function name is StringToBytes
 	 { [StringToBytes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= b]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= b]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.BasicLit [INT 0]}

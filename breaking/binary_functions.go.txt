@@ -1533,6 +1533,5 @@ function name is GetElemDepth
 	 {*ast.BinaryExpr [+ maxDepth]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.CaseClause -> *ast.ReturnStmt -> *ast.BasicLit [INT 1]}
-	 { []}
 
 

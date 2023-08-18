@@ -1,0 +1,9 @@
+function name: streamingFrame
+   0.case
+     *ast.BasicLit -> *ast.ReturnStmt -> *ast.BasicLit 	 [INT 0 STRING "0:0:,"]
+   1.case
+     *ast.BasicLit -> *ast.BasicLit -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 INT 3 fmt Sprintf]
+     *ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "%d:%d:%s," typ utf8str RuneCount]
+      	 [data]
+
+

@@ -1,0 +1,97 @@
+function name: sliceDecoder
+   0.case
+     *ast.SelectorExpr 	 [reflect Int8]
+     *ast.SelectorExpr 	 [reflect Uint8]
+     *ast.SelectorExpr 	 [reflect Int16]
+     *ast.SelectorExpr 	 [reflect Uint16]
+     *ast.SelectorExpr 	 [reflect Int32]
+     *ast.SelectorExpr 	 [reflect Uint32]
+     *ast.SelectorExpr 	 [reflect Int64]
+     *ast.SelectorExpr 	 [reflect Uint64]
+     *ast.ReturnStmt -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr 	 [dec decoder]
+     *ast.Field -> *ast.SelectorExpr 	 [p unsafe Pointer]
+     *ast.FieldList -> *ast.Field 	 [error]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= v reflect NewAt]
+      	 [typ p]
+      	 [Elem]
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Read dec dec order]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [v Interface]
+      	 [nil]
+
+
+function name: arrayDecoder
+   0.case
+     *ast.SelectorExpr 	 [reflect Int8]
+     *ast.SelectorExpr 	 [reflect Uint8]
+     *ast.SelectorExpr 	 [reflect Int16]
+     *ast.SelectorExpr 	 [reflect Uint16]
+     *ast.SelectorExpr 	 [reflect Int32]
+     *ast.SelectorExpr 	 [reflect Uint32]
+     *ast.SelectorExpr 	 [reflect Int64]
+     *ast.SelectorExpr 	 [reflect Uint64]
+     *ast.ReturnStmt -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr 	 [dec decoder]
+     *ast.Field -> *ast.SelectorExpr 	 [p unsafe Pointer]
+     *ast.FieldList -> *ast.Field 	 [error]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= v reflect NewAt]
+      	 [typ p]
+      	 [Elem]
+      	 [Slice]
+     *ast.BasicLit 	 [INT 0 al]
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Read dec dec order]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [v Interface]
+      	 [nil]
+
+
+function name: newDecoder
+   0.case
+     *ast.SelectorExpr 	 [reflect Array]
+     *ast.ReturnStmt -> *ast.CallExpr 	 [arrayDecoder typ]
+   1.case
+     *ast.SelectorExpr 	 [reflect Slice]
+     *ast.ReturnStmt -> *ast.CallExpr 	 [sliceDecoder typ]
+   2.case
+     *ast.SelectorExpr 	 [reflect Struct]
+     *ast.ReturnStmt -> *ast.CallExpr 	 [structDecoder typ]
+   3.case
+     *ast.SelectorExpr 	 [reflect Int8]
+     *ast.SelectorExpr 	 [reflect Uint8]
+     *ast.ReturnStmt 	 [int8Decoder nil]
+   4.case
+     *ast.SelectorExpr 	 [reflect Int16]
+     *ast.SelectorExpr 	 [reflect Uint16]
+     *ast.ReturnStmt 	 [int16Decoder nil]
+   5.case
+     *ast.SelectorExpr 	 [reflect Int32]
+     *ast.SelectorExpr 	 [reflect Uint32]
+     *ast.ReturnStmt 	 [int32Decoder nil]
+   6.case
+     *ast.SelectorExpr 	 [reflect Int64]
+     *ast.SelectorExpr 	 [reflect Uint64]
+     *ast.ReturnStmt 	 [int64Decoder nil]
+   7.case
+     *ast.SelectorExpr 	 [reflect Float32]
+     *ast.ReturnStmt 	 [float32Decoder nil]
+   8.case
+     *ast.SelectorExpr 	 [reflect Float64]
+     *ast.ReturnStmt 	 [float64Decoder nil]
+   9.case
+     *ast.SelectorExpr 	 [reflect Complex64]
+     *ast.ReturnStmt 	 [complex64Decoder nil]
+   10.case
+     *ast.SelectorExpr 	 [reflect Complex128]
+     *ast.ReturnStmt 	 [complex128Decoder nil]
+
+
+function name: valueDecoder
+   0.case
+     *ast.SelectorExpr 	 [reflect Ptr]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [= v d Elem]
+   1.case
+     *ast.SelectorExpr 	 [reflect Slice]
+     *ast.AssignStmt 	 [= v d]
+   2.case
+     *ast.SelectorExpr 	 [reflect Invalid]
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [nil nil errors New]
+     *ast.BasicLit 	 [STRING "can't decode into nil"]
+
+

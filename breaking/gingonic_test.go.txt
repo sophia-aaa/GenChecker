@@ -1,20 +1,3 @@
 {*ast.File [routing_test]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "io/ioutil"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "log"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "net/http"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "net/http/httptest"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "strings"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/gin-gonic/gin"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/manyminds/api2go"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/manyminds/api2go/examples/model"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/manyminds/api2go/examples/resource"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/manyminds/api2go/examples/storage"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/manyminds/api2go/routing" .]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "github.com/onsi/ginkgo" .]}
-{*ast.BasicLit [STRING "github.com/onsi/gomega"]}
-
-

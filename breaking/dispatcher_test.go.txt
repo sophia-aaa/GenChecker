@@ -1,14 +1,21 @@
 {*ast.File [gorpc]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "bytes"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "io"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync/atomic"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "testing"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 
 
 function name is TestDispatcherNewHandlerNoFuncs 
 	 { [TestDispatcherNewHandlerNoFuncs]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d NewHandlerFunc]}
@@ -18,8 +25,7 @@ function name is TestDispatcherNewFuncClientNoFuncs
 	 { [TestDispatcherNewFuncClientNoFuncs]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= c]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= c]}
 	 {*ast.CallExpr [NewTCPClient]}
 	 {*ast.CallExpr [getRandomAddr]}
 	 {*ast.AssignStmt [:= d]}
@@ -32,23 +38,22 @@ function name is TestDispatcherNewServiceClientNoService
 	 { [TestDispatcherNewServiceClientNoService]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= c]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= c]}
 	 {*ast.CallExpr [NewTCPClient]}
 	 {*ast.CallExpr [getRandomAddr]}
 	 {*ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d NewServiceClient]}
-	 {*ast.BasicLit [STRING "foobar" c]}
+	 {*ast.BasicLit [STRING "foobar"]}
+	 { [c]}
 
 
 function name is TestDispatcherAddNonFunc 
 	 { [TestDispatcherAddNonFunc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -60,8 +65,7 @@ function name is TestDispatcherEmptyFuncName
 	 { [TestDispatcherEmptyFuncName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -73,8 +77,7 @@ function name is TestDispatcherInvalidFirstArgType
 	 { [TestDispatcherInvalidFirstArgType]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -88,8 +91,7 @@ function name is TestDispatcherInvalidSecondResType
 	 { [TestDispatcherInvalidSecondResType]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -103,8 +105,7 @@ function name is TestDispatcherTooManyArgs
 	 { [TestDispatcherTooManyArgs]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -118,8 +119,7 @@ function name is TestDispatcherTooManyRes
 	 { [TestDispatcherTooManyRes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -134,8 +134,7 @@ function name is TestDispatcherFuncArg
 	 { [TestDispatcherFuncArg]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -148,8 +147,7 @@ function name is TestDispatcherChanArg
 	 { [TestDispatcherChanArg]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -163,8 +161,7 @@ function name is TestDispatcherInterfaceArg
 	 { [TestDispatcherInterfaceArg]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -183,8 +180,7 @@ function name is TestDispatcherUnsafePointerArg
 	 { [TestDispatcherUnsafePointerArg]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -197,8 +193,7 @@ function name is TestDispatcherFuncRes
 	 { [TestDispatcherFuncRes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -211,8 +206,7 @@ function name is TestDispatcherChanRes
 	 { [TestDispatcherChanRes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -226,8 +220,7 @@ function name is TestDispatcherInterfaceRes
 	 { [TestDispatcherInterfaceRes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -246,8 +239,7 @@ function name is TestDispatcherUnsafePointerRes
 	 { [TestDispatcherUnsafePointerRes]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -278,8 +270,7 @@ function name is TestDispatcherInvalidMap
 	 { [TestDispatcherInvalidMap]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -360,8 +351,7 @@ function name is TestDispatcherMultipleFuncs
 	 { [TestDispatcherMultipleFuncs]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "foo"]}
@@ -376,45 +366,51 @@ function name is TestDispatcherMultipleFuncs
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqa]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqa]}
 	 {*ast.BasicLit [INT 4327]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "foo" reqa]}
+	 {*ast.BasicLit [STRING "foo"]}
+	 { [reqa]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= resa ok]}
 	 {*ast.TypeAssertExpr [res int]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= resa reqa]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: %d. Expected %d" resa reqa]}
+	 {*ast.BasicLit [STRING "Unexpected response: %d. Expected %d"]}
+	 { [resa reqa]}
 	 {*ast.AssignStmt [:= reqb]}
 	 {*ast.BasicLit [STRING "aaa"]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= res err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "bar" reqb]}
+	 {*ast.BasicLit [STRING "bar"]}
+	 { [reqb]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= resb ok]}
 	 {*ast.TypeAssertExpr [res string]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected string" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected string"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= resb reqb]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%s]. Expected [%s]" resb reqb]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%s]. Expected [%s]"]}
+	 { [resb reqb]}
 
 
 function name is TestDispatcherStructsWithIdenticalFields 
@@ -440,40 +436,42 @@ function name is TestDispatcherStructsWithIdenticalFields
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqs]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [Struct1]}
 	 {*ast.KeyValueExpr [A]}
 	 {*ast.BasicLit [INT 12356]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "foo" reqs]}
+	 {*ast.BasicLit [STRING "foo"]}
+	 { [reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unepxected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unepxected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res]}
 	 {*ast.StarExpr [Struct2]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected *Struct2" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected *Struct2"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [ress A]}
 	 {*ast.SelectorExpr [reqs A]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected [%+v]" ress reqs]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected [%+v]"]}
+	 { [ress reqs]}
 
 
 function name is TestDispatcherInvalidArgType 
 	 { [TestDispatcherInvalidArgType]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "foo"]}
@@ -481,8 +479,7 @@ function name is TestDispatcherInvalidArgType
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
 	 {*ast.BasicLit [STRING "foo"]}
 	 {*ast.BasicLit [INT 1234]}
@@ -493,15 +490,15 @@ function name is TestDispatcherInvalidArgType
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Expected nil response. Got %+v" res]}
+	 {*ast.BasicLit [STRING "Expected nil response. Got %+v"]}
+	 { [res]}
 
 
 function name is TestDispatcherUnknownFuncCall 
 	 { [TestDispatcherUnknownFuncCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "foo"]}
@@ -518,8 +515,7 @@ function name is testUnknownFuncs
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
 	 {*ast.BasicLit [STRING "UnknownFunc"]}
 	 {*ast.BasicLit [INT 1234]}
@@ -530,7 +526,8 @@ function name is testUnknownFuncs
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Expected nil response. Got %+v" res]}
+	 {*ast.BasicLit [STRING "Expected nil response. Got %+v"]}
+	 { [res]}
 	 {*ast.AssignStmt [= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc CallTimeout]}
 	 {*ast.BasicLit [STRING "foobar"]}
@@ -543,7 +540,8 @@ function name is testUnknownFuncs
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Expected nil response. Got %+v" res]}
+	 {*ast.BasicLit [STRING "Expected nil response. Got %+v"]}
+	 { [res]}
 	 {*ast.AssignStmt [:= ar err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc CallAsync]}
 	 {*ast.BasicLit [STRING "UnknownFunc"]}
@@ -551,7 +549,8 @@ function name is testUnknownFuncs
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.ExprStmt []}
 	 {*ast.UnaryExpr [<-]}
 	 {*ast.SelectorExpr [ar Done]}
@@ -566,14 +565,14 @@ function name is testUnknownFuncs
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
 	 {*ast.BasicLit [STRING "Expected nil response. Got %+v"]}
 	 {*ast.SelectorExpr [ar Response]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Send]}
 	 {*ast.BasicLit [STRING "FoobarFunc"]}
 	 {*ast.BasicLit [STRING "aaa"]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unepxected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unepxected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= b]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc NewBatch]}
 	 {*ast.AssignStmt [:= br]}
@@ -581,13 +580,14 @@ function name is testUnknownFuncs
 	 {*ast.BasicLit [STRING "UnknownFunc"]}
 	 {*ast.BasicLit [INT 123]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b AddSkipResponse]}
-	 {*ast.BasicLit [STRING "Aaaa" nil]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= err]}
+	 {*ast.BasicLit [STRING "Aaaa"]}
+	 { [nil]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [b Call]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [br Error nil]}
@@ -605,8 +605,7 @@ function name is TestDispatcherEchoFuncCall
 	 { [TestDispatcherEchoFuncCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "Echo"]}
@@ -616,34 +615,35 @@ function name is TestDispatcherEchoFuncCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
 	 {*ast.BasicLit [STRING "Echo"]}
 	 {*ast.BasicLit [STRING "foobar"]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res string]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected string" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected string"]}
+	 { [ress]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress]}
 	 {*ast.BasicLit [STRING "foobar"]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%s]. Expected [foobar]" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%s]. Expected [foobar]"]}
+	 { [ress]}
 
 
 function name is TestDispatcherEchoGobEncoding 
 	 { [TestDispatcherEchoGobEncoding]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "Echo"]}
@@ -654,8 +654,7 @@ function name is TestDispatcherEchoGobEncoding
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tt]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tt]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [time Now]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
@@ -664,14 +663,16 @@ function name is TestDispatcherEchoGobEncoding
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= rest ok]}
 	 {*ast.TypeAssertExpr [res]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [time Time]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T" rest]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T"]}
+	 { [rest]}
 	 {*ast.UnaryExpr [& tt]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
@@ -685,8 +686,7 @@ function name is TestDispatcherEchoEmptyStruct
 	 { [TestDispatcherEchoEmptyStruct]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "Echo"]}
@@ -697,31 +697,33 @@ function name is TestDispatcherEchoEmptyStruct
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= m]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= m]}
 	 {*ast.CompositeLit -> *ast.MapType [string]}
 	 {*ast.StructType -> *ast.FieldList -> *ast.KeyValueExpr -> *ast.BasicLit [STRING "foo"]}
 	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.KeyValueExpr -> *ast.BasicLit [STRING "bar"]}
-	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "Echo" m]}
+	 {*ast.BasicLit [STRING "Echo"]}
+	 { [m]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= resm ok]}
 	 {*ast.TypeAssertExpr [res]}
 	 {*ast.MapType [string]}
 	 {*ast.StructType -> *ast.FieldList -> *ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type %T. Expected %T" resm m]}
+	 {*ast.BasicLit [STRING "Unexpected response type %T. Expected %T"]}
+	 { [resm m]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [!]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual m resm]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%#v]. Expected [%#v]" resm m]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%#v]. Expected [%#v]"]}
+	 { [resm m]}
 
 
 {*ast.GenDecl -> *ast.TypeSpec [sBinaryEnc]}
@@ -735,8 +737,7 @@ function name is MarshalBinary
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= b]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= b]}
 	 {*ast.CallExpr [append b]}
 	 {*ast.CallExpr [byte]}
 	 {*ast.BinaryExpr [>>]}
@@ -764,8 +765,7 @@ function name is UnmarshalBinary
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [s u]}
 	 {*ast.BinaryExpr [|]}
 	 {*ast.BinaryExpr [|]}
@@ -803,8 +803,7 @@ function name is TestDispatcherEchoBinaryEncoding
 	 { [TestDispatcherEchoBinaryEncoding]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "Echo"]}
@@ -815,8 +814,7 @@ function name is TestDispatcherEchoBinaryEncoding
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= s]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= s]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [sBinaryEnc]}
 	 {*ast.KeyValueExpr [u]}
@@ -825,18 +823,21 @@ function name is TestDispatcherEchoBinaryEncoding
 	 {*ast.BasicLit [STRING "foobarbaz"]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "Echo" s]}
+	 {*ast.BasicLit [STRING "Echo"]}
+	 { [s]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res]}
 	 {*ast.StarExpr [sBinaryEnc]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T" ress s]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T"]}
+	 { [ress s]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.StarExpr [ress]}
@@ -879,8 +880,7 @@ function name is TestDispatcherStructArgCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqs]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [RequestArg]}
 	 {*ast.KeyValueExpr [A]}
@@ -889,18 +889,21 @@ function name is TestDispatcherStructArgCall
 	 {*ast.BasicLit [STRING "7822"]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "fooBar" reqs]}
+	 {*ast.BasicLit [STRING "fooBar"]}
+	 { [reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res]}
 	 {*ast.StarExpr [ResponseArg]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected *ResponseArg" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected *ResponseArg"]}
+	 { [ress]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [||]}
 	 {*ast.BinaryExpr [!=]}
@@ -910,7 +913,8 @@ function name is TestDispatcherStructArgCall
 	 {*ast.SelectorExpr [ress D]}
 	 {*ast.SelectorExpr [reqs A]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected &ResponseArg{C:%s, D:%d}" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected &ResponseArg{C:%s, D:%d}"]}
+	 { [ress]}
 	 {*ast.SelectorExpr [reqs B]}
 	 {*ast.SelectorExpr [reqs A]}
 	 {*ast.AssignStmt [=]}
@@ -919,21 +923,21 @@ function name is TestDispatcherStructArgCall
 	 {*ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [reqs B]}
 	 {*ast.BasicLit [STRING "alkjjal"]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= res err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
 	 {*ast.BasicLit [STRING "fooBar"]}
 	 {*ast.StarExpr [reqs]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= ress ok]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= ress ok]}
 	 {*ast.TypeAssertExpr [res]}
 	 {*ast.StarExpr [ResponseArg]}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected *ResponseArg" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected *ResponseArg"]}
+	 { [ress]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [||]}
 	 {*ast.BinaryExpr [||]}
@@ -946,7 +950,8 @@ function name is TestDispatcherStructArgCall
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [ress T tt]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected &ResponseArg{C:%s, D:%d, T:%s}" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected &ResponseArg{C:%s, D:%d, T:%s}"]}
+	 { [ress]}
 	 {*ast.SelectorExpr [reqs B]}
 	 {*ast.SelectorExpr [reqs A tt]}
 
@@ -970,8 +975,7 @@ function name is TestDispatcherRecursiveStructArg
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqs]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [RecMsg]}
 	 {*ast.KeyValueExpr [A]}
@@ -983,18 +987,21 @@ function name is TestDispatcherRecursiveStructArg
 	 {*ast.BasicLit [INT 2]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "foo" reqs]}
+	 {*ast.BasicLit [STRING "foo"]}
+	 { [reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res]}
 	 {*ast.StarExpr [RecMsg]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unepxected response type: %T. Expected *RecMsg" ress]}
+	 {*ast.BasicLit [STRING "Unepxected response type: %T. Expected *RecMsg"]}
+	 { [ress]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [||]}
 	 {*ast.BinaryExpr [!=]}
@@ -1004,15 +1011,15 @@ function name is TestDispatcherRecursiveStructArg
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [ress Rec A]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [reqs Rec A]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unepxected respons: [%+v]. Expected [%+v]" ress reqs]}
+	 {*ast.BasicLit [STRING "Unepxected respons: [%+v]. Expected [%+v]"]}
+	 { [ress reqs]}
 
 
 function name is TestDispatcherMapArgCall 
 	 { [TestDispatcherMapArgCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.GenDecl -> *ast.TypeSpec [MapT]}
 	 {*ast.MapType [string int]}
@@ -1024,8 +1031,7 @@ function name is TestDispatcherMapArgCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqm]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqm]}
 	 {*ast.CompositeLit [MapT]}
 	 {*ast.KeyValueExpr -> *ast.BasicLit [STRING "foo"]}
 	 {*ast.BasicLit [INT 1]}
@@ -1033,17 +1039,20 @@ function name is TestDispatcherMapArgCall
 	 {*ast.BasicLit [INT 42]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "foo" reqm]}
+	 {*ast.BasicLit [STRING "foo"]}
+	 { [reqm]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= resm ok]}
 	 {*ast.TypeAssertExpr [res MapT]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T" res reqm]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T"]}
+	 { [res reqm]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [||]}
 	 {*ast.BinaryExpr [!=]}
@@ -1057,18 +1066,19 @@ function name is TestDispatcherMapArgCall
 	 {*ast.IndexExpr [reqm]}
 	 {*ast.BasicLit [STRING "bar"]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected [%+v]" resm reqm]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected [%+v]"]}
+	 { [resm reqm]}
 
 
 function name is TestDispatcherArrayArgCall 
 	 { [TestDispatcherArrayArgCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.GenDecl -> *ast.TypeSpec [ArrT]}
-	 {*ast.ArrayType -> *ast.BasicLit [INT 3 byte]}
+	 {*ast.ArrayType -> *ast.BasicLit [INT 3]}
+	 { [byte]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "foo"]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [m ArrT]}
@@ -1077,40 +1087,42 @@ function name is TestDispatcherArrayArgCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqm]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqm]}
 	 {*ast.CompositeLit [ArrT]}
 	 {*ast.BasicLit [CHAR 'a']}
 	 {*ast.BasicLit [CHAR 'b']}
 	 {*ast.BasicLit [CHAR 'c']}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "foo" reqm]}
+	 {*ast.BasicLit [STRING "foo"]}
+	 { [reqm]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= resm ok]}
 	 {*ast.TypeAssertExpr [res ArrT]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T" res reqm]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T"]}
+	 { [res reqm]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [!]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Equal]}
 	 {*ast.SliceExpr [resm]}
 	 {*ast.SliceExpr [reqm]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected [%+v]" resm reqm]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected [%+v]"]}
+	 { [resm reqm]}
 
 
 function name is TestDispatcherSliceArgCall 
 	 { [TestDispatcherSliceArgCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "foo"]}
@@ -1121,37 +1133,39 @@ function name is TestDispatcherSliceArgCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqm]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqm]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte]}
 	 {*ast.BasicLit [STRING "foobar"]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "foo" reqm]}
+	 {*ast.BasicLit [STRING "foo"]}
+	 { [reqm]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= resm ok]}
 	 {*ast.TypeAssertExpr [res]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T" res reqm]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected %T"]}
+	 { [res reqm]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [!]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes Equal resm reqm]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected [%+v]" resm reqm]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected [%+v]"]}
+	 { [resm reqm]}
 
 
 function name is TestDispatcherNoArgNoResCall 
 	 { [TestDispatcherNoArgNoResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.AssignStmt [:= noArgNoResCalls]}
 	 {*ast.BasicLit [INT 0]}
@@ -1161,39 +1175,38 @@ function name is TestDispatcherNoArgNoResCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= N]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= N]}
 	 {*ast.BasicLit [INT 10]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
 	 {*ast.BasicLit [STRING "NoArgNoRes"]}
 	 {*ast.BasicLit [STRING "ignoreThis"]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= noArgNoResCalls N]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unepxected number of NoArgNoRes calls: %d. Expected %d" noArgNoResCalls N]}
+	 {*ast.BasicLit [STRING "Unepxected number of NoArgNoRes calls: %d. Expected %d"]}
+	 { [noArgNoResCalls N]}
 
 
 function name is TestDispatcherOneArgNoResCall 
 	 { [TestDispatcherOneArgNoResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.AssignStmt [:= serverS]}
 	 {*ast.BasicLit [INT 0]}
@@ -1202,42 +1215,42 @@ function name is TestDispatcherOneArgNoResCall
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "OneArgNoRes"]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [n int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+= serverS n]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= serverS n]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.BasicLit [INT 10]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "OneArgNoRes" i]}
+	 {*ast.BasicLit [STRING "OneArgNoRes"]}
+	 { [i]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 	 {*ast.AssignStmt [+= clientS i]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= clientS serverS]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unepxected serverS=%d. Expected %d" serverS clientS]}
+	 {*ast.BasicLit [STRING "Unepxected serverS=%d. Expected %d"]}
+	 { [serverS clientS]}
 
 
 function name is TestDispatcherTwoArgNoResCall 
 	 { [TestDispatcherTwoArgNoResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.AssignStmt [:= serverS]}
 	 {*ast.BasicLit [INT 0]}
@@ -1247,42 +1260,42 @@ function name is TestDispatcherTwoArgNoResCall
 	 {*ast.BasicLit [STRING "TwoArgNoRes"]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [clientAddr string]}
 	 {*ast.Field [n int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+= serverS n]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= serverS n]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.BasicLit [INT 10]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "TwoArgNoRes" i]}
+	 {*ast.BasicLit [STRING "TwoArgNoRes"]}
+	 { [i]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 	 {*ast.AssignStmt [+= clientS i]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= clientS serverS]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unepxected serverS=%d. Expected %d" serverS clientS]}
+	 {*ast.BasicLit [STRING "Unepxected serverS=%d. Expected %d"]}
+	 { [serverS clientS]}
 
 
 function name is TestDispatcherNoArgErrorResCall 
 	 { [TestDispatcherNoArgErrorResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.GenDecl -> *ast.ValueSpec [returnErr error]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -1292,26 +1305,28 @@ function name is TestDispatcherNoArgErrorResCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= returnErr nil]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= returnErr nil]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "NoArgErrorRes" nil]}
+	 {*ast.BasicLit [STRING "NoArgErrorRes"]}
+	 { [nil]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 	 {*ast.AssignStmt [= returnErr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
 	 {*ast.BasicLit [STRING "foobar"]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= res err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "NoArgErrorRes" nil]}
+	 {*ast.BasicLit [STRING "NoArgErrorRes"]}
+	 { [nil]}
 	 {*ast.BinaryExpr [== err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
 	 {*ast.BasicLit [STRING "Unexpected nil error"]}
@@ -1320,35 +1335,37 @@ function name is TestDispatcherNoArgErrorResCall
 	 {*ast.CallExpr -> *ast.SelectorExpr [err Error]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [returnErr Error]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]. Expected [%s]" err returnErr]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]. Expected [%s]"]}
+	 { [err returnErr]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 
 
 function name is TestDispatcherOneArgErrorResCall 
 	 { [TestDispatcherOneArgErrorResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "OneArgErrorRes"]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [r string]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
-	 {*ast.BasicLit [STRING "%s" r]}
+	 {*ast.BasicLit [STRING "%s"]}
+	 { [r]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqs]}
 	 {*ast.BasicLit [STRING "foobar"]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "OneArgErrorRes" reqs]}
+	 {*ast.BasicLit [STRING "OneArgErrorRes"]}
+	 { [reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [== err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
@@ -1357,19 +1374,20 @@ function name is TestDispatcherOneArgErrorResCall
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [err Error reqs]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]. Expected [%s]" err reqs]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]. Expected [%s]"]}
+	 { [err reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 
 
 function name is TestDispatcherTwoArgErrorResCall 
 	 { [TestDispatcherTwoArgErrorResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "TwoArgErrorRes"]}
@@ -1377,12 +1395,12 @@ function name is TestDispatcherTwoArgErrorResCall
 	 {*ast.Field [r int]}
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
-	 {*ast.BasicLit [STRING "%d" r]}
+	 {*ast.BasicLit [STRING "%d"]}
+	 { [r]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
 	 {*ast.BasicLit [STRING "TwoArgErrorRes"]}
 	 {*ast.BasicLit [INT 123]}
@@ -1397,19 +1415,20 @@ function name is TestDispatcherTwoArgErrorResCall
 	 {*ast.BasicLit [STRING "%d"]}
 	 {*ast.BasicLit [INT 123]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]. Expected [123]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]. Expected [123]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 
 
 function name is TestDispatcherNoArgOneResCall 
 	 { [TestDispatcherNoArgOneResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "NoArgOneResCall"]}
@@ -1418,33 +1437,35 @@ function name is TestDispatcherNoArgOneResCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "NoArgOneResCall" nil]}
+	 {*ast.BasicLit [STRING "NoArgOneResCall"]}
+	 { [nil]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res string]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected string" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected string"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress]}
 	 {*ast.BasicLit [STRING "foobar"]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response [%s]. Expected [foobar]" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response [%s]. Expected [foobar]"]}
+	 { [ress]}
 
 
 function name is TestDispatcherOneArgOneResCall 
 	 { [TestDispatcherOneArgOneResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "OneArgOneResCall"]}
@@ -1454,34 +1475,36 @@ function name is TestDispatcherOneArgOneResCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqs]}
 	 {*ast.BasicLit [INT 42]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "OneArgOneResCall" reqs]}
+	 {*ast.BasicLit [STRING "OneArgOneResCall"]}
+	 { [reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res int]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress reqs]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response [%d]. Expected [%d]" ress reqs]}
+	 {*ast.BasicLit [STRING "Unexpected response [%d]. Expected [%d]"]}
+	 { [ress reqs]}
 
 
 function name is TestDispatcherOneArgTwoResCall 
 	 { [TestDispatcherOneArgTwoResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "OneArgTwoResCall"]}
@@ -1492,34 +1515,36 @@ function name is TestDispatcherOneArgTwoResCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqs]}
 	 {*ast.BasicLit [INT 442]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "OneArgTwoResCall" reqs]}
+	 {*ast.BasicLit [STRING "OneArgTwoResCall"]}
+	 { [reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res int]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress reqs]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response [%d]. Expected [%d]" ress reqs]}
+	 {*ast.BasicLit [STRING "Unexpected response [%d]. Expected [%d]"]}
+	 { [ress reqs]}
 
 
 function name is TestDispatcherTwoArgOneResCall 
 	 { [TestDispatcherTwoArgOneResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "TwoArgOneResCall"]}
@@ -1530,34 +1555,36 @@ function name is TestDispatcherTwoArgOneResCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqs]}
 	 {*ast.BasicLit [INT 142]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "TwoArgOneResCall" reqs]}
+	 {*ast.BasicLit [STRING "TwoArgOneResCall"]}
+	 { [reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res int]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress reqs]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response [%d]. Expected [%d]" ress reqs]}
+	 {*ast.BasicLit [STRING "Unexpected response [%d]. Expected [%d]"]}
+	 { [ress reqs]}
 
 
 function name is TestDispatcherTwoArgTwoResCall 
 	 { [TestDispatcherTwoArgTwoResCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "TwoArgTwoResCall"]}
@@ -1569,34 +1596,36 @@ function name is TestDispatcherTwoArgTwoResCall
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= reqs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= reqs]}
 	 {*ast.BasicLit [INT 1423]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "TwoArgTwoResCall" reqs]}
+	 {*ast.BasicLit [STRING "TwoArgTwoResCall"]}
+	 { [reqs]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res int]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress reqs]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response [%d]. Expected [%d]" ress reqs]}
+	 {*ast.BasicLit [STRING "Unexpected response [%d]. Expected [%d]"]}
+	 { [ress reqs]}
 
 
 function name is TestDispatcherSend 
 	 { [TestDispatcherSend]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.AssignStmt [:= N]}
 	 {*ast.BasicLit [INT 10]}
@@ -1619,22 +1648,21 @@ function name is TestDispatcherSend
 	 {*ast.CompositeLit -> *ast.StructType -> *ast.FieldList -> *ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Send]}
-	 {*ast.BasicLit [STRING "Sum" i]}
+	 {*ast.BasicLit [STRING "Sum"]}
+	 { [i]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error in Send(): [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error in Send(): [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [+= clientS]}
 	 {*ast.CallExpr [uint32 i]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
@@ -1645,15 +1673,15 @@ function name is TestDispatcherSend
 	 {*ast.CallExpr -> *ast.SelectorExpr [atomic LoadUint32]}
 	 {*ast.UnaryExpr [& serverS clientS]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unepxected serverS=%d. Should be %d" serverS clientS]}
+	 {*ast.BasicLit [STRING "Unepxected serverS=%d. Should be %d"]}
+	 { [serverS clientS]}
 
 
 function name is TestDispatcherSendWrongFunc 
 	 { [TestDispatcherSendWrongFunc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.AssignStmt [:= ch]}
 	 {*ast.CallExpr [make]}
@@ -1666,26 +1694,26 @@ function name is TestDispatcherSendWrongFunc
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Send]}
-	 {*ast.BasicLit [STRING "BarUnknown" i]}
+	 {*ast.BasicLit [STRING "BarUnknown"]}
+	 { [i]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Send]}
 	 {*ast.BasicLit [STRING "Foo"]}
 	 {*ast.BasicLit [INT 10]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.ExprStmt []}
 	 {*ast.UnaryExpr [<- ch]}
 
@@ -1694,8 +1722,7 @@ function name is TestDispatcherCallAsync
 	 { [TestDispatcherCallAsync]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "aaa"]}
@@ -1705,34 +1732,31 @@ function name is TestDispatcherCallAsync
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= N]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= N]}
 	 {*ast.BasicLit [INT 10]}
 	 {*ast.AssignStmt [:= ar]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType -> *ast.StarExpr [AsyncResult N]}
 	 {*ast.GenDecl -> *ast.ValueSpec [err error]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [ar i err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc CallAsync]}
-	 {*ast.BasicLit [STRING "aaa" i]}
+	 {*ast.BasicLit [STRING "aaa"]}
+	 { [i]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error in CallAsync: [%s]" err]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [STRING "Unexpected error in CallAsync: [%s]"]}
+	 { [err]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= r]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= r]}
 	 {*ast.IndexExpr [ar i]}
 	 {*ast.ExprStmt []}
 	 {*ast.UnaryExpr [<-]}
@@ -1753,7 +1777,8 @@ function name is TestDispatcherCallAsync
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress i]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%d]. Expected [%d]" ress i]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%d]. Expected [%d]"]}
+	 { [ress i]}
 
 
 {*ast.GenDecl -> *ast.TypeSpec [testService]}
@@ -1770,8 +1795,7 @@ function name is Add
 	 {*ast.FieldList -> *ast.Field [s]}
 	 {*ast.StarExpr [testService Add]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+=]}
 	 {*ast.SelectorExpr [s state n]}
 
 
@@ -1792,8 +1816,7 @@ function name is TestDispatcherServicePassByValue
 	 { [TestDispatcherServicePassByValue]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
@@ -1805,15 +1828,15 @@ function name is TestDispatcherServiceWithoutName
 	 { [TestDispatcherServiceWithoutName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= service]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= service]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [testService]}
 	 {*ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
-	 {*ast.BasicLit [STRING "" service]}
+	 {*ast.BasicLit [STRING ""]}
+	 { [service]}
 
 
 {*ast.GenDecl -> *ast.TypeSpec [testServiceWithoutMethods]}
@@ -1836,43 +1859,46 @@ function name is TestDispatcherServiceWithoutPublicMethods
 	 { [TestDispatcherServiceWithoutPublicMethods]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= service]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= service]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [testServiceWithoutMethods]}
 	 {*ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testPanic t]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
-	 {*ast.BasicLit [STRING "foobar" service]}
+	 {*ast.BasicLit [STRING "foobar"]}
+	 { [service]}
 
 
 function name is TestDispatcherServiceUnknownService 
 	 { [TestDispatcherServiceUnknownService]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= service]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= service]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [testService]}
 	 {*ast.AssignStmt [:= sd]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sd AddService]}
-	 {*ast.BasicLit [STRING "foobar" service]}
+	 {*ast.BasicLit [STRING "foobar"]}
+	 { [service]}
 	 {*ast.AssignStmt [:= cd]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [cd AddService]}
-	 {*ast.BasicLit [STRING "barbaz" service]}
+	 {*ast.BasicLit [STRING "barbaz"]}
+	 { [service]}
 	 {*ast.AssignStmt [:= c s]}
 	 {*ast.CallExpr [getClientServer t sd]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [s Stop]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Stop]}
 	 {*ast.AssignStmt [:= dc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cd NewServiceClient]}
-	 {*ast.BasicLit [STRING "barbaz" c]}
+	 {*ast.BasicLit [STRING "barbaz"]}
+	 { [c]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "Inc" nil]}
+	 {*ast.BasicLit [STRING "Inc"]}
+	 { [nil]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [== err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
@@ -1880,15 +1906,15 @@ function name is TestDispatcherServiceUnknownService
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected nil" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]. Expected nil"]}
+	 { [res]}
 
 
 function name is TestDispatcherServiceUnknownMethodCall 
 	 { [TestDispatcherServiceUnknownMethodCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
 	 {*ast.BasicLit [STRING "qwerty"]}
@@ -1905,22 +1931,22 @@ function name is TestDispatcherServicePrivateMethodCall
 	 { [TestDispatcherServicePrivateMethodCall]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= service]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= service]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [testService]}
 	 {*ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
-	 {*ast.BasicLit [STRING "qwerty" service]}
+	 {*ast.BasicLit [STRING "qwerty"]}
+	 { [service]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherService t d]}
 	 {*ast.BasicLit [STRING "qwerty"]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "privateFunc" nil]}
+	 {*ast.BasicLit [STRING "privateFunc"]}
+	 { [nil]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [== err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
@@ -1928,38 +1954,40 @@ function name is TestDispatcherServicePrivateMethodCall
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Expected nil response. Got %+v" res]}
+	 {*ast.BasicLit [STRING "Expected nil response. Got %+v"]}
+	 { [res]}
 
 
 function name is TestDispatcherService 
 	 { [TestDispatcherService]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= service]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= service]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [testService]}
 	 {*ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
-	 {*ast.BasicLit [STRING "qwerty" service]}
+	 {*ast.BasicLit [STRING "qwerty"]}
+	 { [service]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherService t d]}
 	 {*ast.BasicLit [STRING "qwerty"]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
 	 {*ast.BasicLit [STRING "Add"]}
 	 {*ast.BasicLit [INT 123]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [service state]}
@@ -1967,17 +1995,19 @@ function name is TestDispatcherService
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
 	 {*ast.BasicLit [STRING "Unexpected service state: %d. Expected 123"]}
 	 {*ast.SelectorExpr [service state]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= res err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "Inc" nil]}
+	 {*ast.BasicLit [STRING "Inc"]}
+	 { [nil]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [service state]}
@@ -1985,24 +2015,27 @@ function name is TestDispatcherService
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
 	 {*ast.BasicLit [STRING "Unexpected service state: %d. Expected 124"]}
 	 {*ast.SelectorExpr [service state]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= res err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
-	 {*ast.BasicLit [STRING "Get" nil]}
+	 {*ast.BasicLit [STRING "Get"]}
+	 { [nil]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res int]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress]}
 	 {*ast.SelectorExpr [service state]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%d]. Expected [%d]" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%d]. Expected [%d]"]}
+	 { [ress]}
 	 {*ast.SelectorExpr [service state]}
 
 
@@ -2010,8 +2043,7 @@ function name is TestDispatcherServiceMultiple
 	 { [TestDispatcherServiceMultiple]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.AssignStmt [:= service1]}
 	 {*ast.UnaryExpr [&]}
@@ -2020,26 +2052,31 @@ function name is TestDispatcherServiceMultiple
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [testService]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
-	 {*ast.BasicLit [STRING "service1" service1]}
+	 {*ast.BasicLit [STRING "service1"]}
+	 { [service1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
-	 {*ast.BasicLit [STRING "service2" service2]}
+	 {*ast.BasicLit [STRING "service2"]}
+	 { [service2]}
 	 {*ast.AssignStmt [:= c s]}
 	 {*ast.CallExpr [getClientServer t d]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [s Stop]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Stop]}
 	 {*ast.AssignStmt [:= dc1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [d NewServiceClient]}
-	 {*ast.BasicLit [STRING "service1" c]}
+	 {*ast.BasicLit [STRING "service1"]}
+	 { [c]}
 	 {*ast.AssignStmt [:= dc2]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [d NewServiceClient]}
-	 {*ast.BasicLit [STRING "service2" c]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= _ err]}
+	 {*ast.BasicLit [STRING "service2"]}
+	 { [c]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc1 Call]}
-	 {*ast.BasicLit [STRING "Inc" nil]}
+	 {*ast.BasicLit [STRING "Inc"]}
+	 { [nil]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [service1 state]}
@@ -2054,14 +2091,14 @@ function name is TestDispatcherServiceMultiple
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
 	 {*ast.BasicLit [STRING "Unexpected service2 state: %d. Expected 0"]}
 	 {*ast.SelectorExpr [service1 state]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= _ err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc2 Call]}
 	 {*ast.BasicLit [STRING "Add"]}
 	 {*ast.BasicLit [INT 42]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [service1 state]}
@@ -2082,8 +2119,7 @@ function name is TestDispatcherBatchSkipResponse
 	 { [TestDispatcherBatchSkipResponse]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.AssignStmt [:= N]}
 	 {*ast.BasicLit [INT 10]}
@@ -2101,16 +2137,15 @@ function name is TestDispatcherBatchSkipResponse
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= b]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= b]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc NewBatch]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [b AddSkipResponse]}
-	 {*ast.BasicLit [STRING "Echo" i]}
+	 {*ast.BasicLit [STRING "Echo"]}
+	 { [i]}
 	 {*ast.AssignStmt [:= r]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [b Add]}
 	 {*ast.BasicLit [STRING "Echo"]}
@@ -2120,12 +2155,12 @@ function name is TestDispatcherBatchSkipResponse
 	 {*ast.SelectorExpr [r Done]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
 	 {*ast.BasicLit [STRING "<-Done must be blocked until DispatcherBatch.Call() is called"]}
-	 {*ast.CommClause -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.CommClause -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [b Call]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Error in DispatcherBatch.Call(): [%s]" err]}
+	 {*ast.BasicLit [STRING "Error in DispatcherBatch.Call(): [%s]"]}
+	 { [err]}
 	 {*ast.SelectStmt -> *ast.BlockStmt -> *ast.CommClause -> *ast.ExprStmt []}
 	 {*ast.UnaryExpr [<-]}
 	 {*ast.SelectorExpr [r Done]}
@@ -2144,8 +2179,7 @@ function name is TestDispatcherBatchSkipResponse
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
 	 {*ast.BasicLit [STRING "Unexpected response returned: %+v. Expected 1234"]}
 	 {*ast.SelectorExpr [r Response]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.BinaryExpr [+ N]}
@@ -2159,8 +2193,7 @@ function name is TestDispatcherBatchMultiFunc
 	 { [TestDispatcherBatchMultiFunc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
 	 {*ast.BasicLit [STRING "Echo"]}
@@ -2174,8 +2207,7 @@ function name is TestDispatcherBatchMultiFunc
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherFunc t d]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= b]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= b]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc NewBatch]}
 	 {*ast.AssignStmt [:= N]}
 	 {*ast.BasicLit [INT 10]}
@@ -2185,20 +2217,20 @@ function name is TestDispatcherBatchMultiFunc
 	 {*ast.AssignStmt [:= f42Result]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType -> *ast.StarExpr [BatchResult N]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [echoResult i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [b Add]}
-	 {*ast.BasicLit [STRING "Echo" i]}
+	 {*ast.BasicLit [STRING "Echo"]}
+	 { [i]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.IndexExpr [f42Result i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [b Add]}
-	 {*ast.BasicLit [STRING "F42" nil]}
+	 {*ast.BasicLit [STRING "F42"]}
+	 { [nil]}
 	 {*ast.SelectStmt -> *ast.BlockStmt -> *ast.CommClause -> *ast.ExprStmt []}
 	 {*ast.UnaryExpr [<-]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr [echoResult i Done]}
@@ -2209,62 +2241,64 @@ function name is TestDispatcherBatchMultiFunc
 	 {*ast.SelectorExpr -> *ast.IndexExpr [f42Result i Done]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
 	 {*ast.BasicLit [STRING "<-Done must be blocked until DispatcherBatch.Call() is called"]}
-	 {*ast.CommClause -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.CommClause -> *ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [b Call]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "error in DispatcherBatch.Call(): [%s]" err]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BasicLit [STRING "error in DispatcherBatch.Call(): [%s]"]}
+	 { [err]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= r]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= r]}
 	 {*ast.IndexExpr [echoResult i]}
 	 {*ast.SelectStmt -> *ast.BlockStmt -> *ast.CommClause -> *ast.ExprStmt []}
 	 {*ast.UnaryExpr [<-]}
 	 {*ast.SelectorExpr [r Done]}
 	 {*ast.CommClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "%d. <-Done must be unblocked after DispatcherBatch.Call()" i]}
+	 {*ast.BasicLit [STRING "%d. <-Done must be unblocked after DispatcherBatch.Call()"]}
+	 { [i]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [r Error nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "%d. Unexpected error in DispatcherBatch result: [%s]" i]}
+	 {*ast.BasicLit [STRING "%d. Unexpected error in DispatcherBatch result: [%s]"]}
+	 { [i]}
 	 {*ast.SelectorExpr [r Error]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [r Response int i]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "%d. Unexpected response in DispatcherBatch result: %+v. Expected %d" i]}
+	 {*ast.BasicLit [STRING "%d. Unexpected response in DispatcherBatch result: %+v. Expected %d"]}
+	 { [i]}
 	 {*ast.SelectorExpr [r Response i]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i N]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= r]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= r]}
 	 {*ast.IndexExpr [f42Result i]}
 	 {*ast.SelectStmt -> *ast.BlockStmt -> *ast.CommClause -> *ast.ExprStmt []}
 	 {*ast.UnaryExpr [<-]}
 	 {*ast.SelectorExpr [r Done]}
 	 {*ast.CommClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "%d. <-Done must be unblocked after DispatcherBatch.Call()" i]}
+	 {*ast.BasicLit [STRING "%d. <-Done must be unblocked after DispatcherBatch.Call()"]}
+	 { [i]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [r Error nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "%d. Unexpected error in DispatcherBatch result: [%s]" i]}
+	 {*ast.BasicLit [STRING "%d. Unexpected error in DispatcherBatch result: [%s]"]}
+	 { [i]}
 	 {*ast.SelectorExpr [r Error]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.TypeAssertExpr -> *ast.SelectorExpr [r Response int]}
 	 {*ast.BasicLit [INT 42]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "%d. Unexpected response in DispatcherBatch result: %+v. Expected 42" i]}
+	 {*ast.BasicLit [STRING "%d. Unexpected response in DispatcherBatch result: %+v. Expected 42"]}
+	 { [i]}
 	 {*ast.SelectorExpr [r Response]}
 
 
@@ -2284,37 +2318,39 @@ function name is TestDispatcherNilService
 	 { [TestDispatcherNilService]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.GenDecl -> *ast.ValueSpec [service]}
 	 {*ast.StarExpr [testNilService]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
-	 {*ast.BasicLit [STRING "nil" service]}
+	 {*ast.BasicLit [STRING "nil"]}
+	 { [service]}
 	 {*ast.ExprStmt -> *ast.CallExpr [testDispatcherService t d]}
 	 {*ast.BasicLit [STRING "nil"]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= res err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dc Call]}
 	 {*ast.BasicLit [STRING "Foo"]}
 	 {*ast.BasicLit [INT 123]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= ress ok]}
 	 {*ast.TypeAssertExpr [res int]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int" res]}
+	 {*ast.BasicLit [STRING "Unexpected response type: %T. Expected int"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= ress]}
 	 {*ast.BasicLit [INT 123]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: %d. Expected %d" ress]}
+	 {*ast.BasicLit [STRING "Unexpected response: %d. Expected %d"]}
+	 { [ress]}
 	 {*ast.BasicLit [INT 123]}
 
 
@@ -2322,14 +2358,14 @@ function name is TestDispatcherFuncAndService
 	 { [TestDispatcherFuncAndService]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= d]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= d]}
 	 {*ast.CallExpr [NewDispatcher]}
 	 {*ast.AssignStmt [:= service]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [testService]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddService]}
-	 {*ast.BasicLit [STRING "foo" service]}
+	 {*ast.BasicLit [STRING "foo"]}
+	 { [service]}
 	 {*ast.AssignStmt [:= barCalls]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [d AddFunc]}
@@ -2343,35 +2379,41 @@ function name is TestDispatcherFuncAndService
 	 {*ast.CallExpr -> *ast.SelectorExpr [d NewFuncClient c]}
 	 {*ast.AssignStmt [:= dcs]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [d NewServiceClient]}
-	 {*ast.BasicLit [STRING "foo" c]}
+	 {*ast.BasicLit [STRING "foo"]}
+	 { [c]}
 	 {*ast.AssignStmt [:= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dcc Call]}
-	 {*ast.BasicLit [STRING "bar" nil]}
+	 {*ast.BasicLit [STRING "bar"]}
+	 { [nil]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= barCalls]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected barCalls=%d. Expected 1" barCalls]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [= res err]}
+	 {*ast.BasicLit [STRING "Unexpected barCalls=%d. Expected 1"]}
+	 { [barCalls]}
+	 {*ast.IfStmt -> *ast.AssignStmt [= res err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [dcs Call]}
 	 {*ast.BasicLit [STRING "Add"]}
 	 {*ast.BasicLit [INT 123]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected error: [%s]" err]}
+	 {*ast.BasicLit [STRING "Unexpected error: [%s]"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= res nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Unexpected response: [%+v]" res]}
+	 {*ast.BasicLit [STRING "Unexpected response: [%+v]"]}
+	 { [res]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [service state]}
@@ -2391,8 +2433,7 @@ function name is testDispatcherService
 	 {*ast.Field [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= c s]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= c s]}
 	 {*ast.CallExpr [getClientServer t d]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [s Stop]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Stop]}
@@ -2410,8 +2451,7 @@ function name is testDispatcherFunc
 	 {*ast.Field [f]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [dc]}
 	 {*ast.StarExpr [DispatcherClient]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= c s]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= c s]}
 	 {*ast.CallExpr [getClientServer t d]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [s Stop]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Stop]}
@@ -2430,18 +2470,17 @@ function name is getClientServer
 	 {*ast.StarExpr [Client]}
 	 {*ast.Field [s]}
 	 {*ast.StarExpr [Server]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= addr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= addr]}
 	 {*ast.BasicLit [STRING "./dispatcher-test.sock"]}
 	 {*ast.AssignStmt [= s]}
 	 {*ast.CallExpr [NewUnixServer addr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [d NewHandlerFunc]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [s Start]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}
-	 {*ast.BasicLit [STRING "Error when starting server: [%s]" err]}
+	 {*ast.BasicLit [STRING "Error when starting server: [%s]"]}
+	 { [err]}
 	 {*ast.AssignStmt [= c]}
 	 {*ast.CallExpr [NewUnixClient addr]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [c Start]}
@@ -2453,8 +2492,7 @@ function name is testPanic
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
 	 {*ast.Field [f]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.DeferStmt -> *ast.CallExpr -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= r]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.DeferStmt -> *ast.CallExpr -> *ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= r]}
 	 {*ast.CallExpr [recover]}
 	 {*ast.BinaryExpr [!= r nil]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Fatalf]}

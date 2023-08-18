@@ -109,7 +109,7 @@ func main() {
 		fmt.Println()
 	}
 
-	patternB2S(filename, modListFunctions, unsafeList)
+	//patternB2S(filename, modListFunctions, unsafeList)
 	// Check Generic Replacement
 	genCheck := checkGenerics(modListFunctions, funcList, typeList)
 	for s := range genCheck {
@@ -281,24 +281,61 @@ func main() {
 			}*/
 			return true
 		}, nil)
-		/* test
-		ast.Inspect(node, func(n ast.Node) bool {
-			switch x := n.(type) {
-			case *ast.GenDecl:
-				for i := range x.Specs {
-					if _, ok := x.Specs[i].(*ast.ImportSpec); ok && strings.EqualFold(x.Specs[i].(*ast.ImportSpec).Name.String(), "\"unsafe\"") {
-						if len(x.Specs) == 1 {
-							x.Specs = []ast.Spec{}
-						} else {
-							x.Specs = append(x.Specs[:i], x.Specs[i+1:]...)
+		/*
+			panic: runtime error: index out of range [19] with length 18
+			length cannot be changed! except usage unsafe pointer. But this tool avoid using unsafe.Pointer, so that I should accept the limit of ast Package and astutil
+				ast.Inspect(node, func(n ast.Node) bool {
+				switch x := n.(type) {
+				case *ast.File:
+					for i := range x.Decls {
+						for _, val := range toResult.nodes {
+							if _, ok := x.Decls[i].(*ast.FuncDecl); ok && strings.EqualFold(x.Decls[i].(*ast.FuncDecl).Name.String(), val.Name.String()) {
+								x.Decls[i] = val
+								//x.Specs[i].(*ast.ImportSpec).Path = &ast.BasicLit{}
+							}
 						}
-						//x.Specs[i].(*ast.ImportSpec).Path = &ast.BasicLit{}
-					}
-				}
+						for _, val := range toResult.funcRemove {
+							if _, ok := x.Decls[i].(*ast.FuncDecl); ok && strings.EqualFold(x.Decls[i].(*ast.FuncDecl).Name.String(), val.funcName) {
+								if len(x.Decls) == 1 {
+									x.Decls = []ast.Decl{}
+								} else {
+									length := len(x.Decls)
+									j := i + 1
+									tmp := x.Decls
+									x.Decls = x.Decls[:i]
+									for ; j < length; j++ {
+										x.Decls = append(x.Decls, tmp[j])
+									}
 
-			}
-			return true
-		}) */
+								}
+								//x.Specs[i].(*ast.ImportSpec).Path = &ast.BasicLit{}
+							}
+
+						}
+
+					}
+
+				}
+				return true
+			})
+
+			ast.Inspect(node, func(n ast.Node) bool {
+				switch x := n.(type) {
+				case *ast.GenDecl:
+					for i := range x.Specs {
+						if _, ok := x.Specs[i].(*ast.ImportSpec); ok && strings.EqualFold(x.Specs[i].(*ast.ImportSpec).Name.String(), "\"unsafe\"") {
+							if len(x.Specs) == 1 {
+								x.Specs = []ast.Spec{}
+							} else {
+								x.Specs = append(x.Specs[:i], x.Specs[i+1:]...)
+							}
+							//x.Specs[i].(*ast.ImportSpec).Path = &ast.BasicLit{}
+						}
+					}
+
+				}
+				return true
+			})*/
 
 		newName := filename[0:len(filename)-3] + "_replaced.go"
 

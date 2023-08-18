@@ -5,7 +5,6 @@
 package index
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -13,7 +12,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/hound-search/hound/codesearch/sparse"
+	"github.com/google/codesearch/sparse"
 )
 
 // Index writing.  See read.go for details of on-disk format.
@@ -50,7 +49,6 @@ type IndexWriter struct {
 
 	post      []postEntry // list of (trigram, file#) pairs
 	postFile  []*os.File  // flushed post entries
-	postData  [][]byte    // mmap buffers to be unmapped
 	postIndex *bufWriter  // temp file holding posting list index
 
 	inbuf []byte     // input buffer
@@ -90,15 +88,12 @@ func makePostEntry(trigram, fileid uint32) postEntry {
 // Tuning constants for detecting text files.
 // A file is assumed not to be text files (and thus not indexed)
 // if it contains an invalid UTF-8 sequences, if it is longer than maxFileLength
-// bytes, if it contains more than maxLongLineRatio lines longer than maxLineLen bytes,
-// or if it contains more than maxTextTrigrams distinct trigrams AND
-// it has a ratio of trigrams to filesize > maxTrigramRatio.
+// bytes, if it contains a line longer than maxLineLen bytes,
+// or if it contains more than maxTextTrigrams distinct trigrams.
 const (
-	maxFileLen       = 1 << 25
-	maxLineLen       = 2000
-	maxLongLineRatio = 0.1
-	maxTextTrigrams  = 20000
-	maxTrigramRatio  = 0.1
+	maxFileLen      = 1 << 30
+	maxLineLen      = 2000
+	maxTextTrigrams = 20000
 )
 
 // AddPaths adds the given paths to the index's list of paths.
@@ -120,20 +115,16 @@ func (ix *IndexWriter) AddFile(name string) {
 
 // Add adds the file f to the index under the given name.
 // It logs errors using package log.
-func (ix *IndexWriter) Add(name string, f io.Reader) string {
+func (ix *IndexWriter) Add(name string, f io.Reader) {
 	ix.trigram.Reset()
 	var (
-		c          = byte(0)
-		i          = 0
-		buf        = ix.inbuf[:0]
-		tv         = uint32(0)
-		n          = int64(0)
-		linelen    = 0
-		numLines   = 0
-		longLines  = 0
-		skipReason = ""
+		c       = byte(0)
+		i       = 0
+		buf     = ix.inbuf[:0]
+		tv      = uint32(0)
+		n       = int64(0)
+		linelen = 0
 	)
-
 	for {
 		tv = (tv << 8) & (1<<24 - 1)
 		if i >= len(buf) {
@@ -144,10 +135,10 @@ func (ix *IndexWriter) Add(name string, f io.Reader) string {
 						break
 					}
 					log.Printf("%s: %v\n", name, err)
-					return ""
+					return
 				}
 				log.Printf("%s: 0-length read\n", name)
-				return ""
+				return
 			}
 			buf = buf[:n]
 			i = 0
@@ -159,49 +150,33 @@ func (ix *IndexWriter) Add(name string, f io.Reader) string {
 			ix.trigram.Add(tv)
 		}
 		if !validUTF8((tv>>8)&0xFF, tv&0xFF) {
-			skipReason = "Invalid UTF-8"
 			if ix.LogSkip {
-				log.Printf("%s: %s\n", name, skipReason)
+				log.Printf("%s: invalid UTF-8, ignoring\n", name)
 			}
-			return skipReason
+			return
 		}
 		if n > maxFileLen {
-			skipReason = "Too long"
 			if ix.LogSkip {
-				log.Printf("%s: %s\n", name, skipReason)
+				log.Printf("%s: too long, ignoring\n", name)
 			}
-			return skipReason
+			return
 		}
-		linelen++
-		if c == '\n' {
-			numLines++
-			if linelen > maxLineLen {
-				longLines++
+		if linelen++; linelen > maxLineLen {
+			if ix.LogSkip {
+				log.Printf("%s: very long lines, ignoring\n", name)
 			}
+			return
+		}
+		if c == '\n' {
 			linelen = 0
 		}
 	}
-
-	if n > 0 {
-		trigramRatio := float32(ix.trigram.Len()) / float32(n)
-		if trigramRatio > maxTrigramRatio && ix.trigram.Len() > maxTextTrigrams {
-			skipReason = fmt.Sprintf("Trigram ratio too high (%0.2f), probably not text", trigramRatio)
-			if ix.LogSkip {
-				log.Printf("%s: %s\n", name, skipReason)
-			}
-			return skipReason
+	if ix.trigram.Len() > maxTextTrigrams {
+		if ix.LogSkip {
+			log.Printf("%s: too many trigrams, probably not text, ignoring\n", name)
 		}
-
-		longLineRatio := float32(longLines) / float32(numLines)
-		if longLineRatio > maxLongLineRatio {
-			skipReason = fmt.Sprintf("Too many long lines, ratio: %0.2f", longLineRatio)
-			if ix.LogSkip {
-				log.Printf("%s: %s\n", name, skipReason)
-			}
-			return skipReason
-		}
+		return
 	}
-
 	ix.totalBytes += n
 
 	if ix.Verbose {
@@ -215,8 +190,6 @@ func (ix *IndexWriter) Add(name string, f io.Reader) string {
 		}
 		ix.post = append(ix.post, makePostEntry(trigram, fileid))
 	}
-
-	return ""
 }
 
 // Flush flushes the index entry to the target file.
@@ -245,11 +218,7 @@ func (ix *IndexWriter) Flush() {
 	ix.main.writeString(trailerMagic)
 
 	os.Remove(ix.nameData.name)
-	for _, d := range ix.postData {
-		unmmap(d)
-	}
 	for _, f := range ix.postFile {
-		f.Close()
 		os.Remove(f.Name())
 	}
 	os.Remove(ix.nameIndex.name)
@@ -258,10 +227,6 @@ func (ix *IndexWriter) Flush() {
 	log.Printf("%d data bytes, %d index bytes", ix.totalBytes, ix.main.offset())
 
 	ix.main.flush()
-}
-
-func (ix *IndexWriter) Close() {
-	ix.main.file.Close()
 }
 
 func copyFile(dst, src *bufWriter) {
@@ -321,9 +286,7 @@ func (ix *IndexWriter) mergePost(out *bufWriter) {
 
 	log.Printf("merge %d files + mem", len(ix.postFile))
 	for _, f := range ix.postFile {
-		ix.postData = append(
-			ix.postData,
-			h.addFile(f))
+		h.addFile(f)
 	}
 	sortPost(ix.post)
 	h.addMem(ix.post)
@@ -375,11 +338,10 @@ type postHeap struct {
 	ch []*postChunk
 }
 
-func (h *postHeap) addFile(f *os.File) []byte {
+func (h *postHeap) addFile(f *os.File) {
 	data := mmapFile(f).d
 	m := (*[npost]postEntry)(unsafe.Pointer(&data[0]))[:len(data)/8]
 	h.addMem(m)
-	return data
 }
 
 func (h *postHeap) addMem(x []postEntry) {
@@ -637,16 +599,13 @@ func validUTF8(c1, c2 uint32) bool {
 // 24 bits to sort.  Run two rounds of 12-bit radix sort.
 const sortK = 12
 
-// TODO(knorton): sortTmp and sortN were previously static state
-// presumably to avoid allocations of the large buffers. Sadly,
-// this makes it impossible for us to run concurrent indexers.
-// I have moved them into local allocations but if we really do
-// need to share a buffer, they can easily go into a reusable
-// object, similar to the way buffers are reused in grepper.
-func sortPost(post []postEntry) {
-	var sortN [1 << sortK]int
+var sortTmp []postEntry
+var sortN [1 << sortK]int
 
-	sortTmp := make([]postEntry, len(post))
+func sortPost(post []postEntry) {
+	if len(post) > len(sortTmp) {
+		sortTmp = make([]postEntry, len(post))
+	}
 	tmp := sortTmp[:len(post)]
 
 	const k = sortK

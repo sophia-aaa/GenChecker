@@ -2,20 +2,10 @@
 
 
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "C"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "errors"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
-
-
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "runtime"]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [workerTableIndex int]}
 
 
@@ -43,8 +33,6 @@
 
 {*ast.GenDecl -> *ast.ValueSpec [workerTableNextAvailable workerTableIndex]}
 {*ast.BasicLit [INT 0]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [ReceiveMessageCallback]}
 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
 {*ast.ArrayType [byte]}
@@ -67,6 +55,9 @@
 {*ast.Field [tableIndex workerTableIndex]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [Worker]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [worker]}
+{*ast.Field [disposed bool]}
 
 
 function name is Version 
@@ -81,11 +72,11 @@ function name is SetFlags
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [args]}
 	 {*ast.ArrayType [string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [string]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= args]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= args]}
 	 {*ast.CallExpr [append]}
 	 {*ast.CompositeLit -> *ast.ArrayType [string]}
-	 {*ast.BasicLit [STRING "dummy" args]}
+	 {*ast.BasicLit [STRING "dummy"]}
+	 { [args]}
 	 {*ast.AssignStmt [:= ptrSize]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
@@ -101,14 +92,12 @@ function name is SetFlags
 	 {*ast.AssignStmt [:= a]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.BasicLit [INT 10000]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [C char argv]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [len args]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= cstr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cstr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString]}
 	 {*ast.IndexExpr [args i]}
@@ -130,14 +119,12 @@ function name is SetFlags
 	 {*ast.AssignStmt [:= out]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [string argc]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [int argc]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [out i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString]}
 	 {*ast.IndexExpr [a i]}
@@ -168,8 +155,7 @@ function name is recvCb
 	 {*ast.SelectorExpr [C int]}
 	 {*ast.Field [index workerTableIndex]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C buf]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= gbuf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= gbuf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C GoBytes buf buflen]}
 	 {*ast.AssignStmt [:= w]}
 	 {*ast.CallExpr [workerTableLookup index]}
@@ -177,8 +163,7 @@ function name is recvCb
 	 {*ast.CallExpr -> *ast.SelectorExpr [w cb gbuf]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= retbuf nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= retbufptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= retbufptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CBytes retbuf]}
 	 {*ast.ReturnStmt -> *ast.CompositeLit -> *ast.SelectorExpr [C buf retbufptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t]}
@@ -195,8 +180,7 @@ function name is ResolveModule
 	 {*ast.StarExpr -> *ast.SelectorExpr [C char]}
 	 {*ast.Field [resolverToken int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [C int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= moduleName]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= moduleName]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString moduleSpecifier]}
 	 {*ast.AssignStmt [:= referrerName]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString referrerSpecifier]}
@@ -271,8 +255,7 @@ function name is Load
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [scriptName string]}
 	 {*ast.Field [code string]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= scriptName_s]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= scriptName_s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString scriptName]}
 	 {*ast.AssignStmt [:= code_s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString code]}
@@ -286,8 +269,7 @@ function name is Load
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= r]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= errStr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= errStr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_last_exception]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker]}
@@ -302,8 +284,7 @@ function name is LoadModule
 	 {*ast.Field [code string]}
 	 {*ast.Field [resolve ModuleResolverCallback]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= scriptName_s]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= scriptName_s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString scriptName]}
 	 {*ast.AssignStmt [:= code_s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString code]}
@@ -328,8 +309,7 @@ function name is LoadModule
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= r]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= errStr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= errStr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_last_exception]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker]}
@@ -343,8 +323,7 @@ function name is SendBytes
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= msg_p]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= msg_p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CBytes msg]}
 	 {*ast.AssignStmt [:= r]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_send_bytes]}
@@ -354,8 +333,7 @@ function name is SendBytes
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= r]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= errStr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= errStr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C GoString]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C worker_last_exception]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [w worker cWorker]}

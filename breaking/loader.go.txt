@@ -1,6 +1,18 @@
 {*ast.File [main]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "cmd/objfile/goobj"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "flag"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "net/http"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "os"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "runtime"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strings"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/dearplain/goloader"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/kr/pretty"]}
 
 
 function name is mustOK 
@@ -30,8 +42,7 @@ function name is Set
 	 {*ast.StarExpr [arrayFlags Set]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [value string]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= s]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= s]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [strings Split value]}
 	 {*ast.BasicLit [STRING ":"]}
 	 {*ast.AssignStmt [=]}
@@ -45,8 +56,7 @@ function name is Set
 	 {*ast.BinaryExpr [>]}
 	 {*ast.CallExpr [len s]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= path]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= path]}
 	 {*ast.IndexExpr [s]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.AssignStmt [=]}
@@ -95,8 +105,7 @@ function name is main
 	 {*ast.SelectorExpr [files File]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flag PrintDefaults]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= symPtr]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= symPtr]}
 	 {*ast.CallExpr [make]}
 	 {*ast.MapType [string uintptr]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [goloader RegSymbol symPtr]}
@@ -137,19 +146,18 @@ function name is main
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Println err]}
 	 {*ast.GenDecl -> *ast.ValueSpec [mmapByte]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.StarExpr [times]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= codeModule err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= codeModule err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [goloader Load reloc symPtr]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Println]}
-	 {*ast.BasicLit [STRING "Load error:" err]}
+	 {*ast.BasicLit [STRING "Load error:"]}
+	 { [err]}
 	 {*ast.AssignStmt [:= runFuncPtr]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [codeModule Syms]}
 	 {*ast.StarExpr [run]}
@@ -164,8 +172,7 @@ function name is main
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [codeModule Unload]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [== mmapByte nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= mmapByte err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= mmapByte err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [goloader Mmap]}
 	 {*ast.BasicLit [INT 1024]}
 	 {*ast.IfStmt []}
@@ -189,20 +196,20 @@ function name is parse
 	 {*ast.StarExpr [file]}
 	 {*ast.BasicLit [STRING ""]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [flag PrintDefaults]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= f err]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= f err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [os Open]}
 	 {*ast.StarExpr [file]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Printf]}
-	 {*ast.BasicLit [STRING "%# v\n" err]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= obj err]}
+	 {*ast.BasicLit [STRING "%# v\n"]}
+	 { [err]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= obj err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [goobj Parse f]}
 	 {*ast.StarExpr [pkgpath]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [pretty Printf]}
-	 {*ast.BasicLit [STRING "%# v\n" obj]}
+	 {*ast.BasicLit [STRING "%# v\n"]}
+	 { [obj]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [f Close]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}

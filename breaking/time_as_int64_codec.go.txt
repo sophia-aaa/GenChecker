@@ -1,6 +1,9 @@
 {*ast.File [extra]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "github.com/json-iterator/go"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 
 
 function name is RegisterTimeAsInt64Codec 
@@ -28,15 +31,15 @@ function name is Decode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= nanoseconds]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= nanoseconds]}
 	 {*ast.BinaryExpr [*]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [codec precision Nanoseconds]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [time Unix]}
-	 {*ast.BasicLit [INT 0 nanoseconds]}
+	 {*ast.BasicLit [INT 0]}
+	 { [nanoseconds]}
 
 
 function name is IsEmpty 
@@ -44,8 +47,7 @@ function name is IsEmpty
 	 {*ast.StarExpr [timeAsInt64Codec IsEmpty]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ts]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ts]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time ptr]}
 	 {*ast.ReturnStmt []}
 	 {*ast.BinaryExpr [==]}
@@ -59,8 +61,7 @@ function name is Encode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [stream]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Stream]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ts]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ts]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [time Time ptr]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [stream WriteInt64]}
 	 {*ast.BinaryExpr [/]}

@@ -1,27 +1,27 @@
 {*ast.File [regexp]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "strconv"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "sync"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strconv"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.ValueSpec [keyBuilderPool]}
 {*ast.CompositeLit -> *ast.SelectorExpr [sync Pool]}
 {*ast.KeyValueExpr [New]}
-{*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field*ast.InterfaceType []}
+{*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.InterfaceType []}
 {*ast.FieldList -> *ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [new keyBuilder]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [keyBuilder]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [buf]}
+{*ast.ArrayType [byte]}
 
 
 function name is Reset 
 	 {*ast.FieldList -> *ast.Field [kb]}
 	 {*ast.StarExpr [keyBuilder Reset]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [keyBuilder]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [kb buf]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [kb buf]}
 	 {*ast.BasicLit [INT 0]}
@@ -53,8 +53,7 @@ function name is Write
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [kb buf]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [kb buf p]}
@@ -66,8 +65,7 @@ function name is AppendString
 	 {*ast.StarExpr [keyBuilder AppendString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [keyBuilder]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [kb buf]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [kb buf s]}
@@ -80,8 +78,7 @@ function name is AppendBytes
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [keyBuilder]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [kb buf]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [kb buf b]}
@@ -93,7 +90,7 @@ function name is Appendf
 	 {*ast.StarExpr [keyBuilder Appendf]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [format string]}
 	 {*ast.Field [a]}
-	 {*ast.Ellipsis*ast.InterfaceType []}
+	 {*ast.Ellipsis -> *ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [keyBuilder]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Fprintf kb format a]}
 	 {*ast.ReturnStmt [kb]}
@@ -104,8 +101,7 @@ function name is AppendInt
 	 {*ast.StarExpr [keyBuilder AppendInt]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [keyBuilder]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [kb buf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [strconv AppendInt]}
 	 {*ast.SelectorExpr [kb buf]}

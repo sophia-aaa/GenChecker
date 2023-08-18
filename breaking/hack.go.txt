@@ -1,24 +1,26 @@
 {*ast.File [hack]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.TypeSpec [StringArena]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [buf]}
+{*ast.ArrayType [byte]}
+{*ast.Field [str string]}
 
 
 function name is NewStringArena 
 	 { [NewStringArena]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [size int]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr [StringArena]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= sa]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= sa]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [StringArena]}
 	 {*ast.KeyValueExpr [buf]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BasicLit [INT 0 size]}
+	 {*ast.BasicLit [INT 0]}
+	 { [size]}
 	 {*ast.AssignStmt [:= pbytes]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect SliceHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
@@ -113,8 +115,7 @@ function name is StringPointer
 	 { [StringPointer]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= pstring]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= pstring]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect StringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [& s]}

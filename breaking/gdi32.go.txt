@@ -1,11 +1,9 @@
 {*ast.File [win]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "syscall"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.BasicLit [STRING "golang.org/x/sys/windows"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "syscall"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "golang.org/x/sys/windows"]}
 {*ast.GenDecl -> *ast.ValueSpec [DRIVERVERSION]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [TECHNOLOGY]}
@@ -86,8 +84,6 @@
 {*ast.BasicLit [INT 32]}
 {*ast.ValueSpec [TEXTCAPS]}
 {*ast.BasicLit [INT 34]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DT_PLOTTER]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [DT_RASDISPLAY]}
@@ -102,8 +98,6 @@
 {*ast.BasicLit [INT 5]}
 {*ast.ValueSpec [DT_DISPFILE]}
 {*ast.BasicLit [INT 6]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [SB_NONE]}
 {*ast.BasicLit [INT 0x00]}
 {*ast.ValueSpec [SB_CONST_ALPHA]}
@@ -116,8 +110,6 @@
 {*ast.BasicLit [INT 0x10]}
 {*ast.ValueSpec [SB_GRAD_TRI]}
 {*ast.BasicLit [INT 0x20]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [CM_NONE]}
 {*ast.BasicLit [INT 0x00]}
 {*ast.ValueSpec [CM_DEVICE_ICM]}
@@ -126,8 +118,6 @@
 {*ast.BasicLit [INT 0x02]}
 {*ast.ValueSpec [CM_CMYK_COLOR]}
 {*ast.BasicLit [INT 0x04]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [RC_BANDING]}
 {*ast.BasicLit [INT 2]}
 {*ast.ValueSpec [RC_BITBLT]}
@@ -154,8 +144,6 @@
 {*ast.BasicLit [INT 0x8000]}
 {*ast.ValueSpec [RC_OP_DX_OUTPUT]}
 {*ast.BasicLit [INT 0x4000]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [CC_NONE]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [CC_CIRCLES]}
@@ -176,8 +164,6 @@
 {*ast.BasicLit [INT 128]}
 {*ast.ValueSpec [CC_ROUNDRECT]}
 {*ast.BasicLit [INT 256]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [LC_NONE]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [LC_POLYLINE]}
@@ -194,8 +180,6 @@
 {*ast.BasicLit [INT 64]}
 {*ast.ValueSpec [LC_INTERIORS]}
 {*ast.BasicLit [INT 128]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [PC_NONE]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [PC_POLYGON]}
@@ -220,8 +204,6 @@
 {*ast.BasicLit [INT 64]}
 {*ast.ValueSpec [PC_INTERIORS]}
 {*ast.BasicLit [INT 128]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [TC_OP_CHARACTER]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [TC_OP_STROKE]}
@@ -256,8 +238,6 @@
 {*ast.BasicLit [INT 32768]}
 {*ast.ValueSpec [TC_SCROLLBLT]}
 {*ast.BasicLit [INT 65536]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [BS_SOLID]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [BS_NULL]}
@@ -279,8 +259,6 @@
 {*ast.BasicLit [INT 8]}
 {*ast.ValueSpec [BS_MONOPATTERN]}
 {*ast.BasicLit [INT 9]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [HS_HORIZONTAL]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [HS_VERTICAL]}
@@ -293,16 +271,12 @@
 {*ast.BasicLit [INT 4]}
 {*ast.ValueSpec [HS_DIAGCROSS]}
 {*ast.BasicLit [INT 5]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [PS_COSMETIC]}
 {*ast.BasicLit [INT 0x00000000]}
 {*ast.ValueSpec [PS_GEOMETRIC]}
 {*ast.BasicLit [INT 0x00010000]}
 {*ast.ValueSpec [PS_TYPE_MASK]}
 {*ast.BasicLit [INT 0x000F0000]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [PS_SOLID]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [PS_DASH]}
@@ -323,8 +297,6 @@
 {*ast.BasicLit [INT 8]}
 {*ast.ValueSpec [PS_STYLE_MASK]}
 {*ast.BasicLit [INT 0x0000000F]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [PS_ENDCAP_ROUND]}
 {*ast.BasicLit [INT 0x00000000]}
 {*ast.ValueSpec [PS_ENDCAP_SQUARE]}
@@ -333,8 +305,6 @@
 {*ast.BasicLit [INT 0x00000200]}
 {*ast.ValueSpec [PS_ENDCAP_MASK]}
 {*ast.BasicLit [INT 0x00000F00]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [PS_JOIN_ROUND]}
 {*ast.BasicLit [INT 0x00000000]}
 {*ast.ValueSpec [PS_JOIN_BEVEL]}
@@ -343,8 +313,6 @@
 {*ast.BasicLit [INT 0x00002000]}
 {*ast.ValueSpec [PS_JOIN_MASK]}
 {*ast.BasicLit [INT 0x0000F000]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [PRF_NONCLIENT]}
 {*ast.BasicLit [INT 0x00000002]}
 {*ast.ValueSpec [PRF_CLIENT]}
@@ -355,8 +323,6 @@
 {*ast.BasicLit [INT 0x00000010]}
 {*ast.ValueSpec [PRF_OWNED]}
 {*ast.BasicLit [INT 0x00000020]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [WHITE_BRUSH]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [LTGRAY_BRUSH]}
@@ -396,12 +362,8 @@
 {*ast.BasicLit [INT 18]}
 {*ast.ValueSpec [DC_PEN]}
 {*ast.BasicLit [INT 19]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [LF_FACESIZE]}
 {*ast.BasicLit [INT 32]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [FW_DONTCARE]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [FW_THIN]}
@@ -470,8 +432,6 @@
 {*ast.BasicLit [INT 163]}
 {*ast.ValueSpec [MAC_CHARSET]}
 {*ast.BasicLit [INT 77]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [OUT_DEFAULT_PRECIS]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [OUT_STRING_PRECIS]}
@@ -492,8 +452,6 @@
 {*ast.BasicLit [INT 8]}
 {*ast.ValueSpec [OUT_PS_ONLY_PRECIS]}
 {*ast.BasicLit [INT 10]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [CLIP_DEFAULT_PRECIS]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [CLIP_CHARACTER_PRECIS]}
@@ -508,8 +466,6 @@
 {*ast.BasicLit [INT 32]}
 {*ast.ValueSpec [CLIP_EMBEDDED]}
 {*ast.BasicLit [INT 128]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DEFAULT_QUALITY]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [DRAFT_QUALITY]}
@@ -522,16 +478,12 @@
 {*ast.BasicLit [INT 4]}
 {*ast.ValueSpec [CLEARTYPE_QUALITY]}
 {*ast.BasicLit [INT 5]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DEFAULT_PITCH]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [FIXED_PITCH]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [VARIABLE_PITCH]}
 {*ast.BasicLit [INT 2]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [FF_DECORATIVE]}
 {*ast.BasicLit [INT 80]}
 {*ast.ValueSpec [FF_DONTCARE]}
@@ -544,8 +496,6 @@
 {*ast.BasicLit [INT 64]}
 {*ast.ValueSpec [FF_SWISS]}
 {*ast.BasicLit [INT 32]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DC_FIELDS]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [DC_PAPERS]}
@@ -616,14 +566,10 @@
 {*ast.BasicLit [INT 34]}
 {*ast.ValueSpec [DC_MEDIATYPES]}
 {*ast.BasicLit [INT 35]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [CCHDEVICENAME]}
 {*ast.BasicLit [INT 32]}
 {*ast.ValueSpec [CCHFORMNAME]}
 {*ast.BasicLit [INT 32]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DM_UPDATE]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [DM_COPY]}
@@ -698,14 +644,10 @@
 {*ast.BasicLit [INT 0x10000000]}
 {*ast.ValueSpec [DM_DISPLAYFIXEDOUTPUT]}
 {*ast.BasicLit [INT 0x20000000]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DMORIENT_PORTRAIT]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [DMORIENT_LANDSCAPE]}
 {*ast.BasicLit [INT 2]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DMPAPER_FIRST DMPAPER_LETTER]}
 {*ast.ValueSpec [DMPAPER_LETTER]}
 {*ast.BasicLit [INT 1]}
@@ -946,8 +888,6 @@
 {*ast.ValueSpec [DMPAPER_LAST DMPAPER_PENV_10_ROTATED]}
 {*ast.ValueSpec [DMPAPER_USER]}
 {*ast.BasicLit [INT 256]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DMBIN_FIRST DMBIN_UPPER]}
 {*ast.ValueSpec [DMBIN_UPPER]}
 {*ast.BasicLit [INT 1]}
@@ -980,8 +920,6 @@
 {*ast.ValueSpec [DMBIN_LAST DMBIN_FORMSOURCE]}
 {*ast.ValueSpec [DMBIN_USER]}
 {*ast.BasicLit [INT 256]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DMRES_DRAFT]}
 {*ast.UnaryExpr [-]}
 {*ast.BasicLit [INT 1]}
@@ -994,22 +932,16 @@
 {*ast.ValueSpec [DMRES_HIGH]}
 {*ast.UnaryExpr [-]}
 {*ast.BasicLit [INT 4]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DMCOLOR_MONOCHROME]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [DMCOLOR_COLOR]}
 {*ast.BasicLit [INT 2]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DMDUP_SIMPLEX]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [DMDUP_VERTICAL]}
 {*ast.BasicLit [INT 2]}
 {*ast.ValueSpec [DMDUP_HORIZONTAL]}
 {*ast.BasicLit [INT 3]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DMTT_BITMAP]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [DMTT_DOWNLOAD]}
@@ -1018,20 +950,14 @@
 {*ast.BasicLit [INT 3]}
 {*ast.ValueSpec [DMTT_DOWNLOAD_OUTLINE]}
 {*ast.BasicLit [INT 4]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DMCOLLATE_FALSE]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [DMCOLLATE_TRUE]}
 {*ast.BasicLit [INT 1]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [TRANSPARENT]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [OPAQUE]}
 {*ast.BasicLit [INT 2]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [SRCCOPY]}
 {*ast.BasicLit [INT 0x00CC0020]}
 {*ast.ValueSpec [SRCPAINT]}
@@ -1066,8 +992,6 @@
 {*ast.BasicLit [INT 0x80000000]}
 {*ast.ValueSpec [CAPTUREBLT]}
 {*ast.BasicLit [INT 0x40000000]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [BLACKONWHITE]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [WHITEONBLACK]}
@@ -1096,25 +1020,17 @@
 {*ast.BasicLit [INT 4]}
 {*ast.ValueSpec [BI_PNG]}
 {*ast.BasicLit [INT 5]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [DIB_RGB_COLORS]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [DIB_PAL_COLORS]}
 {*ast.BasicLit [INT 1]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [CBM_INIT]}
 {*ast.BasicLit [INT 4]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [CLR_INVALID]}
 {*ast.BasicLit [INT 0xFFFFFFFF]}
 {*ast.ValueSpec [CLR_NONE CLR_INVALID]}
 {*ast.ValueSpec [CLR_DEFAULT]}
 {*ast.BasicLit [INT 0xFF000000]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [PFD_TYPE_RGBA]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [PFD_TYPE_COLORINDEX]}
@@ -1161,16 +1077,12 @@
 {*ast.BasicLit [INT 0x40000000]}
 {*ast.ValueSpec [PFD_STEREO_DONTCARE]}
 {*ast.BasicLit [INT 0x80000000]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [GRADIENT_FILL_RECT_H]}
 {*ast.BasicLit [INT 0x00]}
 {*ast.ValueSpec [GRADIENT_FILL_RECT_V]}
 {*ast.BasicLit [INT 0x01]}
 {*ast.ValueSpec [GRADIENT_FILL_TRIANGLE]}
 {*ast.BasicLit [INT 0x02]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [RGN_AND]}
 {*ast.BasicLit [INT 1]}
 {*ast.ValueSpec [RGN_OR]}
@@ -1181,8 +1093,6 @@
 {*ast.BasicLit [INT 4]}
 {*ast.ValueSpec [RGN_COPY]}
 {*ast.BasicLit [INT 5]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [REGIONERROR]}
 {*ast.BasicLit [INT 0]}
 {*ast.ValueSpec [NULLREGION]}
@@ -1191,12 +1101,12 @@
 {*ast.BasicLit [INT 2]}
 {*ast.ValueSpec [COMPLEXREGION]}
 {*ast.BasicLit [INT 3]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [AC_SRC_ALPHA]}
 {*ast.BasicLit [INT 0x1]}
-
-
+{*ast.GenDecl -> *ast.ValueSpec [FR_PRIVATE]}
+{*ast.BasicLit [INT 0x10]}
+{*ast.ValueSpec [FR_NOT_ENUM]}
+{*ast.BasicLit [INT 0x20]}
 
 
 function name is RGB 
@@ -1215,19 +1125,17 @@ function name is RGB
 	 {*ast.BinaryExpr [<<]}
 	 {*ast.CallExpr [COLORREF b]}
 	 {*ast.BasicLit [INT 16]}
-
-
-{*ast.GenDecl -> *ast.TypeSpec [COLORREF uint32]}
-{*ast.TypeSpec [HBITMAP HGDIOBJ]}
-{*ast.TypeSpec [HBRUSH HGDIOBJ]}
-{*ast.TypeSpec [HDC HANDLE]}
-{*ast.TypeSpec [HFONT HGDIOBJ]}
-{*ast.TypeSpec [HGDIOBJ HANDLE]}
-{*ast.TypeSpec [HENHMETAFILE HANDLE]}
-{*ast.TypeSpec [HPALETTE HGDIOBJ]}
-{*ast.TypeSpec [HPEN HGDIOBJ]}
-{*ast.TypeSpec [HRGN HGDIOBJ]}
-{*ast.TypeSpec [CLIPFORMAT uint16]}
+	 {*ast.GenDecl -> *ast.TypeSpec [COLORREF uint32]}
+	 {*ast.TypeSpec [HBITMAP HGDIOBJ]}
+	 {*ast.TypeSpec [HBRUSH HGDIOBJ]}
+	 {*ast.TypeSpec [HDC HANDLE]}
+	 {*ast.TypeSpec [HFONT HGDIOBJ]}
+	 {*ast.TypeSpec [HGDIOBJ HANDLE]}
+	 {*ast.TypeSpec [HENHMETAFILE HANDLE]}
+	 {*ast.TypeSpec [HPALETTE HGDIOBJ]}
+	 {*ast.TypeSpec [HPEN HGDIOBJ]}
+	 {*ast.TypeSpec [HRGN HGDIOBJ]}
+	 {*ast.TypeSpec [CLIPFORMAT uint16]}
 
 
 {*ast.GenDecl -> *ast.TypeSpec [PIXELFORMATDESCRIPTOR]}
@@ -1438,7 +1346,8 @@ function name is RGB
 {*ast.StructType -> *ast.FieldList -> *ast.Field [DsBm BITMAP]}
 {*ast.Field [DsBmih BITMAPINFOHEADER]}
 {*ast.Field [DsBitfields]}
-{*ast.ArrayType -> *ast.BasicLit [INT 3 uint32]}
+{*ast.ArrayType -> *ast.BasicLit [INT 3]}
+{ [uint32]}
 {*ast.Field [DshSection HANDLE]}
 {*ast.Field [DsOffset uint32]}
 
@@ -1646,8 +1555,7 @@ function name is RGB
 
 function name is init 
 	 { [init]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [= libgdi32]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [= libgdi32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [windows NewLazySystemDLL]}
 	 {*ast.BasicLit [STRING "gdi32.dll"]}
 	 {*ast.AssignStmt [= libmsimg32]}
@@ -1878,8 +1786,7 @@ function name is AbortDoc
 	 { [AbortDoc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [abortDoc Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -1896,8 +1803,7 @@ function name is AddFontResourceEx
 	 {*ast.Field [fl uint32]}
 	 {*ast.Field -> *ast.SelectorExpr [pdv unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [addFontResourceEx Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -1916,11 +1822,11 @@ function name is AddFontMemResourceEx
 	 {*ast.Field [pNumFonts]}
 	 {*ast.StarExpr [uint32]}
 	 {*ast.FieldList -> *ast.Field [HANDLE]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [addFontMemResourceEx Addr]}
-	 {*ast.BasicLit [INT 4 pFileView]}
+	 {*ast.BasicLit [INT 4]}
+	 { [pFileView]}
 	 {*ast.CallExpr [uintptr cjSize]}
 	 {*ast.CallExpr [uintptr pvReserved]}
 	 {*ast.CallExpr [uintptr]}
@@ -1938,8 +1844,7 @@ function name is AlphaBlend
 	 {*ast.Field [nXOriginSrc nYOriginSrc nWidthSrc nHeightSrc int32]}
 	 {*ast.Field [ftn BLENDFUNCTION]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall12]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [alphaBlend Addr]}
 	 {*ast.BasicLit [INT 11]}
@@ -1973,8 +1878,7 @@ function name is BitBlt
 	 {*ast.Field [nXSrc nYSrc int32]}
 	 {*ast.Field [dwRop uint32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bitBlt Addr]}
 	 {*ast.BasicLit [INT 9]}
@@ -1998,8 +1902,7 @@ function name is ChoosePixelFormat
 	 {*ast.Field [ppfd]}
 	 {*ast.StarExpr [PIXELFORMATDESCRIPTOR]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [choosePixelFormat Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -2014,8 +1917,7 @@ function name is CloseEnhMetaFile
 	 { [CloseEnhMetaFile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [HENHMETAFILE]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [closeEnhMetaFile Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2030,8 +1932,7 @@ function name is CombineRgn
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hrgnDest hrgnSrc1 hrgnSrc2 HRGN]}
 	 {*ast.Field [fnCombineMode int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [combineRgn Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -2050,8 +1951,7 @@ function name is CopyEnhMetaFile
 	 {*ast.Field [lpszFile]}
 	 {*ast.StarExpr [uint16]}
 	 {*ast.FieldList -> *ast.Field [HENHMETAFILE]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [copyEnhMetaFile Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -2068,8 +1968,7 @@ function name is CreateBitmap
 	 {*ast.Field [cPlanes cBitsPerPel uint32]}
 	 {*ast.Field -> *ast.SelectorExpr [lpvBits unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [HBITMAP]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createBitmap Addr]}
 	 {*ast.BasicLit [INT 5]}
@@ -2087,8 +1986,7 @@ function name is CreateCompatibleBitmap
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nWidth nHeight int32]}
 	 {*ast.FieldList -> *ast.Field [HBITMAP]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createCompatibleBitmap Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2103,8 +2001,7 @@ function name is CreateBrushIndirect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [lplb]}
 	 {*ast.StarExpr [LOGBRUSH]}
 	 {*ast.FieldList -> *ast.Field [HBRUSH]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createBrushIndirect Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2119,8 +2016,7 @@ function name is CreateCompatibleDC
 	 { [CreateCompatibleDC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createCompatibleDC Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2137,8 +2033,7 @@ function name is CreateDC
 	 {*ast.Field [lpInitData]}
 	 {*ast.StarExpr [DEVMODE]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createDC Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -2166,8 +2061,7 @@ function name is CreateDIBSection
 	 {*ast.Field [hSection HANDLE]}
 	 {*ast.Field [dwOffset uint32]}
 	 {*ast.FieldList -> *ast.Field [HBITMAP]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createDIBSection Addr]}
 	 {*ast.BasicLit [INT 6]}
@@ -2192,8 +2086,7 @@ function name is CreateEnhMetaFile
 	 {*ast.Field [lpDescription]}
 	 {*ast.StarExpr [uint16]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createEnhMetaFile Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -2214,8 +2107,7 @@ function name is CreateFontIndirect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [lplf]}
 	 {*ast.StarExpr [LOGFONT]}
 	 {*ast.FieldList -> *ast.Field [HFONT]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createFontIndirect Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2233,8 +2125,7 @@ function name is CreateIC
 	 {*ast.Field [lpdvmInit]}
 	 {*ast.StarExpr [DEVMODE]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createIC Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -2255,8 +2146,7 @@ function name is CreatePatternBrush
 	 { [CreatePatternBrush]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hbmp HBITMAP]}
 	 {*ast.FieldList -> *ast.Field [HBRUSH]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createPatternBrush Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2270,8 +2160,7 @@ function name is CreateRectRgn
 	 { [CreateRectRgn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [HRGN]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [createRectRgn Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -2288,8 +2177,7 @@ function name is DeleteDC
 	 { [DeleteDC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [deleteDC Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2305,8 +2193,7 @@ function name is DeleteEnhMetaFile
 	 { [DeleteEnhMetaFile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hemf HENHMETAFILE]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [deleteEnhMetaFile Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2322,8 +2209,7 @@ function name is DeleteObject
 	 { [DeleteObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hObject HGDIOBJ]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [deleteObject Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2340,8 +2226,7 @@ function name is Ellipse
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ellipse Addr]}
 	 {*ast.BasicLit [INT 5]}
@@ -2360,8 +2245,7 @@ function name is EndDoc
 	 { [EndDoc]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [endDoc Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2375,8 +2259,7 @@ function name is EndPage
 	 { [EndPage]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [endPage Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2391,8 +2274,7 @@ function name is ExcludeClipRect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [excludeClipRect Addr]}
 	 {*ast.BasicLit [INT 5]}
@@ -2414,8 +2296,7 @@ function name is ExtCreatePen
 	 {*ast.Field [lpStyle]}
 	 {*ast.StarExpr [uint32]}
 	 {*ast.FieldList -> *ast.Field [HPEN]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [extCreatePen Addr]}
 	 {*ast.BasicLit [INT 5]}
@@ -2436,8 +2317,7 @@ function name is FillRgn
 	 {*ast.Field [hrgn HRGN]}
 	 {*ast.Field [hbr HBRUSH]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fillRgn Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2452,8 +2332,7 @@ function name is FillRgn
 function name is GdiFlush 
 	 { [GdiFlush]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [gdiFlush Addr]}
 	 {*ast.BasicLit [INT 0]}
@@ -2469,8 +2348,7 @@ function name is GetBkColor
 	 { [GetBkColor]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getBkColor Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2485,8 +2363,7 @@ function name is GetDeviceCaps
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nIndex int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getDeviceCaps Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -2508,8 +2385,7 @@ function name is GetDIBits
 	 {*ast.StarExpr [BITMAPINFO]}
 	 {*ast.Field [uUsage uint32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getDIBits Addr]}
 	 {*ast.BasicLit [INT 7]}
@@ -2532,8 +2408,7 @@ function name is GetEnhMetaFile
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [lpszMetaFile]}
 	 {*ast.StarExpr [uint16]}
 	 {*ast.FieldList -> *ast.Field [HENHMETAFILE]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getEnhMetaFile Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2551,8 +2426,7 @@ function name is GetEnhMetaFileHeader
 	 {*ast.Field [lpemh]}
 	 {*ast.StarExpr [ENHMETAHEADER]}
 	 {*ast.FieldList -> *ast.Field [uint32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getEnhMetaFileHeader Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2569,8 +2443,7 @@ function name is GetObject
 	 {*ast.Field [cbBuffer uintptr]}
 	 {*ast.Field -> *ast.SelectorExpr [lpvObject unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getObject Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2585,8 +2458,7 @@ function name is GetPixel
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nXPos nYPos int32]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getPixel Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2602,8 +2474,7 @@ function name is GetRgnBox
 	 {*ast.Field [lprc]}
 	 {*ast.StarExpr [RECT]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getRgnBox Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -2618,8 +2489,7 @@ function name is GetStockObject
 	 { [GetStockObject]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [fnObject int32]}
 	 {*ast.FieldList -> *ast.Field [HGDIOBJ]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getStockObject Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2633,8 +2503,7 @@ function name is GetTextColor
 	 { [GetTextColor]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getTextColor Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2655,8 +2524,7 @@ function name is GetTextExtentExPoint
 	 {*ast.Field [lpSize]}
 	 {*ast.StarExpr [SIZE]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getTextExtentExPoint Addr]}
 	 {*ast.BasicLit [INT 7]}
@@ -2687,8 +2555,7 @@ function name is GetTextExtentPoint32
 	 {*ast.Field [lpSize]}
 	 {*ast.StarExpr [SIZE]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getTextExtentPoint32 Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -2711,8 +2578,7 @@ function name is GetTextMetrics
 	 {*ast.Field [lptm]}
 	 {*ast.StarExpr [TEXTMETRIC]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getTextMetrics Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -2731,8 +2597,7 @@ function name is GetViewportOrgEx
 	 {*ast.Field [lpPoint]}
 	 {*ast.StarExpr [POINT]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [getViewportOrgEx Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -2754,8 +2619,7 @@ function name is GradientFill
 	 {*ast.Field -> *ast.SelectorExpr [pMesh unsafe Pointer]}
 	 {*ast.Field [nMesh ulMode uint32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [gradientFill Addr]}
 	 {*ast.BasicLit [INT 6]}
@@ -2776,8 +2640,7 @@ function name is IntersectClipRect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [intersectClipRect Addr]}
 	 {*ast.BasicLit [INT 5]}
@@ -2795,8 +2658,7 @@ function name is LineTo
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nXEnd nYEnd int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [lineTo Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2815,8 +2677,7 @@ function name is MoveToEx
 	 {*ast.Field [lpPoint]}
 	 {*ast.StarExpr [POINT]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [moveToEx Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -2839,8 +2700,7 @@ function name is PlayEnhMetaFile
 	 {*ast.Field [lpRect]}
 	 {*ast.StarExpr [RECT]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [playEnhMetaFile Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2859,8 +2719,7 @@ function name is Polyline
 	 {*ast.Field -> *ast.SelectorExpr [lppt unsafe Pointer]}
 	 {*ast.Field [cPoints int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [polyline Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2877,8 +2736,7 @@ function name is Rectangle_
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [rectangle Addr]}
 	 {*ast.BasicLit [INT 5]}
@@ -2900,8 +2758,7 @@ function name is RemoveFontResourceEx
 	 {*ast.Field [fl uint32]}
 	 {*ast.Field -> *ast.SelectorExpr [pdv unsafe Pointer]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [removeFontResourceEx Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -2918,8 +2775,7 @@ function name is RemoveFontMemResourceEx
 	 { [RemoveFontMemResourceEx]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [h HANDLE]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [removeFontMemResourceEx Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -2937,8 +2793,7 @@ function name is ResetDC
 	 {*ast.Field [lpInitData]}
 	 {*ast.StarExpr [DEVMODE]}
 	 {*ast.FieldList -> *ast.Field [HDC]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [resetDC Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -2954,8 +2809,7 @@ function name is RestoreDC
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nSaveDC int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [restoreDC Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -2972,8 +2826,7 @@ function name is RoundRect
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [nLeftRect nTopRect nRightRect nBottomRect nWidth nHeight int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [roundRect Addr]}
 	 {*ast.BasicLit [INT 7]}
@@ -2995,8 +2848,7 @@ function name is SaveDC
 	 { [SaveDC]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [saveDC Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -3011,8 +2863,7 @@ function name is SelectObject
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [hgdiobj HGDIOBJ]}
 	 {*ast.FieldList -> *ast.Field [HGDIOBJ]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [selectObject Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -3027,8 +2878,7 @@ function name is SetBkColor
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [crColor COLORREF]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setBkColor Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -3043,8 +2893,7 @@ function name is SetBkMode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [iBkMode int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setBkMode Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -3061,8 +2910,7 @@ function name is SetBrushOrgEx
 	 {*ast.Field [lppt]}
 	 {*ast.StarExpr [POINT]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setBrushOrgEx Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -3089,8 +2937,7 @@ function name is SetDIBits
 	 {*ast.StarExpr [BITMAPINFO]}
 	 {*ast.Field [fuColorUse uint32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall9]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setDIBits Addr]}
 	 {*ast.BasicLit [INT 7]}
@@ -3114,8 +2961,7 @@ function name is SetPixel
 	 {*ast.Field [X Y int32]}
 	 {*ast.Field [crColor COLORREF]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setPixel Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -3135,8 +2981,7 @@ function name is SetPixelFormat
 	 {*ast.Field [ppfd]}
 	 {*ast.StarExpr [PIXELFORMATDESCRIPTOR]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setPixelFormat Addr]}
 	 {*ast.BasicLit [INT 3]}
@@ -3154,8 +2999,7 @@ function name is SetStretchBltMode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [iStretchMode int32]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setStretchBltMode Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -3170,8 +3014,7 @@ function name is SetTextColor
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.Field [crColor COLORREF]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setTextColor Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -3188,8 +3031,7 @@ function name is SetViewportOrgEx
 	 {*ast.Field [lpPoint]}
 	 {*ast.StarExpr [POINT]}
 	 {*ast.FieldList -> *ast.Field [COLORREF]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [setViewportOrgEx Addr]}
 	 {*ast.BasicLit [INT 4]}
@@ -3209,8 +3051,7 @@ function name is StartDoc
 	 {*ast.Field [lpdi]}
 	 {*ast.StarExpr [DOCINFO]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [startDoc Addr]}
 	 {*ast.BasicLit [INT 2]}
@@ -3225,8 +3066,7 @@ function name is StartPage
 	 { [StartPage]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [int32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [startPage Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -3244,8 +3084,7 @@ function name is StretchBlt
 	 {*ast.Field [nXOriginSrc nYOriginSrc nWidthSrc nHeightSrc int32]}
 	 {*ast.Field [dwRop uint32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall12]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [stretchBlt Addr]}
 	 {*ast.BasicLit [INT 11]}
@@ -3270,8 +3109,7 @@ function name is SwapBuffers
 	 { [SwapBuffers]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [hdc HDC]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [swapBuffers Addr]}
 	 {*ast.BasicLit [INT 1]}
@@ -3291,8 +3129,7 @@ function name is TextOut
 	 {*ast.StarExpr [uint16]}
 	 {*ast.Field [cchString int32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall6]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [textOut Addr]}
 	 {*ast.BasicLit [INT 5]}
@@ -3316,8 +3153,7 @@ function name is TransparentBlt
 	 {*ast.Field [xoriginSrc yoriginSrc wSrc hSrc int32]}
 	 {*ast.Field [crTransparent uint32]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ret _ _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ret _ _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [syscall Syscall12]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [transparentBlt Addr]}
 	 {*ast.BasicLit [INT 11]}

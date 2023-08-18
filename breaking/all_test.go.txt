@@ -1,6 +1,16 @@
 {*ast.File [io]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "math"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "os"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "path/filepath"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "testing"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/stretchr/testify/assert"]}
+{*ast.ImportSpec [.]}
+{*ast.BasicLit [STRING "gopkg.in/check.v1"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/alpacahq/marketstore/v4/utils"]}
 
 
 function name is TestVariableBoundaryCases 
@@ -106,8 +116,7 @@ function name is TestVariableBoundaryCases
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [< diff]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= diff]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= diff]}
 	 {*ast.UnaryExpr [- diff]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert True t]}
 	 {*ast.BinaryExpr [< diff]}
@@ -133,7 +142,8 @@ function name is TestGenerics
 	 {*ast.BasicLit [INT 10]}
 	 {*ast.AssignStmt [:= output err]}
 	 {*ast.CallExpr [DownSizeSlice input]}
-	 {*ast.BasicLit [INT 6 LAST]}
+	 {*ast.BasicLit [INT 6]}
+	 { [LAST]}
 	 {*ast.AssignStmt [:= expected]}
 	 {*ast.CompositeLit -> *ast.ArrayType [float64]}
 	 {*ast.BasicLit [INT 5]}
@@ -147,7 +157,8 @@ function name is TestGenerics
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual output expected]}
 	 {*ast.AssignStmt [= output err]}
 	 {*ast.CallExpr [DownSizeSlice input]}
-	 {*ast.BasicLit [INT 6 FIRST]}
+	 {*ast.BasicLit [INT 6]}
+	 { [FIRST]}
 	 {*ast.AssignStmt [= expected]}
 	 {*ast.CompositeLit -> *ast.ArrayType [float64]}
 	 {*ast.BasicLit [INT 1]}
@@ -173,7 +184,8 @@ function name is TestGenerics
 	 {*ast.BasicLit [INT 10]}
 	 {*ast.AssignStmt [:= output2 err]}
 	 {*ast.CallExpr [DownSizeSlice input2]}
-	 {*ast.BasicLit [INT 6 FIRST]}
+	 {*ast.BasicLit [INT 6]}
+	 { [FIRST]}
 	 {*ast.AssignStmt [:= expected2]}
 	 {*ast.CompositeLit -> *ast.ArrayType [uint32]}
 	 {*ast.BasicLit [INT 1]}
@@ -199,7 +211,8 @@ function name is TestGenerics
 	 {*ast.BasicLit [STRING "10"]}
 	 {*ast.AssignStmt [:= output3 err]}
 	 {*ast.CallExpr [DownSizeSlice input3]}
-	 {*ast.BasicLit [INT 6 FIRST]}
+	 {*ast.BasicLit [INT 6]}
+	 { [FIRST]}
 	 {*ast.AssignStmt [:= expected3]}
 	 {*ast.CompositeLit -> *ast.ArrayType [string]}
 	 {*ast.BasicLit [STRING "1"]}
@@ -214,15 +227,15 @@ function name is TestGenerics
 	 {*ast.AssignStmt [= _ err]}
 	 {*ast.CallExpr [DownSizeSlice]}
 	 {*ast.BasicLit [STRING "Should not work"]}
-	 {*ast.BasicLit [INT 100 FIRST]}
+	 {*ast.BasicLit [INT 100]}
+	 { [FIRST]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert NotNil t err]}
 
 
 function name is makeTestCS 
 	 { [makeTestCS]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [ColumnSeries]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= col1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= col1]}
 	 {*ast.CompositeLit -> *ast.ArrayType [float32]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.BasicLit [INT 2]}
@@ -250,17 +263,23 @@ function name is makeTestCS
 	 {*ast.AssignStmt [:= csA]}
 	 {*ast.CallExpr [NewColumnSeries]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
-	 {*ast.BasicLit [STRING "Epoch" col4]}
+	 {*ast.BasicLit [STRING "Epoch"]}
+	 { [col4]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
-	 {*ast.BasicLit [STRING "One" col1]}
+	 {*ast.BasicLit [STRING "One"]}
+	 { [col1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
-	 {*ast.BasicLit [STRING "Two" col2]}
+	 {*ast.BasicLit [STRING "Two"]}
+	 { [col2]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
-	 {*ast.BasicLit [STRING "Three" col3]}
+	 {*ast.BasicLit [STRING "Three"]}
+	 { [col3]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
-	 {*ast.BasicLit [STRING "Four" col4]}
+	 {*ast.BasicLit [STRING "Four"]}
+	 { [col4]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csA AddColumn]}
-	 {*ast.BasicLit [STRING "Five" col5]}
+	 {*ast.BasicLit [STRING "Five"]}
+	 { [col5]}
 	 {*ast.ReturnStmt [csA]}
 
 
@@ -320,8 +339,7 @@ function name is TestSerializeColumnsToRows
 	 {*ast.CallExpr -> *ast.SelectorExpr [csB GetDataShapes]}
 	 {*ast.GenDecl -> *ast.ValueSpec [expectedLen int]}
 	 {*ast.RangeStmt [_ shape dsvProjected]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+= expectedLen]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= expectedLen]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [shape Len]}
 	 {*ast.AssignStmt [= expectedLen]}
 	 {*ast.CallExpr [AlignedSize expectedLen]}
@@ -337,15 +355,15 @@ function name is TestSerializeColumnsToRows
 	 {*ast.CallExpr [len data]}
 	 {*ast.AssignStmt [= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [csB CoerceColumnType]}
-	 {*ast.BasicLit [STRING "Two" BYTE]}
+	 {*ast.BasicLit [STRING "Two"]}
+	 { [BYTE]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t err]}
 	 {*ast.AssignStmt [= dsvProjected]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [csB GetDataShapes]}
 	 {*ast.AssignStmt [= expectedLen]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.RangeStmt [_ shape dsvProjected]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+= expectedLen]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+= expectedLen]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [shape Len]}
 	 {*ast.AssignStmt [= expectedLen]}
 	 {*ast.CallExpr [AlignedSize expectedLen]}
@@ -417,14 +435,18 @@ function name is TestTimeBucketInfo
 	 {*ast.CallExpr -> *ast.SelectorExpr [tbi2 GetDataShapes]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv2]}
-	 {*ast.BasicLit [INT 0 String]}
+	 {*ast.BasicLit [INT 0]}
+	 { [String]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv]}
-	 {*ast.BasicLit [INT 0 String]}
+	 {*ast.BasicLit [INT 0]}
+	 { [String]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.IndexExpr [dsv2]}
-	 {*ast.BasicLit [INT 0 Equal]}
+	 {*ast.BasicLit [INT 0]}
+	 { [Equal]}
 	 {*ast.IndexExpr [dsv]}
-	 {*ast.BasicLit [INT 0 true]}
+	 {*ast.BasicLit [INT 0]}
+	 { [true]}
 
 
 function name is TestIndexAndOffset 
@@ -448,7 +470,8 @@ function name is TestIndexAndOffset
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.BasicLit [INT 0]}
+	 { [loc]}
 	 {*ast.AssignStmt [:= index]}
 	 {*ast.CallExpr [TimeToIndex t0]}
 	 {*ast.SelectorExpr [time Minute]}
@@ -479,7 +502,8 @@ function name is TestIndexAndOffset
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 5]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.BasicLit [INT 0]}
+	 { [loc]}
 	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t1]}
 	 {*ast.BinaryExpr [*]}
@@ -518,7 +542,8 @@ function name is TestIndexAndOffset
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.BasicLit [INT 0]}
+	 { [loc]}
 	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t2]}
 	 {*ast.SelectorExpr [utils Day]}
@@ -550,7 +575,8 @@ function name is TestIndexAndOffset
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.BasicLit [INT 0]}
+	 { [loc]}
 	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t3]}
 	 {*ast.SelectorExpr [utils Day]}
@@ -581,7 +607,8 @@ function name is TestIndexAndOffset
 	 {*ast.BasicLit [INT 23]}
 	 {*ast.BasicLit [INT 59]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BasicLit [INT 0 loc]}
+	 {*ast.BasicLit [INT 0]}
+	 { [loc]}
 	 {*ast.AssignStmt [= index]}
 	 {*ast.CallExpr [TimeToIndex t4]}
 	 {*ast.SelectorExpr [time Minute]}
@@ -623,8 +650,7 @@ function name is TestUnion
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf col Kind]}
 	 {*ast.SelectorExpr [reflect Slice]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [:= av]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= av]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [csA columns name]}
 	 {*ast.AssignStmt [:= bv]}
@@ -638,8 +664,7 @@ function name is TestUnion
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bv Len]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cv Len]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cv Len]}
@@ -652,7 +677,8 @@ function name is TestUnion
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [cv Index i Interface]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Nil t]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [csA RestrictLength]}
-	 {*ast.BasicLit [INT 2 LAST]}
+	 {*ast.BasicLit [INT 2]}
+	 { [LAST]}
 	 {*ast.AssignStmt [= cs]}
 	 {*ast.CallExpr [ColumnSeriesUnion csA csB]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}
@@ -702,17 +728,23 @@ function name is TestUnion
 	 {*ast.AssignStmt [:= csC]}
 	 {*ast.CallExpr [NewColumnSeries]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
-	 {*ast.BasicLit [STRING "Epoch" col4]}
+	 {*ast.BasicLit [STRING "Epoch"]}
+	 { [col4]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
-	 {*ast.BasicLit [STRING "One" col1]}
+	 {*ast.BasicLit [STRING "One"]}
+	 { [col1]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
-	 {*ast.BasicLit [STRING "Two" col2]}
+	 {*ast.BasicLit [STRING "Two"]}
+	 { [col2]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
-	 {*ast.BasicLit [STRING "Three" col3]}
+	 {*ast.BasicLit [STRING "Three"]}
+	 { [col3]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
-	 {*ast.BasicLit [STRING "Four" col4]}
+	 {*ast.BasicLit [STRING "Four"]}
+	 { [col4]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [csC AddColumn]}
-	 {*ast.BasicLit [STRING "Five" col5]}
+	 {*ast.BasicLit [STRING "Five"]}
+	 { [col5]}
 	 {*ast.AssignStmt [= cs]}
 	 {*ast.CallExpr [ColumnSeriesUnion csB csC]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [assert Equal t]}

@@ -1,22 +1,18 @@
 {*ast.File [api]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "go/types"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "runtime"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "strings"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "sync"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "go/types"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "runtime"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strings"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.TypeSpec [TypeName string]}
 
 
 {*ast.GenDecl -> *ast.ValueSpec [TypeNameInvalid]}
 {*ast.BasicLit [STRING ""]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [StructField]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [Name string]}
 {*ast.Field [Comments string]}
@@ -35,6 +31,21 @@
 {*ast.Field [Type TypeName]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [Type]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Name string]}
+{*ast.Field [Comments string]}
+{*ast.Field [PkgPath string]}
+{*ast.Field [Kind]}
+{*ast.SelectorExpr [reflect Kind]}
+{*ast.Field [Key TypeName]}
+{*ast.Field [Elem TypeName]}
+{*ast.Field [Fields]}
+{*ast.ArrayType [StructField]}
+{*ast.Field [In]}
+{*ast.ArrayType [FuncField]}
+{*ast.Field [Out]}
+{*ast.ArrayType [FuncField]}
+{*ast.Field [Conflict int]}
 
 
 function name is RawTypeName 
@@ -64,8 +75,7 @@ function name is TypeName
 	 {*ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr [Type TypeName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [TypeName]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tn]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tn]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t RawTypeName]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [&&]}
@@ -73,11 +83,11 @@ function name is TypeName
 	 {*ast.BinaryExpr [>]}
 	 {*ast.SelectorExpr [t Conflict]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= tn]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= tn]}
 	 {*ast.CallExpr [TypeName]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
-	 {*ast.BasicLit [STRING "%s [%d]" tn]}
+	 {*ast.BasicLit [STRING "%s [%d]"]}
+	 { [tn]}
 	 {*ast.SelectorExpr [t Conflict]}
 	 {*ast.ReturnStmt [tn]}
 
@@ -137,8 +147,7 @@ function name is setType
 	 {*ast.StarExpr [Type]}
 	 {*ast.Field [typ]}
 	 {*ast.SelectorExpr [reflect Type]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tn]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tn]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t RawTypeName]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [== tn TypeNameInvalid]}
@@ -151,8 +160,7 @@ function name is setType
 	 {*ast.RangeStmt [i originalType typs]}
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [== originalType typ]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= index i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= index i]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t Conflict index]}
 	 {*ast.AssignStmt [= tn]}
@@ -251,8 +259,7 @@ function name is NameOf
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [typ]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.FieldList -> *ast.Field [TypeName]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= t]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [Type]}
 	 {*ast.KeyValueExpr [Name]}
@@ -269,8 +276,7 @@ function name is NameOf
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [t Kind]}
 	 {*ast.SelectorExpr [reflect Interface]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.BasicLit [STRING "interface{}"]}
 	 {*ast.AssignStmt [:= tn]}
@@ -293,8 +299,7 @@ function name is NameOf
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.BasicLit [STRING ""]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint]}
 	 {*ast.BasicLit [STRING "[]"]}
@@ -308,8 +313,7 @@ function name is NameOf
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.BasicLit [STRING ""]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint]}
 	 {*ast.BasicLit [STRING "*"]}
@@ -327,8 +331,7 @@ function name is NameOf
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.BasicLit [STRING ""]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
 	 {*ast.BasicLit [STRING "map[%s]%s"]}
@@ -343,21 +346,18 @@ function name is NameOf
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.BasicLit [STRING ""]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprint]}
 	 {*ast.BasicLit [STRING "chan "]}
 	 {*ast.SelectorExpr [t Elem]}
 	 {*ast.CaseClause -> *ast.SelectorExpr [reflect Struct]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [typ NumField]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= f]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= f]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [typ Field i]}
 	 {*ast.AssignStmt [:= field]}
 	 {*ast.CompositeLit [StructField]}
@@ -386,8 +386,7 @@ function name is NameOf
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.BasicLit [STRING ""]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
 	 {*ast.BasicLit [STRING "func(%s)"]}
@@ -402,8 +401,7 @@ function name is NameOf
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [t Out]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+=]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
 	 {*ast.BasicLit [STRING " %s"]}
@@ -414,8 +412,7 @@ function name is NameOf
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [t Out]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+=]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
 	 {*ast.BasicLit [STRING " (%s)"]}
@@ -436,14 +433,12 @@ function name is fillFunctionSignature
 	 {*ast.StarExpr [Type]}
 	 {*ast.Field [typ]}
 	 {*ast.SelectorExpr [reflect Type]}
-	 {*ast.BlockStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [typ NumIn]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t In]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [t In]}
@@ -451,14 +446,12 @@ function name is fillFunctionSignature
 	 {*ast.KeyValueExpr [Type]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [tc NameOf]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [typ In i]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [typ NumOut]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t Out]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [t Out]}
@@ -474,8 +467,7 @@ function name is NameOfInstance
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ins]}
 	 {*ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field [TypeName]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= typ]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= typ]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect TypeOf ins]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
@@ -492,15 +484,13 @@ function name is NameOfInstance
 	 {*ast.CallExpr -> *ast.SelectorExpr [typ Kind]}
 	 {*ast.KeyValueExpr [Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [funcInfo Name]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= index]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= index]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [strings LastIndexByte]}
 	 {*ast.SelectorExpr [t Name]}
 	 {*ast.BasicLit [CHAR '.']}
 	 {*ast.BinaryExpr [>= index]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [t PkgPath]}
 	 {*ast.SliceExpr -> *ast.SelectorExpr [t Name index]}
 	 {*ast.AssignStmt [=]}
@@ -535,24 +525,20 @@ function name is Complete
 	 {*ast.CallExpr -> *ast.SelectorExpr [strings HasSuffix]}
 	 {*ast.SelectorExpr [typ PkgPath]}
 	 {*ast.BasicLit [STRING ".glob."]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [:= obj err]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= obj err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [analyzer ObjectOf]}
 	 {*ast.SelectorExpr [typ PkgPath]}
 	 {*ast.SelectorExpr [typ Name]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= errors]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= errors]}
 	 {*ast.CallExpr [append errors err]}
-	 {*ast.BranchStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= comments]}
+	 {*ast.BranchStmt -> *ast.IfStmt -> *ast.AssignStmt [:= comments]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [analyzer Comments]}
 	 {*ast.SelectorExpr [typ PkgPath]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [obj Pos]}
 	 {*ast.BinaryExpr [!= comments nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [typ Comments]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [comments Text]}
 	 {*ast.SwitchStmt -> *ast.SelectorExpr [typ Kind]}
@@ -563,23 +549,19 @@ function name is Complete
 	 {*ast.StarExpr -> *ast.SelectorExpr [types Named]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [:= st ok]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= st ok]}
 	 {*ast.TypeAssertExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Underlying]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [types Struct]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [st NumFields]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= field]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= field]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [st Field i]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= j]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= j]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< j]}
 	 {*ast.CallExpr [len]}
@@ -589,14 +571,12 @@ function name is Complete
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [typ Fields j Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [field Name]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= comments]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= comments]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [analyzer Comments]}
 	 {*ast.SelectorExpr [typ PkgPath]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [field Pos]}
 	 {*ast.BinaryExpr [!= comments nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [typ Fields j Comments]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [comments Text]}
 	 {*ast.BranchStmt []}
@@ -606,26 +586,22 @@ function name is Complete
 	 {*ast.StarExpr -> *ast.SelectorExpr [types Signature]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
-	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Params Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= param]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= param]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Params At i]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [typ In i Name]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [param Name]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Results Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= result]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= result]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [o Results At i]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr [typ Out i Name]}
@@ -636,6 +612,7 @@ function name is Complete
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt [nil]}
 	 {*ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [fmt Errorf]}
-	 {*ast.BasicLit [STRING "%v" errors]}
+	 {*ast.BasicLit [STRING "%v"]}
+	 { [errors]}
 
 

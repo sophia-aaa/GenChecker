@@ -1,0 +1,28 @@
+function name: nativeMessageHostManifestDirectoriesChrome
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "linux" = chromeDir path Join]
+     *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING ".config" STRING "google-chrome" STRING "NativeMessagingHosts"]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [= chromeBetaDir path Join]
+     *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING ".config" STRING "google-chrome-beta" STRING "NativeMessagingHosts"]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [= chromeDevDir path Join]
+     *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING ".config" STRING "google-chrome-unstable" STRING "NativeMessagingHosts"]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [= chromiumDir path Join]
+     *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING ".config" STRING "chromium" STRING "NativeMessagingHosts"]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "darwin" = chromeDir path Join]
+     *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING "Library" STRING "Application Support" STRING "Google" STRING "Chrome" STRING "NativeMessagingHosts"]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [= chromeCanaryDir path Join]
+     *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING "Library" STRING "Application Support" STRING "Google" STRING "Chrome Canary" STRING "NativeMessagingHosts"]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [= chromiumDir path Join]
+     *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING "Library" STRING "Application Support" STRING "Chromium" STRING "NativeMessagingHosts"]
+
+
+function name: nativeMessageHostManifestDirectoriesFirefox
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "linux" = firefoxDir path Join]
+     *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING ".mozilla" STRING "native-messaging-hosts"]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "darwin" = firefoxDir path Join]
+     *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING "Library" STRING "Application Support" STRING "Mozilla" STRING "NativeMessagingHosts"]
+
+

@@ -1,6 +1,7 @@
 {*ast.File [jlexer]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 
 
 function name is bytesToStr 

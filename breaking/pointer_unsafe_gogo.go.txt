@@ -1,6 +1,8 @@
 {*ast.File [proto]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 
 
 function name is structPointer_InterfaceAt 
@@ -9,9 +11,8 @@ function name is structPointer_InterfaceAt
 	 {*ast.Field [f field]}
 	 {*ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
-	 {*ast.FieldList -> *ast.Field*ast.InterfaceType []}
-	 {*ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= point]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= point]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.CallExpr [uintptr p]}
@@ -27,9 +28,8 @@ function name is structPointer_InterfaceRef
 	 {*ast.Field [f field]}
 	 {*ast.Field [t]}
 	 {*ast.SelectorExpr [reflect Type]}
-	 {*ast.FieldList -> *ast.Field*ast.InterfaceType []}
-	 {*ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= point]}
+	 {*ast.FieldList -> *ast.Field -> *ast.InterfaceType []}
+	 {*ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= point]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.CallExpr [uintptr p]}
@@ -45,8 +45,7 @@ function name is copyUintPtr
 	 { [copyUintPtr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [oldptr newptr uintptr]}
 	 {*ast.Field [size int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= oldbytes]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= oldbytes]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.BasicLit [INT 0]}
@@ -94,8 +93,7 @@ function name is appendStructPointer
 	 {*ast.Field [typ]}
 	 {*ast.SelectorExpr [reflect Type]}
 	 {*ast.FieldList -> *ast.Field [structPointer]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [typ Elem Size]}
 	 {*ast.AssignStmt [:= oldHeader]}
 	 {*ast.CallExpr [structPointer_GetSliceHeader base f]}
@@ -107,14 +105,12 @@ function name is appendStructPointer
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect MakeSlice typ newLen newLen]}
 	 {*ast.AssignStmt [:= bas]}
 	 {*ast.CallExpr [toStructPointer slice]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.SelectorExpr [oldHeader Len]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= newElemptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= newElemptr]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.CallExpr [uintptr bas]}
 	 {*ast.BinaryExpr [*]}
@@ -142,7 +138,8 @@ function name is appendStructPointer
 	 {*ast.BinaryExpr [*]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BinaryExpr [- newLen]}
-	 {*ast.BasicLit [INT 1 size]}
+	 {*ast.BasicLit [INT 1]}
+	 { [size]}
 
 
 function name is structPointer_FieldPointer 
@@ -200,7 +197,7 @@ function name is structPointer_Len
 	 {*ast.Field [f field]}
 	 {*ast.FieldList -> *ast.Field [int]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [len]}
-	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType*ast.InterfaceType []}
+	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType -> *ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr [structPointer_GetRefStructPointer p f]}
 

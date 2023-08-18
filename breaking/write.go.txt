@@ -1,23 +1,21 @@
 {*ast.File [index]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "io"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "io/ioutil"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "log"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "os"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "strings"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.BasicLit [STRING "github.com/hound-search/hound/codesearch/sparse"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "io"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "io/ioutil"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "log"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "os"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strings"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/google/codesearch/sparse"]}
 {*ast.GenDecl -> *ast.TypeSpec [IndexWriter]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [LogSkip bool]}
 {*ast.Field [Verbose bool]}
 {*ast.Field [trigram]}
 {*ast.StarExpr -> *ast.SelectorExpr [sparse Set]}
 {*ast.Field [buf]}
-{*ast.ArrayType -> *ast.BasicLit [INT 8 byte]}
+{*ast.ArrayType -> *ast.BasicLit [INT 8]}
+{ [byte]}
 {*ast.Field [paths]}
 {*ast.ArrayType [string]}
 {*ast.Field [nameData]}
@@ -31,8 +29,6 @@
 {*ast.ArrayType [postEntry]}
 {*ast.Field [postFile]}
 {*ast.ArrayType -> *ast.StarExpr -> *ast.SelectorExpr [os File]}
-{*ast.Field [postData]}
-{*ast.ArrayType -> *ast.ArrayType [byte]}
 {*ast.Field [postIndex]}
 {*ast.StarExpr [bufWriter]}
 {*ast.Field [inbuf]}
@@ -41,6 +37,12 @@
 {*ast.StarExpr [bufWriter]}
 
 
+{*ast.GenDecl -> *ast.ValueSpec [npost]}
+{*ast.BinaryExpr [/]}
+{*ast.BinaryExpr [<<]}
+{*ast.BasicLit [INT 64]}
+{*ast.BasicLit [INT 20]}
+{*ast.BasicLit [INT 8]}
 
 
 function name is Create 
@@ -69,14 +71,13 @@ function name is Create
 	 {*ast.KeyValueExpr [post]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [postEntry]}
-	 {*ast.BasicLit [INT 0 npost]}
+	 {*ast.BasicLit [INT 0]}
+	 { [npost]}
 	 {*ast.KeyValueExpr [inbuf]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.BasicLit [INT 16384]}
-
-
-{*ast.GenDecl -> *ast.TypeSpec [postEntry uint64]}
+	 {*ast.GenDecl -> *ast.TypeSpec [postEntry uint64]}
 
 
 function name is trigram 
@@ -108,15 +109,11 @@ function name is makePostEntry
 {*ast.GenDecl -> *ast.ValueSpec [maxFileLen]}
 {*ast.BinaryExpr [<<]}
 {*ast.BasicLit [INT 1]}
-{*ast.BasicLit [INT 25]}
+{*ast.BasicLit [INT 30]}
 {*ast.ValueSpec [maxLineLen]}
 {*ast.BasicLit [INT 2000]}
-{*ast.ValueSpec [maxLongLineRatio]}
-{*ast.BasicLit [FLOAT 0.1]}
 {*ast.ValueSpec [maxTextTrigrams]}
 {*ast.BasicLit [INT 20000]}
-{*ast.ValueSpec [maxTrigramRatio]}
-{*ast.BasicLit [FLOAT 0.1]}
 
 
 function name is AddPaths 
@@ -124,8 +121,7 @@ function name is AddPaths
 	 {*ast.StarExpr [IndexWriter AddPaths]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [paths]}
 	 {*ast.ArrayType [string]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [ix paths]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [ix paths paths]}
@@ -135,8 +131,7 @@ function name is AddFile
 	 {*ast.FieldList -> *ast.Field [ix]}
 	 {*ast.StarExpr [IndexWriter AddFile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= f err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= f err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [os Open name]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
@@ -151,7 +146,6 @@ function name is Add
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [name string]}
 	 {*ast.Field [f]}
 	 {*ast.SelectorExpr [io Reader]}
-	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Reset]}
 	 {*ast.GenDecl -> *ast.ValueSpec [c]}
 	 {*ast.CallExpr [byte]}
@@ -169,14 +163,7 @@ function name is Add
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.ValueSpec [linelen]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.ValueSpec [numLines]}
-	 {*ast.BasicLit [INT 0]}
-	 {*ast.ValueSpec [longLines]}
-	 {*ast.BasicLit [INT 0]}
-	 {*ast.ValueSpec [skipReason]}
-	 {*ast.BasicLit [STRING ""]}
-	 {*ast.ForStmt -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [= tv]}
+	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [= tv]}
 	 {*ast.BinaryExpr [&]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [<< tv]}
@@ -190,8 +177,7 @@ function name is Add
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [>= i]}
 	 {*ast.CallExpr [len buf]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= n err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= n err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [f Read]}
 	 {*ast.SliceExpr [buf]}
 	 {*ast.CallExpr [cap buf]}
@@ -204,12 +190,12 @@ function name is Add
 	 {*ast.BinaryExpr [== err]}
 	 {*ast.SelectorExpr [io EOF]}
 	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
-	 {*ast.BasicLit [STRING "%s: %v\n" name err]}
-	 {*ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
-	 {*ast.BasicLit [STRING "%s: 0-length read\n" name]}
-	 {*ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
-	 {*ast.AssignStmt [= buf]}
+	 {*ast.BasicLit [STRING "%s: %v\n"]}
+	 { [name err]}
+	 {*ast.ReturnStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
+	 {*ast.BasicLit [STRING "%s: 0-length read\n"]}
+	 { [name]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.SliceExpr [buf n]}
 	 {*ast.AssignStmt [= i]}
 	 {*ast.BasicLit [INT 0]}
@@ -232,73 +218,40 @@ function name is Add
 	 {*ast.BasicLit [INT 0xFF]}
 	 {*ast.BinaryExpr [& tv]}
 	 {*ast.BasicLit [INT 0xFF]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= skipReason]}
-	 {*ast.BasicLit [STRING "Invalid UTF-8"]}
-	 {*ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
-	 {*ast.BasicLit [STRING "%s: %s\n" name skipReason]}
-	 {*ast.ReturnStmt [skipReason]}
-	 {*ast.IfStmt []}
+	 {*ast.BasicLit [STRING "%s: invalid UTF-8, ignoring\n"]}
+	 { [name]}
+	 {*ast.ReturnStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [> n maxFileLen]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= skipReason]}
-	 {*ast.BasicLit [STRING "Too long"]}
-	 {*ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
-	 {*ast.BasicLit [STRING "%s: %s\n" name skipReason]}
-	 {*ast.ReturnStmt [skipReason]}
-	 {*ast.IncDecStmt [linelen]}
-	 {*ast.IfStmt []}
+	 {*ast.BasicLit [STRING "%s: too long, ignoring\n"]}
+	 { [name]}
+	 {*ast.ReturnStmt -> *ast.IfStmt -> *ast.IncDecStmt [linelen]}
+	 {*ast.BinaryExpr [> linelen maxLineLen]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
+	 {*ast.BasicLit [STRING "%s: very long lines, ignoring\n"]}
+	 { [name]}
+	 {*ast.ReturnStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [== c]}
 	 {*ast.BasicLit [CHAR '\n']}
-	 {*ast.BlockStmt -> *ast.IncDecStmt [numLines]}
-	 {*ast.IfStmt []}
-	 {*ast.BinaryExpr [> linelen maxLineLen]}
-	 {*ast.BlockStmt -> *ast.IncDecStmt [longLines]}
-	 {*ast.AssignStmt [= linelen]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= linelen]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.IfStmt []}
-	 {*ast.BinaryExpr [> n]}
-	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= trigramRatio]}
-	 {*ast.BinaryExpr [/]}
-	 {*ast.CallExpr [float32]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Len]}
-	 {*ast.CallExpr [float32 n]}
-	 {*ast.IfStmt []}
-	 {*ast.BinaryExpr [&&]}
-	 {*ast.BinaryExpr [> trigramRatio maxTrigramRatio]}
 	 {*ast.BinaryExpr [>]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Len maxTextTrigrams]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= skipReason]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
-	 {*ast.BasicLit [STRING "Trigram ratio too high (%0.2f), probably not text" trigramRatio]}
-	 {*ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
-	 {*ast.BasicLit [STRING "%s: %s\n" name skipReason]}
-	 {*ast.ReturnStmt [skipReason]}
-	 {*ast.AssignStmt [:= longLineRatio]}
-	 {*ast.BinaryExpr [/]}
-	 {*ast.CallExpr [float32 longLines]}
-	 {*ast.CallExpr [float32 numLines]}
-	 {*ast.IfStmt []}
-	 {*ast.BinaryExpr [> longLineRatio maxLongLineRatio]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= skipReason]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [fmt Sprintf]}
-	 {*ast.BasicLit [STRING "Too many long lines, ratio: %0.2f" longLineRatio]}
-	 {*ast.IfStmt -> *ast.SelectorExpr [ix LogSkip]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
-	 {*ast.BasicLit [STRING "%s: %s\n" name skipReason]}
-	 {*ast.ReturnStmt [skipReason]}
-	 {*ast.AssignStmt [+=]}
+	 {*ast.BasicLit [STRING "%s: too many trigrams, probably not text, ignoring\n"]}
+	 { [name]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [+=]}
 	 {*ast.SelectorExpr [ix totalBytes n]}
 	 {*ast.IfStmt -> *ast.SelectorExpr [ix Verbose]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Printf]}
-	 {*ast.BasicLit [STRING "%d %d %s\n" n]}
+	 {*ast.BasicLit [STRING "%d %d %s\n"]}
+	 { [n]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix trigram Len name]}
 	 {*ast.AssignStmt [:= fileid]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ix addName name]}
@@ -316,7 +269,6 @@ function name is Add
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [ix post]}
 	 {*ast.CallExpr [makePostEntry trigram fileid]}
-	 {*ast.ReturnStmt -> *ast.BasicLit [STRING ""]}
 
 
 function name is Flush 
@@ -325,7 +277,8 @@ function name is Flush
 	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [ix addName]}
 	 {*ast.BasicLit [STRING ""]}
 	 {*ast.GenDecl -> *ast.ValueSpec [off]}
-	 {*ast.ArrayType -> *ast.BasicLit [INT 5 uint32]}
+	 {*ast.ArrayType -> *ast.BasicLit [INT 5]}
+	 { [uint32]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main writeString magic]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.IndexExpr [off]}
@@ -370,13 +323,9 @@ function name is Flush
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main writeString trailerMagic]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [os Remove]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [ix nameData name]}
-	 {*ast.RangeStmt [_ d]}
-	 {*ast.SelectorExpr [ix postData]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [unmmap d]}
 	 {*ast.RangeStmt [_ f]}
 	 {*ast.SelectorExpr [ix postFile]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [f Close]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [os Remove]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [os Remove]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [f Name]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [os Remove]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [ix nameIndex name]}
@@ -387,12 +336,6 @@ function name is Flush
 	 {*ast.SelectorExpr [ix totalBytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main offset]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main flush]}
-
-
-function name is Close 
-	 {*ast.FieldList -> *ast.Field [ix]}
-	 {*ast.StarExpr [IndexWriter Close]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix main file Close]}
 
 
 function name is copyFile 
@@ -420,7 +363,8 @@ function name is addName
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.CallExpr -> *ast.SelectorExpr [strings Contains name]}
 	 {*ast.BasicLit [STRING "\x00"]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf]}
-	 {*ast.BasicLit [STRING "%q: file has NUL byte in name" name]}
+	 {*ast.BasicLit [STRING "%q: file has NUL byte in name"]}
+	 { [name]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix nameIndex writeUint32]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix nameData offset]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [ix nameData writeString name]}
@@ -435,8 +379,7 @@ function name is addName
 function name is flushPost 
 	 {*ast.FieldList -> *ast.Field [ix]}
 	 {*ast.StarExpr [IndexWriter flushPost]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= w err]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= w err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ioutil TempFile]}
 	 {*ast.BasicLit [STRING ""]}
 	 {*ast.BasicLit [STRING "csearch-index"]}
@@ -454,7 +397,8 @@ function name is flushPost
 	 {*ast.AssignStmt [:= data]}
 	 {*ast.SliceExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType []}
 	 {*ast.BinaryExpr [* npost]}
-	 {*ast.BasicLit [INT 8 byte]}
+	 {*ast.BasicLit [INT 8]}
+	 { [byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [ix post]}
@@ -463,8 +407,7 @@ function name is flushPost
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [ix post]}
 	 {*ast.BasicLit [INT 8]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= n err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= n err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [w Write data]}
 	 {*ast.BinaryExpr [||]}
 	 {*ast.BinaryExpr [!= err nil]}
@@ -501,12 +444,7 @@ function name is mergePost
 	 {*ast.SelectorExpr [ix postFile]}
 	 {*ast.RangeStmt [_ f]}
 	 {*ast.SelectorExpr [ix postFile]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
-	 {*ast.SelectorExpr [ix postData]}
-	 {*ast.CallExpr [append]}
-	 {*ast.SelectorExpr [ix postData]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [h addFile f]}
+	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h addFile f]}
 	 {*ast.ExprStmt -> *ast.CallExpr [sortPost]}
 	 {*ast.SelectorExpr [ix post]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h addMem]}
@@ -592,8 +530,6 @@ function name is mergePost
 
 {*ast.GenDecl -> *ast.ValueSpec [postBuf]}
 {*ast.BasicLit [INT 4096]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [postHeap]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [ch]}
 {*ast.ArrayType -> *ast.StarExpr [postChunk]}
@@ -604,9 +540,7 @@ function name is addFile
 	 {*ast.StarExpr [postHeap addFile]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [f]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [os File]}
-	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= data]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= data]}
 	 {*ast.SelectorExpr -> *ast.CallExpr [mmapFile f d]}
 	 {*ast.AssignStmt [:= m]}
 	 {*ast.SliceExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [npost postEntry]}
@@ -618,7 +552,6 @@ function name is addFile
 	 {*ast.CallExpr [len data]}
 	 {*ast.BasicLit [INT 8]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h addMem m]}
-	 {*ast.ReturnStmt [data]}
 
 
 function name is addMem 
@@ -638,8 +571,7 @@ function name is step
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ch]}
 	 {*ast.StarExpr [postChunk]}
 	 {*ast.FieldList -> *ast.Field [bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= old]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= old]}
 	 {*ast.SelectorExpr [ch e]}
 	 {*ast.AssignStmt [:= m]}
 	 {*ast.SelectorExpr [ch m]}
@@ -676,8 +608,7 @@ function name is add
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [ch m]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [ch e]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [ch m]}
 	 {*ast.BasicLit [INT 0]}
@@ -727,8 +658,7 @@ function name is next
 	 {*ast.CallExpr [len m]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [h pop]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [ch e]}
 	 {*ast.IndexExpr [m]}
 	 {*ast.BasicLit [INT 0]}
@@ -745,8 +675,7 @@ function name is pop
 	 {*ast.FieldList -> *ast.Field [h]}
 	 {*ast.StarExpr [postHeap pop]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [postChunk]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ch]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ch]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [h ch]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.AssignStmt [:= n]}
@@ -774,8 +703,7 @@ function name is push
 	 {*ast.StarExpr [postHeap push]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ch]}
 	 {*ast.StarExpr [postChunk]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= n]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= n]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [h ch]}
 	 {*ast.AssignStmt [=]}
@@ -794,22 +722,19 @@ function name is siftDown
 	 {*ast.FieldList -> *ast.Field [h]}
 	 {*ast.StarExpr [postHeap siftDown]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [i int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ch]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ch]}
 	 {*ast.SelectorExpr [h ch]}
-	 {*ast.ForStmt -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= j1]}
+	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [:= j1]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.BinaryExpr [*]}
-	 {*ast.BasicLit [INT 2 i]}
+	 {*ast.BasicLit [INT 2]}
+	 { [i]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [>= j1]}
 	 {*ast.CallExpr [len ch]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [:= j j1]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= j2]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [:= j j1]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= j2]}
 	 {*ast.BinaryExpr [+ j1]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.BinaryExpr [&&]}
@@ -818,14 +743,12 @@ function name is siftDown
 	 {*ast.BinaryExpr [>=]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr [ch j1 e]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr [ch j2 e]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= j j2]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= j j2]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [<]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr [ch i e]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr [ch j e]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [ch i]}
 	 {*ast.IndexExpr [ch j]}
 	 {*ast.IndexExpr [ch j]}
@@ -837,11 +760,9 @@ function name is siftUp
 	 {*ast.FieldList -> *ast.Field [h]}
 	 {*ast.StarExpr [postHeap siftUp]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [j int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ch]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ch]}
 	 {*ast.SelectorExpr [h ch]}
-	 {*ast.ForStmt -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.BlockStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BinaryExpr [/]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [- j]}
@@ -853,8 +774,7 @@ function name is siftUp
 	 {*ast.BinaryExpr [<]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr [ch i e]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr [ch j e]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [ch i]}
 	 {*ast.IndexExpr [ch j]}
 	 {*ast.IndexExpr [ch j]}
@@ -869,7 +789,8 @@ function name is siftUp
 {*ast.Field [buf]}
 {*ast.ArrayType [byte]}
 {*ast.Field [tmp]}
-{*ast.ArrayType -> *ast.BasicLit [INT 8 byte]}
+{*ast.ArrayType -> *ast.BasicLit [INT 8]}
+{ [byte]}
 
 
 function name is bufCreate 
@@ -882,8 +803,7 @@ function name is bufCreate
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= name]}
 	 {*ast.BasicLit [STRING ""]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= f err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= f err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [os OpenFile name]}
 	 {*ast.BinaryExpr [|]}
 	 {*ast.BinaryExpr [|]}
@@ -891,8 +811,7 @@ function name is bufCreate
 	 {*ast.SelectorExpr [os O_CREATE]}
 	 {*ast.SelectorExpr [os O_TRUNC]}
 	 {*ast.BasicLit [INT 0600]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= f err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= f err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [ioutil TempFile]}
 	 {*ast.BasicLit [STRING ""]}
 	 {*ast.BasicLit [STRING "csearch"]}
@@ -919,8 +838,7 @@ function name is write
 	 {*ast.StarExpr [bufWriter write]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [x]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= n]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= n]}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.CallExpr [cap]}
 	 {*ast.SelectorExpr [b buf]}
@@ -935,15 +853,13 @@ function name is write
 	 {*ast.CallExpr [len x]}
 	 {*ast.CallExpr [cap]}
 	 {*ast.SelectorExpr [b buf]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= _ err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b file Write x]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf]}
 	 {*ast.BasicLit [STRING "writing %s: %v"]}
 	 {*ast.SelectorExpr [b name err]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [b buf]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [b buf x]}
@@ -970,8 +886,7 @@ function name is writeString
 	 {*ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr [bufWriter writeString]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= n]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= n]}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.CallExpr [cap]}
 	 {*ast.SelectorExpr [b buf]}
@@ -986,15 +901,13 @@ function name is writeString
 	 {*ast.CallExpr [len s]}
 	 {*ast.CallExpr [cap]}
 	 {*ast.SelectorExpr [b buf]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= _ err]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b file WriteString s]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [log Fatalf]}
 	 {*ast.BasicLit [STRING "writing %s: %v"]}
 	 {*ast.SelectorExpr [b name err]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [b buf]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [b buf s]}
@@ -1004,8 +917,7 @@ function name is offset
 	 {*ast.FieldList -> *ast.Field [b]}
 	 {*ast.StarExpr [bufWriter offset]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [uint32]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= off _]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= off _]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b file Seek]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 1]}
@@ -1030,8 +942,7 @@ function name is flush
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [b buf]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= _ err]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [b file Write]}
 	 {*ast.SelectorExpr [b buf]}
 	 {*ast.IfStmt []}
@@ -1197,8 +1108,7 @@ function name is writeUvarint
 	 {*ast.CallExpr [byte]}
 	 {*ast.BinaryExpr [>> x]}
 	 {*ast.BasicLit [INT 21]}
-	 {*ast.CaseClause []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.CaseClause -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [b buf]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [b buf]}
@@ -1240,7 +1150,8 @@ function name is validUTF8
 	 {*ast.BasicLit [INT 0x80]}
 	 {*ast.BinaryExpr [&&]}
 	 {*ast.BinaryExpr [<=]}
-	 {*ast.BasicLit [INT 0xc0 c2]}
+	 {*ast.BasicLit [INT 0xc0]}
+	 { [c2]}
 	 {*ast.BinaryExpr [< c2]}
 	 {*ast.BasicLit [INT 0xf8]}
 	 {*ast.CaseClause []}
@@ -1255,7 +1166,8 @@ function name is validUTF8
 	 {*ast.ReturnStmt []}
 	 {*ast.BinaryExpr [&&]}
 	 {*ast.BinaryExpr [<=]}
-	 {*ast.BasicLit [INT 0x80 c2]}
+	 {*ast.BasicLit [INT 0x80]}
+	 { [c2]}
 	 {*ast.BinaryExpr [< c2]}
 	 {*ast.BasicLit [INT 0xc0]}
 	 {*ast.ReturnStmt [false]}
@@ -1263,17 +1175,26 @@ function name is validUTF8
 
 {*ast.GenDecl -> *ast.ValueSpec [sortK]}
 {*ast.BasicLit [INT 12]}
+{*ast.GenDecl -> *ast.ValueSpec [sortTmp]}
+{*ast.ArrayType [postEntry]}
+
+
+{*ast.GenDecl -> *ast.ValueSpec [sortN]}
+{*ast.ArrayType []}
+{*ast.BinaryExpr [<<]}
+{*ast.BasicLit [INT 1]}
+{ [sortK int]}
 
 
 function name is sortPost 
 	 { [sortPost]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [post]}
 	 {*ast.ArrayType [postEntry]}
-	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [sortN]}
-	 {*ast.ArrayType []}
-	 {*ast.BinaryExpr [<<]}
-	 {*ast.BasicLit [INT 1 sortK int]}
-	 {*ast.AssignStmt [:= sortTmp]}
+	 {*ast.BlockStmt -> *ast.IfStmt []}
+	 {*ast.BinaryExpr [>]}
+	 {*ast.CallExpr [len post]}
+	 {*ast.CallExpr [len sortTmp]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= sortTmp]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [postEntry]}
 	 {*ast.CallExpr [len post]}
@@ -1282,13 +1203,11 @@ function name is sortPost
 	 {*ast.CallExpr [len post]}
 	 {*ast.GenDecl -> *ast.ValueSpec [k sortK]}
 	 {*ast.RangeStmt [i sortN]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [sortN i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.RangeStmt [_ p post]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= r]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= r]}
 	 {*ast.BinaryExpr [&]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BinaryExpr [>> p]}
@@ -1296,19 +1215,18 @@ function name is sortPost
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.BinaryExpr [<<]}
-	 {*ast.BasicLit [INT 1 k]}
+	 {*ast.BasicLit [INT 1]}
+	 { [k]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.IncDecStmt -> *ast.IndexExpr [sortN r]}
 	 {*ast.AssignStmt [:= tot]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.RangeStmt [i count sortN]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [sortN i tot]}
 	 {*ast.AssignStmt [+= tot count]}
 	 {*ast.RangeStmt [_ p post]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= r]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= r]}
 	 {*ast.BinaryExpr [&]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BinaryExpr [>> p]}
@@ -1316,7 +1234,8 @@ function name is sortPost
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.BinaryExpr [<<]}
-	 {*ast.BasicLit [INT 1 k]}
+	 {*ast.BasicLit [INT 1]}
+	 { [k]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.AssignStmt [:= o]}
 	 {*ast.IndexExpr [sortN r]}
@@ -1325,45 +1244,45 @@ function name is sortPost
 	 {*ast.IndexExpr [tmp o p]}
 	 {*ast.AssignStmt [= tmp post post tmp]}
 	 {*ast.RangeStmt [i sortN]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [sortN i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.RangeStmt [_ p post]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= r]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= r]}
 	 {*ast.BinaryExpr [&]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BinaryExpr [>> p]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [+]}
-	 {*ast.BasicLit [INT 32 k]}
+	 {*ast.BasicLit [INT 32]}
+	 { [k]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.BinaryExpr [<<]}
-	 {*ast.BasicLit [INT 1 k]}
+	 {*ast.BasicLit [INT 1]}
+	 { [k]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.IncDecStmt -> *ast.IndexExpr [sortN r]}
 	 {*ast.AssignStmt [= tot]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.RangeStmt [i count sortN]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [sortN i tot]}
 	 {*ast.AssignStmt [+= tot count]}
 	 {*ast.RangeStmt [_ p post]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= r]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= r]}
 	 {*ast.BinaryExpr [&]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BinaryExpr [>> p]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [+]}
-	 {*ast.BasicLit [INT 32 k]}
+	 {*ast.BasicLit [INT 32]}
+	 { [k]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.BinaryExpr [<<]}
-	 {*ast.BasicLit [INT 1 k]}
+	 {*ast.BasicLit [INT 1]}
+	 { [k]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.AssignStmt [:= o]}
 	 {*ast.IndexExpr [sortN r]}

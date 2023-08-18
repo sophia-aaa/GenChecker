@@ -2,14 +2,10 @@
 
 
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "C"]}
-
-
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "bytes"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "io"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "syscall"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "bytes"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "io"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "syscall"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.ValueSpec [EILSEQ]}
 {*ast.CallExpr -> *ast.SelectorExpr [syscall Errno]}
 {*ast.SelectorExpr [C EILSEQ]}
@@ -20,8 +16,9 @@
 
 {*ast.GenDecl -> *ast.ValueSpec [DefaultBufSize]}
 {*ast.BasicLit [INT 4096]}
-
-
+{*ast.GenDecl -> *ast.TypeSpec [Iconv]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Handle]}
+{*ast.SelectorExpr [C iconv_t]}
 
 
 function name is Open 
@@ -30,8 +27,7 @@ function name is Open
 	 {*ast.Field [fromcode string]}
 	 {*ast.FieldList -> *ast.Field [cd Iconv]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tocode1]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tocode1]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C CString tocode]}
 	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr [C free]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer tocode1]}
@@ -43,8 +39,7 @@ function name is Open
 	 {*ast.CallExpr -> *ast.SelectorExpr [C iconv_open tocode1 fromcode1]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [= cd]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [= cd]}
 	 {*ast.CompositeLit [Iconv ret]}
 	 {*ast.ReturnStmt []}
 
@@ -52,8 +47,7 @@ function name is Open
 function name is Close 
 	 {*ast.FieldList -> *ast.Field [cd Iconv Close]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= _ err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C iconv_close]}
 	 {*ast.SelectorExpr [cd Handle]}
 	 {*ast.ReturnStmt [err]}
@@ -69,19 +63,16 @@ function name is Conv
 	 {*ast.ArrayType [byte]}
 	 {*ast.Field [inleft int]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= outn inleft err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= outn inleft err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cd Do b]}
 	 {*ast.CallExpr [len b outbuf]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [||]}
 	 {*ast.BinaryExpr [== err nil]}
 	 {*ast.BinaryExpr [!= err E2BIG]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= out]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= out]}
 	 {*ast.SliceExpr [outbuf outn]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= w]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= w]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [bytes NewBuffer nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [w Write]}
 	 {*ast.SliceExpr [outbuf outn]}
@@ -92,8 +83,7 @@ function name is Conv
 	 {*ast.CallExpr [len b inleft inleft outbuf]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [= out]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [= out]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [w Bytes]}
 	 {*ast.ReturnStmt []}
 
@@ -103,7 +93,8 @@ function name is ConvString
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field [string]}
 	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [outbuf]}
-	 {*ast.ArrayType -> *ast.BasicLit [INT 512 byte]}
+	 {*ast.ArrayType -> *ast.BasicLit [INT 512]}
+	 { [byte]}
 	 {*ast.AssignStmt [:= s1 _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cd Conv]}
 	 {*ast.CallExpr -> *ast.ArrayType [byte s]}
@@ -126,8 +117,7 @@ function name is Do
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [== in]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= inbytes]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [:= inbytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t in]}
 	 {*ast.AssignStmt [:= inptr]}
 	 {*ast.UnaryExpr [&]}
@@ -172,14 +162,12 @@ function name is DoWrite
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [== in]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= inbytes]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [:= inbytes]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [C size_t in]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [> inbytes]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= in]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= in]}
 	 {*ast.CallExpr [int inbytes]}
 	 {*ast.AssignStmt [:= inptr]}
 	 {*ast.UnaryExpr [&]}
@@ -212,6 +200,7 @@ function name is DoWrite
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BinaryExpr [!= err E2BIG]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr [int inbytes err]}
-	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0 nil]}
+	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0]}
+	 { [nil]}
 
 

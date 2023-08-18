@@ -1,14 +1,20 @@
 {*ast.File [sqlparser]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "bytes"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "encoding/json"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "strings"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "testing"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/xwb1989/sqlparser/dependency/sqltypes"]}
 
 
 function name is TestAppend 
 	 { [TestAppend]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= query]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= query]}
 	 {*ast.BasicLit [STRING "select * from t where a = 1"]}
 	 {*ast.AssignStmt [:= tree err]}
 	 {*ast.CallExpr [Parse query]}
@@ -25,7 +31,8 @@ function name is TestAppend
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= got want]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "Append: %s, want %s" got want]}
+	 {*ast.BasicLit [STRING "Append: %s, want %s"]}
+	 { [got want]}
 	 {*ast.ExprStmt -> *ast.CallExpr [Append]}
 	 {*ast.UnaryExpr [& b tree]}
 	 {*ast.AssignStmt [= got]}
@@ -35,15 +42,15 @@ function name is TestAppend
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= got want]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "Append: %s, want %s" got want]}
+	 {*ast.BasicLit [STRING "Append: %s, want %s"]}
+	 { [got want]}
 
 
 function name is TestSelect 
 	 { [TestSelect]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tree err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tree err]}
 	 {*ast.CallExpr [Parse]}
 	 {*ast.BasicLit [STRING "select * from t where a = 1"]}
 	 {*ast.IfStmt []}
@@ -155,8 +162,7 @@ function name is TestRemoveHints
 	 {*ast.CompositeLit -> *ast.ArrayType [string]}
 	 {*ast.BasicLit [STRING "select * from t use index (i)"]}
 	 {*ast.BasicLit [STRING "select * from t force index (i)"]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tree err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tree err]}
 	 {*ast.CallExpr [Parse query]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
@@ -173,21 +179,20 @@ function name is TestRemoveHints
 	 {*ast.AssignStmt [:= buf]}
 	 {*ast.CallExpr [NewTrackedBuffer nil]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [sel Format buf]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= got want]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= got want]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [buf String]}
 	 {*ast.BasicLit [STRING "select * from t"]}
 	 {*ast.BinaryExpr [!= got want]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "stripped query: %s, want %s" got want]}
+	 {*ast.BasicLit [STRING "stripped query: %s, want %s"]}
+	 { [got want]}
 
 
 function name is TestAddOrder 
 	 { [TestAddOrder]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= src err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= src err]}
 	 {*ast.CallExpr [Parse]}
 	 {*ast.BasicLit [STRING "select foo, bar from baz order by foo"]}
 	 {*ast.IfStmt []}
@@ -241,8 +246,7 @@ function name is TestSetLimit
 	 { [TestSetLimit]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= src err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= src err]}
 	 {*ast.CallExpr [Parse]}
 	 {*ast.BasicLit [STRING "select foo, bar from baz limit 4"]}
 	 {*ast.IfStmt []}
@@ -325,8 +329,7 @@ function name is TestIsAggregate
 	 { [TestIsAggregate]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= f]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= f]}
 	 {*ast.CompositeLit [FuncExpr]}
 	 {*ast.KeyValueExpr [Name]}
 	 {*ast.CallExpr [NewColIdent]}
@@ -360,8 +363,7 @@ function name is TestReplaceExpr
 	 { [TestReplaceExpr]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tcases]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tcases]}
 	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in out string]}
 	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
 	 {*ast.BasicLit [STRING "select * from t where (select a from b)"]}
@@ -524,8 +526,7 @@ function name is TestReplaceExpr
 	 {*ast.CallExpr -> *ast.ArrayType [byte]}
 	 {*ast.BasicLit [STRING ":a"]}
 	 {*ast.RangeStmt [_ tcase tcases]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tree err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tree err]}
 	 {*ast.CallExpr [Parse]}
 	 {*ast.SelectorExpr [tcase in]}
 	 {*ast.IfStmt []}
@@ -538,12 +539,10 @@ function name is TestReplaceExpr
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [node SQLNode]}
 	 {*ast.FieldList -> *ast.Field [kontinue bool]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.AssignStmt [:= sq ok]}
+	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.AssignStmt [:= sq ok]}
 	 {*ast.TypeAssertExpr [node]}
 	 {*ast.StarExpr [Subquery ok]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= from sq]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= from sq]}
 	 {*ast.ReturnStmt [false nil]}
 	 {*ast.ReturnStmt [true nil tree]}
 	 {*ast.IfStmt []}
@@ -570,8 +569,7 @@ function name is TestExprFromValue
 	 { [TestExprFromValue]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= tcases]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= tcases]}
 	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in]}
 	 {*ast.SelectorExpr [sqltypes Value]}
 	 {*ast.Field [out SQLNode]}
@@ -619,8 +617,7 @@ function name is TestExprFromValue
 	 {*ast.KeyValueExpr [err]}
 	 {*ast.BasicLit [STRING "cannot convert value EXPRESSION(rand()) to AST"]}
 	 {*ast.RangeStmt [_ tcase tcases]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= got err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= got err]}
 	 {*ast.CallExpr [ExprFromValue]}
 	 {*ast.SelectorExpr [tcase in]}
 	 {*ast.IfStmt []}
@@ -640,8 +637,7 @@ function name is TestExprFromValue
 	 {*ast.BranchStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Error err]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= got want got]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= got want got]}
 	 {*ast.SelectorExpr [tcase out]}
 	 {*ast.UnaryExpr [!]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual got want]}
@@ -689,8 +685,7 @@ function name is TestColIdent
 	 { [TestColIdent]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= str]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= str]}
 	 {*ast.CallExpr [NewColIdent]}
 	 {*ast.BasicLit [STRING "Ab"]}
 	 {*ast.IfStmt []}
@@ -743,8 +738,7 @@ function name is TestColIdentMarshal
 	 { [TestColIdentMarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= str]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= str]}
 	 {*ast.CallExpr [NewColIdent]}
 	 {*ast.BasicLit [STRING "Ab"]}
 	 {*ast.AssignStmt [:= b err]}
@@ -759,28 +753,29 @@ function name is TestColIdentMarshal
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= got want]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "json.Marshal()= %s, want %s" got want]}
+	 {*ast.BasicLit [STRING "json.Marshal()= %s, want %s"]}
+	 { [got want]}
 	 {*ast.GenDecl -> *ast.ValueSpec [out ColIdent]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [json Unmarshal b]}
 	 {*ast.UnaryExpr [& out]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "Unmarshal err: %v, want nil" err]}
+	 {*ast.BasicLit [STRING "Unmarshal err: %v, want nil"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [!]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual out str]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "Unmarshal: %v, want %v" out str]}
+	 {*ast.BasicLit [STRING "Unmarshal: %v, want %v"]}
+	 { [out str]}
 
 
 function name is TestColIdentSize 
 	 { [TestColIdentSize]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
 	 {*ast.CallExpr [NewColIdent]}
 	 {*ast.BasicLit [STRING ""]}
@@ -792,15 +787,15 @@ function name is TestColIdentSize
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= size want]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "Size of ColIdent: %d, want 32" want]}
+	 {*ast.BasicLit [STRING "Size of ColIdent: %d, want 32"]}
+	 { [want]}
 
 
 function name is TestTableIdentMarshal 
 	 { [TestTableIdentMarshal]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= str]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= str]}
 	 {*ast.CallExpr [NewTableIdent]}
 	 {*ast.BasicLit [STRING "Ab"]}
 	 {*ast.AssignStmt [:= b err]}
@@ -815,28 +810,29 @@ function name is TestTableIdentMarshal
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= got want]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "json.Marshal()= %s, want %s" got want]}
+	 {*ast.BasicLit [STRING "json.Marshal()= %s, want %s"]}
+	 { [got want]}
 	 {*ast.GenDecl -> *ast.ValueSpec [out TableIdent]}
-	 {*ast.IfStmt []}
-	 {*ast.AssignStmt [:= err]}
+	 {*ast.IfStmt -> *ast.AssignStmt [:= err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [json Unmarshal b]}
 	 {*ast.UnaryExpr [& out]}
 	 {*ast.BinaryExpr [!= err nil]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "Unmarshal err: %v, want nil" err]}
+	 {*ast.BasicLit [STRING "Unmarshal err: %v, want nil"]}
+	 { [err]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [!]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [reflect DeepEqual out str]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "Unmarshal: %v, want %v" out str]}
+	 {*ast.BasicLit [STRING "Unmarshal: %v, want %v"]}
+	 { [out str]}
 
 
 function name is TestHexDecode 
 	 { [TestHexDecode]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= testcase]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= testcase]}
 	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in out string]}
 	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
 	 {*ast.BasicLit [STRING "313233"]}
@@ -851,8 +847,7 @@ function name is TestHexDecode
 	 {*ast.KeyValueExpr [out]}
 	 {*ast.BasicLit [STRING "encoding/hex: odd length hex string"]}
 	 {*ast.RangeStmt [_ tc testcase]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= out err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= out err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [newHexVal]}
 	 {*ast.SelectorExpr [tc in HexDecode]}
 	 {*ast.IfStmt []}
@@ -880,8 +875,7 @@ function name is TestCompliantName
 	 { [TestCompliantName]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= testcases]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= testcases]}
 	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [in out string]}
 	 {*ast.CompositeLit -> *ast.KeyValueExpr [in]}
 	 {*ast.BasicLit [STRING "aa"]}
@@ -904,8 +898,7 @@ function name is TestCompliantName
 	 {*ast.KeyValueExpr [out]}
 	 {*ast.BasicLit [STRING "_ab"]}
 	 {*ast.RangeStmt [_ tc testcases]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= out]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= out]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr [NewColIdent]}
 	 {*ast.SelectorExpr [tc in CompliantName]}
 	 {*ast.IfStmt []}
@@ -931,8 +924,7 @@ function name is TestColumns_FindColumn
 	 { [TestColumns_FindColumn]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= cols]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= cols]}
 	 {*ast.CompositeLit [Columns]}
 	 {*ast.CallExpr [NewColIdent]}
 	 {*ast.BasicLit [STRING "a"]}
@@ -963,8 +955,7 @@ function name is TestColumns_FindColumn
 	 {*ast.UnaryExpr [-]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.RangeStmt [_ tc testcases]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= val]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= val]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [cols FindColumn]}
 	 {*ast.CallExpr [NewColIdent]}
 	 {*ast.SelectorExpr [tc in]}
@@ -981,8 +972,7 @@ function name is TestSplitStatementToPieces
 	 { [TestSplitStatementToPieces]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [testing T]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= testcases]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= testcases]}
 	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.StructType -> *ast.FieldList -> *ast.Field [input string]}
 	 {*ast.Field [output string]}
 	 {*ast.CompositeLit -> *ast.KeyValueExpr [input]}
@@ -1020,8 +1010,7 @@ function name is TestSplitStatementToPieces
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [tcase output]}
 	 {*ast.BasicLit [STRING ""]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [tcase output]}
 	 {*ast.SelectorExpr [tcase input]}
 	 {*ast.AssignStmt [:= stmtPieces err]}
@@ -1032,15 +1021,15 @@ function name is TestSplitStatementToPieces
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
 	 {*ast.BasicLit [STRING "input: %s, err: %v"]}
 	 {*ast.SelectorExpr [tcase input err]}
-	 {*ast.BranchStmt []}
-	 {*ast.AssignStmt [:= out]}
+	 {*ast.BranchStmt -> *ast.AssignStmt [:= out]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [strings Join stmtPieces]}
 	 {*ast.BasicLit [STRING ";"]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= out]}
 	 {*ast.SelectorExpr [tcase output]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [t Errorf]}
-	 {*ast.BasicLit [STRING "out: %s, want %s" out]}
+	 {*ast.BasicLit [STRING "out: %s, want %s"]}
+	 { [out]}
 	 {*ast.SelectorExpr [tcase output]}
 
 

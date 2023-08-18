@@ -468,7 +468,7 @@ function name is rv2i
 	 {*ast.SelectorExpr [urv ptr]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.SelectorExpr [urv ptr]}
-	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr*ast.InterfaceType []}
+	 {*ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.SelectorExpr [urv unsafeIntf]}

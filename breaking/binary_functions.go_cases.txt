@@ -1,0 +1,236 @@
+function name: Type
+   0.case
+     *ast.ReturnStmt -> *ast.BasicLit 	 [TypeCodeObject STRING "OBJECT"]
+   1.case
+     *ast.ReturnStmt -> *ast.BasicLit 	 [TypeCodeArray STRING "ARRAY"]
+   2.case
+     *ast.SwitchStmt -> *ast.IndexExpr -> *ast.SelectorExpr 	 [TypeCodeLiteral bj Value]
+     *ast.BasicLit 	 [INT 0]
+     *ast.BlockStmt -> *ast.CaseClause -> *ast.ReturnStmt -> *ast.BasicLit 	 [LiteralNil STRING "NULL"]
+     *ast.CaseClause -> *ast.ReturnStmt -> *ast.BasicLit 	 [default STRING "BOOLEAN"]
+   3.case
+     *ast.ReturnStmt -> *ast.BasicLit 	 [TypeCodeInt64 STRING "INTEGER"]
+   4.case
+     *ast.ReturnStmt -> *ast.BasicLit 	 [TypeCodeUint64 STRING "UNSIGNED INTEGER"]
+   5.case
+     *ast.ReturnStmt -> *ast.BasicLit 	 [TypeCodeFloat64 STRING "DOUBLE"]
+   6.case
+     *ast.ReturnStmt -> *ast.BasicLit 	 [TypeCodeString STRING "STRING"]
+
+
+function name: Unquote
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeString := tmp string hack String]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [bj GetString]
+     *ast.AssignStmt -> *ast.CallExpr 	 [:= s err unquoteString tmp]
+     *ast.IfStmt -> *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "" errors Trace]
+      	 [err]
+     *ast.AssignStmt -> *ast.CallExpr 	 [:= slen len s]
+     *ast.IfStmt -> *ast.BinaryExpr -> *ast.BasicLit 	 [> slen INT 1]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.IndexExpr -> *ast.BasicLit 	 [:= head tail s INT 0]
+     *ast.IndexExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [s - slen INT 1]
+     *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [&& == head CHAR '"']
+     *ast.BinaryExpr -> *ast.BasicLit 	 [== tail CHAR '"']
+     *ast.BlockStmt -> *ast.ReturnStmt -> *ast.SliceExpr -> *ast.BasicLit -> *ast.BinaryExpr -> *ast.BasicLit 	 [s INT 1 - slen INT 1]
+      	 [nil]
+     *ast.ReturnStmt 	 [s nil]
+
+
+function name: unquoteString
+   0.case
+     *ast.BasicLit -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [CHAR '"' ret WriteByte]
+     *ast.BasicLit 	 [CHAR '"']
+   1.case
+     *ast.BasicLit -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [CHAR 'b' ret WriteByte]
+     *ast.BasicLit 	 [CHAR '\b']
+   2.case
+     *ast.BasicLit -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [CHAR 'f' ret WriteByte]
+     *ast.BasicLit 	 [CHAR '\f']
+   3.case
+     *ast.BasicLit -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [CHAR 'n' ret WriteByte]
+     *ast.BasicLit 	 [CHAR '\n']
+   4.case
+     *ast.BasicLit -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [CHAR 'r' ret WriteByte]
+     *ast.BasicLit 	 [CHAR '\r']
+   5.case
+     *ast.BasicLit -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [CHAR 't' ret WriteByte]
+     *ast.BasicLit 	 [CHAR '\t']
+   6.case
+     *ast.BasicLit -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [CHAR '\\' ret WriteByte]
+     *ast.BasicLit 	 [CHAR '\\']
+   7.case
+     *ast.BasicLit -> *ast.IfStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [CHAR 'u' > + i INT 4]
+     *ast.CallExpr 	 [len s]
+     *ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "" errors Errorf]
+     *ast.BasicLit -> *ast.SliceExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [STRING "Invalid unicode: %s" s + i INT 1]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= char size err decodeEscapedUnicode hack Slice]
+     *ast.SliceExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [s + i INT 1]
+     *ast.BinaryExpr -> *ast.BasicLit 	 [+ i INT 5]
+     *ast.IfStmt -> *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "" errors Trace]
+      	 [err]
+     *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [ret Write]
+     *ast.SliceExpr -> *ast.BasicLit 	 [char INT 0 size]
+     *ast.AssignStmt -> *ast.BasicLit 	 [+= i INT 4]
+
+
+function name: Modify
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [ModifyInsert = bj modifier insert]
+      	 [pathExpr value]
+   1.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [ModifyReplace = bj modifier replace]
+      	 [pathExpr value]
+   2.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [ModifySet = bj modifier set]
+      	 [pathExpr value]
+
+
+function name: rebuildTo
+   0.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeLiteral TypeCodeInt64 TypeCodeUint64 TypeCodeFloat64 TypeCodeString append buf bj Value]
+     *ast.SelectorExpr 	 [bj TypeCode]
+
+
+function name: CompareBinary
+   0.case
+     *ast.AssignStmt -> *ast.BinaryExpr -> *ast.CallExpr -> *ast.IndexExpr -> *ast.SelectorExpr 	 [TypeCodeLiteral = cmp - int right Value]
+     *ast.BasicLit 	 [INT 0]
+     *ast.CallExpr -> *ast.IndexExpr -> *ast.SelectorExpr 	 [int left Value]
+     *ast.BasicLit 	 [INT 0]
+   1.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeInt64 TypeCodeUint64 TypeCodeFloat64 := leftFloat i64AsFloat64 left GetInt64]
+     *ast.SelectorExpr 	 [left TypeCode]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= rightFloat i64AsFloat64 right GetInt64]
+     *ast.SelectorExpr 	 [right TypeCode]
+     *ast.AssignStmt -> *ast.CallExpr 	 [= cmp compareFloat64PrecisionLoss leftFloat rightFloat]
+   2.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeString = cmp bytes Compare]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [left GetString]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [right GetString]
+   3.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeArray := leftCount left GetElemCount]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= rightCount right GetElemCount]
+     *ast.ForStmt -> *ast.AssignStmt -> *ast.BasicLit 	 [:= i INT 0]
+     *ast.BinaryExpr -> *ast.BinaryExpr 	 [&& < i leftCount]
+     *ast.BinaryExpr 	 [< i rightCount]
+     *ast.IncDecStmt 	 [i]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= elem1 left arrayGetElem]
+      	 [i]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= elem2 right arrayGetElem]
+      	 [i]
+     *ast.AssignStmt -> *ast.CallExpr 	 [= cmp CompareBinary elem1 elem2]
+     *ast.IfStmt -> *ast.BinaryExpr -> *ast.BasicLit 	 [!= cmp INT 0]
+     *ast.BlockStmt -> *ast.ReturnStmt 	 [cmp]
+     *ast.AssignStmt -> *ast.BinaryExpr 	 [= cmp - leftCount rightCount]
+   4.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeObject = cmp bytes Compare]
+     *ast.SelectorExpr 	 [left Value]
+     *ast.SelectorExpr 	 [right Value]
+
+
+function name: i64AsFloat64
+   0.case
+     *ast.ReturnStmt -> *ast.CallExpr 	 [TypeCodeLiteral TypeCodeInt64 float64 i64]
+   1.case
+     *ast.AssignStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr 	 [TypeCodeUint64 := u64 uint64]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [unsafe Pointer]
+     *ast.UnaryExpr 	 [& i64]
+     *ast.ReturnStmt -> *ast.CallExpr 	 [float64 u64]
+   2.case
+     *ast.ReturnStmt -> *ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr 	 [TypeCodeFloat64 float64]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [unsafe Pointer]
+     *ast.UnaryExpr 	 [& i64]
+
+
+function name: PeekBytesAsJSON
+   0.case
+     *ast.IfStmt -> *ast.BinaryExpr -> *ast.CallExpr 	 [TypeCodeObject TypeCodeArray >= len b]
+     *ast.BinaryExpr 	 [+ valTypeSize headerSize]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= size endian Uint32]
+     *ast.SliceExpr -> *ast.BinaryExpr 	 [b + valTypeSize dataSizeOff]
+     *ast.AssignStmt -> *ast.BinaryExpr -> *ast.CallExpr 	 [= n + valTypeSize int size]
+     *ast.ReturnStmt 	 []
+   1.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeString := strLen lenLen binary Uvarint]
+     *ast.SliceExpr 	 [b valTypeSize]
+     *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.CallExpr 	 [+ + valTypeSize int strLen]
+      	 [lenLen]
+      	 [nil]
+   2.case
+     *ast.AssignStmt -> *ast.BinaryExpr -> *ast.BasicLit 	 [TypeCodeInt64 TypeCodeUint64 TypeCodeFloat64 = n + valTypeSize INT 8]
+     *ast.ReturnStmt 	 []
+   3.case
+     *ast.AssignStmt -> *ast.BinaryExpr -> *ast.BasicLit 	 [TypeCodeLiteral = n + valTypeSize INT 1]
+     *ast.ReturnStmt 	 []
+
+
+function name: ContainsBinary
+   0.case
+     *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr 	 [TypeCodeObject == target TypeCode]
+      	 [TypeCodeObject]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= len target GetElemCount]
+     *ast.ForStmt -> *ast.AssignStmt -> *ast.BasicLit 	 [:= i INT 0]
+     *ast.BinaryExpr 	 [< i len]
+     *ast.IncDecStmt 	 [i]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= key target objectGetKey]
+      	 [i]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= val target objectGetVal]
+      	 [i]
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= exp exists obj objectSearchKey]
+      	 [key]
+     *ast.BinaryExpr -> *ast.UnaryExpr 	 [|| ! exists]
+     *ast.UnaryExpr -> *ast.CallExpr 	 [! ContainsBinary exp val]
+     *ast.BlockStmt -> *ast.ReturnStmt 	 [false]
+     *ast.ReturnStmt 	 [true]
+     *ast.ReturnStmt 	 [false]
+   1.case
+     *ast.IfStmt -> *ast.BinaryExpr -> *ast.SelectorExpr 	 [TypeCodeArray == target TypeCode]
+      	 [TypeCodeArray]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= len target GetElemCount]
+     *ast.ForStmt -> *ast.AssignStmt -> *ast.BasicLit 	 [:= i INT 0]
+     *ast.BinaryExpr 	 [< i len]
+     *ast.IncDecStmt 	 [i]
+     *ast.BlockStmt -> *ast.IfStmt -> *ast.UnaryExpr -> *ast.CallExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [! ContainsBinary obj target arrayGetElem]
+      	 [i]
+     *ast.BlockStmt -> *ast.ReturnStmt 	 [false]
+     *ast.ReturnStmt 	 [true]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= len obj GetElemCount]
+     *ast.ForStmt -> *ast.AssignStmt -> *ast.BasicLit 	 [:= i INT 0]
+     *ast.BinaryExpr 	 [< i len]
+     *ast.IncDecStmt 	 [i]
+     *ast.BlockStmt -> *ast.IfStmt -> *ast.CallExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [ContainsBinary obj arrayGetElem]
+      	 [i]
+      	 [target]
+     *ast.BlockStmt -> *ast.ReturnStmt 	 [true]
+     *ast.ReturnStmt 	 [false]
+
+
+function name: GetElemDepth
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeObject := len bj GetElemCount]
+     *ast.AssignStmt -> *ast.BasicLit 	 [:= maxDepth INT 0]
+     *ast.ForStmt -> *ast.AssignStmt -> *ast.BasicLit 	 [:= i INT 0]
+     *ast.BinaryExpr 	 [< i len]
+     *ast.IncDecStmt 	 [i]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= obj bj objectGetVal]
+      	 [i]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= depth obj GetElemDepth]
+     *ast.IfStmt -> *ast.BinaryExpr 	 [> depth maxDepth]
+     *ast.BlockStmt -> *ast.AssignStmt 	 [= maxDepth depth]
+     *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BasicLit 	 [+ maxDepth INT 1]
+   1.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [TypeCodeArray := len bj GetElemCount]
+     *ast.AssignStmt -> *ast.BasicLit 	 [:= maxDepth INT 0]
+     *ast.ForStmt -> *ast.AssignStmt -> *ast.BasicLit 	 [:= i INT 0]
+     *ast.BinaryExpr 	 [< i len]
+     *ast.IncDecStmt 	 [i]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= obj bj arrayGetElem]
+      	 [i]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [:= depth obj GetElemDepth]
+     *ast.IfStmt -> *ast.BinaryExpr 	 [> depth maxDepth]
+     *ast.BlockStmt -> *ast.AssignStmt 	 [= maxDepth depth]
+     *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BasicLit 	 [+ maxDepth INT 1]
+
+

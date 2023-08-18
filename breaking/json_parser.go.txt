@@ -652,6 +652,5 @@ function name is Decode
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
 	 {*ast.BasicLit [STRING "nullableFuzzyFloat32Decoder"]}
 	 {*ast.BasicLit [STRING "not number or string"]}
-	 { []}
 
 

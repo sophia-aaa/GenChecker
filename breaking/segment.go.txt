@@ -1,34 +1,22 @@
 {*ast.File [freecache]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "errors"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "sync/atomic"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "errors"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync/atomic"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.ValueSpec [HASH_ENTRY_SIZE]}
 {*ast.BasicLit [INT 16]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [ENTRY_HDR_SIZE]}
 {*ast.BasicLit [INT 24]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [ErrLargeKey]}
 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
 {*ast.BasicLit [STRING "The key is larger than 65535"]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [ErrLargeEntry]}
 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
 {*ast.BasicLit [STRING "The entry size is larger than 1/1024 of cache size"]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [ErrNotFound]}
 {*ast.CallExpr -> *ast.SelectorExpr [errors New]}
 {*ast.BasicLit [STRING "Entry not found"]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [entryPtr]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [offset int64]}
 {*ast.Field [hash16 uint16]}
@@ -48,6 +36,27 @@
 {*ast.Field [reserved uint16]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [segment]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [rb RingBuf]}
+{*ast.Field [segId int]}
+{*ast.Field [_ uint32]}
+{*ast.Field [missCount int64]}
+{*ast.Field [hitCount int64]}
+{*ast.Field [entryCount int64]}
+{*ast.Field [totalCount int64]}
+{*ast.Field [totalTime int64]}
+{*ast.Field [timer Timer]}
+{*ast.Field [totalEvacuate int64]}
+{*ast.Field [totalExpired int64]}
+{*ast.Field [overwrites int64]}
+{*ast.Field [touched int64]}
+{*ast.Field [vacuumLen int64]}
+{*ast.Field [slotLens]}
+{*ast.ArrayType -> *ast.BasicLit [INT 256]}
+{ [int32]}
+{*ast.Field [slotCap int32]}
+{*ast.Field [slotsData]}
+{*ast.ArrayType [entryPtr]}
 
 
 function name is newSegment 
@@ -56,8 +65,7 @@ function name is newSegment
 	 {*ast.Field [segId int]}
 	 {*ast.Field [timer Timer]}
 	 {*ast.FieldList -> *ast.Field [seg segment]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [seg rb]}
 	 {*ast.CallExpr [NewRingBuf bufSize]}
 	 {*ast.BasicLit [INT 0]}
@@ -99,7 +107,8 @@ function name is set
 	 {*ast.BinaryExpr [/]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [seg rb data]}
-	 {*ast.BasicLit [INT 4 ENTRY_HDR_SIZE]}
+	 {*ast.BasicLit [INT 4]}
+	 { [ENTRY_HDR_SIZE]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [>]}
 	 {*ast.BinaryExpr [+]}
@@ -114,8 +123,7 @@ function name is set
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [> expireSeconds]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= expireAt]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= expireAt]}
 	 {*ast.BinaryExpr [+ now]}
 	 {*ast.CallExpr [uint32 expireSeconds]}
 	 {*ast.AssignStmt [:= slotId]}
@@ -139,8 +147,7 @@ function name is set
 	 {*ast.IndexExpr [hdrBuf]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.IfStmt [match]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= matchedPtr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= matchedPtr]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr [slot idx]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb ReadAt]}
@@ -194,8 +201,7 @@ function name is set
 	 {*ast.BinaryExpr [<]}
 	 {*ast.SelectorExpr [hdr valCap]}
 	 {*ast.SelectorExpr [hdr valLen]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [*=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [*=]}
 	 {*ast.SelectorExpr [hdr valCap]}
 	 {*ast.BasicLit [INT 2]}
 	 {*ast.IfStmt []}
@@ -204,14 +210,12 @@ function name is set
 	 {*ast.CallExpr [uint32]}
 	 {*ast.BinaryExpr [- maxKeyValLen]}
 	 {*ast.CallExpr [len key]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [hdr valCap]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.BinaryExpr [- maxKeyValLen]}
 	 {*ast.CallExpr [len key]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [hdr slotId slotId]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [hdr hash16 hash16]}
@@ -235,8 +239,7 @@ function name is set
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [hdr valCap]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [hdr valCap]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.AssignStmt [:= entryLen]}
@@ -249,8 +252,7 @@ function name is set
 	 {*ast.AssignStmt [:= slotModified]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg evacuate entryLen slotId now]}
 	 {*ast.IfStmt [slotModified]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= slot]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= slot]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
 	 {*ast.AssignStmt [= idx match]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
@@ -307,10 +309,8 @@ function name is touch
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! match]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= err ErrNotFound]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= matchedPtr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= err ErrNotFound]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= matchedPtr]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr [slot idx]}
 	 {*ast.GenDecl -> *ast.ValueSpec [hdrBuf]}
@@ -338,15 +338,13 @@ function name is touch
 	 {*ast.UnaryExpr [&]}
 	 {*ast.SelectorExpr [seg missCount]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= expireAt]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= expireAt]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [> expireSeconds]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= expireAt]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= expireAt]}
 	 {*ast.BinaryExpr [+ now]}
 	 {*ast.CallExpr [uint32 expireSeconds]}
 	 {*ast.AssignStmt [:= originAccessTime]}
@@ -386,8 +384,7 @@ function name is evacuate
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [<]}
 	 {*ast.SelectorExpr [seg vacuumLen entryLen]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= oldOff]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= oldOff]}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb End]}
@@ -409,8 +406,7 @@ function name is evacuate
 	 {*ast.CallExpr [int64]}
 	 {*ast.SelectorExpr [oldHdr valCap]}
 	 {*ast.IfStmt -> *ast.SelectorExpr [oldHdr deleted]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= consecutiveEvacuate]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= consecutiveEvacuate]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
 	 {*ast.UnaryExpr [&]}
@@ -425,8 +421,7 @@ function name is evacuate
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.AssignStmt [+=]}
 	 {*ast.SelectorExpr [seg vacuumLen oldEntryLen]}
-	 {*ast.BranchStmt []}
-	 {*ast.AssignStmt [:= expired]}
+	 {*ast.BranchStmt -> *ast.AssignStmt [:= expired]}
 	 {*ast.CallExpr [isExpired]}
 	 {*ast.SelectorExpr [oldHdr expireAt now]}
 	 {*ast.AssignStmt [:= leastRecentUsed]}
@@ -451,8 +446,7 @@ function name is evacuate
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [oldHdr slotId slotId]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= slotModified true]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= slotModified true]}
 	 {*ast.AssignStmt [= consecutiveEvacuate]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
@@ -477,8 +471,7 @@ function name is evacuate
 	 {*ast.UnaryExpr [&]}
 	 {*ast.SelectorExpr [seg totalEvacuate]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= newOff]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= newOff]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Evacuate oldOff]}
 	 {*ast.CallExpr [int oldEntryLen]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [seg updateEntryPtr]}
@@ -503,25 +496,21 @@ function name is get
 	 {*ast.ArrayType [byte]}
 	 {*ast.Field [expireAt uint32]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= hdr ptrOffset err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= hdr ptrOffset err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg locate key hashVal peek]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [= expireAt]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [= expireAt]}
 	 {*ast.SelectorExpr [hdr expireAt]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [>=]}
 	 {*ast.CallExpr [cap buf]}
 	 {*ast.CallExpr [int]}
 	 {*ast.SelectorExpr [hdr valLen]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= value]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= value]}
 	 {*ast.SliceExpr [buf]}
 	 {*ast.SelectorExpr [hdr valLen]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= value]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= value]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.SelectorExpr [hdr valLen]}
@@ -550,13 +539,11 @@ function name is view
 	 {*ast.Field [hashVal uint64]}
 	 {*ast.Field [peek bool]}
 	 {*ast.FieldList -> *ast.Field [err error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= hdr ptrOffset err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= hdr ptrOffset err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg locate key hashVal peek]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= start]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [:= start]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.BinaryExpr [+ ptrOffset ENTRY_HDR_SIZE]}
 	 {*ast.CallExpr [int64]}
@@ -589,8 +576,7 @@ function name is locate
 	 {*ast.FieldList -> *ast.Field [hdrEntry entryHdr]}
 	 {*ast.Field [ptrOffset int64]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= slotId]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= slotId]}
 	 {*ast.CallExpr [uint8]}
 	 {*ast.BinaryExpr [>> hashVal]}
 	 {*ast.BasicLit [INT 8]}
@@ -604,16 +590,14 @@ function name is locate
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! match]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= err ErrNotFound]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= err ErrNotFound]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! peek]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic AddInt64]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.SelectorExpr [seg missCount]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= ptr]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= ptr]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr [slot idx]}
 	 {*ast.GenDecl -> *ast.ValueSpec [hdrBuf]}
@@ -629,8 +613,7 @@ function name is locate
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! peek]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= now]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= now]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg timer Now]}
 	 {*ast.IfStmt -> *ast.CallExpr [isExpired]}
 	 {*ast.SelectorExpr [hdr expireAt now]}
@@ -666,8 +649,7 @@ function name is del
 	 {*ast.ArrayType [byte]}
 	 {*ast.Field [hashVal uint64]}
 	 {*ast.FieldList -> *ast.Field [affected bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= slotId]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= slotId]}
 	 {*ast.CallExpr [uint8]}
 	 {*ast.BinaryExpr [>> hashVal]}
 	 {*ast.BasicLit [INT 8]}
@@ -694,8 +676,7 @@ function name is ttl
 	 {*ast.Field [hashVal uint64]}
 	 {*ast.FieldList -> *ast.Field [timeLeft uint32]}
 	 {*ast.Field [err error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= slotId]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= slotId]}
 	 {*ast.CallExpr [uint8]}
 	 {*ast.BinaryExpr [>> hashVal]}
 	 {*ast.BasicLit [INT 8]}
@@ -709,10 +690,8 @@ function name is ttl
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookup slot hash16 key]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! match]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= err ErrNotFound]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= err ErrNotFound]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [:= ptr]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr [slot idx]}
 	 {*ast.GenDecl -> *ast.ValueSpec [hdrBuf]}
@@ -730,27 +709,23 @@ function name is ttl
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [hdr expireAt]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= now]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BlockStmt -> *ast.AssignStmt [:= now]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg timer Now]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [!]}
 	 {*ast.CallExpr [isExpired]}
 	 {*ast.SelectorExpr [hdr expireAt now]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= timeLeft]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= timeLeft]}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.SelectorExpr [hdr expireAt now]}
-	 {*ast.ReturnStmt []}
-	 {*ast.AssignStmt [= err ErrNotFound]}
+	 {*ast.ReturnStmt -> *ast.AssignStmt [= err ErrNotFound]}
 	 {*ast.ReturnStmt []}
 
 
 function name is expand 
 	 {*ast.FieldList -> *ast.Field [seg]}
 	 {*ast.StarExpr [segment expand]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= newSlotData]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= newSlotData]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [entryPtr]}
 	 {*ast.BinaryExpr [*]}
@@ -758,14 +733,12 @@ function name is expand
 	 {*ast.SelectorExpr [seg slotCap]}
 	 {*ast.BasicLit [INT 2]}
 	 {*ast.BasicLit [INT 256]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.BasicLit [INT 256]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= off]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= off]}
 	 {*ast.BinaryExpr [*]}
 	 {*ast.CallExpr [int32 i]}
 	 {*ast.SelectorExpr [seg slotCap]}
@@ -789,15 +762,13 @@ function name is updateEntryPtr
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slotId uint8]}
 	 {*ast.Field [hash16 uint16]}
 	 {*ast.Field [oldOff newOff int64]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= slot]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= slot]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
 	 {*ast.AssignStmt [:= idx match]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookupByOff slot hash16 oldOff]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! match]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [:= ptr]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [:= ptr]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr [slot idx]}
 	 {*ast.AssignStmt [=]}
@@ -843,8 +814,7 @@ function name is delEntryPtrByOffset
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slotId uint8]}
 	 {*ast.Field [hash16 uint16]}
 	 {*ast.Field [offset int64]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= slot]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= slot]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg getSlot slotId]}
 	 {*ast.AssignStmt [:= idx match]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [seg lookupByOff slot hash16 offset]}
@@ -860,8 +830,7 @@ function name is delEntryPtr
 	 {*ast.Field [slot]}
 	 {*ast.ArrayType [entryPtr]}
 	 {*ast.Field [idx int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= offset]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= offset]}
 	 {*ast.SelectorExpr -> *ast.IndexExpr [slot idx offset]}
 	 {*ast.GenDecl -> *ast.ValueSpec [entryHdrBuf]}
 	 {*ast.ArrayType [ENTRY_HDR_SIZE byte]}
@@ -896,13 +865,11 @@ function name is entryPtrIdx
 	 {*ast.ArrayType [entryPtr]}
 	 {*ast.Field [hash16 uint16]}
 	 {*ast.FieldList -> *ast.Field [idx int]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= high]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= high]}
 	 {*ast.CallExpr [len slot]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [< idx high]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= mid]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= mid]}
 	 {*ast.BinaryExpr [>>]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [+ idx high]}
@@ -913,12 +880,10 @@ function name is entryPtrIdx
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [<]}
 	 {*ast.SelectorExpr [oldEntry hash16 hash16]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= idx]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= idx]}
 	 {*ast.BinaryExpr [+ mid]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= high mid]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= high mid]}
 	 {*ast.ReturnStmt []}
 
 
@@ -932,21 +897,18 @@ function name is lookup
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [idx int]}
 	 {*ast.Field [match bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= idx]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= idx]}
 	 {*ast.CallExpr [entryPtrIdx slot hash16]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [< idx]}
 	 {*ast.CallExpr [len slot]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ptr]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr [slot idx]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [ptr hash16 hash16]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [= match]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [= match]}
 	 {*ast.BinaryExpr [&&]}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.CallExpr [int]}
@@ -969,21 +931,18 @@ function name is lookupByOff
 	 {*ast.Field [offset int64]}
 	 {*ast.FieldList -> *ast.Field [idx int]}
 	 {*ast.Field [match bool]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= idx]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= idx]}
 	 {*ast.CallExpr [entryPtrIdx slot hash16]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [< idx]}
 	 {*ast.CallExpr [len slot]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ptr]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ptr]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr [slot idx]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [ptr hash16 hash16]}
-	 {*ast.BlockStmt -> *ast.BranchStmt []}
-	 {*ast.AssignStmt [= match]}
+	 {*ast.BlockStmt -> *ast.BranchStmt -> *ast.AssignStmt [= match]}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.SelectorExpr [ptr offset offset]}
 	 {*ast.IfStmt [match]}
@@ -1019,8 +978,7 @@ function name is resetStatistics
 function name is clear 
 	 {*ast.FieldList -> *ast.Field [seg]}
 	 {*ast.StarExpr [segment clear]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= bufSize]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= bufSize]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr -> *ast.SelectorExpr [seg rb data]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [seg rb Reset]}
@@ -1038,15 +996,13 @@ function name is clear
 	 {*ast.BinaryExpr [*]}
 	 {*ast.BasicLit [INT 256]}
 	 {*ast.SelectorExpr [seg slotCap]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [seg slotLens]}
 	 {*ast.IncDecStmt [i]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [seg slotLens i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [atomic StoreInt64]}
@@ -1088,8 +1044,7 @@ function name is getSlot
 	 {*ast.StarExpr [segment getSlot]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [slotId uint8]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [entryPtr]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= slotOff]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= slotOff]}
 	 {*ast.BinaryExpr [*]}
 	 {*ast.CallExpr [int32 slotId]}
 	 {*ast.SelectorExpr [seg slotCap]}

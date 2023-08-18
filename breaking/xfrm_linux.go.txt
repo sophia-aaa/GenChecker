@@ -1,17 +1,13 @@
 {*ast.File [nl]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "bytes"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "net"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "bytes"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "net"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.ValueSpec [XFRM_INF]}
 {*ast.UnaryExpr [^]}
 {*ast.CallExpr [uint64]}
 {*ast.BasicLit [INT 0]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [XFRM_MSG_BASE]}
 {*ast.BasicLit [INT 0x10]}
 {*ast.ValueSpec [XFRM_MSG_NEWSA]}
@@ -64,8 +60,6 @@
 {*ast.BasicLit [INT 0x26]}
 {*ast.ValueSpec [XFRM_NR_MSGTYPES]}
 {*ast.BasicLit [INT 0x17]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [XFRMA_UNSPEC]}
 {*ast.BasicLit [INT 0x00]}
 {*ast.ValueSpec [XFRMA_ALG_AUTH]}
@@ -118,8 +112,6 @@
 {*ast.BasicLit [INT 0x18]}
 {*ast.ValueSpec [XFRMA_MAX]}
 {*ast.BasicLit [INT 0x18]}
-
-
 {*ast.GenDecl -> *ast.ValueSpec [SizeofXfrmAddress]}
 {*ast.BasicLit [INT 0x10]}
 {*ast.ValueSpec [SizeofXfrmSelector]}
@@ -130,8 +122,8 @@
 {*ast.BasicLit [INT 0x20]}
 {*ast.ValueSpec [SizeofXfrmId]}
 {*ast.BasicLit [INT 0x18]}
-
-
+{*ast.GenDecl -> *ast.TypeSpec [XfrmAddress]}
+{*ast.ArrayType [SizeofXfrmAddress byte]}
 
 
 function name is ToIP 
@@ -139,7 +131,8 @@ function name is ToIP
 	 {*ast.StarExpr [XfrmAddress ToIP]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [net IP]}
 	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [empty]}
-	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.BasicLit [INT 12 byte]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.BasicLit [INT 12]}
+	 { [byte]}
 	 {*ast.AssignStmt [:= ip]}
 	 {*ast.CallExpr [make]}
 	 {*ast.SelectorExpr [net IP]}
@@ -149,8 +142,7 @@ function name is ToIP
 	 {*ast.BasicLit [INT 4]}
 	 {*ast.BasicLit [INT 16]}
 	 {*ast.SliceExpr [empty]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [ip]}
 	 {*ast.BasicLit [INT 10]}
 	 {*ast.BasicLit [INT 0xff]}
@@ -176,8 +168,7 @@ function name is ToIPNet
 	 {*ast.StarExpr [XfrmAddress ToIPNet]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [prefixlen uint8]}
 	 {*ast.FieldList -> *ast.Field -> *ast.StarExpr -> *ast.SelectorExpr [net IPNet]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= ip]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= ip]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [x ToIP]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [==]}
@@ -202,7 +193,8 @@ function name is FromIP
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [ip]}
 	 {*ast.SelectorExpr [net IP]}
 	 {*ast.BlockStmt -> *ast.GenDecl -> *ast.ValueSpec [empty]}
-	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.BasicLit [INT 16 byte]}
+	 {*ast.CompositeLit -> *ast.ArrayType -> *ast.BasicLit [INT 16]}
+	 { [byte]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [<]}
 	 {*ast.CallExpr [len ip]}
@@ -246,7 +238,8 @@ function name is DeserializeXfrmAddress
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr -> *ast.SliceExpr [b]}
-	 {*ast.BasicLit [INT 0 SizeofXfrmAddress]}
+	 {*ast.BasicLit [INT 0]}
+	 { [SizeofXfrmAddress]}
 	 {*ast.BasicLit [INT 0]}
 
 
@@ -270,7 +263,8 @@ function name is Serialize
 {*ast.Field [PrefixlenS uint8]}
 {*ast.Field [Proto uint8]}
 {*ast.Field [Pad]}
-{*ast.ArrayType -> *ast.BasicLit [INT 3 byte]}
+{*ast.ArrayType -> *ast.BasicLit [INT 3]}
+{ [byte]}
 {*ast.Field [Ifindex int32]}
 {*ast.Field [User uint32]}
 
@@ -291,7 +285,8 @@ function name is DeserializeXfrmSelector
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr -> *ast.SliceExpr [b]}
-	 {*ast.BasicLit [INT 0 SizeofXfrmSelector]}
+	 {*ast.BasicLit [INT 0]}
+	 { [SizeofXfrmSelector]}
 	 {*ast.BasicLit [INT 0]}
 
 
@@ -330,7 +325,8 @@ function name is DeserializeXfrmLifetimeCfg
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr -> *ast.SliceExpr [b]}
-	 {*ast.BasicLit [INT 0 SizeofXfrmLifetimeCfg]}
+	 {*ast.BasicLit [INT 0]}
+	 { [SizeofXfrmLifetimeCfg]}
 	 {*ast.BasicLit [INT 0]}
 
 
@@ -365,7 +361,8 @@ function name is DeserializeXfrmLifetimeCur
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr -> *ast.SliceExpr [b]}
-	 {*ast.BasicLit [INT 0 SizeofXfrmLifetimeCur]}
+	 {*ast.BasicLit [INT 0]}
+	 { [SizeofXfrmLifetimeCur]}
 	 {*ast.BasicLit [INT 0]}
 
 
@@ -382,7 +379,8 @@ function name is Serialize
 {*ast.Field [Spi uint32]}
 {*ast.Field [Proto uint8]}
 {*ast.Field [Pad]}
-{*ast.ArrayType -> *ast.BasicLit [INT 3 byte]}
+{*ast.ArrayType -> *ast.BasicLit [INT 3]}
+{ [byte]}
 
 
 function name is Len 
@@ -401,7 +399,8 @@ function name is DeserializeXfrmId
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.IndexExpr -> *ast.SliceExpr [b]}
-	 {*ast.BasicLit [INT 0 SizeofXfrmId]}
+	 {*ast.BasicLit [INT 0]}
+	 { [SizeofXfrmId]}
 	 {*ast.BasicLit [INT 0]}
 
 

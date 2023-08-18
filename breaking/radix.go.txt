@@ -1,11 +1,9 @@
 {*ast.File [radix]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "bytes"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "bytes"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.ValueSpec [encodeChars]}
 {*ast.CompositeLit -> *ast.ArrayType [string]}
 {*ast.BasicLit [STRING "0"]}
@@ -24,11 +22,13 @@
 {*ast.BasicLit [STRING "d"]}
 {*ast.BasicLit [STRING "e"]}
 {*ast.BasicLit [STRING "f"]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [Nibble byte]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [Timer]}
+{*ast.InterfaceType [ContinuousTime]}
+{*ast.FieldList -> *ast.Field [ContinuousTime]}
+{*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [int64]}
 
 
 function name is toBytes 
@@ -74,13 +74,11 @@ function name is Rip
 	 {*ast.BinaryExpr [* parts]}
 	 {*ast.CallExpr [len b]}
 	 {*ast.RangeStmt [i char b]}
-	 {*ast.BlockStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= j]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= j]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< j parts]}
 	 {*ast.IncDecStmt [j]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [result]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.ParenExpr []}
@@ -93,13 +91,15 @@ function name is Rip
 	 {*ast.BinaryExpr [*]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [/]}
-	 {*ast.BasicLit [INT 8 parts j]}
+	 {*ast.BasicLit [INT 8]}
+	 { [parts j]}
 	 {*ast.CallExpr [byte]}
 	 {*ast.BinaryExpr [-]}
 	 {*ast.BasicLit [INT 8]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [/]}
-	 {*ast.BasicLit [INT 8 parts]}
+	 {*ast.BasicLit [INT 8]}
+	 { [parts]}
 	 {*ast.ReturnStmt []}
 
 
@@ -108,8 +108,7 @@ function name is stringEncode
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [string]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= buffer]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= buffer]}
 	 {*ast.CallExpr [new]}
 	 {*ast.SelectorExpr [bytes Buffer]}
 	 {*ast.RangeStmt [_ c b]}
@@ -134,13 +133,11 @@ function name is Stitch
 	 {*ast.BinaryExpr [/]}
 	 {*ast.CallExpr [len b parts]}
 	 {*ast.RangeStmt [i _ result]}
-	 {*ast.BlockStmt -> *ast.ForStmt []}
-	 {*ast.AssignStmt [:= j]}
+	 {*ast.BlockStmt -> *ast.ForStmt -> *ast.AssignStmt [:= j]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< j parts]}
 	 {*ast.IncDecStmt [j]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [+=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [+=]}
 	 {*ast.IndexExpr [result i]}
 	 {*ast.CallExpr [byte]}
 	 {*ast.BinaryExpr [<<]}
@@ -156,7 +153,8 @@ function name is Stitch
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.ParenExpr []}
 	 {*ast.BinaryExpr [/]}
-	 {*ast.BasicLit [INT 8 parts]}
+	 {*ast.BasicLit [INT 8]}
+	 { [parts]}
 	 {*ast.ReturnStmt []}
 
 
@@ -178,23 +176,21 @@ function name is equals
 	 {*ast.SelectorExpr [other Sum]}
 	 {*ast.SelectorExpr [self Sum]}
 	 {*ast.BasicLit [INT 0]}
-
-
-{*ast.GenDecl -> *ast.TypeSpec [Print]}
-{*ast.StructType -> *ast.FieldList -> *ast.Field [Exists bool]}
-{*ast.Field [Key]}
-{*ast.ArrayType [Nibble]}
-{*ast.Field [Empty bool]}
-{*ast.Field [Timestamp int64]}
-{*ast.Field [SubTree bool]}
-{*ast.Field [SubPrints]}
-{*ast.ArrayType [SubPrint]}
-{*ast.Field [ByteHash]}
-{*ast.ArrayType [byte]}
-{*ast.Field [TreeHash]}
-{*ast.ArrayType [byte]}
-{*ast.Field [TreeDataTimestamp int64]}
-{*ast.Field [TreeSize int]}
+	 {*ast.GenDecl -> *ast.TypeSpec [Print]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [Exists bool]}
+	 {*ast.Field [Key]}
+	 {*ast.ArrayType [Nibble]}
+	 {*ast.Field [Empty bool]}
+	 {*ast.Field [Timestamp int64]}
+	 {*ast.Field [SubTree bool]}
+	 {*ast.Field [SubPrints]}
+	 {*ast.ArrayType [SubPrint]}
+	 {*ast.Field [ByteHash]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [TreeHash]}
+	 {*ast.ArrayType [byte]}
+	 {*ast.Field [TreeDataTimestamp int64]}
+	 {*ast.Field [TreeSize int]}
 
 
 function name is coveredBy 
@@ -227,8 +223,7 @@ function name is push
 	 {*ast.StarExpr [Print push]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n]}
 	 {*ast.StarExpr [node]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [self Key]}
 	 {*ast.CallExpr [append]}
 	 {*ast.SelectorExpr [self Key]}
@@ -240,8 +235,7 @@ function name is set
 	 {*ast.StarExpr [Print set]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [n]}
 	 {*ast.StarExpr [node]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [self Exists true]}
 	 {*ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [self ByteHash]}
@@ -252,8 +246,7 @@ function name is set
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!=]}
 	 {*ast.SelectorExpr [n treeValue nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [self TreeDataTimestamp]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [n treeValue DataTimestamp]}
 	 {*ast.AssignStmt [=]}
@@ -279,8 +272,7 @@ function name is set
 	 {*ast.SelectorExpr [n children]}
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [!= child nil]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr -> *ast.SelectorExpr [self SubPrints index]}
 	 {*ast.CompositeLit [SubPrint]}
 	 {*ast.KeyValueExpr [Exists true]}

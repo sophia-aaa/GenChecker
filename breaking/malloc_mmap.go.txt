@@ -1,16 +1,16 @@
 {*ast.File [fastcache]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "sync"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.BasicLit [STRING "golang.org/x/sys/unix"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "golang.org/x/sys/unix"]}
 {*ast.GenDecl -> *ast.ValueSpec [chunksPerAlloc]}
 {*ast.BasicLit [INT 1024]}
-
-
+{*ast.GenDecl -> *ast.ValueSpec [freeChunks]}
+{*ast.ArrayType -> *ast.StarExpr -> *ast.ArrayType [chunkSize byte]}
+{*ast.ValueSpec [freeChunksLock]}
+{*ast.SelectorExpr [sync Mutex]}
 
 
 function name is getChunk 
@@ -21,8 +21,7 @@ function name is getChunk
 	 {*ast.BinaryExpr [==]}
 	 {*ast.CallExpr [len freeChunks]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= data err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= data err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unix Mmap]}
 	 {*ast.UnaryExpr [-]}
 	 {*ast.BasicLit [INT 1]}
@@ -44,8 +43,7 @@ function name is getChunk
 	 {*ast.BinaryExpr [>]}
 	 {*ast.CallExpr [len data]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= p]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= p]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [chunkSize byte]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
@@ -75,8 +73,7 @@ function name is putChunk
 	 {*ast.ArrayType [byte]}
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [== chunk nil]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [= chunk]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [= chunk]}
 	 {*ast.SliceExpr [chunk chunkSize]}
 	 {*ast.AssignStmt [:= p]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.ArrayType [chunkSize byte]}

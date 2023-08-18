@@ -3964,6 +3964,5 @@ function name is boolToCInt
 	 {*ast.BlockStmt -> *ast.IfStmt [b]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.BasicLit [INT 1]}
 	 {*ast.ReturnStmt -> *ast.BasicLit [INT 0]}
-	 { []}
 
 

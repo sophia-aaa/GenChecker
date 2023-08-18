@@ -1,6 +1,8 @@
 {*ast.File [fastjson]}
 
 
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 
 
 function name is b2s 
@@ -18,8 +20,7 @@ function name is s2b
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [s string]}
 	 {*ast.FieldList -> *ast.Field [b]}
 	 {*ast.ArrayType [byte]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= strh]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= strh]}
 	 {*ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr -> *ast.SelectorExpr [reflect StringHeader]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [& s]}
@@ -62,6 +63,7 @@ function name is startEndString
 	 {*ast.ReturnStmt []}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.BinaryExpr [+ start]}
-	 {*ast.BasicLit [STRING "..." end]}
+	 {*ast.BasicLit [STRING "..."]}
+	 { [end]}
 
 

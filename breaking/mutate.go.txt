@@ -819,6 +819,5 @@ function name is SetFamilies
 	 {*ast.FieldList -> *ast.Field [error]}
 	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr [errors New]}
 	 {*ast.BasicLit [STRING "Cannot set families on mutate operation."]}
-	 { []}
 
 

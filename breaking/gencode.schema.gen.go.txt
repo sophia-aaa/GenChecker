@@ -1,11 +1,9 @@
 {*ast.File [goserbench]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "io"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "time"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "io"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "time"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
 {*ast.GenDecl -> *ast.ValueSpec [_]}
 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
 {*ast.BasicLit [INT 0]}
@@ -15,46 +13,47 @@
 {*ast.CallExpr -> *ast.SelectorExpr [time Now]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [GencodeA]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [Name string]}
+{*ast.Field [BirthDay]}
+{*ast.SelectorExpr [time Time]}
+{*ast.Field [Phone string]}
+{*ast.Field [Siblings int32]}
+{*ast.Field [Spouse bool]}
+{*ast.Field [Money float64]}
 
 
 function name is Size 
 	 {*ast.FieldList -> *ast.Field [d]}
 	 {*ast.StarExpr [GencodeA Size]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [s uint64]}
-	 {*ast.BlockStmt -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= l]}
+	 {*ast.BlockStmt -> *ast.BlockStmt -> *ast.AssignStmt [:= l]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [d Name]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= t l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= t l]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [>= t]}
 	 {*ast.BasicLit [INT 0x80]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [>>= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [>>= t]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.IncDecStmt [s]}
 	 {*ast.IncDecStmt [s]}
 	 {*ast.AssignStmt [+= s l]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= l]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [d Phone]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= t l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= t l]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [>= t]}
 	 {*ast.BasicLit [INT 0x80]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [>>= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [>>= t]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.IncDecStmt [s]}
 	 {*ast.IncDecStmt [s]}
 	 {*ast.AssignStmt [+= s l]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= t]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.SelectorExpr [d Siblings]}
 	 {*ast.AssignStmt [<<= t]}
@@ -63,14 +62,12 @@ function name is Size
 	 {*ast.BinaryExpr [<]}
 	 {*ast.SelectorExpr [d Siblings]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= t]}
 	 {*ast.UnaryExpr [^ t]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [>= t]}
 	 {*ast.BasicLit [INT 0x80]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [>>= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [>>= t]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.IncDecStmt [s]}
 	 {*ast.IncDecStmt [s]}
@@ -86,36 +83,30 @@ function name is Marshal
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field -> *ast.ArrayType [byte]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= size]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= size]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [d Size]}
 	 {*ast.BlockStmt -> *ast.IfStmt []}
 	 {*ast.BinaryExpr [>=]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.CallExpr [cap buf size]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.SliceExpr [buf size]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= buf]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= buf]}
 	 {*ast.CallExpr [make]}
 	 {*ast.ArrayType [byte size]}
 	 {*ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= l]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [d Name]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= t]}
 	 {*ast.CallExpr [uint64 l]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [>= t]}
 	 {*ast.BasicLit [INT 0x80]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 0]}
@@ -137,8 +128,7 @@ function name is Marshal
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.SelectorExpr [d Name]}
 	 {*ast.AssignStmt [+= i l]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= b err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= b err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [d BirthDay MarshalBinary]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}
@@ -146,20 +136,18 @@ function name is Marshal
 	 {*ast.ExprStmt -> *ast.CallExpr [copy]}
 	 {*ast.SliceExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
-	 {*ast.BasicLit [INT 0 b]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= l]}
+	 {*ast.BasicLit [INT 0]}
+	 { [b]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= l]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.CallExpr [len]}
 	 {*ast.SelectorExpr [d Phone]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= t]}
 	 {*ast.CallExpr [uint64 l]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [>= t]}
 	 {*ast.BasicLit [INT 0x80]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 15]}
@@ -181,8 +169,7 @@ function name is Marshal
 	 {*ast.BasicLit [INT 15]}
 	 {*ast.SelectorExpr [d Phone]}
 	 {*ast.AssignStmt [+= i l]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= t]}
 	 {*ast.CallExpr [uint32]}
 	 {*ast.SelectorExpr [d Siblings]}
 	 {*ast.AssignStmt [<<= t]}
@@ -191,14 +178,12 @@ function name is Marshal
 	 {*ast.BinaryExpr [<]}
 	 {*ast.SelectorExpr [d Siblings]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [= t]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [= t]}
 	 {*ast.UnaryExpr [^ t]}
 	 {*ast.ForStmt []}
 	 {*ast.BinaryExpr [>= t]}
 	 {*ast.BasicLit [INT 0x80]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 15]}
@@ -215,20 +200,17 @@ function name is Marshal
 	 {*ast.CallExpr [byte t]}
 	 {*ast.IncDecStmt [i]}
 	 {*ast.BlockStmt -> *ast.IfStmt -> *ast.SelectorExpr [d Spouse]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 15]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 15]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint64]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.UnaryExpr [&]}
@@ -307,7 +289,8 @@ function name is Marshal
 	 {*ast.BasicLit [INT 56]}
 	 {*ast.ReturnStmt -> *ast.SliceExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
-	 {*ast.BasicLit [INT 24 nil]}
+	 {*ast.BasicLit [INT 24]}
+	 { [nil]}
 
 
 function name is Unmarshal 
@@ -317,16 +300,13 @@ function name is Unmarshal
 	 {*ast.ArrayType [byte]}
 	 {*ast.FieldList -> *ast.Field [uint64]}
 	 {*ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= l]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= bs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= bs]}
 	 {*ast.CallExpr [uint8]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.AssignStmt [:= t]}
@@ -352,7 +332,8 @@ function name is Unmarshal
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BasicLit [INT 0x7F bs]}
+	 {*ast.BasicLit [INT 0x7F]}
+	 { [bs]}
 	 {*ast.AssignStmt [+= bs]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.IncDecStmt [i]}
@@ -365,7 +346,8 @@ function name is Unmarshal
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.BinaryExpr [+ i]}
-	 {*ast.BasicLit [INT 0 l]}
+	 {*ast.BasicLit [INT 0]}
+	 { [l]}
 	 {*ast.AssignStmt [+= i l]}
 	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [d BirthDay UnmarshalBinary]}
 	 {*ast.SliceExpr [buf]}
@@ -375,12 +357,10 @@ function name is Unmarshal
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BasicLit [INT 15]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= l]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= l]}
 	 {*ast.CallExpr [uint64]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= bs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= bs]}
 	 {*ast.CallExpr [uint8]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.AssignStmt [:= t]}
@@ -406,7 +386,8 @@ function name is Unmarshal
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 15]}
-	 {*ast.BasicLit [INT 0x7F bs]}
+	 {*ast.BasicLit [INT 0x7F]}
+	 { [bs]}
 	 {*ast.AssignStmt [+= bs]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.IncDecStmt [i]}
@@ -419,10 +400,10 @@ function name is Unmarshal
 	 {*ast.BasicLit [INT 15]}
 	 {*ast.BinaryExpr [+]}
 	 {*ast.BinaryExpr [+ i]}
-	 {*ast.BasicLit [INT 15 l]}
+	 {*ast.BasicLit [INT 15]}
+	 { [l]}
 	 {*ast.AssignStmt [+= i l]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= bs]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= bs]}
 	 {*ast.CallExpr [uint8]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.AssignStmt [:= t]}
@@ -448,7 +429,8 @@ function name is Unmarshal
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 15]}
-	 {*ast.BasicLit [INT 0x7F bs]}
+	 {*ast.BasicLit [INT 0x7F]}
+	 { [bs]}
 	 {*ast.AssignStmt [+= bs]}
 	 {*ast.BasicLit [INT 7]}
 	 {*ast.IncDecStmt [i]}
@@ -462,21 +444,18 @@ function name is Unmarshal
 	 {*ast.BinaryExpr [& t]}
 	 {*ast.BasicLit [INT 1]}
 	 {*ast.BasicLit [INT 0]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [d Siblings]}
 	 {*ast.UnaryExpr [^]}
 	 {*ast.SelectorExpr [d Siblings]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [d Spouse]}
 	 {*ast.BinaryExpr [==]}
 	 {*ast.IndexExpr [buf]}
 	 {*ast.BinaryExpr [+ i]}
 	 {*ast.BasicLit [INT 15]}
 	 {*ast.BasicLit [INT 1]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= v]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= v]}
 	 {*ast.BinaryExpr [|]}
 	 {*ast.BinaryExpr [|]}
 	 {*ast.BinaryExpr [|]}
@@ -565,6 +544,7 @@ function name is Unmarshal
 	 {*ast.UnaryExpr [& v]}
 	 {*ast.ReturnStmt []}
 	 {*ast.BinaryExpr [+ i]}
-	 {*ast.BasicLit [INT 24 nil]}
+	 {*ast.BasicLit [INT 24]}
+	 { [nil]}
 
 

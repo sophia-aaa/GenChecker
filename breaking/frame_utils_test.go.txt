@@ -1,12 +1,10 @@
 {*ast.File [tchannel]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "fmt"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "sync"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "unsafe"]}
-{*ast.BasicLit [STRING "github.com/prashantv/protectmem"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "fmt"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/prashantv/protectmem"]}
 {*ast.GenDecl -> *ast.TypeSpec [protectMemAllocs]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field [frameAlloc]}
 {*ast.StarExpr -> *ast.SelectorExpr [protectmem Allocation]}
@@ -14,6 +12,10 @@
 {*ast.StarExpr -> *ast.SelectorExpr [protectmem Allocation]}
 
 
+{*ast.GenDecl -> *ast.TypeSpec [ProtectMemFramePool]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [sync Mutex]}
+{*ast.Field [allocations]}
+{*ast.MapType -> *ast.StarExpr [Frame protectMemAllocs]}
 
 
 function name is NewProtectMemFramePool 
@@ -31,8 +33,7 @@ function name is Get
 	 {*ast.FieldList -> *ast.Field [p]}
 	 {*ast.StarExpr [ProtectMemFramePool Get]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [Frame]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= frameAlloc]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= frameAlloc]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [protectmem Allocate]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Sizeof]}
 	 {*ast.CompositeLit [Frame]}

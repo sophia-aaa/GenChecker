@@ -1,10 +1,16 @@
 {*ast.File [jingo]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "reflect"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.TypeSpec [SliceEncoder]}
+{*ast.StructType -> *ast.FieldList -> *ast.Field [instruction]}
+{*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [t unsafe Pointer]}
+{*ast.Field [w]}
+{*ast.StarExpr [Buffer]}
+{*ast.Field [tt]}
+{*ast.SelectorExpr [reflect Type]}
+{*ast.Field [offset uintptr]}
 
 
 function name is Marshal 
@@ -14,8 +20,7 @@ function name is Marshal
 	 {*ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.Field [w]}
 	 {*ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= p]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= p]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect ValueOf s Pointer]}
 	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [e instruction p w]}
@@ -26,8 +31,7 @@ function name is NewSliceEncoder
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [t]}
 	 {*ast.InterfaceType []}
 	 {*ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.StarExpr [SliceEncoder]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= e]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= e]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [SliceEncoder]}
 	 {*ast.AssignStmt [=]}
@@ -80,8 +84,6 @@ function name is NewSliceEncoder
 {*ast.ValueSpec [zero]}
 {*ast.CallExpr [uintptr]}
 {*ast.BasicLit [INT 0]}
-
-
 {*ast.GenDecl -> *ast.TypeSpec [sliceHeader]}
 {*ast.StructType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [Data unsafe Pointer]}
 {*ast.Field [Len int]}
@@ -91,8 +93,7 @@ function name is NewSliceEncoder
 function name is sliceInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder sliceInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= enc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= enc]}
 	 {*ast.CallExpr [NewSliceEncoder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Interface]}
@@ -105,8 +106,7 @@ function name is sliceInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -133,8 +133,7 @@ function name is sliceInstr
 function name is structInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder structInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= enc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= enc]}
 	 {*ast.CallExpr [NewStructEncoder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Interface]}
@@ -147,8 +146,7 @@ function name is structInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -178,8 +176,7 @@ function name is stringInstr
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [conv]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
@@ -188,8 +185,7 @@ function name is stringInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -229,14 +225,12 @@ function name is stringInstr
 function name is otherInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder otherInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= conv ok]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= conv ok]}
 	 {*ast.IndexExpr [typeconv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Kind]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
@@ -245,8 +239,7 @@ function name is otherInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -272,8 +265,7 @@ function name is otherInstr
 function name is timeInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder timeInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
@@ -282,8 +274,7 @@ function name is timeInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -313,8 +304,7 @@ function name is timeInstr
 function name is ptrSliceInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder ptrSliceInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= enc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= enc]}
 	 {*ast.CallExpr [NewSliceEncoder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Elem Interface]}
@@ -327,8 +317,7 @@ function name is ptrSliceInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -361,8 +350,7 @@ function name is ptrSliceInstr
 function name is ptrStrctInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder ptrStrctInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= enc]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= enc]}
 	 {*ast.CallExpr [NewStructEncoder]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect New]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Elem Interface]}
@@ -375,8 +363,7 @@ function name is ptrStrctInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -412,8 +399,7 @@ function name is ptrStringInstr
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [conv]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [unsafe Pointer]}
 	 {*ast.Field -> *ast.StarExpr [Buffer]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
@@ -422,8 +408,7 @@ function name is ptrStringInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -460,14 +445,12 @@ function name is ptrStringInstr
 function name is ptrOtherInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder ptrOtherInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [:= conv ok]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [:= conv ok]}
 	 {*ast.IndexExpr [typeconv]}
 	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [e tt Elem Elem Kind]}
 	 {*ast.IfStmt []}
 	 {*ast.UnaryExpr [! ok]}
-	 {*ast.BlockStmt -> *ast.ReturnStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
@@ -476,8 +459,7 @@ function name is ptrOtherInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}
@@ -510,8 +492,7 @@ function name is ptrOtherInstr
 function name is ptrTimeInstr 
 	 {*ast.FieldList -> *ast.Field [e]}
 	 {*ast.StarExpr [SliceEncoder ptrTimeInstr]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [=]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.SelectorExpr [e instruction]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [v unsafe Pointer]}
 	 {*ast.Field [w]}
@@ -520,8 +501,7 @@ function name is ptrTimeInstr
 	 {*ast.BasicLit [CHAR '[']}
 	 {*ast.AssignStmt [:= sl]}
 	 {*ast.StarExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [sliceHeader v]}
-	 {*ast.ForStmt []}
-	 {*ast.AssignStmt [:= i]}
+	 {*ast.ForStmt -> *ast.AssignStmt [:= i]}
 	 {*ast.CallExpr [uintptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.BinaryExpr [< i]}

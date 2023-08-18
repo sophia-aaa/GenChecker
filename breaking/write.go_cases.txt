@@ -1,0 +1,47 @@
+function name: writeUvarint
+   0.case
+     *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit -> *ast.BasicLit 	 [< x << INT 1 INT 7]
+     *ast.AssignStmt -> *ast.SelectorExpr 	 [= b buf]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [append b buf]
+     *ast.CallExpr 	 [byte x]
+   1.case
+     *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit -> *ast.BasicLit 	 [< x << INT 1 INT 14]
+     *ast.AssignStmt -> *ast.SelectorExpr 	 [= b buf]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [append b buf]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte | x INT 0x80]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte >> x INT 7]
+   2.case
+     *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit -> *ast.BasicLit 	 [< x << INT 1 INT 21]
+     *ast.AssignStmt -> *ast.SelectorExpr 	 [= b buf]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [append b buf]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte | x INT 0x80]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte | >> x INT 7]
+     *ast.BasicLit 	 [INT 0x80]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte >> x INT 14]
+   3.case
+     *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit -> *ast.BasicLit 	 [< x << INT 1 INT 28]
+     *ast.AssignStmt -> *ast.SelectorExpr 	 [= b buf]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [append b buf]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte | x INT 0x80]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte | >> x INT 7]
+     *ast.BasicLit 	 [INT 0x80]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte | >> x INT 14]
+     *ast.BasicLit 	 [INT 0x80]
+     *ast.CallExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte >> x INT 21]
+
+
+function name: validUTF8
+   0.case
+     *ast.BinaryExpr -> *ast.BasicLit 	 [< c1 INT 0x80]
+     *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [|| < c2 INT 0x80]
+     *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [&& <= INT 0xc0 c2]
+     *ast.BinaryExpr -> *ast.BasicLit 	 [< c2 INT 0xf8]
+   1.case
+     *ast.BinaryExpr -> *ast.BasicLit 	 [< c1 INT 0xc0]
+     *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BasicLit 	 [< c2 INT 0xf8]
+   2.case
+     *ast.BinaryExpr -> *ast.BasicLit 	 [< c1 INT 0xf8]
+     *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [&& <= INT 0x80 c2]
+     *ast.BinaryExpr -> *ast.BasicLit 	 [< c2 INT 0xc0]
+
+

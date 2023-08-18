@@ -1,12 +1,12 @@
 {*ast.File [dbus]}
 
 
-{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit -> *ast.ImportSpec [STRING "encoding/binary"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "errors"]}
-{*ast.BasicLit -> *ast.ImportSpec [STRING "io"]}
-{*ast.BasicLit [STRING "unsafe"]}
-
-
+{*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "encoding/binary"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "errors"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "io"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.GenDecl -> *ast.ValueSpec [nativeEndian]}
+{*ast.SelectorExpr [binary ByteOrder]}
 
 
 function name is detectEndianness 
@@ -26,8 +26,7 @@ function name is detectEndianness
 
 function name is init 
 	 { [init]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt []}
-	 {*ast.AssignStmt [= nativeEndian]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [= nativeEndian]}
 	 {*ast.CallExpr [detectEndianness]}
 
 
@@ -38,8 +37,7 @@ function name is init
 function name is SendNullByte 
 	 {*ast.FieldList -> *ast.Field [t genericTransport SendNullByte]}
 	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= _ err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= _ err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [t Write]}
 	 {*ast.CompositeLit -> *ast.ArrayType [byte]}
 	 {*ast.BasicLit [INT 0]}
@@ -69,8 +67,7 @@ function name is SendMessage
 	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [msg]}
 	 {*ast.StarExpr [Message]}
 	 {*ast.FieldList -> *ast.Field [error]}
-	 {*ast.BlockStmt []}
-	 {*ast.AssignStmt [:= fds err]}
+	 {*ast.BlockStmt -> *ast.AssignStmt [:= fds err]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [msg CountFds]}
 	 {*ast.IfStmt []}
 	 {*ast.BinaryExpr [!= err nil]}

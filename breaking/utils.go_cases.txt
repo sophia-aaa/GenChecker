@@ -1,0 +1,77 @@
+function name: toString
+   0.case
+     *ast.ReturnStmt 	 [string s]
+   1.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [bool strconv FormatBool]
+      	 [s]
+   2.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [float64 strconv FormatFloat]
+     *ast.BasicLit -> *ast.UnaryExpr -> *ast.BasicLit 	 [s CHAR 'f' - INT 1]
+     *ast.BasicLit 	 [INT 64]
+   3.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [float32 strconv FormatFloat]
+     *ast.CallExpr 	 [float64 s]
+     *ast.BasicLit -> *ast.UnaryExpr -> *ast.BasicLit 	 [CHAR 'f' - INT 1]
+     *ast.BasicLit 	 [INT 32]
+   4.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [int strconv Itoa]
+      	 [s]
+   5.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [int64 strconv FormatInt]
+     *ast.BasicLit 	 [s INT 10]
+   6.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [int32 strconv Itoa]
+     *ast.CallExpr 	 [int s]
+   7.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [int16 strconv FormatInt]
+     *ast.CallExpr 	 [int64 s]
+     *ast.BasicLit 	 [INT 10]
+   8.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [int8 strconv FormatInt]
+     *ast.CallExpr 	 [int64 s]
+     *ast.BasicLit 	 [INT 10]
+   9.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [uint strconv FormatInt]
+     *ast.CallExpr 	 [int64 s]
+     *ast.BasicLit 	 [INT 10]
+   10.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [uint64 strconv FormatInt]
+     *ast.CallExpr 	 [int64 s]
+     *ast.BasicLit 	 [INT 10]
+   11.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [uint32 strconv FormatInt]
+     *ast.CallExpr 	 [int64 s]
+     *ast.BasicLit 	 [INT 10]
+   12.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [uint16 strconv FormatInt]
+     *ast.CallExpr 	 [int64 s]
+     *ast.BasicLit 	 [INT 10]
+   13.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [uint8 strconv FormatInt]
+     *ast.CallExpr 	 [int64 s]
+     *ast.BasicLit 	 [INT 10]
+   14.case
+     *ast.ArrayType 	 [byte]
+     *ast.ReturnStmt -> *ast.CallExpr 	 [b2s s]
+   15.case
+     *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [error s Error]
+
+
+function name: prepareRecipients
+   0.case
+     *ast.StarExpr 	 [Conversation]
+     *ast.RangeStmt -> *ast.SelectorExpr 	 [i c Users]
+     *ast.BlockStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.CompositeLit -> *ast.ArrayType 	 [= ids append ids int64]
+     *ast.SelectorExpr -> *ast.IndexExpr -> *ast.SelectorExpr 	 [c Users]
+      	 [i]
+      	 [ID]
+   1.case
+     *ast.StarExpr 	 [Item]
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.CompositeLit -> *ast.ArrayType 	 [= ids append ids int64]
+     *ast.SelectorExpr -> *ast.SelectorExpr 	 [c User]
+      	 [ID]
+   2.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.CompositeLit -> *ast.ArrayType 	 [int64 = ids append ids int64]
+      	 [c]
+
+
