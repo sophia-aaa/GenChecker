@@ -17,6 +17,84 @@ func
 (a *main.array[T]) Set(i int, x T) {
 	a.Set(i, x)
 }
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Set(i int, x T) {
+	a.Set(i, x)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
+func (a *main.array[T]) Get(i int) T {
+	return a.Get(i)
+}
 func (a *main.array[T]) Get(i int) T {
 	return a.Get(i)
 }
@@ -27,6 +105,112 @@ func (a *main.array[T]) Memset(x T) error {
 	}
 	return nil
 }
+func (a *main.array[T]) Memset(
+
+// Get returns the ith element of the underlying array of the *Dense tensor.
+x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) Memset(x T) error {
+	data := a.Raw()
+	for i := range data {
+		data[i] = x
+	}
+	return nil
+}
+func (a *main.array[T]) memsetIter(
+
+// Memset sets all values in the array.
+x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
 func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
 	var i int
 	data := a.Raw()
@@ -36,10 +220,114 @@ func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
 	err = handleNoOp(err)
 	return
 }
-
-// Get returns the ith element of the underlying array of the *Dense tensor.
-
-// Memset sets all values in the array.
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
+func (a *main.array[T]) memsetIter(x T, it Iterator) (err error) {
+	var i int
+	data := a.Raw()
+	for i, err = it.Next(); err == nil; i, err = it.Next() {
+		data[i] = x
+	}
+	err = handleNoOp(err)
+	return
+}
 
 // Eq checks that any two arrays are equal
 func (a main.array) Eq(other interface{}) bool {

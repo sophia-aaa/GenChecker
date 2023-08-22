@@ -28,6 +28,49 @@ function name: swap
      *ast.IndexExpr 	 [us j]
      *ast.IndexExpr 	 [us i]
 
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
 
 function name: copyDenseSliced
    0.case
@@ -37,6 +80,49 @@ function name: copyDenseSliced
      *ast.BinaryExpr 	 [!= err nil]
      *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
 
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
 
 function name: scalarToHeader
    0.case
@@ -44,4 +130,1411 @@ function name: scalarToHeader
      *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
      *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
 
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
+
+function name: swap
+   0.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 8 := us a hdr]
+      	 [Uint64s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   1.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 4 := us a hdr]
+      	 [Uint32s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   2.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 2 := us a hdr]
+      	 [Uint16s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+   3.case
+     *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [INT 1 := us a hdr]
+      	 [Uint8s]
+     *ast.AssignStmt -> *ast.IndexExpr 	 [= us i]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us j]
+     *ast.IndexExpr 	 [us i]
+
+function name: copyDenseSliced
+   0.case
+     *ast.IfStmt -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [NonStdEngine := err e Memcpy]
+     *ast.UnaryExpr 	 [& da]
+     *ast.UnaryExpr 	 [& sa]
+     *ast.BinaryExpr 	 [!= err nil]
+     *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr 	 [panic err]
+
+function name: scalarToHeader
+   0.case
+     *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Memory = raw storage FromMemory]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at Uintptr]
+     *ast.CallExpr -> *ast.SelectorExpr 	 [at MemSize]
 

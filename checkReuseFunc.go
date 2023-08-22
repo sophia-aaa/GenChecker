@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"go/token"
 	"strings"
 )
@@ -93,6 +94,7 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 										length = len(listFunctions[i].value[idx].value) // will be index a
 										a, b := 0, 0
 										for ; a < length; a++ {
+
 											if !strings.EqualFold(listFunctions[i].value[idx].value[a], listFunctions[j].value[idx].value[b]) {
 												if strings.Contains(listFunctions[i].value[idx].value[a], " ") || strings.Contains(listFunctions[j].value[idx].value[b], " ") ||
 													strings.Contains(listFunctions[i].value[idx].value[a], "_") || strings.Contains(listFunctions[j].value[idx].value[b], "_") {
@@ -129,6 +131,9 @@ func checkGenerics(listFunctions []basicStr, funcList []string, typeList []strin
 										length = len(listFunctions[j].value[idx].value)
 										a, b := 0, 0
 										for ; a < length; a++ {
+											if strings.EqualFold(listFunctions[i].funcName, "ExtraData") {
+												fmt.Println("landing 10")
+											}
 											if !strings.EqualFold(listFunctions[j].value[idx].value[a], listFunctions[i].value[idx].value[b]) {
 												if contains(typeList, listFunctions[j].value[idx].value[a]) {
 													if strings.Contains(listFunctions[j].value[idx].value[a], " ") || strings.Contains(listFunctions[i].value[idx].value[b], " ") ||

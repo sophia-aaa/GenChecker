@@ -112,7 +112,7 @@ func createCasesTextFile(filename string, funcList []caseResult) {
 				}
 			}
 		}
-		str = fmt.Sprintln("\n")
+		str = fmt.Sprintln("")
 		_, err2 = f.WriteString(str)
 		if err2 != nil {
 			log.Fatal(err2)
