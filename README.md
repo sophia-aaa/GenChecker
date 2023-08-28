@@ -11,7 +11,8 @@ to run the tool.
 The tool is divided into three steps.
 
 First, the tool takes a single file as input and changes it into the basic structure of the tool using Go's ast package 
-(see <i>buildAST.go</i>). Every running the tool will be produced a text file that the input file converts into the base structure of this tool.
+(see <i>buildAST.go</i>). Every running the tool will be produced a text file that the input file converts into the base structure of this tool.<br>
+The text files are for debugging or analyse how the input file converted into the AST tree with Go's AST package.
 
 Then, after the file is transformed into a base structure, the tool checks for reused code across multiple data types to match Go's generics recommendation usage. <br>
 See <i>checkReuseFunc.go</i> for functions and <i>checkReuseFunc.go</i> for switch statements.<br>
