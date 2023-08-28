@@ -7,4 +7,3 @@ function name: NewSliceEncoder
       	 [ptrEscapeStringToBuf]
      *ast.ReturnStmt 	 [e]
 
-

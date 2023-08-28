@@ -56,7 +56,6 @@ function name: toString
    15.case
      *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [error s Error]
 
-
 function name: prepareRecipients
    0.case
      *ast.StarExpr 	 [Conversation]
@@ -73,5 +72,4 @@ function name: prepareRecipients
    2.case
      *ast.AssignStmt -> *ast.CallExpr -> *ast.CompositeLit -> *ast.ArrayType 	 [int64 = ids append ids int64]
       	 [c]
-
 

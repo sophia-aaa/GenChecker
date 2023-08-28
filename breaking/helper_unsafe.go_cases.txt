@@ -146,4 +146,3 @@ function name: isEmptyValueFallbackRecur
      *ast.CallExpr -> *ast.SelectorExpr 	 [unsafeCmpZero urv ptr]
      *ast.CallExpr -> *ast.CallExpr -> *ast.SelectorExpr 	 [int rtsize2 urv typ]
 
-

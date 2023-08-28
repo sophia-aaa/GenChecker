@@ -37,7 +37,6 @@ function name: getStructFieldType
      *ast.CallExpr -> *ast.SelectorExpr 	 [fmt Sprint]
      *ast.BasicLit -> *ast.SelectorExpr 	 [STRING "chan " t Elem]
 
-
 function name: NameOf
    0.case
      *ast.SelectorExpr 	 [reflect Array]
@@ -131,7 +130,6 @@ function name: NameOf
      *ast.UnaryExpr -> *ast.SelectorExpr 	 [& t Out]
      *ast.BasicLit 	 [STRING ", "]
 
-
 function name: Complete
    0.case
      *ast.SelectorExpr 	 [reflect Struct]
@@ -192,5 +190,4 @@ function name: Complete
       	 [i]
       	 [Name]
      *ast.CallExpr -> *ast.SelectorExpr 	 [result Name]
-
 

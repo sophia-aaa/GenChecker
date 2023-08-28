@@ -72,7 +72,6 @@ function name: decodeObject
      *ast.ReturnStmt -> *ast.SelectorExpr 	 [dec cursor]
       	 [nil]
 
-
 function name: decodeObjectNull
    0.case
      *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [CHAR ' ' CHAR '\n' CHAR '\t' CHAR '\r' CHAR ',']
@@ -164,7 +163,6 @@ function name: decodeObjectNull
      *ast.ReturnStmt -> *ast.SelectorExpr 	 [dec cursor]
       	 [nil]
 
-
 function name: skipObject
    0.case
      *ast.BasicLit -> *ast.IncDecStmt 	 [CHAR '}' objectsClosed]
@@ -206,7 +204,6 @@ function name: skipObject
      *ast.BlockStmt -> *ast.BranchStmt 	 []
      *ast.AssignStmt 	 [= isInEscapeSeq true]
 
-
 function name: nextKey
    0.case
      *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BranchStmt 	 [CHAR ' ' CHAR '\n' CHAR '\t' CHAR '\r' CHAR ',']
@@ -243,7 +240,6 @@ function name: nextKey
      *ast.BinaryExpr -> *ast.SelectorExpr 	 [+ dec cursor]
      *ast.BasicLit 	 [INT 1]
      *ast.ReturnStmt -> *ast.BasicLit 	 [STRING "" true nil]
-
 
 function name: skipData
    0.case
@@ -293,5 +289,4 @@ function name: skipData
      *ast.AssignStmt -> *ast.SelectorExpr 	 [= dec cursor]
       	 [end]
      *ast.ReturnStmt 	 [err]
-
 

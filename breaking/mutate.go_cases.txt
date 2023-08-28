@@ -209,4 +209,3 @@ function name: valueToBytes
      *ast.CallExpr -> *ast.SelectorExpr 	 [val String]
       	 [nil]
 
-

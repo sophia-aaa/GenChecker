@@ -25,7 +25,6 @@ function name: Decode
       	 [ptr]
      *ast.BasicLit 	 [STRING ""]
 
-
 function name: Decode
    0.case
      *ast.SelectorExpr 	 [jsoniter BoolValue]
@@ -70,7 +69,6 @@ function name: Decode
       	 [ptr]
       	 [false]
 
-
 function name: Decode
    0.case
      *ast.SelectorExpr 	 [jsoniter NumberValue]
@@ -92,7 +90,6 @@ function name: Decode
      *ast.SelectorExpr 	 [jsoniter NilValue]
      *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [iter ReadNil]
      *ast.AssignStmt -> *ast.BasicLit 	 [= str STRING "0"]
-
 
 function name: Decode
    0.case
@@ -140,7 +137,6 @@ function name: Decode
       	 [ptr]
      *ast.BasicLit 	 [INT 0]
 
-
 function name: Decode
    0.case
      *ast.SelectorExpr 	 [jsoniter NumberValue]
@@ -186,5 +182,4 @@ function name: Decode
      *ast.AssignStmt -> *ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr 	 [= float64]
       	 [ptr]
      *ast.BasicLit 	 [INT 0]
-
 

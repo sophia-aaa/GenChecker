@@ -18,7 +18,6 @@ function name: sliceDecoder
      *ast.CallExpr -> *ast.SelectorExpr 	 [v Interface]
       	 [nil]
 
-
 function name: arrayDecoder
    0.case
      *ast.SelectorExpr 	 [reflect Int8]
@@ -40,7 +39,6 @@ function name: arrayDecoder
      *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [Read dec dec order]
      *ast.CallExpr -> *ast.SelectorExpr 	 [v Interface]
       	 [nil]
-
 
 function name: newDecoder
    0.case
@@ -81,7 +79,6 @@ function name: newDecoder
      *ast.SelectorExpr 	 [reflect Complex128]
      *ast.ReturnStmt 	 [complex128Decoder nil]
 
-
 function name: valueDecoder
    0.case
      *ast.SelectorExpr 	 [reflect Ptr]
@@ -93,5 +90,4 @@ function name: valueDecoder
      *ast.SelectorExpr 	 [reflect Invalid]
      *ast.ReturnStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [nil nil errors New]
      *ast.BasicLit 	 [STRING "can't decode into nil"]
-
 

@@ -16,7 +16,6 @@ function name: nativeMessageHostManifestDirectoriesChrome
      *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [= chromiumDir path Join]
      *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING "Library" STRING "Application Support" STRING "Chromium" STRING "NativeMessagingHosts"]
 
-
 function name: nativeMessageHostManifestDirectoriesFirefox
    0.case
      *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "linux" = firefoxDir path Join]
@@ -24,5 +23,4 @@ function name: nativeMessageHostManifestDirectoriesFirefox
    1.case
      *ast.BasicLit -> *ast.AssignStmt -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "darwin" = firefoxDir path Join]
      *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit -> *ast.BasicLit 	 [homeDir STRING "Library" STRING "Application Support" STRING "Mozilla" STRING "NativeMessagingHosts"]
-
 

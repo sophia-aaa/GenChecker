@@ -6,4 +6,3 @@ function name: streamingFrame
      *ast.BasicLit -> *ast.CallExpr -> *ast.SelectorExpr 	 [STRING "%d:%d:%s," typ utf8str RuneCount]
       	 [data]
 
-

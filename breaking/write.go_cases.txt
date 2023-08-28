@@ -29,7 +29,6 @@ function name: writeUvarint
      *ast.BasicLit 	 [INT 0x80]
      *ast.CallExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [byte >> x INT 21]
 
-
 function name: validUTF8
    0.case
      *ast.BinaryExpr -> *ast.BasicLit 	 [< c1 INT 0x80]
@@ -43,5 +42,4 @@ function name: validUTF8
      *ast.BinaryExpr -> *ast.BasicLit 	 [< c1 INT 0xf8]
      *ast.ReturnStmt -> *ast.BinaryExpr -> *ast.BinaryExpr -> *ast.BasicLit 	 [&& <= INT 0x80 c2]
      *ast.BinaryExpr -> *ast.BasicLit 	 [< c2 INT 0xc0]
-
 

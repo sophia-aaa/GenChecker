@@ -216,7 +216,6 @@ func refactoring(filename string) {
 	}
 	toReplace = []pattern3Result{}
 	toResult = patternReplace{nodeList, removeNameList}
-
 	if len(toResult.nodes) > 0 {
 		fset := token.NewFileSet()
 		node, err := parser.ParseFile(fset, filename, nil, parser.ParseComments)

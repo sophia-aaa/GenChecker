@@ -2,13 +2,15 @@
 
 
 {*ast.GenDecl -> *ast.ImportSpec -> *ast.BasicLit [STRING "encoding/json"]}
-{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/json-iterator/go"]}
 {*ast.ImportSpec -> *ast.BasicLit [STRING "io"]}
 {*ast.ImportSpec -> *ast.BasicLit [STRING "math"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "reflect"]}
 {*ast.ImportSpec -> *ast.BasicLit [STRING "strconv"]}
 {*ast.ImportSpec -> *ast.BasicLit [STRING "strings"]}
-{*ast.ImportSpec -> *ast.BasicLit [STRING "sync"]}
 {*ast.ImportSpec -> *ast.BasicLit [STRING "unsafe"]}
+{*ast.ImportSpec [jsoniter]}
+{*ast.BasicLit [STRING "github.com/json-iterator/go"]}
+{*ast.ImportSpec -> *ast.BasicLit [STRING "github.com/modern-go/reflect2"]}
 {*ast.GenDecl -> *ast.ValueSpec [maxUint]}
 {*ast.UnaryExpr [^]}
 {*ast.CallExpr [uint]}
@@ -25,39 +27,40 @@
 {*ast.SelectorExpr [jsoniter API]}
 
 
-{*ast.GenDecl -> *ast.ValueSpec [initJson]}
-{*ast.UnaryExpr [&]}
-{*ast.CompositeLit -> *ast.SelectorExpr [sync Once]}
+function name is init 
+	 { [init]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.AssignStmt [= jsonParser]}
+	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CompositeLit -> *ast.SelectorExpr [jsoniter Config]}
+	 {*ast.KeyValueExpr [EscapeHTML true]}
+	 {*ast.KeyValueExpr [SortMapKeys true]}
+	 {*ast.KeyValueExpr [ValidateJsonRawMessage true]}
+	 {*ast.KeyValueExpr [CaseSensitive true Froze]}
+	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsonParser RegisterExtension]}
+	 {*ast.CallExpr [newBetterFuzzyExtension]}
 
 
-function name is initJsonParserOnce 
-	 { [initJsonParserOnce]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [initJson Do]}
-	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr [registerBetterFuzzyDecoder]}
-	 {*ast.AssignStmt [= jsonParser]}
-	 {*ast.SelectorExpr [jsoniter ConfigCompatibleWithStandardLibrary]}
-
-
-function name is registerBetterFuzzyDecoder 
-	 { [registerBetterFuzzyDecoder]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "string"]}
+function name is newBetterFuzzyExtension 
+	 { [newBetterFuzzyExtension]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [jsoniter DecoderExtension]}
+	 {*ast.BlockStmt -> *ast.ReturnStmt -> *ast.CompositeLit -> *ast.SelectorExpr [jsoniter DecoderExtension]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect String]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyStringDecoder]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "bool"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Bool]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [fuzzyBoolDecoder]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "float32"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Float32]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyFloat32Decoder]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "float64"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Float64]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyFloat64Decoder]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "int"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Int]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -82,8 +85,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "uint"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Uint]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -108,8 +111,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "int8"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Int8]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -136,8 +139,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int8 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt8]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "uint8"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Uint8]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -163,8 +166,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint8 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint8]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "int16"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Int16]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -191,8 +194,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int16 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt16]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "uint16"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Uint16]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -218,8 +221,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint16 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint16]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "int32"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Int32]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -246,8 +249,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int32 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt32]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "uint32"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Uint32]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -273,8 +276,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [uint32 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadUint32]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "int64"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Int64]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -301,8 +304,8 @@ function name is registerBetterFuzzyDecoder
 	 {*ast.BlockStmt -> *ast.AssignStmt [=]}
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [int64 ptr]}
 	 {*ast.CallExpr -> *ast.SelectorExpr [iter ReadInt64]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [jsoniter RegisterTypeDecoder]}
-	 {*ast.BasicLit [STRING "uint64"]}
+	 {*ast.KeyValueExpr -> *ast.CallExpr -> *ast.SelectorExpr [reflect2 DefaultTypeOfKind]}
+	 {*ast.SelectorExpr [reflect Uint64]}
 	 {*ast.UnaryExpr [&]}
 	 {*ast.CompositeLit [nullableFuzzyIntegerDecoder]}
 	 {*ast.FuncLit -> *ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
@@ -435,37 +438,12 @@ function name is Decode
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
 	 {*ast.BasicLit [STRING "fuzzyBoolDecoder"]}
 	 {*ast.BasicLit [STRING "not number or string or nil"]}
-	 {*ast.GenDecl -> *ast.TypeSpec [tolerateEmptyArrayDecoder]}
-	 {*ast.StructType -> *ast.FieldList -> *ast.Field [valDecoder]}
-	 {*ast.SelectorExpr [jsoniter ValDecoder]}
-
-
-function name is Decode 
-	 {*ast.FieldList -> *ast.Field [decoder]}
-	 {*ast.StarExpr [tolerateEmptyArrayDecoder Decode]}
-	 {*ast.FuncType -> *ast.FieldList -> *ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
+	 {*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyIntegerDecoder]}
+	 {*ast.StructType -> *ast.FieldList -> *ast.Field [fun]}
+	 {*ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
+	 {*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
 	 {*ast.Field [iter]}
 	 {*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
-	 {*ast.BlockStmt -> *ast.IfStmt []}
-	 {*ast.BinaryExpr [==]}
-	 {*ast.CallExpr -> *ast.SelectorExpr [iter WhatIsNext]}
-	 {*ast.SelectorExpr [jsoniter ArrayValue]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter Skip]}
-	 {*ast.AssignStmt [:= newIter]}
-	 {*ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool BorrowIterator]}
-	 {*ast.CallExpr -> *ast.ArrayType [byte]}
-	 {*ast.BasicLit [STRING "{}"]}
-	 {*ast.DeferStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.CallExpr -> *ast.SelectorExpr [iter Pool ReturnIterator newIter]}
-	 {*ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [decoder valDecoder Decode ptr newIter]}
-	 {*ast.BlockStmt -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr -> *ast.SelectorExpr [decoder valDecoder Decode ptr iter]}
-
-
-{*ast.GenDecl -> *ast.TypeSpec [nullableFuzzyIntegerDecoder]}
-{*ast.StructType -> *ast.FieldList -> *ast.Field [fun]}
-{*ast.FuncType -> *ast.FieldList -> *ast.Field [isFloat bool]}
-{*ast.Field -> *ast.SelectorExpr [ptr unsafe Pointer]}
-{*ast.Field [iter]}
-{*ast.StarExpr -> *ast.SelectorExpr [jsoniter Iterator]}
 
 
 function name is Decode 
@@ -650,7 +628,7 @@ function name is Decode
 	 {*ast.StarExpr -> *ast.ParenExpr -> *ast.CallExpr -> *ast.ParenExpr -> *ast.StarExpr [float64 ptr]}
 	 {*ast.BasicLit [INT 0]}
 	 {*ast.CaseClause -> *ast.ExprStmt -> *ast.CallExpr -> *ast.SelectorExpr [iter ReportError]}
-	 {*ast.BasicLit [STRING "nullableFuzzyFloat32Decoder"]}
+	 {*ast.BasicLit [STRING "nullableFuzzyFloat64Decoder"]}
 	 {*ast.BasicLit [STRING "not number or string"]}
 
 
