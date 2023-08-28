@@ -7,6 +7,27 @@ import (
 	"strings"
 )
 
+/*
+written by Jang, Hyang Gi on 28.August.2023
+
+Desired codes:
+
+from the function PatternObjectSlice
+	func (h *Header[T]) ObjectSlice() []T {
+		return h.Raw
+	}
+
+from the function PatternSet
+	func (h *Header[T]) Set(i int, x T) {
+		h.Raw[i] = x
+	}
+
+from the function PatternGet
+	func (h *Header[T]) Get(i int) T {
+		return h.Raw[i]
+	}
+*/
+
 func patternObjectSlice(fnc basicStr) *ast.FuncDecl {
 	flag0, flag1, flag2 := false, false, false
 	receiverParam := []string{}

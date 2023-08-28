@@ -5,6 +5,18 @@ import (
 	"strings"
 )
 
+/*
+written by Jang, Hyang Gi on 28.August.2023
+
+Desired codes:
+
+from function patternGenSlice
+		func (g GenHeader[T]) Object() []T {
+			return g.List
+		}
+
+*/
+
 func patternGenSlice(fnc basicStr) *ast.FuncDecl {
 	flag0, flag1, flag2, flag3, flag4, flag5, flag6 := false, false, false, false, false, false, false
 	receiverParam := []string{}

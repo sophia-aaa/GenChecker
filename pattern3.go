@@ -8,6 +8,35 @@ import (
 	"strings"
 )
 
+/*
+written by Jang, Hyang Gi on 28.August.2023
+
+Desired codes:
+
+from function patternArraySet
+	func (a *main.array[T]) SetGen(i int, x T) {
+		a.SetG(i, x)
+	}
+
+from function patternArrayGet
+	func (a *main.array[T]) SetGen(i int, x T) {
+			a.SetG(i, x)
+	}
+
+from function patternMemset
+	func (a *main.array[T]) SetGen(i int, x T) {
+		a.SetG(i, x)
+	}
+
+from function patternMemsetIter
+	func (a *main.array[T]) SetGen(i int, x T) {
+		a.SetG(i, x)
+	}
+
+from function patternEq
+it will be printed out No parameterised methods
+*/
+
 func patternArraySet(fnc basicStr) *ast.FuncDecl {
 	flag0, flag1, flag2, flag3, flag4, flag5, flag6 := false, false, false, false, false, false, false
 	receiverParam := []string{}

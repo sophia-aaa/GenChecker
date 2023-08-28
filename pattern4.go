@@ -5,6 +5,13 @@ import (
 	"strings"
 )
 
+/*
+written by Jang, Hyang Gi on 28.August.2023
+
+from function patternReduce
+it will be printed out No parameterised methods
+*/
+
 func patternReduce(fnc basicStr) {
 	flag0, flag1, flag2 := false, false, false
 	receiverParam := []string{}
