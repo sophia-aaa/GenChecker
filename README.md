@@ -1,7 +1,7 @@
 # GenChecker
 
-This tool <i>GenChecker</i> was developed to study the alternative use of generics in thesis unsafe packages.
-
+This tool <i>GenChecker</i> was developed for the thesis "Code Transformation for Safety: Leveraging Generics to Refactor Unsafe Package Usages in Go" to replace the usage of unsafe package by generics in Go.
+<br>This project was developed using the ast, astutil packages in go.
 Type
 ```
 go run . - "<path>/<filename.go>"
@@ -28,3 +28,11 @@ We extracted 10 patterns from 4 files, and 3 of them say that they cannot be rep
 
 You can use the file <i>spewConverter.go</i> to output the ast.Node of the files. <br>
 This file relies on the package spew.
+
+Due to the limitations of the ast and astutil packages, the tool can only refactor if there is code written in the same way as provided by the first dataset. 
+<br>However, you can use the tool if the code contains reused implementations for multiple data types.
+
+I strongly recommend you to adapt your keyword for your project to add your keyword according to your project in the const.go. Then the tool will be recognised as a list in the <i>const.go</i>
+
+There may be gaps in the tool. Please fork and post an issue with any improvements or suggestions.
+Thank you for your support and have a great day!
